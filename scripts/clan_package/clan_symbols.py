@@ -3,7 +3,7 @@ from random import choice
 from scripts.cat.sprites.load_sprites import sprites
 
 
-def clan_symbol_sprite(clan, return_string=False, force_light=False):
+def clan_symbol_sprite(clan, return_string=False, force_light=False, force_dark=False):
     """
     returns the clan symbol for the given clan_name, if no symbol exists then random symbol is chosen
     :param clan: the clan object
@@ -14,14 +14,14 @@ def clan_symbol_sprite(clan, return_string=False, force_light=False):
         possible_sprites = []
         for sprite in sprites.clan_symbols:
             name = sprite.strip("1234567890")
-            if f"symbol{clan.name.upper()}" == name:
+            if f"symbol{clan.displayname.upper()}" == name:
                 possible_sprites.append(sprite)
         if possible_sprites:
             clan.chosen_symbol = choice(possible_sprites)
         else:
             # give random symbol if no matching symbol exists
             print(
-                f"WARNING: attempted to return symbol, but there's no clan symbol for {clan.name.upper()}. "
+                f"WARNING: attempted to return symbol, but there's no clan symbol for {clan.displayname.upper()}. "
                 f"Random chosen."
             )
             clan.chosen_symbol = choice(sprites.clan_symbols)
@@ -29,4 +29,4 @@ def clan_symbol_sprite(clan, return_string=False, force_light=False):
     if return_string:
         return clan.chosen_symbol
     else:
-        return sprites.get_symbol(clan.chosen_symbol, force_light=force_light)
+        return sprites.get_symbol(clan.chosen_symbol, force_light=force_light, force_dark=force_dark)

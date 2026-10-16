@@ -1,0 +1,22 @@
+{
+    "general1": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "The older queens allow you to join their hangout where they discuss StarClan's young. You feel giddy at the prospect of being included."
+    },
+    "general2": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You nearly chase down a group of wandering kits before reminding yourself they're not confined to camp here."
+    }
+}

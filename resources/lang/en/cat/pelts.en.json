@@ -129,6 +129,7 @@
         "scarred": "scarred",
         "fur_short": "short",
         "fur_medium": "medium",
-        "fur_long": "long"
+        "fur_long": "long",
+        "fur_hairless": "hairless"
     }
 }

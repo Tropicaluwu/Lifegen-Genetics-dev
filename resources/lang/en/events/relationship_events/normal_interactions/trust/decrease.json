@@ -170,7 +170,7 @@
 			"m_c thinks that r_c gave {PRONOUN/m_c/object} the wrong herbs."
 		],
 		"random_status_constraint": [
-			"medicine cat"
+			"healer"
 		]
 	},
 	{
@@ -185,7 +185,7 @@
 			"elder"
 		],
 		"random_status_constraint": [
-			"medicine cat"
+			"healer"
 		]
 	},
 	{
@@ -193,13 +193,13 @@
 		"intensity": "high",
 		"interactions": [
 			"m_c accuses r_c of treating cats incorrectly on purpose!",
-			"m_c saw r_c bringing deathberries into the medicine den.",
+			"m_c saw r_c bringing deathberries into the healer den.",
 			"r_c was rough with m_c during a recent treatment.",
-			"m_c isn't sure why r_c became a medicine cat at all since {PRONOUN/r_c/subject} {VERB/r_c/seem/seems} to not like helping any cats.",
+			"m_c isn't sure why r_c became a healer at all since {PRONOUN/r_c/subject} {VERB/r_c/seem/seems} to not like helping any cats.",
 			"m_c wouldn't be surprised if r_c faked signs from StarClan..."
 		],
 		"random_status_constraint": [
-			"medicine cat"
+			"healer"
 		],
 		"random_trait_constraint": [
 			"cold",
@@ -215,10 +215,10 @@
 			"m_c growls frustratingly at r_c when {PRONOUN/r_c/subject} {VERB/r_c/don't/doesn't} pay attention to m_c's health concerns... again.",
 			"m_c looks for r_c for treatment on a minor wound, only to find {PRONOUN/r_c/object} playing with catmint!",
 			"m_c hopes to never have a serious illness with r_c in charge of treatments...",
-			"m_c complains that r_c never takes {PRONOUN/r_c/poss} role of medicine cat seriously."
+			"m_c complains that r_c never takes {PRONOUN/r_c/poss} role of healer seriously."
 		],
 		"random_status_constraint": [
-			"medicine cat"
+			"healer"
 		],
 		"random_trait_constraint": [
 			"oblivious",
@@ -243,5 +243,38 @@
 			"bloodthirsty",
 			"vengeful"
 		]
+	},
+	{
+		"id": "guy_trust_queen_inc_low1",
+		"interactions": [
+			"m_c thinks r_c was too rough with a kitten.",
+			"m_c doesn't think r_c deserves c_n's adoration.",
+			"m_c hopes r_c resigns if {PRONOUN/m_c/subject} {VERB/m_c/have/has} kittens.",
+			"m_c doesn't let r_c watch the kits."
+		],
+		"random_status_constraint": [
+			"queen's apprentice",
+			"queen"
+		],
+		"reaction_random_cat": {
+			"trust": "decrease"
+		}
+	},
+	{
+		"id": "trust_decrease_lifegen_H1",
+		"interactions": [
+			"m_c tries to hide a broken toy from r_c's sight but ends up being unsuccessful.",
+			"m_c moves r_c's nest to the wrong spot, and now r_c refuses to let m_c touch it."
+		],
+		"main_status_constraint": [
+			"queen's apprentice",
+			"queen"
+		],
+		"random_status_constraint": [
+			"kitten"
+		],
+		"reaction_random_cat": {
+			"trust": "decrease"
+		}
 	}
 ]

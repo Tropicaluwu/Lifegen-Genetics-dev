@@ -96,9 +96,9 @@ class Scar_Events:
         moons_with = game.clan.age - cat.injuries[injury_name]["moon_start"]
         chance = max(5 - moons_with, 1)
 
-        amount_per_med = get_amount_cat_for_one_medic(game.clan)
+        amount_per_med = get_amount_cat_for_one_medic()
         if medicine_cats_can_cover_clan(
-            game.cat_class.all_cats.values(), amount_per_med
+            game.cat_class.all_cats.values(), amount_per_med, clan=cat.status.group_ID
         ):
             chance += 2
 
@@ -113,7 +113,7 @@ class Scar_Events:
                 scar_pool = [
                     i for i in scar_pool if i not in ("TOETRAP", "RATBITE", "FROSTSOCK")
                 ]
-            if "NOTAIL" in cat.pelt.scars:
+            if "NOTAIL" in cat.pelt.scars or (0 < cat.phenotype.bobtailnr < 3):
                 scar_pool = [
                     i
                     for i in scar_pool
@@ -127,7 +127,7 @@ class Scar_Events:
                         "FROSTTAIL",
                     )
                 ]
-            if "HALFTAIL" in cat.pelt.scars:
+            if "HALFTAIL" in cat.pelt.scars or (0 < cat.phenotype.bobtailnr < 3):
                 scar_pool = [
                     i
                     for i in scar_pool
@@ -217,15 +217,7 @@ class Scar_Events:
                     acc
                     for acc in cat.pelt.accessory
                     if acc
-                    not in (
-                        "RED FEATHERS",
-                        "BLUE FEATHERS",
-                        "JAY FEATHERS",
-                        "GULL FEATHERS",
-                        "SPARROW FEATHERS",
-                        "CLOVER",
-                        "DAISY",
-                    )
+                    not in cat.pelt.tail_accessories
                 )
 
             # combining left/right variations into the both version

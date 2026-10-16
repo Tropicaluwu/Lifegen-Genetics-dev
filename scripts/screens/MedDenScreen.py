@@ -157,7 +157,7 @@ class MedDenScreen(Screens):
             starting_height=2,
         )
 
-        if game.clan.game_mode != "classic":
+        if game.clan.game_mode != "classic" and game.clan == game.selected_clan:
             self.help_button = UIImageButton(
                 ui_scale(pygame.Rect((725, 25), (34, 34))),
                 "",
@@ -261,13 +261,15 @@ class MedDenScreen(Screens):
             self.minor_cats = []
             self.injured_and_sick_cats = []
             for the_cat in Cat.all_cats_list:
-                if the_cat.status.alive_in_player_clan and (
+                if (the_cat.status.group_ID == game.selected_clan.group_ID and the_cat.moons > 0) and (
                     the_cat.injuries or the_cat.illnesses
                 ):
                     self.injured_and_sick_cats.append(the_cat)
             for cat in self.injured_and_sick_cats:
                 if cat.injuries:
                     for injury in cat.injuries:
+                        if injury == "pregnant" and game.clan.pregnancy_data.get(cat.ID, {}).get("hidden"):
+                            continue
                         if cat.injuries[injury][
                             "severity"
                         ] != "minor" and injury not in [
@@ -347,8 +349,8 @@ class MedDenScreen(Screens):
         if self.meds:
             med_messages = []
 
-            amount_per_med = get_amount_cat_for_one_medic(game.clan)
-            number = amount_clanmembers_covered(Cat.all_cats.values(), amount_per_med)
+            amount_per_med = get_amount_cat_for_one_medic()
+            number = amount_clanmembers_covered(Cat.all_cats.values(), amount_per_med, clan=game.selected_clan.group_ID)
 
             meds_cover = i18n.t(
                 "screens.med_den.meds_cover", clansize=number, count=len(self.meds)
@@ -368,7 +370,7 @@ class MedDenScreen(Screens):
                 )
             elif len(self.meds) >= 2 and number == 0:
                 meds_cover = event_text_adjust(
-                    Cat=Cat, text=choice(MESSAGES["many_not_working"]), clan=game.clan
+                    Cat=Cat, text=choice(MESSAGES["many_not_working"]), clan=game.selected_clan
                 )
 
             if meds_cover:
@@ -429,7 +431,7 @@ class MedDenScreen(Screens):
 
         # get the med cats
         self.meds = find_alive_cats_with_rank(
-            Cat, [CatRank.MEDICINE_CAT, CatRank.MEDICINE_APPRENTICE], sort=True
+            Cat, [CatRank.MEDICINE_CAT, CatRank.MEDICINE_APPRENTICE], sort=True, clan=game.selected_clan.group_ID
         )
 
         if not self.meds:
@@ -485,7 +487,7 @@ class MedDenScreen(Screens):
                 manager=MANAGER,
             )
             med_skill = cat.skills.skill_string(short=True)
-            med_exp = i18n.t("general.exp_label", exp=cat.experience_level)
+            med_exp = i18n.t("general.exp_label", exp=cat.experience_level_string)
             med_working = True
             if cat.not_working():
                 med_working = False
@@ -541,26 +543,27 @@ class MedDenScreen(Screens):
             if cat.injuries:
                 condition_list.extend(
                     [
-                        i18n.t(f"conditions.injuries.{injury}")
-                        for injury in list(cat.injuries.keys())
+                        event_text_adjust(Cat, i18n.t(f"conditions.injuries.{injury}"), main_cat=cat)
+                        for injury in list(cat.injuries.keys()) if (injury != "pregnant" or not game.clan.pregnancy_data.get(cat.ID, {}).get("hidden"))
                     ]
                 )
             if cat.illnesses:
                 condition_list.extend(
                     [
-                        i18n.t(f"conditions.illnesses.{illness}")
+                        event_text_adjust(Cat, i18n.t(f"conditions.illnesses.{illness}"), main_cat=cat)
                         for illness in list(cat.illnesses.keys())
                     ]
                 )
             if cat.permanent_condition:
                 for condition in cat.permanent_condition:
-                    if cat.permanent_condition[condition]["moons_until"] == -2:
+                    if cat.permanent_condition[condition]["moons_until"] < 1:
                         condition_list.extend(
                             [
                                 i18n.t(f"conditions.permanent_conditions.{permcond}")
                                 for permcond in list(cat.permanent_condition.keys())
                             ]
                         )
+                        break
             conditions = ",<br>".join(condition_list)
 
             conditions = process_text(
@@ -600,7 +603,7 @@ class MedDenScreen(Screens):
         if herb_supply.total <= 0:
             herb_list = ["Empty"]
 
-        elif game.clan.game_mode != "classic":
+        elif game.clan.game_mode != "classic" and game.selected_clan == game.clan:
             for herb, count in herb_supply.entire_supply.items():
                 if count <= 0:
                     continue
@@ -613,7 +616,7 @@ class MedDenScreen(Screens):
 
         if len(herb_list) <= 10:
             # classic doesn't display herbs
-            if game.clan.game_mode == "classic":
+            if game.clan.game_mode == "classic" and game.selected_clan == game.clan:
                 herb_display = None
             else:
                 herb_display = "<br>".join(sorted(herb_list))
@@ -646,7 +649,7 @@ class MedDenScreen(Screens):
                 holding_pairs.extend(pair)
 
             # classic doesn't display herbs
-            if game.clan.game_mode == "classic":
+            if game.clan.game_mode == "classic" and game.selected_clan == game.clan:
                 herb_display = None
             else:
                 herb_display = "<br>".join(holding_pairs)
@@ -714,7 +717,7 @@ class MedDenScreen(Screens):
         if self.med_name:
             self.med_name.kill()
         self.back_button.kill()
-        if game.clan.game_mode != "classic":
+        if game.clan.game_mode != "classic" and game.selected_clan == game.clan:
             self.help_button.kill()
             self.cat_bg.kill()
             self.last_page.kill()

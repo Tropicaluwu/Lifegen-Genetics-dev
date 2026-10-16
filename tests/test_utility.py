@@ -18,39 +18,7 @@ from scripts.clan_package.get_clan_cats import get_alive_clan_queens
 
 class TestPersonalityCompatibility(unittest.TestCase):
     current_traits = [
-        "adventurous",
-        "altruistic",
-        "ambitious",
-        "bloodthirsty",
-        "bold",
-        "calm",
-        "careful",
-        "charismatic",
-        "childish",
-        "cold",
-        "compassionate",
-        "confident",
-        "daring",
-        "empathetic",
-        "faithful",
-        "fierce",
-        "insecure",
-        "lonesome",
-        "loving",
-        "loyal",
-        "nervous",
-        "patient",
-        "playful",
-        "responsible",
-        "righteous",
-        "shameless",
-        "sneaky",
-        "strange",
-        "strict",
-        "thoughtful",
-        "troublesome",
-        "vengeful",
-        "wise",
+        'adventurous', 'aloof', 'ambitious', 'arrogant', 'bloodthirsty', 'bold', 'bouncy', 'calm', 'careful', 'confident', 'competitive', 'cold', 'charismatic', 'cunning', 'cowardly', 'childish', 'compassionate','emotional', 'energetic', 'fierce', 'flexible', 'faithful', 'flamboyant', 'grumpy', 'gloomy', 'humble', 'insecure', 'justified', 'loyal', 'lonesome', 'loving', 'meek', 'mellow', 'methodical', 'nervous', 'oblivious', 'obsessive', 'playful', 'reserved', 'righteous', 'responsible', 'rebellious', 'strict', 'stoic', 'sneaky', 'strange', 'sincere', 'shameless', 'spontaneous', 'thoughtful', 'troublesome', 'trusting', 'vengeful', 'witty', 'wise', 'impulsive', 'bullying', 'attention-seeker', 'charming', 'daring', 'noisy', 'daydreamer', 'sweet', 'polite', 'know-it-all', 'bossy', 'disciplined', 'patient', 'manipulative', 'secretive', 'rebellious', 'grumpy', 'passionate', 'honest', 'leader-like', 'smug', 'unruly', 'shy', 'self-conscious','skittish','fearless'
     ]
 
     def test_some_neutral_combinations(self):
@@ -222,13 +190,13 @@ class TestGetQueens(unittest.TestCase):
     def test_single_mother(self):
         # given
         # young enough kid
-        self.test_cat1.gender = "female"
+        self.test_cat1.phenotype.Generator("fem")
 
         self.test_cat2.status._change_rank(CatRank.KITTEN)
         self.test_cat2.parent1 = self.test_cat1.ID
 
         # too old kid
-        self.test_cat3.gender = "female"
+        self.test_cat3.phenotype.Generator("fem")
 
         self.test_cat4.status._change_rank(CatRank.APPRENTICE)
         self.test_cat4.parent1 = self.test_cat3.ID
@@ -242,13 +210,13 @@ class TestGetQueens(unittest.TestCase):
     def test_single_father(self):
         # given
         # young enough kid
-        self.test_cat1.gender = "male"
+        self.test_cat1.phenotype.Generator("masc")
 
         self.test_cat2.status._change_rank(CatRank.KITTEN)
         self.test_cat2.parent1 = self.test_cat1.ID
 
         # too old kid
-        self.test_cat3.gender = "male"
+        self.test_cat3.phenotype.Generator("masc")
 
         self.test_cat4.status._change_rank(CatRank.APPRENTICE)
         self.test_cat4.parent1 = self.test_cat3.ID
@@ -262,18 +230,18 @@ class TestGetQueens(unittest.TestCase):
     def tests_hetero_pair(self):
         # given
         # young enough kid
-        self.test_cat1.gender = "female"
+        self.test_cat1.phenotype.Generator("fem")
 
-        self.test_cat2.gender = "male"
+        self.test_cat2.phenotype.Generator("masc")
 
         self.test_cat3.status._change_rank(CatRank.KITTEN)
         self.test_cat3.parent1 = self.test_cat2.ID
         self.test_cat3.parent2 = self.test_cat1.ID
 
         # too old kid
-        self.test_cat4.gender = "female"
+        self.test_cat4.phenotype.Generator("fem")
 
-        self.test_cat5.gender = "male"
+        self.test_cat5.phenotype.Generator("masc")
 
         self.test_cat6.status._change_rank(CatRank.APPRENTICE)
         self.test_cat6.parent1 = self.test_cat5.ID
@@ -295,18 +263,18 @@ class TestGetQueens(unittest.TestCase):
     def test_gay_pair(self):
         # given
         # young enough kid
-        self.test_cat1.gender = "male"
+        self.test_cat1.phenotype.Generator("masc")
 
-        self.test_cat2.gender = "male"
+        self.test_cat2.phenotype.Generator("masc")
 
         self.test_cat3.status._change_rank(CatRank.KITTEN)
         self.test_cat3.parent1 = self.test_cat2.ID
         self.test_cat3.parent2 = self.test_cat1.ID
 
         # too old kid
-        self.test_cat4.gender = "male"
+        self.test_cat4.phenotype.Generator("masc")
 
-        self.test_cat5.gender = "male"
+        self.test_cat5.phenotype.Generator("masc")
 
         self.test_cat6.status._change_rank(CatRank.APPRENTICE)
         self.test_cat6.parent1 = self.test_cat5.ID
@@ -329,18 +297,18 @@ class TestGetQueens(unittest.TestCase):
     def test_lesbian_pair(self):
         # given
         # young enough kid
-        self.test_cat1.gender = "female"
+        self.test_cat1.phenotype.Generator("fem")
 
-        self.test_cat2.gender = "female"
+        self.test_cat2.phenotype.Generator("fem")
 
         self.test_cat3.status._change_rank(CatRank.KITTEN)
         self.test_cat3.parent1 = self.test_cat2.ID
         self.test_cat3.parent2 = self.test_cat1.ID
 
         # too old kid
-        self.test_cat4.gender = "female"
+        self.test_cat4.phenotype.Generator("fem")
 
-        self.test_cat5.gender = "female"
+        self.test_cat5.phenotype.Generator("fem")
 
         self.test_cat6.status._change_rank(CatRank.APPRENTICE)
         self.test_cat6.parent1 = self.test_cat5.ID
@@ -363,11 +331,11 @@ class TestGetQueens(unittest.TestCase):
     def test_poly_pair(self):
         # given
         # young enough kid
-        self.test_cat1.gender = "female"
+        self.test_cat1.phenotype.Generator("fem")
 
-        self.test_cat2.gender = "female"
+        self.test_cat2.phenotype.Generator("fem")
 
-        self.test_cat3.gender = "male"
+        self.test_cat3.phenotype.Generator("masc")
 
         self.test_cat4.status._change_rank(CatRank.KITTEN)
         self.test_cat4.parent1 = self.test_cat2.ID

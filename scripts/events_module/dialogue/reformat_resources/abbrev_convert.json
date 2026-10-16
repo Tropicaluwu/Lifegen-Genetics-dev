@@ -1,0 +1,313 @@
+{
+    "r_c1": {},
+    "r_c2": {},
+    "r_c3": {},
+    "r_c4": {},
+    "r_c": {},
+    "l_n": {
+        "rank": ["leader"]
+    },
+    "d_c": {
+        "dead": ["any"]
+    },
+    "d_n": {
+        "rank": ["deputy"]
+    },
+    "r_a": {
+        "rank": ["apprentice"]
+    },
+    "r_m": {
+        "rank": ["medicine cat", "medicine cat apprentice"]
+    },
+    "y_p": {
+        "relationship": {
+            "cats_from": ["y_p"],
+            "cats_to": ["y_c"],
+            "relationship": ["parent/child"]
+        }
+    },
+    "tm_n": {
+        "relationship": {
+            "cats_from": ["tm_n"],
+            "cats_to": ["t_c"],
+            "relationship": ["app/mentor"]
+        }
+    },
+    "t_l": {
+        "relationship": {
+            "cats_from": ["t_l"],
+            "cats_to": ["t_c"],
+            "relationship": ["littermates"]
+        }
+    },
+    "t_m": {
+        "relationship": {
+            "cats_from": ["t_m"],
+            "cats_to": ["t_c"],
+            "relationship": ["mates"]
+        }
+    },
+    "t_p": {
+        "relationship": {
+            "cats_from": ["t_p"],
+            "cats_to": ["t_c"],
+            "relationship": ["parent/child"]
+        }
+    },
+    "t_a": {
+        "relationship": {
+            "cats_from": ["t_a"],
+            "cats_to": ["t_c"],
+            "relationship": ["app/mentor"]
+        }
+    },
+    "t_s": {
+        "relationship": {
+            "cats_from": ["t_s"],
+            "cats_to": ["t_c"],
+            "relationship": ["siblings"]
+        }
+    },
+    "t_k": {
+        "relationship": {
+            "cats_from": ["t_k"],
+            "cats_to": ["t_c"],
+            "relationship": ["child/parent"]
+        }
+    },
+    "t_ka": {
+        "relationship": {
+            "cats_from": ["t_ka"],
+            "cats_to": ["t_c"],
+            "relationship": ["child/parent"]
+        },
+        "age": ["adolescent"]
+    },
+    "t_kk": {
+        "relationship": {
+            "cats_from": ["t_kk"],
+            "cats_to": ["t_c"],
+            "relationship": ["child/parent"]
+        },
+        "age": ["kitten", "newborn"]
+    },
+    "y_m": {
+        "relationship": {
+            "cats_from": ["y_m"],
+            "cats_to": ["y_c"],
+            "relationship": ["mates"]
+        }
+    },
+    "r_q": {
+        "rank": ["queen"]
+    },
+    "r_k": {
+        "rank": ["kitten"]
+    },
+    "r_e": {
+        "rank": ["elder"]
+    },
+    "theircrush": {
+        "relationship": {
+            "cats_from": ["t_c"],
+            "cats_to": ["theircrush"],
+            "relationship": ["min_romance_20", "not_mates"]
+        }
+    },
+    "yourcrush": {
+        "relationship": {
+            "cats_from": ["y_c"],
+            "cats_to": ["yourcrush"],
+            "relationship": ["min_romance_20", "not_mates"]
+        }
+    },
+    "r_w1": {
+        "rank": ["warrior"]
+    },
+    "r_w2": {
+        "rank": ["warrior"]
+    },
+    "r_w3": {
+        "rank": ["warrior"]
+    },
+    "r_w": {
+        "rank": ["warrior"]
+    },
+    "y_a": {
+        "relationship": {
+            "cats_from": ["y_a"],
+            "cats_to": ["y_c"],
+            "relationship": ["app/mentor"]
+        }
+    },
+    "r_s": {
+        "condition": ["illness:any"]
+    },
+    "r_i": {
+        "condition": ["injury:any"]
+    },
+    "y_s": {
+        "relationship": {
+            "cats_from": ["y_s"],
+            "cats_to": ["y_c"],
+            "relationship": ["siblings"]
+        }
+    },
+    "y_l": {
+        "relationship": {
+            "cats_from": ["y_l"],
+            "cats_to": ["y_c"],
+            "relationship": ["littermates"]
+        }
+    },
+    "r_d": {
+        "rank": ["mediator"]
+    },
+    "df_y_a": {
+        "relationship": {
+            "cats_from": ["df_y_a"],
+            "cats_to": ["y_c"],
+            "relationship": ["df app/df mentor"]
+        }
+    },
+    "df_m_n": {
+        "relationship": {
+            "cats_from": ["df_m_n"],
+            "cats_to": ["y_c"],
+            "relationship": ["df mentor/df app"]
+        }
+    },
+    "m_n": {
+        "relationship": {
+            "cats_from": ["m_n"],
+            "cats_to": ["y_c"],
+            "relationship": ["mentor/app"]
+        }
+    },
+    "rsc_c": {
+        "dead": ["sc"]
+    },
+    "y_kk": {
+        "relationship": {
+            "cats_from": ["y_kk"],
+            "cats_to": ["y_c"],
+            "relationship": ["child/parent"]
+        },
+        "age": ["kitten"]
+    },
+    "y_ka": {
+        "relationship": {
+            "cats_from": ["y_ka"],
+            "cats_to": ["y_c"],
+            "relationship": ["child/parent"]
+        },
+        "age": ["adolescent"]
+    },
+    "y_k": {
+        "relationship": {
+            "cats_from": ["y_k"],
+            "cats_to": ["y_c"],
+            "relationship": ["child/parent"]
+        }
+    },
+    "rdf_c": {
+        "dead": ["df"]
+    },
+    "rur_c": {
+        "dead": ["ur"]
+    },
+    "fc_c": {
+        "focus_cat": true
+    },
+    "v_c": {
+        "murder": {"victim":"v_c"}
+    },
+    "l_c": {
+        "standing": ["lost"]
+    },
+    "e_c": {
+        "standing": ["exiled"]
+    },
+    "rsh_c": {
+        "shunned": true
+    },
+    "rsh_w": {
+        "rank": ["warrior"],
+        "shunned": true
+    },
+    "rsh_e": {
+        "rank": ["elder"],
+        "shunned": true
+    },
+    "rsh_a": {
+        "rank": ["apprentice"],
+        "shunned": true
+    },
+    "rsh_d": {
+        "rank": ["mediator", "mediator apprentice"],
+        "shunned": true
+    },
+    "rsh_m": {
+        "rank": ["medicine cat", "medicine cat apprentice"],
+        "shunned": true
+    },
+    "rsh_k": {
+        "rank": ["kitten"],
+        "shunned": true
+    },
+    "sh_d": {
+        "rank": ["deputy"],
+        "shunned": true
+    },
+    "sh_l": {
+        "rank": ["leader"],
+        "shunned": true
+    },
+    "n_r1": {
+        "relationship": {
+            "cats_from": ["n_r1"],
+            "cats_to": ["n_r2"],
+            "relationship": ["min_romance_20"]
+        }
+    },
+    "n_r2": {
+        "relationship": {
+            "cats_from": ["n_r2"],
+            "cats_to": ["n_r1"],
+            "relationship": ["min_romance_20"]
+        }
+    },
+    "yg_c": {
+        "relationship": {
+            "cats_from": ["yg_c"],
+            "cats_to": ["y_c"],
+            "relationship": ["dead/grieving"]
+        },
+        "dead": ["any"]
+    },
+    "tg_c": {
+        "relationship": {
+            "cats_from": ["tg_c"],
+            "cats_to": ["t_c"],
+            "relationship": ["dead/grieving"]
+        },
+        "dead": ["any"]
+    },
+    "df_cm": {
+        "rank": ["df_trainee"]
+    },
+    "crush1": {
+        "relationship": {
+            "cats_from": ["y_c"],
+            "cats_to": ["crush1"],
+            "relationship": ["min_romance_15", "non-mates"]
+        }
+    },
+    "affair_ym": {
+        "relationship": {
+            "cats_from": ["y_c"],
+            "cats_to": ["affair_ym"],
+            "relationship": ["max_trust_30", "mates"]
+        }
+    }
+}

@@ -1,7 +1,9 @@
 [
     {
         "event_id": "mtn_death_bury_multicamp1",
-        "location": ["mountainous:camp1"],
+        "location": [
+            "mountainous:camp1"
+        ],
         "season": [
             "leaf-fall",
             "leaf-bare"
@@ -21,14 +23,20 @@
     },
     {
         "event_id": "gen_death_weasel_death",
-        "location": ["mountainous:camp4"],
-        "season": ["any"],
+        "location": [
+            "mountainous:camp4"
+        ],
+        "season": [
+            "any"
+        ],
         "sub_type": [],
         "tags": ["clan:kitten"],
         "frequency": 2,
         "event_text": "m_c snuck out of camp and was lost to the strange, angular tunnels, nothing left to find but blood and weasel-scent.",
         "m_c": {
-            "age": ["kitten"],
+            "age": [
+                "kitten"
+            ],
             "dies": true
         },
         "history": [

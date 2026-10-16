@@ -1,7 +1,15 @@
+import pygame
+
+from scripts.cat.cats import Cat
+from scripts.game_structure import image_cache
+import pygame_gui
+
+from scripts.ui.windows.retire_prompt import RetireWindow
+from scripts.ui.windows.mate_prompt import MateWindow
+from scripts.game_structure.propagating_thread import PropagatingThread
 from threading import current_thread
 from typing import Dict, Optional, Union
 
-import pygame
 import pygame_gui
 import ujson
 
@@ -18,6 +26,7 @@ from scripts.game_structure.game.switches import (
     switch_set_value,
     switch_get_value,
     Switch,
+    switch_remove_list_value
 )
 from scripts.game_structure.propagating_thread import PropagatingThread
 from scripts.game_structure.screen_settings import (
@@ -28,6 +37,8 @@ from scripts.ui.windows.freshkill import FreshkillManagementWindow
 from scripts.ui.windows.herbs import HerbManagementWindow
 from scripts.ui.windows.save_check import SaveCheckWindow
 from scripts.ui.event_load_animation import EventLoadingAnimation
+from scripts.ui.windows.choose_deputy import ChooseDeputyWindow
+from scripts.ui.windows.name_kits import NameKitsWindow
 from scripts.screens.enums import GameScreen
 from scripts.ui.scale import ui_scale_blit
 from scripts.game_structure import game
@@ -52,6 +63,21 @@ class Screens:
         It will handle keeping track of the last screen and cur screen.
         Last screen must be tracked to ensure a clear transition between screens."""
 
+        if new_screen not in [GameScreen.CAMP, GameScreen.MEDIATION, GameScreen.PROFILE] and game.clan and game.clan.clancount == "multiclan":
+            game.selected_clan = game.clan
+            if Screens.menu_buttons.get("supplies"):
+                for b in Screens.menu_buttons["supplies"].child_buttons:
+                    b.enable()
+            for b in ["screens.core.warriors_den", "screens.core.leader_den"]:
+                Screens.menu_buttons["dens"].child_button_dicts[b].enable()
+            Screens.menu_buttons["heading"].selected_list = [game.clan.displayname + "Clan"]
+            if hasattr(Screens.menu_buttons["heading"], "child_buttons"):
+                for b in Screens.menu_buttons["heading"].child_buttons:
+                    if b.text in Screens.menu_buttons["heading"].selected_list:
+                        b.disable()
+                    else:
+                        b.enable()
+                
         # self.exit_screen()
         game.last_screen_forupdate = self.name
 
@@ -61,6 +87,7 @@ class Screens:
             GameScreen.CAMP,
             GameScreen.LIST,
             GameScreen.EVENTS,
+            GameScreen.ALLEGIANCES,
         ):
             game.last_screen_forProfile = self.name
 
@@ -77,11 +104,16 @@ class Screens:
             GameScreen.MEDIATION,
             GameScreen.CHANGE_GENDER,
             GameScreen.FAMILY_TREE,
+
+            GameScreen.ELDER_STORY,
+        ]:
+            self.current_page = 1
+        if new_screen in [
+            GameScreen.SWITCH_CLAN,
+            GameScreen.START,
+            GameScreen.MAKE_CLAN
         ]:
             game.last_list_forProfile = None
-            self.current_group = "your_clan"
-            self.death_status = "living"
-            self.current_page = 1
 
         switch_set_value(Switch.cur_screen, new_screen)
 
@@ -104,11 +136,18 @@ class Screens:
         self.work_done = {}
 
         bg = pygame.Surface(scripts.game_structure.screen_settings.game_screen_size)
-        bg.fill(constants.CONFIG["theme"]["light_mode_background"])
         bg_dark = pygame.Surface(
             scripts.game_structure.screen_settings.game_screen_size
         )
-        bg_dark.fill(constants.CONFIG["theme"]["dark_mode_background"])
+        if game_setting_get("red_bg"):
+            light_fill = scripts.screens.screens_core.screens_core.get_red_bg(False)
+            dark_fill = scripts.screens.screens_core.screens_core.get_red_bg(True)
+        else:
+            light_fill = constants.CONFIG["theme"]["light_mode_background"]
+            dark_fill = constants.CONFIG["theme"]["dark_mode_background"]
+
+        bg.fill(light_fill)
+        bg_dark.fill(dark_fill)
 
         self.game_bgs = {}
         self.fullscreen_bgs = {}
@@ -176,7 +215,22 @@ class Screens:
             self.work_done.pop(work_thread.name)
 
             final_actions()
+            switch_set_value(Switch.window_open, False)
 
+        
+        if len(switch_get_value(Switch.windows_dict)) > 0:
+            if 'name kits' in switch_get_value(Switch.windows_dict) and not switch_get_value(Switch.window_open):
+                NameKitsWindow('events screen')
+                switch_remove_list_value(Switch.windows_dict, 'name kits')
+            elif 'retire' in switch_get_value(Switch.windows_dict) and not switch_get_value(Switch.window_open):
+                RetireWindow('events screen')
+                switch_remove_list_value(Switch.windows_dict, 'retire')
+            elif 'deputy' in switch_get_value(Switch.windows_dict) and not switch_get_value(Switch.window_open):
+                ChooseDeputyWindow('events screen')
+                switch_remove_list_value(Switch.windows_dict, 'deputy')
+            elif 'mate' in switch_get_value(Switch.windows_dict) and not switch_get_value(Switch.window_open):
+                MateWindow('events screen')
+                switch_remove_list_value(Switch.windows_dict, 'mate')
         return
 
     def on_use(self):
@@ -200,7 +254,9 @@ class Screens:
         Screens.menu_buttons = scripts.screens.screens_core.screens_core.menu_buttons
         Screens.game_frame = scripts.screens.screens_core.screens_core.game_frame
         try:
-            Screens.update_heading_text(game.clan.displayname + "Clan")
+            Screens.update_heading_text(
+                "general.clan", text_kwargs={"name": game.selected_clan.displayname}
+            )
         except AttributeError:
             Screens.update_heading_text("DebugClan")
         if self.active_bg is None or "default" in self.active_bg:
@@ -350,7 +406,22 @@ class Screens:
         elif event.ui_element in (
             Screens.menu_buttons["back_to_camp"],
             Screens.menu_buttons["heading"],
-        ):
+        ) or (hasattr(Screens.menu_buttons["heading"], "parent_button") and event.ui_element == Screens.menu_buttons["heading"].parent_button):
+            self.change_screen(GameScreen.CAMP)
+        elif (hasattr(Screens.menu_buttons["heading"], "child_buttons") and event.ui_element in Screens.menu_buttons["heading"].child_buttons):
+            game.selected_clan = next(filter(lambda c: c.displayname == event.ui_element.text.replace("Clan", ""), game.clan.all_other_clans), game.clan)
+            if game.selected_clan != game.clan:
+                if Screens.menu_buttons.get("supplies"):
+                    for b in Screens.menu_buttons["supplies"].child_buttons:
+                        b.disable()
+                for b in ["screens.core.warriors_den", "screens.core.leader_den"]:
+                    Screens.menu_buttons["dens"].child_button_dicts[b].disable()
+            else:
+                if Screens.menu_buttons.get("supplies"):
+                    for b in Screens.menu_buttons["supplies"].child_buttons:
+                        b.enable()
+                for b in ["screens.core.warriors_den", "screens.core.leader_den"]:
+                    Screens.menu_buttons["dens"].child_button_dicts[b].enable()
             self.change_screen(GameScreen.CAMP)
         # VIEW CATS
         elif event.ui_element == Screens.menu_buttons["cats"]:
@@ -478,6 +549,10 @@ class Screens:
 
         if theme is None:
             theme = self.theme
+        if not self.active_bg:
+            self.active_bg = "default"
+        blur_bg = None
+        bg = None
 
         # make the right string to pull the correct camp image
         try:
@@ -508,10 +583,6 @@ class Screens:
             bg = scripts.screens.screens_core.screens_core.default_game_bgs[theme][
                 self.active_bg
             ]
-        else:
-            raise Exception(
-                f"Selected game background not recognised! '{self.active_bg}' not in default or custom bgs"
-            )
 
         if self.active_blur_bg == "default" or self.active_blur_bg == season:
             blur_bg = season_bg
@@ -533,10 +604,6 @@ class Screens:
             blur_bg = scripts.screens.screens_core.screens_core.default_fullscreen_bgs[
                 theme
             ][self.active_blur_bg]
-        else:
-            raise Exception(
-                f"Selected fullscreen background not recognised! '{self.active_blur_bg}' not in default or custom bgs"
-            )
 
         if (
             self.previous_season != season
@@ -559,14 +626,14 @@ class Screens:
                 self.bg_transition = False
 
             # actually run the transition
-            if self.bg_transition_time > 0:
+            if self.bg_transition_time > 0 and blur_bg:
                 temp = blur_bg.copy()
                 temp.set_alpha(
                     255 // self.bg_transition_time
                 )  # this determines the actual fade rate
                 scripts.game_structure.screen_settings.screen.blit(temp, (0, 0))
                 self.bg_transition_time -= 1
-            else:
+            elif blur_bg:
                 # if we've done the transition, just blit the full-alpha version on top to remove artifacts.
                 scripts.game_structure.screen_settings.screen.blit(blur_bg, (0, 0))
         # now blit the foreground.
@@ -589,11 +656,18 @@ class Screens:
         Used to save a dictionary of data to help rebuild the screen the way it was when we return.
         :return: A dictionary of data to be used later to rebuild the screen
         """
-        return {
-            "heading": scripts.screens.screens_core.screens_core.menu_buttons[
-                "heading"
-            ].text
-        }
+        try:
+            return {
+                "heading": scripts.screens.screens_core.screens_core.menu_buttons[
+                    "heading"
+                ].parent_button.text
+            }
+        except AttributeError:
+            return {
+                "heading": scripts.screens.screens_core.screens_core.menu_buttons[
+                    "heading"
+                ].text
+            }
 
     def display_change_load(self, variable_dict: Dict):
         """

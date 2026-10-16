@@ -15,3 +15,5 @@ class CanHaveStat(Enum):
     adult = "adult"
     app = "app"
     healer = "healer"
+
+    y_c = "y_c"

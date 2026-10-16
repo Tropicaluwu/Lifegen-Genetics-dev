@@ -17,6 +17,16 @@
         ]
     },
     {
+        "id": "newborn_death_starclan_thoughts",
+        "thoughts": [
+            "Is confused about the new cats around",
+            "Is wondering when everyone is coming back",
+            "Mewls for milk out of habit",
+            "Woke up from {PRONOUN/m_c/poss} nap"
+        ],
+        "main_age_constraint": [ "newborn" ]
+    },
+    {
         "id": "parent_death_to_newborn",
         "thoughts": [
             "Clings to the warmth of {PRONOUN/m_c/poss} litter",
@@ -26,6 +36,7 @@
             "Feels at peace knowing {PRONOUN/m_c/poss} Clanmates will care for {PRONOUN/m_c/poss} kits"
         ],
         "random_age_constraint": ["newborn"],
-        "relationship_constraint": ["parent/child"]
+        "relationship_constraint": ["parent/child"],
+        "random_living_status": ["living"]
     }
 ]

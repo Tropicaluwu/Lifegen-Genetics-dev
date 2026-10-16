@@ -69,7 +69,7 @@ class SetCommand(Command):
             game_setting_set(args[1], value)
             output = game_setting_get(args[1])
         elif args[0] == "switch":
-            switch_set_value(Switch[args[1]], not switch_get_value(Switch[args[1]]))
+            switch_set_value(Switch[args[1]], value)
             output = switch_get_value(Switch[args[1]])
         elif args[0] == "debug":
             game.debug_settings[args[1]] = value
@@ -108,7 +108,7 @@ class GetCommand(Command):
                     ) in switch_generator():
                         add_output_line_to_log(f"  {setting} - {val}")
                     return
-                output = switch_get_value(args[1])
+                output = switch_get_value(Switch[args[1]])
             elif args[0] == "debug":
                 if len(args) == 1:
                     add_output_line_to_log("Available settings:")

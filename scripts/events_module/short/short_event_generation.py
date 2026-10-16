@@ -13,6 +13,7 @@ from scripts.clan_resources.freshkill import (
 )
 from scripts.events_module.event_filters import (
     event_for_location,
+    event_for_clancount,
     event_for_tags,
     event_for_cat,
     event_for_reputation,
@@ -20,6 +21,7 @@ from scripts.events_module.event_filters import (
     event_for_freshkill_supply,
     event_for_herb_supply,
     event_for_season,
+    event_for_other_clan,
     cat_for_event,
     get_frequency,
     find_new_frequency,
@@ -48,6 +50,8 @@ def create_short_event(
     victim_cat: Cat = None,
     sub_type: list = None,
     future_event=None,
+    clan=None,
+    second_clan=None
 ):
     """
     Handles everything involved in finding and executing an appropriate short event for the given args.
@@ -58,9 +62,11 @@ def create_short_event(
     :param sub_type: The required subtypes for this event.
     :param future_event: If this is being triggered by a future event, pass the future event object here.
     """
+    if clan is None:
+        clan = game.clan
     if future_event and (
-        not main_cat.status.alive_in_player_clan
-        or (random_cat and not random_cat.status.alive_in_player_clan)
+        not (main_cat and main_cat.status.group_ID == clan.group_ID)
+        or (random_cat and not random_cat.status.group_ID == clan.group_ID)
     ):
         # we set this to true because we want it to be considered triggered and thus removed
         # however we aren't removing because it was triggered, we're removing because none of the involved cats are eligible
@@ -72,23 +78,36 @@ def create_short_event(
 
     # check for war and assign other_clan accordingly
     war_chance = 5
+    enemies = game.clan.get_wars(clan.group_ID)
+    chosen_enemy = random.choice(enemies) if enemies else None
+    rel_change_types = switch_get_value(Switch.war_rel_change_type)
+    rel_changed = None
+    if chosen_enemy:
+        if rel_change_types.get(clan.group_ID) and rel_change_types[clan.group_ID].get(chosen_enemy):
+            rel_changed = rel_change_types[clan.group_ID][chosen_enemy]
+        elif rel_change_types.get(chosen_enemy):
+            rel_changed = rel_change_types[chosen_enemy][clan.group_ID]
     # if the war didn't go badly, then we decrease the chance of this event being war-focused
-    if switch_get_value(Switch.war_rel_change_type) != "rel_down":
+    if rel_changed != "rel_down":
         war_chance = 2
-    if game.clan.war.get("at_war", False) and random.randint(1, war_chance) != 1:
-        enemy_clan = get_warring_clan()
-        other_clan = enemy_clan
+    if chosen_enemy and random.randint(1, war_chance) != 1:
+        other_clan = [c for c in [
+            game.clan]+game.clan.all_other_clans if c.group_ID == chosen_enemy][0]
         sub_types.append("war")
     else:
         other_clan = random.choice(
-            game.clan.all_other_clans if game.clan.all_other_clans else None
+            game.clan.all_other_clans +
+            [game.clan] if game.clan.all_other_clans else None
         )
+        while other_clan == clan:
+            other_clan = random.choice(
+                game.clan.all_other_clans + [game.clan])
 
     # collecting CAMP skill cats for reduction events
     camp_cats = [
         c
         for c in Cat.all_cats_list
-        if c.status.alive_in_player_clan
+        if c.status.group_ID == clan.group_ID
         and (
             (c.skills.primary and c.skills.primary.path == SkillPath.CAMP)
             or (c.skills.secondary and c.skills.secondary.path == SkillPath.CAMP)
@@ -121,6 +140,7 @@ def create_short_event(
         events = find_needed_events(
             frequency,
             event_type,
+            main_cat=main_cat,
         )
 
         chosen_event, random_cat = filter_events(
@@ -129,6 +149,7 @@ def create_short_event(
             random_cat=random_cat,
             other_clan=other_clan,
             sub_types=sub_types,
+            clan=clan,
             allowed_events=future_event.allowed_events if future_event else None,
             excluded_events=future_event.excluded_events if future_event else None,
             ignore_subtyping=future_event.negate_subtyping if future_event else None,
@@ -162,19 +183,20 @@ def create_short_event(
         chosen_event.types = types
 
         # execute the event
-        chosen_event.execute_event(other_clan)
+        chosen_event.execute_event(other_clan, clan, second_clan)
 
     else:
         # this doesn't necessarily mean there's a problem, but can be helpful for narrowing down possibilities
-        print(f"WARNING: no {event_type}: {sub_types} events found for {main_cat.name}")
+        # print(f"WARNING: no {event_type}: {sub_types} events found for {main_cat.name}")
         return
 
 
-def find_needed_events(frequency, event_type=None) -> list:
+def find_needed_events(frequency, event_type=None, main_cat=None) -> list:
     """
     Handles detecting the biome and collecting all events possible for biome and type
     :param frequency: The event frequency to look for
     :param event_type: The type of event to pull
+    :param main_cat: The main cat for this event
     """
     event_list = []
 
@@ -200,11 +222,18 @@ def find_needed_events(frequency, event_type=None) -> list:
 
     biome = temp_biome.lower()
 
-    # biome specific events
-    event_list.extend(generate_event_objects(event_type, biome, frequency))
+    # other clans' cats get events too (genemod's multi clan), otherwise they could never die
+    # from events and those clans just kept growing
+    if (
+        main_cat is None
+        or main_cat.status.alive_in_player_clan
+        or (not main_cat.dead and main_cat.status.is_other_clancat)
+    ):
+        # biome specific events
+        event_list.extend(generate_event_objects(event_type, biome, frequency))
 
-    # any biome events
-    event_list.extend(generate_event_objects(event_type, "general", frequency))
+        # general (non-biome) events 
+        event_list.extend(generate_event_objects(event_type, "general", frequency))
 
     return event_list
 
@@ -248,6 +277,12 @@ def generate_event_objects(event_triggered, biome, frequency) -> list:
     file_path = f"{event_triggered}/{biome}.json"
     load_name = f"{file_path}_{frequency}"
 
+    # LG
+    if event_triggered != "faith":
+        file_path = f"{event_triggered}/{biome}.json"
+    else:
+        file_path = f"{event_triggered}.json"
+
     try:
         if file_path in loaded_events:
             return loaded_events[file_path]
@@ -261,6 +296,12 @@ def generate_event_objects(event_triggered, biome, frequency) -> list:
                 return event_list
             for event in events_dict:
                 event_text = event["event_text"] if "event_text" in event else None
+
+                # LG: this is for faith events
+                if isinstance(event_text, list):
+                    event_text = random.choice(event_text)
+                # ---
+
                 event_frequency = event["frequency"] if "frequency" in event else 4
 
                 if not event_text:
@@ -270,6 +311,7 @@ def generate_event_objects(event_triggered, biome, frequency) -> list:
                     print(
                         f"WARNING: some events resources which are used in generate_events have no 'event_text'."
                     )
+                    print("TYPE:", event_triggered)
                 if frequency != event_frequency:
                     continue
 
@@ -296,7 +338,7 @@ def generate_event_objects(event_triggered, biome, frequency) -> list:
                     ),
                     m_c=event["m_c"] if "m_c" in event else {},
                     r_c=r_c,
-                    new_cat=event["new_cat"] if "new_cat" in event else [],
+                    new_cat=event["multiclan_cat"] if game.clan.clancount == "multiclan" and "multiclan_cat" in event else (event["new_cat"] if "new_cat" in event else []),
                     injury=event["injury"] if "injury" in event else [],
                     exclude_involved=(
                         event["exclude_involved"] if "exclude_involved" in event else []
@@ -329,6 +371,7 @@ def filter_events(
     main_cat,
     random_cat,
     other_clan,
+    clan=None,
     sub_types: list = None,
     allowed_events: list = None,
     excluded_events: list = None,
@@ -347,6 +390,8 @@ def filter_events(
     :param ignore_subtyping: ignores subtyping entirely
     :param reduction_avoidance_chance: chance to avoid events that reduce supplies
     """
+    if clan is None:
+        clan = game.clan
     final_events = []
     incorrect_format = []
 
@@ -363,6 +408,10 @@ def filter_events(
 
         # ensure ID and requirements override
         if constants.CONFIG["event_generation"]["debug_override_requirements"]:
+            if game.clan.clancount == 'multiclan' and event.other_clan and not event_for_other_clan(
+                Cat, event.other_clan.get("has_rank"), other_clan.group_ID
+            ):
+                continue
             final_events.append(event)
             continue
 
@@ -371,7 +420,10 @@ def filter_events(
             if set(event.sub_type) != set(sub_types):
                 continue
 
-        if not event_for_location(event.location):
+        if not event_for_clancount(event.tags, game.clan):
+            continue
+
+        if not event_for_location(event.location, clan):
             continue
 
         if not event_for_season(event.season):
@@ -381,12 +433,12 @@ def filter_events(
         if not event_for_tags(event.tags, main_cat, random_cat):
             continue
 
-        if not game.clan.leader and "lead_name" in event.text:
+        if not clan.leader and "lead_name" in event.text:
             continue
-        if not game.clan.deputy and "dep_name" in event.text:
+        if not clan.deputy and "dep_name" in event.text:
             continue
         if (
-            not find_alive_cats_with_rank(Cat, [CatRank.MEDICINE_CAT], working=True)
+            not find_alive_cats_with_rank(Cat, [CatRank.MEDICINE_CAT], working=True, clan=clan.group_ID)
             and "med_name" in event.text
         ):
             continue
@@ -465,16 +517,29 @@ def filter_events(
             if not other_clan:
                 continue
 
-            if not event_for_clan_relations(
-                event.other_clan["current_rep"], other_clan
+            if "current_rep" in event.other_clan and not event_for_clan_relations(
+                event.other_clan["current_rep"], clan, other_clan
+            ):
+                continue
+
+            if game.clan.clancount == 'multiclan' and not event_for_other_clan(
+                Cat, event.other_clan.get("has_rank"), other_clan.group_ID
             ):
                 continue
 
             # during a war we want to encourage the clans to have positive events
             # when the overall war notice was positive
             if "war" in event.sub_type:
-                rel_change_type = switch_get_value(Switch.war_rel_change_type)
-                if event.other_clan["changed"] < 0 and rel_change_type != "rel_down":
+                rel_change_types = switch_get_value(Switch.war_rel_change_type)
+                rel_change_type = "rel_down"
+                if rel_change_types.get(clan.group_ID):
+                    rel_change_type = rel_change_types[clan.group_ID].get(other_clan.group_ID, "rel_down")
+                elif rel_change_types.get(other_clan.group_ID):
+                    rel_change_type = rel_change_types[other_clan.group_ID].get(clan.group_ID, "rel_down")
+                if (
+                    event.other_clan["changed"] < 0
+                    and rel_change_type != "rel_down"
+                ):
                     continue
 
         # clans below a certain age can't have their supplies messed with
@@ -541,7 +606,7 @@ def filter_events(
     cat_list = [
         c
         for c in Cat.all_cats.values()
-        if c.status.alive_in_player_clan and c != main_cat
+        if c.status.group_ID == clan.group_ID and c != main_cat
     ]
     chosen_cat = None
     chosen_event = None

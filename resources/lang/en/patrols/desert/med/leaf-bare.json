@@ -15,7 +15,7 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [2, 2]
+            "healer": [2, 2]
         },
         "frequency": 4,
         "intro_text": "p_l and r_c take a look at their supply of herbs and decide to combine their efforts into searching for more. Two sets of trained eyes are better than one!",
@@ -23,7 +23,7 @@
         "chance_of_success": 70,
         "success_outcomes": [
             {
-                "text": "p_l and r_c decide to search on the normally barren scrublands, where recently fallen rain has brought the desert to life. As the sun rises in the sky, its usual heat is dulled by the welcome defense of the clouds, letting the medicine cats fetch the season's bounty.",
+                "text": "p_l and r_c decide to search on the normally barren scrublands, where recently fallen rain has brought the desert to life. As the sun rises in the sky, its usual heat is dulled by the welcome defense of the clouds, letting the healers fetch the season's bounty.",
                 "exp": 10,
                 "herbs": [
                     "random_herbs"

@@ -63,6 +63,9 @@ class ShortEventSchemaItem(BaseModel):
     new_cat: Union[List[NewCat], MISSING] = Field(
         MISSING, description="Adds a new cat."
     )
+    multiclan_cat: Union[List[NewCat], MISSING] = Field(
+        MISSING, description="Adds a new cat."
+    )
     injury: Union[List[InjuryItem], MISSING] = Field(
         MISSING, description="Indicates which cats get injured, and how."
     )

@@ -1,0 +1,66 @@
+{
+    "spritesheet": "acc_misc2",
+    "sprite_list": [
+        {
+            "ORANGEBUTTERFLY": "body",
+            "BLUEBUTTERFLY": "body",
+            "BROWNPELT": "body",
+            "GRAYPELT": "body",
+            "BROWNMOSSPELT": "tail",
+            "GRAYMOSSPELT": "tail",
+            "FERN": "tail",
+            "MOREFERN": "tail",
+            "BLEEDINGVINES": "tail",
+            "BLEEDINGHEART": "tail",
+            "LILY": "body"
+        },
+        {
+            "CHERRYBLOSSOM": "body",
+            "TULIPPETALS": "body",
+            "CLOVERFLOWER": "body",
+            "PANSIES": "body",
+            "BELLFLOWERS": "body",
+            "SANVITALIAFLOWERS": "tail",
+            "EGGSHELLS": "body",
+            "BLUEEGGSHELLS": "body",
+            "EASTEREGG": "body",
+            "FORSYTHIA": "body"
+        },
+        {
+            "MINTLEAF": "head",
+            "STICKS": "body",
+            "SPINGFEATHERS": "body",
+            "SNAILSHELL": "body",
+            "MUD": "body",
+            "CHERRYPLUMLEAVES": "body",
+            "CATKIN": "body",
+            "HONEYCOMB": "head",
+            "FLOWERCROWN": "head",
+            "LILIESOFTHEVALLEY": "body"
+        },
+        {
+            "STRAWMANE": "body",
+            "MISTLETOE": "body",
+            "REDPOINSETTIA": "body",
+            "WHITEPOINSETTIA": "body",
+            "COTONEASTERWREATH": "body",
+            "YEWS": "body",
+            "CALLUNA": "body",
+            "TEETHCOLLAR": "body",
+            "DRIEDORANGE": "body",
+            "ROESKULL": "body"
+        },
+        {
+            "WOODENOAKANTLERS": "body",
+            "WOODENBIRCHANTLERS": "body",
+            "DOGWOOD": "body",
+            "GRAYWOOL": "body",
+            "BLACKWOOL": "body",
+            "CREAMWOOL": "body",
+            "WHITEWOOL": "body",
+            "FIRBRANCHES": "tail",
+            "CORALBELLS": "body",
+            "SLIVERDUSTPLANT": "body"
+        }
+    ]
+}

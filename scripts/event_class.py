@@ -5,13 +5,11 @@ TODO: Docs
 
 
 """
-
-
 # pylint: enable=line-too-long
 class Single_Event:
     """A class to hold info regarding a single event"""
 
-    def __init__(self, text, types=None, cats_involved=None, cat_dict=None):
+    def __init__(self, text, types=None, cats_involved=None, cat_dict=None, clan=None):
         """text: The event text.
         types: Which types of event, in a list or tuple. Current options are:
                 "relation", "ceremony", "birth_death", "health", "other_clans", "misc"
@@ -20,6 +18,7 @@ class Single_Event:
         """
 
         self.text = text
+        self.clan = clan
 
         if isinstance(types, str):
             self.types = []
@@ -50,8 +49,18 @@ class Single_Event:
         cat_dict = self.cat_dict.copy() if self.cat_dict else {}
         if self.cat_dict:
             for abbr, kitty in self.cat_dict.items():
+                if not kitty:
+                    return {}
                 cat_dict[abbr] = kitty.ID
 
+        if self.clan:
+            return {
+                "text": self.text,
+                "clan" : self.clan,
+                "types": self.types,
+                "cats_involved": self.cats_involved,
+                "cat_dict": cat_dict,
+            }
         return {
             "text": self.text,
             "types": self.types,
@@ -73,11 +82,19 @@ class Single_Event:
         cat_dict = dict.get("cat_dict", None)
         if cat_dict:
             for abbr, kitty in cat_dict.copy().items():
-                cat_dict[abbr] = Cat.fetch_cat(kitty)
+                kitty_exists = Cat.fetch_cat(kitty)
+                if kitty_exists:
+                    cat_dict[abbr] = kitty_exists
+                else:
+                    del cat_dict[abbr]
 
         return Single_Event(
             text=dict["text"],
+            clan=dict.get("clan"),
             types=dict.get("types", None),
             cats_involved=dict.get("cats_involved", None),
             cat_dict=cat_dict,
         )
+
+    def __eq__(self, obj):
+        return self.text == obj.text

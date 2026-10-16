@@ -1066,7 +1066,7 @@
         "chance_of_success": 40,
         "success_outcomes": [
             {
-                "text": "The patrol approaches the injured cat and sees signs of life. They gingerly pick up the cat and take {PRONOUN/n_c:0/object} back to camp to be treated by the medicine cat. The cat is grateful for their help and decides to join the Clan.",
+                "text": "The patrol approaches the injured cat and sees signs of life. They gingerly pick up the cat and take {PRONOUN/n_c:0/object} back to camp to be treated by the healer. The cat is grateful for their help and decides to join the Clan.",
                 "exp": 10,
                 "new_cat": [
                     [
@@ -1177,7 +1177,7 @@
         "chance_of_success": 40,
         "success_outcomes": [
             {
-                "text": "p_l approaches the injured cat and sees signs of life. {PRONOUN/p_l/subject/CAP} gingerly {VERB/p_l/pick/picks} up the cat and {VERB/p_l/take/takes} {PRONOUN/n_c:0/object} back to camp to be treated by the medicine cat. The cat is grateful for their help and decides to join the Clan.",
+                "text": "p_l approaches the injured cat and sees signs of life. {PRONOUN/p_l/subject/CAP} gingerly {VERB/p_l/pick/picks} up the cat and {VERB/p_l/take/takes} {PRONOUN/n_c:0/object} back to camp to be treated by the healer. The cat is grateful for their help and decides to join the Clan.",
                 "exp": 10,
                 "new_cat": [
                     [
@@ -1367,24 +1367,9 @@
                 "text": "Swerving to follow the scent trail, the patrol almost falls over a hissing queen. Reeling with surprise, no one hears exactly what she spits out about never letting herself be taken — but she grabs something and flees. It's only as the patrol regroups that they hear the distressed calls of her other kittens.",
                 "exp": 20,
                 "new_cat": [
-                    [
-                        "female",
-                        "loner",
-                        "age:has_kits",
-                        "meeting"
-                    ],
-                    [
-                        "litter",
-                        "parent:0",
-                        "status:newborn",
-                        "backstory:abandoned2"
-                    ],
-                    [
-                        "age:newborn",
-                        "loner",
-                        "meeting",
-                        "parent:0"
-                    ]
+                    ["female", "loner", "age:has_kits", "meeting"],
+                    ["litter", "parent:0", "status:newborn", "backstory:abandoned2"],
+                    ["age:newborn", "loner", "meeting", "parent:0", "sibling:1"]
                 ],
                 "relationships": [
                     {
@@ -2097,13 +2082,10 @@
         "chance_of_success": 40,
         "success_outcomes": [
             {
-                "text": "The new medicine cat is welcomed into the Clan.",
+                "text": "The new healer is welcomed into the Clan.",
                 "exp": 10,
                 "new_cat": [
-                    [
-                        "status:medicine cat",
-                        "loner"
-                    ]
+                    ["status:healer", "loner"]
                 ],
                 "relationships": [
                     {
@@ -2120,20 +2102,11 @@
                 "frequency": 4
             },
             {
-                "text": "The new medicine cat is welcomed into the Clan along with {PRONOUN/n_c:0/poss} litter of kits.",
+                "text": "The new healer is welcomed into the Clan along with {PRONOUN/n_c:0/poss} litter of kits.",
                 "exp": 10,
                 "new_cat": [
-                    [
-                        "status:medicine cat",
-                        "loner",
-                        "age:has_kits"
-                    ],
-                    [
-                        "litter",
-                        "parent:0",
-                        "status:kitten",
-                        "backstory:outsider_roots2"
-                    ]
+                    ["status:healer", "loner", "age:has_kits"],
+                    ["litter", "parent:0", "status:kitten", "backstory:outsider_roots2"]
                 ],
                 "relationships": [
                     {
@@ -2220,13 +2193,10 @@
         "chance_of_success": 40,
         "success_outcomes": [
             {
-                "text": "The new medicine cat is welcomed into the Clan.",
+                "text": "The new healer is welcomed into the Clan.",
                 "exp": 10,
                 "new_cat": [
-                    [
-                        "status:medicine cat",
-                        "loner"
-                    ]
+                    ["status:healer", "loner"]
                 ],
                 "relationships": [
                     {
@@ -2243,20 +2213,11 @@
                 "frequency": 4
             },
             {
-                "text": "The new medicine cat is welcomed into the Clan along with {PRONOUN/n_c:0/poss} litter of kits.",
+                "text": "The new healer is welcomed into the Clan along with {PRONOUN/n_c:0/poss} litter of kits.",
                 "exp": 10,
                 "new_cat": [
-                    [
-                        "status:medicine cat",
-                        "loner",
-                        "age:has_kits"
-                    ],
-                    [
-                        "litter",
-                        "parent:0",
-                        "status:kitten",
-                        "backstory:outsider_roots2"
-                    ]
+                    ["status:healer", "loner", "age:has_kits"],
+                    ["litter", "parent:0", "status:kitten", "backstory:outsider_roots2"]
                 ],
                 "relationships": [
                     {
@@ -2745,23 +2706,11 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "apprentice": [
-                -1,
-                -1
-            ],
-            "medicine cat": [
-                1,
-                6
-            ],
-            "healer cats": [
-                1,
-                6
-            ],
-            "all apprentices": [ -1, -1 ],
-            "normal adult": [
-                -1,
-                -1
-            ]
+            "apprentice": [-1, -1],
+            "healer": [1, 6],
+            "healer cats": [1, 6],
+            "all apprentices": [-1, -1],
+            "normal adult": [-1, -1]
         },
         "frequency": 1,
         "intro_text": "While searching for some specific herbs, p_l is startled by weird sounds and whispers on the wind.",
@@ -2870,23 +2819,11 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "apprentice": [
-                -1,
-                -1
-            ],
-            "medicine cat": [
-                1,
-                6
-            ],
-            "healer cats": [
-                1,
-                6
-            ],
-            "all apprentices": [ -1, -1 ],
-            "normal adult": [
-                -1,
-                -1
-            ]
+            "apprentice": [-1, -1],
+            "healer": [1, 6],
+            "healer cats": [1, 6],
+            "all apprentices": [-1, -1],
+            "normal adult": [-1, -1]
         },
         "frequency": 1,
         "intro_text": "While searching for some specific herbs, p_l is startled by weird sounds and whispers on the wind.",
@@ -2999,22 +2936,10 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "apprentice": [
-                -1,
-                -1
-            ],
-            "medicine cat apprentice": [
-                1,
-                6
-            ],
-            "healer cats": [
-                1,
-                6
-            ],
-            "normal adult": [
-                -1,
-                -1
-            ]
+            "apprentice": [-1, -1],
+            "healer apprentice": [1, 6],
+            "healer cats": [1, 6],
+            "normal adult": [-1, -1]
         },
         "frequency": 1,
         "intro_text": "While searching for some specific herbs, p_l is startled by weird sounds and whispers on the wind.",
@@ -3133,22 +3058,10 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "apprentice": [
-                -1,
-                -1
-            ],
-            "medicine cat apprentice": [
-                1,
-                6
-            ],
-            "healer cats": [
-                1,
-                6
-            ],
-            "normal adult": [
-                -1,
-                -1
-            ]
+            "apprentice": [-1, -1],
+            "healer apprentice": [1, 6],
+            "healer cats": [1, 6],
+            "normal adult": [-1, -1]
         },
         "frequency": 1,
         "intro_text": "While searching for some specific herbs, p_l is startled by weird sounds and whispers on the wind.",
@@ -6839,6 +6752,42 @@
         "chance_of_success": 85,
         "success_outcomes": [
             {
+                "text": "The patrol races towards the sound. They are puzzled when they only see a lone Twoleg, but grim realization soon dawns on them after they hear more screams coming from a bag the Twoleg is holding. Jumping into action, the c_n cats startle the Twoleg into letting go of the bag. While the rest of the patrol claws the ankles of the now furious Twoleg, p_l and r_c quickly and quietly get the shivering kittens out of sight, promising them safety and welcome in c_n.",
+                "exp": 10,
+                "new_cat": [
+                    [ "kittypet", "can_birth", "age:has_kits" ],
+                    [ "litter", "status:kitten", "backstory:abandoned4", "kittypet", "parent:0" ]
+                ],
+                "relationships": [
+                    {
+                        "cats_from": [ "n_c:1" ],
+                        "cats_to": [ "patrol" ],
+                        "values": [ "like", "trust", "comfort" ],
+                        "amount": 10,
+                        "log": {
+                            "cats_from": "cat_to was part of the patrol that rescued cat_from from a cruel Twoleg and brought {PRONOUN/cat_from/object} to c_n."
+                        }
+                    }
+                ],
+                "outsider_rep": 1,
+                "injury": [
+                    {
+                        "cats": [
+                            "n_c:1"
+                        ],
+                        "injuries": [
+                            "blunt_force_injury"
+                        ],
+                        "no_results": true
+                    }
+                ],
+                "history_text": {
+                    "scar": "m_c was scarred after a Twoleg attempted to drown {PRONOUN/m_c/object}.",
+                    "death": "m_c died of injuries inflicted by a Twoleg attempting to drown {PRONOUN/m_c/object}."
+                },
+                "frequency": 1
+            },
+            {
                 "text": "The patrol races towards the sound. They're puzzled when they only see a Twoleg, but realization soon dawns when the bag it holds thrashes and wails. Jumping into action, the c_n cats startle the Twoleg into letting go of the bag. While the angered Twoleg is distracted, p_l and r_c hurriedly get the shivering old cat out of sight, promising {PRONOUN/n_c:0/object} safety in c_n for as long as {PRONOUN/n_c:0/subject} {VERB/n_c:0/wish/wishes}.",
                 "exp": 10,
                 "new_cat": [
@@ -7049,15 +6998,8 @@
                     }
                 ],
                 "new_cat": [
-                    [
-                        "dead"
-                    ],
-                    [
-                        "litter",
-                        "parent:0",
-                        "status:kitten",
-                        "backstory:orphaned6"
-                    ]
+                    ["meeting", "dead"],
+                    ["litter", "parent:0", "status:kitten", "backstory:orphaned6"]
                 ],
                 "outsider_rep": 1,
                 "frequency": 4

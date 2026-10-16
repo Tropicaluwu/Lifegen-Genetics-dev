@@ -84,12 +84,12 @@
         "main_status_constraint": [
             "apprentice",
             "mediator apprentice",
-            "medicine cat apprentice",
-            "warrior", 
-            "mediator", 
-            "medicine cat", 
-            "deputy", 
-            "leader", 
+            "healer apprentice",
+            "warrior",
+            "mediator",
+            "healer",
+            "deputy",
+            "leader",
             "elder"
         ]
     },
@@ -102,10 +102,10 @@
         "main_status_constraint": [
             "apprentice",
             "mediator apprentice",
-            "medicine cat apprentice",
+            "healer apprentice",
             "warrior",
             "mediator",
-            "medicine cat",
+            "healer",
             "deputy",
             "leader",
             "elder"
@@ -132,12 +132,12 @@
         "main_status_constraint": [
             "apprentice",
             "mediator apprentice",
-            "medicine cat apprentice",
-            "warrior", 
-            "mediator", 
-            "medicine cat", 
-            "deputy", 
-            "leader", 
+            "healer apprentice",
+            "warrior",
+            "mediator",
+            "healer",
+            "deputy",
+            "leader",
             "elder"
         ]
     },
@@ -152,12 +152,12 @@
         "main_status_constraint": [
             "apprentice",
             "mediator apprentice",
-            "medicine cat apprentice",
-            "warrior", 
-            "mediator", 
-            "medicine cat", 
-            "deputy", 
-            "leader", 
+            "healer apprentice",
+            "warrior",
+            "mediator",
+            "healer",
+            "deputy",
+            "leader",
             "elder"
         ]
     },
@@ -170,11 +170,11 @@
             "parent/child"
         ],
         "main_status_constraint": [
-            "warrior", 
-            "mediator", 
-            "medicine cat", 
-            "deputy", 
-            "leader", 
+            "warrior",
+            "mediator",
+            "healer",
+            "deputy",
+            "leader",
             "elder"
         ]
     }

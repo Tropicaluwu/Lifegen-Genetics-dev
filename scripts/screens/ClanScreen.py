@@ -1,6 +1,7 @@
 import random
 import traceback
 from copy import deepcopy
+from operator import xor
 
 import pygame
 import pygame_gui
@@ -19,9 +20,11 @@ from .enums import GameScreen
 from ..clan_package.settings import get_clan_setting
 from ..clan_package.settings.clan_settings import switch_clan_setting
 from ..game_structure.game.switches import switch_set_value, Switch
-from ..cat.enums import CatRank
+from ..cat.enums import CatRank, CatAge, CatGroup
 from ..ui.elements.save_button import UISaveButton
 from ..ui.generate_button import ButtonStyles, get_button_dict
+
+from scripts.lifegen_utility import assign_new_bg, get_current_camp
 
 
 class ClanScreen(Screens):
@@ -84,11 +87,27 @@ class ClanScreen(Screens):
 
     def screen_switches(self):
         super().screen_switches()
+
         self.show_mute_buttons()
         self.update_camp_bg()
         switch_set_value(Switch.cat, None)
-        if game.clan.biome + game.clan.camp_bg in constants.LAYOUTS:
-            self.layout = constants.LAYOUTS[game.clan.biome + game.clan.camp_bg]
+
+        # other clans just use their camp, your own clan goes by where your cat lives
+        view_clan = game.selected_clan if game.selected_clan else game.clan
+        if view_clan is not game.clan:
+            current_bg = view_clan.camp_bg
+        elif game.clan.your_cat.status.group == CatGroup.HOUSEHOLD:
+            current_bg = game.clan.household_bg
+        elif game.clan.your_cat.status.group == CatGroup.LONER_GROUP:
+            current_bg = game.clan.loner_group_bg
+        elif game.clan.your_cat.status.group == CatGroup.ROGUE_GROUP:
+            current_bg = game.clan.rogue_group_bg
+        else:
+            current_bg = game.clan.camp_bg
+
+
+        if view_clan.biome + current_bg in constants.LAYOUTS:
+            self.layout = constants.LAYOUTS[view_clan.biome + current_bg]
         else:
             self.layout = constants.LAYOUTS["default"]
 
@@ -98,7 +117,13 @@ class ClanScreen(Screens):
         self.choose_cat_positions()
 
         self.set_disabled_menu_buttons(["camp_screen"])
-        self.update_heading_text(f"{game.clan.displayname}Clan")
+
+        if game.selected_clan and game.selected_clan is not game.clan:
+            self.update_heading_text(f"{game.selected_clan.displayname}Clan")
+        else:
+            # LG EDIT
+            self.update_heading_text(game.clan.your_cat.status.get_group_heading_text())
+            # ---
         self.show_menu_buttons()
         Screens.menu_buttons["back_to_camp"].hide()
 
@@ -110,7 +135,6 @@ class ClanScreen(Screens):
         i = 0
         all_positions = list(self.taken_spaces.values())
         used_positions = all_positions.copy()
-
         layers = []
         for x in self.cats_in_camp:
             layers.append(2)
@@ -130,6 +154,7 @@ class ClanScreen(Screens):
                         blend_layer, self.layout["cat_shading"]["blur"]
                     )
                 except ValueError:
+                    print("LG PRINT: ValueError:", x.placement, "is out of bounds.")
                     x_diff = ui_scale_value(
                         50 + (x.placement[0] if x.placement[0] < 0 else 0)
                     )
@@ -186,10 +211,13 @@ class ClanScreen(Screens):
             object_id=ObjectID(class_id="@buttonstyles_rounded_rect", object_id=None),
             starting_height=2,
         )
+        if game.selected_clan != game.clan:
+            self.warrior_den_label.disable()
+            self.leader_den_label.disable()
         self.med_den_label = UISurfaceImageButton(
-            ui_scale(pygame.Rect(self.layout["medicine den"], (151, 28))),
+            ui_scale(pygame.Rect(self.layout["healer den"], (105, 28))),
             "screens.core.medicine_cat_den",
-            get_button_dict(ButtonStyles.ROUNDED_RECT, (151, 28)),
+            get_button_dict(ButtonStyles.ROUNDED_RECT, (105, 28)),
             object_id=ObjectID(class_id="@buttonstyles_rounded_rect", object_id=None),
             starting_height=2,
         )
@@ -246,6 +274,7 @@ class ClanScreen(Screens):
         self.save_button = UISaveButton(
             position=(343, 643),
         )
+        self.save_button.reset_save()
 
         self.update_buttons_and_text()
 
@@ -287,21 +316,24 @@ class ClanScreen(Screens):
         Screens.menu_buttons["back_to_camp"].show()
 
     def update_camp_bg(self):
-        light_dark = "dark" if game_setting_get("dark mode") else "light"
+        light_dark = "dark" if xor(game_setting_get("dark mode"), game_setting_get("flip camp mode")) else "light"
 
-        camp_bg_base_dir = "resources/images/camp_bg/"
         leaves = ["newleaf", "greenleaf", "leafbare", "leaffall"]
-        camp_nr = game.clan.camp_bg
+        if game.selected_clan and game.selected_clan is not game.clan:
+            camp_bg_base_dir = "resources/images/camp_bg/clancat"
+            camp_nr = game.selected_clan.camp_bg
+        else:
+            camp_bg_base_dir, camp_nr = get_current_camp()
 
-        if camp_nr is None:
+        if not camp_nr:
             camp_nr = "camp1"
-            game.clan.camp_bg = camp_nr
+            assign_new_bg("camp1")
 
         available_biome = ["Forest", "Mountainous", "Plains", "Beach"]
-        biome = game.clan.biome
+        biome = game.selected_clan.biome
         if biome not in available_biome:
             biome = available_biome[0]
-            game.clan.biome = biome
+            game.selected_clan.biome = biome
         biome = biome.lower()
 
         all_backgrounds = []
@@ -395,19 +427,28 @@ class ClanScreen(Screens):
         for x in all_dens:
             first_choices[x].extend(first_choices[x])
 
-        for x in game.clan.clan_cats:
-            if not Cat.all_cats[x].status.alive_in_player_clan:
+        viewing_other_clan = game.selected_clan and game.selected_clan is not game.clan
+        for x in (list(Cat.all_cats) if viewing_other_clan else game.clan.clan_cats):
+            if x not in Cat.all_cats:
+                # a cat that was removed but left on the roster, don't crash over it
+                continue
+            if viewing_other_clan:
+                if Cat.all_cats[x].status.group_ID != game.selected_clan.group_ID:
+                    continue
+            elif not Cat.all_cats[x].status.alive_in_your_cat_group:
                 continue
 
             base_pos = None
             # Newborns are not meant to be placed. They are hiding.
             if (
-                Cat.all_cats[x].status.rank == CatRank.NEWBORN
+                Cat.all_cats[x].age == CatAge.NEWBORN
                 or constants.CONFIG["fun"]["all_cats_are_newborn"]
+                or Cat.all_cats[x].moons < 0
             ):
                 if (
-                    constants.CONFIG["fun"]["all_cats_are_newborn"]
-                    or constants.CONFIG["fun"]["newborns_can_roam"]
+                    (constants.CONFIG["fun"]["all_cats_are_newborn"]
+                    or constants.CONFIG["fun"]["newborns_can_roam"])
+                    and Cat.all_cats[x].moons >= 0
                 ):
                     # Free them
                     [
@@ -422,6 +463,7 @@ class ClanScreen(Screens):
             if Cat.all_cats[x].status.rank in (
                 CatRank.APPRENTICE,
                 CatRank.MEDIATOR_APPRENTICE,
+                CatRank.QUEENS_APPRENTICE
             ):
                 [
                     Cat.all_cats[x].placement,
@@ -444,7 +486,7 @@ class ClanScreen(Screens):
                 ] = self.choose_nonoverlapping_positions(
                     first_choices, all_dens, [1, 1, 2000, 1, 1, 1, 1]
                 )
-            elif Cat.all_cats[x].status.rank == CatRank.KITTEN:
+            elif Cat.all_cats[x].status.rank in [CatRank.KITTEN, CatRank.QUEEN, CatRank.QUEEN_APPRENTICE]:
                 [
                     Cat.all_cats[x].placement,
                     base_pos,
@@ -458,7 +500,7 @@ class ClanScreen(Screens):
                 ] = self.choose_nonoverlapping_positions(
                     first_choices, all_dens, [20, 20, 20, 400, 1, 1, 1]
                 )
-            elif Cat.all_cats[x].status.rank in (CatRank.WARRIOR, CatRank.MEDIATOR):
+            elif Cat.all_cats[x].status.rank in (CatRank.WARRIOR, CatRank.MEDIATOR, CatRank.QUEEN):
                 [
                     Cat.all_cats[x].placement,
                     base_pos,
@@ -472,6 +514,16 @@ class ClanScreen(Screens):
                 ] = self.choose_nonoverlapping_positions(
                     first_choices, all_dens, [1, 200, 1, 1, 1, 1, 1]
                 )
+            # LG
+            # placing outsiders if youre outside
+            else:
+                [
+                    Cat.all_cats[x].placement,
+                    base_pos,
+                ] = self.choose_nonoverlapping_positions(
+                    first_choices, all_dens, [1, 100, 1, 1, 1, 100, 50]
+                )
+            # ---
             if not Cat.all_cats[x].placement:
                 # if a cat wasn't placed, it's because no spots remain
                 break
@@ -483,27 +535,39 @@ class ClanScreen(Screens):
         self.save_button.update_state()
 
         self.label_toggle.kill()
-        if get_clan_setting("den labels"):
-            self.label_toggle = UIImageButton(
-                ui_scale(pygame.Rect((25, 641), (34, 34))),
-                "",
-                starting_height=2,
-                object_id="@checked_checkbox",
-            )
-            self.warrior_den_label.show()
-            self.clearing_label.show()
-            self.nursery_label.show()
-            self.app_den_label.show()
-            self.leader_den_label.show()
-            self.med_den_label.show()
-            self.elder_den_label.show()
+        if game.clan.your_cat.status.group.is_any_clan_group():
+            if get_clan_setting("den labels"):
+                self.label_toggle = UIImageButton(
+                    ui_scale(pygame.Rect((25, 641), (34, 34))),
+                    "",
+                    starting_height=2,
+                    object_id="@checked_checkbox",
+                )
+                self.warrior_den_label.show()
+                self.clearing_label.show()
+                self.nursery_label.show()
+                self.app_den_label.show()
+                self.leader_den_label.show()
+                self.med_den_label.show()
+                self.elder_den_label.show()
+            else:
+                self.label_toggle = UIImageButton(
+                    ui_scale(pygame.Rect((25, 641), (34, 34))),
+                    "",
+                    starting_height=2,
+                    object_id="@unchecked_checkbox",
+                )
+                self.warrior_den_label.hide()
+                self.clearing_label.hide()
+                self.nursery_label.hide()
+                self.app_den_label.hide()
+                self.leader_den_label.hide()
+                self.med_den_label.hide()
+                self.elder_den_label.hide()
         else:
-            self.label_toggle = UIImageButton(
-                ui_scale(pygame.Rect((25, 641), (34, 34))),
-                "",
-                starting_height=2,
-                object_id="@unchecked_checkbox",
-            )
+            self.show_den_labels.hide()
+            self.show_den_labels_text.hide()
+            self.label_toggle.hide()
             self.warrior_den_label.hide()
             self.clearing_label.hide()
             self.nursery_label.hide()

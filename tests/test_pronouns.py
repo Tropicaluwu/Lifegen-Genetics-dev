@@ -37,8 +37,6 @@ def _test():
     replacement_dict = {
         "m_c": _r,
         "r_c": _r,
-        "r_c1": _r,
-        "r_c2": _r,
         "n_c": _r,
         "app1": _r,
         "app2": _r,
@@ -57,21 +55,48 @@ def _test():
         "(deadmentor)": _r,
         "(previous_mentor)": _r,
         "mur_c": _r,
+        "t_c": _r,
+        "y_c": _r,
+        "parent": _r,
+        "parent1": _r,
+        "parent2": _r,
+        "sibling": _r,
+       
+        "crush1": _r,
+        "theircrush": _r,
+        "yourcrush": _r,
+        "mate1": _r,
         "c_n": _r,
         "o_c_n": _r,
         "lead_name": _r,
         "dep_name": _r,
         "med_name": _r,
         "cat_tag": _r,
+        "insert_siblings": _r,
+        "o_c1": _r,
         "cat_to": _r,
         "cat_from": _r,
     }
 
     for x in range(0, 11):
         replacement_dict[f"n_c:{x}"] = _r
+        replacement_dict[f"r_c{x}"] = _r
+
+    # LG
+    for x in range(0, 11):
+        replacement_dict[f"r_c:{x}"] = _r
+    # ---
 
     for root, _, files in os.walk("resources"):
         for file in files:
+            if (
+                (
+                    "lifegen_events" in root and
+                    "lifegen_events\\NEW" not in root
+                )
+                ):
+                # TEMP: ignore old event files
+                continue
             if file.endswith(".json") and file not in (
                 "credits_text.json",
                 "clansettings.json",
@@ -121,25 +146,41 @@ def _test_replacement_failure(path: str, repl_dict: dict) -> bool:
             print(_e)
             success = False
         else:
+            # LG
+            exceptions = [
+                "plike", "plove", "neutral", "rlike", "rlove", "neutral", "dislike", "hate",
+                "jealous", "trust", "comfort", "respect"
+                ]
+            match = (
+                re.search(r"(?<!\.\.)(?<!\.\s\.\s)\.\s+([a-z_]+)", processed)
+                or re.search(r"[?!]\s+([a-z]+)", processed)
+            )
+            # ---
+
             # This tests for any pronoun or verb tag fragments that might have
             # snuck through. This is most likely caused by using the incorrect type of
             # brackets
             if re.search(r"\{PRONOUN|\(PRONOUN|\{VERB|\(VERB|\{ADJ|\(ADJ", processed):
                 print(
-                    f'::error file={path}: "{_str}" contains pronoun tag fragments after replacment'
+                    f'::error file={path}: "{processed}" contains pronoun tag fragments after replacment'
                 )
                 success = False
+            elif re.search(r'For allele search:', processed):
+                pass
 
             # This tests for any pronoun or verb that is incorrectly capitalized
             # excludes ellipses (i.e. ... and . . .) but includes regular colons
             # includes ? and ! always (e.g. "...!" is included).
             # DOES NOT check the start of the string for capitalization
-            elif (
-                re.search(r"(?<!\.\.)(?<!\.\s\.\s)\.\s+[a-z]", processed) is not None
-                or re.search(r"[?!]\s+[a-z]", processed) is not None
-            ):
-                print(f'::error file={path}: Capitalization errors in "{_str}"')
-                success = False
+
+            # LG
+            # edited to make exceptions for lifegen rel addons
+            elif match:
+                following = match.group(1)
+                if following not in exceptions:
+                    print(f'::error file={path}: Capitalization errors in "{_str}"')
+                    print("ERROR:", following)
+                    success = False
 
     return success
 

@@ -15,11 +15,11 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [
+            "healer": [
                 1,
                 1
             ],
-            "medicine cat apprentice": [
+            "healer apprentice": [
                 1,
                 1
             ]
@@ -132,7 +132,7 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "medicine cat apprentice": [1, 1]
+            "healer apprentice": [1, 1]
         },
         "frequency": 4,
         "intro_text": "p_l has been sent out into the forest to try to find specific herbs alone.",
@@ -182,7 +182,7 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [1, 1],
+            "healer": [1, 1],
             "normal adult": [1, 1]
         },
         "frequency": 4,
@@ -458,7 +458,7 @@
                 "frequency": 4
             },
             {
-                "text": "r_c yowls out in pain, alerting p_l and causing {PRONOUN/p_l/object} to drop everything and rush over. The medicine cat tries to help {PRONOUN/p_l/poss} companion to stand, but it quickly becomes clear that that won't be happening. r_c will need to be carried back to camp.",
+                "text": "r_c yowls out in pain, alerting p_l and causing {PRONOUN/p_l/object} to drop everything and rush over. The healer tries to help {PRONOUN/p_l/poss} companion to stand, but it quickly becomes clear that that won't be happening. r_c will need to be carried back to camp.",
                 "exp": 0,
                 "injury": [
                     {
@@ -496,7 +496,7 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [2, 2]
+            "healer": [2, 2]
         },
         "frequency": 4,
         "intro_text": "r_c trips over a tree root while out collecting herbs with p_l.",
@@ -674,7 +674,7 @@
                 "frequency": 4
             },
             {
-                "text": "p_l checks r_c over and, while the other medicine cat is not seriously injured, {PRONOUN/r_c/subject}{VERB/r_c/'re/'s} definitely a little more battered than {PRONOUN/r_c/subject} {VERB/r_c/were/was} when they set out.",
+                "text": "p_l checks r_c over and, while the other healer is not seriously injured, {PRONOUN/r_c/subject}{VERB/r_c/'re/'s} definitely a little more battered than {PRONOUN/r_c/subject} {VERB/r_c/were/was} when they set out.",
                 "exp": 0,
                 "injury": [
                     {
@@ -771,7 +771,7 @@
                 "frequency": 4
             },
             {
-                "text": "r_c yowls out in pain, alerting p_l and causing {PRONOUN/p_l/object} to drop everything and rush over. p_l tries to help {PRONOUN/p_l/poss} fellow medicine cat to stand, but it quickly becomes clear that that won't be happening. r_c will need to be carried back to camp.",
+                "text": "r_c yowls out in pain, alerting p_l and causing {PRONOUN/p_l/object} to drop everything and rush over. p_l tries to help {PRONOUN/p_l/poss} fellow healer to stand, but it quickly becomes clear that that won't be happening. r_c will need to be carried back to camp.",
                 "exp": 0,
                 "injury": [
                     {
@@ -809,7 +809,7 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [1, 1],
+            "healer": [1, 1],
             "normal adult": [1, 1]
         },
         "frequency": 4,
@@ -971,7 +971,7 @@
                 "frequency": 4
             },
             {
-                "text": "r_c hurries over to help p_l and, while the medicine cat is not seriously injured, {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} definitely a little more battered than {PRONOUN/p_l/subject} {VERB/p_l/were/was} when they set out.",
+                "text": "r_c hurries over to help p_l and, while the healer is not seriously injured, {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} definitely a little more battered than {PRONOUN/p_l/subject} {VERB/p_l/were/was} when they set out.",
                 "exp": 0,
                 "injury": [
                     {
@@ -1068,7 +1068,7 @@
                 "frequency": 4
             },
             {
-                "text": "p_l yowls out in pain, alerting r_c and causing {PRONOUN/r_c/object} to drop everything and rush over. r_c tries to help the medicine cat to stand, but it quickly becomes clear that that won't be happening. p_l will need to be carried back to camp.",
+                "text": "p_l yowls out in pain, alerting r_c and causing {PRONOUN/r_c/object} to drop everything and rush over. r_c tries to help the healer to stand, but it quickly becomes clear that that won't be happening. p_l will need to be carried back to camp.",
                 "exp": 0,
                 "injury": [
                     {

@@ -369,7 +369,7 @@ class ChooseAdoptiveParentScreen(Screens):
 
         birth_parents = [
             Cat.fetch_cat(i)
-            for i in (self.the_cat.parent1, self.the_cat.parent2)
+            for i in (self.the_cat.parent1, self.the_cat.parent2, self.the_cat.parent3)
             if isinstance(Cat.fetch_cat(i), Cat)
         ]
 
@@ -444,7 +444,7 @@ class ChooseAdoptiveParentScreen(Screens):
             self.adoptive_next_page.enable()
         else:
             self.adoptive_last_page.enable()
-            self.adoptive_last_page.enable()
+            self.adoptive_next_page.enable()
 
         text = f"{self.adoptive_page + 1} / {max(1, total_pages)}"
         if not self.adoptive_page_display:
@@ -706,7 +706,7 @@ class ChooseAdoptiveParentScreen(Screens):
             [
                 i18n.t("general.moons_age", count=self.the_cat.moons),
                 i18n.t(f"general.{self.the_cat.status.rank.lower()}", count=1),
-                self.the_cat.genderalign,
+                self.the_cat.genderalign_string,
                 i18n.t(f"cat.personality.{self.the_cat.personality.trait}"),
             ]
         )
@@ -888,7 +888,7 @@ class ChooseAdoptiveParentScreen(Screens):
             [
                 i18n.t("general.moons_age", count=self.selected_cat.moons),
                 i18n.t(f"general.{self.selected_cat.status.rank.lower()}", count=1),
-                self.selected_cat.genderalign,
+                self.selected_cat.genderalign_string,
                 i18n.t(f"cat.personality.{self.selected_cat.personality.trait}"),
             ]
         )
@@ -909,8 +909,7 @@ class ChooseAdoptiveParentScreen(Screens):
         valid_parents = [
             inter_cat
             for inter_cat in Cat.all_cats_list
-            if inter_cat.status.group_ID
-            == self.the_cat.status.group_ID  # Adoptive parents must be part of the same group
+            if inter_cat.status.group_ID == self.the_cat.status.group_ID  # Adoptive parents must be part of the same group
             and inter_cat.ID != self.the_cat.ID  # Can't be your own adoptive parent
             and inter_cat.moons - self.the_cat.moons
             >= 14  # Adoptive parent must be at least 14 moons older. -> own child can't adopt you
@@ -918,6 +917,7 @@ class ChooseAdoptiveParentScreen(Screens):
             not in self.the_cat.mate  # Can't set your mate your adoptive parent.
             and inter_cat.ID
             not in self.the_cat.get_parents()  # Adoptive parents can't already be their parent
+            and not inter_cat.no_kits
             and self.not_related_to_mate(
                 inter_cat
             )  # quick fix TODO: change / remove later

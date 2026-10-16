@@ -11,6 +11,8 @@ import asyncio
 import threading
 from time import time
 
+import i18n
+
 from scripts.game_structure.game.settings import game_setting_get
 from scripts.game_structure.game.switches import switch_get_value, Switch
 from scripts.game_structure import game
@@ -115,12 +117,12 @@ class _DiscordRPC(threading.Thread):
                     "Don't worry, it will fix itself. Hopefully."
                 )
                 img_str = "discord"  # fallback incase the game isn't loaded yet
-                img_text = "Clangen!!"
+                img_text = "Genemod!!"
 
             # Example: beach_greenleaf_camp1_dark
 
             if game.clan:
-                clan_name = f"{game.clan.displayname}Clan"
+                clan_name = i18n.t("general.clan", name=game.clan.displayname)
                 cats_amount = len(game.clan.clan_cats)
                 clan_age = game.clan.age
             else:
@@ -136,12 +138,7 @@ class _DiscordRPC(threading.Thread):
                     small_image="discord",
                     small_text=f"{cats_amount} cats",
                     start=self._start_time,
-                    buttons=[
-                        {
-                            "label": "Join The Server",
-                            "url": "https://discord.gg/clangen",
-                        }
-                    ],
+                    buttons=[{"label": "Join The Server", "url": "https://discord.gg/lifegen"}],
                 )
             except BaseException:  # pylint: disable=broad-except
                 print("Discord rpc had issue updating, disabling...")

@@ -1,0 +1,12 @@
+{
+    "general1": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You spot a group of abandoned kits. Carefully, using whatever resources you could as a ghost, you lead them to a new, safe place to stay."
+    }
+}

@@ -8,6 +8,7 @@ import pygame_gui
 import ujson
 
 from scripts.cat.cats import Cat, BACKSTORIES, create_option_preview_cat
+from scripts.game_structure.game.settings import game_setting_get
 from scripts.cat.pelts import Pelt
 from scripts.cat.personality import Personality
 from scripts.cat.skills import SkillPath
@@ -284,7 +285,10 @@ class EventEditScreen(Screens):
         self.acc_button = {}
         self.acc_info: list = []
         """Loaded accessory tags"""
-        self.acc_categories = Pelt.acc_categories
+        if game_setting_get("lifegen_sprite_changes"):
+            self.acc_categories = Pelt.lifegen_acc_categories
+        else:
+            self.acc_categories = Pelt.clangen_acc_categories
         self.open_category: str = ""
         """Currently open acc category (wild, collar, ect.)"""
 
@@ -1531,7 +1535,10 @@ class EventEditScreen(Screens):
         self.acc_element = {}
         if not self.param_locks.get("acc"):
             self.acc_info = []
-        self.acc_categories = Pelt.acc_categories
+        if game_setting_get("lifegen_sprite_changes"):
+            self.acc_categories = Pelt.lifegen_acc_categories
+        else:
+            self.acc_categories = Pelt.clangen_acc_categories
         self.open_category = None
         self.acc_button = {}
         self.main_cat_editor = {}

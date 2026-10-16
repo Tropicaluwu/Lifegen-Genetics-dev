@@ -13,6 +13,8 @@ class GatherCatEnum(Enum):
     not_p_l = "-p_l"
     s_c = "s_c"
     not_s_c = "-s_c"
+    y_c = "y_c"
+    not_y_c = "-y_c"
     app1 = "app1"
     not_app1 = "-app1"
     app2 = "app2"
@@ -53,5 +55,5 @@ class GatherCatEnum(Enum):
 
 class GatherCat(RootModel):
     root: Union[
-        GatherCatEnum, Annotated[str, StringConstraints(pattern=r"^n_c:[0-9]+$")]
+        GatherCatEnum, Annotated[str, StringConstraints(pattern=r"^(n_c:|r_c:|o_c)[0-9]+$")]
     ]

@@ -29,6 +29,7 @@ from scripts.ui.scale import (
     ui_scale_value,
     ui_scale_blit,
 )
+from scripts.lifegen_utility import get_current_camp
 
 game_frame: Optional[pygame.Surface] = None
 core_vignette = pygame.image.load("resources/images/vignette.png")
@@ -75,8 +76,8 @@ def rebuild_core(*, should_rebuild_bgs=True):
 
     if get_version_info().is_source_build:
         dev_watermark = pygame_gui.elements.UILabel(
-            ui_scale(pygame.Rect((525, 660), (300, 50))),
-            "screens.core.dev_watermark",
+            ui_scale(pygame.Rect((545, 660), (300, 50))),
+            "LifeGen Genetics: " + version_number.text,
             object_id="#dev_watermark",
             text_kwargs={"ver": version_number.text},
         )
@@ -93,10 +94,14 @@ def rebuild_top_menu_buttons():
     """
     global menu_buttons
 
+    game.selected_clan = game.clan
+
     if game.clan:
         mode = game.clan.game_mode
     else:
         mode = None
+
+    clancount  = game.clan.clancount if hasattr(game.clan, "clancount") else "singleclan"
 
     button_names = [
         "events",
@@ -236,25 +241,46 @@ def rebuild_top_menu_buttons():
     )
     del scale_rect
 
-    heading_rect = ui_scale(pygame.Rect((0, 0), (220, 35)))
-    heading_rect.bottomleft = ui_scale_offset((0, 0))  # yes, this is intentional.
-    menu_buttons["heading"] = UISurfaceImageButton(
-        heading_rect,
-        "",
-        get_button_dict(ButtonStyles.CLAN_HEADER, (220, 35)),
-        visible=False,
-        manager=MANAGER,
-        object_id="@buttonstyles_clan_header",
-        starting_height=5,
-        anchors={
-            "bottom": "bottom",
-            "bottom_target": menu_buttons["patrols"],
-            "centerx": "centerx",
-        },
-        tool_tip_text="screens.core.header_tooltip",
-    )
-    del heading_rect
+    if clancount == "singleclan":
+        heading_rect = ui_scale(pygame.Rect((0, 0), (220, 35)))
+        heading_rect.bottomleft = ui_scale_offset((0, 0))  # yes, this is intentional.
+        menu_buttons["heading"] = UISurfaceImageButton(
+            heading_rect,
+            "",
+            get_button_dict(ButtonStyles.CLAN_HEADER, (220, 35)),
+            visible=False,
+            manager=MANAGER,
+            object_id="@buttonstyles_clan_header",
+            starting_height=5,
+            anchors={
+                "bottom": "bottom",
+                "bottom_target": menu_buttons["patrols"],
+                "centerx": "centerx",
+            },
+            tool_tip_text="screens.core.header_tooltip",
+        )
+        del heading_rect
+    else:
+        clan_list = [c.displayname +"Clan" for c in [game.clan] + game.clan.all_other_clans]
+        menu_buttons["heading"] = UIDropDown(
+            pygame.Rect((0, 25), (220, 35)),
+            "",
+            item_list=clan_list,
+            child_dimensions=(150, 30),
+            center_children=True,
+            parent_style=ButtonStyles.CLAN_HEADER,
+            visible=False,
+            manager=MANAGER,
+            object_id="@buttonstyles_clan_header",
+            starting_height=5,
+            anchors={
+                "centerx": "centerx",
+            },
+            open_on_hover=True
+        )
 
+        menu_buttons["heading"].change_layer(9)
+        
     rebuild_moon_n_season_indicator()
 
 
@@ -279,6 +305,7 @@ def rebuild_moon_n_season_indicator(change_moon: bool = False, visible: bool = F
 
     if "season_indicator" in menu_buttons:
         menu_buttons["season_indicator"].kill()
+        menu_buttons["secret_season_indicator"].kill()
 
     if "moon_indicator" not in menu_buttons:
         global chosen_moon_phase
@@ -318,9 +345,24 @@ def rebuild_moon_n_season_indicator(change_moon: bool = False, visible: bool = F
         ),
         visible=visible,
         manager=MANAGER,
-        starting_height=5,
+        starting_height=5
+    )
+    menu_buttons["secret_season_indicator"] = UIModifiedImage(
+        ui_scale(pygame.Rect((404, 3), (144, 67))),
+        pygame.transform.scale(
+            pygame.image.load(f"resources/images/season_{season}.png").convert_alpha(),
+            (144, 67),
+        ),
+        visible=visible,
+        manager=MANAGER,
+        starting_height=5
     )
     menu_buttons["season_indicator"].disable()
+    menu_buttons["secret_season_indicator"].set_tooltip(i18n.t(f"general.{game.clan.current_season.lower() if game.clan else ''}"))
+    menu_buttons["secret_season_indicator"].tool_tip_delay = 0
+
+    menu_buttons["season_indicator"].change_layer(10)
+    menu_buttons["secret_season_indicator"].change_layer(2)
 
 
 def load_moon_phases():
@@ -423,6 +465,27 @@ def rebuild_mute(location: str):
         anchors=anchors,
     )
 
+def get_red_bg(dark_mode=False):
+    if dark_mode:
+        b = 50
+        b_alter = 3
+    else:
+        b = 194
+        b_alter = 4
+    if game.clan:
+        if game.clan.your_cat:
+            if not game.clan.your_cat.history:
+                game.clan.your_cat.load_history()
+            if game.clan.your_cat.history:
+                if game.clan.your_cat.history.murder:
+                    if "is_murderer" in game.clan.your_cat.history.murder:
+                        if len(game.clan.your_cat.history.murder["is_murderer"]) > 0:
+                            for m in range(len(game.clan.your_cat.history.murder["is_murderer"])):
+                                b -= b_alter
+    if dark_mode:
+        return [57, max(36,b), 36]
+    else:
+        return [206, max(b, 167), 168]
 
 def rebuild_bgs():
     global default_fullscreen_bgs
@@ -466,9 +529,17 @@ def rebuild_bgs():
         del game_box
 
     bg = pygame.Surface(scripts.game_structure.screen_settings.game_screen_size)
-    bg.fill(constants.CONFIG["theme"]["light_mode_background"])
     bg_dark = pygame.Surface(scripts.game_structure.screen_settings.game_screen_size)
-    bg_dark.fill(constants.CONFIG["theme"]["dark_mode_background"])
+
+    if game_setting_get("red_bg"):
+        light_fill = get_red_bg(False)
+        dark_fill = get_red_bg(True)
+    else:
+        light_fill = constants.CONFIG["theme"]["light_mode_background"]
+        dark_fill = constants.CONFIG["theme"]["dark_mode_background"]
+
+    bg.fill(light_fill)
+    bg_dark.fill(dark_fill)
 
     default_game_bgs = {
         "light": {"default": bg},
@@ -554,14 +625,14 @@ def rebuild_bgs():
 
 
 def get_camp_bgs():
-    camp_bg_base_dir = "resources/images/camp_bg/"
     leaves = ["newleaf", "greenleaf", "leafbare", "leaffall"]
     available_biome = ["forest", "mountainous", "plains", "beach"]
 
     try:
-        camp_nr = game.clan.camp_bg
+        camp_bg_base_dir, camp_nr = get_current_camp()
         biome = game.clan.biome.lower()
     except AttributeError:
+        camp_bg_base_dir = "resources/images/camp_bg/clancat/"
         camp_nr = "camp1"
         biome = available_biome[0]
 

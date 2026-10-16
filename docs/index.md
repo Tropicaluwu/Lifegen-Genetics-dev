@@ -1,19 +1,34 @@
-# Welcome to the ClanGen Wiki! 
+# Welcome to the LifeGen Wiki! 
 
-This wiki is intended to document the intended behavior of implemented systems and provide a range of resources for developers, modders, and players. 
+!!! warning "to-do"
+     contributing page should be changed to reflect lifegen a little more
+
+
+!!! important
+    LifeGen is in no way officially affiliated with the ClanGen team. LifeGen is a mod maintained by unprofessionals, therefore amateur code should be expected.
+
+Welcome to the LifeGen wiki! This is where guides, information, and catalogs written by the LifeGen team is held.
+
+This wiki only includes *specifically LifeGen* information. If you're searching for a feature added by the base game, please peek at [ClanGen's documentation](https://clangen.io/docs/).
 
 <div class="grid cards" markdown>
 
-- _[Developer Documentation](dev/index.md)_
+- _[Features Documentation](lifegen-features/index.md)_
 
-    Information on ClanGen from a developer standpoint.
+    Documentation on the Features LifeGen adds to the game.
 
 - _[User-Guides](user-guides/index.md)_
 
-    User-created guides on a variety of topics.
+    Stores guides created by players for players.
+
+- _[LifeGen's Catalog](lifegen-catalog/index.md)_
+
+    Stores a catalog of LifeGen's added features and upcoming releases.
+
+- _[Tech Help Documentation](tech-help-documentation/index.md)_
+
+    Stores documentation written by LifeGen's tech help team. Includes bug fixes, and current release "known bugs".
 
 </div> 
 
-!!! important
-    User guides are contributed by volunteers within the community and are not created directly by the ClanGen development team, nor are they maintained by the ClanGen development team.
-
+LifeGen's Documentation is a work-in-process, and it is based on the current stable release of LifeGen. LifeGen has an open development, however, we do not officially help with the development in any way. **Use at your own risk.**

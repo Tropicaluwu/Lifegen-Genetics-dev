@@ -22,6 +22,7 @@ class MainCatFiltering(unittest.TestCase):
         leader=None,
         deputy=None,
         medicine_cat=None,
+        your_cat=Cat(), 
         biome="Forest",
         camp_bg=None,
         game_mode="expanded",
@@ -259,8 +260,8 @@ class Abbreviations(unittest.TestCase):
         interaction1.status_constraint = {"r_c1": ["warrior"]}
 
         interaction2 = GroupInteraction("2")
-        interaction2.status_constraint = {"r_c1": ["medicine cat"]}
-
+        interaction2.status_constraint = {"r_c1": ["healer"]}
+        
         # when
         all_interactions = [interaction1, interaction2]
         interaction_cats = [random1, random2, random3]

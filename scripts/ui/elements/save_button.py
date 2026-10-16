@@ -126,7 +126,7 @@ class UISaveButton:
         except RuntimeError:
             SaveErrorWindow(traceback.format_exc())
             switch_set_value(Switch.cur_screen, GameScreen.START)
-            game.last_screen_forupdate = current_screen
+            game.last_screen_forupdate = current_screen.name
             game.switch_screens = True
 
     def reset_save(self):

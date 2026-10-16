@@ -1200,7 +1200,10 @@
             "current_rep": [
                 "hostile"
             ],
-            "changed": -1
+            "changed": -1,
+            "has_rank": [
+                "any_warrior_mult"
+            ]
         }
     },
     {
@@ -1250,7 +1253,10 @@
             "current_rep": [
                 "hostile"
             ],
-            "changed": -1
+            "changed": -1,
+            "has_rank": [
+                "any_warrior_mult"
+            ]
         }
     },
     {
@@ -1334,7 +1340,10 @@
             "current_rep": [
                 "hostile"
             ],
-            "changed": -3
+            "changed": -3,
+            "has_rank": [
+                "any_warrior_mult"
+            ]
         }
     },
     {
@@ -1365,8 +1374,8 @@
                 "elder",
                 "mediator apprentice",
                 "mediator",
-                "medicine cat apprentice",
-                "medicine cat"
+                "healer apprentice",
+                "healer"
             ]
         },
         "injury": [
@@ -1442,7 +1451,10 @@
             "current_rep": [
                 "hostile"
             ],
-            "changed": -3
+            "changed": -3,
+            "has_rank": [
+                "any_warrior_mult"
+            ]
         }
     },
     {
@@ -2821,7 +2833,7 @@
             "war"
         ],
         "tags": [
-            "clan:medicine cat"
+            "clan:healer"
         ],
         "frequency": 4,
         "event_text": "It's hard for border patrols to actually encounter each other in the desert. So o_c_n deliberately waits for a c_n patrol, each trading escalating insults until the situation explodes into violence. med_name patches up m_c and r_c afterward, as the camp seethes with anger.",
@@ -3041,12 +3053,12 @@
         "frequency": 4,
         "event_text": "m_c dashes off from {PRONOUN/m_c/poss} mentor and tumbles face-first into a cactus! Thankfully r_c is able to remove the spines with little difficulty.",
         "m_c": {
-            "status": ["apprentice", "mediator apprentice", "medicine cat apprentice"],
+            "status": ["apprentice", "mediator apprentice", "healer apprentice"],
             "trait": ["adventurous", "arrogant", "bold", "childish", "confident", "daring", "oblivious", "playful", "rebellious", "shameless", "troublesome"],
             "relationship_status": ["app/mentor"]
         },
         "r_c": {
-            "status": ["warrior", "mediator", "medicine cat"]
+            "status": ["warrior", "mediator", "healer"]
         },
         "injury": [
             {
@@ -4131,8 +4143,8 @@
                 "deputy",
                 "leader",
                 "warrior",
-                "medicine cat",
-                "medicine cat apprentice"
+                "healer",
+                "healer apprentice"
             ]
         },
         "injury": [
@@ -4180,8 +4192,8 @@
                 "warrior",
                 "leader",
                 "deputy",
-                "medicine cat",
-                "medicine cat apprentice"
+                "healer",
+                "healer apprentice"
             ]
         },
         "injury": [
@@ -4227,8 +4239,8 @@
                 "warrior",
                 "mediator",
                 "mediator apprentice",
-                "medicine cat",
-                "medicine cat apprentice"
+                "healer",
+                "healer apprentice"
             ]
         },
         "injury": [
@@ -4522,8 +4534,8 @@
             "status": [
                 "apprentice",
                 "warrior",
-                "medicine cat",
-                "medicine cat apprentice",
+                "healer",
+                "healer apprentice",
                 "leader",
                 "deputy"
             ],
@@ -4619,7 +4631,10 @@
             "current_rep": [
                 "hostile"
             ],
-            "changed": -2
+            "changed": -2,
+            "has_rank": [
+                "any_warrior_mult"
+            ]
         }
     },
     {

@@ -5,6 +5,8 @@ import pygame.transform
 import pygame_gui.elements
 
 from scripts.cat.cats import Cat
+from scripts.cat.enums import CatStanding
+from scripts.cat_relations.relationship import Relationship
 from scripts.game_structure import image_cache, constants
 from scripts.game_structure import game
 from scripts.ui.elements.relation_display import UIRelationDisplay
@@ -32,6 +34,7 @@ from scripts.clan_package.settings import (
     set_clan_setting,
     switch_clan_setting,
 )
+from scripts.clan_package.clan_symbols import clan_symbol_sprite
 from scripts.game_structure.game.switches import (
     switch_set_value,
     Switch,
@@ -63,7 +66,9 @@ class RelationshipScreen(Screens):
         self.next_page_button = None
         self.previous_page_button = None
         self.show_empty_text = None
+        self.show_you_text = None
         self.show_dead_text = None
+        self.show_outside_text = None
         self.back_button = None
         self.next_cat_button = None
         self.previous_cat_button = None
@@ -125,8 +130,12 @@ class RelationshipScreen(Screens):
                             self.log_icon,
                             self.checkboxes["show_dead"],
                             self.checkboxes["show_empty"],
+                            self.checkboxes["show_you"],
+                            self.checkboxes["show_outside"],
                             self.show_dead_text,
                             self.show_empty_text,
+                            self.show_you_text,
+                            self.show_outside_text,
                         ],
                     )
                 elif self.next_cat == 0:
@@ -143,8 +152,12 @@ class RelationshipScreen(Screens):
                             self.log_icon,
                             self.checkboxes["show_dead"],
                             self.checkboxes["show_empty"],
+                            self.checkboxes["show_you"],
+                            self.checkboxes["show_outside"],
                             self.show_dead_text,
                             self.show_empty_text,
+                            self.show_you_text,
+                            self.show_outside_text,
                         ],
                     )
                 elif self.previous_cat == 0:
@@ -161,8 +174,12 @@ class RelationshipScreen(Screens):
                             self.log_icon,
                             self.checkboxes["show_dead"],
                             self.checkboxes["show_empty"],
+                            self.checkboxes["show_you"],
+                            self.checkboxes["show_outside"],
                             self.show_dead_text,
                             self.show_empty_text,
+                            self.show_you_text,
+                            self.show_outside_text,
                         ],
                     )
                 else:
@@ -181,8 +198,12 @@ class RelationshipScreen(Screens):
                             self.log_icon,
                             self.checkboxes["show_dead"],
                             self.checkboxes["show_empty"],
+                            self.checkboxes["show_you"],
+                            self.checkboxes["show_outside"],
                             self.show_dead_text,
+                            self.show_outside_text,
                             self.show_empty_text,
+                            self.show_you_text,
                         ],
                     )
             elif event.ui_element == self.checkboxes["show_dead"]:
@@ -195,6 +216,17 @@ class RelationshipScreen(Screens):
                 self.update_checkboxes()
                 self.apply_cat_filter()
                 self.update_cat_page()
+            elif event.ui_element == self.checkboxes["show_you"]:
+                switch_clan_setting("show only you")
+                self.update_checkboxes()
+                self.apply_cat_filter()
+                self.update_cat_page()
+            elif event.ui_element == self.checkboxes["show_outside"]:
+                switch_clan_setting("show outside relation")
+                self.update_checkboxes()
+                self.apply_cat_filter()
+                self.update_cat_page()
+
 
     def screen_switches(self):
         super().screen_switches()
@@ -245,7 +277,7 @@ class RelationshipScreen(Screens):
             ui_scale(pygame.Rect((53, 143), (220, 320))), MANAGER
         )
         self.toggle_frame_image = get_box(
-            BoxStyles.ROUNDED_BOX, (220, 120), sides=(True, False, True, True)
+            BoxStyles.ROUNDED_BOX, (220, 160), sides=(True, True, True, True)
         )
 
         self.list_frame_image = pygame.transform.scale(
@@ -257,12 +289,22 @@ class RelationshipScreen(Screens):
 
         self.show_dead_text = pygame_gui.elements.UITextBox(
             "screens.relationship.show_dead_checkbox",
-            ui_scale(pygame.Rect((110, 505), (100, 30))),
+            ui_scale(pygame.Rect((110, 490), (100, 30))),
             object_id="#text_box_30_horizleft",
         )
         self.show_empty_text = pygame_gui.elements.UITextBox(
             "screens.relationship.show_empty_checkbox",
-            ui_scale(pygame.Rect((110, 550), (100, 30))),
+            ui_scale(pygame.Rect((110, 525), (100, 30))),
+            object_id="#text_box_30_horizleft",
+        )
+        self.show_you_text = pygame_gui.elements.UITextBox(
+            "Only You",
+            ui_scale(pygame.Rect((110, 560), (100, 30))),
+            object_id="#text_box_30_horizleft",
+        )
+        self.show_outside_text = pygame_gui.elements.UITextBox(
+            "screens.relationship.show_outside_checkbox",
+            ui_scale(pygame.Rect((110, 595), (150, 30))),
             object_id="#text_box_30_horizleft",
         )
 
@@ -359,6 +401,10 @@ class RelationshipScreen(Screens):
         del self.show_dead_text
         self.show_empty_text.kill()
         del self.show_empty_text
+        self.show_you_text.kill()
+        del self.show_you_text
+        self.show_outside_text.kill()
+        del self.show_outside_text
         self.previous_page_button.kill()
         del self.previous_page_button
         self.next_page_button.kill()
@@ -378,7 +424,7 @@ class RelationshipScreen(Screens):
             self.checkboxes[ele].kill()
         self.checkboxes = {}
         self.checkboxes["show_dead"] = UIImageButton(
-            ui_scale(pygame.Rect((78, 505), (34, 34))),
+            ui_scale(pygame.Rect((78, 490), (34, 34))),
             "",
             object_id=(
                 "@checked_checkbox"
@@ -388,11 +434,30 @@ class RelationshipScreen(Screens):
         )
 
         self.checkboxes["show_empty"] = UIImageButton(
-            ui_scale(pygame.Rect((78, 550), (34, 34))),
-            "",
+            ui_scale(pygame.Rect((78, 525), (34, 34))), "",
             object_id=(
                 "@checked_checkbox"
                 if get_clan_setting("show empty relation")
+                else "@unchecked_checkbox"
+            ),
+        )
+
+        # LG: only you filter
+        if get_clan_setting("show only you"):
+            checkbox_type = "@checked_checkbox"
+        else:
+            checkbox_type = "@unchecked_checkbox"
+
+        self.checkboxes["show_you"] = UIImageButton(
+            ui_scale(pygame.Rect((78, 560), (34, 34))), "", object_id=checkbox_type
+        )
+
+        self.checkboxes["show_outside"] = UIImageButton(
+            ui_scale(pygame.Rect((78, 595), (34, 34))),
+            "",
+            object_id=(
+                "@checked_checkbox"
+                if get_clan_setting("show outside relation")
                 else "@unchecked_checkbox"
             ),
         )
@@ -408,7 +473,9 @@ class RelationshipScreen(Screens):
 
         self.current_page = 1
         self.inspect_cat = None
-
+        self.the_cat.blank_relations = list(set([x for x in self.the_cat.blank_relations if x not in self.the_cat.relationships]))
+        blank_relations = [Relationship(self.the_cat, Cat.fetch_cat(x)) for x in self.the_cat.blank_relations if Cat.fetch_cat(x)]
+        
         # Keep a list of all the relations
         if constants.CONFIG["sorting"]["sort_by_rel_total"]:
             self.all_relations = sorted(
@@ -416,8 +483,12 @@ class RelationshipScreen(Screens):
                 key=lambda x: x.total_abs_relationship_value,
                 reverse=True,
             )
+            self.all_relations = self.all_relations + [r for r in blank_relations if r not in self.all_relations]
         else:
-            self.all_relations = list(self.the_cat.relationships.values()).copy()
+            self.all_relations = (list(self.the_cat.relationships.values()).copy() + blank_relations).sorted(key=lambda x: x.cat_to)
+
+        # self.all_relations = [rel for rel in self.all_relations if rel.cat_to.status.is_outsider or rel.cat_from.status.is_outsider 
+        #                       or rel.cat_to.status.get_last_living_group() in self.the_cat.status.all_groups or self.the_cat.status.get_last_living_group() in rel.cat_to.status.all_groups]
 
         self.focus_cat_elements["header"] = pygame_gui.elements.UITextBox(
             "screens.relationship.heading",
@@ -514,22 +585,14 @@ class RelationshipScreen(Screens):
                     )
 
             # Gender
-            if self.inspect_cat.genderalign == "female":
-                gender_icon = image_cache.load_image(
-                    "resources/images/female_big.png"
-                ).convert_alpha()
-            elif self.inspect_cat.genderalign == "male":
-                gender_icon = image_cache.load_image(
-                    "resources/images/male_big.png"
-                ).convert_alpha()
-            elif self.inspect_cat.genderalign == "trans female":
-                gender_icon = image_cache.load_image(
-                    "resources/images/transfem_big.png"
-                ).convert_alpha()
-            elif self.inspect_cat.genderalign == "trans male":
-                gender_icon = image_cache.load_image(
-                    "resources/images/transmasc_big.png"
-                ).convert_alpha()
+            if 'trans molly' in self.inspect_cat.genderalign:
+                gender_icon = image_cache.load_image("resources/images/transfem_big.png").convert_alpha()
+            elif 'trans tom' in self.inspect_cat.genderalign:
+                gender_icon = image_cache.load_image("resources/images/transmasc_big.png").convert_alpha()
+            elif 'molly' in self.inspect_cat.genderalign:
+                gender_icon = image_cache.load_image("resources/images/female_big.png").convert_alpha()
+            elif 'tom' in self.inspect_cat.genderalign:
+                gender_icon = image_cache.load_image("resources/images/male_big.png").convert_alpha()
             else:
                 # Everyone else gets the nonbinary icon
                 gender_icon = image_cache.load_image(
@@ -575,53 +638,53 @@ class RelationshipScreen(Screens):
             if related:
                 relation = ""
                 if self.the_cat.is_uncle_aunt(self.inspect_cat):
-                    if self.inspect_cat.genderalign in ("female", "trans female"):
+                    if self.inspect_cat.genderalign in ['molly', 'trans molly']:
                         relation = "general.niece"
-                    elif self.inspect_cat.genderalign in ("male", "trans male"):
+                    elif self.inspect_cat.genderalign in ['tom', 'trans tom']:
                         relation = "general.nephew"
                     else:
                         relation = "general.siblings_child"
                 elif self.inspect_cat.is_uncle_aunt(self.the_cat):
-                    if self.inspect_cat.genderalign in ("female", "trans female"):
+                    if self.inspect_cat.genderalign in ['molly', 'trans molly']:
                         relation = "general.aunt"
-                    elif self.inspect_cat.genderalign in ("male", "trans male"):
+                    elif self.inspect_cat.genderalign in ['tom', 'trans tom']:
                         relation = "general.uncle"
                     else:
                         relation = "general.parents_sibling"
                 elif self.inspect_cat.is_grandparent(self.the_cat):
-                    if self.inspect_cat.genderalign in ("female", "trans female"):
+                    if self.inspect_cat.genderalign in ("female", "trans female", "molly", "trans molly"):
                         relation = "general.grandmother"
-                    elif self.inspect_cat.genderalign in ("male", "trans male"):
+                    elif self.inspect_cat.genderalign in ("male", "trans male", "tom", "trans tom"):
                         relation = "general.grandfather"
                     else:
                         relation = "general.grandparent"
                 elif self.the_cat.is_grandparent(self.inspect_cat):
-                    if self.inspect_cat.genderalign in ("female", "trans female"):
+                    if self.inspect_cat.genderalign in ("female", "trans female", "molly", "trans molly"):
                         relation = "general.granddaughter"
-                    elif self.inspect_cat.genderalign in ("male", "trans male"):
+                    elif self.inspect_cat.genderalign in ("male", "trans male", "tom", "trans tom"):
                         relation = "general.grandson"
                     else:
                         relation = "general.grandchild"
                 elif self.inspect_cat.is_parent(self.the_cat):
-                    if self.inspect_cat.genderalign in ("female", "trans female"):
+                    if self.inspect_cat.genderalign in ("female", "trans female", "molly", "trans molly"):
                         relation = "general.mother"
-                    elif self.inspect_cat.genderalign in ("male", "trans male"):
+                    elif self.inspect_cat.genderalign in ("male", "trans male", "tom", "trans tom"):
                         relation = "general.father"
                     else:
                         relation = "general.parent"
                 elif self.the_cat.is_parent(self.inspect_cat):
-                    if self.inspect_cat.genderalign in ("female", "trans female"):
+                    if self.inspect_cat.genderalign in ("female", "trans female", "molly", "trans molly"):
                         relation = "general.daughter"
-                    elif self.inspect_cat.genderalign in ("male", "trans male"):
+                    elif self.inspect_cat.genderalign in ("male", "trans male", "tom", "trans tom"):
                         relation = "general.son"
                     else:
                         relation = "general.child"
                 elif self.inspect_cat.is_sibling(
                     self.the_cat
                 ) or self.the_cat.is_sibling(self.inspect_cat):
-                    if self.inspect_cat.genderalign in ("female", "trans female"):
+                    if self.inspect_cat.genderalign in ("female", "trans female", "molly", "trans molly"):
                         relation = "general.sister"
-                    elif self.inspect_cat.genderalign in ("male", "trans male"):
+                    elif self.inspect_cat.genderalign in ("male", "trans male", "tom", "trans tom"):
                         relation = "general.brother"
                     else:
                         relation = "general.sibling"
@@ -635,9 +698,9 @@ class RelationshipScreen(Screens):
                 elif not get_clan_setting(
                     "first cousin mates"
                 ) and self.inspect_cat.is_cousin(self.the_cat):
-                    if self.inspect_cat.genderalign in ("female", "trans female"):
+                    if self.inspect_cat.genderalign in ("female", "trans female", "molly", "trans molly"):
                         relation = "general.cousin_female"
-                    elif self.inspect_cat.genderalign in ("male", "trans male"):
+                    elif self.inspect_cat.genderalign in ("male", "trans male", "tom", "trans tom"):
                         relation = "general.cousin_male"
                     else:
                         relation = "general.cousin_nb"
@@ -676,7 +739,11 @@ class RelationshipScreen(Screens):
         self.filtered_cats = self.all_relations.copy()
         if not get_clan_setting("show dead relation"):
             self.filtered_cats = list(
-                filter(lambda rel: not rel.cat_to.dead, self.filtered_cats)
+                filter(lambda rel: rel.cat_to and not rel.cat_to.dead, self.filtered_cats)
+            )
+        else:
+            self.filtered_cats = list(
+                filter(lambda rel: rel.cat_to and not rel.cat_to.faded, self.filtered_cats)
             )
 
         if not get_clan_setting("show empty relation"):
@@ -687,6 +754,21 @@ class RelationshipScreen(Screens):
                 )
             )
 
+        # LG: you filter
+        if get_clan_setting("show only you"):
+            self.filtered_cats = list(
+                filter(lambda rel: rel.cat_to.ID == game.clan.your_cat.ID, self.filtered_cats)
+            )
+        # ---
+
+
+        if not get_clan_setting("show outside relation"):
+            self.filtered_cats = list(
+                filter(lambda rel: rel.cat_to.status.is_outsider or rel.cat_from.status.is_outsider
+                       or rel.cat_to.status.get_last_living_group() in self.the_cat.status.all_groups or self.the_cat.status.get_last_living_group() in rel.cat_to.status.all_groups, self.filtered_cats)
+            )
+            
+
         # Filter for search
         search_cats = []
         if search_text.strip() != "":
@@ -694,6 +776,15 @@ class RelationshipScreen(Screens):
                 if search_text.lower() in str(cat.cat_to.name).lower():
                     search_cats.append(cat)
             self.filtered_cats = search_cats
+        
+        seen = set()
+        uniq = []
+        for x in self.filtered_cats:
+            if x not in seen:
+                uniq.append(x)
+                seen.add(x)
+        if len(seen) != len(uniq):
+            print("duplicates: " + seen)
 
     def update_cat_page(self):
         for ele in self.relation_list_elements:
@@ -763,22 +854,14 @@ class RelationshipScreen(Screens):
         )
         self.relation_list_elements["name" + str(i)].disable()
         # Gender alignment
-        if the_relationship.cat_to.genderalign == "female":
-            gender_icon = image_cache.load_image(
-                "resources/images/female_big.png"
-            ).convert_alpha()
-        elif the_relationship.cat_to.genderalign == "male":
-            gender_icon = image_cache.load_image(
-                "resources/images/male_big.png"
-            ).convert_alpha()
-        elif the_relationship.cat_to.genderalign == "trans female":
-            gender_icon = image_cache.load_image(
-                "resources/images/transfem_big.png"
-            ).convert_alpha()
-        elif the_relationship.cat_to.genderalign == "trans male":
-            gender_icon = image_cache.load_image(
-                "resources/images/transmasc_big.png"
-            ).convert_alpha()
+        if the_relationship.cat_to.genderalign.replace("intersex ", "") == 'molly':
+            gender_icon = image_cache.load_image("resources/images/female_big.png").convert_alpha()
+        elif the_relationship.cat_to.genderalign.replace("intersex ", "") == 'tom':
+            gender_icon = image_cache.load_image("resources/images/male_big.png").convert_alpha()
+        elif the_relationship.cat_to.genderalign.replace("intersex ", "") == 'trans molly':
+            gender_icon = image_cache.load_image("resources/images/transfem_big.png").convert_alpha()
+        elif the_relationship.cat_to.genderalign.replace("intersex ", "") == 'trans tom':
+            gender_icon = image_cache.load_image("resources/images/transmasc_big.png").convert_alpha()
         else:
             # Everyone else gets the nonbinary icon
             gender_icon = image_cache.load_image(
@@ -789,6 +872,13 @@ class RelationshipScreen(Screens):
             ui_scale(pygame.Rect((pos_x + 80, pos_y + 5), (18, 18))),
             pygame.transform.scale(gender_icon, ui_scale_dimensions((18, 18))),
         )
+
+        if game.clan.clancount == "multiclan" and the_relationship.cat_to.status.fetch_clan_object():
+            clan_icon = clan_symbol_sprite(the_relationship.cat_to.status.fetch_clan_object(), force_dark=True)
+            self.sprite_buttons["clan_symbol" + str(i)] = UISpriteButton(
+                ui_scale(pygame.Rect((pos_x + 80, pos_y+25), (18, 18))),
+                clan_icon,
+            )
 
         related = False
         # MATE

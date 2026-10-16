@@ -12,6 +12,7 @@ from scripts.models.common.future_event import FutureEvent
 from scripts.models.common.relationship_status import RelationshipStatus
 from scripts.models.common.skill import Skill
 from scripts.models.common.trait import Trait
+from scripts.models.common.kit_trait import KitTrait
 from scripts.models.patrol.can_have_status import CanHaveStat
 from scripts.models.patrol.history_text import HistoryText
 from scripts.models.patrol.injury_item import InjuryItem
@@ -38,14 +39,40 @@ class Outcome(BaseModel):
         MISSING,
         description="Makes this a stat outcome which can occur if a stat cat can be found.",
     )
-    stat_trait: Union[List[Trait], MISSING] = Field(
+    # stat_trait: Union[List[Trait], MISSING] = Field(
+    #     MISSING,
+    #     description="Makes this a stat outcome which can occur if a stat cat can be found.",
+    # )
+
+    # LG Change: Need kit traits for LG patrols
+    stat_trait: Union[List[Union[Trait, KitTrait]], MISSING] = Field(
         MISSING,
         description="Makes this a stat outcome which can occur if a stat cat can be found.",
     )
-    can_have_stat: Union[List[CanHaveStat], MISSING] = Field(
+    # can_have_stat: Union[List[CanHaveStat], MISSING] = Field(
+    #     MISSING,
+    #     description="Overrides default behavior or adds additional requirements for stat_cat picking.",
+    # )
+    # LG Change: Need r_c:X abbrevs
+    can_have_stat: Union[List[Union[CanHaveStat, GatherCat]], MISSING] = Field(
         MISSING,
         description="Overrides default behavior or adds additional requirements for stat_cat picking.",
     )
+    # --
+    # LG
+    stat_residence: Union[List[str], MISSING] = Field(
+        MISSING,
+        description="Dead residence the stat cat must be a part of."
+    )
+    stat_cluster: Union[List[str], MISSING] = Field(
+        MISSING,
+        description="Cluster the stat cat must be a part of."
+    )
+    stat_faith: Union[List[int], MISSING] = Field(
+        MISSING,
+        description="Faith range the stat cat must be a part of."
+    )
+    # ---
     prey: Union[List[Prey], MISSING] = Field(
         MISSING, description="Indicates how much prey each cat brings back."
     )
@@ -61,6 +88,26 @@ class Outcome(BaseModel):
     injury: Union[List[InjuryItem], MISSING] = Field(
         MISSING, description="Indicates which cats get injured and how."
     )
+
+    # LG
+    murder: Union[List[dict], MISSING] = Field(
+            MISSING, description="Indicates which cats will be murdered and by who."
+        )
+    accessory: Union[List[dict], MISSING] = Field(
+        MISSING, description="Indicates accessories gained from the outcome."
+    )
+    faith_effects: Union[List[dict], MISSING] = Field(
+        MISSING, description="Indicates faith effects given."
+    )
+    convert: Union[List[str], MISSING] = Field(
+        MISSING, description="Indicates which cats were converted to the Dark Forest."
+    )
+    faith_effect: Union[List[dict], MISSING] = Field(
+        MISSING, description="Indicates faith effects caused by the outcome."
+    )
+
+    # ---
+
     min_max_status: Union[Dict[MinMaxStatusDictKey, Tuple[int, int]], MISSING] = Field(
         MISSING,
         description="Allows specification of the minimum and maximum number of specific types of cats that are allowed on the patrol.",
@@ -74,6 +121,10 @@ class Outcome(BaseModel):
     relationship_constraint: Union[List[RelationshipStatus], MISSING] = Field(
         MISSING,
         description="Dictates what relationships m_c must have towards r_c. Do not use this section if there is no r_c in the event.",
+    )
+    multiclan_cat: Union[List[NewCat], MISSING] = Field(
+        MISSING,
+        description="Adds new cat(s), either joining the clan or as outside cats. The {index} value corresponds to their index value on this list (e.g. n_c:0 refers to the first cat in this list).",
     )
     new_cat: Union[List[NewCat], MISSING] = Field(
         MISSING,

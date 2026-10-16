@@ -47,7 +47,7 @@ class Relationship:
         self.chosen_interaction = None
         self.cat_from = cat_from
         self.cat_to = cat_to
-        self.mates = mates
+        self.mate = mates
         self.family = family
         self.opposite_relationship = (
             None  # link to opposite relationship will be created later
@@ -78,7 +78,7 @@ class Relationship:
         return {
             "cat_from_id": self.cat_from.ID,
             "cat_to_id": self.cat_to.ID,
-            "mates": self.mates,
+            "mates": self.mate,
             "family": self.family,
             "romance": self.romance,
             "like": self.like,
@@ -102,9 +102,9 @@ class Relationship:
     def start_interaction(self) -> None:
         """This function handles the simple interaction of this relationship."""
         # such interactions are only allowed for living Clan members
-        if not self.cat_from.status.alive_in_player_clan:
+        if not self.cat_from.status.group.is_any_clan_group():
             return
-        if not self.cat_to.status.alive_in_player_clan:
+        if not self.cat_to.status.group.is_any_clan_group():
             return
         if self.cat_from.ID == self.cat_to.ID:
             return
@@ -115,7 +115,7 @@ class Relationship:
 
         # update relationship
         if self.cat_to.ID in self.cat_from.mate:
-            self.mates = True
+            self.mate = True
 
         # check if opposite_relationship is here, otherwise creates it
         if self.opposite_relationship is None:
@@ -156,8 +156,8 @@ class Relationship:
             chosen_interaction = choice(possible_interactions)
 
         # if the chosen_interaction is still in the TRIGGERED_SINGLE_INTERACTIONS, clean the list
-        if chosen_interaction in self.used_interaction_ids:
-            self.used_interaction_ids = []
+        if chosen_interaction.id in self.used_interaction_ids:
+            Relationship.used_interaction_ids.clear()
 
         # add the chosen interaction id to the TRIGGERED_SINGLE_INTERACTIONS
         self.chosen_interaction = chosen_interaction
@@ -208,7 +208,6 @@ class Relationship:
                     for condition in injuries:
                         injured_cat.history.add_possible_history(
                             condition,
-                            status=injured_cat.status,
                             scar_text=possible_scar,
                             death_text=possible_death,
                         )
@@ -219,17 +218,17 @@ class Relationship:
         # prepare string for display
         interaction_str = self.adjust_interaction_string(interaction_str)
 
-        effect = ""
+        effect = "relationships.neutral_postscript"
         if positive:
-            effect = i18n.t(f"relationships.positive_postscript_{intensity}")
+            effect = f"relationships.positive_postscript_{intensity}"
         elif not positive:
-            effect = i18n.t(f"relationships.negative_postscript_{intensity}")
+            effect = f"relationships.negative_postscript_{intensity}"
 
-        interaction_str = interaction_str + effect
+        interaction_str = i18n.t(effect, text=interaction_str)
         self.log.append(
-            interaction_str
-            + i18n.t(
+            i18n.t(
                 "relationships.age_postscript",
+                text=interaction_str,
                 name=str(self.cat_from.name),
                 count=self.cat_from.moons,
             )
@@ -237,11 +236,14 @@ class Relationship:
         relevant_event_tabs = ["relation", "interaction"]
         if self.chosen_interaction.get_injuries:
             relevant_event_tabs.append("health")
+            relevant_event_tabs.remove("interaction")
+        clan = self.cat_from.status.fetch_clan_object(game.clan)
         game.cur_events_list.append(
             Single_Event(
                 interaction_str,
-                ["relation", "interaction"],
-                cat_dict={"m_c": self.cat_to, "r_c": self.cat_from},
+                relevant_event_tabs,
+                cat_dict={"m_c": self.cat_from, "r_c": self.cat_to},
+                clan=clan.group_ID
             )
         )
 
@@ -253,7 +255,13 @@ class Relationship:
             "r_c": (str(self.cat_to.name), choice(self.cat_to.pronouns)),
         }
 
-        return process_text(string, cat_dict)
+        # LG: added o_c_n and c_n
+        event_text = process_text(string, cat_dict)
+        if game.clan.all_other_clans:
+            event_text = event_text.replace("o_c_n", random.choice(game.clan.all_other_clans).name + "Clan")
+        event_text = event_text.replace("c_n", game.clan.name + "Clan")
+
+        return event_text
 
     def get_value_change_amount(self, is_positive: bool, intensity: str) -> int:
         """Finds and returns the int amount that the relationship type will change by according to given intensity and additional modifiers
@@ -423,11 +431,11 @@ class Relationship:
             else:
                 if rel_type == RelType.ROMANCE:
                     continue
-                if attr > 0:
-                    value_weights[rel_type] += int(abs(attr / 10))
+                if attr < 0: 
+                    value_weights[rel_type] += int(abs(attr) / 10)
 
         # increase the chance of a romance interaction if they are already mates
-        if self.mates:
+        if self.mate:
             value_weights[RelType.ROMANCE] += 1
 
         # if a romance relationship is not possible, remove this type, but only if there are no mates
@@ -438,7 +446,7 @@ class Relationship:
         mate_to_from = self.cat_to.is_potential_mate(
             self.cat_from, for_love_interest=True
         )
-        if (not mate_from_to or not mate_to_from) and not self.mates:
+        if (not mate_from_to or not mate_to_from) and not self.mate:
             while RelType.ROMANCE in value_weights:
                 value_weights.pop(RelType.ROMANCE)
 
@@ -484,7 +492,7 @@ class Relationship:
             )
 
         for interact in possible_interactions:
-            if not event_for_location(interact.biome):
+            if not event_for_location(interact.biome, self.cat_from.status.fetch_clan_object(game.clan)):
                 continue
 
             if not event_for_season(interact.season):
@@ -543,7 +551,14 @@ class Relationship:
         """
         Returns the total int of all relationship types.
         """
-        return self.romance + self.like + self.respect + self.comfort + self.trust
+        return self.romance + abs(self.like) + abs(self.respect) + abs(self.comfort) + abs(self.trust)
+
+    @property
+    def has_negative(self) -> bool:
+        """
+        Returns True if the relationship has a negative value.
+        """
+        return any(tier for tier in self.get_reltype_tiers() if tier.is_any_neg)
 
     @property
     def total_abs_relationship_value(self) -> int:
@@ -778,9 +793,7 @@ class Relationship:
         """
         Returns the tier group for the given value.
         """
-        for group, interval in constants.CONFIG["relationship"][
-            "value_intervals"
-        ].items():
+        for group, interval in constants.CONFIG["relationship"]["value_intervals"].items():
             if rel_type <= interval:
                 return group
 

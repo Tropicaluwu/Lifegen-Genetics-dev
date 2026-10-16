@@ -1,7 +1,7 @@
 [project]
-name = "clangen"
+name = "genemod"
 version = "0.7.9"
-description = "Fan-edit of the warrior cat clangen game"
+description = "Genetics mod of clangen"
 license = "MPL-2.0"
 authors = [
     { name = "Sablesteel", email = "noemail@null.com" },

@@ -39,8 +39,8 @@
                 "any"
             ],
             "status": [
-                "medicine cat",
-                "medicine cat apprentice"
+                "healer",
+                "healer apprentice"
             ],
             "skill": [
                 "PROPHET,2"
@@ -62,8 +62,8 @@
                 "any"
             ],
             "status": [
-                "medicine cat",
-                "medicine cat apprentice"
+                "healer",
+                "healer apprentice"
             ],
             "skill": [
                 "OMEN,2"

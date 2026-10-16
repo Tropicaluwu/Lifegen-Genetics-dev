@@ -13,14 +13,18 @@ dev_tools = false
   # sets the max amount of interactions a cat with a special role (leader, deputy, medicine cat, or mediator) can have each moon
   max_interaction_special = 6
 
+  # maximum number of cross-clan relationship events that can happen each moon (multiclan only)
+  max_crossclan_interaction = 15
+
   # sets the positive or negative effect that interactions will have on other cats based on personality compatibility
   compatibility_effect = 5
 
   # Adds a passive buff to relationship events. We divide the value change by passive_influence_div and apply it to all other relationship values.
   passive_influence_div = 3
 
-  # 1/chance an interaction is 'neutral' instead of negative or positive
-  chance_for_neutral = 10
+  # Used for patrol and moon event relationship changes. 0.5 - half the usual change, 0 - no change, 1 - the usual change, etc.
+  pos_rel_change_multiplier = 1
+  neg_rel_change_multiplier = 1
 
   # 1/chance that a group event will be a "special group event"
   # special groups are defined in group_types.json
@@ -51,6 +55,16 @@ dev_tools = false
       mid_pos = 69
       extreme_pos = 100
 
+  [relationship.colours]
+    # colours are RGB values, each number is a value from 0 to 255
+    neutral = [130, 117, 82]
+    low_pos = [182, 174, 51]
+    mid_pos = [150, 195, 49]
+    extreme_pos = [154, 241, 32]
+    low_neg = [186, 128, 60]
+    mid_neg = [214, 90, 53]
+    extreme_neg = [233, 38, 30]
+
 [mates]
   # maximum age difference allowed for cats to be romantic with each other
   age_range = 40
@@ -64,9 +78,11 @@ dev_tools = false
   # 1/chance of becoming mates, triggers with friends_to_lover (has to be a high number because many relationships are checked each moon)
   chance_friends_to_lovers = 170
 
+  # base 1/chance for mates to break up. Affected by relationship values and personality compatibility. 0 disables breakups entirely
+  base_breakup_chance = 30
+  
   # chance to move on from a dead or absent mate, fraction represents a percentage. default is 30% chance.
   chance_to_move_on = 0.3
-
 
   # NOTE FOR RELATIONSHIP CONSTRAINTS
   #  0: no condition
@@ -225,11 +241,13 @@ dev_tools = false
   # cooldown for cats getting pregnant that applies after giving birth
   birth_cooldown = 6
 
-  # 1/chance that kits, relationship and other factors will influence this chance
+  # 1/chance that kits, relationship and other factors will influence this chance. modded_ is used with modded litters
   primary_chance_mated = 80
+  modded_primary_chance_mated = 50
 
-  # 1/chance that kits, relationship and other factors will influence this chance
+  # 1/chance that kits, relationship and other factors will influence this chance. modded_ is used with modded litters
   primary_chance_unmated = 130
+  modded_primary_chance_unmated = 100
 
   # 1/chance that a mated cat has an affair
   random_affair_chance = 50
@@ -237,6 +255,27 @@ dev_tools = false
   # 1/chance for an unmated cat to have an affair (coparenting)
   # for this check, only other unmated cats can be the affair partner
   unmated_random_affair_chance = 10
+
+  # proportion of situations where surrogacy will be selected when applicable (0 - never, 1 - always)
+  surrogate_rate = 1
+
+  # 1/chance for cats to select a clanmate as a surrogate when possible
+  clanmate_surrogate_chance = 5
+
+  # 1/chance for unmated cats to have a multi-sire litter with outside sires
+  multi-sire_chance = 5
+
+  # maximum amount of outsider sires for a litter
+  multi-sire_max_sires = 5
+
+  # default chance 0-1 for a litter with an outside parent to be a half-clan litter
+  half-clan_chance = 0.25
+
+  # 1/chance that a phantom pregnancy will happen when cats fail to have a litter
+  false_pregnancy_chance = 500
+
+  # 1/chance that a pregnancy will be hidden from the player until a cat gives birth
+  hidden_pregnancy_chance = 200
 
   # The kit number is incremental. It is 1-6 as default so if you change these numbers, you should probably keep this in mind.
   # As in, your max kits number should probably be 5 more than the min kits number.
@@ -281,38 +320,68 @@ dev_tools = false
     "senior adult" = 0
     senior = 0
 
+  [pregnancy.one_kit_modded]
+    "young adult" = 128
+    adult = 8
+    "senior adult" = 16
+    senior = 2
+  [pregnancy.two_kit_modded]
+    "young adult" = 256
+    adult = 16
+    "senior adult" = 32
+    senior = 8
+  [pregnancy.three_kit_modded]
+    "young adult" = 256
+    adult = 32
+    "senior adult" = 64
+    senior = 8
+  [pregnancy.four_kit_modded]
+    "young adult" = 256
+    adult = 32
+    "senior adult" = 64
+    senior = 4
+  [pregnancy.five_kit_modded]
+    "young adult" = 128
+    adult = 32
+    "senior adult" = 64
+    senior = 2
+  # 6-8 random litter size
+  [pregnancy.six_kit_modded]
+    "young adult" = 64
+    adult = 16
+    "senior adult" = 32
+    senior = 1
+  # 9-12 random litter size
+  [pregnancy.nine_kit_modded]
+    "young adult" = 16
+    adult = 4
+    "senior adult" = 6
+    senior = 0
+  # 13-19 random litter size
+  [pregnancy.max_kit_modded]
+    "young adult" = 1
+    adult = 1
+    "senior adult" = 1
+    senior = 0
+  # stillborn chances depend on litter size
+  # small = 0-2, three = 3, mid = 4-5, big = 6-8, large = 9+
+  [pregnancy.stillborn_chances]
+    small = 0.01
+    three = 0.025
+    mid = 0.05
+    big = 0.1
+    large = 0.15
+
 [cat_generation]
   # base 1/chance that a cat will generate with a permanent condition. gets modified further in code
   base_permanent_condition = 90
 
-  # 1/2^(chance - 1) that a male cat will be a tortie
-  base_male_tortie = 13
-
-  # 1/2^(chance/2) that a female cat will be a tortie
-  base_female_tortie = 4
-
-  # base 1/(chance + 1) that a cat will have heterochromia. gets modified further in code
-  base_heterochromia = 120
-
-  # 1/(chance + 1) for a cat to have same pelt as one of their parents
-  direct_inheritance = 15
-
-  # 1/2^(chance) that a cat will be a wildcard tortie
-  wildcard_tortie = 9
-
-  # base 1/2^(chance) that a cat will have vitiligo
-  vit_chance = 8
-
-  # 1/2^(chance) that a cat will have colourpoint
-  random_point_chance = 5
+  # kittypets will have a higher chance of having many rarer genes, even if not purebred
+  kittypet_gene_boost = false
 
 [cat_name_controls]
-  # set to true if you always want cats named after the color of their pelt
-  # if cats can't find a pelt color, they will choose from normal_prefixes
-  always_name_after_appearance = false
-
-  # allows cats to be named after the color of their eyes
-  allow_eye_names = true
+  # if changing prefixes is enabled, 1/chance for a cat to change their prefix when coming out as trans
+  trans_prefix_change_chance = 25
 
   # determines which list outsiders pull from: silly_names, human_names, loner_names, or normal_prefixes
   # number / total for each control
@@ -320,6 +389,31 @@ dev_tools = false
   kittypet = [30, 50, 10, 10]
   loner = [5, 15, 50, 30]
   rogue = [3, 7, 35, 55]
+  clancat = [10, 10, 20, 40]
+
+  # if changing prefixes is enabled, this is the chance of the prefix changing during ceremonies 
+  # (eg. kit-apprentice is during apprentice ceremony)
+  
+  # pelt_change_modifier is for how much more likely the change is if a cat's appearance has significantly changed
+  # such as for cats developing vitiligo, turning red from amber, etc.
+  [cat_name_controls.prefix_change_chance]
+    kit-apprentice = 75
+    apprentice-warrior = 75
+    warrior-elder = 75
+    pelt_change_modifier = 15
+    
+  [cat_name_controls.alt_suffixes] # only with alt suffixes on
+    # how likely should a suffix list be (relative to each other)
+    primary_skill = 4
+    secondary_skill = 2
+
+    trait = 2
+    general_honour = 1
+    trait_honour = 1 # trait-specific honours lists ; if trait-specific honours removed entirely, uses general_honour instead
+
+    special = 1
+    common = 3 # for cats not graduating early
+    common_early = 1 # for healers graduating before 15 and other cats graduating before 12 moons old
 
 [accessory_generation]
   # base 1/chance a cat generates with an accessory 
@@ -368,6 +462,9 @@ dev_tools = false
   # age that a cat will complete fading
   age_to_fade = 202
 
+  # kits fade faster if modded kits is on
+  kit_fade = 24
+
   # max opacity when a cat fades
   opacity_at_fade = 20
 
@@ -378,30 +475,64 @@ dev_tools = false
   # base 1/chance that a cat will be chosen as a mediator apprentice
   mediator_app_chance = 50
 
+  # base 1/chance that a cat will be chosen as a queen apprentice
+  queen_app_chance = 75
+
   # base 1/chance that a cat will be chosen as a med cat apprentice
   base_medicine_app_chance = 41
 
-[roles."medicine cat apprentice"]
-  # maximum number of medicine cat apprentices to full medicine cats (e.g. 4 adult medcats can have 2 apps total)
-  max_medcats_to_apps = 2
+  # max 1/chance for old leaders to retire if enabled
+  max_leader_retire_chance = 50
 
-  # minimum percentage of medcat population that are seniors for buff to app chance
-  threshold_percentage_seniors = 30
+  # max 1/chance for old healers to retire if enabled
+  max_healer_retire_chance = 10
 
-  # how many moons is considered "very old"
-  threshold_moons_ancient = 150
+  # max 1/chance for old mediators to retire if enabled
+  max_mediator_retire_chance = 25
 
-  # minimum percentage of medcat population that are ancient for buff to app chance
-  threshold_percentage_ancient = 30
+  # max 1/chance for old permaqueens to retire
+  max_queen_retire_chance = 25
 
-[roles.become_mediator_chances]
-  # 1/chance that a cat will switch to mediator. rolls every moon, so keep it high.
+  [roles.become_mediator_chances]
+    # 1/chance that a cat will switch to mediator. rolls every moon, so keep it high.
+    warrior = 5000
+    elder = 400
+
+  [roles.become_queen_chances]
+    # 1/chance that a cat will switch to queen. rolls every moon, so keep it high.
+    warrior = 5000
+    mediator = 7500
+    elder = 500
+
+  [roles.become_healer_chances]
+    # 1/chance that a cat will switch to mediator. rolls every moon, so keep it high.
+    warrior = 5000
+    apprentice = 1000
+    
+  [roles."medicine cat apprentice"]
+    # maximum number of medicine cat apprentices to full medicine cats (e.g. 4 adult medcats can have 2 apps total)
+    max_medcats_to_apps = 2
+
+    # minimum percentage of medcat population that are seniors for buff to app chance
+    threshold_percentage_seniors = 30
+
+    # how many moons is considered "very old"
+    threshold_moons_ancient = 150
+
+    # minimum percentage of medcat population that are ancient for buff to app chance
+    threshold_percentage_ancient = 30
+
+[roles.become_med_chances]
+  # LG: 1/chance that a cat will switch to a medicine cat. rolls every moon, so keep it high.
   warrior = 5000
   elder = 400
 
 [lost_cat]
   # 1/chance that a lost cat will return on their own
   rejoin_chance = 20
+
+  # 1/chance for a cat to rejoin the Clan if recently tnred. Only rolled once
+  rejoin_tnr_chance = 2
 
 [cat_ages]
   # represents ranges for cat ages
@@ -461,9 +592,14 @@ dev_tools = false
 
   # forces specified event to occur regardless of if requirements are met
   debug_override_requirements = false
-
+  
   # forces the given frequency, frequency can be a number from 1-4
   debug_override_frequency = 0
+
+  # modifies the likelihood of moonskip events that effect relationships between Clans. 
+  # 0 is default, -1 would try to ensure only negative events happen, 1 would try to ensure only positive events happen, 
+  # -0.5 would make positive events about half as likely as normal ; 0.5 would make negative events about half as likely as normal
+  clan_rel_change_multiplier = 0
 
 [death_related]
   # base 1/chance that leader will die
@@ -479,12 +615,20 @@ dev_tools = false
   war_death_modifier_leader = 35
   war_death_modifier = 330
 
+  # 2^x chance for mass death event to trigger per cat on moonskip
+  mass_death_chance = 9
+  # Maximum amount to pick for mass death events when triggered (max will be 1/3 of the living clan cats if that is smaller)
+  max_mass_death = 10
+
   # base 1/2^(chance) a completely random murder occurs
   # aggression and instability will make the denominator lower and increase chance of murder
-  base_random_murder_chance = 25
+  base_random_murder_chance = 10
 
   # base 1/chance a disliked cat will be murdered
   base_murder_kill_chance = 80
+
+  # base 1/chance a disliked cat will be murdered when not in the same Clan
+  base_crossclan_murder_kill_chance = 130
 
   # age cats will start dying of old age based on old_age_death_curve
   old_age_death_start = 150
@@ -494,11 +638,31 @@ dev_tools = false
   #   1 = 189 moons, 2 = 178, 3 = 172, 4.5 (default) = 168, 8 = 163, 20 = 158
   old_age_death_curve = 4.5
 
+  # if you have modded kits on, this is the highest modifier permaqueens can have for lowering kitten death chances
+  # 1 = completely negate kit death boosts, 0 = no influence at all, 0.5 - half the chance of death, etc.
+  # will be less effective if there's not enough permaqueens in your Clan, however
+  max_queen_influence = 0.2
+
+  # 0-1 chance for a kit of a certain age to die on moonskip if modded litters is on 
+  [death_related.kit_death_chances]
+    "0" = 0.33
+    "1" = 0.15
+    "2" = 0.1
+    "3" = 0.1
+    "4" = 0.05
+    "5" = 0.05
+
 [condition_related]
   # 10/chance an illness will occur
   expanded_illness_chance = 250
   "cruel season_illness_chance" = 200
   classic_illness_chance = 500
+
+  # if a cat has a permanent condition with defined seasonal risks, the above illness chance is divided by the modifier to determine if they get a seasonal risk
+  # eg. default expanded_illness chance is 250 and default condition_modifier is 5, so 1/5 chance of permanent condition risk appearing 
+  classic_perm_condition_modifier = 5
+  expanded_perm_condition_modifier = 5
+  "cruel season_perm_condition_modifier" = 10
 
   # 5/chance (for most personalities) or 15/chance (for some personalities) an injury will occur 
   classic_injury_chance = 450
@@ -516,21 +680,178 @@ dev_tools = false
   # Set this to -1 for it to be infinite
   rerolls = 3
 
+  # If true, boosts the chance of rarer genes and breeds for founding cats
+  use_special_roller = true
+
+  # how many neighbouring clans are generated on clan creation. Must be at least 1
+  # the game is also not built to handle more than 5 so issues may potentially arise with more
+  other_clans_range = [2, 5]
+
+  # range of outsiders to generate upon Clan creation
+  starting_outsiders = [0, 0]
+
+  # range of cats to pick on quickstart (not counting the leader, deputy, and healer)
+  quickstart_cats = [4, 7]
+
+  # range of cats to pick on quickstart (not counting the leader, deputy, and healer) for neighbouring Clans in multiclan
+  neighbourclan_cats = [4, 7]
+
+  # number of lives leaders receive - will pick from the list, so something like [7, 8, 9] would have an equal random chance of 7, 8, and 9
+  leader_lives_nr = [9]
+
+[genetics_config]
+  # 1/chance for newly generated kittypets and other cats to be purebred
+  kittypet_breed = 75
+  other_breed = 1000
+
+  # when gene boost is applicable, chance will be divided by this value and rounded up. Eg. for chocolate it would be 20/1.5 = 14
+  boost_value = 1.5
+
+  chimera = 1000
+  identical_twins = 333
+  intersex = 100
+  "XXX/XXY" = 1000
+  "X monosomy" = 3500
+  brindled_bicolour = 0
+  pseudo_merle = 200
+  vitiligo = 150
+  random_mutation = 150
+  somatic_mutation = 200
+  breakthrough = 50
+  dense_blotched = 50
+  cryptic_tortie = 100
+  sectoral_heterochromia = 200
+  random_heterochromia = 250
+
+  no-low_white_blue_eyes = 150
+  low_white_blue_eyes = 100
+  mid_white_blue_eyes = 75
+  high_white_blue_eyes = 50
+  het_dom_white_blue_eyes = 15
+  homo_dom_white_blue_eyes = 5
+  
+  no-low_white_one_blue_eye = 125
+  low_white_one_blue_eye = 75
+  mid_white_one_blue_eye = 50
+  high_white_one_blue_eye = 25
+  het_dom_white_one_blue_eye = 10
+  homo_dom_white_one_blue_eye = 3
+
+  # All genes are 1/x chances. They can be set to 0 to prevent it from appearing at all
+  longhair = 2
+  longtype = ['long', 'long', 'long', 'medium'] #whether a longhair appears as longhair or as a mediumhair
+  cinnamon = 35
+  chocolate = 20
+  red = 4
+  dilute = 2
+  "dominant white" = 40
+  "white spotting" = 3
+  "birman gloving" = 50
+  "thai white" = 400
+  salmiak = 300
+  colourpoint = 10
+  sepia = 20
+  mocha = 300
+  albino = 200
+  silver = 20
+  solid = 2
+  charcoal = 150
+  blotched = 3
+  ticked = 10
+
+  "pink-eyed dilute" = 400
+  "dilute modifier" = 150
+  grizzle = 275
+  carnelian = 200
+  russet = 250
+  amber = 125
+  sunshine = 125
+  "extreme sunshine" = 125
+  copper = 125
+  karpati = 300
+  bleaching = 400
+  ghosting = 400
+  satin = 400
+  glitter = 150
+
+  wirehair = 400
+  laperm = 400
+  cornish = 200
+  urals = 400
+  tenn = 300
+  fleece = 450
+  selkirk = 300
+  devon = 200
+  "canadian hairless" = 300
+  "russian hairless" = 400
+  lykoi = 350
+
+  curl = 300
+  fold = 300
+  four_ears = 300
+  manx = 300
+  "american bobtail" = 300
+  "karelian bobtail" = 500
+  "kurilian bobtail" = 400
+  "japanese bobtail" = 250
+  toybob = 400
+  ringtail = 400
+  munchkin = 300
+  polydactyl = 150
+  DBE = 150
+
+  body_ranges = [1, 4, 12, 60, 12, 4, 1]
+  height_ranges = [1, 4, 12, 60, 180, 60, 12, 2, 2, 1]
+  saturation = [0, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 6]
+  wideband = ["2", "1", "1", "1", "0"]
+  rufousing = ["2", "1", "1", "1", "0"]
+  spotted = ["2", "1", "0"]
+  tickmod = ["2", "1", "1", "1", "0", "0", "0", "0", "0", "0", "0"]
+  bengal = ["2", "1", "1", "1", "0", "0", "0", "0", "0", "0", "0"]
+  sokoke = ["2", "2", "1", "1", "1", "1", "0", "0", "0"]
+  wideband_kittypet = ["2", "1", "1", "0"]
+  rufousing_kittypet = ["2", "1", "1", "0"]
+  spotted_kittypet = ["2", "1", "0"]
+  tickmod_kittypet = ["2", "1", "1", "1", "0", "0", "0", "0", "0"]
+  bengal_kittypet = ["2", "1", "1", "1", "0", "0", "0", "0", "0"]
+  sokoke_kittypet = ["2", "2", "1", "1", "1", "1", "0", "0", "0"]
+
+[april_fools_genes]
+  green = 25
+  polycaudal = 25
+  rainbow_eyes = 10
+  black_spotting = 15 # both this and peacock blue courtesy of mars from Create a Clan
+  peacock_blue = 10
+
+[tnr_mode]
+  # chance for kittypets and other outsiders to generate as already spayed/neutered
+  kittypet_neuter = 0.8
+  loner_tnr = 0.05
+  # chance for cats lost to Twolegs to be spayed/neutered. Clan_tnr2 is for events not explicitly reminiscent of TNR programs
+  Clan_tnr = 0.99
+  Clan_tnr2 = 0.5
+
 [graduation]
+  # minimum age required for a cat to graduate
+  min_graduating_age = 10
+
+  [graduation.max_apprentice_age]
+    # max apprentice ages. after this, they're forcibly promoted
+    "healer apprentice" = 30
+    apprentice = 25
+    "mediator apprentice" = 25
+    "queen apprentice" = 25
+
+[clancat_ex]
   # base possible experience gain for apprentices
   # [[lowest_exp_gain, highest_exp_gain], [lowest_exp_gain2, highest_exp_gain2]]
   # use the second range to slightly increase the probability that those values are used
   base_app_timeskip_ex = [[3, 12], [5, 6]]
   base_med_app_timeskip_ex = [[2, 7], [2, 3]]
 
-  # minimum age required for a cat to graduate
-  min_graduating_age = 10
-
-  [graduation.max_apprentice_age]
-    # max apprentice ages. after this, they're forcibly promoted
-    "medicine cat apprentice" = 30
-    apprentice = 25
-    "mediator apprentice" = 25
+  # passive exp gain for adult clancats, not applied if the cat patrols that moon
+  base_adult_timeskip_ex = [[4, 12], [6, 7]]
+  base_senior_timeskip_ex = [[3, 9], [3, 4]]
 
 [outside_ex]
   # base possible experience gain for cats outside the clan
@@ -539,6 +860,13 @@ dev_tools = false
   base_adolescent_timeskip_ex = [[2, 10], [4, 5]]
   base_adult_timeskip_ex = [[4, 12], [6, 7]]
   base_senior_timeskip_ex = [[3, 9], [3, 4]]
+
+[outsider_events]
+  # chances for random outsider deaths or leaving the territory are 2^x
+  outsider_death = 6
+  outsider_wander_off = 7
+  # outsider_return is a 2^x chance for outsiders chased away or having left the territory to return by themselves
+  outsider_return = 6
 
 [focus]
   # NOTE: 'raid other clans' should be more dangerous than 'hoarding'!!!
@@ -550,8 +878,10 @@ dev_tools = false
 
   [focus.hunting]
     # Defines how much a working warrior(leader/deputy) or apprentice gathers additionally
+    # Emergency kicks in when none are available - healers and 3+ moon old kits hunt as well
     warrior = 2
     apprentice = 1
+    emergency = 1
 
   [focus.outsiders]
     # Defines how much increase or decrease the reputation is.
@@ -570,7 +900,7 @@ dev_tools = false
 
     # injury chance of each warrior(leader/deputy) or medicine cat to get injured
     injury_chance_warrior = 18
-    "injury_chance_medicine cat" = 33
+    "injury_chance_healer" = 33
 
     # the more clan which are raided the more likely it is to get injured
     chance_increase_per_clan = 3
@@ -601,7 +931,7 @@ dev_tools = false
 
     # injury chance of each warrior(leader/deputy) or medicine cat to get injured
     injury_chance_warrior = 25
-    "injury_chance_medicine cat" = 35
+    injury_chance_healer = 35
 
     # illness chance of each warrior(leader/deputy) and medicine cat to get sick
     illness_chance = 35
@@ -662,6 +992,8 @@ dev_tools = false
 
 [fun]
   april_fools = false
+  # april_fools_hats only applicable if april_fools is also on
+  april_fools_hats = true
   all_cats_are_newborn = false
   newborns_can_roam = false
   newborns_can_patrol = false
@@ -754,3 +1086,170 @@ dev_tools = false
       greenleaf = [1, 2, 3]
       leaf-fall = [2, 3, 2]
       leaf-bare = [5, 2, 1]
+
+  [clan_resources.freshkill]
+    # if false, a cat's nutritional status will have no effect
+    activate_death = true
+
+    # if false, freshkill pile events will not be triggered
+    activate_events = true
+    # determines when the freshkill pile amount is considered "full" or "excessive" for the purpose of events
+    # the higher this number, the more freshkill is required before the pile is "full/excessive"
+    base_event_trigger_factor = 4
+
+    # defines the amount of prey a Clan begins with
+    start_amount = 60
+
+    # the amount of prey a healthy warrior will catch automatically each timeskip
+    # amount will be chosen from the given range. default is 2-4 prey.
+    auto_warrior_prey = [2,4]
+    # the same, but for healthy apprentices
+    auto_apprentice_prey = [1,3]
+
+    # the baseline of prey amount caught on patrol will be a warrior's prey_requirement plus this value
+    additional_prey = 1
+
+    # the percentage of nutrition at which a cat is considered malnourished
+    nutrition_malnourished_percentage = 45
+    # the percentage of nutrition at which a cat is considered starving
+    nutrition_starving_percentage = 20
+
+    # the amount that a cat's prey requirement increases if the cat is sick/injured/pregnant
+    condition_increase = 1
+
+    # the rank order in which cats will be fed
+    feeding_order = [
+            "newborn",
+            "kitten",
+            "queen/pregnant",
+            "elder",
+            "healer",
+            "healer apprentice",
+            "apprentice",
+            "queen apprentice",
+            "mediator apprentice",
+            "warrior",
+            "queen",
+            "mediator",
+            "deputy",
+            "leader"
+        ]
+
+    [clan_resources.freshkill.text_nutrition]
+        # nutrition % ranges and their corresponding text displays
+        # for example: 0-21% nutrition is considered starving
+        lower_range = [0, 21, 41, 61, 81, 91]
+        text = ["starving", "very hungry", "hungry", "satiated", "full", "stuffed"]
+
+    # the prey each rank will consume on a timeskip
+    # kittens and newborns with birthing parent will not consume prey (as they will drink milk)
+    [clan_resources.freshkill.prey_requirement]
+        leader = 3
+        deputy = 3
+        healer = 2
+        "healer apprentice" = 1.5
+        "mediator apprentice" = 1.5
+        "queen apprentice" = 1.5
+        mediator = 2
+        queen = 2
+        warrior = 3
+        apprentice = 1.5
+        elder = 1.5
+        "queen/pregnant" = 4
+        kitten = 0.5
+        newborn = 0.25
+        loner = 3
+        rogue = 3
+        kittypet = 1
+
+    # the bonus prey a hunter skill cat will catch according to exp rank
+    [clan_resources.freshkill.hunter_exp_bonus]
+        untrained = 0.1
+        trainee = 1
+        prepared = 2
+        competent = 3
+        proficient = 4
+        skilled = 5
+        expert = 6
+        master = 7
+
+    # hunter_exp_bonus number will be multiplied by the number matching their skill tier.
+    # for example, an expert tier 2 hunter will catch an extra 6 * 2 (12 total) prey
+    [clan_resources.freshkill.hunter_bonus]
+        # tier = multiplier
+        1 = 1
+        2 = 2
+        3 = 3
+
+    # used to dictate how often certain sizes of prey are found in each biome/season
+    [clan_resources.freshkill.patrol_balance]
+        # season = [very_small, small, medium, large, huge]
+        # numbers indicate the weight of each prey size, larger numbers make the prey size more likely to occur
+        [clan_resources.freshkill.patrol_balance.Forest]
+            Newleaf = [2,5,5,2,1]
+            Greenleaf = [1,3,6,4,2]
+            Leaf-fall = [2,4,5,3,1]
+            Leaf-bare = [3,6,4,2,0]
+        [clan_resources.freshkill.patrol_balance.Mountainous]
+            Newleaf = [2,5,5,2,1]
+            Greenleaf = [1,3,6,4,2]
+            Leaf-fall = [2,6,4,2,1]
+            Leaf-bare = [3,6,4,2,0]
+        [clan_resources.freshkill.patrol_balance.Plains]
+            Newleaf = [2,5,5,2,1]
+            Greenleaf = [1,3,6,4,2]
+            Leaf-fall = [2,4,5,3,1]
+            Leaf-bare = [3,6,4,2,0]
+        [clan_resources.freshkill.patrol_balance.Beach]
+            Newleaf = [2,5,5,2,1]
+            Greenleaf = [2,5,5,2,1]
+            Leaf-fall = [2,5,5,2,1]
+            Leaf-bare = [2,6,4,2,1]
+        [clan_resources.freshkill.patrol_balance.Wetlands]
+            Newleaf = [2,5,5,2,1]
+            Greenleaf = [2,5,5,2,1]
+            Leaf-fall = [2,5,5,2,1]
+            Leaf-bare = [2,6,4,2,1]
+        [clan_resources.freshkill.patrol_balance.Desert]
+            Newleaf = [2,6,4,2,1]
+            Greenleaf = [3,6,4,2,0]
+            Leaf-fall = [2,5,5,2,1]
+            Leaf-bare = [1,3,6,4,2]
+
+    # used in conjunction with patrol_balance to modify the chosen prey size by the patrol frequency
+    # the less frequent the patrol, the larger the prey it can find
+    [clan_resources.freshkill.patrol_weight_adaption]
+        # prey size increase = associated frequency
+        1_prey_class_increase = 4
+        2_prey_class_increase = 3
+        3_prey_class_increase = 2
+        4_prey_class_increase = 1
+
+# LIFEGEN!!!!
+
+[lifegen]
+  [lifegen.debug]
+    debug_ensure_focus = ""
+    debug_ensure_dialogue = ""
+    debug_dialogue_override_filtering = false
+
+  [lifegen.shunned_cat]
+    max_forgiven_moons = 10
+    max_shunned_moons = 10
+    return_home_chance = 2
+    [lifegen.shunned_cat.exile_chance]
+      newborn = 500
+      kitten = 45
+      adolescent = 20
+      young_adult = 10
+      adult = 9
+      senior_adult = 8
+      senior = 8
+  
+  [lifegen.gen]
+    affair_relationship_change_lb = 10
+    affair_relationship_change_ub = 30
+    affair_success_chance = 1
+    affair_success_pregnancy_chance = 20
+    murder_chance = -1
+    accomplice_chance = -1

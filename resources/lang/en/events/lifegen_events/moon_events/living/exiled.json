@@ -1,0 +1,394 @@
+{
+    "general1": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You wander around, lost."
+    },
+    "general2": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "deputy"
+                ]
+            },
+            "r_c:1": {
+                "rank": [
+                    "warrior"
+                ]
+            },
+            "r_c:2": {
+                "rank": [
+                    "warrior"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You see r_c:0 leading a patrol around the borders. They, along with r_c:1 and r_c:2, snarl and chase you away after spotting you hanging around."
+    },
+    "general3": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "Life outside of the borders of your home is harder than you imagined. You miss the company of others within the camp, the comradery of your Clanmates."
+    },
+    "general4": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "warrior"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "Prey is harder to come by out here. You take the time to sneak into c_n territory as carefully as you can, but get caught by r_c:0 and chased away again."
+    },
+    "general5": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You meet a loner as you wander around. They seem wary of you however, and soon moves on."
+    },
+    "general6": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You meet a small group of rogues you know have been causing problems for your former Clan. With a bit of well-timed mischief, you manage to chase them off without a hitch."
+    },
+    "general7": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "kitten"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "One day you notice a kit wandering just outside of the territory looking lost. Oh - that's r_c:0. You don't know how {PRONOUN/r_c:0/subject} go there but you watch over them until a patrol of frantic warriors comes to collect them."
+    },
+    "general8": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "apprentice"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "While lingering on the border you notice r_c:0 alone. You also notice a rogue stalking closer. You yowl a warning, and r_c:0 puffs up in shock before turning tail and racing back the way {PRONOUN/r_c:0/subject} came."
+    },
+    "general9": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "medicine cat",
+                    "medicine cat apprentice"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You notice a flourishing patch of herbs. c_n would find this useful... You end up deciding to leave some on a path you know r_c:0 takes daily."
+    },
+    "general10": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "A group of rogues approach you to learn more about c_n. You sense they're up to no good. You share a bit of information anyways, and wish them luck with whatever they're planning."
+    },
+    "general11": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You watch the daily life of your former Clan with growing resentment..."
+    },
+    "general12": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You catch a mouse right before it crosses the border."
+    },
+    "general13": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "warrior"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "A bird escapes from r_c:0 - and right into your awaiting paws. You sneer your gratitude as r_c:0 hisses and spits in fury."
+    },
+    "general14": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You spot a patrol meandering along the border chatting idly."
+    },
+    "general15": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "As you walk along the border, a voice calls out to you. It's r_c:0, reminding you to stay out. You continue on without a care in the world."
+    },
+    "assertive16": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "assertive"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You spend some time within c_n's borders. Sure, you don't need to anymore, but it's fun to spite your former Clan."
+    },
+    "assertive17": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "assertive"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "Despite exile being a punishment, it isn't for you. You've never felt so free. Now you can do what you want - without your Clanmates breathing down your neck."
+    },
+    "assertive18": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "assertive"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "Some rogues are causing trouble for c_n. Without hesitation you chase them off. c_n is yours to mess with - not theirs."
+    },
+    "assertive19": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "assertive"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "warrior"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 is stalking a bird. You take a second before deciding to have some fun. You yowl to scare both r_c:0 and the bird. It takes off in a burst of panic, and your former Clanmate spits at you."
+    },
+    "assertive20": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "assertive"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "medicine cat",
+                    "medicine cat apprentice"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "While sneaking around on c_n territory, you notice a patch of herbs flourishing. Just for the sake of it you trample part of the plant before leaving. r_c:0 will be spitting mad later!"
+    },
+    "assertive21": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "assertive"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "When you meet a passing loner, they strike up conversation. You hold nothing back about your past in c_n, however, and the loner is quick to make an excuse to leave."
+    },
+    "assertive22": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "assertive"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You meet with a rogue you know is pleasant to work with. With your information, they are able to put together some plans to make c_n regret exiling you."
+    },
+    "assertive23": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "assertive"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "Exile is anything but boring. You can always bother your former Clanmates - or accomplish your dreams of exploring freely."
+    },
+    "assertive24": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "assertive"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You mark your scent on the c_n borders. You're still here. They'd do well to remember that."
+    },
+    "introspective25": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "introspective"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "Being exiled has its perks - you're now able to daydream and wonder out loud without complaining cats disrupting your very critical alone time... at least."
+    },
+    "introspective26": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "introspective"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You're starting to wonder if you're hearing voices within the unfamiliar silence, but despite your efforts to search the surroundings - nothing. Is it all in your head?"
+    },
+    "rare27": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "warrior"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "rare"
+        ],
+        "event": "Your hunting brings you right to the border, and your prey escapes over the scentlines. You curse your luck before r_c:0 shows themselves with your lost meal. {PRONOUN/r_c:0/subject/CAP} stare at you a moment before dropping {PRONOUN/r_c:0/poss} catch and walking away to let you take it."
+    },
+    "rare28": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "medicine cat",
+                    "medicine cat apprentice"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "rare"
+        ],
+        "event": "To your surprise, r_c:0 approaches you one moon with a bundle of herbs, placing them a distance away. No words were exchanged, but as r_c:0 treads back to the clan, you can't help but wonder if this act of kindness was pity - or something else entirely?"
+    }
+}

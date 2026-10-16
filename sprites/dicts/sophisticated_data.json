@@ -1,0 +1,43 @@
+{
+    "spritesheet": "acc_sophisticated",
+    "sprite_list": [
+        {
+            "MOONHAT": "head",
+            "FIDDLEHEADS": "head",
+            "LANTERNS": "body",
+            "HEARTCHARMS": "head",
+            "CELESTIALCHIMES": "body",
+            "STARCHIMES": "body",
+            "LUNARCHIMES": "body",
+            "SILVERLUNARCHIMES": "body"
+        },
+        {
+            "SPRINGFLOWERCORSAGE": "tail",
+            "ORCHID": "body",
+            "SPRINGFLOWERS": "head",
+            "RADIO": "body",
+            "SWANFEATHER": "body",
+            "DRACULAPARROTFEATHER": "body",
+            "JAYFEATHER": "body"
+        },
+        {
+            "EAGLEFEATHER": "body",
+            "STARFLOWERS": "paws",
+            "HEARTLEAVES": "body",
+            "YELLOWWISTERIA": "body",
+            "HOLLYLEAVES": "body",
+            "HOLLYVINES": "body",
+            "LAVENDERHEADPIECE": "head",
+            "LAVENDERTAILWRAP": "tail",
+            "LAVENDERANKLET": "paws"
+        },
+        {
+            "WILLOWBARK BAG": "body",
+            "CLAY DAISY POT": "body",
+            "CLAY AMANITA POT": "body",
+            "CLAY BROWNCAP POT": "body",
+            "BIRD SKULL": "head",
+            "LEAF BOW": "body"
+        }
+    ]
+}

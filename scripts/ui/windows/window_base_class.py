@@ -87,12 +87,14 @@ class GameWindow(UIWindow):
             )
 
     def process_event(self, event):
-        if event.type == pygame_gui.UI_BUTTON_START_PRESS and self.back_button:
+        if event.type == pygame_gui.UI_BUTTON_START_PRESS and getattr(
+            self, "back_button", None
+        ):
             if event.ui_element == self.back_button:
                 self.kill()
 
         elif (
-            self.click_outside_to_close
+            getattr(self, "click_outside_to_close", False)
             and event.type == pygame.MOUSEBUTTONDOWN
             and not self.are_contents_hovered()
         ):
@@ -109,7 +111,9 @@ class GameWindow(UIWindow):
         return any_hovered
 
     def kill(self):
-        self.fade.kill()
-        if self.box:
+        # fade/box may not exist yet if the window is killed mid-construction
+        if getattr(self, "fade", None):
+            self.fade.kill()
+        if getattr(self, "box", None):
             self.box.kill()
         super().kill()

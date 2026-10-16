@@ -1,7 +1,7 @@
 import pygame
 import pygame_gui
 
-from scripts.cat.names import Name
+from scripts.cat.names import Name, names
 from scripts.game_structure import game
 from scripts.game_structure.screen_settings import MANAGER
 from scripts.ui.elements.image_button import UIImageButton
@@ -13,6 +13,7 @@ from scripts.ui.windows.window_base_class import GameWindow
 from scripts.events_module.text_adjust import shorten_text_to_fit
 from scripts.ui.scale import ui_scale
 from re import sub
+from random import choice, random
 
 
 class ChangeCatNameWindow(GameWindow):
@@ -150,9 +151,9 @@ class ChangeCatNameWindow(GameWindow):
                 self.the_cat.name.specsuffix_hidden = self.specsuffic_hidden
 
                 # Note: Prefixes are not allowed be all spaces or empty, but they can have spaces in them.
-                if sub(r"[^A-Za-z0-9 ]+", "", self.prefix_entry_box.get_text()) != "":
+                if sub(r"[^A-Za-z0-9-' ]+", "", self.prefix_entry_box.get_text()) != "":
                     self.the_cat.name.prefix = sub(
-                        r"[^A-Za-z0-9 ]+", "", self.prefix_entry_box.get_text()
+                        r"[^A-Za-z0-9-' ]+", "", self.prefix_entry_box.get_text()
                     )
 
                 # Suffixes can be empty, if you want. However, don't change the suffix if it's currently being hidden
@@ -163,13 +164,16 @@ class ChangeCatNameWindow(GameWindow):
                     or self.the_cat.name.specsuffix_hidden
                 ):
                     self.the_cat.name.suffix = sub(
-                        r"[^A-Za-z0-9 ]+", "", self.suffix_entry_box.get_text()
+                        r"[^A-Za-z0-9-' ]+", "", self.suffix_entry_box.get_text()
                     )
                     self.name_changed.show()
 
                 if old_name != str(self.the_cat.name):
                     self.name_changed.show()
-                    self.heading.set_text(f"-Change {self.the_cat.name}'s Name-")
+                    self.heading.set_text(
+                        "windows.change_name_title",
+                        text_kwargs={"name": self.the_cat.name},
+                    )
                 else:
                     self.name_changed.hide()
 
@@ -178,16 +182,24 @@ class ChangeCatNameWindow(GameWindow):
                     use_suffix = self.suffix_entry_box.text
                 else:
                     use_suffix = self.the_cat.name.suffix
-                self.prefix_entry_box.set_text(
-                    Name(None, use_suffix, cat=self.the_cat).prefix
-                )
+                if self.the_cat.status.get_last_living_group() or random() < 0.5:
+                    self.prefix_entry_box.set_text(
+                        Name(
+                            self.the_cat,
+                            None,
+                            use_suffix,
+                            biome=self.the_cat.status.fetch_clan_object(game.clan).biome
+                        ).prefix
+                    )
+                else:
+                    self.prefix_entry_box.set_text(choice(names.names_dict["loner_names"]))
             elif event.ui_element == self.random_suffix:
                 if self.prefix_entry_box.text:
                     use_prefix = self.prefix_entry_box.text
                 else:
                     use_prefix = self.the_cat.name.prefix
                 self.suffix_entry_box.set_text(
-                    Name(use_prefix, None, cat=self.the_cat).suffix
+                    Name(self.the_cat, use_prefix, None).suffix
                 )
             elif event.ui_element == self.toggle_spec_block_on:
                 self.specsuffic_hidden = True

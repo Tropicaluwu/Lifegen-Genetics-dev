@@ -1,0 +1,22 @@
+{
+    "general1": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You see the ghost of a young kit. Thrilled, you rush to say hello, but you accidentally scare them off. Oops."
+    },
+    "general2": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You attempt to make conversation with one of the young kits, forgetting you're a ghost."
+    }
+}

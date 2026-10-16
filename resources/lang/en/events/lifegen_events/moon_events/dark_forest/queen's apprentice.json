@@ -1,0 +1,32 @@
+{
+    "general1": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "Kitten-mewling and yelling never seems to get quieter."
+    },
+    "general2": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You can hear a kit crying out all over the forest, but no matter how hard you search, you can never find it."
+    },
+    "general3": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "The kits here have a certain darkness in their eyes that no living kit has."
+    }
+}

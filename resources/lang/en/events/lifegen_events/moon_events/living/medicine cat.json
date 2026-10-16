@@ -1,0 +1,535 @@
+{
+    "general1": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "Finally taking a moment's rest from your duties, you lay just outside your den to observe the Clan. You watch your healthy Clanmates bustle about camp, grateful to StarClan that your hard work really does pay off."
+    },
+    "general2": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "app/mentor"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "Today, you allow r_c:0 to take the lead in tending to injuries and illnesses. You can't help but keep an eye on {PRONOUN/r_c:0/object}, just in case {PRONOUN/r_c:0/subject} {VERB/r_c:0/need/needs} any corrections or advice."
+    },
+    "general3": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You step into the medicine den, sighing at the disheveled piles of herbs scattered about. It looks like your duties have distracted you from properly sorting through your herb storages. Gritting your teeth at the task, you pull together all of the herbs, assess the quantities, pick out any of the decaying herbs, and group them in their designated placements. You give a satisfied nod as you finish, feeling your stress ease away."
+    },
+    "general4": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You ponder the last Half-Moon gathering, uncertain of StarClan's intent for the future of c_n."
+    },
+    "general5": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "kitten"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You find a kit in your den stealing your herbs! They admit that r_c:0 dared them to do it when you sit them down for a talk. You spend the rest of the day chewing out the two kits."
+    },
+    "general6": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "warrior"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "Stressed and tired from treating multiple Clanmates within the same day, you accidentally give r_c:0 the wrong advice for {PRONOUN/r_c:0/poss} injury. Safe to say it worsened overnight."
+    },
+    "general7": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You misinterpret a sign from StarClan, causing confusion and concern within c_n regarding an upcoming disaster."
+    },
+    "general8": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "queen"
+                ]
+            },
+            "r_c:1": {
+                "rank": [
+                    "kitten"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "It's r_c:1's moonly check-up, and you spend your dusk treating a screaming and crying kit as r_c:0 watches sheepishly from the sidelines."
+    },
+    "general9": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "warrior"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "Another moon, another dawn treating a warrior who fell into thorns. You hold in your laughter as r_c:0, admittedly, reminds you of a porcupine."
+    },
+    "general10": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You spend your day diligently conversing with r_c:0 about the current herb supply."
+    },
+    "general11": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "app/mentor"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You stop r_c:0 from overlooking mold on a herb, taking the opportunity to explain why even the littlest bit of mold can cause an injury to worsen."
+    },
+    "general12": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You lose track of time during a gathering, missing a scheduled check-up on c_n's kits."
+    },
+    "general13": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "kitten"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "While explaining to r_c:0 about the uses of different herbs, you sneeze loudly from a bunch of dusty yarrow, causing r_c:0 to squeal in delight."
+    },
+    "general14": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "app/mentor"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You try to demonstrate how to properly chew herbs, only to end up making a disgusted face from the taste. r_c:0 starts to giggle uncontrollably at your misfortune."
+    },
+    "general15": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "medicine cat",
+                    "medicine cat apprentice"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 nods off as {PRONOUN/r_c:0/subject} meticulously {VERB/r_c:0/count/counts} the herb supply for the second time this dawn, and you can't help but snort into your paw as r_c:0, yet again, begins to recount the poppies."
+    },
+    "introspective16": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "introspective"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You peacefully reorganize herbs within the medicine den, finding the repetitive task strangely calming."
+    },
+    "introspective17": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "introspective"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You think about how fleeting a cat's life can be, and how important it is to cherish every moment."
+    },
+    "neurotic18": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "neurotic"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "apprentice"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You try to warn an overenthusiastic r_c:0 about the dangers of deathberries, only to internally scare yourself into believing you've accidentally eaten some."
+    },
+    "silly19": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "silly"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "apprentice"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You try to warn an overenthusiastic r_c:0 about the dangers of deathberries, only to internally scare yourself into believing you've accidentally eaten some."
+    },
+    "stable20": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "stable"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You wake up early to organize your herbs before the sun even rises."
+    },
+    "unlawful21": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "unlawful"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You think about sneaking across the border of o_c_n to gather some herbs that you're running low on."
+    },
+    "unlawful22": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "unlawful"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You wonder how kittypets seem to recover from illnesses and injuries so quickly. Perhaps you should ask a kittypet about their secrets?"
+    },
+    "rare23": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "rare"
+        ],
+        "event": "You don't catch a kit sneaking into your den, and end up having to treat them when they get into the poppy seeds. Thankfully, they survive, but you have a very important talk with the queens and the kits on the importance of using herbs correctly."
+    },
+    "rare24": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "rare"
+        ],
+        "event": "A prophecy burns in your mind as you are shocked awake, leaving you lost and befuddled. Maybe you should speak with r_c:0 about it?"
+    },
+    "rare25": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "rare"
+        ],
+        "event": "You swear that you can hear ghostly whispers in the wind, begging you to listen."
+    },
+    "shunned26": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "The herbs you used to find solace in seem tainted now. Every leaf you touch reminds you of your act."
+    },
+    "shunned27": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "Cats flinch away from you when you offer treatment. Trust, once freely given, now has to be earned."
+    },
+    "shunned28": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "You feel StarClan's eyes on you, their gaze a weight you cannot escape."
+    },
+    "shunned29": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "Other medicine cats avoid you during gatherings. Your transgression has isolated you."
+    },
+    "shunned30": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "The leader questions your interpretations of omens now. Your words no longer carry their previous weight."
+    },
+    "shunned31": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "Apprentices are hesitant to train under you. Your reputation precedes you."
+    },
+    "shunned32": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "You debate whether staying in this Clan is the right path."
+    },
+    "shunned33": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "The gatherings feel different. Other Clans' medicine cats regard you warily, as if your actions have tainted the sacred bond you all share."
+    },
+    "shunned34": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "Even the kits, who once looked at you with awe and fascination, now scurry away at your approach. The tales of your deeds have filtered down to even the youngest members of the Clan."
+    },
+    "shunned35": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "The respect that the elders held for you has evaporated. Their warm tales of your skill and devotion are replaced with cold silence, and their eyes hold a look of disappointment."
+    },
+    "shunned36": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "StarClan's voices in your dreams grow faint. Their messages become obscured and it's harder to find guidance in your slumber."
+    },
+    "shunned37": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "At the half-moon meeting, you wake up to a shadow-filled forest instead of starry meadows."
+    },
+    "shunned38": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "Cats take longer to recover under your care. Whether it's their fear or your guilt affecting the healing, you can't tell."
+    },
+    "shunned39": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "An unexpected illness spreads through the Clan. Some cats mutter that it's a punishment from StarClan."
+    },
+    "shunned40": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "You hear the elders talking about the old medicine cat, how they were so skilled and how cats these days aren't the same."
+    },
+    "shunned41": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "The once comforting presence of the StarClan guide feels distant now, leaving you feeling even more isolated."
+    }
+}

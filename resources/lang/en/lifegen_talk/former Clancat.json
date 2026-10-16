@@ -1,0 +1,612 @@
+{
+    "dead_formerclancat_J1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "any"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "any"
+                ]
+            }
+        },
+        "intro": [
+            "This isn't what I expected from the afterlife. Was this what you were hoping for?"
+        ]
+    },
+    "dead_formerclancat_J2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "any"
+                ]
+            }
+        },
+        "intro": [
+            "I don't know why you can see me. It kind of freaks me out."
+        ]
+    },
+    "dead_formerclancat_J3": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "ur"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "sc"
+                ]
+            }
+        },
+        "intro": [
+            "I don't think it's fair that I'm over here, and you're not.",
+            "Maybe there's some way I could sneak you in..?",
+            "No, no, I couldn't do that. If I do, they might kick me out...",
+            "I'm sorry, y_c."
+        ]
+    },
+    "dead_formerclancat_J4": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "standing": [
+                    "shunned"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "residence": [
+                    "any"
+                ]
+            }
+        },
+        "intro": [
+            "Clans are cruel. This wouldn't be happening to you if you just left."
+        ]
+    },
+    "dead_formerclancat_J5": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "deaf:any:false",
+                    "grief stricken"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "residence": [
+                    "any"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "dead/grieving"
+                ]
+            }
+        ],
+        "intro": [
+            "[t_c butts {PRONOUN/t_c/poss} ghostly head against yours.]",
+            "[You can't tell if being able to see {PRONOUN/t_c/object} as a ghost makes you more happy or sad.]",
+            "[{PRONOUN/t_c/poss/CAP} pelt is translucent, lacking any colour or feeling...]",
+            "[You miss the living t_c. So, so much.]"
+        ]
+    },
+    "dead_formerclancat_J6": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false",
+                    "grief stricken"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "residence": [
+                    "any"
+                ]
+            }
+        },
+        "intro": [
+            "I'm sorry for your loss, y_c.",
+            "Being in a Clan is all about community, and helping each other out... isn't it?",
+            "You Clanmates will get you back on your paws. You'll be okay."
+        ]
+    },
+    "dead_formerclancat_J7": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "residence": [
+                    "df"
+                ]
+            }
+        },
+        "intro": [
+            "This existence is what I get for running away, I suppose.",
+            "StarClan plays some sick games."
+        ]
+    },
+    "dead_formerclancat_J8": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "residence": [
+                    "sc"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "residence": [
+                    "df"
+                ]
+            }
+        },
+        "intro": [
+            "You StarClan cats have a say in who gets sent to the Dark Forest, right?",
+            "So, why me? I'm sorry I ran away from my Clan. Was that what I did wrong?",
+            "Can I get you to forgive me?"
+        ]
+    },
+    "dead_formerclancat_J9": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "residence": [
+                    "ur"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "residence": [
+                    "df"
+                ]
+            }
+        },
+        "intro": [
+            "Hey, ghostie.",
+            "How's your day been?",
+            "Mm, good. Oh, me? Nothing, nothing, just endless fighting and starving and drowning.",
+            "The usual."
+        ]
+    },
+    "dead_formerclancat_J10": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "residence": [
+                    "df"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "residence": [
+                    "df"
+                ]
+            }
+        },
+        "intro": [
+            "This sucks."
+        ]
+    },
+    "dead_formerclancat_J11": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "kitten"
+                ],
+                "residence": [
+                    "sc"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "df"
+                ]
+            }
+        },
+        "intro": [
+            "Hey, there, buddy.",
+            "How did you get over here? Is there an open spot at the border? Can you show me?"
+        ]
+    },
+    "dead_formerclancat_J12": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "kitten"
+                ],
+                "residence": [
+                    "ur"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "df"
+                ]
+            }
+        },
+        "intro": [
+            "Are... are you lost?",
+            "So am I."
+        ]
+    },
+    "dead_formerclancat_J13": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "kitten"
+                ],
+                "residence": [
+                    "df"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "df"
+                ]
+            }
+        },
+        "intro": [
+            "An outsider and a kit in the Dark Forest.",
+            "I think these 'StarClan' cats need to take a good look at who it really is they're sending to purgatory."
+        ]
+    },
+    "dead_formerclancat_J14": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "deaf:any:false",
+                    "grief stricken"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "standing": [
+                    "shunned"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "residence": [
+                    "any"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "dead/grieving"
+                ]
+            }
+        ],
+        "intro": [
+            "[t_c gives you a sympathetic look.]"
+        ]
+    },
+    "dead_formerclancat_J15": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false",
+                    "grief stricken"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "standing": [
+                    "shunned"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "residence": [
+                    "any"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "dead/grieving"
+                ]
+            }
+        ],
+        "intro": [
+            "Aw, y_c. Bad moon, huh?"
+        ]
+    },
+    "dead_formerclancat_J16": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ],
+                "residence": [
+                    "df"
+                ]
+            },
+            "t_c": {
+                "age": [
+                    "not_kitten"
+                ],
+                "residence": [
+                    "ur"
+                ]
+            }
+        },
+        "intro": [
+            "Oh, wow, look at you...",
+            "I guess leaving the Clans was the right choice, huh? You should've done the same."
+        ]
+    },
+    "dead_formerclancat_J17": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "residence": [
+                    "any"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            },
+            "t_c": {
+                "residence": [
+                    "any"
+                ]
+            }
+        },
+        "intro": [
+            "Oh, goodness...",
+            "I'm sorry you have to be here, little guy."
+        ]
+    },
+    "fcshunned_deaf_J1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "deaf:any:false"
+                ],
+                "standing": [
+                    "shunned"
+                ]
+            },
+            "t_c": {
+                "residence": [
+                    "any"
+                ]
+            }
+        },
+        "intro": [
+            "[t_c looks at you very curiously, but makes no attempt to communicate.]"
+        ]
+    },
+    "fcshunned_deaf_J2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "deaf:any:false"
+                ],
+                "standing": [
+                    "shunned"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "deaf:any:false"
+                ],
+                "residence": [
+                    "any"
+                ]
+            }
+        },
+        "intro": [
+            "[t_c is looking at you with pity.]",
+            "[You flash them a harsh glare. A ghost shouldn't be sympathising with a killer.]"
+        ]
+    },
+    "fcshunned_deaf_J3": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "deaf:any:false"
+                ],
+                "standing": [
+                    "shunned"
+                ]
+            },
+            "t_c": {
+                "residence": [
+                    "any",
+                    "ur"
+                ]
+            }
+        },
+        "intro": [
+            "[t_c is looking at you with pity.]",
+            "[You flash them a harsh glare. A ghost shouldn't be sympathising with a killer.]"
+        ]
+    },
+    "deaf_sc_Guy1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "deaf:any:false"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "residence": [
+                    "sc"
+                ]
+            }
+        },
+        "intro": [
+            "[t_c raises {PRONOUN/t_c/poss} sparkling tail in welcome.]"
+        ]
+    }
+}

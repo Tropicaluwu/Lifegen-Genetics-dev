@@ -69,14 +69,14 @@
 			"kitten",
 			"apprentice",
 			"mediator apprentice",
-			"medicine cat apprentice"
+			"healer apprentice"
 		],
 		"random_status_constraint": [
 			"elder",
 			"leader",
 			"mediator",
 			"deputy",
-			"medicine cat"
+			"healer"
 		]
 	},
 	{
@@ -171,8 +171,8 @@
 			"m_c went to r_c for advice about a dream {PRONOUN/m_c/subject} had."
 		],
 		"random_status_constraint": [
-			"medicine cat",
-			"medicine cat apprentice"
+			"healer",
+			"healer apprentice"
 		],
 		"also_influences": {
 			"trust": "increase"
@@ -189,8 +189,8 @@
 			"r_c soothes m_c about a bad dream {PRONOUN/m_c/subject} had."
 		],
 		"random_status_constraint": [
-			"medicine cat",
-			"medicine cat apprentice"
+			"healer",
+			"healer apprentice"
 		],
 		"also_influences": {
 			"comfort": "increase"
@@ -219,8 +219,8 @@
 			"leader"
 		],
 		"random_status_constraint": [
-			"medicine cat apprentice",
-			"medicine cat"
+			"healer apprentice",
+			"healer"
 		],
 		"reaction_random_cat": {
 			"comfort": "increase"
@@ -240,10 +240,10 @@
 		"main_status_constraint": [
 			"apprentice",
 			"mediator apprentice",
-			"medicine cat apprentice"
+			"healer apprentice"
 		],
 		"random_status_constraint": [
-			"medicine cat apprentice",
+			"healer apprentice",
 			"apprentice",
 			"mediator apprentice"
 		],
@@ -269,10 +269,10 @@
 		"main_status_constraint": [
 			"apprentice",
 			"mediator apprentice",
-			"medicine cat apprentice"
+			"healer apprentice"
 		],
 		"random_status_constraint": [
-			"medicine cat apprentice"
+			"healer apprentice"
 		],
 		"reaction_random_cat": {
 			"comfort": "increase"
@@ -384,7 +384,7 @@
 			"elder",
 			"warrior",
 			"mediator",
-			"medicine cat",
+			"healer",
 			"deputy",
 			"leader"
 		],
@@ -392,7 +392,7 @@
 			"kitten",
 			"apprentice",
 			"mediator apprentice",
-			"medicine cat apprentice"
+			"healer apprentice"
 		]
 	},
 	{
@@ -418,7 +418,7 @@
 		],
 		"random_status_constraint": [
 			"warrior",
-			"medicine cat",
+			"healer",
 			"deputy",
 			"leader"
 		]
@@ -551,12 +551,12 @@
 			"kitten",
 			"apprentice",
 			"mediator apprentice",
-			"medicine cat apprentice"
+			"healer apprentice"
 		],
 		"random_status_constraint": [
 			"warrior",
 			"elder",
-			"medicine cat",
+			"healer",
 			"mediator",
 			"deputy",
 			"leader"

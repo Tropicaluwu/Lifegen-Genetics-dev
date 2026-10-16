@@ -1,5 +1,7 @@
 import random
 
+import i18n
+
 from scripts.cat.cats import Cat
 from scripts.cat.enums import CatRank
 from scripts.event_class import Single_Event
@@ -69,7 +71,7 @@ class DisasterEvents:
 
         # display trigger event
         event = self.disaster_text(chosen_disaster.trigger_events)
-        event.replace("c_n", f"{game.clan.displayname}Clan")
+        event.replace("c_n", i18n.t("general.clan", name=game.clan.displayname))
         game.cur_events_list.append(Single_Event(event, "misc"))
 
     def handle_current_primary_disaster(self):
@@ -191,7 +193,7 @@ class DisasterEvents:
         # removing events that mention ranks if those ranks are not currently filled in the clan
         for event in text_list:
             if (
-                event.find("med_name") == -1 or event.find("medicine cat") == -1
+                event.find("med_name") == -1 or event.find("healer") == -1
             ) and not med_exists:
                 text_list.remove(event)
             if (
@@ -208,6 +210,6 @@ class DisasterEvents:
         text = text.replace("lead_name", str(leader.name))
         text = text.replace("dep_name", str(deputy.name))
         text = text.replace("med_name", str(random.choice(med_cats).name))
-        text = text.replace("c_n", f"{game.clan.displayname}Clan")
+        text = text.replace("c_n", i18n.t("general.clan", name=game.clan.displayname))
 
         return text

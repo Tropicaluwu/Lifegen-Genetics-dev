@@ -3,7 +3,7 @@ from __future__ import annotations
 from enum import Enum
 from typing import Dict, List, Literal, Optional, Tuple, Union
 
-from pydantic import BaseModel, Field, ConfigDict
+from pydantic import BaseModel, Field
 from pydantic_core import MISSING
 from scripts.models.common.biome import Biome
 from scripts.models.common.min_max_status import MinMaxStatusDictKey
@@ -16,7 +16,6 @@ from scripts.models.patrol.patrol_type import PatrolType
 
 
 class PatrolSchemaItem(BaseModel):
-    model_config = ConfigDict(extra="forbid")
     patrol_id: str = Field(
         ..., description="Unique string used to identify the patrol."
     )
@@ -49,6 +48,19 @@ class PatrolSchemaItem(BaseModel):
         MISSING,
         description="Allows specification of the minimum and maximum number of specific types of cats that are allowed on the patrol.",
     )
+
+    # LG
+    random_cats: Union[Dict[str, Dict], MISSING] = Field(
+        MISSING,
+        description="LIFEGNE: Randomly mentioned cats.",
+    )
+    relationships: Union[List, MISSING] = Field(
+        MISSING,
+        description="LIFEGEN: Specified relationships between randomly mentioned cats."
+    )
+    # ---
+
+
     frequency: int = Field(
         ...,
         description="Controls how common a patrol is. 4 is the most common, 1 is the least.",

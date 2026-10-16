@@ -7,6 +7,12 @@ import pygame_gui
 from pygame_gui.core import ObjectID
 from pygame_gui.elements import UIImage
 
+# for lifegen
+import os
+import ujson
+from scripts.housekeeping.datadir import get_save_dir
+from ..cat.enums import CatRank
+
 import scripts.game_structure.screen_settings
 from scripts.clan import Clan
 from scripts.game_structure import game
@@ -89,6 +95,11 @@ class SwitchClanScreen(Screens):
 
         # del self.screen  # No need to keep that in memory.
 
+        for page in self.your_cat_buttons:
+            for button in page:
+                button.kill()
+                del button  # pylint: disable=modified-iterating-list
+
         for page in self.clan_buttons:
             for button in page:
                 button.kill()
@@ -109,6 +120,8 @@ class SwitchClanScreen(Screens):
         self.clan_buttons = [[]]
         self.delete_buttons = [[]]
         self.clan_name = [[]]
+
+        self.your_cat_buttons = [[]]
 
     def screen_switches(self):
         """
@@ -138,7 +151,7 @@ class SwitchClanScreen(Screens):
             anchors={"centerx": "centerx"},
             text_kwargs={
                 "clan": game.clan.displayname if game.clan else "",
-                "clan_id": game.clan.name if game.clan else "",
+                "clan_id": game.clan.displayname if game.clan else "",
                 "count": 1 if game.clan else 0,
             },
         )
@@ -149,6 +162,7 @@ class SwitchClanScreen(Screens):
         self.clan_display_names = [[]]
         self.delete_buttons = [[]]
 
+        self.your_cat_buttons = [[]]
         # cursed math o clock!
         # i am exceedingly sorry for this abomination
         core_frame_dimensions = 375 - 49
@@ -167,7 +181,52 @@ class SwitchClanScreen(Screens):
         self.clans_frame.disable()
 
         i = 0
+        y_pos = 378
+        you = None
         for clan in self.clan_list[1:]:
+            clan_age = 0
+            try:
+                # LIFEGEN: grabbing mc names for QOL display -------------------
+                clan_json_path = f"{get_save_dir()}/{clan}clan.json"
+                if os.path.exists(clan_json_path):
+                    with open(clan_json_path, "r") as read_file:
+                        clan_json = ujson.loads(read_file.read())
+                        you = clan_json["your_cat"]
+                        clan_age = clan_json["clanage"]
+            except:
+                pass
+
+            clan_cats_json_path = f"{get_save_dir()}/{clan}/clan_cats.json"
+            your_name = ""
+            try:
+                if os.path.exists(clan_cats_json_path):
+                    with open(clan_cats_json_path, "r") as read_file:
+                        clan_cats_json = ujson.loads(read_file.read())
+                    for item in clan_cats_json:
+                        if item["ID"] == you:
+                            # if theres a better way to do this Keep it to yourself
+                            if isinstance(item['status'], dict):
+                                rank = item["status"]["group_history"][-1]["rank"]
+                            else:
+                                rank = item['status']
+                            if rank in [CatRank.KITTEN, CatRank.NEWBORN]:
+                                suffix = "kit"
+                            elif rank in [
+                                CatRank.APPRENTICE, CatRank.QUEENS_APPRENTICE,
+                                CatRank.MEDIATOR_APPRENTICE, CatRank.MEDICINE_APPRENTICE
+                                ]:
+                                suffix = "paw"
+                            elif rank == CatRank.LEADER:
+                                suffix = "star"
+                            else:
+                                suffix = item["name_suffix"]
+
+                            your_name = item["name_prefix"] + suffix
+                            break
+            except Exception as e:
+                print("Error finding save information:", e)
+            # ---------------------------------------------------------------------
+
             self.clan_name[-1].append(clan)
             try:
                 with open(f"{get_save_dir()}/{clan}clan.json") as f:
@@ -207,6 +266,29 @@ class SwitchClanScreen(Screens):
                     ),
                 )
             )
+            if your_name != "" and clan_age != "":
+                tooltext = f"<b>{your_name}</b><br>Clan age: {clan_age} moons"
+            else:
+                print("Can't find info for", clan + "Clan")
+                tooltext = None
+            
+            self.your_cat_buttons[-1].append(
+                UIImageButton(
+                    pygame.Rect(
+                        (
+                            ui_scale_value(513),
+                            -0.59 * (item_height + ui_scale_value(22)),
+                        ),
+                        ui_scale_dimensions((34, 34)),
+                    ),
+                    "",
+                    object_id="#help_button",
+                    manager=MANAGER,
+                    starting_height=2,
+                    tool_tip_text=tooltext if tooltext else None,
+                    anchors={"top_target": self.clan_buttons[-1][-1]},
+                )
+            )
 
             # welcome to another bit of jank that I am embarrassed to put my name to!
             self.delete_buttons[-1].append(
@@ -231,6 +313,8 @@ class SwitchClanScreen(Screens):
                 self.clan_buttons.append([])
                 self.clan_name.append([])
                 self.delete_buttons.append([])
+                self.your_cat_buttons.append([])
+
 
         self.next_page_button = UISurfaceImageButton(
             ui_scale(pygame.Rect((456, 540), (34, 34))),
@@ -285,11 +369,22 @@ class SwitchClanScreen(Screens):
             for button in page:
                 button.hide()
 
+        # LG
+        for page in self.your_cat_buttons:
+            for button in page:
+                button.hide()
+        # ---
+
         for button in self.clan_buttons[self.page]:
             button.show()
 
         for button in self.delete_buttons[self.page]:
             button.show()
+
+        # LG
+        for button in self.your_cat_buttons[self.page]:
+            button.show()
+        # ---
 
     def on_use(self):
         """

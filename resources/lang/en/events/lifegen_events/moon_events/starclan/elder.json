@@ -1,0 +1,32 @@
+{
+    "general1": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "Despite your age, you walk with a youthful spring."
+    },
+    "general2": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "Kits and warriors alike gather eagerly to listen to your tales."
+    },
+    "general3": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You reminisce daily on the long life you had, both the good and the bad. The bad doesn't feel so bad anymore."
+    }
+}

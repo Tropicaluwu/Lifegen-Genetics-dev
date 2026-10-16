@@ -6,6 +6,9 @@ import pygame.transform
 import pygame_gui.elements
 
 from scripts.cat.cats import Cat
+from scripts.cat_relations.relationship import (
+    Relationship
+)
 from scripts.game_structure import image_cache, game
 from ..ui.elements.relation_display import UIRelationDisplay
 from ..ui.elements.sprite_button import UISpriteButton
@@ -128,7 +131,8 @@ class MediationScreen(Screens):
         for cat in Cat.all_cats_list:
             if (
                 cat.status.rank.is_any_mediator_rank()
-                and cat.status.alive_in_player_clan
+                and cat.status.group_ID == (Cat.fetch_cat(switch_get_value(Switch.cat)).status.group_ID if switch_get_value(Switch.cat) and not Cat.fetch_cat(switch_get_value(Switch.cat)).dead else game.selected_clan.group_ID)
+                and cat.moons > 0
             ):
                 self.mediators.append(cat)
 
@@ -330,7 +334,11 @@ class MediationScreen(Screens):
                 object_id=get_text_box_theme(),
             )
 
-            text = mediator.personality.trait + "\n" + mediator.experience_level
+            text = (
+                i18n.t(f"cat.personality.{mediator.personality.trait}")
+                + "\n"
+                + mediator.experience_level_string
+            )
 
             if mediator.not_working():
                 text += "\n" + i18n.t("general.cant_work")
@@ -371,7 +379,8 @@ class MediationScreen(Screens):
             i
             for i in Cat.all_cats_list
             if (i.ID != self.mediators[self.selected_mediator].ID)
-            and i.status.alive_in_player_clan
+            and i.status.group_ID == self.mediators[self.selected_mediator].status.group_ID
+            and i.moons > 0
         ]
         self.all_cats = self.chunks(self.all_cats_list, 24)
         self.current_listed_cats = self.all_cats_list
@@ -409,7 +418,7 @@ class MediationScreen(Screens):
                 if get_clan_setting("show fav") and cat.favourite:
                     _temp = pygame.transform.scale(
                         pygame.image.load(
-                            f"resources/images/fav_marker.png"
+                            f"resources/images/fav_marker{cat.favourite}.png"
                         ).convert_alpha(),
                         ui_scale_dimensions((50, 50)),
                     )
@@ -472,19 +481,19 @@ class MediationScreen(Screens):
         )
 
         # Gender
-        if cat.genderalign == "female":
+        if cat.genderalign == "molly":
             gender_icon = image_cache.load_image(
                 "resources/images/female_big.png"
             ).convert_alpha()
-        elif cat.genderalign == "male":
+        elif cat.genderalign == "tom":
             gender_icon = image_cache.load_image(
                 "resources/images/male_big.png"
             ).convert_alpha()
-        elif cat.genderalign == "trans female":
+        elif cat.genderalign == "trans molly":
             gender_icon = image_cache.load_image(
                 "resources/images/transfem_big.png"
             ).convert_alpha()
-        elif cat.genderalign == "trans male":
+        elif cat.genderalign == "trans tom":
             gender_icon = image_cache.load_image(
                 "resources/images/transmasc_big.png"
             ).convert_alpha()
@@ -578,51 +587,51 @@ class MediationScreen(Screens):
         if related and other_cat and not mates:
             relation = ""
             if cat.is_uncle_aunt(other_cat):
-                if other_cat.genderalign in ("female", "trans female"):
+                if other_cat.genderalign in ("molly", "trans molly"):
                     relation = "general.niece"
-                elif other_cat.genderalign in ("male", "trans male"):
+                elif other_cat.genderalign in ("tom", "trans tom"):
                     relation = "general.nephew"
                 else:
                     relation = "general.siblings_child"
             elif other_cat.is_uncle_aunt(cat):
-                if other_cat.genderalign in ("female", "trans female"):
+                if other_cat.genderalign in ("molly", "trans molly"):
                     relation = "general.aunt"
-                elif other_cat.genderalign in ("male", "trans male"):
+                elif other_cat.genderalign in ("tom", "trans tom"):
                     relation = "general.uncle"
                 else:
                     relation = "general.parents_sibling"
             elif other_cat.is_grandparent(cat):
-                if other_cat.genderalign in ("female", "trans female"):
+                if other_cat.genderalign in ("female", "trans female", "molly", "trans molly"):
                     relation = "general.grandmother"
-                elif other_cat.genderalign in ("male", "trans male"):
+                elif other_cat.genderalign in ("male", "trans male", "tom", "trans tom"):
                     relation = "general.grandfather"
                 else:
                     relation = "general.grandparent"
             elif cat.is_grandparent(other_cat):
-                if other_cat.genderalign in ("female", "trans female"):
+                if other_cat.genderalign in ("female", "trans female", "molly", "trans molly"):
                     relation = "general.granddaughter"
-                elif other_cat.genderalign in ("male", "trans male"):
+                elif other_cat.genderalign in ("male", "trans male", "tom", "trans tom"):
                     relation = "general.grandson"
                 else:
                     relation = "general.grandchild"
             elif other_cat.is_parent(cat):
-                if other_cat.genderalign in ("female", "trans female"):
+                if other_cat.genderalign in ("female", "trans female", "molly", "trans molly"):
                     relation = "general.mother"
-                elif other_cat.genderalign in ("male", "trans male"):
+                elif other_cat.genderalign in ("male", "trans male", "tom", "trans tom"):
                     relation = "general.father"
                 else:
                     relation = "general.parent"
             elif cat.is_parent(other_cat):
-                if other_cat.genderalign in ("female", "trans female"):
+                if other_cat.genderalign in ("female", "trans female", "molly", "trans molly"):
                     relation = "general.daughter"
-                elif other_cat.genderalign in ("male", "trans male"):
+                elif other_cat.genderalign in ("male", "trans male", "tom", "trans tom"):
                     relation = "general.son"
                 else:
                     relation = "general.child"
             elif other_cat.is_sibling(cat) or cat.is_sibling(other_cat):
-                if other_cat.genderalign in ("female", "trans female"):
+                if other_cat.genderalign in ("female", "trans female", "molly", "trans molly"):
                     relation = "general.sister"
-                elif other_cat.genderalign in ("male", "trans male"):
+                elif other_cat.genderalign in ("male", "trans male", "tom", "trans tom"):
                     relation = "general.brother"
                 else:
                     relation = "general.sibling"
@@ -634,9 +643,9 @@ class MediationScreen(Screens):
             elif not get_clan_setting("first cousin mates") and other_cat.is_cousin(
                 cat
             ):
-                if other_cat.genderalign in ("female", "trans female"):
+                if other_cat.genderalign in ("female", "trans female", "molly", "trans molly"):
                     relation = "general.cousin_female"
-                elif other_cat.genderalign in ("male", "trans male"):
+                elif other_cat.genderalign in ("male", "trans male", "tom", "trans tom"):
                     relation = "general.cousin_male"
                 else:
                     relation = "general.cousin_nb"
@@ -676,7 +685,7 @@ class MediationScreen(Screens):
             if other_cat.ID in cat.relationships:
                 the_relationship = cat.relationships[other_cat.ID]
             else:
-                the_relationship = cat.create_one_relationship(other_cat)
+                the_relationship = Relationship(cat, other_cat)
 
             # ROMANTIC LOVE
             # CHECK AGE DIFFERENCE
@@ -847,7 +856,7 @@ class MediationScreen(Screens):
     def on_use(self):
         super().on_use()
         # Only update the positions if the search text changes
-        if self.search_bar.is_focused and self.search_bar.get_text() == "name search":
+        if self.search_bar.is_focused and self.search_bar.get_text() == "general.name_search":
             self.search_bar.set_text("")
         if self.search_bar.get_text() != self.previous_search_text:
             self.update_search_cats(self.search_bar.get_text())

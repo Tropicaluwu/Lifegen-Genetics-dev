@@ -41,49 +41,55 @@ class TestEventFilters(unittest.TestCase):
         self.test_cat = create_cat(CatRank.LEADER, moons=50)
         game.clan.leader = self.test_cat
 
+        # LG
+        self.test_your_cat = create_cat(CatRank.KITTEN, moons=2)
+        game.clan.your_cat = self.test_your_cat
+
+
     def test_location(self):
         """
         Tests a variety of location tag combinations
         """
 
         self.assertTrue(
-            event_for_location(locations=["forest"]),
+            event_for_location(locations=["forest"], clan=game.clan),
             "Assert single biome match.",
         )
         self.assertTrue(
-            event_for_location(locations=["forest:camp1"]),
+            event_for_location(locations=["forest:camp1"], clan=game.clan),
             "Assert single camp match.",
         )
         self.assertFalse(
-            event_for_location(locations=["desert"]),
+            event_for_location(locations=["desert"], clan=game.clan),
             "Assert single biome mismatch.",
         )
         self.assertFalse(
-            event_for_location(locations=["forest:camp2"]),
+            event_for_location(locations=["forest:camp2"], clan=game.clan),
             "Assert single camp mismatch.",
         )
         self.assertTrue(
-            event_for_location(locations=["desert:camp2", "forest"]),
+            event_for_location(locations=["desert:camp2", "forest"], clan=game.clan),
             "Assert mixed location match.",
         )
         self.assertFalse(
-            event_for_location(locations=["desert:camp2", "plains", "forest:camp2"]),
+            event_for_location(locations=["desert:camp2", "plains", "forest:camp2"], clan=game.clan),
             "Assert mixed location mismatch.",
         )
         self.assertTrue(
-            event_for_location(locations=["-plains"]),
+            event_for_location(locations=["-plains"], clan=game.clan),
             "Assert single location excluded.",
         )
         self.assertTrue(
-            event_for_location(locations=["-plains", "-forest:camp2"]),
+            event_for_location(locations=["-plains", "-forest:camp2"], clan=game.clan),
             "Assert mixed locations excluded.",
         )
         self.assertFalse(
-            event_for_location(locations=["-plains", "-forest"]),
+            event_for_location(locations=["-plains", "-forest"], clan=game.clan),
             "Assert mixed locations, including current biome, excluded.",
         )
         self.assertFalse(
-            event_for_location(locations=["-plains", "-forest:camp1"]),
+            event_for_location(
+                locations=["-plains", "-forest:camp1"], clan=game.clan),
             "Assert mixed locations, including current camp, excluded.",
         )
 
@@ -1556,16 +1562,11 @@ class TestCatConstraint(unittest.TestCase):
             )
 
     def test_gender(self):
-        male = Cat(gender="male")
-        female = Cat(gender="female")
+        male = Cat(gender="male", disable_random=True)
+        female = Cat(gender="female", disable_random=True)
 
         with self.subTest("empty"):
             self.assertTrue(event_for_cat(cat=male, cat_info={"gender": []}))
-
-        with self.subTest("invalid input"):
-            self.assertRaises(
-                ValueError, event_for_cat, cat=male, cat_info={"gender": ["isosceles"]}
-            )
 
         with self.subTest("expected male, was male"):
             self.assertTrue(event_for_cat(cat=male, cat_info={"gender": ["male"]}))

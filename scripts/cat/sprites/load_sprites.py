@@ -3,12 +3,14 @@ import os
 from copy import copy
 
 import pygame
+
+import os
+
 import ujson
 
 from scripts.cat.enums import CatGroup
 from scripts.game_structure import constants, image_cache
 from scripts.game_structure.game.settings import game_setting_get
-from scripts.special_dates import SpecialDate, is_today
 
 logger = logging.getLogger(__name__)
 
@@ -23,6 +25,7 @@ class Sprites:
     ) as read_file:
         POSE_DATA = ujson.loads(read_file.read())
 
+    # ACCESSORIES
     with open(
         "sprites/dicts/collar_sprite_data.json", "r", encoding="utf-8"
     ) as read_file:
@@ -38,6 +41,53 @@ class Sprites:
     ) as read_file:
         PLANT_DATA = ujson.loads(read_file.read())
 
+    # LG
+    with open(
+        "sprites/dicts/alive_insect_data.json", "r", encoding="utf-8"
+    ) as read_file:
+        ALIVEINSECT_DATA = ujson.loads(read_file.read())
+    with open(
+        "sprites/dicts/dead_insect_data.json", "r", encoding="utf-8"
+    ) as read_file:
+        DEADINSECT_DATA = ujson.loads(read_file.read())
+    with open(
+        "sprites/dicts/plant2_sprite_data.json", "r", encoding="utf-8"
+    ) as read_file:
+        PLANT2_DATA = ujson.loads(read_file.read())
+    with open(
+        "sprites/dicts/sophisticated_data.json", "r", encoding="utf-8"
+    ) as read_file:
+        SOPHISTICATED_DATA = ujson.loads(read_file.read())
+    with open(
+        "sprites/dicts/fruit_data.json", "r", encoding="utf-8"
+    ) as read_file:
+        FRUIT_DATA = ujson.loads(read_file.read())
+    with open(
+        "sprites/dicts/flowercrowns_data.json", "r", encoding="utf-8"
+    ) as read_file:
+        FLOWERCROWNS_DATA = ujson.loads(read_file.read())
+    with open(
+        "sprites/dicts/misc_accs_data.json", "r", encoding="utf-8"
+    ) as read_file:
+        MISC_ACCS_DATA = ujson.loads(read_file.read())
+    with open(
+        "sprites/dicts/misc2_accs_data.json", "r", encoding="utf-8"
+    ) as read_file:
+        MISC2_ACCS_DATA = ujson.loads(read_file.read())
+    with open(
+        "sprites/dicts/harness_data.json", "r", encoding="utf-8"
+    ) as read_file:
+        HARNESS_DATA = ujson.loads(read_file.read())
+    with open(
+        "sprites/dicts/smallanimals_data.json", "r", encoding="utf-8"
+    ) as read_file:
+        SMALLANIMALS_DATA = ujson.loads(read_file.read())
+    with open(
+        "sprites/dicts/wild2_sprite_data.json", "r", encoding="utf-8"
+    ) as read_file:
+        WILD2_DATA = ujson.loads(read_file.read())
+
+    # SCARS
     with open(
         "sprites/dicts/scar_sprite_data.json", "r", encoding="utf-8"
     ) as read_file:
@@ -49,22 +99,9 @@ class Sprites:
         SCAR_MISSING_PART_DATA = ujson.loads(read_file.read())
 
     with open(
-        "sprites/dicts/skin_sprite_data.json", "r", encoding="utf-8"
-    ) as read_file:
-        SKIN_DATA = ujson.loads(read_file.read())
-
-    with open(
         "sprites/dicts/tortie_patches_sprite_data.json", "r", encoding="utf-8"
     ) as read_file:
         TORTIE_DATA = ujson.loads(read_file.read())
-
-    with open(
-        "sprites/dicts/pelt_sprite_data.json", "r", encoding="utf-8"
-    ) as read_file:
-        PELT_DATA = ujson.loads(read_file.read())
-
-    with open("sprites/dicts/eye_sprite_data.json", "r", encoding="utf-8") as read_file:
-        EYE_DATA = ujson.loads(read_file.read())
 
     with open(
         "sprites/dicts/white_patches_mostly_sprite_data.json", "r", encoding="utf-8"
@@ -86,10 +123,11 @@ class Sprites:
         "sprites/dicts/white_patches_vitiligo_sprite_data.json", "r", encoding="utf-8"
     ) as read_file:
         WHITE_VITILIGO_DATA = ujson.loads(read_file.read())
+
     with open(
-        "sprites/dicts/white_patches_points_sprite_data.json", "r", encoding="utf-8"
+        "sprites/dicts/eye_colour_data.json", "r", encoding="utf-8"
     ) as read_file:
-        WHITE_POINT_DATA = ujson.loads(read_file.read())
+        EYE_DATA = ujson.loads(read_file.read())
 
     def __init__(self):
         """Class that handles and hold all spritesheets.
@@ -181,7 +219,7 @@ class Sprites:
                         self.size,
                     )
 
-                except ValueError:
+                except ValueError as e:
                     # Fallback for non-existent sprites
                     print(f"WARNING: nonexistent sprite - {full_name}")
                     if not self.blank_sprite:
@@ -262,22 +300,187 @@ class Sprites:
 
         del width, height  # unneeded
 
+        # for x in [
+        #     "lineart", "lineartdf", "lineartdead", "lineartur", 
+        #     "line_sc_overlay", "line_ur_underlay", "line_ur_overlay",
+        #     "gradient_ur",
+        #     'whitepatches', 'tortiepatchesmasks', 
+        #     'scars', 'missingscars',
+        #     'medcatherbs', 'wild',
+        #     'collars',
+        #     'shadersnewwhite', 'lightingnew', 
+        #     'fademask', 'fadestarclan', 'fadedarkforest', "fadeunknownresidence",
+        #     'symbols'
+        # ]:
+        #     if "lineart" in x and is_today(SpecialDate.APRIL_FOOLS):
+        #         self.spritesheet(f"sprites/aprilfools{x}.png", "aprilfools"+x)
+        #     self.spritesheet(f"sprites/{x}.png", x)
+    
+        for x in ["lineart", "lineart_df", "lineart_sc", "lineart_ur"]:
+            self.spritesheet(f"sprites/{x}_aprilfools.png", x+"_aprilfools")
+        self.make_group("lineart_aprilfools", (0, 0), "aprilfoolslines")
+        self.make_group("lineart_sc_aprilfools", (0, 0), "aprilfoolslineartdead")
+        self.make_group("lineart_ur_aprilfools", (0, 0), "aprilfoolslineartur")
+        self.make_group("lineart_df_aprilfools", (0, 0), "aprilfoolslineartdf")
+
+        for x in os.listdir("sprites/genemod/borders"):
+            self.spritesheet("sprites/genemod/borders/"+x, 'genemod/'+x.replace('.png', ""))
+        for x in os.listdir("sprites/genemod/Base Colours"):
+            self.spritesheet("sprites/genemod/Base Colours/"+x, 'base/'+x.replace('.png', ""))
+        for x in os.listdir("sprites/genemod/points"):
+            self.spritesheet("sprites/genemod/points/"+x, x.replace('.png', ""))
+        for x in os.listdir("sprites/genemod/New Tabbies"):
+            self.spritesheet("sprites/genemod/New Tabbies/"+x, 'Tabby/'+x.replace('.png', ""))
+        for x in os.listdir("sprites/genemod/extra"):
+            self.spritesheet("sprites/genemod/extra/"+x, 'Other/'+x.replace('.png', ""))
+        for x in os.listdir("sprites/genemod/effects"):
+            self.spritesheet("sprites/genemod/effects/"+x, 'Other/'+x.replace('.png', ""))
+        for x in os.listdir("sprites/genemod/somatic"):
+            self.spritesheet("sprites/genemod/somatic/"+x, 'Somatic/'+x.replace('.png', ""))
+            self.make_group('Somatic/'+x.replace('.png', ""), (0, 0), "Somatic/"+x.replace('.png', ""))
+        
+        
+        for x in os.listdir("sprites/genemod/white"):
+            self.spritesheet("sprites/genemod/white/"+x, 'White/'+x.replace('.png', ""))
+            self.make_group('White/'+x.replace('.png', ""), (0, 0), x.replace('.png', ""))
+        for x in os.listdir("sprites/genemod/break white"):
+            self.spritesheet("sprites/genemod/break white/"+x, 'Break/'+x.replace('.png', ""))
+            self.make_group('Break/'+x.replace('.png', ""), (0, 0), 'break/'+x.replace('.png', ""))
+
+        # ...idk what to call these
+        self.make_group('genemod/fourears', (0, 0), 'fourears')
+
+        self.make_group('genemod/normal border', (0, 0), 'normbord')
+        self.make_group('genemod/foldborder', (0, 0), 'foldbord')
+        self.make_group('genemod/curlborder', (0, 0), 'curlbord')
+
+        self.make_group('genemod/foldlineart', (0, 0), 'foldlines')
+        self.make_group('genemod/fold_curllineart', (0, 0), 'fold_curllines')
+        self.make_group('genemod/curllineart', (0, 0), 'curllines')
+
+        self.make_group('genemod/isolateears', (0, 0), 'isolateears')
+        self.make_group('genemod/noears', (0, 0), 'noears')
+        
+        self.make_group('genemod/rexlines', (0, 0), 'rexlineart')
+        self.make_group('genemod/rexlinesdf', (0, 0), 'rexlineartdf')
+        self.make_group('genemod/rexborder', (0, 0), 'rexbord')
+
+        for a, x in enumerate(range(1, 6)):
+            self.make_group('genemod/bobtails', (a, 0), f'bobtail{x}')
+
+        # genemod base colours
+
+        for i, x in enumerate(["black", "chocolate", "cinnamon", 
+                               "blue", "lilac", "fawn", 
+                               "dove", "champagne", "buff", 
+                               "platinum", "lavender", "beige"]):
+            self.make_group('base/eumelanin', (0, i), f'{x}', sprites_x=7, sprites_y=1)
+        for i, x in enumerate(["rufousedred", "mediumred", "lowred", 
+                               "rufousedcream", "mediumcream", "lowcream", 
+                               "rufousedhoney", "mediumhoney", "lowhoney", 
+                               "rufousedivory", "mediumivory", "lowivory"]):
+            self.make_group('base/pheomelanin', (0, i), f'{x}', sprites_x=7, sprites_y=1)
+        self.make_group('base/lightbases', (0, 0), 'lightbasecolours', sprites_x=4, sprites_y=1)
+
+        # genemod tabby bases
+
+        for x in ["black", "blue", "pale_blue", "dove", "pale_dove", "platinum",
+                  "chocolate", "lilac", "pale_lilac", "champagne", "lavender",
+                  "cinnamon", "fawn", "pale_fawn", "buff", "beige",
+                  "red", "cream", "honey", "ivory"]:
+            for a, i in enumerate(['rufousedlow', 'rufousedmedium', 'rufousedhigh', 'rufousedshaded', 'rufousedchinchilla']):
+                self.make_group('Tabby/'+x, (a, 0), f'{x}{i}', sprites_x=1, sprites_y=1)
+            for a, i in enumerate(['mediumlow', 'mediummedium', 'mediumhigh', 'mediumshaded', 'mediumchinchilla']):
+                self.make_group('Tabby/'+x, (a, 1), f'{x}{i}', sprites_x=1, sprites_y=1)
+            for a, i in enumerate(['lowlow', 'lowmedium', 'lowhigh', 'lowshaded', 'lowchinchilla']):
+                self.make_group('Tabby/'+x, (a, 2), f'{x}{i}', sprites_x=1, sprites_y=1)
+            for a, i in enumerate(['silverlow', 'silvermedium', 'silverhigh', 'silvershaded', 'silverchinchilla']):
+                self.make_group('Tabby/'+x, (a, 3), f'{x}{i}', sprites_x=1, sprites_y=1)
+        for a, x in enumerate(['low', 'medium', 'high', 'shaded', 'chinchilla']):
+            self.make_group('Tabby/shading', (a, 0), f'{x}shading')
+        self.make_group('Tabby/unders', (0, 0), f'Tabby_unders')
+
+        # genemod tabby patterns
+
+        for a, i in enumerate(['mackerel', 'brokenmack', 'spotted', 'blotched', 'fullbar', 'fullbaralt']):
+            self.make_group('Other/tabbypatterns', (a, 0), f'{i}')
+        for a, i in enumerate(['braided', 'brokenbraid', 'rosetted', 'marbled', 'redbar', 'redbaralt']):
+            self.make_group('Other/tabbypatterns', (a, 1), f'{i}')
+        for a, i in enumerate(['pinstripe', 'brokenpins', 'servaline', 'blotchtail', 'agouti']):
+            self.make_group('Other/tabbypatterns', (a, 2), f'{i}')
+        for a, i in enumerate(['pinsbraided', 'brokenpinsbraid', 'leopard', 'blotchbar', 'pinsbar', 'charcoal']):
+            self.make_group('Other/tabbypatterns', (a, 3), f'{i}')
+        for a, i in enumerate(['macktail', 'bengtail', 'partialrosetted', 'sheeted', 'goldengradient', 'tabbypads']):
+            self.make_group('Other/tabbypatterns', (a, 4), f'{i}')
+
+        #genemod point markings
+
+        self.make_group('points_spring', (0, 0), 'pointsm')
+        self.make_group('points_summer', (0, 0), 'pointsl')
+        self.make_group('points_winter', (0, 0), 'pointsd')
+        self.make_group('mocha_spring', (0, 0), 'mocham')
+        self.make_group('mocha_summer', (0, 0), 'mochal')
+        self.make_group('mocha_winter', (0, 0), 'mochad')
+
+        #genemod karpati
+        for a, x in enumerate(['hetkarpatiwinter', 'hetkarpatispring', 'hetkarpatisummer']):
+            self.make_group('Other/karpati', (a, 0), x)
+        for a, x in enumerate(['homokarpatiwinter', 'homokarpatispring', 'homokarpatisummer']):
+            self.make_group('Other/karpati', (a, 1), x)
+
+        #genemod effects
+        self.make_group('Other/ghosting', (0, 0), 'ghost')
+        self.make_group('Other/grizzle', (0, 0), 'grizzle')
+        self.make_group('Other/bleach', (0, 0), 'bleach')
+        self.make_group('Other/lykoi', (0, 0), 'lykoi')
+        self.make_group('Other/hairless', (0, 0), 'hairless')
+        self.make_group('Other/donskoy', (0, 0), 'donskoy')
+        self.make_group('Other/furpoint', (0, 0), 'furpoint')
+        self.make_group('Other/caramel', (0, 0), 'caramel', 1, 1)
+        self.make_group('Other/satin', (0, 0), 'satin', 1, 1)
+        self.make_group('Other/salmiak', (0, 0), 'salmiak')
+        self.make_group('Other/nosebridge', (0, 0), 'rednose')
+        self.make_group('Other/blue-tipped', (0, 0), 'BLUE-TIPPED')
+
+
+        #genemod extra
+        self.make_group('Other/ears', (0, 0), 'ears')
+        self.make_group('Other/noses', (0, 0), 'nose')
+        self.make_group('Other/nose_colours', (0, 0), 'nosecolours', sprites_y=5)
+        self.make_group('Other/paw_pads', (0, 0), 'pads')
+        self.make_group('Other/pad_colours', (0, 0), 'padcolours', sprites_y=5)
+
+        #genemod eyes
+
+        for i, x in enumerate(['left', 'right', 'sectoral1', 'sectoral2', 'sectoral3', 'sectoral4', 'sectoral5', 'sectoral6']):
+            self.make_group('Other/eyebase', (i, 0), x, sprites_y=8)
+        for i, x in enumerate(['outer', 'inner', 'pupil']):
+            self.make_group('Other/eyesections', (i, 0), f"eye{x}", sprites_y=7)
+        
         data_jsons = (
-            self.EYE_DATA,
-            self.PELT_DATA,
             self.WHITE_MOSTLY_DATA,
             self.WHITE_HIGH_DATA,
             self.WHITE_MID_DATA,
             self.WHITE_LITTLE_DATA,
             self.WHITE_VITILIGO_DATA,
-            self.WHITE_POINT_DATA,
             self.TORTIE_DATA,
-            self.SKIN_DATA,
             self.SCAR_DATA,
             self.SCAR_MISSING_PART_DATA,
             self.PLANT_DATA,
             self.WILD_DATA,
             self.COLLAR_DATA,
+
+            self.ALIVEINSECT_DATA,
+            self.DEADINSECT_DATA,
+            self.PLANT2_DATA,
+            self.SOPHISTICATED_DATA,
+            self.FRUIT_DATA,
+            self.FLOWERCROWNS_DATA,
+            self.MISC_ACCS_DATA,
+            self.MISC2_ACCS_DATA,
+            self.HARNESS_DATA,
+            self.SMALLANIMALS_DATA,
+            self.WILD2_DATA,
         )
 
         # data jsons that have multiple associated spritesheets
@@ -292,7 +495,6 @@ class Sprites:
             "fadedarkforest",
             "fadeunknownresidence",
             "symbols",
-            "heterochromiamask",
         ]
 
         # separate from data_json list bc we need to handle it differently later
@@ -305,20 +507,12 @@ class Sprites:
                 spritesheets.append(data["spritesheet"])
 
         for x in spritesheets:
-            if "lineart" in x and (
-                constants.CONFIG["fun"]["april_fools"]
-                or is_today(SpecialDate.APRIL_FOOLS)
-            ):
-                self.spritesheet(f"sprites/{x}_aprilfools.png", x)
-            else:
-                self.spritesheet(f"sprites/{x}.png", x)
+            self.spritesheet(f"sprites/{x}.png", x)
 
         # Line art
         for sheet in self.POSE_DATA["spritesheet"]:
             self.make_group(sheet, (0, 0), sheet)
 
-        # Heterochromia mask
-        self.make_group("heterochromiamask", (0, 0), f"heterochromiamask")
 
         # Fading Fog
         for i in range(0, 3):
@@ -363,7 +557,7 @@ class Sprites:
                 self.make_group(
                     spritesheet=spritesheet,
                     pos=(col, row),
-                    name=f"{spritesheet}{sprite}",
+                    name=f"{spritesheet if 'patches' not in spritesheet else ''}{sprite}",
                 )
 
     def load_symbols(self):
@@ -438,7 +632,7 @@ class Sprites:
 
             y_pos += 1
 
-    def get_symbol(self, symbol_str: str, force_light=False):
+    def get_symbol(self, symbol_str: str, force_light=False, force_dark=False):
         """Change the color of the symbol to match the requested theme, then return it
         :param Surface symbol_str: The clan symbol to convert
         :param force_light: Use to ignore dark mode and always display the light mode color
@@ -454,7 +648,7 @@ class Sprites:
             (87, 76, 45),
             (
                 pygame.Color(constants.CONFIG["theme"]["dark_mode_clan_symbols"])
-                if not force_light and game_setting_get("dark mode")
+                if not force_light and (game_setting_get("dark mode") or force_dark)
                 else pygame.Color(constants.CONFIG["theme"]["light_mode_clan_symbols"])
             ),
             distance=0,

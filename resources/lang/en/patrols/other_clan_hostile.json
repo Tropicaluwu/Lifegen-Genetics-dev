@@ -11,6 +11,11 @@
             "border"
         ],
         "tags": [],
+        "other_clan_filter": {
+            "has_rank": [
+                "any_warrior_mult"
+            ]
+        },
         "patrol_art": "gen_bord_otherclan_hostile",
         "min_cats": 1,
         "max_cats": 1,
@@ -247,6 +252,11 @@
                 6
             ]
         },
+        "other_clan_filter": {
+            "has_rank": [
+                "exiled"
+            ]
+        },
         "frequency": 2,
         "intro_text": "A o_c_n scent is found clearly crossing the border. The patrol tracks it to its source, expecting a foolhardy young provocateur, and are instead surprised by their rival's most recent exile.",
         "decline_text": "The patrol decides not to confront the cat.",
@@ -258,7 +268,7 @@
                 "art": "gen_speaking_cat_outsider",
                 "new_cat": [
                     [
-                        "backstory:disgraced1,disgraced2,disgraced3"
+                        "backstory:disgraced1,disgraced2,disgraced3", "exiled"
                     ]
                 ],
                 "relationships": [
@@ -302,7 +312,7 @@
                 "art": "gen_speaking_cat_outsider",
                 "new_cat": [
                     [
-                        "backstory:disgraced1,disgraced2,disgraced3"
+                        "backstory:disgraced1,disgraced2,disgraced3", "exiled"
                     ]
                 ],
                 "relationships": [
@@ -346,7 +356,7 @@
                 "art": "gen_speaking_cat_outsider",
                 "new_cat": [
                     [
-                        "backstory:disgraced1,disgraced3"
+                        "backstory:disgraced1,disgraced3", "exiled"
                     ]
                 ],
                 "relationships": [
@@ -391,7 +401,8 @@
                 "new_cat": [
                     [
                         "meeting",
-                        "former clancat"
+                        "former clancat", 
+                        "exiled"
                     ]
                 ],
                 "relationships": [
@@ -423,7 +434,8 @@
                 "new_cat": [
                     [
                         "meeting",
-                        "former clancat"
+                        "former clancat", 
+                        "exiled"
                     ]
                 ],
                 "relationships": [
@@ -454,7 +466,8 @@
                     [
                         "age:has_kits",
                         "meeting",
-                        "former clancat"
+                        "former clancat",
+                        "exiled"
                     ],
                     [
                         "litter",
@@ -492,7 +505,8 @@
                 "new_cat": [
                     [
                         "backstory:disgraced1,disgraced2,disgraced3",
-                        "age:has_kits"
+                        "age:has_kits",
+                        "exiled"
                     ],
                     [
                         "litter",
@@ -546,7 +560,8 @@
                 "new_cat": [
                     [
                         "meeting",
-                        "former clancat"
+                        "former clancat",
+                        "exiled"
                     ]
                 ],
                 "frequency": 4
@@ -569,7 +584,8 @@
                 "new_cat": [
                     [
                         "meeting",
-                        "former clancat"
+                        "former clancat",
+                        "exiled"
                     ]
                 ],
                  "relationships": [
@@ -620,7 +636,8 @@
                 "new_cat": [
                     [
                         "meeting",
-                        "former clancat"
+                        "former clancat",
+                        "exiled"
                     ]
                 ],
                 "relationships": [
@@ -695,7 +712,8 @@
                 "new_cat": [
                     [
                         "meeting",
-                        "former clancat"
+                        "former clancat",
+                        "exiled"
                     ]
                 ],
                 "relationships": [
@@ -762,7 +780,8 @@
                 "new_cat": [
                     [
                         "meeting",
-                        "former clancat"
+                        "former clancat",
+                        "exiled"
                     ]
                 ],
                 "relationships": [
@@ -797,7 +816,8 @@
                 "new_cat": [
                     [
                         "meeting",
-                        "former clancat"
+                        "former clancat",
+                        "exiled"
                     ]
                 ],
                 "relationships": [
@@ -839,6 +859,12 @@
         "tags": [
             "new_cat"
         ],
+        "other_clan_filter": {
+            "has_rank": [
+                "any_warrior_mult",
+                "elder"
+            ]
+        },
         "patrol_art": "gen_train_talkingWOCW",
         "min_cats": 1,
         "max_cats": 1,
@@ -919,8 +945,10 @@
                     [
                         "meeting",
                         "clancat",
+                        "exists",
                         "mate:p_l",
-                        "age:mate"
+                        "age:mate",
+                        "change_clan"
                     ]
                 ],
                 "art": "gen_flower_date_warrior_other_clan",
@@ -985,8 +1013,10 @@
                 "new_cat": [
                     [
                         "clancat",
+                        "exists",
                         "mate:p_l",
-                        "age:mate"
+                        "age:mate",
+                        "change_clan"
                     ]
                 ],
                 "art": "gen_flower_date_warrior_other_clan",
@@ -1050,12 +1080,7 @@
                     }
                 ],
                 "new_cat": [
-                    [
-                        "meeting",
-                        "clancat",
-                        "mate:p_l",
-                        "age:mate"
-                    ]
+                    ["meeting", "clancat", "exists", "mate:p_l", "age:mate", "change_clan"]
                 ],
                 "art": "gen_flower_date_warrior_other_clan",
                 "frequency": 4
@@ -1124,12 +1149,7 @@
                     }
                 ],
                 "new_cat": [
-                    [
-                        "meeting",
-                        "clancat",
-                        "mate:p_l",
-                        "age:mate"
-                    ]
+                    ["change_clan", "rogue", "clancat", "exists", "meeting", "mate:p_l", "age:mate"]
                 ],
                 "art": "gen_flower_date_warrior_other_clan",
                 "frequency": 1
@@ -1204,12 +1224,7 @@
                     }
                 ],
                 "new_cat": [
-                    [
-                        "meeting",
-                        "clancat",
-                        "mate:p_l",
-                        "age:mate"
-                    ]
+                    ["meeting", "clancat", "exists", "mate:p_l", "age:mate"]
                 ],
                 "art": "gen_flower_date_warrior_other_clan",
                 "frequency": 1
@@ -1294,12 +1309,7 @@
                     }
                 ],
                 "new_cat": [
-                    [
-                        "meeting",
-                        "clancat",
-                        "mate:p_l",
-                        "age:mate"
-                    ]
+                    ["meeting", "clancat", "exists", "mate:p_l", "age:mate"]
                 ],
                 "art": "gen_battle_warrior_other_clan",
                 "frequency": 1
@@ -1362,12 +1372,7 @@
                     }
                 ],
                 "new_cat": [
-                    [
-                        "meeting",
-                        "clancat",
-                        "mate:p_l",
-                        "age:mate"
-                    ]
+                    ["meeting", "clancat", "exists", "mate:p_l", "age:mate"]
                 ],
                 "art": "gen_battle_warrior_other_clan",
                 "frequency": 1
@@ -1457,7 +1462,8 @@
                         "former clancat",
                         "mate:p_l",
                         "age:mate",
-                        "parent:0"
+                        "parent:0",
+                        "sibling:1"
                     ]
                 ],
                 "art": "gen_battle_warrior_other_clan",
@@ -1573,12 +1579,7 @@
                     }
                 ],
                 "new_cat": [
-                    [
-                        "dead",
-                        "mate:p_l",
-                        "age:mate",
-                        "clancat"
-                    ]
+                    ["dead", "mate:p_l", "age:mate", "clancat", "exists"]
                 ],
                 "art": "gen_battle_warrior_other_clan",
                 "frequency": 4
@@ -1658,12 +1659,7 @@
                     }
                 ],
                 "new_cat": [
-                    [
-                        "meeting",
-                        "clancat",
-                        "mate:p_l",
-                        "age:mate"
-                    ]
+                    ["meeting", "clancat", "exists", "mate:p_l", "age:mate"]
                 ],
                 "art": "gen_bord_twocat_hostile_warrior_warrior",
                 "frequency": 4
@@ -1718,12 +1714,7 @@
                     "death": "m_c died in a fight with {PRONOUN/m_c/poss} mate's Clanmates."
                 },
                 "new_cat": [
-                    [
-                        "dead",
-                        "mate:p_l",
-                        "age:mate",
-                        "clancat"
-                    ]
+                    ["dead", "mate:p_l", "age:mate", "clancat", "exists"]
                 ],
                 "art": "gen_battle_warrior_other_clan",
                 "frequency": 4
@@ -2946,11 +2937,17 @@
             "herb_gathering"
         ],
         "tags": [],
+        "other_clan_filter" : {
+            "has_rank": [
+                "any_healer",
+                "warrior"
+            ]
+        },
         "patrol_art": "gen_med_borderherb",
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "medicine cat": [
+            "healer": [
                 1,
                 6
             ]
@@ -2961,7 +2958,7 @@
         "chance_of_success": 30,
         "success_outcomes": [
             {
-                "text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/pad/pads} over to the border and {VERB/p_l/hesitate/hesitates} only momentarily before crossing. {PRONOUN/p_l/subject/CAP} quickly {VERB/p_l/gather/gathers} some of the berries, making sure to leave plenty for o_c_n's medicine cat if they need some too.",
+                "text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/pad/pads} over to the border and {VERB/p_l/hesitate/hesitates} only momentarily before crossing. {PRONOUN/p_l/subject/CAP} quickly {VERB/p_l/gather/gathers} some of the berries, making sure to leave plenty for o_c_n's healer if they need some too.",
                 "exp": 20,
                 "herbs": [
                     "raspberry"
@@ -2970,7 +2967,7 @@
                 "frequency": 4
             },
             {
-                "text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/pad/pads} to the border and {VERB/p_l/pause/pauses} for a heartbeat to scent the air. o_c_n's scent is very strong, but there's something else... o_c_n's medicine cat appears at that moment. They're walking towards the raspberries when they spot p_l and curl their lip. They snarl that they're not willing to share with an enemy Clan. p_l takes the hint and leaves.",
+                "text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/pad/pads} to the border and {VERB/p_l/pause/pauses} for a heartbeat to scent the air. o_c_n's scent is very strong, but there's something else... o_c_n's healer appears at that moment. They're walking towards the raspberries when they spot p_l and curl their lip. They snarl that they're not willing to share with an enemy Clan. p_l takes the hint and leaves.",
                 "exp": 20,
                 "herbs": [
                     "raspberry"
@@ -2979,7 +2976,7 @@
                 "frequency": 1
             },
             {
-                "text": "p_l is about to step over the border when a hiss stops {PRONOUN/p_l/object} in {PRONOUN/p_l/poss} tracks. A o_c_n warrior bounds into view, bristling with rage. {PRONOUN/p_l/subject/CAP} quickly {VERB/p_l/explain/explains} that {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} the medicine cat, that the Warrior Code allows {PRONOUN/p_l/object} to cross the border, and {VERB/p_l/assure/assures} the warrior that {PRONOUN/p_l/subject} only {VERB/p_l/need/needs} a few berries for some sick Clanmates. The warrior looks torn, but agrees to this.",
+                "text": "p_l is about to step over the border when a hiss stops {PRONOUN/p_l/object} in {PRONOUN/p_l/poss} tracks. A o_c_n warrior bounds into view, bristling with rage. {PRONOUN/p_l/subject/CAP} quickly {VERB/p_l/explain/explains} that {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} the healer, that the Warrior Code allows {PRONOUN/p_l/object} to cross the border, and {VERB/p_l/assure/assures} the warrior that {PRONOUN/p_l/subject} only {VERB/p_l/need/needs} a few berries for some sick Clanmates. The warrior looks torn, but agrees to this.",
                 "exp": 20,
                 "stat_skill": [
                     "MEDIATOR,3"
@@ -2993,7 +2990,7 @@
         ],
         "fail_outcomes": [
             {
-                "text": "p_l starts to step over the border but a hiss stops {PRONOUN/p_l/object} in {PRONOUN/p_l/poss} tracks. A o_c_n patrol is running {PRONOUN/p_l/poss} way. As the patrol approaches, {PRONOUN/p_l/subject} {VERB/p_l/blurt/blurts} out that {PRONOUN/p_l/subject}{VERB/r_c/'re/'s} a medicine cat. One of the warriors snarls that they won't tolerate c_n cats on their land, medicine cat or not, and p_l needs to leave before they make {PRONOUN/p_l/object}. {PRONOUN/p_l/subject/CAP} {VERB/p_l/oblige/obliges} quickly.",
+                "text": "p_l starts to step over the border but a hiss stops {PRONOUN/p_l/object} in {PRONOUN/p_l/poss} tracks. A o_c_n patrol is running {PRONOUN/p_l/poss} way. As the patrol approaches, {PRONOUN/p_l/subject} {VERB/p_l/blurt/blurts} out that {PRONOUN/p_l/subject}{VERB/r_c/'re/'s} a healer. One of the warriors snarls that they won't tolerate c_n cats on their land, healer or not, and p_l needs to leave before they make {PRONOUN/p_l/object}. {PRONOUN/p_l/subject/CAP} {VERB/p_l/oblige/obliges} quickly.",
                 "exp": 0,
                 "other_clan_rep": -1,
                 "frequency": 4
@@ -3028,6 +3025,12 @@
             "border"
         ],
         "tags": [],
+        "other_clan_filter": {
+            "has_rank": [
+                "any_apprentice",
+                "warrior"
+            ]
+        },
         "patrol_art": "gen_bord_scent_hostile",
         "min_cats": 2,
         "max_cats": 6,
@@ -3150,6 +3153,12 @@
             "border"
         ],
         "tags": [],
+        "other_clan_filter": {
+            "has_rank": [
+                "any_apprentice",
+                "warrior"
+            ]
+        },
         "patrol_art": "gen_bord_scent_hostile",
         "min_cats": 2,
         "max_cats": 6,
@@ -3269,6 +3278,14 @@
             "border"
         ],
         "tags": [],
+        "other_clan_filter": {
+            "has_rank": [
+                "apprentice",
+                "warrior",
+                "deputy",
+                "leader"
+            ]
+        },
         "patrol_art": "bord_general_intro",
         "min_cats": 1,
         "max_cats": 1,
@@ -3714,6 +3731,12 @@
             "border"
         ],
         "tags": [],
+        "other_clan_filter": {
+            "has_rank": [
+                "apprentice",
+                "warrior"
+            ]
+        },
         "patrol_art": "bord_general_intro",
         "min_cats": 1,
         "max_cats": 1,
@@ -4159,6 +4182,14 @@
             "border"
         ],
         "tags": [],
+        "other_clan_filter": {
+            "has_rank": [
+                "apprentice",
+                "warrior",
+                "deputy",
+                "leader"
+            ]
+        },
         "patrol_art": "bord_general_intro",
         "min_cats": 1,
         "max_cats": 1,
@@ -4604,6 +4635,14 @@
             "border"
         ],
         "tags": [],
+        "other_clan_filter": {
+            "has_rank": [
+                "apprentice",
+                "warrior",
+                "deputy",
+                "leader"
+            ]
+        },
         "patrol_art": "bord_general_intro",
         "min_cats": 1,
         "max_cats": 1,
@@ -5387,6 +5426,11 @@
             "border"
         ],
         "tags": [],
+        "other_clan_filter": {
+            "has_rank": [
+                "warrior_mult"
+            ]
+        },
         "patrol_art": "gen_bord_scent_hostile_dislikelocked1",
         "min_cats": 2,
         "max_cats": 6,
@@ -5633,7 +5677,7 @@
                 "frequency": 4
             },
             {
-                "text": "This smacks of a setup to s_c. If {PRONOUN/s_c/subject} were trying to get away with attacking c_n, this is how {PRONOUN/s_c/subject}'d do it, tempt some mouse-brain with an opportunity that looked too good to resist. So, assuming cunning eyes are already watching {PRONOUN/s_c/object}, {PRONOUN/s_c/subject} {VERB/s_c/lay/lies} down to bask in front of the border instead. Good old psychological warfare.",
+                "text": "This smacks of a setup to s_c. If {PRONOUN/s_c/subject} {VERB/s_c/were/was} trying to get away with attacking c_n, this is how {PRONOUN/s_c/subject}'d do it, tempt some mouse-brain with an opportunity that looked too good to resist. So, assuming cunning eyes are already watching {PRONOUN/s_c/object}, {PRONOUN/s_c/subject} {VERB/s_c/lay/lies} down to bask in front of the border instead. Good old psychological warfare.",
                 "exp": 50,
                 "stat_skill": [
                     "SPEAKER,2",
@@ -5727,6 +5771,11 @@
         "min_cats": 2,
         "max_cats": 6,
         "min_max_status": {},
+        "other_clan_filter": {
+            "has_rank": [
+                "any_warrior_mult"
+            ]
+        },
         "frequency": 4,
         "intro_text": "The o_c_n scent marks at the border are unusually faint, considering the hostility between the two Clans. It could be an opportunity to mark further into o_c_n land, or it could be something to be cautious about.",
         "decline_text": "Either way, the decision of what to do about the border should be made back at camp, not here. p_l takes {PRONOUN/p_l/poss} little patrol home to report it.",
@@ -5738,7 +5787,7 @@
                 "frequency": 4
             },
             {
-                "text": "This smacks of a setup to s_c. If {PRONOUN/s_c/subject} were trying to get away with attacking c_n, this is how {PRONOUN/s_c/subject}'d do it, tempt some mouse-brain with an opportunity that looked too good to resist. So, assuming cunning eyes are already watching {PRONOUN/s_c/object}, {PRONOUN/s_c/subject} {VERB/s_c/lay/lies} down to bask in front of the border instead, talking loudly with {PRONOUN/s_c/poss} patrolmates. Good old psychological warfare.",
+                "text": "This smacks of a setup to s_c. If {PRONOUN/s_c/subject} {VERB/s_c/were/was} trying to get away with attacking c_n, this is how {PRONOUN/s_c/subject}'d do it, tempt some mouse-brain with an opportunity that looked too good to resist. So, assuming cunning eyes are already watching {PRONOUN/s_c/object}, {PRONOUN/s_c/subject} {VERB/s_c/lay/lies} down to bask in front of the border instead, talking loudly with {PRONOUN/s_c/poss} patrolmates. Good old psychological warfare.",
                 "exp": 50,
                 "stat_skill": [
                     "SPEAKER,2",
@@ -5865,6 +5914,13 @@
             "border"
         ],
         "tags": [],
+        "other_clan_filter": {
+            "has_rank": [
+                "kitten_mult",
+                "any_warrior_mult",
+                "leader"
+            ]
+        },
         "patrol_art": "bord_general_intro",
         "min_cats": 3,
         "max_cats": 6,
@@ -6056,24 +6112,22 @@
             {
                 "text": "p_l seizes the opportunity to weaken o_c_n and orders the patrol to attack and kill the kits.",
                 "exp": 20,
+                "frequency": 4,
                 "other_clan_rep": -2,
-                "frequency": 4
+                "new_cat": [
+                    [ "age: kitten", "meeting", "clancat", "exists", "dead" ],
+                    [ "age: kitten", "meeting", "clancat", "exists", "dead" ]
+                ]
             },
             {
                 "text": "p_l seizes the opportunity to weaken o_c_n and orders the patrol to steal the two kits.",
                 "exp": 20,
                 "other_clan_rep": -8,
+                "frequency": 4,
                 "new_cat": [
-                    [
-                        "age:kitten",
-                        "backstory:stolenkit3"
-                    ],
-                    [
-                        "age:kitten",
-                        "backstory:stolenkit3"
-                    ]
-                ],
-                "frequency": 4
+                    ["age: kitten", "backstory: stolenkit3", "clancat", "exists", "change_clan"],
+                    ["age: kitten", "backstory: stolenkit3", "clancat", "exists", "change_clan"]
+                ]
             }
         ]
     }

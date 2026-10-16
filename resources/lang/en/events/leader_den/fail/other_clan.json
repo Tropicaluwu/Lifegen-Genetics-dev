@@ -218,7 +218,7 @@
   },
   {
     "interaction_type": "praise",
-    "event_text": "At the Gathering, o_c_n's leader announces that their medicine cats received an omen. m_c proposes an extremely literal interpretation, at which the medicine cats sigh and assure m_c they had already considered it.",
+    "event_text": "At the Gathering, o_c_n's leader announces that their healers received an omen. m_c proposes an extremely literal interpretation, at which the healers sigh and assure m_c they had already considered it.",
     "rel_change": -3,
     "m_c": {
       "trait": ["childish", "oblivious"],
@@ -229,7 +229,7 @@
   },
   {
     "interaction_type": "praise",
-    "event_text": "At the Gathering, o_c_n's leader announces that their medicine cats received a prophecy. m_c proposes an extremely literal interpretation, at which the medicine cats sigh and assure m_c they had already considered it.",
+    "event_text": "At the Gathering, o_c_n's leader announces that their healers received a prophecy. m_c proposes an extremely literal interpretation, at which the healers sigh and assure m_c they had already considered it.",
     "rel_change": -3,
     "m_c": {
       "trait": ["childish", "oblivious"],
@@ -468,7 +468,7 @@
     "event_text": "o_c_n's leader distances themselves from m_c during the Gathering, ignoring all attempts at conversation. An ally will only go so far in hard times.",
     "rel_change": -2,
     "m_c": {
-      "status": ["apprentice", "mediator apprentice", "medicine cat apprentice"],
+      "status": ["apprentice", "mediator apprentice", "healer apprentice"],
       "trait": ["nervous", "insecure", "gloomy", "playful", "childish", "charismatic", "bold", "daring", "righteous", "strict", "compassionate", "thoughtful", "careful", "calm", "faithful", "loving", "responsible", "shameless", "wise", "cunning", "sincere"]
     },
     "player_clan_temper": ["any"],
@@ -760,7 +760,7 @@
   },
   {
     "interaction_type": "befriend",
-    "event_text": "At the Gathering, o_c_n's leader announces a prophecy that the o_c_n medicine cats received. m_c offers {PRONOUN/m_c/poss} interpretation, but o_c_n's leader coolly replies that o_c_n will handle it alone.",
+    "event_text": "At the Gathering, o_c_n's leader announces a prophecy that the o_c_n healers received. m_c offers {PRONOUN/m_c/poss} interpretation, but o_c_n's leader coolly replies that o_c_n will handle it alone.",
     "rel_change": -2,
     "m_c": {
       "skill": [ "PROPHET,1" ]
@@ -999,7 +999,7 @@
     "event_text": "o_c_n's leader looks at m_c with sickly-sweet pity, ignoring the stuttered offers of friendship.",
     "rel_change": -1,
     "m_c": {
-      "status": ["apprentice", "mediator apprentice", "medicine cat apprentice"],
+      "status": ["apprentice", "mediator apprentice", "healer apprentice"],
       "trait": ["nervous", "insecure", "gloomy", "thoughtful", "careful", "sneaky", "cunning"]
     },
     "player_clan_temper": ["any"],
@@ -1010,7 +1010,7 @@
     "event_text": "o_c_n's leader seems less than impressed when the apprentice approaches them with confident overtures of friendship.",
     "rel_change": -2,
     "m_c": {
-      "status": ["apprentice", "mediator apprentice", "medicine cat apprentice"],
+      "status": ["apprentice", "mediator apprentice", "healer apprentice"],
       "trait": ["fierce", "troublesome", "bloodthirsty", "cold", "charismatic", "playful", "bold", "daring", "righteous", "strict", "compassionate", "thoughtful", "ambitious", "confident", "adventurous", "calm", "careful", "faithful", "loving", "responsible", "loyal", "shameless", "sneaky", "strange", "vengeful", "wise", "arrogant", "competitive", "cunning", "oblivious", "sincere", "flamboyant", "rebellious"]
     },
     "player_clan_temper": ["any"],
@@ -1353,7 +1353,7 @@
     "event_text": "o_c_n's leader stares down at m_c and regards {PRONOUN/m_c/poss} stuttered words skeptically, eventually turning away. Their dismissal is harsh, but they at least seem content to just ignore c_n.",
     "rel_change": 0,
     "m_c": {
-      "status": ["apprentice", "mediator apprentice", "medicine cat apprentice"],
+      "status": ["apprentice", "mediator apprentice", "healer apprentice"],
       "trait": ["nervous", "insecure", "gloomy", "cunning"]
     },
     "player_clan_temper": ["any"],
@@ -1364,7 +1364,7 @@
     "event_text": "o_c_n's leader seems startled at the appearance of m_c leading a Clan. They peer sideways at m_c throughout the Gathering, but otherwise ignore {PRONOUN/m_c/object}.",
     "rel_change": 0,
     "m_c": {
-      "status": ["apprentice", "mediator apprentice", "medicine cat apprentice"]
+      "status": ["apprentice", "mediator apprentice", "healer apprentice"]
     },
     "player_clan_temper": ["any"],
     "other_clan_temper": ["gracious", "amiable", "mellow"]
@@ -1374,7 +1374,7 @@
     "event_text": "o_c_n's leader regards m_c's appearance at the head of c_n impassively. Later on in the Gathering they scoff at m_c's offered peace.",
     "rel_change": 0,
     "m_c": {
-      "status": ["apprentice", "mediator apprentice", "medicine cat apprentice"]
+      "status": ["apprentice", "mediator apprentice", "healer apprentice"]
     },
     "player_clan_temper": ["any"],
     "other_clan_temper": ["stoic", "logical"]
@@ -1417,7 +1417,7 @@
     "event_text": "The leader of o_c_n laughs at the sight of c_n being led by m_c. The cat makes a comment on how piteous m_c's clan must be, to have an apprentice leading them, and sneers that they'll soon have succeeded at wiping c_n out.",
     "rel_change": -1,
     "m_c": {
-      "status": ["apprentice", "mediator apprentice", "medicine cat apprentice"]
+      "status": ["apprentice", "mediator apprentice", "healer apprentice"]
     },
     "player_clan_temper": ["any"],
     "other_clan_temper": ["bloodthirsty", "proud"]
@@ -1427,7 +1427,7 @@
     "event_text": "When c_n arrives at the Gathering and m_c takes {PRONOUN/m_c/poss} place with the Clan leaders, o_c_n's leader gasps and inquires as to what happened to leave <i>m_c</i> as the only option to lead, the <i>poor dear</i>. Their words are sickly sweet; m_c finds {PRONOUN/m_c/self} unable to control the following narrative o_c_n spins. c_n is no better off at the end of it.",
     "rel_change": 0,
     "m_c": {
-      "status": ["apprentice", "mediator apprentice", "medicine cat apprentice"]
+      "status": ["apprentice", "mediator apprentice", "healer apprentice"]
     },
     "player_clan_temper": ["any"],
     "other_clan_temper": ["cunning"]
@@ -1437,7 +1437,7 @@
     "event_text": "When m_c joins the Clan leaders at the Gathering, o_c_n's leader starts throwing nervous glances at the other leaders. No one else comments on the apprentice, though, despite the air of awkwardness. o_c_n's leader avoids m_c for the rest of the Gathering.",
     "rel_change": 0,
     "m_c": {
-      "status": ["apprentice", "mediator apprentice", "medicine cat apprentice"]
+      "status": ["apprentice", "mediator apprentice", "healer apprentice"]
     },
     "player_clan_temper": ["any"],
     "other_clan_temper": ["wary"]

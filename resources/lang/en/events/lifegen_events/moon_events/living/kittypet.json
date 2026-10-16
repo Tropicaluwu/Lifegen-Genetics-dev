@@ -1,0 +1,26 @@
+{
+    "general1": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "Your housefolk leaves during the day. You spend a few hours staring out the window, waiting for them to come back."
+    },
+    "silly2": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "silly"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "Your housefolk leaves during the day. You spend a few hours staring out the window, waiting for them to come back..."
+    }
+}

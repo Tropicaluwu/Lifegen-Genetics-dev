@@ -1,0 +1,29 @@
+{
+    "spritesheet": "acc_plants2",
+    "sprite_list": [
+        {
+            "SINGULARCLOVER": "head",
+            "STICK": "body",
+            "PUMPKIN": "body",
+            "MOSS": "body",
+            "IVY": "body",
+            "MOSS PELT": "body",
+            "REEDS": "body",
+            "BAMBOO": "body",
+            "SEAWEED": "tail",
+            "DAISY CORSAGE": "tail"
+        },
+        {
+            "DAISIES": "head",
+            "DIANTHUS": "head",
+            "BLEEDING HEARTS": "head",
+            "FRANGIPANI": "head",
+            "BLUE GLORY": "head",
+            "CATNIP FLOWER": "head",
+            "BLANKET FLOWER": "head",
+            "ALLIUM": "head",
+            "LACELEAF": "head",
+            "PURPLE GLORY": "head"
+        }
+    ]
+}

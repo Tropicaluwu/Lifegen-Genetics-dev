@@ -368,7 +368,7 @@
 		"random_status_constraint": [
 			"apprentice",
 			"mediator apprentice",
-			"medicine cat apprentice"
+			"healer apprentice"
 		],
 		"reaction_random_cat": {
 			"like": "increase"
@@ -499,7 +499,7 @@
 			"apprentice"
 		],
 		"random_status_constraint": [
-			"medicine cat apprentice"
+			"healer apprentice"
 		]
 	},
 	{
@@ -517,7 +517,7 @@
 			"apprentice"
 		],
 		"random_status_constraint": [
-			"medicine cat apprentice"
+			"healer apprentice"
 		]
 	},
 	{
@@ -746,8 +746,8 @@
 			"r_c is a little hesitant to ask m_c to check on something minor, but knows that even though m_c can be grumpy sometimes, {PRONOUN/m_c/subject} always takes care of {PRONOUN/r_c/object}."
 		],
 		"main_status_constraint": [
-			"medicine cat",
-			"medicine cat apprentice"
+			"healer",
+			"healer apprentice"
 		],
 		"main_trait_constraint": [
 			"cold",
@@ -839,16 +839,16 @@
 			"warrior",
 			"deputy",
 			"leader",
-			"medicine cat apprentice",
-			"medicine cat"
+			"healer apprentice",
+			"healer"
 		],
 		"random_status_constraint": [
 			"apprentice",
 			"warrior",
 			"deputy",
 			"leader",
-			"medicine cat apprentice",
-			"medicine cat"
+			"healer apprentice",
+			"healer"
 		],
 		"relationship_constraint": [
 			"dislikes_only"
@@ -869,10 +869,10 @@
 		"main_status_constraint": [
 			"apprentice",
 			"mediator apprentice",
-			"medicine cat apprentice",
+			"healer apprentice",
 			"warrior",
 			"mediator",
-			"medicine cat",
+			"healer",
 			"deputy",
 			"leader"
 		],
@@ -904,7 +904,7 @@
 		"main_status_constraint": [
 			"warrior",
 			"mediator",
-			"medicine cat",
+			"healer",
 			"deputy",
 			"leader"
 		],
@@ -912,7 +912,7 @@
 			"elder",
 			"warrior",
 			"mediator",
-			"medicine cat",
+			"healer",
 			"deputy",
 			"leader"
 		],

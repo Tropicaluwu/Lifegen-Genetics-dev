@@ -1,84 +1,72 @@
-# clangen
+# LifeGen Genetics
 
-## On AI & LLMs
-
-> [!WARNING]
-> Issues and Pull Requests created with AI based tools are going to be closed without further comment.
-> Repeat offenders will be blocked from this project until further notice.
-
-### [Discord Server](https://discord.gg/clangen) || [Official website](https://clangen.io) || [Itch.io Page](https://sablesteel.itch.io/clan-gen-fan-edit) 
-
-## Description
-Fan-edit of the warrior cat clangen game built using Python and Pygame.
+**LifeGen** and **Genemod** (the genetics mod) put together into one game. You play as your own cat like in LifeGen, and every cat has real genes like in Genemod, so kits actually look like their parents.
 
 ## Credits
-Original creator: just-some-cat.tumblr.com
 
-Fan-edit creator: SableSteel, and many others
+**None of this would exist without these teams. All of the real work is theirs:**
 
-## Downloads
-### Stable
-Stable versions can be downloaded directly from the [official ClanGen website](https://clangen.io/download)
+### LifeGen
+Made by the **LifeGen team**. LifeGen is the mod where you play as your own cat.
+- GitHub: [sedgestripe/clangen](https://github.com/sedgestripe/clangen)
+- Website: [mods.clangen.io/LifeGen](https://mods.clangen.io/LifeGen/download)
+- Discord: [discord.gg/lifegen](https://discord.gg/lifegen)
+- Full list of everyone who worked on it: [LifeGen credits](https://docs.google.com/document/d/1XCm5Eo-y5VA6W9quDMbF3VNyKL7S8_9Tl4c2buuiA8g/edit?usp=sharing)
 
-### Development
-**Note**: Development versions are automatic snapshots of current development efforts. They are _not_ stable, can crash and even corrupt your save files.
-Additionally, we do not provide tech support for development versions.
+### Genemod (Genetics mod)
+Made by **Chinch-Bug** and contributors. Genemod gives every cat real, inheritable genes.
+- GitHub: [Chinch-Bug/clangen-genemod](https://github.com/Chinch-Bug/clangen-genemod)
+- Discord: [Genemod server](https://discord.gg/t6XqgQ46Jx)
 
-Download at your own risk here: [ClanGen development download](https://clangen.io/download-development)
+### ClanGen
+The game both mods are built on. Original creator **just-some-cat**, fan edit by **SableSteel** and the ClanGen team.
+- GitHub: [ClanGenOfficial/clangen](https://github.com/ClanGenOfficial/clangen)
+- Itch.io: [sablesteel.itch.io/clan-gen-fan-edit](https://sablesteel.itch.io/clan-gen-fan-edit)
+
+This is an unofficial combination made for fun. **Please don't take bug reports from it to the LifeGen, Genemod or ClanGen teams**, they didn't make this version and can't help with it.
+
+## What's in it
+
+- Everything from LifeGen: playing as your own cat, talking, patrols, the Dark Forest, shunning, affairs and the rest
+- Genemod's genetics: coat colour, patterns, white spotting, eyes, fur types, ear and tail traits, genetic conditions and offspring prediction
+- Genemod's multi clan mode (optional, picked when you make a new clan)
+- Up to date with ClanGen v0.13.4
+- Fixes for crashes that came from putting the two mods together
+
+See [changelog.txt](changelog.txt) for the full list.
+
+## Using a LifeGen save
+
+LifeGen saves work. Copy your clan's folder and its `<Name>clan.json` file (for example a `Leap` folder and `Leapclan.json`) from
+
+`%LOCALAPPDATA%\LifeGen\LifeGen\saves`
+
+into
+
+`%LOCALAPPDATA%\LifeGenGenetics\LifeGenGenetics\saves`
+
+(run the game once first so the folder exists). The first time the save loads, every cat gets genes made from its old pelt. Keep a backup of the original, because once it's saved here it won't load in regular LifeGen anymore.
 
 ## Running from source
-> [!WARNING]
-> Running the game via poetry is no longer supported. Please use uv instead.
 
-ClanGen uses uv to manage virtual environments. Therefore it is required to install the dependencies and run the game from source without manual tweaking.
+You need [uv](https://docs.astral.sh/uv/), it installs the right Python by itself.
 
-### Installing python
-> [!NOTE] 
-> You no longer need to install Python on your system. uv will automatically install the correct version for you.
-
-### Installing uv
-Follow the instructions for installing uv from the official website: https://docs.astral.sh/uv/getting-started/installation/
-
-#### Linux, macOS, WSL
-Open a terminal and paste this:
-```
-curl -LsSf https://astral.sh/uv/install.sh | sh
-```
-Then restart your terminal and check if uv is installed by running `uv --version`
-
-#### Windows (Powershell)
-Open a PowerShell window (Windows key and then enter `PowerShell`) and paste this:
-```
-powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
-```
-Then restart your terminal and check if uv is installed by running `uv --version`
-
-### Running the game via the helper scripts
-#### Linux, macOS
-Double click the `run.sh` script or open it in the terminal via `./run.sh` with the current working directory set to the game's root directory.
-
-#### Windows
-Double click the `run.bat` script.
-
-### Running the game via Visual Studio Code
-> [!NOTE] 
-> uv automatically creates the .venv folder in the root directory of the game, unlike poetry.
-
-First, you need to let uv install the dependencies. To do so, run the following command in the terminal:
 ```
 uv sync
+uv run main.py
 ```
 
-After that, ensure that you have the Python extension installed in Visual Studio Code. You can install it from the Extensions tab on the left sidebar. [(or click here)
-](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
+When you run from source, saves go in the `saves` folder next to `main.py`.
 
-Then, open the Command Palette (Ctrl+Shift+P) and search for `Python: Select Interpreter`. Select the virtual environment created by uv (it should mention a `.venv` somewhere).
+## Building the exe
 
-Finally, open the `main.py` file and click the play button in the top right corner to run the game.
+```
+uv sync --group build
+uv run pyinstaller Clangen.spec
+```
 
+The game ends up in `dist/LifeGenGenetics`.
 
-## Bug Reporting
-We have migrated to GitHub Issues for bug reporting and tracking. We no longer review bug reports from the retired Google Form.
+## License
 
-## Contributing
-If you'd like to contribute to Clangen, please read our [Contributing guide](https://github.com/ClanGenOfficial/clangen/blob/development/CONTRIBUTING.md).
+Code is under the Mozilla Public License 2.0 and the sprites/art are under CC BY-NC 4.0, same as ClanGen, LifeGen and Genemod. See [LICENSE.md](LICENSE.md).

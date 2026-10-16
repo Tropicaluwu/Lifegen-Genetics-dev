@@ -1,12 +1,16 @@
 import logging
 import os
+import traceback
 from math import floor
-from random import choice
+from random import choice, randint
+from copy import deepcopy
+from operator import xor
 
 import i18n
 import ujson
 
 from scripts.cat.cats import Cat, BACKSTORIES
+from scripts.clan import clan_class
 from ..cat.enums import CatGroup, CatRank
 from scripts.cat.pelts import Pelt
 from scripts.cat_relations.inheritance import Inheritance
@@ -15,6 +19,7 @@ from scripts.game_structure.game.switches import (
     switch_set_value,
     Switch,
 )
+from scripts.game_structure.game.settings import game_setting_get
 from ..cat.pronouns import get_new_pronouns
 from scripts.housekeeping.version import SAVE_VERSION_NUMBER
 from scripts.game_structure import constants
@@ -28,21 +33,465 @@ logger = logging.getLogger(__name__)
 
 
 def load_cats():
+    switch_set_value(
+        Switch.error_message, ""
+    )
     try:
         json_load()
-    except FileNotFoundError:
-        try:
-            csv_load(Cat.all_cats)
-        except FileNotFoundError as e:
-            switch_set_value(Switch.error_message, "Can't find clan_cats.json!")
-            switch_set_value(Switch.traceback, e)
-            raise
+    except FileNotFoundError as e:
+        switch_set_value(Switch.error_message, "Can't find clan_cats.json!")
+        switch_set_value(Switch.traceback, e)
+
+def accurate_porting(cat, info):
+
+    maingame_white = deepcopy(Pelt.maingame_white)
+
+    additional_white = {
+        "low": {
+            "1": ["RIGHTEAR", "LEFTEAR", "ESTRELLA", "BACKSPOT", "EYEBAGS"],
+            "2": ["EXTRA", "BLAZEMASK", "TEARS"],
+            "3": ["TOPCOVER", "WINGS", "WOODPECKER", "FADEBELLY", "ROSINA"],
+            "4": ["FADESPOTS", "MITAINE", "SKUNK", "BULLSEYE"],
+            "5": ["SPARROW"]
+        },
+        "high": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": ["BLACKSTAR", "LOVEBUG", "FULLWHITE"]
+        }
+    }
+    cat.phenotype.lykoi = ["Ly", "Ly"]
+    cat.phenotype.pinkdilute = ["Dp", "Dp"]
+    cat.phenotype.dilutemd = ["dm", "dm"]
+    cat.phenotype.ext = ["E", "E"]
+    cat.phenotype.corin = ["N", "N"]
+    cat.phenotype.karp = ["k", "k"]
+    cat.phenotype.bleach = ["Lb", "Lb"]
+    cat.phenotype.ghosting = ["gh", "gh"]
+    cat.phenotype.satin = ["St", "St"]
+    cat.phenotype.glitter = ["Gl", "Gl"]
+
+    cat.phenotype.curl = ["cu", "cu"]
+    cat.phenotype.fold = ["fd", "fd"]
+    cat.phenotype.fourear = ["Dup", "Dup"]
+    cat.phenotype.manx = ["ab", "ab"]
+    cat.phenotype.kab = ["Kab", "Kab"]
+    cat.phenotype.toybob = ["tb", "tb"]
+    cat.phenotype.jbob = ["Jb", "Jb"]
+    cat.phenotype.kub = ["kub", "kub"]
+    cat.phenotype.ring = ["Rt", "Rt"]
+    cat.phenotype.munch = ["mk", "mk"]
+    cat.phenotype.pax3 = ["NoDBE", "NoDBE"]
+        
+    for i in range(1, 6):
+        maingame_white["low"][str(i)] += additional_white["low"][str(i)]
+        maingame_white["high"][str(i)] += additional_white["high"][str(i)]
+
+    if cat.phenotype.length == "hairless":
+        cat.phenotype.ruhr = ["hrbd", "hrbd"]
+        cat.phenotype.sedesp = ["Hr", "Hr"]
+
+    if info["pelt_length"] == "short":
+        cat.phenotype.furLength[0] = "L"
+    else:
+        cat.phenotype.furLength = ["l", "l"]
+        cat.phenotype.longtype = info["pelt_length"]
+    
+    cat.pelt.length = info["pelt_length"]
+    cat.phenotype.pointgene[0] = "C"
+    cat.phenotype.white = ["w", "w"]
+    cat.phenotype.white_pattern = []
+
+    if info["white_patches"]:
+        cat.phenotype.white_pattern = info["white_patches"] if isinstance(info["white_patches"], list) else [info["white_patches"]]
+    
+        white_found = False
+        for i in range(1, 6):
+            if cat.phenotype.white_pattern[0] in maingame_white["low"][str(i)]:
+                if cat.phenotype.white_pattern[0] == "SKUNK":
+                    cat.phenotype.white = ["wt", "w"]
+                else:
+                    cat.phenotype.white = ["ws", "w"]
+                cat.phenotype.whitegrade = i
+                white_found = True
+                break
+        if not white_found:
+            for i in range(1, 6):
+                if cat.phenotype.white_pattern[0] in maingame_white["high"][str(i)]:
+                    cat.phenotype.white = ["ws", "ws"]
+                    cat.phenotype.whitegrade = i
+                    white_found = True
+                    break
+
+    if info["vitiligo"]:
+        if info["vitiligo"] == "KARPATI":
+            cat.phenotype.karp = ["K", "k"]
+        elif isinstance(cat.phenotype.white_pattern, list):
+            cat.phenotype.vitiligo = True
+            cat.phenotype.white_pattern.insert(0, info["vitiligo"])
+        else:
+            cat.phenotype.vitiligo = True
+            cat.phenotype.white_pattern = [info["vitiligo"]]
+    if info["points"]:
+        if info["points"] == "SEPIAPOINT":
+            cat.phenotype.pointgene = ["cb", "cb"]
+        elif info["points"] == "MINKPOINT":
+            cat.phenotype.pointgene = ["cb", "cs"]
+        else:
+            cat.phenotype.pointgene = ["cs", "cs"]
+            if info["points"] == "RAGDOLL":
+                cat.phenotype.white_pattern.insert(0, "TRIXIE")
+                cat.phenotype.white = ["ws", "ws"]
+                cat.phenotype.whitegrade = 3
+        
+    if info["eye_colour"] in ["BLUE", "COBALT", "CYAN", "DARKBLUE", "HEATHERBLUE", "PALEBLUE", "SUNLITICE"]:
+        pigmentation = "blue"
+        refraction = choice(range(5, 9))
+        if info["eye_colour"] in ["COBALT", "DARKBLUE", "HEATHERBLUE"]:
+            refraction = choice(range(9, 12))
+        elif info["eye_colour"] in ["PALEBLUE", "CYAN"]:
+            refraction = choice(range(1, 5))
+        cat.phenotype.lefteyetype = f"R{refraction} ; {pigmentation}"
+        cat.phenotype.righteyetype = f"R{refraction} ; {pigmentation}"
+    elif info["eye_colour"] in ["GOLD", "YELLOW", "PALEYELLOW", "GREENYELLOW"]:
+        pigmentation = choice(range(1, 6))
+        refraction = choice(range(1, 4))
+        if info["eye_colour"] == "PALEYELLOW":
+            pigmentation = 1
+        if info["eye_colour"] == "GREENYELLOW":
+            refraction = choice(range(3, 6))
+        cat.phenotype.lefteyetype = f"R{refraction} ; P{pigmentation}"
+        cat.phenotype.righteyetype = f"R{refraction} ; P{pigmentation}"
+    elif info["eye_colour"] in ["AMBER", "COPPER", "BRONZE"]:
+        pigmentation = choice(range(6, 12))
+        refraction = choice(range(1, 4))
+        if info["eye_colour"] == "AMBER":
+            pigmentation = choice(range(5, 8))
+        if info["eye_colour"] == "COPPER":
+            pigmentation = choice(range(7, 10))
+        if info["eye_colour"] == "BRONZE":
+            pigmentation = choice(range(9, 12))
+        cat.phenotype.lefteyetype = f"R{refraction} ; P{pigmentation}"
+        cat.phenotype.righteyetype = f"R{refraction} ; P{pigmentation}"
+    elif info["eye_colour"] in ["EMERALD", "GREEN", "PALEGREEN", "SAGE"]:
+        pigmentation = choice(range(2, 12))
+        refraction = choice(range(9, 12))
+        if info["eye_colour"] == "PALEGREEN":
+            pigmentation = choice(range(2, 4))
+        elif info["eye_colour"] == "SAGE":
+            pigmentation = choice(range(7, 10))
+        else:
+            pigmentation = choice(range(3, 7))
+        cat.phenotype.lefteyetype = f"R{refraction} ; P{pigmentation}"
+        cat.phenotype.righteyetype = f"R{refraction} ; P{pigmentation}"
+    elif info["eye_colour"] in ["HAZEL"]:
+        pigmentation = choice(range(5, 8))
+        refraction = choice(range(5, 8))
+        cat.phenotype.lefteyetype = f"R{refraction} ; P{pigmentation}"
+        cat.phenotype.righteyetype = f"R{refraction} ; P{pigmentation}"
+
+    if info["eye_colour2"] in ["BLUE", "COBALT", "CYAN", "DARKBLUE", "HEATHERBLUE", "PALEBLUE", "SUNLITICE"]:
+        pigmentation = "blue"
+        refraction = choice(range(5, 9))
+        if info["eye_colour"] in ["COBALT", "DARKBLUE", "HEATHERBLUE"]:
+            refraction = choice(range(9, 12))
+        elif info["eye_colour"] in ["PALEBLUE", "CYAN"]:
+            refraction = choice(range(1, 5))
+        cat.phenotype.lefteyetype = f"R{refraction} ; {pigmentation}"
+    elif info["eye_colour2"] in ["GOLD", "YELLOW", "PALEYELLOW", "GREENYELLOW"]:
+        pigmentation = choice(range(1, 6))
+        refraction = choice(range(1, 4))
+        if info["eye_colour"] == "PALEYELLOW":
+            pigmentation = 1
+        if info["eye_colour"] == "GREENYELLOW":
+            refraction = choice(range(3, 6))
+        cat.phenotype.lefteyetype = f"R{refraction} ; P{pigmentation}"
+    elif info["eye_colour2"] in ["AMBER", "COPPER", "BRONZE"]:
+        pigmentation = choice(range(6, 12))
+        refraction = choice(range(1, 4))
+        if info["eye_colour"] == "AMBER":
+            pigmentation = choice(range(5, 8))
+        if info["eye_colour"] == "COPPER":
+            pigmentation = choice(range(7, 10))
+        if info["eye_colour"] == "BRONZE":
+            pigmentation = choice(range(9, 12))
+        cat.phenotype.lefteyetype = f"R{refraction} ; P{pigmentation}"
+    elif info["eye_colour2"] in ["EMERALD", "GREEN", "PALEGREEN", "SAGE"]:
+        pigmentation = choice(range(2, 12))
+        refraction = choice(range(9, 12))
+        if info["eye_colour"] == "PALEGREEN":
+            pigmentation = choice(range(2, 4))
+        elif info["eye_colour"] == "SAGE":
+            pigmentation = choice(range(7, 10))
+        else:
+            pigmentation = choice(range(3, 7))
+        cat.phenotype.lefteyetype = f"R{refraction} ; P{pigmentation}"
+    elif info["eye_colour2"] in ["HAZEL"]:
+        pigmentation = choice(range(5, 8))
+        refraction = choice(range(5, 8))
+        cat.phenotype.lefteyetype = f"R{refraction} ; P{pigmentation}"
+    
+    if "SUNLITICE" in [info["eye_colour"], info["eye_colour2"]]:
+        if not info["eye_colour2"]:
+            cat.phenotype.extraeye = "sectoral3"
+        elif info["eye_colour"] == "SUNLITICE":
+            cat.phenotype.extraeye = "sectoral2"
+        else:
+            cat.phenotype.extraeye = "sectoral1"
+        cat.phenotype.extraeyetype = f"R{choice(range(1, 4))} ; P{choice(range(1, 3))}"
+
+    red_bases = ["CREAM", "DARKGINGER", "GINGER", "PALEGINGER", "GOLDEN"]
+    tabby_bases = ["CREAM", "DARKGINGER", "GINGER", "PALEGINGER", "GOLDEN", "WHITE"]
+    cat.chimerapheno = None
+    main_colour = {"pattern": info["pelt_name"].lower(), "colour": info["pelt_color"]}
+    patch_colour = {"pattern": "", "colour": ""}
+    is_tortie = False
+
+    if info["pelt_name"].lower() in ["tortie", "calico"]:
+        if not xor(info["pelt_color"] in red_bases, info["tortie_color"] in red_bases) or (info["tortie_pattern"] != info["tortie_base"] and 
+        (info["pelt_color"] not in tabby_bases and info["tortie_base"] not in ["single", "smoke"]) and (info["tortie_color"] not in tabby_bases and info["tortie_pattern"] not in ["single", "smoke"])):
+            cat.chimerapheno = deepcopy(cat.phenotype)
+            cat.chimerapheno.chimerapattern = [info["tortie_marking"]]
+            main_colour = {"pattern": info["tortie_base"], "colour": info["pelt_color"]}
+            patch_colour = {"pattern": info["tortie_pattern"], "colour": info["tortie_color"]}
+        else:
+            if info["tortie_color"] in red_bases:
+                main_colour = {
+                    "pattern": info["tortie_base"], "colour": info["pelt_color"]}
+                patch_colour = {
+                    "pattern": info["tortie_pattern"], "colour": info["tortie_color"]}
+            else:
+                patch_colour = {
+                    "pattern": info["tortie_base"], "colour": info["pelt_color"]}
+                main_colour = {
+                    "pattern": info["tortie_pattern"], "colour": info["tortie_color"]}
+            is_tortie = True
+    
+    cat.phenotype.agouti[0] = "A"
+
+    if main_colour["pattern"] in ["bengal", "rosette", "marbled"] or (not cat.chimerapheno and patch_colour["pattern"] in ["bengal", "rosette", "marbled"]):
+        cat.phenotype.bengal = "2222"
+    if main_colour["pattern"] in ["bengal", "masked", "marbled"] or (not cat.chimerapheno and patch_colour["pattern"] in ["bengal", "masked", "marbled"]):
+        cat.phenotype.agouti = ["Apb", "a"]
+    elif (main_colour["pattern"] in ["single", "singlecolour", "twocolour", "smoke"] and main_colour["colour"] not in tabby_bases) or (main_colour["colour"] == "GHOST"):
+        cat.phenotype.agouti = ["a", "a"]
+
+    if main_colour["pattern"] in ["ticked", "agouti", "singlestripe"] or (not cat.chimerapheno and patch_colour["pattern"] in ["ticked", "agouti", "singlestripe"]):
+        cat.phenotype.ticked[0] = "Ta"
+        if main_colour["pattern"] != "ticked" or (not cat.chimerapheno and patch_colour["pattern"] != "ticked"):
+            cat.phenotype.tickgenes = "2222"
+    elif main_colour["pattern"] in ["classic", "sokoke", "marbled"] or (not cat.chimerapheno and patch_colour["pattern"] in ["classic", "sokoke", "marbled"]):
+        cat.phenotype.ticked = ["ta", "ta"]
+        cat.phenotype.mack = ["mc", "mc"]
+        if main_colour["pattern"] == "sokoke" or (not cat.chimerapheno and patch_colour["pattern"] == "sokoke"):
+            cat.phenotype.sokoke = "2222"
+    elif main_colour["pattern"] in ["tabby", "mackerel", "speckled", "rosette", "masked", "bengal"] or (not cat.chimerapheno and patch_colour["pattern"] in ["tabby", "mackerel", "speckled", "rosette", "masked", "bengal"]):
+        cat.phenotype.ticked = ["ta", "ta"]
+        cat.phenotype.mack[0] = "Mc"
+        cat.phenotype.spotted = "0000"
+        if main_colour["pattern"] in ["speckled", "rosette", "bengal"] or (not cat.chimerapheno and patch_colour["pattern"] in ["speckled", "rosette", "bengal"]):
+            cat.phenotype.spotted = "2222"
+    if (main_colour["pattern"] in ["single", "singlecolour", "twocolour", "smoke"] and main_colour["colour"] in tabby_bases):
+        cat.phenotype.ticked[0] = "Ta"
+    
+    if cat.chimerapheno:
+        cat.chimerapheno.agouti[0] = "A"
+        if patch_colour["pattern"] in ["bengal", "rosette", "marbled"]:
+            cat.chimerapheno.bengal = "2222"
+            if patch_colour["pattern"] != "rosette":
+                cat.chimerapheno.agouti = ["Apb", "a"]
+
+        if patch_colour["pattern"] in ["ticked", "agouti", "singlestripe"]:
+            cat.chimerapheno.ticked[0] = "Ta"
+            if patch_colour["pattern"] != "ticked":
+                cat.chimerapheno.tickgenes = "2222"
+        elif patch_colour["pattern"] in ["classic", "sokoke", "marbled"]:
+            cat.chimerapheno.ticked = ["ta", "ta"]
+            cat.chimerapheno.mack = ["mc", "mc"]
+            if patch_colour["pattern"] == "sokoke":
+                cat.chimerapheno.sokoke = "2222"
+        elif patch_colour["pattern"] in ["tabby", "mackerel", "speckled", "rosette", "masked", "bengal"]:
+            cat.chimerapheno.ticked = ["ta", "ta"]
+            cat.chimerapheno.mack[0] = "Mc"
+            cat.chimerapheno.spotted = "0000"
+            if patch_colour["pattern"] in ["speckled", "rosette", "bengal"]:
+                cat.chimerapheno.spotted = "2222"
+        elif (patch_colour["pattern"] in ["single", "singlecolour", "twocolour", "smoke"] and patch_colour["colour"] not in tabby_bases) or (patch_colour["colour"] == "GHOST"):
+            cat.chimerapheno.agouti = ["a", "a"]
+        elif (patch_colour["pattern"] in ["single", "singlecolour", "twocolour", "smoke"] and patch_colour["colour"] in tabby_bases):
+            cat.chimerapheno.ticked[0] = "Ta"
+    
+    if not patch_colour["pattern"] and main_colour["pattern"] in ["singlecolour", "twocolour"] and main_colour["colour"] == "WHITE":
+        cat.phenotype.white[0] = ["W"]
+    
+    if main_colour["colour"] in ["WHITE", "PALEGREY", "SILVER", "GREY", "DARKGREY", "CREAM", "PALEGINGER", "LIGHTBROWN", "LILAC"]:
+        cat.phenotype.dilute = ["d", "d"]
+        cat.phenotype.rufousing = "0000"
+    else:
+        cat.phenotype.dilute[0] = "D"
+    
+    if cat.chimerapheno:
+        if patch_colour["colour"] in ["WHITE", "PALEGREY", "SILVER", "GREY", "DARKGREY", "CREAM", "PALEGINGER", "LIGHTBROWN", "LILAC"]:
+            cat.chimerapheno.dilute = ["d", "d"]
+            cat.chimerapheno.rufousing = "0000"
+        else:
+            cat.chimerapheno.dilute[0] = "D"
+
+    if main_colour["colour"] in ["LIGHTBROWN", "GOLDEN-BROWN"]:
+        cat.phenotype.eumelanin = ["bl", "bl"]
+    elif main_colour["colour"] in ["WHITE", "PALEGREY", "LILAC", "BROWN", "CHOCOLATE", "SIENNA"]:
+        cat.phenotype.eumelanin = ["b", "b"]
+    else:
+        cat.phenotype.eumelanin[0] = "B"
+
+    if cat.chimerapheno:
+        if patch_colour["colour"] in ["LIGHTBROWN", "GOLDEN-BROWN"]:
+            cat.chimerapheno.eumelanin = ["bl", "bl"]
+        elif patch_colour["colour"] in ["WHITE", "PALEGREY", "LILAC", "BROWN", "CHOCOLATE", "SIENNA"]:
+            cat.chimerapheno.eumelanin = ["b", "b"]
+        else:
+            cat.chimerapheno.eumelanin[0] = "B"
+    
+    if is_tortie:
+        cat.phenotype.sexgene = ["O", "o"]
+        if cat.phenotype.sex == "tom":
+            cat.phenotype.sexgene.append("Y")
+            cat.get_permanent_condition('sterile', born_with=True, genetic=True)
+        cat.phenotype.tortiepattern = [info["tortie_marking"]]
+    elif main_colour["colour"] in red_bases:
+        cat.phenotype.sexgene[0] = "O"
+        if cat.phenotype.sexgene[1] == "o":
+            cat.phenotype.sexgene[1] = "O"
+    elif patch_colour["colour"] not in red_bases:
+        cat.phenotype.sexgene[0] = "o"
+        if cat.phenotype.sexgene[1] == "O":
+            cat.phenotype.sexgene[1] = "o"
+
+    if cat.chimerapheno:
+        if patch_colour["colour"] in red_bases:
+            cat.chimerapheno.sexgene[0] = "O"
+            if cat.chimerapheno.sexgene[1] == "o":
+                cat.chimerapheno.sexgene[1] = "O"
+        elif main_colour["colour"] not in red_bases:
+            cat.chimerapheno.sexgene[0] = "o"
+            if cat.chimerapheno.sexgene[1] == "O":
+                cat.chimerapheno.sexgene[1] = "o"
+    
+    if main_colour["colour"] in ["WHITE", "SILVER", "GHOST"] and cat.phenotype.agouti != ["Apb", "a"]:
+        cat.phenotype.silver[0] = "I"
+    else:
+        cat.phenotype.silver = ["i", "i"]
+
+    if cat.chimerapheno:
+        if patch_colour["colour"] in ["WHITE", "SILVER", "GHOST"]:
+            cat.chimerapheno.silver[0] = "I"
+        else:
+            cat.chimerapheno.silver = ["i", "i"]
+
+    if main_colour["colour"] in ["WHITE", "GOLDEN", "LIGHTBROWN"]:
+        wbsum = 0
+        while 12 > wbsum < 14:
+            cat.phenotype.wideband = ""
+            wbsum = 0
+            for i in range(0, 8):
+                cat.phenotype.wideband += choice(["1", "1", "2"])
+                wbsum += int(cat.phenotype.wideband[i])
+        if main_colour["pattern"] in ["single", "singlecolour", "twocolour", "smoke"] and main_colour["colour"] == "GOLDEN":
+            cat.phenotype.wideband = "22222222"
+    else:
+        wbsum = 0
+        while wbsum > 11:
+            cat.phenotype.wideband = ""
+            wbsum = 0
+            for i in range(0, 8):
+                cat.phenotype.wideband += choice(["1", "0", "0", "2"])
+                wbsum += int(cat.phenotype.wideband[i])
+
+    if cat.chimerapheno:
+        if patch_colour["colour"] in ["WHITE", "GOLDEN", "LIGHTBROWN"]:
+            wbsum = 0
+            while 12 > wbsum < 14:
+                cat.chimerapheno.wideband = ""
+                wbsum = 0
+                for i in range(0, 8):
+                    cat.chimerapheno.wideband += choice(["1", "1", "2"])
+                    wbsum += int(cat.chimerapheno.wideband[i])
+            if patch_colour["pattern"] in ["single", "singlecolour", "twocolour", "smoke"] and patch_colour["colour"] == "GOLDEN":
+                cat.chimerapheno.wideband = "22222222"
+        else:
+            wbsum = 0
+            while wbsum > 11:
+                cat.chimerapheno.wideband = ""
+                wbsum = 0
+                for i in range(0, 8):
+                    cat.chimerapheno.wideband += choice(["1", "0", "0", "2"])
+                    wbsum += int(cat.chimerapheno.wideband[i])
+
+    if main_colour["colour"] in ["DARKGINGER"]:
+        cat.phenotype.rufousing = "2222"
+    if main_colour["colour"] in ["BLACK"]:
+        cat.phenotype.rufousing = "0000"
+        cat.phenotype.wideband = "00000000"
+    if main_colour["colour"] in ["LILAC", "GREY"] or (main_colour["colour"] in ["SIENNA"] and main_colour["pattern"] in ["single", "singlecolour", "twocolour", "smoke"]):
+        cat.phenotype.saturation = choice(range(0, 5))
+    elif main_colour["colour"] in ["DARKGREY", "PALEGREY", "DARKBROWN", "GHOST"]:
+        cat.phenotype.saturation = choice(range(5, 7))
+    else:
+        cat.phenotype.saturation = choice(range(2, 5))
+
+    if cat.chimerapheno:
+        if patch_colour["colour"] in ["DARKGINGER", "CHOCOLATE"]:
+            cat.chimerapheno.rufousing = "2222"
+        if patch_colour["colour"] in ["BLACK"]:
+            cat.chimerapheno.rufousing = "0000"
+            cat.chimerapheno.wideband = "00000000"
+        if patch_colour["colour"] in ["LILAC", "GREY"] or (main_colour["colour"] in ["SIENNA"] and main_colour["pattern"] in ["single", "singlecolour", "twocolour", "smoke"]):
+            cat.chimerapheno.saturation = choice(range(0, 5))
+        if patch_colour["colour"] in ["DARKGREY", "PALEGREY", "DARKBROWN", "GHOST"]:
+            cat.chimerapheno.saturation = choice(range(4, 7))
+        else:
+            cat.chimerapheno.saturation = choice(range(2, 5))
+            
+    cat.phenotype.GeneSort()
+    cat.phenotype.PolyEval()
+    cat.phenotype.EyeColourName()
+    cat.phenotype.PhenotypeOutput(cat.phenotype.white_pattern)
+    cat.phenotype.SpriteInfo(cat.moons)
+    if cat.chimerapheno:
+        cat.chimerapheno.GeneSort()
+        cat.chimerapheno.PolyEval()
+        cat.chimerapheno.EyeColourName()
+        cat.chimerapheno.PhenotypeOutput(cat.chimerapheno.white_pattern)
+        cat.chimerapheno.SpriteInfo(cat.moons)
+
+def clear_missing_cat_links(cats):
+    """Clears links to cats that aren't in the save anymore, living, dead or faded: parents,
+    mates, mentors and apprentices. The family tree and apprentice code look these cats up and
+    crashed when one was missing."""
+    for cat in cats:
+        for field in ("parent1", "parent2", "parent3", "mentor"):
+            other_id = getattr(cat, field, None)
+            if other_id and not Cat.fetch_cat(other_id):
+                logger.warning(f"Cat #{cat.ID} had a missing {field} ({other_id}), removed it.")
+                setattr(cat, field, None)
+        for field in (
+            "adoptive_parents", "surrogate_parents", "affair_parents",
+            "mate", "former_mentor", "apprentice", "former_apprentices",
+        ):
+            other_ids = getattr(cat, field, None)
+            if other_ids:
+                kept = [i for i in other_ids if Cat.fetch_cat(i)]
+                if len(kept) != len(other_ids):
+                    logger.warning(f"Cat #{cat.ID} had missing cats in {field}, removed them.")
+                    setattr(cat, field, kept)
 
 
 def json_load():
     Cat.all_cats.clear()
     Cat.all_cats_list.clear()
-
+    Inheritance.all_inheritances = {}
     all_cats = []
     clanname = switch_get_value(Switch.clan_list)[0]
     clan_cats_json_path = f"{get_save_dir()}/{clanname}/clan_cats.json"
@@ -54,7 +503,7 @@ def json_load():
         with open(clan_cats_json_path, "r", encoding="utf-8") as read_file:
             cat_data = ujson.loads(read_file.read())
     except PermissionError as e:
-        switch_set_value(Switch.error_message, f"Can\t open {clan_cats_json_path}!")
+        switch_set_value(Switch.error_message, f"Can\'t open {clan_cats_json_path}!")
         switch_set_value(Switch.traceback, e)
         raise
     except ujson.JSONDecodeError as e:
@@ -62,11 +511,73 @@ def json_load():
         switch_set_value(Switch.traceback, e)
         raise
 
-    old_tortie_patches = convert["old_tortie_patches"]
-
     # create new cat objects
     for i, cat in enumerate(cat_data):
         try:
+            
+            if "shunned" not in cat:
+                cat["shunned"] = False
+            if "revealed" in cat:
+                cat["forgiven"] = cat["revealed"]
+
+            if cat["favourite"] is False:
+                cat["favourite"] = 0
+            elif cat["favourite"] is True:
+                cat["favourite"] = 1
+
+            if "accessories" in cat:
+                cat["accessory"] = cat["accessories"]
+                cat.pop("accessories")
+            if "inventory" not in cat:
+                cat["inventory"] = cat["accessory"]
+
+            # lifegen accessory change conversion
+            accessory_convert = {
+                "SMALL COMET": "COMET MOTH",
+                "LARGE COMET": "COMET MOTH",
+                "RASPBERRY2": "RASPBERRY",
+                "SMALL LUNA": "LUNA MOTH",
+                "LARGE LUNA": "LUNA MOTH",
+                "CHERRY2": "CHERRY",
+                "RAINCOAT": "YELLOWRAINCOAT",
+                "CHIMES": "CELESTIALCHIMES",
+                "LADYBUG": "LADYBUGS",
+                "YELLOWCROWN": "DANDELIONCROWN",
+                "REDCROWN": "POPPYCROWN",
+                "LILYPADCROWN": "LILYPADHAT",
+                "ACORN2": "ACORN",
+                "HOLLY2": "HOLLYLEAVES",
+                "BLEEDING HEARTS2": "BLEEDING HEART BRANCH",
+                "MOSS2": "FLOWER MOSS",
+                "CLOVER2": "CLOVER",
+                "CLOVERS": "CLOVER",
+            }
+            for acc in cat["inventory"].copy():
+                if acc in accessory_convert:
+                    if acc in cat['accessory']:
+                        cat['accessory'].remove(acc)
+                        if accessory_convert[acc]:
+                            cat['inventory'].append(accessory_convert[acc])
+                    print("Removing outdated accessory:", acc)
+                    cat['inventory'].remove(acc)
+                    if accessory_convert[acc]:
+                        cat['inventory'].append(accessory_convert[acc])
+
+                elif acc not in (Pelt.all_clangen_accessories + Pelt.all_lifegen_accessories):
+                    if acc in cat['accessory']:
+                        cat['accessory'].remove(acc)
+                    if acc in cat['inventory']:
+                        cat['inventory'].remove(acc)
+            
+            for acc in cat['inventory']:
+                if acc not in (Pelt.all_clangen_accessories + Pelt.all_lifegen_accessories):
+                    cat["inventory"].remove(acc)
+            for acc in cat['accessory']:
+                if acc not in (Pelt.all_clangen_accessories + Pelt.all_lifegen_accessories):
+                    cat["accessory"].remove(acc)
+                if acc not in cat["inventory"]:
+                    cat["inventory"].append(acc)
+            
             # accounting for old saves
             # checks first if status is in the old format
             # if it is then we use the old info to provide an initial status dict
@@ -82,33 +593,57 @@ def json_load():
             else:
                 status_dict = cat["status"]
 
-            new_cat = Cat(
-                ID=cat["ID"],
-                prefix=cat["name_prefix"],
-                suffix=cat["name_suffix"],
-                specsuffix_hidden=(
-                    cat["specsuffix_hidden"] if "specsuffix_hidden" in cat else False
-                ),
-                gender=cat["gender"],
-                status_dict=status_dict,
-                parent1=cat["parent1"],
-                parent2=cat["parent2"],
-                moons=cat["moons"],
-                eye_colour=cat["eye_colour"],
-                loading_cat=True,
-            )
-
-            if cat["eye_colour"] == "BLUE2":
-                cat["eye_colour"] = "COBALT"
-            if cat["eye_colour"] in ["BLUEYELLOW", "BLUEGREEN"]:
-                if cat["eye_colour"] == "BLUEYELLOW":
-                    cat["eye_colour2"] = "YELLOW"
-                elif cat["eye_colour"] == "BLUEGREEN":
-                    cat["eye_colour2"] = "GREEN"
-                cat["eye_colour"] = "BLUE"
-            if "eye_colour2" in cat:
-                if cat["eye_colour2"] == "BLUE2":
-                    cat["eye_colour2"] = "COBALT"
+            if "eye_colour" in cat:
+                if cat["eye_colour"] == "BLUE2":
+                    cat["eye_colour"] = "COBALT"
+                if cat["eye_colour"] in ["BLUEYELLOW", "BLUEGREEN"]:
+                    if cat["eye_colour"] == "BLUEYELLOW":
+                        cat["eye_colour2"] = "YELLOW"
+                    elif cat["eye_colour"] == "BLUEGREEN":
+                        cat["eye_colour2"] = "GREEN"
+                    cat["eye_colour"] = "BLUE"
+                if "eye_colour2" in cat:
+                    if cat["eye_colour2"] == "BLUE2":
+                        cat["eye_colour2"] = "COBALT"
+            if "pattern" in cat:
+                cat["tortie_marking"] = cat["pattern"]
+                del cat["pattern"]
+            try:
+                new_cat = Cat(ID=cat["ID"],
+                        prefix=cat["name_prefix"],
+                        suffix=cat["name_suffix"],
+                        specsuffix_hidden=(cat["specsuffix_hidden"] if 'specsuffix_hidden' in cat else False),
+                        status_dict=status_dict,
+                        backstory=cat["backstory"],
+                        parent1=cat["parent1"],
+                        parent2=cat["parent2"],
+                        parent3=cat.get("parent3"),
+                        moons=cat["moons"],
+                        genotype=cat["genotype"],
+                        chimerageno=cat["chimerageno"] if "chimerageno" in cat else cat["genotype"]["chimerageno"],
+                        passes=cat["passes_genotype"] if "passes_genotype" in cat else 1,
+                        white_patterns=cat["white_pattern"],
+                        chim_white=cat["chim_white"] if 'chim_white' in cat else None,
+                        chim_pattern=cat["chimera_pattern"] if "chimera_pattern" in cat else cat["genotype"]["chimerapattern"],
+                        loading_cat=True)
+                if cat.get("group"):
+                    new_cat.group = cat.get("group")
+            except Exception as e:
+                if cat.get("genotype", False):
+                    raise e
+                new_cat = Cat(ID=cat["ID"],
+                        prefix=cat["name_prefix"],
+                        suffix=cat["name_suffix"],
+                        specsuffix_hidden=(cat["specsuffix_hidden"] if 'specsuffix_hidden' in cat else False),
+                        gender=cat['gender'],
+                        status_dict=status_dict,
+                        parent1=cat["parent1"],
+                        parent2=cat["parent2"],
+                        parent3=cat.get("parent3"),
+                        moons=cat["moons"],
+                        loading_cat=True)
+                if not cat.get("genotype", False) and (game_setting_get("accurate_porting") or (not new_cat.parent1 and not new_cat.parent2)):
+                    accurate_porting(new_cat, cat)
 
             if "tint" in cat:
                 if cat["tint"] == "none":
@@ -117,16 +652,10 @@ def json_load():
                 if cat["white_patches_tint"] == "none":
                     cat["white_patches_tint"] = None
 
-            if "pattern" in cat:
-                cat["tortie_marking"] = cat["pattern"]
-                del cat["pattern"]
-
             new_cat.pelt = Pelt(
-                name=cat["pelt_name"],
-                length=cat["pelt_length"],
-                colour=cat["pelt_color"],
-                eye_color=cat["eye_colour"],
-                eye_colour2=cat["eye_colour2"] if "eye_colour2" in cat else None,
+                new_cat.phenotype,
+                tint=cat.get('tint', 'none'),
+                white_patches_tint=cat.get('white_tint', 'none'),
                 paralyzed=cat["paralyzed"],
                 newborn_sprite=cat.get("sprite_newborn"),
                 kitten_sprite=(
@@ -153,23 +682,10 @@ def json_load():
                     cat["sprite_para_adult"] if "sprite_para_adult" in cat else None
                 ),
                 reverse=cat["reverse"],
-                vitiligo=cat["vitiligo"] if "vitiligo" in cat else None,
-                points=cat["points"] if "points" in cat else None,
-                white_patches_tint=(
-                    cat["white_patches_tint"]
-                    if "white_patches_tint" in cat
-                    else "offwhite"
-                ),
-                white_patches=cat["white_patches"],
-                tortie_base=cat["tortie_base"],
-                tortie_colour=cat["tortie_color"],
-                tortie_pattern=cat["tortie_pattern"],
-                tortie_marking=cat["tortie_marking"],
-                skin=cat["skin"],
-                tint=cat["tint"] if "tint" in cat else None,
                 scars=cat["scars"] if "scars" in cat else [],
                 accessory=cat["accessory"],
                 opacity=cat["opacity"] if "opacity" in cat else 100,
+                inventory = cat["inventory"] if "inventory" in cat else []
             )
 
             # Runs a bunch of appearance-related conversion of old stuff.
@@ -186,7 +702,24 @@ def json_load():
                 cat["adoptive_parents"] if "adoptive_parents" in cat else []
             )
 
+            new_cat.surrogate_parents = (
+                cat["surrogate_parents"] if "surrogate_parents" in cat else []
+            )
+
+            new_cat.affair_parents = (
+                cat["affair_parents"] if "affair_parents" in cat else []
+            )
+
             new_cat.genderalign = cat["gender_align"]
+            # lifegen/clangen saves use male/female words, genemod uses tom/molly
+            old_align_names = {
+                "male": "tom",
+                "female": "molly",
+                "trans male": "trans tom",
+                "trans female": "trans molly",
+                "nonbinary": "sam",
+            }
+            new_cat.genderalign = old_align_names.get(new_cat.genderalign, new_cat.genderalign)
             new_cat.pronouns = (
                 cat["pronouns"]
                 if "pronouns" in cat
@@ -222,9 +755,12 @@ def json_load():
             new_cat.patrol_with_mentor = (
                 cat["patrol_with_mentor"] if "patrol_with_mentor" in cat else 0
             )
-            new_cat.no_kits = cat["no_kits"]
+            new_cat.no_kits = cat["no_kits"] if "no_kits" in cat else False
             new_cat.no_mates = cat["no_mates"] if "no_mates" in cat else False
             new_cat.no_retire = cat["no_retire"] if "no_retire" in cat else False
+            new_cat.no_faith = cat["no_faith"] if "no_faith" in cat else False
+            new_cat.lock_faith = cat["lock_faith"] if "lock_faith" in cat else "flexible"
+            new_cat.driven_out = cat["driven_out"] if "driven_out" in cat else False
 
             if "skill_dict" in cat:
                 new_cat.skills = CatSkills(cat["skill_dict"])
@@ -284,20 +820,65 @@ def json_load():
             new_cat.experience = cat["experience"]
             new_cat.apprentice = cat["current_apprentice"]
             new_cat.former_apprentices = cat["former_apprentices"]
-
             new_cat.faded_offspring = (
                 cat["faded_offspring"] if "faded_offspring" in cat else []
             )
             new_cat.prevent_fading = (
                 cat["prevent_fading"] if "prevent_fading" in cat else False
             )
-            new_cat.favourite = cat["favourite"] if "favourite" in cat else False
+            new_cat.favourite = cat["favourite"] if "favourite" in cat else 0
+            if cat.get("legacy_pelt"):
+                from scripts.cat.legacy_pelt import LegacyPelt
+                try:
+                    new_cat.legacy_pelt = LegacyPelt.from_dict(cat["legacy_pelt"])
+                except TypeError:
+                    new_cat.legacy_pelt = None
+            if new_cat.favourite == True:
+                new_cat.favourite = 1
+            new_cat.w_done = cat["w_done"] if "w_done" in cat else False
+            new_cat.talked_to = cat["talked_to"] if "talked_to" in cat else False
+            new_cat.insulted = cat["insulted"] if "insulted" in cat else False
+            new_cat.flirted = cat['flirted'] if "flirted" in cat else False
+            new_cat.backstory_str = cat["backstory_str"] if "backstory_str" in cat else ""
+            new_cat.joined_df = cat["joined_df"] if "joined_df" in cat else False
+            new_cat.revives = cat["revives"] if "revives" in cat else 0
+            new_cat.courage = cat["courage"] if "courage" in cat else 0
+            new_cat.intelligence = cat["intelligence"] if "intelligence" in cat else 0
+            new_cat.empathy = cat["empathy"] if "empathy" in cat else 0
+            new_cat.compassion = cat["compassion"] if "compassion" in cat else 0
+            new_cat.did_activity = cat["did_activity"] if "did_activity" in cat else False
+            new_cat.df_mentor = cat["df_mentor"] if "df_mentor" in cat else None
+            new_cat.df_apprentices = cat["df_apprentices"] if "df_apprentices" in cat else []
+            new_cat.faith = cat["faith"] if "faith" in cat else randint(-3,3)
+            new_cat.connected_dialogue = cat["connected_dialogue"] if "connected_dialogue" in cat else {}
+            new_cat.df_join_moon = cat["df_join_moon"] if "df_join_moon" in cat else 0
+            new_cat.df_patrols = cat["df_patrols"] if "df_patrols" in cat else 0
+            new_cat.graduated_df = cat["graduated_df"] if "graduated_df" in cat else False
 
             if "died_by" in cat or "scar_event" in cat or "mentor_influence" in cat:
                 new_cat.convert_history(
                     cat["died_by"] if "died_by" in cat else [],
                     cat["scar_event"] if "scar_event" in cat else [],
                 )
+            # if "pronouns" in cat:
+            #     for lang in cat["pronouns"]:
+            #         for prn_set in cat["pronouns"][lang]:
+            #             if "sibling" not in prn_set:
+            #                 if new_cat.genderalign in ["male", "trans male"]:
+            #                     prn_set["sibling"] = "brother"
+            #                 elif new_cat.genderalign in ["female", "trans female"]:
+            #                     prn_set["sibling"] = "sister"
+            #                 else:
+            #                     prn_set["sibling"] = "sibling"
+
+            
+            #             if "parent" not in prn_set:
+            #                 if new_cat.genderalign in ["male", "trans male"]:
+            #                     prn_set["parent"] = "father"
+            #                 elif new_cat.genderalign in ["female", "trans female"]:
+            #                     prn_set["parent"] = "mother"
+            #                 else:
+            #                     prn_set["parent"] = "parent"
 
             new_cat.starclan_affinity = cat.get("starclan_affinity", 0)
             new_cat.dark_forest_affinity = cat.get("dark_forest_affinity", 0)
@@ -314,6 +895,11 @@ def json_load():
             )
             switch_set_value(Switch.traceback, e)
             raise
+
+    version_info = clan_class.load_clan()
+    version_convert(version_info)
+
+    clear_missing_cat_links(all_cats)
 
     # replace cat ids with cat objects and add other needed variables
     other_clan_cats = [c for c in Cat.all_cats_list if c.status.is_other_clancat]
@@ -336,8 +922,6 @@ def json_load():
         try:
             if not cat.dead:
                 cat.load_relationship_of_cat()
-                if cat.relationships is not None and len(cat.relationships) < 1:
-                    cat.init_all_relationships()
             else:
                 cat.relationships = {}
         except Exception as e:
@@ -370,260 +954,6 @@ def json_load():
         # Save integrety checks
         if constants.CONFIG["save_load"]["load_integrity_checks"]:
             save_check()
-
-
-def csv_load(all_cats):
-    if switch_get_value(Switch.clan_list)[0].strip() == "":
-        cat_data = ""
-    else:
-        if os.path.exists(
-            get_save_dir() + "/" + switch_get_value(Switch.clan_list)[0] + "cats.csv"
-        ):
-            with open(
-                get_save_dir()
-                + "/"
-                + switch_get_value(Switch.clan_list)[0]
-                + "cats.csv",
-                "r",
-                encoding="utf-8",
-            ) as read_file:
-                cat_data = read_file.read()
-        else:
-            with open(
-                get_save_dir()
-                + "/"
-                + switch_get_value(Switch.clan_list)[0]
-                + "cats.txt",
-                "r",
-                encoding="utf-8",
-            ) as read_file:
-                cat_data = read_file.read()
-    if len(cat_data) > 0:
-        cat_data = cat_data.replace("\t", ",")
-        for i in cat_data.split("\n"):
-            # CAT: ID(0) - prefix:suffix(1) - gender(2) - status(3) - age(4) - trait(5) - parent1(6) - parent2(7) - mentor(8)
-            # PELT: pelt(9) - colour(10) - white(11) - length(12)
-            # SPRITE: kitten(13) - apprentice(14) - warrior(15) - elder(16) - eye colour(17) - reverse(18)
-            # - white patches(19) - pattern(20) - tortiebase(21) - tortiepattern(22) - tortiecolour(23) - skin(24) - skill(25) - NONE(26) - spec(27) - accessory(28) -
-            # spec2(29) - moons(30) - mate(31)
-            # dead(32) - SPRITE:dead(33) - exp(34) - dead for _ moons(35) - current apprentice(36)
-            # (BOOLS, either TRUE OR FALSE) paralyzed(37) - no kits(38) - exiled(39)
-            # genderalign(40) - former apprentices list (41)[FORMER APPS SHOULD ALWAYS BE MOVED TO THE END]
-            if i.strip() != "":
-                attr = i.split(",")
-                for x in range(len(attr)):
-                    attr[x] = attr[x].strip()
-                    if attr[x] in ["None", "None "]:
-                        attr[x] = None
-                    elif attr[x].upper() == "TRUE":
-                        attr[x] = True
-                    elif attr[x].upper() == "FALSE":
-                        attr[x] = False
-                switch_set_value(
-                    Switch.error_message,
-                    f"There was an error loading cat # {str(attr[0])} (code: 1)",
-                )
-                the_pelt = Pelt(
-                    colour=attr[2], name=attr[11], length=attr[9], eye_color=attr[17]
-                )
-                switch_set_value(
-                    Switch.error_message,
-                    f"There was an error loading cat # {str(attr[0])} (code: 2)",
-                )
-                the_cat = Cat(
-                    ID=attr[0],
-                    prefix=attr[1].split(":")[0],
-                    suffix=attr[1].split(":")[1],
-                    gender=attr[2],
-                    status={"rank": attr[3]},
-                    pelt=the_pelt,
-                    parent1=attr[6],
-                    parent2=attr[7],
-                )
-
-                switch_set_value(
-                    Switch.error_message,
-                    f"There was an error loading cat # {str(attr[0])} (code: 3)",
-                )
-                the_cat.age, the_cat.mentor = attr[4], attr[8]
-                switch_set_value(
-                    Switch.error_message,
-                    f"There was an error loading cat # {str(attr[0])} (code: 4)",
-                )
-                (
-                    the_cat.pelt.cat_sprites["kitten"],
-                    the_cat.pelt.cat_sprites["adolescent"],
-                ) = int(attr[13]), int(attr[14])
-                switch_set_value(
-                    Switch.error_message,
-                    f"There was an error loading cat # {str(attr[0])} (code: 5)",
-                )
-                the_cat.pelt.cat_sprites["adult"], the_cat.pelt.cat_sprites["elder"] = (
-                    int(attr[15]),
-                    int(attr[16]),
-                )
-                switch_set_value(
-                    Switch.error_message,
-                    f"There was an error loading cat # {str(attr[0])} (code: 6)",
-                )
-                (
-                    the_cat.pelt.cat_sprites["young adult"],
-                    the_cat.pelt.cat_sprites["senior adult"],
-                ) = int(attr[15]), int(attr[15])
-                switch_set_value(
-                    Switch.error_message,
-                    f"There was an error loading cat # {str(attr[0])} (code: 7)",
-                )
-                (
-                    the_cat.pelt.reverse,
-                    the_cat.pelt.white_patches,
-                    the_cat.pelt.tortie_marking,
-                ) = (attr[18], attr[19], attr[20])
-                switch_set_value(
-                    Switch.error_message,
-                    f"There was an error loading cat # {str(attr[0])} (code: 8)",
-                )
-                (
-                    the_cat.pelt.tortie_base,
-                    the_cat.pelt.tortie_pattern,
-                    the_cat.pelt.tortie_colour,
-                ) = (attr[21], attr[22], attr[23])
-                switch_set_value(
-                    Switch.error_message,
-                    f"There was an error loading cat # {str(attr[0])} (code: 9)",
-                )
-                the_cat.trait, the_cat.pelt.skin, the_cat.specialty = (
-                    attr[5],
-                    attr[24],
-                    attr[27],
-                )
-                switch_set_value(
-                    Switch.error_message,
-                    f"There was an error loading cat # {str(attr[0])} (code: 10)",
-                )
-                the_cat.skill = attr[25]
-                if len(attr) > 28:
-                    the_cat.pelt.accessory = (attr[28],)
-                if len(attr) > 29:
-                    the_cat.specialty2 = attr[29]
-                else:
-                    the_cat.specialty2 = None
-                switch_set_value(
-                    Switch.error_message,
-                    f"There was an error loading cat # {str(attr[0])} (code: 11)",
-                )
-                if len(attr) > 34:
-                    the_cat.experience = int(attr[34])
-                    experiencelevels = [
-                        "very low",
-                        "low",
-                        "slightly low",
-                        "average",
-                        "somewhat high",
-                        "high",
-                        "very high",
-                        "master",
-                        "max",
-                    ]
-                    the_cat.experience_level = experiencelevels[
-                        floor(int(the_cat.experience) / 10)
-                    ]
-                else:
-                    the_cat.experience = 0
-                switch_set_value(
-                    Switch.error_message,
-                    f"There was an error loading cat # {str(attr[0])} (code: 12)",
-                )
-                if len(attr) > 30:
-                    # Attributes that are to be added after the update
-                    the_cat.moons = int(attr[30])
-                    if len(attr) >= 31:
-                        # assigning mate to cat, if any
-                        the_cat.mate = [attr[31]]
-                    if len(attr) >= 32:
-                        # Is the cat dead
-                        the_cat.status.send_to_afterlife(target_ID=CatGroup.STARCLAN_ID)
-                        the_cat.pelt.cat_sprites["dead"] = attr[33]
-                switch_set_value(
-                    Switch.error_message,
-                    f"There was an error loading cat # {str(attr[0])} (code: 13)",
-                )
-                if len(attr) > 35:
-                    the_cat.dead_for = int(attr[35])
-                switch_set_value(
-                    Switch.error_message,
-                    f"There was an error loading cat # {str(attr[0])} (code: 14)",
-                )
-                if len(attr) > 36 and attr[36] is not None:
-                    the_cat.apprentice = attr[36].split(";")
-                switch_set_value(
-                    Switch.error_message,
-                    f"There was an error loading cat # {str(attr[0])} (code: 15)",
-                )
-                if len(attr) > 37:
-                    the_cat.pelt.paralyzed = bool(attr[37])
-                if len(attr) > 38:
-                    the_cat.no_kits = bool(attr[38])
-                if len(attr) > 39:
-                    if bool(attr[39]):
-                        the_cat.status.exile_from_group()
-                if len(attr) > 40:
-                    the_cat.genderalign = attr[40]
-                if len(attr) > 41 and attr[41] is not None:  # KEEP THIS AT THE END
-                    the_cat.former_apprentices = attr[41].split(";")
-        switch_set_value(
-            Switch.error_message,
-            "There was an error loading this clan's mentors, apprentices, relationships, or sprite info.",
-        )
-        for inter_cat in all_cats.values():
-            # Load the mentors and apprentices after all cats have been loaded
-            switch_set_value(
-                Switch.error_message,
-                f"There was an error loading this clan's mentors/apprentices. Last cat read was {inter_cat}",
-            )
-            inter_cat.mentor = Cat.all_cats.get(inter_cat.mentor)
-            apps = []
-            former_apps = []
-            for app_id in inter_cat.apprentice:
-                app = Cat.all_cats.get(app_id)
-                # Make sure if cat isn't an apprentice, they're a former apprentice
-                if app.status.rank == CatRank.APPRENTICE:
-                    apps.append(app)
-                else:
-                    former_apps.append(app)
-            for f_app_id in inter_cat.former_apprentices:
-                f_app = Cat.all_cats.get(f_app_id)
-                former_apps.append(f_app)
-            inter_cat.apprentice = [
-                a.ID for a in apps
-            ]  # Switch back to IDs. I don't want to risk breaking everything.
-            inter_cat.former_apprentices = [a.ID for a in former_apps]
-            if not inter_cat.dead:
-                switch_set_value(
-                    Switch.error_message,
-                    f"There was an error loading this clan's relationships. Last cat read was {inter_cat}",
-                )
-                inter_cat.load_relationship_of_cat()
-            switch_set_value(
-                Switch.error_message,
-                f"There was an error loading a cat's sprite info. Last cat read was {inter_cat}",
-            )
-            # update_sprite(inter_cat)
-        # generate the relationship if some is missing
-        if not the_cat.dead:
-            switch_set_value(
-                Switch.error_message,
-                f"There was an error when relationships were created.",
-            )
-            for id in all_cats.keys():
-                the_cat = all_cats.get(id)
-                switch_set_value(
-                    Switch.error_message,
-                    f"There was an error when relationships for cat #{the_cat} are created.",
-                )
-                if the_cat.relationships is not None and len(the_cat.relationships) < 1:
-                    the_cat.create_all_relationships()
-        switch_set_value(Switch.error_message, "")
 
 
 def save_check():

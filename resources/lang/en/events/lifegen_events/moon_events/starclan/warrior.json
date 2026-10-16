@@ -1,0 +1,92 @@
+{
+    "general1": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You do some hunting for the StarClan kits. There's so much prey here that hunting it is nearly getting boring."
+    },
+    "general2": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You meet up with some friends to joke about the good old days. c_n doesn't know how good they have it."
+    },
+    "stable3": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "stable"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You wish you could have done more."
+    },
+    "stable4": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "stable"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "Sometimes you think that maybe the Clan needs more cats like you. Cats who were kind and caring. Loyal and dedicated. Not lazy and selfish."
+    },
+    "stable5": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "stable"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You find yourself wandering along the paths where you used to travel alongside your friends. You begin to tear up at the thought... You wonder if they still walk through here or if the memories are too painful."
+    },
+    "stable6": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "stable"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You carefully guide the kits of StarClan to the best spot on the territory and let them play until moonrise."
+    },
+    "stable7": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "stable"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You smile at a friend as they visit your grave, yet they don't see you."
+    }
+}

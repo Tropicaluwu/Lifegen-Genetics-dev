@@ -1,0 +1,206 @@
+{
+    "general1": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "As you look down on the apprentices of c_n, you wish you'd lived long enough to become a 'paw'."
+    },
+    "general2": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "The nests in StarClan are cosy, but you still feel jealous of all of the living c_n kits who get to sleep in the nursery."
+    },
+    "general3": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "dead": [
+                    "sc"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You run around StarClan territory with r_c:0, yelling, laughing, and never getting tired."
+    },
+    "general4": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "dead": [
+                    "sc"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You wander a bit too close to the Dark Forest border. Before you can say hello to the glowing pair of eyes you spy through the brambles, r_c:0 grabs you and quickly rushes you back to familiar territory."
+    },
+    "general5": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "As you playfully chase a feather, it gets stuck under your claw and vanishes into the starry night."
+    },
+    "general6": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You roll around in wonder as the stars you were running on get tangled in your fur."
+    },
+    "general7": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "dead": [
+                    "sc"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You express a cheeky smile when r_c:0 hands you a particularly shiny sparkle."
+    },
+    "general8": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You feel a pang of guilt as you watch your littermates grow up without you and wish you could switch places with them."
+    },
+    "general9": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You wonder if there's a word for a parent who has lost their kit."
+    },
+    "general10": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "queen"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0_song is singing to the kits in the nursery today, and you feel left out. Instead of being down there listening to r_c:0_song, you're up here in StarClan, just watching the clan go by without you."
+    },
+    "stable11": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "stable"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You wish you had a chance to prove yourself... StarClan had other plans."
+    },
+    "stable12": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "stable"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You question what the warriors mean when they say you were too young."
+    },
+    "stable13": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "stable"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "A queen of StarClan grooms your fur and gives you as many cuddles as you want."
+    },
+    "stable14": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "stable"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You wonder where you went wrong..."
+    },
+    "stable15": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "stable"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You accidentally stumble off a cloud after playing a game with another kitten. They watch you fall slowly from the sky only to fall down with you. You both drift back down to the ground, then excitedly begin to climb into the air once more."
+    },
+    "stable16": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "stable"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You ponder what games you could play in StarClan."
+    }
+}

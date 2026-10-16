@@ -23,6 +23,16 @@ class PatrolTagEnum(Enum):
     app4_mentored = "app4_mentored"
     app5_mentored = "app5_mentored"
     app6_mentored = "app6_mentored"
+    tnr = "tnr"
+    tnr2 = "tnr2"
+
+    # LG
+    sc_lifegen = "sc_lifegen"
+    ur_lifegen = "ur_lifegen"
+    df_lifegen = "df_lifegen"
+    shunned = "shunned"
+    fellowtrainee = "fellowtrainee"
+    mc_death = "mc_death"
 
 
 class PatrolTag(RootModel):

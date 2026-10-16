@@ -21,7 +21,7 @@
     },
     {
         "id": "gen_newborn_to_parent",
-        "thoughts":[
+        "thoughts": [
             "Snuggles closer to r_c",
             "Snuggles up to the belly of r_c",
             "Smells r_c and immediately perks up",
@@ -44,7 +44,7 @@
     },
     {
         "id": "gen_newborn_to_sibling",
-        "thoughts":[
+        "thoughts": [
             "Tried suckling on r_c's tail",
             "Is being buried under r_c",
             "Was almost shoved out of the nest by r_c"

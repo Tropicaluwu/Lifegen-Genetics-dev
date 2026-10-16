@@ -1,0 +1,32 @@
+{
+    "general1": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You send a sign down to the Clan to congratulate them on their recent kits."
+    },
+    "general2": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "A group of kits swarm you with existential questions. It fills you with a sense of nostalgia."
+    },
+    "general3": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You make sure to take good care of StarClan's kits. Just because you died doesn't mean you should waste the many moons you spend on training."
+    }
+}

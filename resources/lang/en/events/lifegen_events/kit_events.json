@@ -1,0 +1,50 @@
+{
+    "kit_events": {
+        "moon_2_one_parent": [
+            "You feel the soft touch of parent1's fur as {PRONOUN/parent1/subject} {VERB/parent1/curl/curls} around you. {PRONOUN/parent1/poss/CAP} warm purr is comforting, making you feel safe. The world may be wide and unknown, but here, buried in {PRONOUN/parent1/poss} fur, you know you are loved and protected.",
+            "Even though your eyes are still closed, you know you're not alone. parent1 is there, brushing your head with {PRONOUN/parent1/poss} muzzle.",
+            "The wind picks up outside the nursery causing you to tremble. parent1 comes closer, whispering into your ear that it's just the wind, nothing to fear. Your trembling lessens as {PRONOUN/parent1/poss} comforting purrs reassure you.",
+            "One day, you feel the soft nudge of parent1. {PRONOUN/parent1/subject/CAP} {VERB/parent1/encourage/encourages} you to stand on your tiny paws. Despite a few stumbles, you manage to stand tall, looking up to see parent1's eyes glowing with pride.",
+            "parent1 takes you to the entrance of the nursery for the first time. The camp is buzzing with activity, making your heart pound with excitement and fear. parent1's reassuring nudge reminds you that this is your future - you're not just a kit - you're a part of the Clan.",
+            "Trying to run for the first time, you stumble and fall flat on your face. parent1 asks if you're okay, hiding a smile."
+        ],
+        "moon_2_two_parents": [
+            "One day, parent1 takes your tiny paw into {PRONOUN/parent1/poss} own, guiding you to make your first paw print in the soft mud outside the nursery. parent2 watches from a distance, {PRONOUN/parent2/poss} eyes gleaming with pride.",
+            "parent1 and parent2 take turns teaching you the Warrior Code, their voices filling the nursery with tales of honor, loyalty, and bravery.",
+            "One evening, under the star-studded sky, parent1 points out various constellations to you. parent2 whispers stories that align with each constellation, legends of the great warriors who now watch over you from StarClan.",
+            "The day comes when you leave the nursery for the first time, exploring the bustling Clan camp. parent1 and parent2 stay close, guiding and watching as you interact with your future Clanmates."
+        ],
+        "moon_3_one_parent": [
+            "One day, while the camp is buzzing with the morning's activity, parent1 gently wakes you. {PRONOUN/parent1/subject/CAP} {VERB/parent1/tell/tells} you it's time to explore the camp, {PRONOUN/parent1/poss} voice warm and encouraging. Your tiny heart races with anticipation as you venture out of the nursery, parent1's reassuring presence guiding you every step of the way.",
+            "parent1's voice pulls you from your dream, a soft hum singing praises of StarClan.",
+            "parent1's voice pulls you from your dream. {PRONOUN/parent1/subject/CAP}{VERB/parent1/'re/'s} quietly singing a haunting melody of the Dark Forest.",
+            "You feel the tickle of parent1's tail against your nose, waking you up from your mid-day nap. With a playful swat, {PRONOUN/parent1/subject} {VERB/parent1/invite/invites} you to join in a gentle play-fight.",
+            "parent1 leads you to the fresh-kill pile. You observe as {PRONOUN/parent1/subject} skillfully {VERB/parent1/select/selects} the perfect meal, teaching you about the different prey in the process.",
+            "As the moon shines brightly overhead, parent1 tells you tales of the great gatherings of the four Clans that happen every full moon."
+        ],
+        "moon_3_two_parents": [
+            "One quiet evening, parent1 and parent2 sit with you under the starlit sky. They tell you tales of the ancient Clans and the great warriors that now shimmer above you in StarClan. These stories fill your dreams, painting them with acts of courage, wisdom, and sacrifice that one day, you too, might echo.",
+            "During a particularly warm day, parent1 nudges you towards a shady spot under a tree. parent2 fetches a small piece of fresh-kill for you, teaching you the importance of staying nourished and cool.",
+            "One day, parent1 and parent2 take turns teaching you about different prey. You learn about their smells, sounds, and tracks, feeling a rush of excitement with every new discovery.",
+            "One moonlit night, parent1 shares with you the Warrior Code while parent2 attentively listens. As you memorize the code, {PRONOUN/parent1/subject} {VERB/parent1/explain/explains} each law, helping you understand the principles that bind your Clan together."
+        ],
+        "moon_4_one_parent": [
+            "One day, parent1 shows you the apprentice's den. Though it seems big and somewhat intimidating, the prospect of joining the apprentices fills you with excitement.",
+            "You tried to sneak out of camp after parent1 was called elsewhere. Sadly, your denmate snitched on you, and you were brought back to the nursery."
+        ],
+        "moon_4_two_parents": [
+            "One day, parent1 shows you the apprentice's den while parent2 watches with a warm smile. It seems big and somewhat intimidating, but the prospect of joining the apprentices fills you with excitement.",
+            "You tried to sneak out of camp after parent1 and parent2 were called elsewhere. Sadly, your denmate snitched on you, and you were brought back to the nursery."
+        ],
+        "moon_5_one_parent": [
+            "parent1 encourages you to speak with the elders about the different paths you can take when you become an apprentice. Your head starts to feel like it's going to explode after you learn about what each role -- warrior, medicine cat, and mediator -- entails.",
+            "You're so excited for your upcoming apprentice ceremony that you jump up and down with excitement. parent1 watches you with amusement.",
+            "As your sixth moon approaches, parent1 tells you about the approaching ceremony where you'll be assigned a mentor and begin your training."
+        ],
+        "moon_5_two_parents": [
+            "parent1 and parent2 encourage you to speak with the elders about the different paths you can take when you become an apprentice. Your head starts to feel like it's going to explode after you learn about what each role -- warrior, medicine cat, queen, and mediator -- entails.",
+            "You're so excited for your upcoming apprentice ceremony that you jump up and down with excitement. parent1 and parent2 watch you with amusement.",
+            "As your sixth moon approaches, parent1 and parent2 tell you about the approaching ceremony where you'll be assigned a mentor and begin your training."
+        ]
+    }
+}

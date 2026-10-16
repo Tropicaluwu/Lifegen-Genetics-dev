@@ -117,6 +117,24 @@
         "-otherclan3",
         "otherclan4",
         "-otherclan4",
+        "otherclan5",
+        "-otherclan5",
+        "otherclan6",
+        "-otherclan6",
+        "otherclan7",
+        "-otherclan7",
+        "otherclan8",
+        "-otherclan8",
+        "otherclan9",
+        "-otherclan9",
+        "otherclan10",
+        "-otherclan10",
+        "otherclan11",
+        "-otherclan11",
+        "otherclan12",
+        "-otherclan12",
+        "otherclan13",
+        "-otherclan13",
         "ostracized_warrior",
         "-ostracized_warrior",
         "disgraced1",
@@ -180,7 +198,39 @@
         "baby_loner_backstories",
         "-baby_loner_backstories",
         "baby_kittypet_backstories",
-        "-baby_kittypet_backstories"
+        "-baby_kittypet_backstories",
+        "oldstarclan1",
+        "oldstarclan2",
+        "oldstarclan3",
+        "oldstarclan_backstories",
+        "dfkit1",
+        "dfkit2",
+        "dark_forest_kits",
+        "newscguide1",
+        "newscguide2",
+        "newscguide3",
+        "newscguide4",
+        "new_sc_guide_backstories",
+        "newdfguide1",
+        "newdfguide2",
+        "newdfguide3",
+        "newdfguide4",
+        "new_df_guide_backstories",
+        "dead1",
+        "dead2",
+        "dead3",
+        "dead4",
+        "dead5",
+        "dead6",
+        "dead7",
+        "dead8",
+        "dead9",
+        "dead10",
+        "dead11",
+        "dead12",
+        "dead_cat_backstories",
+        "starclan_backstories",
+        "df_backstories"
       ],
       "title": "Backstory",
       "type": "string"
@@ -209,7 +259,7 @@
           "$ref": "#/$defs/CatEnum"
         },
         {
-          "pattern": "^n_c:[0-9]+$",
+          "pattern": "^(n_c:|r_c:|o_c)[0-9]+$",
           "type": "string"
         }
       ],
@@ -460,7 +510,7 @@
           "$ref": "#/$defs/GatherCatEnum"
         },
         {
-          "pattern": "^n_c:[0-9]+$",
+          "pattern": "^(n_c:|r_c:|o_c)[0-9]+$",
           "type": "string"
         }
       ],
@@ -476,6 +526,8 @@
         "-p_l",
         "s_c",
         "-s_c",
+        "y_c",
+        "-y_c",
         "app1",
         "-app1",
         "app2",
@@ -709,7 +761,21 @@
         "bossy",
         "-bossy",
         "noisy",
-        "-noisy"
+        "-noisy",
+        "smug",
+        "-smug",
+        "secretive",
+        "-secretive",
+        "manipulative",
+        "-manipulative",
+        "leader-like",
+        "-leader-like",
+        "passionate",
+        "-passionate",
+        "rebellious",
+        "-rebellious",
+        "honest",
+        "-honest"
       ],
       "title": "KitTrait",
       "type": "string"
@@ -873,11 +939,19 @@
             "type": "string"
           },
           {
+            "pattern": "^sibling:([,0-9]+)$",
+            "type": "string"
+          },
+          {
             "pattern": "^adoptive:([_,0-9a-zA-Z]+)$",
             "type": "string"
           },
           {
             "pattern": "^mate:([_,0-9a-zA-Z]+)$",
+            "type": "string"
+          },
+          {
+            "pattern": "^residence:(.+)$",
             "type": "string"
           }
         ]
@@ -901,7 +975,10 @@
         "exists",
         "unknown",
         "litter",
-        "dead"
+        "dead",
+        "change_clan",
+        "change_clan_rev",
+        "exiled"
       ],
       "title": "NewCatTag",
       "type": "string"
@@ -930,6 +1007,12 @@
           "description": "How the reputation of the Clan changes as a result of this event",
           "title": "Changed",
           "type": "integer"
+        },
+        "has_rank": {
+          "description": "Clan must have certain ranks of cats in order for event to trigger.",
+          "items": {},
+          "title": "Has Rank",
+          "type": "array"
         }
       },
       "title": "OtherClan",
@@ -1435,6 +1518,14 @@
           "title": "New Cat",
           "type": "array"
         },
+        "multiclan_cat": {
+          "description": "Adds a new cat.",
+          "items": {
+            "$ref": "#/$defs/NewCat"
+          },
+          "title": "Multiclan Cat",
+          "type": "array"
+        },
         "injury": {
           "description": "Indicates which cats get injured, and how.",
           "items": {
@@ -1526,12 +1617,23 @@
         "-apprentice",
         "mediator apprentice",
         "-mediator apprentice",
+        "queen apprentice",
+        "-queen apprentice",
+        "healer apprentice",
+        "-healer apprentice",
         "medicine cat apprentice",
         "-medicine cat apprentice",
+        "any_apprentice",
         "warrior",
         "-warrior",
         "mediator",
         "-mediator",
+        "queen",
+        "-queen",
+        "healer",
+        "-healer",
+        "any_healer",
+        "any_fighter",
         "medicine cat",
         "-medicine cat",
         "deputy",
@@ -1540,6 +1642,10 @@
         "-leader",
         "elder",
         "-elder",
+        "queen",
+        "queen's apprentice",
+        "-queen",
+        "-queen's apprentice",
         "any",
         "living",
         "starclan",
@@ -1654,7 +1760,10 @@
         "lost",
         "kit_manipulated",
         "romance",
-        "adoption"
+        "adoption",
+        "tnr",
+        "not_singleclan",
+        "not_multiclan"
       ],
       "title": "TagEnum",
       "type": "string"
@@ -1738,7 +1847,45 @@
         "-gloomy",
         "-sincere",
         "-flamboyant",
-        "-rebellious"
+        "-rebellious",
+        "mellow",
+        "flexible",
+        "stoic",
+        "witty",
+        "methodical",
+        "aloof",
+        "justified",
+        "reserved",
+        "meek",
+        "cowardly",
+        "emotional",
+        "spontaneous",
+        "energetic",
+        "bouncy",
+        "trusting",
+        "disciplined",
+        "patient",
+        "humble",
+        "obsessive",
+        "-mellow",
+        "-flexible",
+        "-stoic",
+        "-witty",
+        "-methodical",
+        "-aloof",
+        "-justified",
+        "-reserved",
+        "-meek",
+        "-cowardly",
+        "-emotional",
+        "-spontaneous",
+        "-energetic",
+        "-bouncy",
+        "-trusting",
+        "-disciplined",
+        "-patient",
+        "-humble",
+        "-obsessive"
       ],
       "title": "Trait",
       "type": "string"

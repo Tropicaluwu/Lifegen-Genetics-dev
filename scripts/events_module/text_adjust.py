@@ -16,9 +16,11 @@ from scripts.cat.pronouns import (
 )
 from scripts.cat.sprites.load_sprites import sprites
 from scripts.clan_package.get_clan_cats import find_alive_cats_with_rank
-from scripts.game_structure import localization, game
+from scripts.game_structure import localization, game, constants
 from scripts.game_structure.game import switch_get_value, Switch
 from scripts.game_structure.localization import load_lang_resource, get_lang_config
+
+from scripts.screens.enums import GameScreen
 
 if TYPE_CHECKING:
     from scripts.cat.cats import Cat
@@ -45,6 +47,13 @@ def pronoun_repl(m, cat_pronouns_dict, raise_exception=False):
     # Add protection about the "insert" sometimes used
     if m.group(0) == "{insert}":
         return m.group(0)
+    if m.group(0) == "{surrogate}":
+        return m.group(0)
+
+    # LG
+    if m.group(0) == "{cap_insert}":
+        return m.group(0)
+    # ---
 
     inner_details = m.group(1).split("/")
     out = None
@@ -132,6 +141,7 @@ def process_text(text, cat_dict, raise_exception=False):
     adjust_text = re.sub(
         "|".join(name_patterns), lambda x: name_repl(x, cat_dict), adjust_text
     )
+    adjust_text = adjust_text.replace("medicine cat", "healer").replace("medicine den", "healer den")
     return adjust_text
 
 
@@ -155,7 +165,7 @@ def adjust_prey_abbr(patrol_text):
 
 
 def get_special_snippet_list(
-    chosen_list, amount, sense_groups=None, return_string=True
+    chosen_list, amount, sense_groups=None, return_string=True, clan=None
 ):
     """
     function to grab items from various lists in snippet_collections.json
@@ -175,11 +185,13 @@ def get_special_snippet_list(
     (i.e. ["hate", "fear", "dread"] becomes "hate, fear, and dread") - Default is True
     :return: a list of the chosen items from chosen_list or a formatted string if format is True
     """
+    if clan is None:
+        clan = game.clan
     if not game.clan:
         biome = None
     else:
         biome = (
-            game.clan.biome
+            clan.biome
             if not game.clan.override_biome
             else game.clan.override_biome
         ).casefold()
@@ -303,14 +315,13 @@ def ongoing_event_text_adjust(Cat, text, clan=None, other_clan_name=None):
     """
     cat_dict = {}
     if "lead_name" in text:
-        kitty = Cat.fetch_cat(game.clan.leader)
-        cat_dict["lead_name"] = (str(kitty.name), choice(kitty.pronouns))
+        cat_dict["lead_name"] = (str(clan.leader.name), choice(clan.leader.pronouns))
     if "dep_name" in text:
-        kitty = Cat.fetch_cat(game.clan.deputy)
-        cat_dict["dep_name"] = (str(kitty.name), choice(kitty.pronouns))
+        cat_dict["dep_name"] = (str(clan.deputy.name), choice(clan.deputy.pronouns))
     if "med_name" in text:
+        meds = find_alive_cats_with_rank(Cat, [CatRank.MEDICINE_CAT], working=True, clan=clan.group_ID)
         kitty = choice(
-            find_alive_cats_with_rank(Cat, [CatRank.MEDICINE_CAT], working=True)
+            meds if meds else find_alive_cats_with_rank(Cat, [CatRank.MEDICINE_CAT], clan=clan.group_ID)
         )
         cat_dict["med_name"] = (str(kitty.name), choice(kitty.pronouns))
 
@@ -328,14 +339,19 @@ def ongoing_event_text_adjust(Cat, text, clan=None, other_clan_name=None):
         else:
             clan_name = str(game.clan.displayname)
 
-    text = text.replace("c_n", clan_name + "Clan")
+    text = text.replace("c_n", i18n.t("general.clan", name=clan_name))
+
+    text = text.replace("medicine cat", "healer").replace("medicine den", "healer den")
+
+    if set(constants.CONFIG["clan_creation"]["leader_lives_nr"]) != (9):
+        text = text.replace("nine lives", "lives")
 
     return text
 
 
 def event_text_adjust(
     Cat: Type["Cat"],
-    text,
+    text: str,
     *,
     patrol_leader=None,
     main_cat=None,
@@ -346,14 +362,17 @@ def event_text_adjust(
     patrol_apprentices: list = None,
     new_cats: list = None,
     multi_cats: list = None,
-    clan=None,
-    other_clan=None,
+    clan = None,
+    other_clan = None,
     chosen_herb: str = None,
+    # LG: random cats in patrols
+    chosen_lifegen_cats: list = None
 ):
     """
     handles finding abbreviations in the text and replacing them appropriately, returns the adjusted text
     :param Cat Cat: always pass the Cat class
     :param str text: the text being adjusted
+    :param dict patrol_cat_dict: LIFEGEN: dict to hold random cat abbrevs in LG patrols
     :param Cat patrol_leader: Cat object for patrol_leader (p_l), if present
     :param Cat main_cat: Cat object for main_cat (m_c), if present
     :param Cat random_cat: Cat object for random_cat (r_c), if present
@@ -367,10 +386,18 @@ def event_text_adjust(
     :param OtherClan other_clan: OtherClan object for other_clan (o_c_n), if present
     :param str chosen_herb: string of chosen_herb (chosen_herb), if present
     """
+    vowels = ["A", "E", "I", "O", "U"]
     if not patrol_apprentices:
         patrol_apprentices = []
     if not new_cats:
         new_cats = []
+
+    # LG
+    if not chosen_lifegen_cats:
+        chosen_lifegen_cats = []
+
+    if clan is None:
+        clan = game.clan
 
     if not text:
         text = "This should not appear, report as a bug please! Tried to adjust the text, but no text was provided."
@@ -387,7 +414,7 @@ def event_text_adjust(
     text, senses, list_type, cat_tag = find_special_list_types(text)
     if list_type:
         sign_list = get_special_snippet_list(
-            list_type, amount=randint(1, 3), sense_groups=senses
+            list_type, amount=randint(1, 3), sense_groups=senses, clan=clan
         )
         text = text.replace(list_type, str(sign_list))
         if cat_tag:
@@ -405,6 +432,14 @@ def event_text_adjust(
                 str(patrol_leader.name),
                 choice(patrol_leader.pronouns),
             )
+    
+    # LG
+    for i, lg_cat in enumerate(chosen_lifegen_cats):
+        name = str(lg_cat.name)
+        pronoun = choice(lg_cat.pronouns)
+
+        replace_dict[f"r_c:{i}"] = (name, pronoun)
+    # ---
 
     # random_cat
     if "r_c" in text:
@@ -461,19 +496,25 @@ def event_text_adjust(
 
     # lead_name
     if "lead_name" in text:
-        leader = Cat.fetch_cat(game.clan.leader)
+        leader = Cat.fetch_cat(clan.leader if clan else game.clan.leader)
         replace_dict["lead_name"] = (str(leader.name), choice(leader.pronouns))
 
     # dep_name
     if "dep_name" in text:
-        deputy = Cat.fetch_cat(game.clan.deputy)
+        deputy = Cat.fetch_cat(clan.deputy if clan else game.clan.deputy)
         replace_dict["dep_name"] = (str(deputy.name), choice(deputy.pronouns))
 
     # med_name
     if "med_name" in text:
-        med = choice(
-            find_alive_cats_with_rank(Cat, [CatRank.MEDICINE_CAT], working=True)
-        )
+        try:
+            med = choice(
+                find_alive_cats_with_rank(
+                    Cat, [CatRank.MEDICINE_CAT, CatRank.MEDICINE_APPRENTICE], working=True, clan=clan.group_ID)
+            )
+        except:
+            med = choice(
+                find_alive_cats_with_rank(Cat, [CatRank.MEDICINE_CAT], clan=clan.group_ID)
+            )
         replace_dict["med_name"] = (str(med.name), choice(med.pronouns))
 
     # assign all names and pronouns
@@ -495,7 +536,7 @@ def event_text_adjust(
             "o_c_n",
             other_clan
             if isinstance(other_clan, str)
-            else str(other_clan.name) + "Clan",
+            else i18n.t("general.clan", name=str(other_clan.displayname)),
         )
 
     # clan_name
@@ -503,13 +544,17 @@ def event_text_adjust(
         try:
             clan_name = clan.displayname
         except AttributeError:
-            # todo can this be Switch.clan_name ?
-            try:
-                clan_name = switch_get_value(Switch.clan_list)[0]
-            except IndexError:
-                clan_name = "Test"
+            if game.clan is not None:
+                clan_name = game.clan.displayname
+            else:
+                try:
+                    clan_name = switch_get_value(Switch.clan_list)[0]
+                except IndexError:
+                    clan_name = "Test"
 
-        text = _replace_clan_name(text, "c_n", str(clan_name) + "Clan")
+        text = _replace_clan_name(
+            text, "c_n", i18n.t("general.clan", name=str(clan_name))
+        )
 
     # prey lists
     text = adjust_prey_abbr(text)
@@ -542,6 +587,11 @@ def event_text_adjust(
             text = text.replace(
                 "given_herb", i18n.t(f"conditions.herbs.{chosen_herb}", count=2)
             )
+
+    text = text.replace("medicine cat", "healer").replace("medicine den", "healer den")
+
+    if list(set(constants.CONFIG["clan_creation"]["leader_lives_nr"])) != [9]:
+        text = text.replace("nine lives", "lives")
 
     return text
 
@@ -602,7 +652,11 @@ def leader_ceremony_text_adjust(
     if extra_lives:
         text = text.replace("[life_num]", str(extra_lives))
 
-    text = text.replace("c_n", str(game.clan.displayname) + "Clan")
+    clan = leader.status.fetch_clan_object()
+    text = text.replace("c_n", i18n.t("general.clan", name=str(clan.displayname)))
+
+    if list(set(constants.CONFIG["clan_creation"]["leader_lives_nr"])) != [9]:
+        text = text.replace("nine lives", "lives")
 
     return text
 
@@ -618,8 +672,11 @@ def ceremony_text_adjust(
     random_honor=None,
     living_parents=(),
     dead_parents=(),
+    clan=None
 ):
-    clanname = str(game.clan.displayname + "Clan")
+    if clan is None:
+        clan = game.clan
+    clanname = i18n.t("general.clan", name=clan.displayname)
 
     random_honor = random_honor
     random_living_parent = None
@@ -647,8 +704,8 @@ def ceremony_text_adjust(
             else ("previous_mentor_name", None)
         ),
         "l_n": (
-            (str(game.clan.leader.name), choice(game.clan.leader.pronouns))
-            if game.clan.leader
+            (str(clan.leader.name), choice(clan.leader.pronouns))
+            if clan.leader
             else ("leader_name", None)
         ),
         "c_n": (clanname, None),
@@ -706,16 +763,19 @@ def ceremony_text_adjust(
 
     adjust_text = process_text(adjust_text, cat_dict)
 
+    if list(set(constants.CONFIG["clan_creation"]["leader_lives_nr"])) != [9]:
+        adjust_text = adjust_text.replace("nine lives", "lives")
+
     return adjust_text, random_living_parent, random_dead_parent
 
 
-def get_leader_life_notice() -> str:
+def get_leader_life_notice(clan) -> str:
     """
     Returns a string specifying how many lives the leader has left or notifying of the leader's full death
     """
-    if game.clan.instructor.status.group == CatGroup.DARK_FOREST:
-        return i18n.t("cat.history.leader_lives_left_df", count=game.clan.leader_lives)
-    return i18n.t("cat.history.leader_lives_left_sc", count=game.clan.leader_lives)
+    if clan.instructor.status.group_ID == CatGroup.DARK_FOREST_ID:
+        return i18n.t("cat.history.leader_lives_left_df", count=clan.leader_lives)
+    return i18n.t("cat.history.leader_lives_left_sc", count=clan.leader_lives)
 
 
 def adjust_list_text(list_of_items: List) -> str:
@@ -777,9 +837,14 @@ def history_text_adjust(text, other_clan_name, clan, other_cat_rc=None):
         text = text.replace("o_c_n", str(other_clan_name))
 
     if "c_n" in text:
-        text = text.replace("c_n", clan.displayname + "Clan")
+        text = text.replace("c_n", i18n.t("general.clan", name=clan.displayname))
     if "r_c" in text and other_cat_rc:
         text = selective_replace(text, "r_c", str(other_cat_rc.name))
+
+    text = text.replace("medicine cat", "healer").replace("medicine den", "healer den")
+
+    if list(set(constants.CONFIG["clan_creation"]["leader_lives_nr"])) != [9]:
+        text = text.replace("nine lives", "lives")
     return text
 
 

@@ -1,0 +1,76 @@
+[
+    {
+        "event_id": "mountain_single_eagle1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 2,
+        "event_text": [
+            "m_c sees an eagle overhead of r_c and warns {PRONOUN/r_c/object} just in time before it could swoop."
+        ],
+        "m_c": {
+            "skill": [ "SENSE,1" ]
+        },
+        "r_c": {
+            "skill": [ "-SENSE,1" ]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "r_c" ],
+                "cats_to": [ "m_c" ],
+                "values": [ "trust", "comfort" ],
+                "amount": 15,
+                "mutual": false,
+                "log": {
+                    "cats_from": "cat_to saved cat_from from an eagle."
+                }
+            }
+        ],
+        "other_clan": {
+            "changed": 1
+        }
+    },
+    {
+        "event_id": "mountain_single_avalanche1",
+        "location": [ "mountainous" ],
+        "season": [ "leaf-bare" ],
+        "sub_type": [ ],
+        "frequency": 2,
+        "event_text": [
+            "While on a solo patrol, m_c witnesss a o_c_n cat get caught under a falling snow drift. {PRONOUN/m_c/subject/CAP} {VERB/m_c/are/is} able to get r_c out, but not before the cold got to {PRONOUN/r_c/object}."
+        ],
+        "m_c": {
+            "skill": [ "SENSE,1" ],
+            "age": [ "-senior" ]
+        },
+        "r_c": {
+            "age": [ "-senior" ]
+        },
+        "injury": [
+            {
+                "cats": [
+                    "r_c"
+                ],
+                "injuries": [
+                    "cold_injury"
+                ]
+            }
+        ],
+        "relationships": [
+            {
+                "cats_from": [ "r_c" ],
+                "cats_to": [ "m_c" ],
+                "values": [ "trust", "respect", "like", "comfort" ],
+                "amount": 15,
+                "mutual": false,
+                "log": {
+                    "cats_from": "cat_from was saved from a deep snowdrift by cat_to."
+                }
+            }
+        ]
+    }
+]

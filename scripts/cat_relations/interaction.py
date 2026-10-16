@@ -266,3 +266,5 @@ def rebuild_relationship_dicts():
                 f"events/relationship_events/normal_interactions/{rel}/decrease.json"
             )
         )
+
+    relationship_lang = i18n.config.get("locale")

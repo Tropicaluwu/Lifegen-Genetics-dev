@@ -2,6 +2,7 @@
     {
         "id": "general_rogue_thoughts",
         "thoughts": [
+            "Tells {PRONOUN/m_c/self} {PRONOUN/m_c/subject} {VERB/m_c/are/is} going to kill r_c and take their position in c_n",
             "Wishes the other rogues would leave {PRONOUN/m_c/object} alone",
             "Snarls at any cat that comes near",
             "Wanders off on {PRONOUN/m_c/poss} own",
@@ -15,6 +16,56 @@
             "Is fighting with another rogue over food",
             "Laughs at the thought of dead cats 'watching over' c_n",
             "Debates if {PRONOUN/m_c/subject} should join c_n"
+        ],
+        "random_status_constraint": [
+            "leader",
+            "deputy",
+            "medicine cat"
+        ],
+        "main_trait_constraint": [
+            "bloodthirsty"
+        ],
+        "random_outside_status": [
+            "clancat"
+        ]
+    },
+    {
+        "id": "vengeful_rogue",
+        "thoughts": [
+            "Wants vengeance on {PRONOUN/m_c/poss} past Clan"
+        ],
+        "main_trait_constraint": [
+            "vengeful"
+        ]
+    },
+    {
+        "id": "strange_rogue",
+        "thoughts": [
+            "Crowns {PRONOUN/m_c/self} the ruler of all rogues"
+        ],
+        "main_trait_constraint": [
+            "strange"
+        ]
+    },
+    {
+        "id": "shameless_rogue",
+        "thoughts": [
+            "Is eating kittypet kibble",
+            "Stole some random kittypet's food",
+            "Is eating dog food {PRONOUN/m_c/subject} found",
+            "Is putting {PRONOUN/m_c/poss} own scent on c_n's clearly marked borders"
+        ],
+        "main_trait_constraint": [
+            "shameless"
+        ]
+    },
+    {
+        "id": "cold_rogue",
+        "thoughts": [
+            "Thinks about how {PRONOUN/m_c/subject} {VERB/m_c/don't/doesn't} need anyone else"
+        ],
+        "main_trait_constraint": [
+            "cold"
         ]
     },
     {
@@ -37,9 +88,6 @@
         ],
         "random_outside_status": [
             "outside"
-        ],
-        "random_living_status": [
-            "living"
         ]
     },
     {

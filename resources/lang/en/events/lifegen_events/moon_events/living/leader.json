@@ -1,0 +1,757 @@
+{
+    "general1": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You spend some time thinking about which warriors would be good mentors in the future."
+    },
+    "general2": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "apprentice"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You find yourself stuck while trying to think of fitting suffix choices for r_c:0."
+    },
+    "general3": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "mediator"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You have a quick word with r_c:0 about rising tensions with the other Clans."
+    },
+    "general4": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "kitten"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 stares at you in awe when you decide to pay a visit to the nursery."
+    },
+    "general5": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "apprentice"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You watch r_c:0 practice a few battle moves, giving {PRONOUN/r_c:0/object} helpful tips and pointers when prompted."
+    },
+    "general6": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "deputy"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You go for a morning stroll out in the territory for a much-needed break, putting r_c:0 in charge for the time being."
+    },
+    "general7": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "deputy"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "Even though you've had highs and lows, you know that you can trust r_c:0 to lead the Clan."
+    },
+    "general8": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You catch up with a few friends, putting leadership duties aside."
+    },
+    "general9": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You admire how much the Clan has grown under your leadership."
+    },
+    "general10": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "kitten"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "When r_c:0 was nowhere to be found, you quickly sprang into action, organizing search parties to look both in and out of camp. Thankfully, {PRONOUN/r_c:0/subject} {VERB/r_c:0/were/was} found in no time."
+    },
+    "general11": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "mates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You hold off your leader duties to spend some time with r_c:0."
+    },
+    "general12": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "medicine cat",
+                    "medicine cat apprentice"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 stops by your den, asking if {PRONOUN/r_c:0/subject} could share a potential message that {PRONOUN/r_c:0/subject} had received the night before."
+    },
+    "general13": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "A curious Clanmate asks you about your leadership ceremony. You dodge the question, not giving up any of the details."
+    },
+    "general14": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "kitten"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 asks you what it's like being the leader of c_n. You decide to bring {PRONOUN/r_c:0/object} along as you work through your day, much to {PRONOUN/r_c:0/poss} excitement. "
+    },
+    "general15": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You ponder over a tough decision, making the choice that best suits the safety and interests of the Clan."
+    },
+    "general16": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "apprentice"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You forbid r_c:0 from going to the Gathering after finding out that {PRONOUN/r_c:0/subject} had intentionally antagonized a o_c_n patrol, leading to an unnecessary fight."
+    },
+    "general17": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You stand up against untrue allegations presented by the o_c_n leader, prepared to defend your Clan with your life."
+    },
+    "neurotic18": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "neurotic"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "When you're unsure if you're the right cat to lead c_n, you remember your leadership ceremony. StarClan chose you for this role, and you're determined to prove they made a good decision."
+    },
+    "neurotic19": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "neurotic"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You hope the stars are watching. You hope they approve of your decisions."
+    },
+    "neurotic20": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "neurotic"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "warrior"
+                ]
+            },
+            "r_c:1": {
+                "rank": [
+                    "warrior"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You know it's wrong, but you eavesdrop when you overhear r_c:0 and r_c:1 talking about your recent leadership choices."
+    },
+    "neurotic21": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "neurotic"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You delicately navigate a conversation with some o_c_n representatives, struggling to stand your ground while not upsetting the other cats."
+    },
+    "neurotic22": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "neurotic"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You spend a full day thinking about what you want to say at this moon's Gathering."
+    },
+    "neurotic23": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "neurotic"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "deputy"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 compliments how you navigated a difficult situation at the o_c_n border. Their words make you smile for the rest of the day."
+    },
+    "neurotic24": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "neurotic"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "mediator"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You ask r_c:0 to give you some tips about effective negotiation."
+    },
+    "neurotic25": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "neurotic"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "Sometimes, you wish you could ask the other leaders for advice on the challenges of managing a Clan."
+    },
+    "neurotic26": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "neurotic"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You wonder if the other warriors wish you had chosen them as your deputy."
+    },
+    "neurotic27": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "neurotic"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "deputy"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You wonder if r_c:0 will consider you a good predecessor, or one who left behind trouble for {PRONOUN/r_c:0/object} to clean up."
+    },
+    "neurotic28": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "neurotic"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You stay up until dawn trying to make a decision, weighing the opinions of your Clanmates and trying to find an option that will make everycat happy."
+    },
+    "neurotic29": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "neurotic"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "deputy"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You remind r_c:0 that {PRONOUN/r_c:0/subject}{VERB/r_c:0/'re/'s} always allowed to give you feedback on your leadership."
+    },
+    "neurotic30": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "neurotic"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "deputy"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You join a border patrol, but let r_c:0 lead."
+    },
+    "neurotic31": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "neurotic"
+                ]
+            },
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "mates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You're glad for r_c:0's company in the sometimes-lonely leader's den."
+    },
+    "neurotic32": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "neurotic"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "deputy"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You confess some insecurities to r_c:0, but worry afterwards that now {PRONOUN/r_c:0/subject} might think you're a weak leader."
+    },
+    "neurotic33": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "neurotic"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            },
+            "r_c:1": {
+                "rank": [
+                    "kitten"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:1 is clearly starstruck by you. You wonder if that will change as {PRONOUN/r_c:1/subject} {VERB/r_c:0/grow/grows} older."
+    },
+    "neurotic34": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "neurotic"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "mediator"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You ask r_c:0 to teach all of the apprentices a bit about strategies for working with other Clans, so they learn how to solve problems with words in addition to claws."
+    },
+    "neurotic35": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "neurotic"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "kitten"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 innocently asks if you like being the leader. It takes you a while to formulate a response."
+    },
+    "rare36": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "apprentice"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "rare"
+        ],
+        "event": "You find r_c:0 sitting in thought at the edge of camp. Curious, you approach {PRONOUN/r_c:0/object}, inquiring about {PRONOUN/r_c:0/poss} training. {PRONOUN/r_c:0/subject/CAP} {VERB/r_c:0/confess/confesses} {PRONOUN/r_c:0/poss} worries, wondering if {PRONOUN/r_c:0/poss} mentor is really the right fit for {PRONOUN/r_c:0/object}. You sit silently for a moment before advising {PRONOUN/r_c:0/object} that, no matter what, you are all Clanmates. You are certain that {PRONOUN/r_c:0/poss} mentor is doing their best to train {PRONOUN/r_c:0/object} well, but if it comes to it, you can always find a better mentor for {PRONOUN/r_c:0/object}. The apprentice purrs gratefully, happy that {PRONOUN/r_c:0/subject} could confide in you, before scampering off with renewed energy."
+    },
+    "rare37": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "medicine cat",
+                    "medicine cat apprentice"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "rare"
+        ],
+        "event": "You catch r_c:0's eye, confused as {PRONOUN/r_c:0/subject} quickly {VERB/r_c:0/turn/turns} away, bristling. It seems like {PRONOUN/r_c:0/subject}{VERB/r_c:0/'re/'s} trying to avoid you. Why? What has StarClan told {PRONOUN/r_c:0/object}?"
+    },
+    "rare38": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "deputy"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "rare"
+        ],
+        "event": "You wonder if r_c:0 is really the right cat to be your successor."
+    },
+    "rare39": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "warrior"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "rare"
+        ],
+        "event": "You pray that r_c:0 knows where {PRONOUN/r_c:0/poss} loyalties lie after watching {PRONOUN/r_c:0/object} sneak out of camp in the middle of the night."
+    },
+    "rare40": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "rare"
+        ],
+        "event": "After losing a close friend, you can't help but wonder if your nine lives are truly a blessing."
+    },
+    "shunned41": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "The Clan struggles with their faith in your leadership, every decision you make met with wary eyes."
+    },
+    "shunned42": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "The respect you once held from your Clanmates is replaced with suspicion and fear, making it harder for you to lead."
+    },
+    "shunned43": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "Debates break out in the Clan over your actions. Some want you to step down while others still trust your judgment."
+    },
+    "shunned44": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "Members of the Clan approach you less frequently, afraid of your power and the secrets it holds."
+    },
+    "shunned45": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "Cats you used to consider your loyal supporters now cast doubtful glances in your direction."
+    },
+    "shunned46": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "The medicine cat appears more withdrawn, looking to StarClan for guidance over this grave matter."
+    },
+    "shunned47": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "At gatherings, leaders from other Clans regard you with cold indifference, your reputation tarnished."
+    },
+    "shunned48": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "deputy"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "Your deputy watches you more closely, {PRONOUN/r_c:0/poss} trust in your judgment faltered."
+    },
+    "shunned49": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "Warriors challenge your decisions more frequently, as faith in your leadership is shaken."
+    },
+    "shunned50": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "You wonder if it's better to step down."
+    },
+    "shunned51": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "You wonder if you truly deserve your nine lives."
+    },
+    "shunned52": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "You notice the apprentices and kits are steered away from you, their once awe-filled gazes now filled with fear."
+    }
+}

@@ -11,7 +11,7 @@ from scripts.screens.enums import GameScreen
 from ...constants import DISPLAY_SETTINGS
 
 settings_changed: bool = False
-settings = {"moon_and_seasons_open": False}
+settings = {}
 setting_lists = {}
 
 settings_path = Path(get_save_dir()) / "settings.json"
@@ -27,7 +27,7 @@ def game_settings_save(currentscreen=None):
     settings_changed = False
     try:
         safe_save(settings_path, settings)
-    except RuntimeError:
+    except (RuntimeError, OSError):
         from scripts.ui.windows.save_error import SaveErrorWindow
 
         SaveErrorWindow(traceback.format_exc())
@@ -42,6 +42,9 @@ def game_settings_load():
         with open(settings_path, "r", encoding="utf-8") as read_file:
             settings_data = ujson.loads(read_file.read())
     except FileNotFoundError:
+        return
+    except ujson.JSONDecodeError:
+        print("Unable to load settings.json!")
         return
 
     for key, value in settings_data.items():

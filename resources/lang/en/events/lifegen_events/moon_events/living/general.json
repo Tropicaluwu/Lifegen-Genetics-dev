@@ -1,0 +1,145 @@
+{
+    "shunned1": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "You wander around camp aimlessly."
+    },
+    "shunned2": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "You wish you can turn back time."
+    },
+    "shunned3": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "Your paws always feel like they are stained with blood."
+    },
+    "shunned4": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "The cats that you thought were your friends look at you with hatred."
+    },
+    "shunned5": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "Warriors chase you away from the freshkill pile when you are hungry."
+    },
+    "shunned6": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "You sit and reflect."
+    },
+    "shunned7": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "You wonder if enough time will pass that everycat will forget and things will go back to normal again."
+    },
+    "shunned8": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "You go back to your den one night to find your nest ripped to shreds."
+    },
+    "shunned9": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "You look upon the freshkill and your stomach grumbles, a reminder that your actions starved you - literally."
+    },
+    "shunned10": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "cool"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "You turn your nose to the bits of scrap fresh kill you're given, regardless of your hunger."
+    },
+    "shunned11": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "introspective"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "You spend nights unable to sleep, wondering if murdering was really worth the treatment you get from c_n."
+    },
+    "shunned12": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "If you were to leave tonight, would you go unnoticed? Would the Clan search for you?"
+    },
+    "shunned13": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "A small part of you wishes r_c:0 would just get this over with and exile you already."
+    }
+}

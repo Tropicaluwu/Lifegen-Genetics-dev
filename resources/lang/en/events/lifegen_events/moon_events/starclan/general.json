@@ -1,0 +1,375 @@
+{
+    "general1": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You think of a message to send to the medicine cats of c_n during the half-moon meeting."
+    },
+    "general2": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You will the clouds to cover the moon during a tense Gathering."
+    },
+    "general3": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "apprentice"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 gets lost during their first solo hunt. You use the wind and the rustling of the undergrowth to guide {PRONOUN/r_c:0/object} safely back to camp."
+    },
+    "general4": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You take some time to practice your dreamwalking so that you can visit the c_n cats you've been watching so closely."
+    },
+    "general5": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You snap a twig to startle a shrew right into the paws of a hunting patrol. When they thank StarClan for their prey, you reply in your head with a purr that it's no problem."
+    },
+    "general6": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You squint down at your paws, wondering if they may be beginning to fade."
+    },
+    "general7": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You thought that being dead would free you from feeling any grief, but you can't help but feel sorrow as some of your StarClan Clanmates begin to fade."
+    },
+    "general8": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You feel a wave of unease when you realize how close you are to the Dark Forest border."
+    },
+    "general9": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You decide to walk around c_n for a bit, and notice a floating wisp. This wisp seems to be what other StarClan cats have described as 'lost spirits.' You try to approach the spirit, but it disappears before you can get close."
+    },
+    "general10": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "warrior"
+                ],
+                "skill": [
+                    "clairvoyant"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "When r_c:0 is on a patrol, you sense foxes nearby. You send {PRONOUN/r_c:0/object} a sign, willing {PRONOUN/r_c:0/object} to leave before the foxes arrive. Luckily, {PRONOUN/r_c:0/subject} {VERB/r_c:0/pick/picks} up on the sign and {VERB/r_c:0/head/heads} home quickly."
+    },
+    "general11": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "age": ["kitten"]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "child/parent"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You watch r_c:0 run around, in the same way you did when you were {PRONOUN/r_c:0/poss} age. StarClan, you'd take being exiled to the Dark Forest for even one minute to run around and play games with {PRONOUN/r_c:0/object}."
+    },
+    "general12": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "apprentice"
+                ],
+                "skill": [
+                    "star"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You comfort r_c:0 after {PRONOUN/r_c:0/subject} {VERB/r_c:0/fail/fails} {PRONOUN/r_c:0/poss} first assessment. You also give {PRONOUN/r_c:0/object} some tips for next time. {PRONOUN/r_c:0/subject/CAP} {VERB/r_c:0/thank/thanks} you for your help and seems to be more confident during {PRONOUN/r_c:0/poss} next assessment."
+    },
+    "stable13": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "stable"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You feel accepting of all you did during your life for c_n, you feel it was enough."
+    },
+    "stable14": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "stable"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You wonder how your family is doing?"
+    },
+    "stable15": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "stable"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You wish you were more adventurous when you were alive."
+    },
+    "stable16": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "stable"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You wonder if your name will be remembered through c_n's history? Or are you doomed to fade away?"
+    },
+    "stable17": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "stable"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "Maybe you could have done more if you didn't let your fears dictate your life."
+    },
+    "stable18": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "stable"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You hope the future generations learn from your mistakes."
+    },
+    "stable19": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "stable"
+                ]
+            },
+            "r_c:0": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You silently curse at r_c:0 for abandoning {PRONOUN/r_c:0/poss} Clanmate in a time of need."
+    },
+    "stable20": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "stable"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You watch the medicine cats eagerly, despite your death you yearn for new knowledge."
+    },
+    "stable21": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "stable"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You walk beside an apprentice with confidence, proudly watching their growth."
+    },
+    "stable22": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "stable"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You attempt to yell at a mentor for snapping at an apprentice for unjust reasons, only to remember they can't hear nor see you."
+    },
+    "stable23": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "stable"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You play with the kits in StarClan."
+    },
+    "stable24": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "stable"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You wander through the river underwater, even in death the beauty of the territory and its wonders amaze you."
+    },
+    "stable25": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "stable"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You feel trapped so far from home."
+    },
+    "stable26": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "stable"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You curl in a ball, still unable to accept the truth behind your death."
+    },
+    "stable27": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "stable"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "medicine cat",
+                    "medicine cat apprentice"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You're giving r_c:0 a prophecy. Feathers, bars of steel, and scales of fins. What {PRONOUN/r_c:0/subject} {VERB/r_c:0/do/does} with that information is out of your control."
+    }
+}

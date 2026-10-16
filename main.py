@@ -69,15 +69,14 @@ def load_data():
         switch_set_value(Switch.clan_list, clan_list)
         switch_set_value(Switch.clan_name, clan_list[0])
         try:
+            constants.load_clan_config()
             game.starclan = Afterlife()
             game.dark_forest = Afterlife()
             load_cats()
-            version_info = clan_class.load_clan()
-            version_convert(version_info)
             game.load_events()
         except Exception as e:
             logging.exception("File failed to load")
-            if switch_get_value(Switch.error_message) is None:
+            if not switch_get_value(Switch.error_message):
                 switch_set_value(
                     Switch.error_message, "There was an error loading the cats file!"
                 )
@@ -152,11 +151,17 @@ def load_game():
     game.cur_events_list.clear()
     game.patrol_cats.clear()
     game.patrolled.clear()
+    game.dated_cats.clear()
     game.updated_afterlife_cats.clear()
     game.clan = None
     game.starclan = None
     game.dark_forest = None
+    if hasattr(all_screens.get_screen(GameScreen.LIST), "full_cats_list"):
+        all_screens.get_screen(GameScreen.LIST).full_cats_list.clear()
     switch_set_value(Switch.switch_clan, False)
+    switch_set_value(
+        Switch.error_message, ""
+    )
 
     finished_loading = False
     loading_thread = threading.Thread(target=load_data)
@@ -243,12 +248,9 @@ while 1:
                 MANAGER.print_layer_debug()
             elif event.key == pygame.K_F3:
                 debug_mode.toggle_debug_mode()
-                # debugmode.toggle_console()
             elif event.key == pygame.K_F11:
                 scripts.game_structure.screen_settings.toggle_fullscreen(
-                    source_screen=all_screens.screen_dict[
-                        switch_get_value(Switch.cur_screen).replace(" ", "_")
-                    ],
+                    source_screen=all_screens.screen_dict[switch_get_value(Switch.cur_screen).replace(" ", "_")],
                     show_confirm_dialog=False,
                 )
 

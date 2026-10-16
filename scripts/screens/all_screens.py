@@ -8,6 +8,15 @@ from .ChooseMateScreen import ChooseMateScreen
 from .ChooseMentorScreen import ChooseMentorScreen
 from .ClanScreen import ClanScreen
 from .ClanSettingsScreen import ClanSettingsScreen
+from .TalkScreen import TalkScreen
+from .ChooseRebornScreen import ChooseRebornScreen
+from .AchievementScreen import AchievementScreen
+from .MurderScreen import MurderScreen
+from .DeputyScreen import DeputyScreen
+from .NameKitsScreen import NameKitsScreen
+from .AffairScreen import AffairScreen
+from .QueenScreen import QueenScreen
+from .MoonplaceScreen import MoonplaceScreen
 from .EventEditScreen import EventEditScreen
 from .EventsScreen import EventsScreen
 from .FamilyTreeScreen import FamilyTreeScreen
@@ -26,6 +35,9 @@ from .SpriteInspectScreen import SpriteInspectScreen
 from .StartScreen import StartScreen
 from .SwitchClanScreen import SwitchClanScreen
 from .WarriorDenScreen import WarriorDenScreen
+from .GiftScreen import GiftScreen
+from .ElderStoryScreen import ElderStoryScreen
+from .PredictOffspringScreen import PredictOffspringScreen
 from .enums import GameScreen
 
 # ---------------------------------------------------------------------------- #
@@ -57,6 +69,7 @@ def rebuild_all_screens():
 
     enum_to_class = {
         GameScreen.PROFILE: ProfileScreen,
+        GameScreen.OFFSPRING_PREDICT: PredictOffspringScreen,
         GameScreen.CEREMONY: CeremonyScreen,
         GameScreen.CHANGE_ROLE: RoleScreen,
         GameScreen.SPRITE_INSPECT: SpriteInspectScreen,
@@ -81,6 +94,18 @@ def rebuild_all_screens():
         GameScreen.MEDIATION: MediationScreen,
         GameScreen.CHANGE_GENDER: ChangeGenderScreen,
         GameScreen.EVENT_EDIT: EventEditScreen,
+
+        GameScreen.MURDER: MurderScreen,
+        GameScreen.AFFAIR: AffairScreen,
+        GameScreen.GIFT: GiftScreen,
+        GameScreen.TALK: TalkScreen,
+        GameScreen.MOONPLACE: MoonplaceScreen,
+        GameScreen.NAME_KITS: NameKitsScreen,
+        GameScreen.CHOOSE_REBORN: ChooseRebornScreen,
+        GameScreen.CHOOSE_DEPUTY: DeputyScreen,
+        GameScreen.ACHIEVEMENTS: AchievementScreen,
+        GameScreen.ELDER_STORY: ElderStoryScreen,
+        GameScreen.QUEEN: QueenScreen
     }
 
     for enum, classobj in enum_to_class.items():

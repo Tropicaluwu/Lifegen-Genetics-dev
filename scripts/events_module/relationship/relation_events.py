@@ -6,7 +6,7 @@ import ujson
 
 from scripts.game_structure import constants
 from scripts.cat.cats import Cat
-from scripts.cat.enums import CatRank, CatAge
+from scripts.cat.enums import CatRank, CatGroup, CatAge
 from scripts.events_module.relationship.group_events import GroupEvents
 from scripts.events_module.relationship.romantic_events import RomanticEvents
 from scripts.events_module.relationship.welcoming_events import Welcoming_Events
@@ -93,9 +93,9 @@ class Relation_Events:
                 continue
 
             if inter_cat.ID not in cat.relationships:
-                cat.create_one_relationship(inter_cat)
+                continue
             if cat.ID not in inter_cat.relationships:
-                inter_cat.create_one_relationship(cat)
+                continue
 
             cat_to_inter = (
                 cat.relationships[inter_cat.ID].like > 10
@@ -116,16 +116,19 @@ class Relation_Events:
 
             # the more mates the cat has, the less likely it will be that they interact with another cat romantically
             for mate_id in cat.mate:
-                chance_number -= int(cat.relationships[mate_id].romance / 20)
-            use_mate = int(random.random() * chance_number)
-
-        # If use_mate is falsey, or if the cat has been marked as "no_mates", only allow romantic
+                try:
+                    chance_number -= int(cat.relationships[mate_id].romance / 20)
+                except:
+                    chance_number -= 0
+            use_mate = int(random.random() * chance_number)  
+            
+        # If use_mate is falsey, or if the cat has been marked as "no_mates", only allow romantic 
         # relations with current mates
         if use_mate or cat.no_mates:
             cat_to_choose_from = [
                 cat.all_cats[mate_id]
                 for mate_id in cat.mate
-                if cat.all_cats[mate_id].status.alive_in_player_clan
+                if cat.all_cats[mate_id].status.group.is_any_clan_group()
             ]
 
         if not cat_to_choose_from:
@@ -184,9 +187,7 @@ class Relation_Events:
             chosen_type = "all"
         possible_interaction_cats = list(
             filter(
-                lambda cat: (
-                    cat.status.alive_in_player_clan and not cat.age == CatAge.NEWBORN
-                ),
+                lambda c: (c.status.group_ID == cat.status.group_ID and not c.age == CatAge.NEWBORN),
                 Cat.all_cats.values(),
             )
         )
@@ -235,7 +236,7 @@ class Relation_Events:
                 min(constants.CONFIG["mates"]["age_range"], int(new_cat.moons * 0.4)),
             )
             alive_cats = [
-                i for i in new_cat.all_cats.values() if i.status.alive_in_player_clan
+                i for i in new_cat.all_cats.values() if i.status.group_ID == new_cat.status.group_ID
             ]
             number = constants.CONFIG["new_cat"]["cat_amount_welcoming"]
 
@@ -279,11 +280,13 @@ class Relation_Events:
         """Returns a list of cats, where the relationship from main_cat towards the cat fulfill the given constraints."""
         cat_list = list(
             filter(
-                lambda cat: cat.status.alive_in_player_clan,
+                lambda cat: cat.status.group_ID == main_cat.status.group_ID,
                 Cat.all_cats.values(),
             )
         )
-        cat_list.remove(main_cat)
+        if main_cat in cat_list:
+            cat_list.remove(main_cat)
+        
         filtered_cat_list = []
 
         for inter_cat in cat_list:
@@ -294,9 +297,6 @@ class Relation_Events:
             cat_to = inter_cat
 
             if cat_to.ID not in cat_from.relationships:
-                cat_from.create_one_relationship(cat_to)
-                if cat_from.ID not in cat_to.relationships:
-                    cat_to.create_one_relationship(cat_from)
                 continue
 
             passed = filter_relationship_type(
@@ -325,6 +325,7 @@ class Relation_Events:
             CatRank.DEPUTY,
             CatRank.MEDICINE_CAT,
             CatRank.MEDIATOR,
+            CatRank.QUEEN
         ]
 
         # set the threshold correctly

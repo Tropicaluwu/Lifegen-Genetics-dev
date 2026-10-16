@@ -22,6 +22,10 @@ class PatrolEvent:
         season: List[str] = None,
         types: List[str] = None,
         tags: List[str] = None,
+        lifegen_cat_constraints: dict = None,
+        lifegen_relationship_constraints: List = [],
+        chosen_lifegen_cats: List = [],
+        other_clan_filter: dict = {},
         frequency: int = 4,
         patrol_art: Union[str, None] = None,
         patrol_art_clean: Union[str, None] = None,
@@ -37,13 +41,20 @@ class PatrolEvent:
         min_max_status: dict = None,
         relationship_constraints: List[str] = None,
         pl_skill_constraints: List[str] = None,
-        pl_trait_constraints: List[str] = None,
+        pl_trait_constraints: List[str] = None
     ):
         self.weight = 1
 
         self.patrol_id = patrol_id
+        # LG
+        self.lifegen_cat_constraints = lifegen_cat_constraints
+        self.lifegen_relationship_constraints = lifegen_relationship_constraints
+
+        self.chosen_lifegen_cats = chosen_lifegen_cats
+        # ---
         self.frequency = frequency
         self.types = types if types is not None else []
+        self.other_clan_filter = other_clan_filter if other_clan_filter else {"has_rank" : ["any_warrior_mult"]}
 
         self.patrol_art = patrol_art
         self.patrol_art_clean = patrol_art_clean

@@ -1,0 +1,573 @@
+{
+    "general1": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You find kits frolicking in your favorite spot to nap, but you don't have the heart to scare them off. Instead, you watch them play fondly until they're eventually called back by the queens."
+    },
+    "general2": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You spend the day taking a very productive nap in the sun."
+    },
+    "general3": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You take a moment to think about how much the Clan has changed."
+    },
+    "general4": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You find yourself longing for the time when your biggest worries were catching butterflies and trying to figure out which nest in the nursery had the softest moss."
+    },
+    "general5": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You attract a small crowd as you tell a thrilling story, leading your audience through many unexpected twists and turns."
+    },
+    "general6": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You accidentally cause an apprentice to get side-tracked by telling them tales from your own apprentice days."
+    },
+    "general7": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "kitten"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "Soaking up the rays in camp seems like a grand plan. r_c:0 ends up joining you, and soon you find yourself snuggled up with the Clan's kits in the bright warmth of the sun."
+    },
+    "general8": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "deputy"
+                ]
+            },
+            "r_c:1": {
+                "rank": [
+                    "queen"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:1 asks you to do a story-telling session for the kits! By the end of the day, some apprentices, warriors, and even r_c:0 have come to listen as well."
+    },
+    "general9": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 and you spend time sharing tongues in the camp clearing. The two of you swap drama and stories without a care in the world."
+    },
+    "general10": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "medicine cat",
+                    "medicine cat apprentice"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "A storm blowing through makes your joints ache. r_c:0 sympathizes and gives you some honey-laced herbs."
+    },
+    "general11": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "Old age gets the best of everycat. You're no different - and you ponder that while sunbathing."
+    },
+    "assertive12": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "assertive"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "deputy"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 asks where you're going as you amble towards the camp's exit. You tell them to mind {PRONOUN/r_c:0/poss} own business and that you'll be back by nightfall. With an amused huff {PRONOUN/r_c:0/subject} {VERB/r_c:0/remind/reminds} you not to go too far or get into trouble."
+    },
+    "assertive13": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "assertive"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "kitten"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "When r_c:0 trods on your leg, you cuff {PRONOUN/r_c:0/poss} ear lightly. Before {PRONOUN/r_c:0/subject} can cry or apologize however you're on your feet with a proposition to play a different game... One that makes sure you'll be left in peace for a while."
+    },
+    "assertive14": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "assertive"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You're quite happy soaking up a patch of sun until clouds begin to cover the sky. With a huff you get to your paws and search for a better spot. r_c:0 seems to have already laid claim to a warm rock... so you demand the spot. {PRONOUN/r_c:0/subject/CAP} huff at you but give in without a fuss."
+    },
+    "assertive15": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "assertive"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "mediator"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 approaches you for a bit of advice. Since you're self-assured, {PRONOUN/r_c:0/subject} ask you how that came to be over your many moons. You ramble on and on... and on and on... and on... Until r_c:0 politely excuses {PRONOUN/r_c:0/self}."
+    },
+    "assertive16": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "assertive"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "warrior"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "As you head out of camp for the day, r_c:0 calls out to stop you. {PRONOUN/r_c:0/subject/CAP} say it could be dangerous if you left the camp alone. You remind {PRONOUN/r_c:0/object} sternly that you're well aware after all your moons - and have chosen to go alone anyways."
+    },
+    "assertive17": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "assertive"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "deputy"
+                ]
+            },
+            "r_c:1": {
+                "rank": [
+                    "apprentice"
+                ]
+            },
+            "r_c:2": {
+                "rank": [
+                    "warrior"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:1 is complaining loudly about you. Apparently you're either always wandering off alone, or being 'mean'. r_c:2, to {PRONOUN/r_c:2/poss} credit, does attempt to warn r_c:1 before you saunter by with your head held high towards r_c:0. r_c:1 will be cleaning your den personally for a moon!"
+    },
+    "introspective18": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "introspective"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You spend your day gazing out to the distance, pondering your life to this point."
+    },
+    "introspective19": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "introspective"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You shiver repulsively, suddenly have a flashback to an embarrassing memory from your youth. You find yourself musing on the dreadful memory for the rest of the day."
+    },
+    "introspective20": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "introspective"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "kitten"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You feel a sliver of guilt as you deny r_c:0 playtime, knowing your old bones are too wary for such activities."
+    },
+    "stable21": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "stable"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You breathe in deeply, embracing the cool air of a new day. You just hope it isn't your last."
+    },
+    "stable22": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "stable"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "mediator"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You find yourself venting to r_c:0, you don't understand why you're still standing when those you grew up with died young. {PRONOUN/r_c:0/subject/CAP} {VERB/r_c:0/assure/assures} you that through you living, their memories are kept alive and thanks to you, the Clan won't soon forget them."
+    },
+    "stable23": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "stable"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "The warriors roll their eyes at you again, not wanting to listen to another lecture on loyalty to Clanmates- you state it as if the cats of this Clan think it's an unheard concept."
+    },
+    "stable24": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "stable"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You sit peacefully as you let the kits crawl over your tail, playing some kind of game where they think it's a big and scary snake. You occasionally hiss which sends them squealing with childish joy."
+    },
+    "stable25": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "stable"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "medicine cat",
+                    "medicine cat apprentice"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 chats with you about your day as {PRONOUN/r_c:0/subject} {VERB/r_c:0/perform/performs} {PRONOUN/r_c:0/poss} regular medical exam. It's a pleasant morning between you both."
+    },
+    "stable26": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "stable"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You share embarrassing stories of an apprentice's mentor from when they were an apprentice. You give them a confidence boost in sharing how everycat makes mistakes and a new perspective allowing the apprentice to loosen up around their mentor."
+    },
+    "stable27": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "stable"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You offer r_c:0 words of wisdom for the upcoming gathering."
+    },
+    "rare28": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "rare"
+        ],
+        "event": "You wake up to the medicine cat and a handful of friends gathered around you in a hush, discovering that you had scared r_c:0 by not waking up when shaken. You shake it off, but your mind keeps wandering back to what would have happened if you didn't awaken."
+    },
+    "rare29": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "rare"
+        ],
+        "event": "Gazing out over the camp, you ponder about your long life. Things could have been so different... But would you have changed them for anything else?"
+    },
+    "rare30": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "rare"
+        ],
+        "event": "One night, deep in sleep, you look around to notice yourself between a star-shimmering territory and a shadow-soaked forest. You can feel eyes on you from both sides as you stand in the grey between. Then, you gasp awake in your nest, r_c:0 glancing at you worriedly."
+    },
+    "shunned31": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "The Clan is uneasy, unsure how to deal with the chilling revelation about you."
+    },
+    "shunned32": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "No kits visit you anymore."
+    },
+    "shunned33": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "Cats treat you differently, avoiding the elders' den and your stories of the old times."
+    },
+    "shunned34": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "Younger cats look at you with fear and disbelief, their trust shattered."
+    },
+    "shunned35": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "The leader, deputy, and medicine cat confer frequently, the seriousness of your actions troubling them deeply."
+    },
+    "shunned36": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "Your old friends withdraw from you, the bond once shared now tainted with your deed."
+    },
+    "shunned37": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "Clanmates question your old war stories, wondering what truths they may have overlooked."
+    },
+    "shunned38": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "The medicine cat appears more often in your den, ostensibly for health checks, but the tension is palpable."
+    },
+    "shunned39": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "The queens hastily steer their kits away from your reach, afraid of what you might do."
+    },
+    "shunned40": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "You notice your name whispered around the fresh-kill pile, your actions the subject of hushed and anxious conversations."
+    },
+    "shunned41": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "At gatherings, other Clans regard you warily, the grim knowledge about you having spread."
+    }
+}

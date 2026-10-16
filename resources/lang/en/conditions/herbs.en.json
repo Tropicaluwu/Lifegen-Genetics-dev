@@ -101,8 +101,16 @@
             "many": "plantain bundles"
         },
         "catmint": {
-            "one": "catmint pile",
+            "one": "catmint piles",
             "many": "catmint piles"
+        },
+        "sweet-sedge": {
+            "one": "sweet-sedge",
+            "many": "sweet-sedge"
+        },
+        "dock": {
+            "one": "dock bundle",
+            "many": "dock bundles"
         }
     }
 }

@@ -11,13 +11,24 @@ while mating and for the display of the family tree screen.
 import i18n
 from strenum import StrEnum  # pylint: disable=no-name-in-module
 
+import os
+import ujson
+from scripts.game_structure import game
+from scripts.housekeeping.datadir import get_save_dir
+from scripts.game_structure.game.save_load import safe_save
 from scripts.events_module.text_adjust import adjust_list_text
+from scripts.game_structure.game.switches import (
+    switch_set_value,
+    switch_get_value,
+    Switch,
+)
 
 
 class RelationType(StrEnum):
     """An enum representing the possible relationships of a cat"""
 
     BLOOD = ""  # direct blood related - do not need a special print
+    SURROGATE = "surrogate"  # parent was a surrogate
     ADOPTIVE = "adoptive"  # not blood related but close (parents, kits, siblings)
     HALF_BLOOD = "half sibling"  # only one blood parent is the same (siblings only)
     NOT_BLOOD = "not blood related"  # not blood related for parent siblings
@@ -26,6 +37,7 @@ class RelationType(StrEnum):
 
 BLOOD_RELATIVE_TYPES = [
     RelationType.BLOOD,
+    RelationType.SURROGATE,
     RelationType.HALF_BLOOD,
     RelationType.RELATED,
 ]
@@ -36,8 +48,8 @@ class Inheritance:
 
     def __init__(self, cat, born=False):
         self.need_update = False
-        self.mates = None
-        self.other_mates = None
+        self.mate = {}
+        self.other_mates = []
         self.kits = {}
         self.kits_mates = {}
         self.siblings = {}
@@ -48,10 +60,17 @@ class Inheritance:
         self.cousins = {}
         self.grand_parents = {}
         self.grand_kits = {}
+        self.others_in_tree = []
         self.all_involved = []
         self.all_but_cousins = []
 
         self.cat = cat
+        if not born:
+            try:
+                self.load_inheritance()
+                return
+            except:
+                pass
         self.update_inheritance()
 
         # if the cat is newly born, update all the related cats
@@ -61,10 +80,102 @@ class Inheritance:
         # SAVE INHERITANCE INTO ALL_INHERITANCES DICTIONARY
         self.all_inheritances[cat.ID] = self
 
+    def __setitem__(self, key, value):
+        setattr(self, key, value)
+
+    def save_inheritance(self, fade=False):
+        # save inheritance
+        clanname = None
+        if switch_get_value(Switch.clan_name) != "":
+            clanname = switch_get_value(Switch.clan_name)
+        elif len(switch_get_value(Switch.clan_list)) > 0:
+            clanname = switch_get_value(Switch.clan_list)[0]
+        elif game.clan is not None:
+            clanname = game.clan.displayname
+
+        family_directory = get_save_dir() + "/" + clanname + "/inheritance"
+        family_file_path = family_directory + "/" + self.cat.ID + "_inheritance.json"
+
+        if fade:
+            if os.path.exists(family_file_path):
+                os.remove(family_file_path)
+            return
+
+        family = {}
+
+        if self.mate:
+            family["mate"] = self.mate
+        if self.other_mates:
+            family["other_mates"] = self.other_mates
+
+        if self.kits:
+            family["kits"] = self.kits
+        if self.kits_mates:
+            family["kits_mates"] = self.kits_mates
+
+        if self.siblings:
+            family["siblings"] = self.siblings
+        if self.siblings_mates:
+            family["siblings_mates"] = self.siblings_mates
+        if self.siblings_kits:
+            family["siblings_kits"] = self.siblings_kits
+
+        if self.parents:
+            family["parents"] = self.parents
+        if self.parents_siblings:
+            family["parents_siblings"] = self.parents_siblings
+
+        if self.cousins:
+            family["cousins"] = self.cousins
+
+        if self.grand_parents:
+            family["grand_parents"] = self.grand_parents
+        if self.grand_kits:
+            family["grand_kits"] = self.grand_kits
+
+        if self.others_in_tree:
+            family["others_in_tree"] = list(set([c for c in self.others_in_tree if c not in self.all_involved]))
+        if self.all_involved:
+            family["all_involved"] = list(set(self.all_involved))
+        if self.all_but_cousins:
+            family["all_but_cousins"] = list(set(self.all_but_cousins))
+
+        safe_save(family_file_path, family)
+
+    def load_inheritance(self):
+        if switch_get_value(Switch.clan_name) != "":
+            clanname = switch_get_value(Switch.clan_name)
+        else:
+            clanname = switch_get_value(Switch.clan_list)[0]
+
+        family_directory = get_save_dir() + "/" + clanname + "/inheritance/"
+        family_cat_directory = family_directory + self.cat.ID + "_inheritance.json"
+
+        with open(family_cat_directory, "r", encoding="utf-8") as read_file:
+            rel_data = ujson.loads(read_file.read())
+            for key in rel_data.keys():
+                if key == "all_in_tree":
+                    self["others_in_tree"] = rel_data[key]
+                if key == "mates":  # older genemod files
+                    self["mate"] = rel_data[key]
+                    continue
+                self[key] = rel_data[key]
+
+        self.all_inheritances[self.cat.ID] = self
+        # parents
+        for key in self.parents:
+            self.all_involved.remove(key)
+            self.all_but_cousins.remove(key)
+        self.init_parents()
+        
+        if self.parents.keys() != rel_data.get("parents", {}).keys():
+            self.update_inheritance()
+            self.update_all_related_inheritance()
+    
     def update_inheritance(self):
         """Update inheritance of the given cat."""
         self.parents = {}
-        self.mates = {}
+        self.mate = {}
         self.kits = {}
         self.kits_mates = {}
         self.siblings = {}
@@ -74,6 +185,7 @@ class Inheritance:
         self.cousins = {}
         self.grand_parents = {}
         self.grand_kits = {}
+        self.others_in_tree = []
         self.all_involved = []
         self.all_but_cousins = []
         self.other_mates = []
@@ -126,6 +238,9 @@ class Inheritance:
 
         self.init_faded_cousins()
 
+        self.all_involved = list(set(self.all_involved))
+        self.all_but_cousins = list(set(self.all_but_cousins))
+
         if len(self.need_update) > 1:
             for update_id in self.need_update:
                 if update_id in self.all_inheritances:
@@ -144,12 +259,12 @@ class Inheritance:
                 and self.cat.fetch_cat(cat_id)
                 and not self.cat.fetch_cat(cat_id).faded
             ):
+                # self.all_inheritances[cat_id].update_inheritance()
+
                 if self.cat.ID in self.all_inheritances[cat_id].all_involved:
                     self.all_inheritances[cat_id].all_involved.remove(self.cat.ID)
                     if self.cat.ID in self.all_inheritances[cat_id].all_but_cousins:
-                        self.all_inheritances[cat_id].all_but_cousins.remove(
-                            self.cat.ID
-                        )
+                        self.all_inheritances[cat_id].all_but_cousins.remove(self.cat.ID)
 
                 if cat_id in self.kits:
                     self.all_inheritances[cat_id].init_parents()
@@ -157,9 +272,9 @@ class Inheritance:
                     if self.cat.ID in self.all_inheritances[cat_id].grand_parents:
                         del self.all_inheritances[cat_id].grand_parents[self.cat.ID]
                     self.all_inheritances[cat_id].init_grandparents()
-                if cat_id in self.mates:
-                    if self.cat.ID in self.all_inheritances[cat_id].mates:
-                        del self.all_inheritances[cat_id].mates[self.cat.ID]
+                if cat_id in self.mate:
+                    if self.cat.ID in self.all_inheritances[cat_id].mate:
+                        del self.all_inheritances[cat_id].mate[self.cat.ID]
                     self.all_inheritances[cat_id].init_mates()
                 if cat_id in self.parents:
                     if self.cat.ID in self.all_inheritances[cat_id].kits:
@@ -192,6 +307,9 @@ class Inheritance:
                         del self.all_inheritances[cat_id].grand_kits[self.cat.ID]
                     self.all_inheritances[cat_id].init_grand_kits(self.cat.ID, self.cat)
 
+                self.all_inheritances[cat_id].all_involved = list(set(self.all_inheritances[cat_id].all_involved))
+                self.all_inheritances[cat_id].all_but_cousins = list(set(self.all_inheritances[cat_id].all_but_cousins))
+
     def update_all_mates(self):
         """
         This function should be called, when the cat breaks up.
@@ -199,11 +317,21 @@ class Inheritance:
         """
         self.update_inheritance()
         for inter_inheritances in self.all_inheritances.values():
-            if (
-                self.cat.ID in inter_inheritances.other_mates
-                or self.cat.ID in inter_inheritances.all_involved
-            ):
-                inter_inheritances.update_inheritance()
+            if self.cat.ID in inter_inheritances.other_mates:
+                # inter_inheritances.update_inheritance()
+                inter_inheritances.other_mates.remove(self.cat.ID)
+                inter_inheritances.siblings_mates = {}
+                inter_inheritances.init_mates()
+                for id in inter_inheritances.siblings.keys():
+                    inter_inheritances.init_sibling_mates(id, self.cat.fetch_cat(id))
+            if self.cat.ID in inter_inheritances.siblings:
+                inter_inheritances.siblings_mates = {}
+                for id in inter_inheritances.siblings.keys():
+                    inter_inheritances.init_sibling_mates(id, self.cat.fetch_cat(id))
+            if self.cat.ID in inter_inheritances.kits:
+                inter_inheritances.kits_mates = {}
+                for id in inter_inheritances.kits.keys():
+                    inter_inheritances.init_kits(id, self.cat.fetch_cat(id))
 
     def get_cat_info(self, cat_id) -> dict:
         """Returns a list of the additional information of the given cat id."""
@@ -241,15 +369,17 @@ class Inheritance:
         if cat_id in self.kits_mates:
             info["type"].append(self.kits_mates[cat_id]["type"])
             info["additional"].extend(self.kits_mates[cat_id]["additional"])
-        if cat_id in self.mates:
-            info["type"].append(self.mates[cat_id]["type"])
-            info["additional"].extend(self.mates[cat_id]["additional"])
+        if cat_id in self.mate:
+            info["type"].append(self.mate[cat_id]["type"])
+            info["additional"].extend(self.mate[cat_id]["additional"])
         return info
 
     def remove_parent(self, cat):
         """Remove the cat the parent dictionary - used to 'update' the adoptive parents."""
         if cat.ID in self.parents:
             del self.parents[cat.ID]
+            self.all_involved.remove(cat.ID)
+            self.all_but_cousins.remove(cat.ID)
             self.update_all_related_inheritance()
 
     def add_parent(self, parent, rel_type=RelationType.ADOPTIVE):
@@ -330,6 +460,7 @@ class Inheritance:
 
     def init_parents(self):
         """Create parent relationships"""
+        self.parents = {}
         # by blood
         current_parent_ids = self.get_blood_parents()
         for relevant_id in current_parent_ids:
@@ -352,30 +483,44 @@ class Inheritance:
             }
             self.all_involved.append(relevant_id)
             self.all_but_cousins.append(relevant_id)
+        
+        if surrogates := self.get_surrogate_parents():
+            for x in surrogates:
+                self.parents[x]["type"] = RelationType.SURROGATE
+
+        if affair := self.get_affair_parents():
+            for x in affair:
+                if x in self.parents:
+                    self.parents[x]["additional"].append(i18n.t("inheritance.affair"))
 
     def init_mates(self):
         """Create a mate relationship"""
+        self.mate = {}
         for relevant_id in self.cat.mate:
             mate_rel = RelationType.NOT_BLOOD
             # they might be related, but only if it is not an adoption
             if relevant_id in self.all_involved:
                 mate_rel = self.get_exact_rel_type(relevant_id)
-            self.mates[relevant_id] = {
+            self.mate[relevant_id] = {
                 "type": mate_rel,
                 "additional": [i18n.t("inheritance.current_mate")],
             }
-            self.other_mates.append(relevant_id)
+            if relevant_id not in self.other_mates:
+                self.other_mates.append(relevant_id)
+                self.others_in_tree.append(relevant_id)
 
         for relevant_id in self.cat.previous_mates:
             mate_rel = RelationType.NOT_BLOOD
             # they might be related, but only if it is not an adoption
             if relevant_id in self.all_involved:
                 mate_rel = self.get_exact_rel_type(relevant_id)
-            self.mates[relevant_id] = {
+            self.mate[relevant_id] = {
                 "type": mate_rel,
                 "additional": [i18n.t("inheritance.prev_mate")],
             }
-            self.other_mates.append(relevant_id)
+            if relevant_id not in self.other_mates:
+                self.other_mates.append(relevant_id)
+                self.others_in_tree.append(relevant_id)
 
     def init_grandparents(self):
         """Create a grandparent relationship."""
@@ -398,13 +543,12 @@ class Inheritance:
                     if value["type"] == RelationType.BLOOD
                     else RelationType.NOT_BLOOD
                 )
-                if grand_id not in self.grand_parents:
-                    self.grand_parents[grand_id] = {
-                        "type": grand_type,
-                        "additional": [],
-                    }
-                    self.all_involved.append(grand_id)
-                    self.all_but_cousins.append(grand_id)
+                self.grand_parents[grand_id] = {
+                    "type": grand_type,
+                    "additional": [],
+                }
+                self.all_involved.append(grand_id)
+                self.all_but_cousins.append(grand_id)
                 self.grand_parents[grand_id]["additional"].append(
                     i18n.t("inheritance.parent_of_inter", name=str(parent_cat.name))
                 )
@@ -416,16 +560,22 @@ class Inheritance:
         # kits - blood
         inter_blood_parents = self.get_blood_parents(inter_cat)
         if self.cat.ID in inter_blood_parents:
-            self.kits[inter_id] = {"type": RelationType.BLOOD, "additional": []}
+            surrogates = self.get_surrogate_parents(inter_cat)
+            affair = self.get_affair_parents(inter_cat)
+            self.kits[inter_id] = {"type": RelationType.SURROGATE if self.cat.ID in surrogates else RelationType.BLOOD, "additional": []}
+            if self.cat.ID in affair:
+                self.kits[inter_id]["additional"].append(i18n.t("inheritance.affair"))
             self.all_involved.append(inter_id)
             self.all_but_cousins.append(inter_id)
             if len(inter_blood_parents) > 1:
                 inter_blood_parents.remove(self.cat.ID)
-                other_id = inter_blood_parents.pop()
+                other_id = inter_blood_parents[0]
                 other_cat = self.cat.fetch_cat(other_id)
-                self.kits[inter_id]["additional"].append(
-                    i18n.t("inheritance.second_parent", name=str(other_cat.name))
-                )
+                if other_cat:
+                    self.others_in_tree.append(other_id)
+                    self.kits[inter_id]["additional"].append(
+                        i18n.t("inheritance.second_parent", name=str(other_cat.name))
+                    )
 
         # kit - adoptive
         if self.cat.ID in inter_cat.adoptive_parents:
@@ -464,6 +614,30 @@ class Inheritance:
                         i18n.t("inheritance.mate_of_inter", name=str(inter_cat.name))
                     ],
                 }
+                self.others_in_tree.append(mate_id)
+
+    def init_sibling_mates(self, inter_id, inter_cat):
+        """Create a sibling's mate relationship."""
+        if not inter_cat:
+            return
+        for mate_id in inter_cat.mate:
+            mate_rel = RelationType.NOT_BLOOD
+            # they might be related, but only if it is not an adoption
+            if mate_id in self.all_involved:
+                if mate_id in self.parents.keys():
+                    mate_rel = self.parents[mate_id]["type"]
+                else:
+                    mate_rel = self.get_exact_rel_type(mate_id)
+            self.siblings_mates[mate_id] = {
+                "type": mate_rel,
+                "additional": [
+                    i18n.t("inheritance.mate_of_inter",
+                            name=str(inter_cat.name))
+                ],
+            }
+            if mate_id not in self.other_mates:
+                self.other_mates.append(mate_id)
+                self.others_in_tree.append(mate_id)
 
     def init_siblings(self, inter_id, inter_cat):
         """Create a sibling relationship."""
@@ -479,12 +653,15 @@ class Inheritance:
         inter_parent_ids = self.get_blood_parents(inter_cat)
         blood_parent_overlap = set(current_parent_ids) & set(inter_parent_ids)
 
+        # surrogate siblings
+        surrogate_parent_ids = self.get_surrogate_parents()
+        inter_surrogate_parent_ids = self.get_surrogate_parents(inter_cat)
+        surrogate_parent_overlap = set(surrogate_parent_ids) & set(inter_surrogate_parent_ids)
+
         # adopt
         adoptive_overlap1 = set(current_parent_ids) & set(inter_cat.adoptive_parents)
         adoptive_overlap2 = set(self.cat.adoptive_parents) & set(inter_parent_ids)
-        adoptive_overlap3 = set(self.cat.adoptive_parents) & set(
-            inter_cat.adoptive_parents
-        )
+        adoptive_overlap3 = set(self.cat.adoptive_parents) & set(inter_cat.adoptive_parents)
 
         siblings = False
         rel_type = RelationType.BLOOD
@@ -507,6 +684,9 @@ class Inheritance:
                 == self.cat.moons + self.cat.dead_for
             ):
                 additional_info.append(i18n.t("inheritance.littermates"))
+        elif blood_parent_overlap == surrogate_parent_overlap and blood_parent_overlap:
+            siblings = True
+            rel_type = RelationType.SURROGATE
         elif len(blood_parent_overlap) == 1 and (
             len(inter_parent_ids) > 1 or len(current_parent_ids) > 1
         ):
@@ -525,21 +705,7 @@ class Inheritance:
             self.all_involved.append(inter_id)
             self.all_but_cousins.append(inter_id)
 
-            for mate_id in inter_cat.mate:
-                mate_rel = RelationType.NOT_BLOOD
-                # they might be related, but only if it is not an adoption
-                if mate_id in self.all_involved:
-                    if mate_id in self.parents.keys():
-                        mate_rel = self.parents[mate_id]["type"]
-                    else:
-                        mate_rel = self.get_exact_rel_type(mate_id)
-                self.siblings_mates[mate_id] = {
-                    "type": mate_rel,
-                    "additional": [
-                        i18n.t("inheritance.mate_of_inter", name=str(inter_cat.name))
-                    ],
-                }
-                self.other_mates.append(mate_id)
+            self.init_sibling_mates(inter_id, inter_cat)
 
             # iterate over all cats, to get the children of the sibling
             for _c in self.cat.all_cats.values():
@@ -547,7 +713,7 @@ class Inheritance:
                 _c_adoptive = self.get_adoptive_parents(_c)
                 if inter_id in _c_parents:
                     parents_cats = [self.cat.fetch_cat(c_id) for c_id in _c_parents]
-                    parent_cats_names = [str(c.name) for c in parents_cats]
+                    parent_cats_names = [str(c.name) for c in parents_cats if c is not None]
                     kit_rel_type = (
                         RelationType.BLOOD
                         if rel_type in BLOOD_RELATIVE_TYPES
@@ -582,17 +748,16 @@ class Inheritance:
             ):
                 # the inter cat is an uncle/aunt of the current cat
                 # only create a new entry if there is no entry for this cat - shouldn't be but safety check
-                if inter_id not in self.parents_siblings:
-                    # get the relation type of the grandparent to assume how they are related
-                    rel_type = RelationType.BLOOD
+                # get the relation type of the grandparent to assume how they are related
+                rel_type = RelationType.BLOOD
 
-                    # create new entity
-                    self.parents_siblings[inter_id] = {
-                        "type": rel_type,
-                        "additional": [],
-                    }
-                    self.all_involved.append(inter_id)
-                    self.all_but_cousins.append(inter_id)
+                # create new entity
+                self.parents_siblings[inter_id] = {
+                    "type": rel_type,
+                    "additional": [],
+                }
+                self.all_involved.append(inter_id)
+                self.all_but_cousins.append(inter_id)
 
                 grand_parent_cat = self.cat.fetch_cat(inter_parent_id)
                 if len(self.parents_siblings[inter_id]["additional"]) > 0:
@@ -616,7 +781,7 @@ class Inheritance:
             return
         inter_parent_ids = self.get_parents(inter_cat)
         parents_cats = [self.cat.fetch_cat(c_id) for c_id in inter_parent_ids]
-        parent_cats_names = [str(c.name) for c in parents_cats]
+        parent_cats_names = [str(c.name) for c in parents_cats if c]
 
         for inter_parent_id in inter_parent_ids:
             if inter_parent_id in self.parents_siblings.keys():
@@ -635,6 +800,7 @@ class Inheritance:
 
                 self.cousins[inter_id] = {"type": rel_type, "additional": [add_info]}
                 self.all_involved.append(inter_id)
+                self.others_in_tree.append(inter_parent_id)
 
     def init_grand_kits(self, inter_id, inter_cat):
         """Create a grandkit relationship."""
@@ -644,7 +810,7 @@ class Inheritance:
             return
         inter_parent_ids = self.get_parents(inter_cat)
         parents_cats = [self.cat.fetch_cat(c_id) for c_id in inter_parent_ids]
-        parent_cats_names = [str(c.name) for c in parents_cats if c]
+        parent_cats_names = [str(c.name) for c in parents_cats if c is not None]
 
         add_info = ""
         if len(parent_cats_names) > 0:
@@ -702,6 +868,8 @@ class Inheritance:
             relevant_cat = cat
         if relevant_cat.parent1:
             if relevant_cat.parent2:
+                if relevant_cat.parent3:
+                    return [relevant_cat.parent1, relevant_cat.parent2, relevant_cat.parent3]
                 return [relevant_cat.parent1, relevant_cat.parent2]
             return [relevant_cat.parent1]
         return []
@@ -710,6 +878,16 @@ class Inheritance:
         """Returns a list of IDs which are adoptive parents of the current cat."""
         relevant_cat = cat if cat else self.cat
         return relevant_cat.adoptive_parents
+
+    def get_surrogate_parents(self, cat=None) -> list:
+        """Returns a list of IDs which are surrogate parents of the current cat."""
+        relevant_cat = cat if cat else self.cat
+        return relevant_cat.surrogate_parents
+
+    def get_affair_parents(self, cat=None) -> list:
+        """Returns a list of IDs which are affair parents of the current cat."""
+        relevant_cat = cat if cat else self.cat
+        return relevant_cat.affair_parents
 
     # TODO - refactor these to just use one
     def get_parents(self, cat=None) -> list:
@@ -848,14 +1026,14 @@ class Inheritance:
 
     def get_mates(self) -> list:
         """Returns a list of id's which are kits of a sibling, according to the inheritance hierarchy."""
-        return [key for key in self.mates.keys()]
+        return [key for key in self.mate.keys()]
 
     def get_exact_rel_type(self, cat_id):
         all_relations = []
         if cat_id in self.parents:
             all_relations.append(self.parents[cat_id])
-        if cat_id in self.mates:
-            all_relations.append(self.mates[cat_id])
+        if cat_id in self.mate:
+            all_relations.append(self.mate[cat_id])
         if cat_id in self.kits:
             all_relations.append(self.kits[cat_id])
         if cat_id in self.kits_mates:
@@ -879,3 +1057,12 @@ class Inheritance:
             return RelationType.RELATED
         else:
             return RelationType.NOT_BLOOD
+
+    @staticmethod
+    def get_all_cat_ids():
+        id_list = []
+        for inh in Inheritance.all_inheritances.values():
+            id_list = list(set(id_list + inh.others_in_tree + inh.all_involved))
+        
+        return id_list
+

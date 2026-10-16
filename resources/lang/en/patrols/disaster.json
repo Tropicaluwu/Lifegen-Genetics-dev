@@ -69,7 +69,7 @@
                 "frequency": 1
             },
             {
-                "text": "s_c makes a careful judgment, and the patrol keeps going, but they make sure to stay on the high ground as the rain pours down around them.",
+                "text": "s_c makes a careful judgement, and the patrol keeps going, but they make sure to stay on the high ground as the rain pours down around them.",
                 "exp": 20,
                 "stat_skill": [
                     "CLEVER,2"
@@ -188,7 +188,7 @@
                 "frequency": 1
             },
             {
-                "text": "s_c makes a careful judgment and keeps going, but {PRONOUN/s_c/subject} {VERB/s_c/make/makes} sure to stay on the high ground as the rain pours down around {PRONOUN/s_c/object}.",
+                "text": "s_c makes a careful judgement and keeps going, but {PRONOUN/s_c/subject} {VERB/s_c/make/makes} sure to stay on the high ground as the rain pours down around {PRONOUN/s_c/object}.",
                 "exp": 20,
                 "stat_skill": [
                     "CLEVER,2"
