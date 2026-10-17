@@ -288,6 +288,16 @@ class ListScreen(Screens):
             if not game.last_list_forProfile:
                 self.current_group = "general.your_group"
 
+        # LG: the group remembered from last time can be gone now (your cat's own group after they died or
+        # came back to the Clan), and the group dropdown crashed on it, so start from your Clan instead
+        if self.current_group not in (
+            self.living_group_names if self.death_status == "living" else self.dead_group_names
+        ):
+            self.death_status = "living"
+            self.current_group = "general.your_clan"
+            if game.last_list_forProfile:
+                game.last_list_forProfile = "general.your_clan"
+
         # SCREEN CONTAINER - everything should come back to here
         self.list_screen_container = pygame_gui.core.UIContainer(
             ui_scale(pygame.Rect((0, 0), (800, 700))),

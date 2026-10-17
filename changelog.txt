@@ -76,3 +76,4 @@ Fixes:
 - Fixed leaders listing their own leader name (sometimes more than once) under "Previous names"
 - Fixed your cat's camp showing every other Clan's cats (with their leaders and deputies) after joining another Clan in multi clan mode
 - In multi clan mode the other Clans' own healers come to the Moonplace, instead of new healers being made and added to those Clans every half-moon
+- Fixed a crash opening the Cats screen after your cat came back to the Clan (or died) while it still remembered your cat's old group
