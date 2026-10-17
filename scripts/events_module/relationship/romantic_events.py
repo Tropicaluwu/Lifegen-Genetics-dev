@@ -592,7 +592,7 @@ class RomanticEvents:
         alive_inclan_to_mates = [
             mate
             for mate in cat_to.mate
-            if cat_to.fetch_cat(mate).status.group.is_any_clan_group()
+            if cat_to.fetch_cat(mate) and cat_to.fetch_cat(mate).status.group.is_any_clan_group()
         ]
         poly = len(alive_inclan_from_mates) > 0 or len(alive_inclan_to_mates) > 0
 
@@ -750,12 +750,12 @@ class RomanticEvents:
         alive_inclan_from_mates = [
             mate
             for mate in cat_from.mate
-            if cat_from.fetch_cat(mate).status.group.is_any_clan_group()
+            if cat_from.fetch_cat(mate) and cat_from.fetch_cat(mate).status.group.is_any_clan_group()
         ]
         alive_inclan_to_mates = [
             mate
             for mate in cat_to.mate
-            if cat_to.fetch_cat(mate).status.group.is_any_clan_group()
+            if cat_to.fetch_cat(mate) and cat_to.fetch_cat(mate).status.group.is_any_clan_group()
         ]
         poly = len(alive_inclan_from_mates) > 0 or len(alive_inclan_to_mates) > 0
 
@@ -861,7 +861,7 @@ class RomanticEvents:
         alive_inclan_from_mates = [
             mate
             for mate in cat_from.mate
-            if cat_from.fetch_cat(mate).status.group.is_any_clan_group()
+            if cat_from.fetch_cat(mate) and cat_from.fetch_cat(mate).status.group.is_any_clan_group()
         ]
         if len(alive_inclan_from_mates) > 0:
             for mate_id in alive_inclan_from_mates:
@@ -901,7 +901,7 @@ class RomanticEvents:
         alive_inclan_to_mates = [
             mate
             for mate in cat_to.mate
-            if cat_to.fetch_cat(mate).status.group.is_any_clan_group()
+            if cat_to.fetch_cat(mate) and cat_to.fetch_cat(mate).status.group.is_any_clan_group()
         ]
         if len(alive_inclan_to_mates) > 0:
             for mate_id in alive_inclan_to_mates:
@@ -1003,12 +1003,12 @@ class RomanticEvents:
             alive_inclan_from_mates = [
                 mate
                 for mate in cat_from.mate
-                if cat_from.fetch_cat(mate).status.group.is_any_clan_group()
+                if cat_from.fetch_cat(mate) and cat_from.fetch_cat(mate).status.group.is_any_clan_group()
             ]
             alive_inclan_to_mates = [
                 mate
                 for mate in cat_to.mate
-                if cat_to.fetch_cat(mate).status.group.is_any_clan_group()
+                if cat_to.fetch_cat(mate) and cat_to.fetch_cat(mate).status.group.is_any_clan_group()
             ]
             if len(alive_inclan_from_mates) > 0 and len(alive_inclan_to_mates) > 0:
                 poly_key = "both_mates"

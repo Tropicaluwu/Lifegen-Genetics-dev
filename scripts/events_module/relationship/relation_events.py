@@ -128,7 +128,7 @@ class Relation_Events:
             cat_to_choose_from = [
                 cat.all_cats[mate_id]
                 for mate_id in cat.mate
-                if cat.all_cats[mate_id].status.group.is_any_clan_group()
+                if mate_id in cat.all_cats and cat.all_cats[mate_id].status.group.is_any_clan_group()
             ]
 
         if not cat_to_choose_from:
