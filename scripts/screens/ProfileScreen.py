@@ -2202,7 +2202,19 @@ class ProfileScreen(Screens):
                 f" {i18n.t('cat.backstories.currently_exiled', name=self.the_cat.name)}"
             )
 
-        text = event_text_adjust(Cat, text, main_cat=self.the_cat, clan=self.the_cat.status.fetch_clan_object(game.clan))
+        # LG: some backstories name another Clan (o_c_n). Without one, only the c_n part got replaced
+        # and it showed "o_ThunderClan". The cat's ID picks the Clan, so it stays the same every time
+        other_clan = None
+        if "o_c_n" in text:
+            others = game.clan.all_other_clans if game.clan else []
+            if others:
+                key = int(self.the_cat.ID) if str(self.the_cat.ID).isdigit() else sum(map(ord, str(self.the_cat.ID)))
+                other_clan = others[key % len(others)]
+            else:
+                text = text.replace("o_c_n", "another Clan")
+        text = event_text_adjust(
+            Cat, text, main_cat=self.the_cat, clan=self.the_cat.status.fetch_clan_object(game.clan), other_clan=other_clan
+        )
         if "o_c_n" in text:
             if self.the_cat.backstory_str:
                 text = text.replace("o_c_n", self.the_cat.backstory_str)
