@@ -341,7 +341,9 @@ class Status:
             return self.alive_in_player_clan
         # this fails tests bc it checks this before Clan exists
         # so... nonecheck failsafe
-        return self.group == game.clan.your_cat.status.group
+        # LG: the same group, not just the same kind of group. Compared by kind, your cat in one other Clan
+        # counted every other Clan's cats as their clanmates too (their camp showed two Clans)
+        return self.group_ID == game.clan.your_cat.status.group_ID
 
     @property
     def is_outsider(self) -> bool:

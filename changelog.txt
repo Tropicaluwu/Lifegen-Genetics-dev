@@ -74,3 +74,5 @@ Fixes:
 - Fixed a crash when going to the Moonplace after another Clan's medicine cat faded or died (or after loading a different Clan)
 - Fixed backstories that name another Clan (like a cat sent to spy on your Clan) showing "o_" and your own Clan's name instead of the other Clan
 - Fixed leaders listing their own leader name (sometimes more than once) under "Previous names"
+- Fixed your cat's camp showing every other Clan's cats (with their leaders and deputies) after joining another Clan in multi clan mode
+- In multi clan mode the other Clans' own healers come to the Moonplace, instead of new healers being made and added to those Clans every half-moon

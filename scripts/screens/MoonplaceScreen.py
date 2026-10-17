@@ -454,6 +454,19 @@ class MoonplaceScreen(Screens):
     def handle_other_med(self):
         """Updates other Clans' medicine cats for the Moonplace."""
 
+        # LG: in multi clan mode the other Clans have their own real healers, so those come to the Moonplace.
+        # Making new ones put extra cats into those Clans every half-moon
+        if game.clan.clancount == "multiclan":
+            switch_set_value(
+                Switch.other_meds,
+                [
+                    c.ID for c in Cat.all_cats_list
+                    if not c.dead and c.status.is_other_clancat and c.status.rank.is_any_medicine_rank()
+                    and not (game.clan.your_cat and c.status.group_ID == game.clan.your_cat.status.group_ID)
+                ],
+            )
+            return
+
         def generate_other_meds(clan, num):
             """Generates cats for specified clan (mostly full names, some apprentices)."""
             for _ in range(num):
