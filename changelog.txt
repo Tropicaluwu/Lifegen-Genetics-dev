@@ -78,3 +78,4 @@ Fixes:
 - In multi clan mode the other Clans' own healers come to the Moonplace, instead of new healers being made and added to those Clans every half-moon
 - Fixed a crash opening the Cats screen after your cat came back to the Clan (or died) while it still remembered your cat's old group
 - Fixed a crash during the moon when a cat's mate isn't in the game anymore
+- Fixed healers the Moonplace made for the other Clans being deleted when going back to the main menu (which left their mates pointing at nobody). Saves that already have them keep them

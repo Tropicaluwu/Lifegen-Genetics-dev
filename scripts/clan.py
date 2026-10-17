@@ -1323,6 +1323,13 @@ class Clan:
         if game.clan.your_cat and game.clan.your_cat.ID not in clan_data["clan_cats"].split(","):
             game.clan.add_cat(game.clan.your_cat)
 
+        # LG: the Moonplace used to make healers for the other Clans without putting them on the roster, so the
+        # main menu deleted them again and their mates were left pointing at nobody. Living cats of the other
+        # Clans always belong on it
+        for other in Cat.all_cats_list:
+            if other.status.is_other_clancat and not other.dead and other.ID not in clan_data["clan_cats"].split(","):
+                game.clan.add_cat(other)
+
         for cat in clan_data["clan_cats"].split(","):
             if cat in Cat.all_cats:
                 game.clan.add_cat(Cat.all_cats[cat])
