@@ -1693,7 +1693,10 @@ class Cat:
         """Create a leader ceremony and add it to the history"""
 
         load_leader_ceremonies()
-        self.history.prev_names.append(str(self.name))
+        # LG: the name before becoming leader. A cat that's already leader (a founder, another Clan's leader,
+        # or a ceremony first made when it's looked at) already has their leader name, so it isn't a previous one
+        if self.status.rank != CatRank.LEADER and str(self.name) not in self.history.prev_names[-1:]:
+            self.history.prev_names.append(str(self.name))
 
         total_lives = max(1, choice(constants.CONFIG["clan_creation"]["leader_lives_nr"]))
         self.status.fetch_clan_object().leader_lives = total_lives

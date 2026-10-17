@@ -2040,7 +2040,9 @@ class ProfileScreen(Screens):
             life_history = [str(self.get_backstory_text())]
 
             if self.the_cat.history and len(self.the_cat.history.prev_names):
-                life_history.append(self.get_previous_names())
+                prev_names = self.get_previous_names()
+                if prev_names:
+                    life_history.append(prev_names)
 
             if self.the_cat.history and len(self.the_cat.history.prev_pers):
                 life_history.append(self.get_previous_personalities())
@@ -2087,7 +2089,12 @@ class ProfileScreen(Screens):
         return living_cats
 
     def get_previous_names(self):
-        return "Previous names: " + ', '.join(self.the_cat.history.prev_names)
+        # LG: each name once, and not the name they have now (older saves have repeats of it)
+        names = []
+        for name in self.the_cat.history.prev_names:
+            if name != str(self.the_cat.name) and name not in names:
+                names.append(name)
+        return "Previous names: " + ', '.join(names) if names else ""
 
     def get_previous_personalities(self):
         return "Previous traits: " + ', '.join(self.the_cat.history.prev_pers)

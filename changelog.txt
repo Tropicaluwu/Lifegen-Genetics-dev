@@ -73,3 +73,4 @@ Fixes:
 - The relationships tab on the events screen only shows the Clan picked in the dropdown, like the other tabs (it was showing every Clan's chats)
 - Fixed a crash when going to the Moonplace after another Clan's medicine cat faded or died (or after loading a different Clan)
 - Fixed backstories that name another Clan (like a cat sent to spy on your Clan) showing "o_" and your own Clan's name instead of the other Clan
+- Fixed leaders listing their own leader name (sometimes more than once) under "Previous names"
