@@ -1255,7 +1255,7 @@ class MurderScreen(Screens):
             chance += 16
         
         if cat_to_murder.status.rank == CatRank.LEADER:
-            if game.clan.leader_lives > 1:
+            if self._lives_clan(cat_to_murder).leader_lives > 1:
                 chance += 40
             else:
                 chance += 16
@@ -1420,7 +1420,7 @@ class MurderScreen(Screens):
         
         if death and not injury:
             if you.status.rank == CatRank.LEADER:
-                game.clan.leader_lives -= 1
+                self._lives_clan(you).leader_lives -= 1
             you.die()
 
         owie = "sore"
@@ -1567,7 +1567,7 @@ class MurderScreen(Screens):
             if "tags" in murder_dict and murder_dict["tags"]:
                 if (
                     (all_leader_lives and cat_to_murder.status.rank == CatRank.LEADER)
-                    or (not all_leader_lives and cat_to_murder.status.rank == CatRank.LEADER and game.clan.leader_lives == 1)
+                    or (not all_leader_lives and cat_to_murder.status.rank == CatRank.LEADER and self._lives_clan(cat_to_murder).leader_lives == 1)
                     ):
                     if "all_lives" not in murder_dict["tags"]:
                         continue
@@ -1698,7 +1698,7 @@ class MurderScreen(Screens):
         ceremony_txt = process_text(ceremony_txt, replace_dict)
 
         if cat_to_murder.status.rank == CatRank.LEADER and all_leader_lives:
-            game.clan.leader_lives = 0
+            self._lives_clan(cat_to_murder).leader_lives = 0
         
         involved_cats = [game.clan.your_cat.ID, cat_to_murder.ID]
         if accomplice:
@@ -1718,9 +1718,9 @@ class MurderScreen(Screens):
 
         # only a leader victim has lives to lose
         if cat_to_murder.status.rank == CatRank.LEADER and not all_leader_lives:
-            game.clan.leader_lives -= 1
-            if discover_chance < 7:
-                discover_chance = randint(7,9)
+            self._lives_clan(cat_to_murder).leader_lives -= 1
+            # LG: they wake up knowing who did it, so very likely to be found out, but never certain
+            discover_chance = min(max(discover_chance, randint(7, 9)), 9)
         # if u kill the leader n they wake up like an hour later Yeah ur probably gonna get caught
         cat_to_murder.die()
         # discover_chance = 3
@@ -1732,6 +1732,15 @@ class MurderScreen(Screens):
             discovered = True
         else:
             discovered = False
+
+        # LG: a leader who only lost a life wakes up knowing who attacked them
+        if discovered and cat_to_murder.status.rank == CatRank.LEADER and not all_leader_lives and not cat_to_murder.dead:
+            blamed = "you and " + str(accomplice.name) if accomplice and accompliced else "you"
+            game.cur_events_list.insert(1, Single_Event(
+                str(cat_to_murder.name) + " wakes after losing a life and names " + blamed + " as " + (
+                    "their attackers." if accomplice and accompliced else "the attacker."),
+                ["alert", "birth_death"],
+                [game.clan.your_cat.ID, cat_to_murder.ID] + ([accomplice.ID] if accomplice and accompliced else [])))
 
         game.clan.your_cat.history.add_murder(game.clan.your_cat.ID, cat_to_murder)
         game.clan.your_cat.history.reveal_murder(
@@ -2031,16 +2040,22 @@ class MurderScreen(Screens):
         text = text.replace("v_c", str(victim.name))
         return text
 
+    @staticmethod
+    def _lives_clan(cat):
+        """LG: the Clan whose leader lives this cat has. Another Clan's leader has their own, it used to take
+        them from your Clan's leader"""
+        return cat.status.fetch_clan_object(game.clan) or game.clan
+
     def leader_death_chance(self, cat_to_murder, accomplice, accompliced):
         """calculates chance for leader to lose all of their lives if the murder succeeds. out of 100"""
         chance = 50
         if cat_to_murder.status.rank != CatRank.LEADER:
             return
         
-        if game.clan.leader_lives == 1:
+        if self._lives_clan(cat_to_murder).leader_lives == 1:
             chance = 100
         else:
-            add = int(game.clan.leader_lives) * 5
+            add = int(self._lives_clan(cat_to_murder).leader_lives) * 5
             chance -= add
 
         if cat_to_murder.is_ill() or cat_to_murder.is_injured():

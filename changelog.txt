@@ -79,3 +79,13 @@ Fixes:
 - Fixed a crash opening the Cats screen after your cat came back to the Clan (or died) while it still remembered your cat's old group
 - Fixed a crash during the moon when a cat's mate isn't in the game anymore
 - Fixed healers the Moonplace made for the other Clans being deleted when going back to the main menu (which left their mates pointing at nobody). Saves that already have them keep them
+- Fixed an answer staying stuck on the talk screen when two answers lead to the same reply (like "Kits and elders eat first")
+- Your cat's parent who brings you to the Clan from outside has a backstory saying so (it was Clanborn), and parents made when a new Clan starts are Clan founders like everyone else
+- Cats who joined the Clan from outside no longer keep the backstory for still living as a kittypet, loner or rogue ("lives a comfortable life with her housefolk")
+- Your cat living in another Clan sees that Clan's camp, not your old Clan's
+- Backstories that name a cat who traveled with them ("was joined by ... on their travels") name one of their clanmates, not a random cat from anywhere (like another Clan's founder)
+- Fixed not being able to patrol with another Clan's cats in multi clan mode (no cats showed up to pick)
+- Fixed accessories cats get from events (and collars new kittypets arrive with) not showing on the cat
+- Murdering a leader: they usually only lose one life (the chance to take all of them goes up as they lose lives), and a leader who survives wakes up and very likely names you as the attacker
+- Fixed murdering another Clan's leader taking lives from your Clan's leader instead of theirs (which also made it always take all of their lives)
+- A cat from another Clan who's hired to kill someone in exchange for a place in your Clan no longer gets an "exiled from their old Clan" backstory (they left by choice), and the victim's history says "a cat hired by" instead of "a rogue hired by"

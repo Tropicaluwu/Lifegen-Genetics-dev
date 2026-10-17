@@ -2126,6 +2126,16 @@ class ProfileScreen(Screens):
             + BACKSTORIES["backstory_categories"].get("current_rogue_backstories", [])
         )
 
+        # LG: an outsider who joined the Clan (or died) kept the backstory for still living that life
+        # ("lives a comfortable life with her housefolk"), so they get the "joined the Clan" version of it
+        if (
+            self.the_cat.backstory in current_outsider_bs
+            and not (self.the_cat.status.is_outsider and not self.the_cat.dead)
+        ):
+            for kind in ("kittypet", "loner", "rogue"):
+                if self.the_cat.backstory.startswith(f"current_{kind}"):
+                    bs_blurb = i18n.t(f"cat.backstories.{kind}1")
+
         # if cat is in the unknown residence
         if self.the_cat.status.group == CatGroup.UNKNOWN_RESIDENCE:
             bs_blurb = i18n.t(
@@ -2234,16 +2244,32 @@ class ProfileScreen(Screens):
         if "c_n" in text:
             text = text.replace("c_n", str(game.clan.displayname) + "Clan")
         if "r_c" in text:
+            # LG: the cat in the backstory is one of their clanmates (an older one if there is). Any living cat
+            # could be picked before, even another Clan's founder
+            clanmates = [
+                c for c in self.get_living_cats()
+                if c.status.group_ID == self.the_cat.status.group_ID and c.ID != self.the_cat.ID
+            ]
+            if self.the_cat.backstory_str and clanmates:
+                named = [c for c in Cat.all_cats_list if str(c.name) == self.the_cat.backstory_str]
+                if named and all(c.status.group_ID != self.the_cat.status.group_ID for c in named):
+                    # an older save picked a cat from somewhere else, pick again
+                    self.the_cat.backstory_str = None
             if self.the_cat.backstory_str:
                 text = text.replace("r_c", self.the_cat.backstory_str)
             else:
-                random_cat = choice(self.get_living_cats())
-                counter = 0
-                while random_cat.moons < self.the_cat.moons or random_cat.ID == self.the_cat.ID:
-                    if counter == 30:
-                        break
+                older = [c for c in clanmates if c.moons >= self.the_cat.moons]
+                pool = older or clanmates
+                if pool:
+                    random_cat = choice(pool)
+                else:
                     random_cat = choice(self.get_living_cats())
-                    counter+=1
+                    counter = 0
+                    while random_cat.moons < self.the_cat.moons or random_cat.ID == self.the_cat.ID:
+                        if counter == 30:
+                            break
+                        random_cat = choice(self.get_living_cats())
+                        counter+=1
                 self.the_cat.backstory_str = str(random_cat.name)
                 text = text.replace("r_c", str(random_cat.name))
         return text

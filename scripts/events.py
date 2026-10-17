@@ -1132,13 +1132,14 @@ def generate_birth_event():
                 kit.change_name(new_prefix=kit.name.prefix, new_suffix="")
         return kits
     
-    def generate_outsider_parent(group=None, mate=None, dead=False):
+    def generate_outsider_parent(group=None, mate=None, dead=False, arrived=False):
         """
         Generates an outsider parent for the MC
         
         :param group: The group the parent will be a part of. Will be a random non-MC group if unspecified.
         :param mate: The Cat object of the first parent, if there is one.
         :param dead: If the parent is dead before MC is born.
+        :param arrived: If the parent comes to the Clan from outside with the MC (the one outsider parent birth).
         """
         if group:
             parent_group = group
@@ -1199,6 +1200,14 @@ def generate_birth_event():
         parent1_outside = attribute_dict[parent_group]["outside"]
         parent1_social = attribute_dict[parent_group]["cat_social"]
         parent1_backstory = random.choice(attribute_dict[parent_group]["possible_backstories"])
+        # LG: a parent made inside your Clan was always Clanborn
+        if parent_group == CatGroup.PLAYER_CLAN_ID:
+            if arrived:
+                # they come to the Clan from outside, with your cat
+                parent1_backstory = random.choice(["loner1", "rogue1", "kittypet1"])
+            elif game.clan.clan_age == "new" and game.clan.age < 1:
+                # a brand new Clan's first cats are its founders
+                parent1_backstory = random.choice(BACKSTORIES["backstory_categories"]["clan_founder_backstories"])
 
         parent1_gender = None
         if mate and not get_clan_setting("same sex birth"):
@@ -1333,7 +1342,7 @@ def generate_birth_event():
             parent1.set_mate(parent2)
 
         elif birth_type == BirthType.ONE_OUTSIDER_PARENT:
-            parent1 = generate_outsider_parent(group=game.clan.your_cat.status.group_ID, dead=False)
+            parent1 = generate_outsider_parent(group=game.clan.your_cat.status.group_ID, dead=False, arrived=True)
 
         elif birth_type == BirthType.TWO_OUTSIDER_PARENTS:
             parent1 = generate_outsider_parent(group=game.clan.your_cat.status.group_ID, dead=False)

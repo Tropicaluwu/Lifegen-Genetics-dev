@@ -345,16 +345,19 @@ class TalkScreen(Screens):
             text = self.chosen_text_value[f"{self.current_scene}_choices"][c]['text']
             scene = self.chosen_text_value[f"{self.current_scene}_choices"][c]['next_scene']
 
+            # LG: kept under the choice's own name, not the scene it leads to. Two choices leading to the same
+            # scene overwrote each other, and the first one's button and text stayed on screen for good
             # The clickable button
-            self.choice_buttons[scene] = UIImageButton(
+            self.choice_buttons[c] = UIImageButton(
                 ui_scale(pygame.Rect((390, 427 + y_pos), (34, 34))),
                 text = "",
                 object_id="#dialogue_choice_button",
                 manager=MANAGER
                 )
+            self.choice_buttons[c].next_scene = scene
 
             # the background image for the text
-            self.choice_display["bg" + scene] = pygame_gui.elements.UIImage(
+            self.choice_display["bg" + c] = pygame_gui.elements.UIImage(
                 ui_scale(pygame.Rect((430, 427 + y_pos), (270, 35))),
                 pygame.transform.scale(image_cache.load_image("resources/images/option_bg.png").convert_alpha(),
                 (270, 35)),
@@ -364,7 +367,7 @@ class TalkScreen(Screens):
             # the text
             # use adjust_text to get r_c names and pronouns
             choice_display_text = self.adjust_text(text)
-            self.choice_display["text" + scene] = pygame_gui.elements.UITextBox(
+            self.choice_display["text" + c] = pygame_gui.elements.UITextBox(
                 choice_display_text,
                 ui_scale(pygame.Rect((435, 428 + y_pos), (270, 35))),
                 object_id="#text_box_30_horizleft",
@@ -416,7 +419,7 @@ class TalkScreen(Screens):
                 self.change_screen(GameScreen.PROFILE)
             for btn in self.choice_buttons:
                 if event.ui_element == self.choice_buttons[btn]:
-                    self.current_scene = btn
+                    self.current_scene = self.choice_buttons[btn].next_scene
                     new_scene = True
 
         elif event.type == pygame.KEYDOWN and game_setting_get("keybinds"):

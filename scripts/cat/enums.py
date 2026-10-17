@@ -90,11 +90,13 @@ class CatRank(StrEnum):
     def is_allowed_to_patrol(self, cat=None, allow_mediators=False) -> bool:
         # newborn is not included in this because the constants.CONFIG["fun"] needs extra checks
         if cat is not None:
-            if not cat.status.alive_in_your_cat_group:
-                return False
             # outsiders who travel with you can patrol once they're old enough
             if not cat.status.group.is_any_clan_group():
-                return cat.moons >= 6
+                return cat.status.alive_in_your_cat_group and cat.moons >= 6
+            # LG: Clan cats are only checked by rank here. Which Clan is patrolling is up to the patrol screen,
+            # this used to turn away every other Clan's cats when you picked that Clan to patrol with
+            if cat.dead:
+                return False
         if self.is_any_clancat_rank() and self not in (
             self.ELDER,
             self.KITTEN,

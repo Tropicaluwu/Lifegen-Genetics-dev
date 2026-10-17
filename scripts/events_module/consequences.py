@@ -688,6 +688,8 @@ def find_clan_cats(Cat, Relationship, event, in_event_cats: dict, i: int, attrib
     if "exiled" in attribute_list:
         all_clan_cats = [i for i in Cat.all_cats.values(
         ) if i.status.is_exiled() and i.status.is_exiled() != clan.group_ID and not i.dead]
+    # LG: whether the cat really is an exile, or just a member of another Clan
+    picked_from_exiles = bool(all_clan_cats)
     if not all_clan_cats:
         all_clan_cats = [i for i in Cat.all_cats.values(
         ) if i.status.group_ID == other_clan.group_ID]
@@ -884,7 +886,12 @@ def find_clan_cats(Cat, Relationship, event, in_event_cats: dict, i: int, attrib
 
     for cat in picked_cats:
         if chosen_backstory:
-            cat.backstory = chosen_backstory
+            # LG: an exiled backstory (disgraced, ostracized) only fits a cat who really was exiled. A cat
+            # who was just a member of another Clan left it of their own will
+            if not picked_from_exiles and ("disgraced" in chosen_backstory or "ostracized" in chosen_backstory):
+                cat.backstory = choice(["otherclan1", "otherclan2", "otherclan4"])
+            else:
+                cat.backstory = chosen_backstory
             cat.history.add_beginning()
 
         # SET MATES
@@ -1149,10 +1156,14 @@ def create_new_cat(
                 weights = constants.CONFIG["cat_name_controls"]["kittypet"]
                 # check if the kittypets come with a pretty acc
                 if bool(getrandbits(1)):
+                    collar = choice(new_cat.pelt.collar_accessories)
                     new_cat.pelt.accessory = (
                         *new_cat.pelt.accessory,
-                        choice(new_cat.pelt.collar_accessories),
+                        collar,
                     )
+                    # LG: in their inventory too, or it's never drawn
+                    if collar not in new_cat.pelt.inventory:
+                        new_cat.pelt.inventory.append(collar)
             if original_social == CatSocial.LONER:
                 weights = constants.CONFIG["cat_name_controls"]["loner"]
 

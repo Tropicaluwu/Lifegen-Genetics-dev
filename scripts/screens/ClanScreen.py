@@ -94,6 +94,9 @@ class ClanScreen(Screens):
 
         # other clans just use their camp, your own clan goes by where your cat lives
         view_clan = game.selected_clan if game.selected_clan else game.clan
+        # LG: your cat living in another Clan: their camp is that Clan's
+        if view_clan is game.clan and game.clan.your_cat and game.clan.your_cat.status.group == CatGroup.OTHER_CLAN:
+            view_clan = game.clan.your_cat.status.fetch_clan_object(game.clan) or game.clan
         if view_clan is not game.clan:
             current_bg = view_clan.camp_bg
         elif game.clan.your_cat.status.group == CatGroup.HOUSEHOLD:
@@ -330,10 +333,14 @@ class ClanScreen(Screens):
             assign_new_bg("camp1")
 
         available_biome = ["Forest", "Mountainous", "Plains", "Beach"]
-        biome = game.selected_clan.biome
+        biome_clan = game.selected_clan
+        # LG: your cat living in another Clan sees that Clan's land
+        if (biome_clan is game.clan or not biome_clan) and game.clan.your_cat                 and game.clan.your_cat.status.group == CatGroup.OTHER_CLAN:
+            biome_clan = game.clan.your_cat.status.fetch_clan_object(game.clan) or game.clan
+        biome = biome_clan.biome
         if biome not in available_biome:
             biome = available_biome[0]
-            game.selected_clan.biome = biome
+            biome_clan.biome = biome
         biome = biome.lower()
 
         all_backgrounds = []

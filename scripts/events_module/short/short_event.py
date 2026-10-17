@@ -573,14 +573,19 @@ class ShortEvent:
         if not acc_list:
             return False
 
+        # LG: it goes in their inventory too, like patrol accessories. Accessories are only drawn for cats
+        # with something in their inventory, so a cat with an empty one never showed it
+        chosen_acc = choice(acc_list)
+        if chosen_acc not in self.main_cat.pelt.inventory:
+            self.main_cat.pelt.inventory.append(chosen_acc)
         if self.main_cat.pelt.accessory:
             self.main_cat.pelt.accessory = (
                 *self.main_cat.pelt.accessory,
-                choice(acc_list),
+                chosen_acc,
             )
             return None
         else:
-            self.main_cat.pelt.accessory = ([choice(acc_list)])
+            self.main_cat.pelt.accessory = ([chosen_acc])
             return None
 
     def handle_transition(self):

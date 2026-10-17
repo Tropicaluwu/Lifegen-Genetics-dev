@@ -165,8 +165,12 @@ def check_achievements(Cat, eventspage=False):
 def get_current_camp():
     """ LG """
     if game.clan.your_cat:
-        if game.clan.your_cat.status.group in [CatGroup.PLAYER_CLAN, CatGroup.OTHER_CLAN]:
+        if game.clan.your_cat.status.group == CatGroup.PLAYER_CLAN:
             camp_nr = game.clan.camp_bg
+            camp_bg_base_dir = "resources/images/camp_bg/clancat"
+        elif game.clan.your_cat.status.group == CatGroup.OTHER_CLAN:
+            # LG: your cat living in another Clan sees that Clan's camp, not your old Clan's
+            camp_nr = (game.clan.your_cat.status.fetch_clan_object(game.clan) or game.clan).camp_bg
             camp_bg_base_dir = "resources/images/camp_bg/clancat"
         elif game.clan.your_cat.status.group == CatGroup.ROGUE_GROUP:
             camp_nr = game.clan.rogue_group_bg
