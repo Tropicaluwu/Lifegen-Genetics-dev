@@ -2599,7 +2599,8 @@ def kit_deaths(cats, clan=None):
     death_chances = constants.CONFIG['death_related']['kit_death_chances']
     
     for kit in cats:
-        if kit.dead or kit.status.social == CatSocial.KITTYPET:
+        # unborn cats (like your cat before it's born) sit at -1 moons
+        if kit.dead or kit.moons < 0 or kit.status.social == CatSocial.KITTYPET:
             continue
         
         multiplier = 1-(clan_queens) if kit.status.group_ID == clan.group_ID and kit.status.rank == CatRank.KITTEN else 1
@@ -3227,6 +3228,7 @@ def perform_ceremonies(cat, clan):
 
                     if (
                         switch_get_value(Switch.request_apprentice) and
+                        cat.status.group_ID == game.clan.your_cat.status.group_ID and
                         game.clan.your_cat.status.rank == CatRank.MEDICINE_CAT
                         ):
                         chance = 1
@@ -3277,6 +3279,7 @@ def perform_ceremonies(cat, clan):
 
                     if (
                         switch_get_value(Switch.request_apprentice) and
+                        cat.status.group_ID == game.clan.your_cat.status.group_ID and
                         game.clan.your_cat.status.rank == CatRank.MEDIATOR
                     ):
                         chance = 1
@@ -3628,7 +3631,7 @@ def ceremony(cat, promoted_to, preparedness="prepared"):
         CatRank.MEDIATOR_APPRENTICE: [CatRank.MEDIATOR],
         CatRank.QUEENS_APPRENTICE: [CatRank.QUEEN]
     }
-    if switch_get_value(Switch.request_apprentice):
+    if switch_get_value(Switch.request_apprentice) and cat.status.group_ID == game.clan.your_cat.status.group_ID:
         if game.clan.your_cat.status.rank in mentor_dict.get(promoted_to, []):
             switch_set_value(Switch.request_apprentice, False)
     # ---

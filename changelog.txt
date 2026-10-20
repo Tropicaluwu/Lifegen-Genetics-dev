@@ -89,3 +89,6 @@ Fixes:
 - Murdering a leader: they usually only lose one life (the chance to take all of them goes up as they lose lives), and a leader who survives wakes up and very likely names you as the attacker
 - Fixed murdering another Clan's leader taking lives from your Clan's leader instead of theirs (which also made it always take all of their lives)
 - A cat from another Clan who's hired to kill someone in exchange for a place in your Clan no longer gets an "exiled from their old Clan" backstory (they left by choice), and the victim's history says "a cat hired by" instead of "a rogue hired by"
+- Fixed the game crashing on the first moon skip with "Use modded litters" on (your cat counted as a kit before they were born)
+- Fixed "request an apprentice" giving your cat apprentices from other Clans (or of the wrong role, like a healer apprentice for a warrior)
+- Fixed patrol rewards for the extra cats on a patrol (like the flower crowns from the group dates) not being given

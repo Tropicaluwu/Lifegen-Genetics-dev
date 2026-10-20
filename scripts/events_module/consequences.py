@@ -1355,6 +1355,15 @@ def gather_cat_objects(
             found_cat = event.patrol_apprentices[4]
         elif abbr == "app6" and len(event.patrol_apprentices) >= 6:
             found_cat = event.patrol_apprentices[5]
+        elif re.match(r"o_c[1-4]$", abbr) and hasattr(event, "patrol_cats"):
+            # same cats the patrol text names as o_c1-4
+            other_cats = [
+                c for c in event.patrol_cats
+                if c not in (event.patrol_leader, event.random_cat)
+            ]
+            index = int(abbr[-1]) - 1
+            if index < len(other_cats):
+                found_cat = other_cats[index]
 
         # LG
         if dialogue_dict:
