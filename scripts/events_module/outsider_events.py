@@ -50,7 +50,13 @@ class OutsiderEvents:
                 elif cat.status.is_lost(CatGroup.PLAYER_CLAN_ID if game.clan.clancount == "singleclan" else None):
                     text = random.choice(deaths["lost"])
                     death_history = i18n.t("events.death.outsider_deaths.history.lost")
-                elif game.clan.clancount == "singleclan" and cat.status.is_other_clancat or cat.status.is_former_clancat:
+                elif (
+                    game.clan.clancount == "singleclan" and cat.status.is_other_clancat or cat.status.is_former_clancat
+                ) and any(
+                    # former Clan cats who became loners, rogues or kittypets have no Clan to name
+                    c.group_ID == cat.status.get_last_valid_group_id()
+                    for c in [game.clan] + game.clan.all_other_clans
+                ):
                     group_id = cat.status.get_last_valid_group_id()
                     if cat.status.is_exiled(group_id):
                         text = random.choice(deaths["other_clan_exiled"])
@@ -84,6 +90,8 @@ class OutsiderEvents:
                     death_history = i18n.t(
                         f"events.death.outsider_deaths.history.{cat.status.social.value}"
                     )
+                else:
+                    text = random.choice(deaths["default"])
                 
                 cat.history.add_death(death_text=death_history)
                 cat.die(grief_allowed=False)
