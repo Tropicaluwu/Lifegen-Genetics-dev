@@ -92,3 +92,4 @@ Fixes:
 - Fixed the game crashing on the first moon skip with "Use modded litters" on (your cat counted as a kit before they were born)
 - Fixed "request an apprentice" giving your cat apprentices from other Clans (or of the wrong role, like a healer apprentice for a warrior)
 - Fixed patrol rewards for the extra cats on a patrol (like the flower crowns from the group dates) not being given
+- The parents made up for your cat's birth (outsiders, or birth parents who died) now have genes that could actually have made your cat, so your cat can't have a color or trait neither parent could pass down

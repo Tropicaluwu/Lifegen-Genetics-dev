@@ -1092,6 +1092,177 @@ def get_acc_name(acc):
 
     return acc_name
 
+# LG: genes for the parents made up for your cat's birth. Your cat's genes come first (you pick
+# their look), so the made-up parents are given genes that could have made your cat
+PARENT_GENE_PAIRS = [
+    "furLength", "eumelanin", "dilute", "white", "pointgene", "silver", "agouti", "mack", "ticked",
+    "wirehair", "laperm", "cornish", "urals", "tenn", "fleece", "sedesp", "ruhr", "ruhrmod", "lykoi",
+    "pinkdilute", "dilutemd", "ext", "corin", "karp", "bleach", "ghosting", "satin", "glitter",
+    "curl", "fold", "fourear", "manx", "kab", "toybob", "jbob", "kub", "ring", "munch", "poly", "pax3",
+]
+PARENT_POLYGENES = ["wideband", "rufousing", "unders_ruf", "bengal", "sokoke", "spotted", "tickgenes"]
+
+
+def _is_pair(genes):
+    return isinstance(genes, list) and len(genes) == 2
+
+
+def _match_gene_pair(kit_pair, parent_pairs):
+    """Each parent gets one of the kit's two copies (changing as few as possible)"""
+    if len(parent_pairs) == 1:
+        pair = parent_pairs[0]
+        if kit_pair[0] not in pair and kit_pair[1] not in pair:
+            pair[random.randint(0, 1)] = random.choice(kit_pair)
+        return
+    a, b = kit_pair
+    orders = [(a, b), (b, a)]
+    random.shuffle(orders)
+    first, second = min(
+        orders,
+        key=lambda o: (o[0] not in parent_pairs[0]) + (o[1] not in parent_pairs[1]),
+    )
+    for allele, pair in ((first, parent_pairs[0]), (second, parent_pairs[1])):
+        if allele not in pair:
+            pair[random.randint(0, 1)] = allele
+
+
+def _match_sex_genes(kit_genes, parent_genes):
+    """X genes (like orange): a mother passes one of hers, a father his only X (or his Y)"""
+    if len(kit_genes.sexgene) != 2 or any(len(g.sexgene) != 2 for g in parent_genes):
+        return
+    fathers = [g for g in parent_genes if "Y" in g.sexgene]
+    if len(parent_genes) == 2:
+        if len(fathers) == 1:
+            father = fathers[0]
+            mother = parent_genes[0] if parent_genes[1] is father else parent_genes[1]
+        else:
+            # same sex parents
+            mother, father = random.sample(parent_genes, 2)
+    elif fathers:
+        mother, father = None, parent_genes[0]
+    else:
+        mother, father = parent_genes[0], None
+
+    def mother_slots():
+        return [i for i, x in enumerate(mother.sexgene) if x != "Y"] or [0]
+
+    def mother_xs():
+        return [mother.sexgene[i] for i in mother_slots()]
+
+    def father_slot():
+        return 1 if father.sexgene[0] == "Y" else 0
+
+    if "Y" in kit_genes.sexgene:
+        # the X came from the mother, the Y from the father
+        kit_x = kit_genes.sexgene[1] if kit_genes.sexgene[0] == "Y" else kit_genes.sexgene[0]
+        if mother and kit_x not in mother_xs():
+            mother.sexgene[random.choice(mother_slots())] = kit_x
+        return
+
+    a, b = kit_genes.sexgene
+    if mother and father:
+        orders = [(a, b), (b, a)]
+        random.shuffle(orders)
+        from_mother, from_father = min(
+            orders,
+            key=lambda o: (o[0] not in mother_xs()) + (o[1] != father.sexgene[father_slot()]),
+        )
+        if from_mother not in mother_xs():
+            mother.sexgene[random.choice(mother_slots())] = from_mother
+        father.sexgene[father_slot()] = from_father
+    elif mother:
+        if a not in mother_xs() and b not in mother_xs():
+            mother.sexgene[random.choice(mother_slots())] = random.choice([a, b])
+    elif father.sexgene[father_slot()] not in (a, b):
+        father.sexgene[father_slot()] = random.choice([a, b])
+
+
+def _match_polygene(kit_value, parent_values):
+    """Polygenes are counts (0-2) at each spot: a 0 passes nothing, a 2 always passes one, a 1 either"""
+
+    def passes(value):
+        return {0: (0,), 1: (0, 1), 2: (1,)}[value]
+
+    def possible(values):
+        if len(values) == 1:
+            return any(0 <= kit_value - g <= 1 for g in passes(values[0]))
+        return any(g1 + g2 == kit_value for g1 in passes(values[0]) for g2 in passes(values[1]))
+
+    if possible(parent_values):
+        return parent_values
+    if len(parent_values) == 1:
+        options = [[v] for v in range(3)]
+    else:
+        options = [[v1, v2] for v1 in range(3) for v2 in range(3)]
+    options = [o for o in options if possible(o)]
+    random.shuffle(options)
+    return min(options, key=lambda o: sum(abs(new - old) for new, old in zip(o, parent_values)))
+
+
+def _redraw_from_genes(cat):
+    """Remakes a cat's look from their (changed) genes, the same way a new cat gets it"""
+    genes = cat.phenotype
+    genes.GeneSort()
+    genes.PolyEval()
+    # eye color depends on genes like dilute and colorpoint too (keeps their eye grades)
+    genes.deaf = False
+    genes.EyeColourFinder()
+    genes.white_pattern = []
+    genes.PhenotypeOutput(genes.white_pattern)
+    genes.SpriteInfo(cat.moons)
+    genes.white_pattern = Pelt.generate_white(
+        genes.white, genes.pointgene, genes.whitegrade, genes.vitiligo, None, genes.pax3
+    )
+    if genes.maincolour == "white" and not genes.patchmain:
+        genes.white_pattern = "No"
+    old_pelt = cat.pelt
+    cat.pelt = Pelt.generate_new_pelt(genes, cat.age)
+    for attr in ("scars", "accessory", "inventory", "reverse"):
+        if hasattr(old_pelt, attr):
+            setattr(cat.pelt, attr, getattr(old_pelt, attr))
+    cat.genetic_conditions()
+
+
+def match_parents_to_kit(kit, parents):
+    """Gives parents made up for your cat's birth genes that could have made your cat.
+    Only the parents change, your cat keeps the look you picked."""
+    parents = [p for p in parents if p]
+    if not parents:
+        return
+    # a chimera parent passes on their main genes
+    for parent in parents:
+        if parent.chimerapheno:
+            parent.passes = 1
+    kit_genes = kit.phenotype
+    parent_genes = [p.phenotype for p in parents]
+
+    for gene in PARENT_GENE_PAIRS:
+        kit_pair = kit_genes[gene]
+        parent_pairs = [g[gene] for g in parent_genes]
+        if _is_pair(kit_pair) and all(_is_pair(pair) for pair in parent_pairs):
+            _match_gene_pair(kit_pair, parent_pairs)
+
+    _match_sex_genes(kit_genes, parent_genes)
+
+    for gene in PARENT_POLYGENES:
+        kit_string = kit_genes[gene]
+        # (newer Genemod keeps some of these as a blended number instead)
+        if not isinstance(kit_string, str) or any(
+            not isinstance(g[gene], str) or len(g[gene]) != len(kit_string) for g in parent_genes
+        ):
+            continue
+        new_strings = [""] * len(parent_genes)
+        for i, kit_value in enumerate(kit_string):
+            values = _match_polygene(int(kit_value), [int(g[gene][i]) for g in parent_genes])
+            for j, value in enumerate(values):
+                new_strings[j] += str(value)
+        for g, new_string in zip(parent_genes, new_strings):
+            setattr(g, gene, new_string)
+
+    for parent in parents:
+        _redraw_from_genes(parent)
+
+
 def generate_birth_event():
     '''Handles birth event generation and creation of inheritance for your cat'''
 
@@ -1116,6 +1287,7 @@ def generate_birth_event():
     # birth_type = BirthType.TWO_PARENTS
 
     outside_groups = game.clan.your_cat.status.group.get_all_outside_groups_IDs()
+    made_up_parents = []
 
     def create_siblings(parent1, parent2, adoptive_parents):
         '''Creates siblings for your cat'''
@@ -1235,6 +1407,7 @@ def generate_birth_event():
         )
         if dead:
             parent1.die()
+        made_up_parents.append(parent1)
         return parent1
 
     def is_valid_parent(cat, other_parent, adoptive=False):
@@ -1518,6 +1691,9 @@ def generate_birth_event():
         game.cur_events_list.insert(0, Single_Event(adjusted_birth_txt, ["alert", "birth_death"], game.clan.your_cat.ID))
 
     birth_type, parent1, parent2, adoptive_parents = get_parents(birth_type)
+    match_parents_to_kit(
+        game.clan.your_cat, [p for p in (parent1, parent2) if p in made_up_parents]
+    )
     siblings = create_siblings(parent1, parent2, adoptive_parents) if random.randint(1,4) != 1 else []
     handle_inheritance(parent1, parent2, adoptive_parents, siblings)
     handle_backstory(siblings)
