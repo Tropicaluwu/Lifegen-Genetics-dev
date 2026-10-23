@@ -1102,6 +1102,7 @@ def generate_sprite(
             if (
                 game_setting_get('tints')
                 and cat.pelt.tint in sprites.cat_tints["tint_colours"]
+                and cat.pelt.tint != "none"
             ):
                 tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
                 tint.fill(tuple(sprites.cat_tints["tint_colours"][cat.pelt.tint]))
@@ -1109,6 +1110,7 @@ def generate_sprite(
             if (
                 game_setting_get('tints')
                 and cat.pelt.tint in sprites.cat_tints["dilute_tint_colours"]
+                and cat.pelt.tint != "none"
             ):
                 tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
                 tint.fill(tuple(sprites.cat_tints["dilute_tint_colours"][cat.pelt.tint]))
@@ -1162,6 +1164,7 @@ def generate_sprite(
                 and cat.pelt.white_patches_tint != "none"
                 and cat.pelt.white_patches_tint
                 in sprites.white_patches_tints["tint_colours"]
+                and cat.pelt.white_patches_tint != "none"
             ):
                 tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
                 tint.fill(

@@ -94,3 +94,4 @@ Fixes:
 - Fixed patrol rewards for the extra cats on a patrol (like the flower crowns from the group dates) not being given
 - The parents made up for your cat's birth (outsiders, or birth parents who died) now have genes that could actually have made your cat, so your cat can't have a color or trait neither parent could pass down
 - Fixed a random crash during the moon when a cat who left your Clan to become a loner, rogue or kittypet dies
+- Fixed cats showing ERROR in the custom cat maker when the tint or white patches tint was set to "none"
