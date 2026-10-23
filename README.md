@@ -16,7 +16,6 @@ Made by the **LifeGen team**. LifeGen is the mod where you play as your own cat.
 ### Genemod (Genetics mod)
 Made by **Chinch-Bug** and contributors. Genemod gives every cat real, inheritable genes.
 - GitHub: [Chinch-Bug/clangen-genemod](https://github.com/Chinch-Bug/clangen-genemod)
-- Discord: [Genemod server](https://discord.gg/t6XqgQ46Jx)
 
 ### ClanGen
 The game both mods are built on. Original creator **just-some-cat**, fan edit by **SableSteel** and the ClanGen team.
