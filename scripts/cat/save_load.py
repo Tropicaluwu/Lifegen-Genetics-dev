@@ -29,11 +29,18 @@ def save_cats(clanname, cat_class: Type["Cat"], game: "Game"):
     if not directory.exists():
         directory.mkdir(parents=True)
 
-    # Delete all existing relationship files
+    # Delete the old relationship files, except for dead cats that aren't loaded right now. Their
+    # relationships aren't in memory, and deleting the file would wipe them if they get revived
     if not relationships_dir.exists():
         relationships_dir.mkdir()
+    keep = {
+        f"{c.ID}_relations.json"
+        for c in cat_class.all_cats.values()
+        if c.dead and not c.relationships
+    }
     for f in relationships_dir.glob("*.json"):
-        f.unlink()
+        if f.name not in keep:
+            f.unlink()
 
     save_faded_cats(clanname, cat_class, game)  # Fades cat and saves them, if needed
 
@@ -48,7 +55,7 @@ def save_cats(clanname, cat_class: Type["Cat"], game: "Game"):
             inter_cat.save_history(history_dir)
             # after saving, dump the history info
             inter_cat.history = None
-        if not inter_cat.dead:
+        if not inter_cat.dead or inter_cat.relationships:
             inter_cat.save_relationship_of_cat(relationships_dir)
 
     safe_save(f"{get_save_dir()}/{clanname}/clan_cats.json", clan_cats)
@@ -66,6 +73,8 @@ def save_faded_cats(clanname, cat_class: Type["Cat"], game: "Game"):
 
     copy_of_info = ""
     for cat in cat_to_fade:
+        if cat not in cat_class.all_cats:
+            continue
         inter_cat = cat_class.all_cats[cat]
 
         # Add ID to list of faded cats.

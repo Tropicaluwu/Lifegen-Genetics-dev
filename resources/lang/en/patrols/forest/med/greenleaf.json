@@ -17,7 +17,7 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [1, 1],
+            "healer": [1, 1],
             "normal adult": [1, 1]
         },
         "frequency": 4,
@@ -123,7 +123,7 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "medicine cat": [1, 1]
+            "healer": [1, 1]
         },
         "frequency": 4,
         "intro_text": "p_l is on a mission to find herbs. {PRONOUN/p_l/subject/CAP} {VERB/p_l/know/knows} a nice place where mullein grows in a grassy clearing, and it's always good to have some on paw for coughs and sore throats.",
@@ -170,8 +170,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat apprentice": [1, 1],
-            "medicine cat": [1, 1]
+            "healer apprentice": [1, 1],
+            "healer": [1, 1]
         },
         "tags": [],
         "intro_text": "p_l sets off to find the bulbs of a corpse lily, so that app1 can learn both risk and reward.",

@@ -1,3 +1,4 @@
+from scripts.cat.enums import CatGroup
 from scripts.game_structure import game
 
 
@@ -5,13 +6,12 @@ def get_warring_clan():
     """
     returns enemy clan if a war is currently ongoing
     """
-    enemy_clan = None
-    if game.clan.war.get("at_war", False):
-        for other_clan in game.clan.all_other_clans:
-            if other_clan.name == game.clan.war["enemy"]:
-                enemy_clan = other_clan
-
-    return enemy_clan
+    # wars are stored per clan pair now (genemod), so just ask for the player clans enemies
+    enemies = game.clan.get_wars(CatGroup.PLAYER_CLAN_ID)
+    for other_clan in game.clan.all_other_clans:
+        if other_clan.group_ID in enemies:
+            return other_clan
+    return None
 
 
 def get_other_clan(clan_name):
@@ -19,19 +19,16 @@ def get_other_clan(clan_name):
     returns the clan object of given clan name
     """
     for clan in game.clan.all_other_clans:
-        if clan.name == clan_name:
+        if clan.displayname == clan_name:
             return clan
 
 
-def change_clan_relations(other_clan, difference):
+def change_clan_relations(clan, other_clan, difference):
     """
     will change the Clan's relation with other clans according to the difference parameter.
     """
-    # grab the clan that has been indicated
-    other_clan = other_clan
     # grab the relation value for that clan
-    y = game.clan.all_other_clans.index(other_clan)
-    clan_relations = int(game.clan.all_other_clans[y].relations)
+    clan_relations = game.clan.get_relations(clan, other_clan)
     # change the value
     clan_relations += difference
     # making sure it doesn't exceed the bounds
@@ -40,15 +37,15 @@ def change_clan_relations(other_clan, difference):
     elif clan_relations < 0:
         clan_relations = 0
     # setting it in the Clan save
-    game.clan.all_other_clans[y].relations = clan_relations
+    game.clan.set_relations(clan, other_clan, clan_relations)
 
 
-def change_clan_reputation(difference):
+def change_clan_reputation(difference, clan):
     """
     will change the Clan's reputation with outsider cats according to the difference parameter.
     """
-    game.clan.reputation += difference
-    if game.clan.reputation < 0:
-        game.clan.reputation = 0  # clamp to 0
-    elif game.clan.reputation > 100:
-        game.clan.reputation = 100  # clamp to 100
+    clan.reputation += difference
+    if clan.reputation < 0:
+        clan.reputation = 0  # clamp to 0
+    elif clan.reputation > 100:
+        clan.reputation = 100  # clamp to 100

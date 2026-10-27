@@ -1,7 +1,8 @@
-import tomllib
-
 from pygame import Cursor, image, SYSTEM_CURSOR_ARROW
 import ujson
+import tomllib
+import os
+from scripts.housekeeping.datadir import get_save_dir
 
 # these scripts don't import any clangen scripts into themselves, so it's okay for them to be imported here
 from scripts.clan_resources.herb.herb import HERBS
@@ -23,10 +24,10 @@ EVENTS_PER_PAGE = 10
 BIOME_TYPES = ["Forest", "Plains", "Mountainous", "Beach", "Wetlands", "Desert"]
 
 CAMPS: dict = {
-    "Forest": ["Classic", "Gully", "Grotto", "Lakeside"],
-    "Mountainous": ["Cliff", "Cavern", "Crystal River", "Ruins"],
-    "Plains": ["Grasslands", "Tunnels", "Wastelands", "Bridge"],
-    "Beach": ["Tidepools", "Tidal Cave", "Shipwreck", "Fjord"],
+    "Forest": ["Classic", "Gully", "Grotto", "Lakeside", "Pine", "Birch"],
+    "Mountainous": ["Cliff", "Cavern", "Crystal River", "Rocky Slope", "Quarry", "Ruins"],
+    "Plains": ["Grasslands", "Tunnels", "Wastelands", "Taiga", "Desert", "City", "Farm", "Bushland", "Castle", "Bridge"],
+    "Beach": ["Tidepools", "Tidal Cave", "Shipwreck", "Fjord", "Tropical_Island", "Quay"],
 }
 
 SEASONS = ["Newleaf", "Greenleaf", "Leaf-fall", "Leaf-bare"]
@@ -157,12 +158,60 @@ SUPPLY_ADJUSTMENTS = [
 
 with open("resources/game_config.toml", "r", encoding="utf-8") as read_file:
     CONFIG = tomllib.loads(read_file.read())
+    PREY_CONFIG = CONFIG["clan_resources"]["freshkill"]
+
+def recursive_merge(dict1, dict2):
+    for key, value in dict2.items():
+        if key in dict1 and isinstance(dict1[key], dict) and isinstance(value, dict):
+            # Recursively merge nested dictionaries
+            dict1[key] = recursive_merge(dict1[key], value)
+        else:
+            # Merge non-dictionary values
+            dict1[key] = value
+    return dict1
+
+def other_config_refreshes():
+    global CONFIG
+    from scripts.cat.cats import Cat
+    from scripts.cat.enums import CatAge
+    from scripts.game_structure import game
+    Cat.age_moons = {
+        CatAge.NEWBORN: CONFIG["cat_ages"]["newborn"],
+        CatAge.KITTEN: CONFIG["cat_ages"]["kitten"],
+        CatAge.ADOLESCENT: CONFIG["cat_ages"]["adolescent"],
+        CatAge.YOUNG_ADULT: CONFIG["cat_ages"]["young adult"],
+        CatAge.ADULT: CONFIG["cat_ages"]["adult"],
+        CatAge.SENIOR_ADULT: CONFIG["cat_ages"]["senior adult"],
+        CatAge.SENIOR: CONFIG["cat_ages"]["senior"],
+    }
+    PREY_CONFIG = CONFIG["clan_resources"]["freshkill"]
+
+def load_clan_config():
+    global CONFIG
+    from scripts.game_structure.game.switches import Switch, switch_get_value
+    reset_config()
+    if switch_get_value(Switch.clan_list) and os.path.exists(
+        get_save_dir() +
+        f"/{switch_get_value(Switch.clan_list)[0]}/game_config.toml"
+    ):
+        with open(
+            get_save_dir()
+            + f"/{switch_get_value(Switch.clan_list)[0]}/game_config.toml",
+            "r",
+            encoding="utf-8",
+        ) as read_file:
+            config_override = tomllib.loads(read_file.read())
+            CONFIG = recursive_merge(CONFIG, config_override)
+            other_config_refreshes()
+
+def reset_config():
+    global CONFIG
+    with open("resources/game_config.toml", "r", encoding="utf-8") as read_file:
+        CONFIG = tomllib.loads(read_file.read())
+        other_config_refreshes()
 
 with open("resources/display_settings.toml", "r", encoding="utf-8") as read_file:
     DISPLAY_SETTINGS = tomllib.loads(read_file.read())
-
-with open("resources/prey_config.toml", "r", encoding="utf-8") as read_file:
-    PREY_CONFIG = tomllib.loads(read_file.read())
 
 with open("resources/placements.json", "r", encoding="utf-8") as read_file:
     LAYOUTS = ujson.loads(read_file.read())

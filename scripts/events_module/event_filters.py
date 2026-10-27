@@ -6,13 +6,16 @@ from typing import List, Optional
 from scripts.cat.constants import BACKSTORIES
 from scripts.cat.personality import Personality
 from scripts.cat_relations.enums import RelType, rel_type_tiers, RelTier
-from scripts.cat.enums import CatRank, CatAge, CatCompatibility
+from scripts.cat.enums import CatRank, CatGroup, CatAge, CatCompatibility
 from scripts.special_dates import get_special_date, contains_special_date_tag
 from scripts.clan_package.get_clan_cats import (
     find_alive_cats_with_rank,
     get_possible_mates,
+    get_alive_clan_queens,
+    get_living_clan_cat_count,
 )
 from scripts.game_structure import game
+from scripts.lifegen_utility import get_cluster
 
 ALL_BACKSTORIES_LIST = set(
     [story for s in BACKSTORIES["backstory_categories"].values() for story in s]
@@ -55,10 +58,12 @@ def find_new_frequency(used_frequencies: set) -> int:
         return 4
 
 
-def event_for_location(locations: list) -> bool:
+def event_for_location(locations: list, clan=None) -> bool:
     """
     Checks if the clan is within the allowed locations.
     """
+    if clan is None:
+        clan = game.clan
     if "any" in locations:
         return True
 
@@ -82,15 +87,29 @@ def event_for_location(locations: list) -> bool:
 
         if game.clan.override_biome:
             if req_biome == game.clan.override_biome:
-                if "any" in req_camps or game.clan.camp_bg in req_camps:
+                if "any" in req_camps or clan.camp_bg in req_camps:
                     return not is_exclusionary
 
-        elif req_biome == game.clan.biome.lower():
-            if "any" in req_camps or game.clan.camp_bg in req_camps:
+        elif req_biome == clan.biome.lower():
+            if "any" in req_camps or clan.camp_bg in req_camps:
                 return not is_exclusionary
 
     return is_exclusionary
 
+
+def event_for_clancount(tags: list, clan=None) -> bool:
+    """
+    Checks if the clan is within the allowed locations.
+    """
+    if clan is None:
+        clan = game.clan
+    if not game.clan:
+        return True
+
+    if f"not_{game.clan.clancount}" in tags:
+        return False
+    
+    return True
 
 def event_for_season(seasons: list) -> bool:
     """
@@ -109,7 +128,7 @@ def event_for_season(seasons: list) -> bool:
 
     is_exclusionary = _check_for_exclusionary_value(seasons)
     if is_exclusionary:
-        seasons = [x.replace("-", "") for x in seasons]
+        seasons = [x.replace("-", "", 1) for x in seasons]
 
     if game.clan.current_season.lower() in seasons:
         return not is_exclusionary
@@ -118,7 +137,7 @@ def event_for_season(seasons: list) -> bool:
 
 
 def event_for_tags(
-    tags: list, cat, other_cat=None, mentor_tags_fulfilled: dict = None
+    tags: list, cat, clan=CatGroup.PLAYER_CLAN_ID, other_cat=None, mentor_tags_fulfilled: dict = None
 ) -> bool:
     """
     Checks if current tags disqualify the event.
@@ -144,7 +163,7 @@ def event_for_tags(
     # check leader life tags
     if hasattr(cat, "ID"):
         if cat.status.is_leader:
-            leader_lives = game.clan.leader_lives
+            leader_lives = cat.status.fetch_clan_object(game.clan).leader_lives
 
             life_lookup = {
                 "some_lives": (4, 9),
@@ -189,7 +208,9 @@ def event_for_tags(
                         CatRank.APPRENTICE,
                         CatRank.MEDIATOR_APPRENTICE,
                         CatRank.MEDICINE_APPRENTICE,
+                        CatRank.QUEENS_APPRENTICE
                     ],
+                    clan=clan
                 ):
                     return False
                 else:
@@ -198,12 +219,15 @@ def event_for_tags(
             if rank in [
                 CatRank.LEADER,
                 CatRank.DEPUTY,
-            ] and not find_alive_cats_with_rank(cat, [rank]):
+                CatRank.MEDICINE_CAT,
+                CatRank.MEDICINE_APPRENTICE,
+            ] and not find_alive_cats_with_rank(cat, [rank], clan=clan):
                 return False
 
             if (
-                rank not in [CatRank.LEADER, CatRank.DEPUTY]
-                and not len(find_alive_cats_with_rank(cat, [rank])) >= 2
+                rank not in [CatRank.LEADER, CatRank.DEPUTY,
+                             CatRank.MEDICINE_CAT, CatRank.MEDICINE_APPRENTICE]
+                and not len(find_alive_cats_with_rank(cat, [rank], clan=clan)) >= 2
             ):
                 return False
 
@@ -243,17 +267,60 @@ def event_for_reputation(required_rep: list) -> bool:
     return False
 
 
-def event_for_clan_relations(required_rel: list, other_clan) -> bool:
+def event_for_clan_relations(required_rel: list, clan, other_clan) -> bool:
     """
     checks if the clan has clan relations matching required_rel
     """
     if not required_rel or "any" in required_rel:
         return True
 
-    current_standing = other_clan.get_standing()
+    current_standing = game.clan.get_relations(clan, other_clan, get_label=True)
 
     return current_standing in required_rel
 
+
+def event_for_other_clan(Cat, ranks: list, other_clan) -> bool:
+    """
+    checks if the other clan has required cats
+    """
+
+    if ranks and "none" in ranks:
+        return True
+
+    if not ranks:
+        oc_cats = get_living_clan_cat_count(Cat, other_clan, include_newborns=False)
+        return oc_cats > 0
+
+    for rank in ranks:
+        final_ranks = [rank.replace("_mult", "")]
+        if "queen" in rank:
+            all_clan_cats = [i for i in Cat.all_cats.values() if i.status.group_ID == other_clan]
+            (parents, orphans) = get_alive_clan_queens(all_clan_cats, clan=other_clan)
+            if not len(parents) or (len(parents) < 2 and "mult" in rank):
+                return False
+        if "exiled" in rank:
+            all_clan_cats = [i for i in Cat.all_cats.values() if i.status.is_exiled(other_clan) and i.status.is_outsider and i.status.is_near()]
+            if not len(all_clan_cats) or (len(all_clan_cats) < 2 and "mult" in rank):
+                return False
+        else:            
+            if "any_app" in rank:
+                final_ranks = ["apprentice", "mediator apprentice", "healer apprentice", "queen apprentice"]
+            if "any_warrior" in rank:
+                final_ranks = ["leader", "deputy", "warrior"]
+            if "any_fighter" in rank:
+                final_ranks = ["leader", "deputy", "warrior", "apprentice"]
+            if "any_healer" in rank:
+                final_ranks = ["healer", "healer apprentice"]
+            if "any_mediator" in rank:
+                final_ranks = ["mediator", "mediator apprentice"]
+            if "any_queen" in rank:
+                final_ranks = ["queen", "queen apprentice"]
+            oc_cats = find_alive_cats_with_rank(
+                Cat, final_ranks, working=True, clan=other_clan)
+            if not oc_cats or (len(oc_cats) < 3 and "mult" in rank):
+                return False
+        
+    return True
 
 def event_for_freshkill_supply(pile, trigger, factor, clan_size) -> bool:
     """
@@ -351,6 +418,10 @@ def event_for_cat(
         "skill": _check_cat_skills,
         "backstory": _check_cat_backstory,
         "gender": _check_cat_gender,
+
+        # LG
+        "min_max_faith": _check_cat_faith,
+        "cluster": _check_cat_cluster
     }
 
     for param, func in func_lookup.items():
@@ -443,6 +514,8 @@ def _check_cat_status(cat, statuses: list) -> bool:
     """
     if not statuses or "any" in statuses:
         return True
+
+    statuses = [s.replace("medicine cat", "healer") for s in statuses]
 
     if (cat.status.rank in statuses) or ("lost" in statuses and cat.status.is_lost()):
         return True
@@ -566,6 +639,15 @@ def _check_cat_backstory(cat, backstories: list) -> bool:
 
     return is_exclusionary
 
+def _check_cat_faith(cat, min_max_faith: list) -> bool:
+    if cat.faith < min_max_faith[0] or cat.faith > min_max_faith[1]:
+        return False
+    return True
+
+def _check_cat_cluster(cat, clusters: list) -> bool:
+    if any(cluster in get_cluster(cat.personality.trait) for cluster in clusters):
+        return True
+    return False
 
 def _check_cat_gender(cat, genders: list) -> bool:
     """
@@ -573,13 +655,16 @@ def _check_cat_gender(cat, genders: list) -> bool:
     """
     if not genders:
         return True
+    
+    equivalents = {
+        "male" : ["tom", "intersex tom", "intersex trans tom", "trans tom"],
+        "female" : ["molly", "intersex molly", "intersex trans molly", "trans molly"],
+        "nonbinary" : ["sam", "intersex sam"]
+    }
 
-    for gender in genders:
-        if gender not in ["male", "female"]:
-            raise ValueError(f"Gender must be one of 'male', 'female'. Got {gender}")
-
-    if cat.gender in genders:
-        return True
+    for g in genders:
+        if cat.genderalign in equivalents.get(g, []):
+            return True
 
     return False
 
@@ -752,6 +837,8 @@ def _get_cats_with_status(cat_list: list, statuses: tuple) -> list:
     if not statuses or "any" in statuses:
         return cat_list
 
+    statuses = [s.replace("medicine cat", "healer") for s in statuses]
+
     is_exclusionary = _check_for_exclusionary_value(statuses)
 
     if is_exclusionary:
@@ -772,7 +859,8 @@ def _get_cats_with_skill(cat_list: list, skills: tuple) -> list:
     if is_exclusionary:
         skills = [x.replace("-", "") for x in skills]
 
-    for kitty in cat_list.copy():
+    result = []
+    for kitty in cat_list:
         has_skill = False
         for _skill in skills:
             split_skill = _skill.split(",")
@@ -786,13 +874,10 @@ def _get_cats_with_skill(cat_list: list, skills: tuple) -> list:
             ):
                 has_skill = True
 
-        if has_skill and is_exclusionary:
-            cat_list.remove(kitty)
+        if has_skill != is_exclusionary:
+            result.append(kitty)
 
-        if not has_skill and not is_exclusionary:
-            cat_list.remove(kitty)
-
-    return cat_list
+    return result
 
 
 def _get_cats_with_trait(cat_list: list, traits: tuple) -> list:
@@ -935,8 +1020,18 @@ def filter_relationship_type(group: list, filter_types: List[str], patrol_leader
                         return False
                 if "mates" in exclusionary_values and not qualifies:
                     return False
-
         filter_types.remove("mates")
+    # LG
+    if "not_mates" in filter_types:
+        if not all([test_cat.ID in inter_cat.mate for inter_cat in testing_cats]):
+            if "not_mates" in exclusionary_values:
+                qualifies = True
+            else:
+                return False
+        if "not_mates" in exclusionary_values and not qualifies:
+            return False
+        filter_types.remove("not_mates")
+    # ---
 
     # check if all cats are mates with p_l (they do not have to be mates with each other)
     if "mates_with_pl" in filter_types:
@@ -1018,6 +1113,28 @@ def filter_relationship_type(group: list, filter_types: List[str], patrol_leader
         if "app/mentor" in exclusionary_values and not qualifies:
             return False
         filter_types.remove("app/mentor")
+    
+    # LG
+    if "df_app/df_mentor" in filter_types:
+        if len(group) != 2:
+            return False
+        if not group[0].ID in group[1].df_apprentices:
+            return False
+        filter_types.remove("df_app/df_mentor")
+
+    if "df_mentor/df_app" in filter_types:
+        if len(group) != 2:
+            return False
+        if not group[1].ID in group[0].df_apprentices:
+            return False
+        filter_types.remove("df_mentor/df_app")
+
+    if "strangers" in filter_types and len(group) == 2:
+        relationship = group[0].relationships[group[1].ID]
+        if relationship and (relationship.like < 1 or relationship.romance < 1):
+            return False
+    elif "strangers" in filter_types:
+        return False
 
     # return early if there's nothing left to check
     if not filter_types:
@@ -1026,19 +1143,22 @@ def filter_relationship_type(group: list, filter_types: List[str], patrol_leader
     # Filtering relationship values
     # these don't get exclusionary values because it's giving me a headache
     # each cat has to have relationships toward each other matching every level tag
+    group_ids = [cat.ID for cat in group]
     for tier in filter_types:
         for inter_cat in group:
             if len(group) == 2 and inter_cat == group[1]:
                 # if this is a two cat group, then we only look for the first cat's rel toward the second cat.
                 # groups > 2 will require that all cats feel the same way toward each other.
                 continue
-            group_ids = [cat.ID for cat in group]
 
             relevant_relationships = [
-                rel
-                for rel in inter_cat.relationships.values()
-                if rel.cat_to.ID in group_ids and rel.cat_to.ID != inter_cat.ID
+                inter_cat.relationships[cat_id]
+                for cat_id in group_ids
+                if cat_id in inter_cat.relationships
             ]
+
+            if len(relevant_relationships) != len(group_ids)-1:
+                return False # There's strangers when there shouldn't be
 
             # list of every cat's tier list
             group_lists: list[RelTier] = [
@@ -1073,19 +1193,18 @@ def filter_relationship_type(group: list, filter_types: List[str], patrol_leader
 
                     # get the tier's index within the rel_types's list
                     index = rel_type_tiers[rel_type].index(rel_tier)
-                    allowed_tiers = []
+                    allowed_tiers = set()
                     # if it's a pos tier, we allow that index and higher
                     if rel_tier.is_any_pos:
-                        allowed_tiers = rel_type_tiers[rel_type][index:]
+                        allowed_tiers = set(rel_type_tiers[rel_type][index:])
                     # if it's a neg tier, we allow that index and lower
                     elif rel_tier.is_any_neg:
-                        allowed_tiers = rel_type_tiers[rel_type][0 : index + 1]
+                        allowed_tiers = set(rel_type_tiers[rel_type][0 : index + 1])
 
                     discard = True
-                    for _t in tier_list:
-                        if _t in allowed_tiers:
-                            discard = False
-                            break
+                    tier_set = set(tier_list)
+                    if allowed_tiers.intersection(tier_set):
+                        discard = False
                     if discard:
                         return False
 

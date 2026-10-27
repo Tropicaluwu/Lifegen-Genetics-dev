@@ -1,0 +1,26 @@
+{
+    "spritesheet": "acc_wilds2",
+    "sprite_list": [
+        {
+            "LILYPAD": "body",
+            "LARGE DEATHBERRY": "body",
+            "SMALL DEATHBERRY": "body",
+            "ACORN": "head",
+            "PINECONE": "head",
+            "VINE": "paws",
+            "CHERRY": "head",
+            "BLEEDING HEART BRANCH": "head",
+            "SHELL PACK": "body"
+        },
+        {
+            "WHEAT": "head",
+            "BLACK WHEAT": "head",
+            "GOLD FERNS": "body",
+            "MUD PAWS": "paws",
+            "ASHY PAWS": "paws",
+            "BERRIES": "head",
+            "FLOWER MOSS": "body",
+            "MUSHROOMS": "body"
+        }
+    ]
+}

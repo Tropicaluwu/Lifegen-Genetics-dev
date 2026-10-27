@@ -10,7 +10,7 @@ from scripts.game_structure import game
 logger = logging.getLogger(__name__)
 
 
-def prep_future_event(event, event_id: str, possible_cats: dict):
+def prep_future_event(event, event_id: str, possible_cats: dict, clan):
     """
     Checks if the given event has a future event attached, then creates the future event
     :param event: the class object for the event
@@ -22,7 +22,7 @@ def prep_future_event(event, event_id: str, possible_cats: dict):
         return
     for event_info in event.future_event:
         # create dict of all cats that need to be involved in future event
-        gathered_cat_dict = _collect_involved_cats(possible_cats, event_info)
+        gathered_cat_dict = _collect_involved_cats(possible_cats, event_info, clan)
         if not gathered_cat_dict:
             logger.info(
                 f"WARNING: couldn't find valid cats for the future event of event {event_id}. Future event wasn't created."
@@ -39,11 +39,12 @@ def prep_future_event(event, event_id: str, possible_cats: dict):
                     event_info["moon_delay"][0], event_info["moon_delay"][1]
                 ),
                 involved_cats=gathered_cat_dict,
+                clan=clan.group_ID
             )
         )
 
 
-def _collect_involved_cats(cat_dict: dict, future_info: dict) -> Optional[dict]:
+def _collect_involved_cats(cat_dict: dict, future_info: dict, clan=None) -> Optional[dict]:
     """
     collects involved cats and assigns their roles for the future event, then
     returns a dict associating their new role (key) with their cat ID (value)
@@ -52,6 +53,8 @@ def _collect_involved_cats(cat_dict: dict, future_info: dict) -> Optional[dict]:
     string and value should be cat object.
     :param future_info: the future_info dict from the parent event
     """
+    if clan is None:
+        clan = game.clan
     gathered_cat_dict = {}
 
     # we always need an m_c and an r_c, so if they weren't specified at all then we need to find them
@@ -62,7 +65,7 @@ def _collect_involved_cats(cat_dict: dict, future_info: dict) -> Optional[dict]:
 
     # we're just keeping this to living cats within the clan for now, more complexity can come later
     possible_cats = [
-        kitty for kitty in Cat.all_cats.values() if kitty.status.alive_in_player_clan
+        kitty for kitty in Cat.all_cats.values() if kitty.status.group_ID == clan.group_ID
     ]
 
     for new_role, cat_involved in future_info["involved_cats"].items():

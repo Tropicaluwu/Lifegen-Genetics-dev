@@ -24,18 +24,29 @@ class History:
         self,
         beginning=None,
         mentor_influence=None,
+        queen_influence=None,
         app_ceremony=None,
         lead_ceremony=None,
         possible_history=None,
         died_by=None,
         scar_events=None,
         murder=None,
+        wrong_placement=None,
+        prev_names=None,
+        prev_pers=None,
         cat=None,
+        # CHECKMERGE
+        # not for merge, but add encountered to this init?
         afterlife_acceptance=None,
     ):
+        self.prev_names = prev_names if prev_names else []
+        self.prev_pers = prev_pers if prev_pers else []
         self.beginning = beginning if beginning else {}
         self.mentor_influence = (
             mentor_influence if mentor_influence else {"trait": {}, "skill": {}}
+        )
+        self.queen_influence = (
+            queen_influence if queen_influence else {"trait": {}, "skill": {}}
         )
         self.app_ceremony = app_ceremony if app_ceremony else {}
         self.lead_ceremony = lead_ceremony if lead_ceremony else None
@@ -43,6 +54,7 @@ class History:
         self.died_by = died_by if died_by else []
         self.scar_events = scar_events if scar_events else []
         self.murder = murder if murder else {}
+        self.wrong_placement = wrong_placement if wrong_placement else False
         self.cat = cat
         self.afterlife_acceptance = (
             afterlife_acceptance if afterlife_acceptance else None
@@ -157,8 +169,11 @@ class History:
 
     def make_dict(self):
         history_dict = {
+            "prev_names": self.prev_names,
+            "prev_pers": self.prev_pers,
             "beginning": self.beginning,
             "mentor_influence": self.mentor_influence,
+            "queen_influence": self.queen_influence,
             "app_ceremony": self.app_ceremony,
             "lead_ceremony": self.lead_ceremony,
             "afterlife_acceptance": self.afterlife_acceptance,
@@ -166,6 +181,7 @@ class History:
             "died_by": self.died_by,
             "scar_events": self.scar_events,
             "murder": self.murder,
+            "wrong_placement": self.wrong_placement
         }
         return history_dict
 
@@ -173,7 +189,7 @@ class History:
     #                            adding and removing                               #
     # ---------------------------------------------------------------------------- #
 
-    def add_beginning(self, clan_born=False):
+    def add_beginning(self, df=False, clan_born=False):
         """
         adds joining age and moon info to the cat's history save
         :param clan_born: default False, set True if the cat was not born in the Clan
@@ -181,12 +197,20 @@ class History:
         if not game.clan:
             return
 
-        self.beginning = {
+        if df is True:
+            # when a cat is met in the dark forest
+            self.beginning = {
+            "moon": game.clan.age
+        }
+        else:
+           self.beginning = {
             "clan_born": clan_born,
             "birth_season": game.clan.current_season if clan_born else None,
             "age": self.cat.moons,
             "moon": game.clan.age,
-        }
+           }
+      
+            
 
     def add_mentor_facet_influence_strings(self):
         """
@@ -196,9 +220,10 @@ class History:
         if not self.mentor_influence["trait"]:
             return
 
-        if (
-            "Benevolent" or "Abrasive" or "Reserved" or "Outgoing"
-        ) in self.mentor_influence["trait"]:
+        if any(
+            t in self.mentor_influence["trait"]
+            for t in ("Benevolent", "Abrasive", "Reserved", "Outgoing")
+        ):
             self.mentor_influence["trait"] = None
             return
 
@@ -280,12 +305,177 @@ class History:
 
         # working under the impression that these blurbs will be preceded by "become better at"
         skill_influence_text = {
+                SkillPath.TEACHER: ["teaching"],
+                SkillPath.HUNTER: ["hunting"],
+                SkillPath.FIGHTER: ["fighting"],
+                SkillPath.RUNNER: ["running"],
+                SkillPath.CLIMBER: ["climbing"],
+                SkillPath.SWIMMER: ["swimming"],
+                SkillPath.DIGGER: ["tunneling", "digging"],
+                SkillPath.STEALTH: ["stealth", "deception"],
+                SkillPath.SPEAKER: ["arguing"],
+                SkillPath.MEDIATOR: ["resolving arguments"],
+                SkillPath.CLEVER: ["solving problems"],
+                SkillPath.INSIGHTFUL: ["providing insight"],
+                SkillPath.SENSE: ["noticing small details"],
+                SkillPath.KIT: ["caring for kittens"],
+                SkillPath.STORY: ["storytelling"],
+                SkillPath.LORE: ["remembering lore"],
+                SkillPath.CAMP: ["caring for camp"],
+                SkillPath.HEALER: ["healing"],
+                SkillPath.STAR: ["connecting to StarClan"],
+                SkillPath.OMEN: ["finding omens"],
+                SkillPath.DREAM: ["understanding dreams"],
+                SkillPath.CLAIRVOYANT: ["predicting the future"],
+                SkillPath.PROPHET: ["understanding prophecies"],
+                SkillPath.GHOST: ["connecting to the afterlife"],
+                SkillPath.EXPLORER: ["exploring unknown areas"],
+                SkillPath.TRACKER: ["tracking down scents"],
+                SkillPath.ARTISTAN: ["decorating dens"],
+                SkillPath.GUARDIAN: ["guarding the camp"],
+                SkillPath.TUNNELER: ["tunneling"],
+                SkillPath.NAVIGATOR: ["navigating unknown territory"],
+                SkillPath.SONG: ["using their voice"],
+                SkillPath.GRACE: ["watching where they step"],
+                SkillPath.CLEAN: ["keeping themself tidy"],
+                SkillPath.INNOVATOR: ["solving problems"],
+                SkillPath.COMFORTER: ["comforting others"],
+                SkillPath.MATCHMAKER: ["matchmaking"],
+                SkillPath.THINKER: ["thinking outside of the box"],
+                SkillPath.COOPERATIVE: ["being a team player"],
+                SkillPath.SCHOLAR: ["learning new things"],
+                SkillPath.TIME: ["managing their time"],
+                SkillPath.TREASURE: ["finding gifts"],
+                SkillPath.FISHER: ["fishing"],
+                SkillPath.LANGUAGE: ["using their words"],
+                SkillPath.SLEEPER: ["self-care"],
+                SkillPath.GARDENER: ["taking care of plants"],
+                SkillPath.DARK: ["connecting to the Dark Forest"],
+                # Kittypet-unique
+                SkillPath.TWOLEGCARE: ["getting along with Twolegs"],
+                SkillPath.CHARMER: ["charming others"],
+                SkillPath.SHOWCAT: ["looking their best"],
+                # Loner-unique
+                SkillPath.WANDERER: ["traveling long distances"],
+                SkillPath.SCAVENGER: ["scavenging for resources"],
+                SkillPath.SURVIVOR: ["surviving hardship"],
+                # Rogue-unique
+                SkillPath.BRAWLER: ["brawling"],
+                SkillPath.INTIMIDATOR: ["intimidating others"],
+                SkillPath.AMBUSHER: ["laying ambushes"]
+            }
+        
+        for _ment in self.mentor_influence["skill"]:
+            self.mentor_influence["skill"][_ment]["strings"] = []
+            for _path in self.mentor_influence["skill"][_ment]:
+                # Check to make sure nothing weird got in there.
+                if _path == "strings":
+                    continue
+
+                try:
+                    if self.mentor_influence["skill"][_ment][_path] > 0:
+                        self.mentor_influence["skill"][_ment]["strings"].append(
+                            random.choice(skill_influence_text[SkillPath[_path]])
+                        )
+                except KeyError:
+                    print("issue", _path)
+
+    def add_queen_facet_influence_strings(self):
+        """
+        adds queen influence to the cat's history save
+        """
+
+        if not self.queen_influence["trait"]:
+            return
+
+        # working under the impression that these blurbs will be preceded by "more likely to"
+        facet_influence_text = {
+            "lawfulness_raise": [
+                "follow rules",
+                "follow the status quo",
+                "heed {PRONOUN/m_c/poss} inner compass",
+                "have strong inner morals",
+            ],
+            "lawfulness_lower": [
+                "bend the rules",
+                "break away from the status quo",
+                "break rules that don't suit {PRONOUN/m_c/object}",
+                "make {PRONOUN/m_c/poss} own rules",
+            ],
+            "sociability_raise": [
+                "be friendly towards others",
+                "step out of {PRONOUN/m_c/poss} comfort zone",
+                "interact with others",
+                "put others at ease",
+            ],
+            "sociability_lower": [
+                "be cold towards others",
+                "refrain from socializing",
+                "bicker with others",
+            ],
+            "aggression_raise": [
+                "be ready for a fight",
+                "start a fight",
+                "defend {PRONOUN/m_c/poss} beliefs",
+                "use teeth and claws over words",
+                "resort to violence",
+            ],
+            "aggression_lower": [
+                "be slow to anger",
+                "avoid a fight",
+                "use words over teeth and claws",
+                "try to avoid violence",
+            ],
+            "stability_raise": [
+                "stay collected",
+                "think things through",
+                "be resilient",
+                "have a positive outlook",
+                "be consistent",
+                "adapt easily",
+            ],
+            "stability_lower": [
+                "behave erratically",
+                "make impulsive decisions",
+                "have trouble adapting",
+                "dwell on things",
+            ],
+        }
+
+        for _queen in self.queen_influence["trait"]:
+            self.queen_influence["trait"][_queen]["strings"] = []
+            for _fac in self.queen_influence["trait"][_queen]:
+                # Check to make sure nothing weird got in there.
+                if _fac in self.cat.personality.facet_types:
+                    if self.queen_influence["trait"][_queen][_fac] > 0:
+                        self.queen_influence["trait"][_queen]["strings"].append(
+                            random.choice(
+                                facet_influence_text[_fac + "_raise"])
+                        )
+                    elif self.queen_influence["trait"][_queen][_fac] < 0:
+                        self.queen_influence["trait"][_queen]["strings"].append(
+                            random.choice(
+                                facet_influence_text[_fac + "_lower"])
+                        )
+
+    def add_queen_skill_influence_strings(self):
+        """
+        adds queen influence to the cat's history save
+        """
+
+        if not self.queen_influence["skill"]:
+            return
+
+        # working under the impression that these blurbs will be preceded by "become better at"
+        skill_influence_text = {
             SkillPath.TEACHER: ["teaching"],
             SkillPath.HUNTER: ["hunting"],
             SkillPath.FIGHTER: ["fighting"],
             SkillPath.RUNNER: ["running"],
             SkillPath.CLIMBER: ["climbing"],
             SkillPath.SWIMMER: ["swimming"],
+            SkillPath.DIGGER: ["tunneling", "digging"],
+            SkillPath.STEALTH: ["stealth", "deception"],
             SkillPath.SPEAKER: ["arguing"],
             SkillPath.MEDIATOR: ["resolving arguments"],
             SkillPath.CLEVER: ["solving problems"],
@@ -304,17 +494,18 @@ class History:
             SkillPath.GHOST: ["connecting to the afterlife"],
         }
 
-        for _ment in self.mentor_influence["skill"]:
-            self.mentor_influence["skill"][_ment]["strings"] = []
-            for _path in self.mentor_influence["skill"][_ment]:
+        for _queen in self.queen_influence["skill"]:
+            self.queen_influence["skill"][_queen]["strings"] = []
+            for _path in self.queen_influence["skill"][_queen]:
                 # Check to make sure nothing weird got in there.
                 if _path == "strings":
                     continue
 
                 try:
-                    if self.mentor_influence["skill"][_ment][_path] > 0:
-                        self.mentor_influence["skill"][_ment]["strings"].append(
-                            random.choice(skill_influence_text[SkillPath[_path]])
+                    if self.queen_influence["skill"][_queen][_path] > 0:
+                        self.queen_influence["skill"][_queen]["strings"].append(
+                            random.choice(
+                                skill_influence_text[SkillPath[_path]])
                         )
                 except KeyError:
                     print("issue", _path)
@@ -339,6 +530,27 @@ class History:
         if path.name not in self.mentor_influence["skill"][mentor_id]:
             self.mentor_influence["skill"][mentor_id][path.name] = 0
         self.mentor_influence["skill"][mentor_id][path.name] += amount
+
+    def add_facet_queen_influence(self, queen_id, facet, amount):
+        """Adds the history information for a single queen facet change, that occurs upon apprenticeship."""
+
+        if queen_id not in self.queen_influence["trait"]:
+            self.queen_influence["trait"][queen_id] = {}
+        if facet not in self.queen_influence["trait"][queen_id]:
+            self.queen_influence["trait"][queen_id][facet] = 0
+        self.queen_influence["trait"][queen_id][facet] += amount
+
+    def add_skill_queen_influence(self, queen_id, path, amount):
+        """Adds queen influence on skills."""
+
+        if not isinstance(path, SkillPath):
+            path = SkillPath[path]
+
+        if queen_id not in self.queen_influence["skill"]:
+            self.queen_influence["skill"][queen_id] = {}
+        if path.name not in self.queen_influence["skill"][queen_id]:
+            self.queen_influence["skill"][queen_id][path.name] = 0
+        self.queen_influence["skill"][queen_id][path.name] += amount
 
     def add_app_ceremony(self, honor):
         """
@@ -424,16 +636,22 @@ class History:
         )
 
     def add_afterlife_acceptance(
-        self, guide_afterlife: CatGroup, is_kit=False, contentious=False, rejected=False
+        self,
+        guide_afterlife: CatGroup,
+        is_kit=False,
+        contentious=False,
+        rejected=False,
+        misplaced=False,
     ):
         """
         Adds afterlife acceptance text to the cat's history. If using an optional parameter, should set only one out of
-        `is_kit`, `contentious`, and `rejected` to `True`, since the rest will be ignored.
+        `is_kit`, `contentious`, `rejected`, and `misplaced` to `True`, since the rest will be ignored.
 
-        :param guide_afterlife: The afterlife of the guide. Do NOT set to the opposite afterlife if rejected is `True`.
+        :param guide_afterlife: The afterlife the cat is residing in. Do NOT set to the opposite afterlife if rejected is `True`.
         :param is_kit: `True` if the cat is a kit. Gives kinder acceptance text referring to kits.
         :param contentious: `True` if the acceptance is supposed to be contentious. Afterlife will seem iffy about the cat.
         :param rejected: `True` if cat is rejected from `guide_afterlife`. They will go to the opposite one instead.
+        :param misplaced: `True` if the cat was sent to `guide_afterlife` by mistake and doesn't belong there.
         """
 
         afterlife = None
@@ -458,10 +676,40 @@ class History:
                 self.afterlife_acceptance = random.choice(
                     afterlife_acceptance_options[f"{afterlife}_rejected"]
                 )
+            elif misplaced:
+                self.afterlife_acceptance = random.choice(
+                    afterlife_acceptance_options[f"{afterlife}_misplaced"]
+                )
             else:
                 self.afterlife_acceptance = random.choice(
                     afterlife_acceptance_options[f"{afterlife}_default"]
                 )
+
+    @staticmethod
+    def _acceptance_afterlife(acceptance):
+        if not acceptance:
+            return None
+        if acceptance.startswith("starclan"):
+            base, opposite = CatGroup.STARCLAN, CatGroup.DARK_FOREST
+        elif acceptance.startswith("dark_forest"):
+            base, opposite = CatGroup.DARK_FOREST, CatGroup.STARCLAN
+        else:
+            return None
+        return opposite if "rejected" in acceptance else base
+
+    def reconcile_afterlife_acceptance(self):
+        cat = self.cat
+        if not cat or not self.afterlife_acceptance:
+            return
+        group = cat.status.group
+        implied = History._acceptance_afterlife(self.afterlife_acceptance)
+        if implied is None or implied == group:
+            return
+        if group in (CatGroup.STARCLAN, CatGroup.DARK_FOREST):
+            self.add_afterlife_acceptance(group, is_kit=cat.age.is_baby())
+        else:
+            # e.g. the unknown residence - no StarClan/Dark Forest blurb applies
+            self.afterlife_acceptance = None
 
     def add_scar(self, scar_text, condition=None, other_cat=None):
         if not game.clan:
@@ -513,12 +761,18 @@ class History:
             }
         )
 
+        if self.cat:
+            self.cat.starclan_affinity -= 100
+            self.cat.dark_forest_affinity += 100
+
     def reveal_murder(
         self,
         victim,
         murderer_id,
         clan_reveal: bool = False,
         aware_individuals: list = None,
+        # LG
+        shunned_cat = None
     ):
         """
         This adds reveal information to both the murderer and victim's history. This should be called from the murderer's history.
@@ -533,6 +787,8 @@ class History:
             if murder["victim"] == victim.ID:
                 if clan_reveal:
                     murder["revealed"]["to_clan"] = True
+                    if shunned_cat:
+                        shunned_cat.status.shun_from_group()
                 else:
                     murder["revealed"]["aware_individuals"].extend(aware_individuals)
 

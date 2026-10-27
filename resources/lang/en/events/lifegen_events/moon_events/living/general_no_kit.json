@@ -1,0 +1,2573 @@
+{
+    "general1": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "It's a great day to lie down and soak up the sun's rays. You take advantage of it."
+    },
+    "general2": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "warrior"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You spend some time with r_c:0 today. The two of you enjoy the time away from camp."
+    },
+    "general3": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "Today is a good day to spend with the elders. r_c:0 is thrilled that you've come to join them."
+    },
+    "general4": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "queen"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 is looking worn out. You offer to watch the kits for a bit so {PRONOUN/r_c:0/subject} can take a rest. r_c:0 is thrilled and accepts. When {PRONOUN/r_c:0/subject} {VERB/r_c:0/come/comes} back later the kits are napping and r_c:0 looks much better."
+    },
+    "general5": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You help out with a few den repairs this moon. The camp looks much better in the end, and should be good for another moon."
+    },
+    "general6": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "warrior"
+                ]
+            },
+            "r_c:1": {
+                "rank": [
+                    "warrior"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "It's a dreary day today. r_c:0 and r_c:1 just came back from patrol and are sheltered beside you. The three of you share tongues for a bit, grooming out damp fur."
+    },
+    "general7": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "medicine cat",
+                    "medicine cat apprentice"
+                ]
+            },
+            "r_c:1": {
+                "rank": [
+                    "warrior"
+                ]
+            },
+            "r_c:2": {
+                "rank": [
+                    "warrior"
+                ]
+            },
+            "r_c:3": {
+                "rank": [
+                    "mediator"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "Lightning is striking in the sky. You watch it with r_c:3, r_c:1, r_c:2, and r_c:0."
+    },
+    "general8": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "warrior"
+                ]
+            },
+            "r_c:1": {
+                "rank": [
+                    "mediator"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:1 visits you after you had a very cross conversation with r_c:0."
+    },
+    "general9": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "apprentice"
+                ]
+            },
+            "r_c:1": {
+                "rank": [
+                    "warrior"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You're out with r_c:0 and r_c:1 today. You're not on patrol, really, all of you just wanted to stretch your legs."
+    },
+    "general10": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "A Clan meeting has your attention. Danger in the territory means everycat should be on high alert this moon."
+    },
+    "general11": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "queen"
+                ]
+            },
+            "r_c:1": {
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "Twolegs on the territory have the Clan nervous. You reassure r_c:0 and r_c:1 that they won't find the camp."
+    },
+    "general12": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "kitten"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 is causing trouble - and you're the first one on the scene. With a fond sigh you herd {PRONOUN/r_c:0/object} back to the nursery."
+    },
+    "general13": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "medicine cat",
+                    "medicine cat apprentice"
+                ]
+            },
+            "r_c:1": {
+                "rank": [
+                    "warrior"
+                ]
+            },
+            "r_c:2": {
+                "rank": [
+                    "warrior"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "The Clan is having a lazy sunhigh. You end up chatting with r_c:1, r_c:2, and r_c:0 about nothing in particular."
+    },
+    "general14": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "mediator"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "Gossip isn't necessarily good... But it sure can be fun. r_c:0 always has the best info so you spend some time with {PRONOUN/r_c:0/object}."
+    },
+    "general15": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "warrior"
+                ]
+            },
+            "r_c:1": {
+                "rank": [
+                    "warrior"
+                ]
+            },
+            "r_c:2": {
+                "rank": [
+                    "warrior"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 is chatting with r_c:1. You listen in as you eat your evening meal. Seems like r_c:2 has annoyed r_c:0..."
+    },
+    "general16": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "queen"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 and the kits have left a bit of a mess with whatever game they were playing. You decide to clean up, and later, r_c:0 is incredibly grateful."
+    },
+    "general17": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "warrior"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 is talking about a kittypet {PRONOUN/r_c:0/subject} met on patrol. You recall that kittypet as well. Small world!"
+    },
+    "general18": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "medicine cat",
+                    "medicine cat apprentice"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You're helping r_c:0 since {PRONOUN/r_c:0/subject} needed extra paws. {PRONOUN/r_c:0/subject/CAP}{VERB/r_c:0/'re/'s} grateful to you for the assistance, and it turns out to be a great opportunity to connect with {PRONOUN/r_c:0/object} more."
+    },
+    "general19": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "queen"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "It's time to clean out your nest! Fresh moss is great, but you will miss the bits of fluff and feathers. r_c:0 seems to notice your unhappiness and offers some of {PRONOUN/r_c:0/poss} supply for you!"
+    },
+    "general20": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "mediator"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 notices you're a little down. {PRONOUN/r_c:0/subject/CAP} {VERB/r_c:0/spend/spends} quite a bit of time talking through some things with you. By the end, a weight has been lifted off your shoulders."
+    },
+    "general21": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "medicine cat",
+                    "medicine cat apprentice"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 notices you looking tired. You reassure {PRONOUN/r_c:0/object} that you're fine but relent when {PRONOUN/r_c:0/subject} {VERB/r_c:0/give/gives} you some herbs to help you sleep."
+    },
+    "general22": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 is looking deep in thought. You offer to hear {PRONOUN/r_c:0/object} out about whatever it is bothering {PRONOUN/r_c:0/object}."
+    },
+    "general23": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "A stroll today has let you discover a hidden gem of an area on the territory. Maybe you can use this as a nice hideaway on occasion!"
+    },
+    "general24": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "Some time today was well spent lost in your own thoughts. Reflection is always a useful tool."
+    },
+    "general25": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "warrior"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "What you think of r_c:0 has become relevant today within the Clan. Why is everycat so nosy?"
+    },
+    "general26": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "mediator"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "After noticing you being quiet today, r_c:0 comes over to check in with you. A pleasant conversation boosts your mood."
+    },
+    "general27": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "apprentice"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 seems to be having a very hard time lately. You extend some kindness to {PRONOUN/r_c:0/object}, and {PRONOUN/r_c:0/subject}{VERB/r_c:0/'re/'s} soon bouncing back thanks to you."
+    },
+    "general28": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You stop to take in the moment. What a moon it's been. What a time to be you!"
+    },
+    "general29": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "Did you just see something out the corner of your eyes? Or have you just spooked yourself for no good reason?"
+    },
+    "general30": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "warrior"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You trip on your way to the fresh-kill pile. Half the Clan saw it, but r_c:0 is nice enough to help you play it off. Whew!"
+    },
+    "general31": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "There's fun to be had this moon! r_c:0 had suggested playing some games as a Clan. Your team won!"
+    },
+    "general32": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "With your claws sharpened and fur glistening, you feel like you could conquer the world today! Until someone points out a straying tuft of fur..."
+    },
+    "general33": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "warrior"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 shakes you awake. {PRONOUN/r_c:0/subject/CAP} {VERB/r_c:0/tell/tells} you to stop sleeping. You were having such a nice dream though!"
+    },
+    "general34": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "deputy"
+                ]
+            },
+            "r_c:1": {
+                "rank": [
+                    "apprentice"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:1 is being scolded by r_c:0. After a moment's consideration you end up distracting r_c:0 to let r_c:1 catch a break."
+    },
+    "general35": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "A buzzing fly is being annoying. It ends up being caught in your keen paws for it's crime of being bothersome."
+    },
+    "general36": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "What an unusual blue butterfly! Strange... Maybe it's a sign? You ponder it for a bit."
+    },
+    "general37": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "warrior"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 is going on and on and on about a really cool cloud. You're caught yawning at the tale, and r_c:0 is cross for a few days. Oops?"
+    },
+    "general38": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You look to the stars one evening and ponder. Is StarClan really watching?"
+    },
+    "general39": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You look to the night sky one evening and wonder if the darkness is the Dark Forest's influence."
+    },
+    "general40": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            },
+            "r_c:1": {
+                "rank": [
+                    "deputy"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "The camp is abuzz with chatter. Seems like r_c:0 and r_c:1 had an argument, and it's the talk of the Clan!"
+    },
+    "assertive41": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "assertive"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You're one of the most confident cats in the Clan and you know it! Nothing could make you back down from a challenge... Even though you end up on dawn patrol after losing. Worth it."
+    },
+    "assertive42": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "assertive"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "warrior"
+                ]
+            },
+            "r_c:1": {
+                "rank": [
+                    "warrior"
+                ]
+            },
+            "r_c:2": {
+                "rank": [
+                    "mediator"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 is talking behind your back. When r_c:1 informs you, you strut right up to r_c:0 to confront them. r_c:2 has to quickly step in."
+    },
+    "assertive43": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "assertive"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "apprentice"
+                ]
+            },
+            "r_c:1": {
+                "rank": [
+                    "mediator"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:1 is trying to speak to you about what you said to r_c:0 earlier. You remind {PRONOUN/r_c:1/object} that you don't mince words."
+    },
+    "assertive44": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "assertive"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "apprentice"
+                ]
+            },
+            "r_c:1": {
+                "rank": [
+                    "mediator"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 is raring for a good spar. You offer to train with {PRONOUN/r_c:0/object} for a bit... But by the end r_c:0 is a bit bruised. {PRONOUN/r_c:1/subject/CAP} don't ask again. r_c:0's loss!"
+    },
+    "assertive45": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "assertive"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "kitten"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 is admiring you it seems! It's probably because of your boldness. Or maybe that you're confident? You're also pretty fierce and..."
+    },
+    "assertive46": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "assertive"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "When a dog finds the camp, you're one of the first to launch at it with a yowl. Your sheer confidence unnerves the dog enough to send it away with it's tail between its legs."
+    },
+    "assertive47": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "assertive"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "warrior"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "Bragging is unbecoming, r_c:0 says. You turn your nose at {PRONOUN/r_c:0/object}. It's not bragging if it's true! It's sharing your accomplishments!"
+    },
+    "assertive48": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "assertive"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            },
+            "r_c:1": {
+                "rank": [
+                    "deputy"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You may have bitten off more than you could chew this time. r_c:0 and r_c:1 are looking quite cross as you're called aside. Who tattled?!"
+    },
+    "assertive49": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "assertive"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You're shining as bright as the stars themselves! Nothing can stop you. Not even StarClan nor the Dark Forest could dull how you feel!"
+    },
+    "assertive50": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "assertive"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "kitten"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "Showing off your scars is always a fun time. r_c:0 is enthralled by each story attached to {PRONOUN/r_c:0/object}."
+    },
+    "assertive51": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "assertive"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "When a storm blows in, you're the first to volunteer to get to work ensuring the camp is secure."
+    },
+    "introspective52": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "introspective"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "There's nothing like waking up early to watch the sun rise and feel the morning breeze against your fur! And, naturally, it's the perfect environment to think about anything and everything."
+    },
+    "introspective53": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "introspective"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You stumbled across a yellow flower that seemed to follow the sunshine as time passed. It almost seems poetic - romantic. A rooted plant following their untouchable and unrequited love, unable to survive without them."
+    },
+    "introspective54": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "introspective"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "Some days you just wish your mind would stop thinking. It's a bit ironic that you can be annoyed of yourself."
+    },
+    "introspective55": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "introspective"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You wonder if other cats think you talk too much or think too often. Do they find you annoying? A know-it-all? Harboring too many opinions?"
+    },
+    "introspective56": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "introspective"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "warrior"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "y_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "max_like_-15"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You can't help but find r_c:0's porcupine-like appearance fitting, considering {PRONOUN/r_c:0/poss} prickly personality."
+    },
+    "sweet57": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "sweet"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You take the time to sort through the fresh-kill pile, making sure to throw away any old or rotting pieces of prey."
+    },
+    "unlawful58": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "unlawful"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "kitten"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You take the last piece of fresh-kill from the pile before r_c:0 could get to it."
+    },
+    "rare59": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "medicine cat",
+                    "medicine cat apprentice"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "rare"
+        ],
+        "event": "r_c:0 takes you aside quietly. {PRONOUN/r_c:0/subject/CAP} {VERB/r_c:0/seem/seems} concerned and {VERB/r_c:0/begin/begins} to speak about something before shaking {PRONOUN/r_c:0/poss} head and telling you not to mind {PRONOUN/r_c:0/object}. You wonder what made r_c:0 stop..."
+    },
+    "rare60": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "rare"
+        ],
+        "event": "You overhear r_c:0 speaking about you. It seems quite serious."
+    },
+    "rare61": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "deputy"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "rare"
+        ],
+        "event": "r_c:0 is looking at you strangely. You pause to ask {PRONOUN/r_c:0/object}, but {PRONOUN/r_c:0/subject} {VERB/r_c:0/shake/shakes} {PRONOUN/r_c:0/poss} head and quietly {VERB/r_c:0/walk/walks} away. Weird."
+    },
+    "rare62": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "mediator"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "rare"
+        ],
+        "event": "When r_c:0 takes you aside, you expect a few things. None of them happen though, as {PRONOUN/r_c:0/subject} simply {VERB/r_c:0/study/studies} you for a few moments before {PRONOUN/r_c:0/subject} {VERB/r_c:0/walk/walks} away. What was that..?"
+    },
+    "rare63": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "rare"
+        ],
+        "event": "There's an uneasiness in the camp today. A blue butterfly was found torn up in the clearing. No one seems to know anything, but everycat agrees it probably isn't a good sign..."
+    },
+    "df64": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "df"
+        ],
+        "event": "Waking up in the Dark Forest, you feel the usual pang of unease. The trees are silent, devoid of the sounds of life you're accustomed to in your Clan."
+    },
+    "df65": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "df"
+        ],
+        "event": "You practice the brutal techniques you've learned in the Dark Forest. Each thrust of your claws and silent pounce feels like a betrayal of your Clan, but you're driven forward by an insatiable desire to be stronger."
+    },
+    "df66": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "df"
+        ],
+        "event": "You explore deeper into the Dark Forest, its unfamiliar shadows playing tricks on your eyes. There's an air of malice that makes your fur stand on end."
+    },
+    "df67": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "df"
+        ],
+        "event": "You wander in the silent wilderness, caught in the eerie tranquility of the Dark Forest. Here, you can almost forget about your Clan and the consequences of your choices."
+    },
+    "df68": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "df"
+        ],
+        "event": "Your claws rake through the thin air as you practice a deadly move. The Dark Forest feels like a second home now, a place where your ambitions aren't shackled by the Warrior Code."
+    },
+    "df69": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "df"
+        ],
+        "event": "You stop mid-strike, listening to the unnatural stillness around you in the Dark Forest. You feel eyes on you, but you look around and you can't see anything."
+    },
+    "df70": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "df"
+        ],
+        "event": "The chilling cold of the Dark Forest wraps around you. There's no warmth here, only the relentless pursuit of power."
+    },
+    "df71": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "df"
+        ],
+        "event": "You repeat a lethal move you learned from the Dark Forest over and over again until your muscles ache. It's a stark contrast to the harmless training of your apprenticehood."
+    },
+    "df72": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "df"
+        ],
+        "event": "In the heart of the Dark Forest, you find a strange comfort. There's a freedom here from the expectations and rules of Clan life."
+    },
+    "df73": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "df"
+        ],
+        "event": "Every night in the Dark Forest brings a new challenge. Navigating through the shifting landscape becomes a skill you master."
+    },
+    "df74": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "residence": ["df"]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "mentor/app"
+                ]
+            }
+        ],
+        "types": [
+            "df"
+        ],
+        "event": "r_c:0 introduces you to other Dark Forest cats. Perhaps one day you'll join them as a warrior among their ranks."
+    },
+    "df75": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "residence": ["df"]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "mentor/app"
+                ]
+            }
+        ],
+        "types": [
+            "df"
+        ],
+        "event": "r_c:0 drills you on advanced battle techniques again and again. Your muscles ache when you wake up."
+    },
+    "df76": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "residence": ["df"]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "mentor/app"
+                ]
+            }
+        ],
+        "types": [
+            "df"
+        ],
+        "event": "Out of the corner of your eye, you swear you see r_c:0 disappearing into the shadows."
+    },
+    "df77": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "df_trainee"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "df"
+        ],
+        "event": "Is that... r_c:0? Your fur stands on end as you come face to face with them in the Dark Forest. They acknowledge you with a slight dip of their head and race off into the shadows."
+    },
+    "df78": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "df_trainee"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "df"
+        ],
+        "event": "Through the darkness, you spot r_c:0 huddled beside a twisted tree within the Dark Forest. They jump at your approach, their eyes wide and fearful, before sprinting away into the darkness."
+    },
+    "df79": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "df_trainee"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "df"
+        ],
+        "event": "There's a rustle of dead leaves within the Dark Forest. You turn and notice r_c:0. They seem entranced by a ghostly flower, plucking its petals one by one. Their eyes meet yours, their expression a mix of fear and defiance, before they fade into the shadows."
+    },
+    "df80": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "df_trainee"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "df"
+        ],
+        "event": "In the ghostly twilight of the Dark Forest, you bump into r_c:0. They look just as shocked to see you. After a moment of awkward silence, they sprint away, leaving you alone once more."
+    },
+    "df81": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "df_trainee"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "df"
+        ],
+        "event": "r_c:0 is standing by a still, dark pool within the Dark Forest. Their reflection looks distorted, their eyes haunted. They meet your gaze, nod, and then walk off into the darkness."
+    },
+    "df82": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "df_trainee"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "df"
+        ],
+        "event": "A rustle in the undergrowth reveals r_c:0. They seem as out of place in the Dark Forest as you feel. Their eyes dart to you before they quickly move away."
+    },
+    "df83": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "df_trainee"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "df"
+        ],
+        "event": "In the distance, you see r_c:0 engaged in a ruthless fight with an unknown Dark Forest cat. The sight of you halts them mid-swing, their eyes flashing surprise and an unnerving bloodlust."
+    },
+    "df84": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "df_trainee"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "df"
+        ],
+        "event": "In the Dark Forest, you catch sight of r_c:0 standing at the edge of a murky pool, their reflection distorted on the surface. They appear lost in thought. You run off before they can notice you."
+    },
+    "df85": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "df_trainee"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "df"
+        ],
+        "event": "You find r_c:0 hissing at a shadowy figure in the Dark Forest, their fur standing on end. They pause at your arrival, shooting you a challenging glance before turning to chase the shadow."
+    },
+    "df86": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "df_trainee"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "df"
+        ],
+        "event": "A shadow moves and r_c:0 is revealed, standing solemnly beneath a gnarled tree within the Dark Forest. They acknowledge your presence with a forlorn gaze before they silently fade back into the gloom."
+    },
+    "df87": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "df_trainee"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "df"
+        ],
+        "event": "Within the Dark Forest, you nearly collide with r_c:0, who's running in panic. They stop short, panting heavily. They glance at you with wild fear in their eyes, then dart off into the obscurity of the forest."
+    },
+    "df88": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "df_trainee"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "df"
+        ],
+        "event": "Amidst the eerie quiet of the Dark Forest, r_c:0 emerges, practicing a vicious swipe on a cat you recognize from another Clan. Their training stops abruptly at your appearance, a smirk creeping onto their face before they vanish into the fog."
+    },
+    "df89": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "df_trainee"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "df"
+        ],
+        "event": "You wake up once again in the Dark Forest. A flicker of movement reveals r_c:0 hunched over, staring at the ground. They look up at your approach, sorrow clouding their gaze, before they melt away into the foreboding woods."
+    },
+    "df90": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "df_trainee"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "df"
+        ],
+        "event": "As you trek through the gloom of the Dark Forest, you stumble upon r_c:0 laughing at a shifting shadow. Seeing you, their laughter dies instantly and they swiftly turn, vanishing deeper into the forest."
+    },
+    "crush91": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "y_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "min_romance_15",
+                    "non-mates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You debate asking r_c:0 out on a date. Today seems like the perfect day!"
+    },
+    "crush92": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "y_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "min_romance_15",
+                    "non-mates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "One dusk, you watch the sunset and r_c:0 comes and sits next to you. As the lightning bugs circle through the air, you feel a spark of chemistry between you."
+    },
+    "crush93": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "y_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "min_romance_15",
+                    "non-mates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "Watching r_c:0 stretch in the sunlight beaming into camp, you stare until {PRONOUN/r_c:0/subject} {VERB/r_c:0/make/makes} eye contact with you, and you avert your eyes hurriedly."
+    },
+    "crush94": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "y_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "min_romance_15",
+                    "non-mates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 offers to help you clean your fur after a day out in the territory."
+    },
+    "crush95": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "y_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "min_romance_15",
+                    "non-mates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You wake up from a bad dream, and decide to take a walk outside. Surprisingly, r_c:0 is awake too, and joins you on your walk. You feel like you can understand {PRONOUN/r_c:0/object} a bit better."
+    },
+    "crush96": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "y_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "min_romance_15",
+                    "non-mates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "While out hunting with r_c:0 you manage to trip over your own paws, whiskers first and crash to the ground. r_c:0 notices and runs to your side, helping you up. Though you weren't injured, it warms your heart at {PRONOUN/r_c:0/poss} concern."
+    },
+    "crush97": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "y_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "min_romance_15",
+                    "non-mates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You spend all day hunting for r_c:0's favorite piece of fresh-kill. The happiness in {PRONOUN/r_c:0/poss} eyes more than make up for your exhaustion."
+    },
+    "crush98": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "y_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "min_romance_15",
+                    "non-mates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "Your crush, r_c:0, asks if you'd like to share a squirrel together in the shade."
+    },
+    "crush99": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "y_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "min_romance_15",
+                    "non-mates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "After a bad day, r_c:0 offers to let you talk to {PRONOUN/r_c:0/object} about it. You feel much better afterwards."
+    },
+    "crush100": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "y_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "min_romance_15",
+                    "non-mates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You catch r_c:0 playing with some kits in the nursery and can't help but imagine what a good parent {PRONOUN/r_c:0/subject} would be."
+    },
+    "crush101": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "y_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "min_romance_15",
+                    "non-mates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You invite r_c:0 to go stargazing with you, though you end up looking at {PRONOUN/r_c:0/object} more than the sky."
+    },
+    "crush102": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "y_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "min_romance_15",
+                    "non-mates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You find your crush, r_c:0's favorite type of prey on a hunting patrol. You bring it to {PRONOUN/r_c:0/object}, hoping {PRONOUN/r_c:0/subject} might interpret it as more than a friendly gesture."
+    },
+    "crush103": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "y_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "min_romance_15",
+                    "non-mates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You can't help but stare at r_c:0 from across the clearing, but {PRONOUN/r_c:0/subject} {VERB/r_c:0/see/sees} you and {VERB/r_c:0/smile/smiles} at you. You quickly scramble to pretend like you weren't looking, unable to stop a smile forming on your face."
+    },
+    "crush104": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "y_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "min_romance_15",
+                    "non-mates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You start to feel a connection with r_c:0 and ask to go on a moonlit walk with {PRONOUN/r_c:0/object}. r_c:0 is surprised at first, but then happily agrees."
+    },
+    "crush105": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "mates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "Your mate, r_c:0 takes you on a midnight stroll. Both of you enjoy the night air and each other's company."
+    },
+    "crush106": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "mates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 asks you if you would like to have kits and start a family."
+    },
+    "crush107": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "mates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "Thunder cracks in the sky, startling r_c:0 awake. What startles you is that {PRONOUN/r_c:0/subject} {VERB/r_c:0/move/moves} over to you for comfort, and you can't help but drape your tail over {PRONOUN/r_c:0/object} reassuringly."
+    },
+    "crush108": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "mates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You and r_c:0 spend a moonlit evening sharing tongues."
+    },
+    "crush109": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "mates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 asks you to tell {PRONOUN/r_c:0/object} about your current interests, {PRONOUN/r_c:0/poss} eyes full of genuine interest. Your heart soars as you begin a very long, very detailed description of your interests, hardly noticing the affection on r_c:0's face as {PRONOUN/r_c:0/subject} {VERB/r_c:0/watch/watches} you ramble on."
+    },
+    "crush110": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "mates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "After a battle with an enemy Clan, r_c:0 is the first cat you make sure is alright."
+    },
+    "crush111": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "mates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You challenge r_c:0 to a friendly bug-hunting challenge! The two of you have a great time, playfully arguing over which bug is cooler."
+    },
+    "crush112": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "mates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You and r_c:0 find yourselves staring up at the sky, trying to associate a thing or scene to each cloud that passes by."
+    },
+    "crush113": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "mates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You invite r_c:0 to go stargazing with you, though you end up looking at {PRONOUN/r_c:0/object} more than the sky."
+    },
+    "crush114": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "mates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You and r_c:0 share a nest one night, snuggling together for warmth."
+    },
+    "crush115": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "mates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "On a lazy afternoon, r_c:0 teaches you a silly song from {PRONOUN/r_c:0/poss} kithood, making you both giggle."
+    },
+    "crush116": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "mates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 shyly asks your opinion on kits."
+    },
+    "crush117": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "mates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You find a carefully crafted trinket near your nest, only to realize that r_c:0 made it just for you."
+    },
+    "crush118": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "mates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "One morning, you wake up to find a flower by your nest. r_c:0 shyly admits {PRONOUN/r_c:0/subject} thought it matched the color of your eyes."
+    },
+    "crush119": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "mates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You wake up to find that r_c:0 brought you your favorite piece of freshkill. How thoughtful!"
+    },
+    "crush120": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "mates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "While trying to impress r_c:0, you trip over your paws. {PRONOUN/r_c:0/subject/CAP} {VERB/r_c:0/snicker/snickers} before moving to help you back up."
+    },
+    "crush121": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "mates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You catch a look at r_c:0 from across the camp. {PRONOUN/r_c:0/subject/CAP} {VERB/r_c:0/get/gets} even more beautiful with every day that passes."
+    },
+    "crush122": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "mates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You and r_c:0 spent the night cuddled together in the den during a chilly night."
+    },
+    "crush123": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "mates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 has seemed really distant lately, maybe a walk around the territory with you will help {PRONOUN/r_c:0/object} feel a bit better."
+    },
+    "crush124": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "mates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You and r_c:0 take a walk on a rainy evening, and it ends with you two splashing each other and playing in puddles."
+    },
+    "crush125": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "mates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 shares a story from {PRONOUN/r_c:0/poss} kithood, making you laugh with {PRONOUN/r_c:0/poss} antics. It's a side of {PRONOUN/r_c:0/object} you've never seen before, and you cherish the moment."
+    },
+    "crush126": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "mates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You and r_c:0 decide to climb the tallest tree in the territory. From the top, you both enjoy the breathtaking view, feeling closer than ever."
+    },
+    "crush127": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "mates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "After a hard day, r_c:0 gently grooms your fur, {PRONOUN/r_c:0/poss} touch soothing away your worries."
+    },
+    "crush128": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "mates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You and r_c:0 sing an old Clan song, yowling the lyrics together. You aren't the greatest singers, but you both have fun nevertheless -- you both are soon breathless from laughter."
+    },
+    "crush129": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "mates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You're restless today and r_c:0 notices rather quickly. {PRONOUN/r_c:0/subject/CAP} {VERB/r_c:0/challenge/challenges} you to a friendly spar, and you have a great deal of fun improving your fighting skills while also spending time with r_c:0."
+    },
+    "crush130": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "mates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "Every moment with r_c:0 makes your heart beat faster. The glances you two share. The conversations between you and {PRONOUN/r_c:0/object}. Waking up every day next to r_c:0 seems like a dream, but as you cuddle {PRONOUN/r_c:0/object} in your shared nest, you're reminded that it's reality- and you couldn't be happier."
+    },
+    "crush131": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "mates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 seems stressed, constantly exhausted and worried. You invite {PRONOUN/r_c:0/object} outside of camp, just you and {PRONOUN/r_c:0/object}, to talk. After a long, heartfelt conversation about how the stress of Clan life is getting to {PRONOUN/r_c:0/object}, r_c:0 is renewed in {PRONOUN/r_c:0/poss} abilities and profusely thanks you for letting {PRONOUN/r_c:0/object} vent."
+    },
+    "crush132": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "mates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "Like many other relationships, you and r_c:0 have not had a perfect one. After an argument, you find r_c:0 sitting outside of camp alone. You decide to give {PRONOUN/r_c:0/object} space, but {PRONOUN/r_c:0/subject} {VERB/r_c:0/ask/asks} you to stay. The two of you talk about the argument and how the two of you can prevent future ones. After the talk, you feel as if your bond has strengthened."
+    },
+    "affair133": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "y_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "max_trust_30",
+                    "mates"
+                ]
+            }
+        ],
+        "types": [
+            "affair"
+        ],
+        "event": "At a gathering, you can't help but notice how often r_c:0's gaze drifts to a certain cat from another Clan."
+    },
+    "affair134": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "y_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "max_trust_30",
+                    "mates"
+                ]
+            }
+        ],
+        "types": [
+            "affair"
+        ],
+        "event": "You find a tuft of unfamiliar fur stuck to r_c:0 after {PRONOUN/r_c:0/subject} {VERB/r_c:0/return/returns} from a solo 'hunt'. The scent doesn't belong to any prey, and you're left with an uneasy feeling."
+    },
+    "affair135": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "y_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "max_trust_30",
+                    "mates"
+                ]
+            }
+        ],
+        "types": [
+            "affair"
+        ],
+        "event": "In the moonlight, you see the silhouette of r_c:0 and another cat by the lakeside. They sit so close, their reflections merge as one in the water."
+    },
+    "affair136": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "y_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "max_trust_30",
+                    "mates"
+                ]
+            }
+        ],
+        "types": [
+            "affair"
+        ],
+        "event": "You spot r_c:0 sneaking out of camp during the night. Curious, you decide to follow and discover {PRONOUN/r_c:0/object} meeting another cat in secret."
+    },
+    "affair137": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "y_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "max_trust_30",
+                    "mates"
+                ]
+            }
+        ],
+        "types": [
+            "affair"
+        ],
+        "event": "During the gathering, your heart sinks as you see r_c:0 sit closely beside another cat, their whiskers brushing and their gazes locked in a way that's hard to misinterpret."
+    },
+    "affair138": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "y_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "max_trust_30",
+                    "mates"
+                ]
+            }
+        ],
+        "types": [
+            "affair"
+        ],
+        "event": "A Clanmate approaches you with hesitation, sharing rumors they've heard about r_c:0 and another outsider. While you're inclined to dismiss it, a nagging doubt creeps into your mind."
+    },
+    "affair139": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "y_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "max_trust_30",
+                    "mates"
+                ]
+            }
+        ],
+        "types": [
+            "affair"
+        ],
+        "event": "Your gaze lands on a sight that makes your heart drop - your mate, r_c:0, sharing an intimate moment of laughter and playful nudges with another cat."
+    },
+    "affair140": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "y_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "max_trust_30",
+                    "mates"
+                ]
+            }
+        ],
+        "types": [
+            "affair"
+        ],
+        "event": "You look for your mate to ask {PRONOUN/r_c:0/object} out on a date, when you see {PRONOUN/r_c:0/object} pressing {PRONOUN/r_c:0/poss} pelt up against another cat. When r_c:0 sees you, {PRONOUN/r_c:0/subject} quickly {VERB/r_c:0/run/runs} up to you to explain."
+    }
+}

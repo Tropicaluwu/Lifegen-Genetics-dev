@@ -4,7 +4,7 @@ from typing import Union
 
 import i18n
 
-from scripts.cat.enums import CatRank, CatAge
+from scripts.cat.enums import CatRank, CatAge, CatGroup
 
 
 class SkillPath(Enum):
@@ -33,6 +33,18 @@ class SkillPath(Enum):
         "good swimmer",
         "talented swimmer",
         "fish-like swimmer",
+    )
+    DIGGER = (
+        "loves digging holes",
+        "good digger",
+        "talented tunneler",
+        "subterranean master"
+    )
+    STEALTH = (
+        "likes to hide",
+        "good at sneaking",
+        "very stealthy",
+        "quiet as a phantom"
     )
     SPEAKER = (
         "confident with words",
@@ -95,6 +107,7 @@ class SkillPath(Enum):
         "prophet",
     )
     GHOST = ("morbid curiosity", "ghost sense", "ghost sight", "ghost speaker")
+
     DARK = (
         "interested in the Dark Forest",
         "Dark Forest affinity",
@@ -102,9 +115,209 @@ class SkillPath(Enum):
         "unshakable Dark Forest link",
     )
 
+    # NEW SKILLS --
+    
+    EXPLORER = (
+        "curious wanderer",
+        "knowledgeable explorer",
+        "brave pathfinder",
+        "master of territories"
+    )
+    TRACKER = (
+        "tracker instincts",
+        "proficient tracker",
+        "great tracker",
+        "masterful tracker"
+    )
+    ARTISTAN = (
+        "likes to decorate",
+        "good decorator",
+        "great decorator",
+        "artisan"
+    )
+    GUARDIAN = (
+        "watchful",
+        "good guard",
+        "great guard",
+        "guardian"
+    )
+    TUNNELER = (
+        "enjoys digging",
+        "good tunneler",
+        "great tunneler",
+        "fantastic tunneler"
+    )
+    NAVIGATOR = (
+        "good with directions",
+        "good navigator",
+        "great navigator",
+        "pathfinder"
+    )
+    SONG = (
+        "likes to sing",
+        "good singer",
+        "great singer",
+        "captivating singer"
+    )
+    GRACE = (
+        "steps lightly",
+        "graceful",
+        "elegant",
+        "radiates elegance"
+    )
+    CLEAN = (
+        "tidy",
+        "fur-care enthusiast",
+        "meticulous cleaner",
+        "master of aesthetics"
+    )
+    INNOVATOR = (
+        "always curious",
+        "problem solver",
+        "creator of solutions",
+        "visionary thinker"
+    )
+    COMFORTER = (
+        "gentle voice",
+        "comforting presence",
+        "nightmare soother",
+        "boogeyman-fighter"
+    )
+    MATCHMAKER = (
+        "interested in relationship drama",
+        "relationship advisor",
+        "skilled heart-reader",
+        "masterful matchmaker"
+    )
+    THINKER = (
+        "oddly resourceful",
+        "out-of-the-box thinker",
+        "paradox enthusiast",
+        "philosopher"
+    )
+    COOPERATIVE = (
+        "lives in groups",
+        "good sport",
+        "team player",
+        "insider"
+    )
+    SCHOLAR = (
+        "always learning",
+        "well-versed",
+        "incredibly knowledgeable",
+        "polymath"
+    )
+    TIME = (
+        "oddly orderly",
+        "always busy",
+        "coordinated",
+        "efficiency aficionado"
+    )
+    TREASURE = (
+        "looks for trinkets",
+        "item stasher",
+        "trinket stower",
+        "treasure keeper"
+    )
+    FISHER = (
+        "bats at rivers", 
+        "grazes fish", 
+        "fish-catcher", 
+        "gold star fishercat"
+    )
+    LANGUAGE = (
+        "other-cat-ly whisperer",
+        "dog-whisperer",
+        "multilingual",
+        "listener of all voices"
+    ) 
+    SLEEPER = (
+        "dozes easily",
+        "sunhigh log",
+        "dormouse", 
+        "leader of SnoozeClan"
+    )
+    GARDENER = (
+        "curious about plants",
+        "plant enthusiast",
+        "observant gardener",
+        "green nose"
+    )
+
+    # LG: outsider-unique skill paths feel free to change the descriptions
+
+    # Kittypet-unique
+    TWOLEGCARE = (
+        "patient with housefolk",
+        "housefolk friend",
+        "trusted by Twolegs",
+        "Twoleg whisperer"
+    )
+    CHARMER = (
+        "easy to like",
+        "magnetic",
+        "irresistibly charming",
+        "purrs hearts open"
+    )
+    SHOWCAT = (
+        "preens for attention",
+        "polished",
+        "ribbon-winner",
+        "show-perfect"
+    )
+
+    # Loner-unique
+    WANDERER = (
+        "restless paws",
+        "well-traveled",
+        "seasoned wanderer",
+        "knower of lands"
+    )
+    SCAVENGER = (
+        "picks at scraps",
+        "resourceful scavenger",
+        "keen scavenger",
+        "finder of forgotten things"
+    )
+    SURVIVOR = (
+        "tough soul",
+        "survivor",
+        "strong endurance",
+        "unbreakable"
+    )
+
+    # Rogue-unique
+    BRAWLER = (
+        "scrappy",
+        "street brawler",
+        "ruthless brawler",
+        "fights without rules"
+    )
+    INTIMIDATOR = (
+        "unsettling glare",
+        "intimidating",
+        "fear-striker",
+        "presence of nightmares"
+    )
+    AMBUSHER = (
+        "hides well",
+        "patient ambusher",
+        "clever ambusher",
+        "invisible ambusher"
+    )
+
     @staticmethod
-    def get_random(exclude: list = ()):
-        """Get a random path, with more uncommon paths being less common"""
+    def get_random(exclude: list = (), cat_group: "CatGroup" = None):
+        """Get a random path, with more uncommon paths being less common.
+        """
+
+        all_unique = set()
+        matching_unique = ()
+        for grp, skills in GROUP_UNIQUE_SKILLS.items():
+            all_unique.update(skills)
+            if cat_group == grp:
+                matching_unique = skills
+        blocked = (all_unique - set(matching_unique)) | set(exclude)
 
         uncommon_paths = [
             i
@@ -118,18 +331,45 @@ class SkillPath(Enum):
                 SkillPath.HEALER,
                 SkillPath.DARK,
             )
-            if i not in exclude
+            if i not in blocked
         ]
 
-        if not int(random.random() * 15):
+        if uncommon_paths and not int(random.random() * 15):
             return random.choice(uncommon_paths)
-        else:
-            common_paths = [
-                i
-                for i in list(SkillPath)
-                if i not in exclude and i not in uncommon_paths
-            ]
-            return random.choice(common_paths)
+
+        common_paths = [
+            i
+            for i in list(SkillPath)
+            if i not in blocked and i not in uncommon_paths
+        ]
+        # matching outsider-unique skills get extra weight
+        weighted = list(common_paths)
+        for skill in matching_unique:
+            if skill in common_paths:
+                weighted.extend([skill] * 3)
+        return random.choice(weighted)
+
+
+# Outsider-group-locked skills. Cats from these groups can roll them; cats
+# from other groups can only get them from a parent.
+GROUP_UNIQUE_SKILLS = {
+    CatGroup.HOUSEHOLD: (
+        SkillPath.TWOLEGCARE,
+        SkillPath.CHARMER,
+        SkillPath.SHOWCAT,
+    ),
+    CatGroup.LONER_GROUP: (
+        SkillPath.WANDERER,
+        SkillPath.SCAVENGER,
+        SkillPath.SURVIVOR,
+    ),
+    CatGroup.ROGUE_GROUP: (
+        SkillPath.BRAWLER,
+        SkillPath.INTIMIDATOR,
+        SkillPath.AMBUSHER,
+    ),
+}
+    
 
 
 class HiddenSkillEnum(Enum):
@@ -160,6 +400,8 @@ class Skill:
         SkillPath.RUNNER: "running",
         SkillPath.CLIMBER: "climbing",
         SkillPath.SWIMMER: "swimming",
+        SkillPath.DIGGER: "tunneling",
+        SkillPath.STEALTH: "stealth",
         SkillPath.SPEAKER: "speaking",
         SkillPath.MEDIATOR: "mediating",
         SkillPath.CLEVER: "clever",
@@ -177,6 +419,36 @@ class Skill:
         SkillPath.PROPHET: "prophesying",
         SkillPath.GHOST: "ghosts",
         SkillPath.DARK: "dark forest",
+        SkillPath.EXPLORER: "exploring",
+        SkillPath.TRACKER: "tracking",
+        SkillPath.ARTISTAN: "decorating",
+        SkillPath.GUARDIAN: "guarding",
+        SkillPath.TUNNELER: "tunneling",
+        SkillPath.NAVIGATOR: "navigating",
+        SkillPath.SONG: "singing",
+        SkillPath.GRACE: "grace",
+        SkillPath.CLEAN: "cleaning",
+        SkillPath.INNOVATOR: "innovating",
+        SkillPath.COMFORTER: "comforting",
+        SkillPath.MATCHMAKER: "matchmaking",
+        SkillPath.THINKER: "thinking",
+        SkillPath.COOPERATIVE: "cooperating",
+        SkillPath.SCHOLAR: "learning",
+        SkillPath.TIME: "efficient",
+        SkillPath.TREASURE: "finding",
+        SkillPath.FISHER: "fishing",
+        SkillPath.LANGUAGE: "language",
+        SkillPath.SLEEPER: "sleeping",
+        SkillPath.GARDENER: "gardening",
+        SkillPath.TWOLEGCARE: "twoleg care",
+        SkillPath.CHARMER: "charming",
+        SkillPath.SHOWCAT: "showcat",
+        SkillPath.WANDERER: "wandering",
+        SkillPath.SCAVENGER: "scavenging",
+        SkillPath.SURVIVOR: "surviving",
+        SkillPath.BRAWLER: "brawling",
+        SkillPath.INTIMIDATOR: "intimidating",
+        SkillPath.AMBUSHER: "ambushing",
     }
 
     def __init__(self, path: SkillPath, points: int = 0, interest_only: bool = False):
@@ -192,8 +464,12 @@ class Skill:
     def __repr__(self) -> str:
         return f"<Skill: {self.path}, {self.points}, {self.tier}, {self.interest_only}>"
 
-    def get_short_skill(self):
-        return Skill.short_strings.get(self.path, "???")
+    def get_short_skill_string(self):
+        """
+        Returns a localized short string descriptor of the skill
+        :return: string representing the skill
+        """
+        return i18n.t(f"cat.skills.{Skill.short_strings.get(self.path, 'unknown')}")
 
     @staticmethod
     def generate_from_save_string(save_string: str):
@@ -211,7 +487,11 @@ class Skill:
 
     @staticmethod
     def get_random_skill(
-        points: int = None, point_tier: int = None, exclude=(), interest_only=False
+        points: int = None,
+        point_tier: int = None,
+        exclude=(),
+        interest_only=False,
+        cat_group: "CatGroup" = None,
     ):
         """Generates a random skill. If wanted, you can specify a tier for the points
         value to be randomized within."""
@@ -229,7 +509,7 @@ class Skill:
         if isinstance(exclude, SkillPath):
             exclude = [exclude]
 
-        return Skill(SkillPath.get_random(exclude), points, interest_only)
+        return Skill(SkillPath.get_random(exclude, cat_group=cat_group), points, interest_only)
 
     @property
     def points(self):
@@ -269,6 +549,18 @@ class Skill:
     def tier(self):
         print("Can't set tier directly")
 
+    def get_points_to_tier(self, tier:int):
+        """This is separate from the tier setter, since it will booonly allow you
+        to set points to tier 1, 2, or 3, and never 0. Tier 0 is retricted to interest_only
+        skills"""
+        
+        # Make sure it in the right range. If not, return.
+        if not (1 <= tier <= 3):
+            return
+        
+        # Adjust to 0-indexed ranges list
+        return Skill.tier_ranges[tier - 1][0]
+
     def set_points_to_tier(self, tier: int):
         """This is separate from the tier setter, since it will only allow you
         to set points to tier 1, 2, or 3, and never 0. Tier 0 is restricted to interest_only
@@ -284,6 +576,23 @@ class Skill:
     def get_save_string(self):
         """Gets the string that is saved in the cat data"""
         return f"{self.path.name},{self.points},{self.interest_only}"
+    
+    def get_skill_from_string(self, string, interest=False, skill_object_only=False):
+        """Returns a SkillPath given a string skill"""
+
+        # LG
+        if interest:
+            interest_string = "True"
+        else:
+            interest_string = "False"
+        for skill in SkillPath:
+            if string in skill.value:
+                index = skill.value.index(string)
+                if skill_object_only:
+                    return skill
+                return self.generate_from_save_string(f"{skill.name},{Skill.get_points_to_tier(self, tier=max(1,index))},{interest_string}")
+            
+        return "String not found in any Enum"
 
 
 class CatSkills:
@@ -306,6 +615,8 @@ class CatSkills:
         SkillPath.RUNNER: SkillTypeFlag.AGILE,
         SkillPath.CLIMBER: SkillTypeFlag.STRONG | SkillTypeFlag.AGILE,
         SkillPath.SWIMMER: SkillTypeFlag.STRONG | SkillTypeFlag.AGILE,
+        SkillPath.DIGGER: SkillTypeFlag.STRONG | SkillTypeFlag.OBSERVANT,
+        SkillPath.STEALTH: SkillTypeFlag.AGILE | SkillTypeFlag.SOCIAL | SkillTypeFlag.SMART,
         SkillPath.SPEAKER: SkillTypeFlag.SOCIAL | SkillTypeFlag.SMART,
         SkillPath.MEDIATOR: SkillTypeFlag.SMART | SkillTypeFlag.SOCIAL,
         SkillPath.CLEVER: SkillTypeFlag.SMART,
@@ -325,6 +636,36 @@ class CatSkills:
         SkillPath.PROPHET: SkillTypeFlag.SUPERNATURAL,
         SkillPath.GHOST: SkillTypeFlag.SUPERNATURAL,
         SkillPath.DARK: SkillTypeFlag.SUPERNATURAL,
+        SkillPath.EXPLORER: SkillTypeFlag.SMART | SkillTypeFlag.OBSERVANT,
+        SkillPath.TRACKER: SkillTypeFlag.SMART | SkillTypeFlag.OBSERVANT,
+        SkillPath.ARTISTAN: SkillTypeFlag.SMART,
+        SkillPath.GUARDIAN: SkillTypeFlag.STRONG | SkillTypeFlag.OBSERVANT,
+        SkillPath.TUNNELER: SkillTypeFlag.STRONG | SkillTypeFlag.AGILE | SkillTypeFlag.OBSERVANT,
+        SkillPath.NAVIGATOR: SkillTypeFlag.SMART | SkillTypeFlag.OBSERVANT,
+        SkillPath.SONG: SkillTypeFlag.SOCIAL,
+        SkillPath.GRACE: SkillTypeFlag.AGILE,
+        SkillPath.CLEAN: SkillTypeFlag.OBSERVANT | SkillTypeFlag.SOCIAL,
+        SkillPath.INNOVATOR: SkillTypeFlag.SMART | SkillTypeFlag.OBSERVANT,
+        SkillPath.COMFORTER: SkillTypeFlag.SOCIAL | SkillTypeFlag.OBSERVANT,
+        SkillPath.MATCHMAKER: SkillTypeFlag.SOCIAL | SkillTypeFlag.SMART | SkillTypeFlag.OBSERVANT,
+        SkillPath.THINKER: SkillTypeFlag.SMART | SkillTypeFlag.OBSERVANT,
+        SkillPath.COOPERATIVE: SkillTypeFlag.SOCIAL | SkillTypeFlag.OBSERVANT,
+        SkillPath.SCHOLAR: SkillTypeFlag.SMART,
+        SkillPath.TIME: SkillTypeFlag.AGILE | SkillTypeFlag.SMART,
+        SkillPath.TREASURE: SkillTypeFlag.SMART | SkillTypeFlag.OBSERVANT,
+        SkillPath.FISHER: SkillTypeFlag.STRONG | SkillTypeFlag.AGILE | SkillTypeFlag.OBSERVANT,
+        SkillPath.LANGUAGE: SkillTypeFlag.SOCIAL,
+        SkillPath.SLEEPER: SkillTypeFlag.STRONG,
+        SkillPath.GARDENER: SkillTypeFlag.OBSERVANT,
+        SkillPath.TWOLEGCARE: SkillTypeFlag.SOCIAL | SkillTypeFlag.OBSERVANT,
+        SkillPath.CHARMER: SkillTypeFlag.SOCIAL,
+        SkillPath.SHOWCAT: SkillTypeFlag.SOCIAL | SkillTypeFlag.AGILE,
+        SkillPath.WANDERER: SkillTypeFlag.AGILE | SkillTypeFlag.SMART | SkillTypeFlag.OBSERVANT,
+        SkillPath.SCAVENGER: SkillTypeFlag.OBSERVANT | SkillTypeFlag.SMART,
+        SkillPath.SURVIVOR: SkillTypeFlag.STRONG | SkillTypeFlag.SMART,
+        SkillPath.BRAWLER: SkillTypeFlag.STRONG | SkillTypeFlag.AGILE,
+        SkillPath.INTIMIDATOR: SkillTypeFlag.STRONG | SkillTypeFlag.SOCIAL,
+        SkillPath.AMBUSHER: SkillTypeFlag.AGILE | SkillTypeFlag.OBSERVANT,
     }
 
     # pylint: enable=unsupported-binary-operation
@@ -362,7 +703,10 @@ class CatSkills:
 
     @staticmethod
     def generate_new_catskills(
-        rank: CatRank, age: CatAge, hidden_skill: HiddenSkillEnum = None
+        rank: CatRank,
+        age: CatAge,
+        hidden_skill: HiddenSkillEnum = None,
+        cat_group: "CatGroup" = None,
     ):
         """Generates a new skill"""
         new_skill = CatSkills()
@@ -372,12 +716,19 @@ class CatSkills:
         if rank == CatRank.NEWBORN or age == CatAge.NEWBORN:
             pass
         elif rank == CatRank.KITTEN or age == CatAge.KITTEN:
-            new_skill.primary = Skill.get_random_skill(points=0, interest_only=True)
+            new_skill.primary = Skill.get_random_skill(
+                points=0, interest_only=True, cat_group=cat_group
+            )
         elif rank.is_any_apprentice_rank() or age == CatAge.ADOLESCENT:
-            new_skill.primary = Skill.get_random_skill(point_tier=1, interest_only=True)
+            new_skill.primary = Skill.get_random_skill(
+                point_tier=1, interest_only=True, cat_group=cat_group
+            )
             if random.randint(1, 3) == 1:
                 new_skill.secondary = Skill.get_random_skill(
-                    point_tier=1, interest_only=True, exclude=new_skill.primary.path
+                    point_tier=1,
+                    interest_only=True,
+                    exclude=new_skill.primary.path,
+                    cat_group=cat_group,
                 )
         else:
             primary_tier = 1
@@ -394,10 +745,14 @@ class CatSkills:
             elif age == CatAge.SENIOR:
                 primary_tier -= random.randint(0, 1)
 
-            new_skill.primary = Skill.get_random_skill(point_tier=primary_tier)
+            new_skill.primary = Skill.get_random_skill(
+                point_tier=primary_tier, cat_group=cat_group
+            )
             if random.randint(1, 2) == 1:
                 new_skill.secondary = Skill.get_random_skill(
-                    point_tier=secondary_tier, exclude=new_skill.primary.path
+                    point_tier=secondary_tier,
+                    exclude=new_skill.primary.path,
+                    cat_group=cat_group,
                 )
 
         return new_skill
@@ -414,9 +769,9 @@ class CatSkills:
 
         if short:
             if self.primary:
-                output.append(i18n.t(f"cat.skills.{self.primary.get_short_skill()}"))
+                output.append(self.primary.get_short_skill_string())
             if self.secondary:
-                output.append(i18n.t(f"cat.skills.{self.secondary.get_short_skill()}"))
+                output.append(self.secondary.get_short_skill_string())
         else:
             if self.primary:
                 output.append(i18n.t(f"cat.skills.{self.primary.skill}"))
@@ -489,12 +844,12 @@ class CatSkills:
         if not self.primary:
             parents = [
                 the_cat.fetch_cat(i)
-                for i in [the_cat.parent1, the_cat.parent2] + the_cat.adoptive_parents
-                if type(the_cat) == type(the_cat.fetch_cat(i))
+                for i in [the_cat.parent1, the_cat.parent2, the_cat.parent3] + the_cat.adoptive_parents
+                if the_cat.fetch_cat(i) and not the_cat.fetch_cat(i).faded
             ]
             parental_paths = [
-                i.skills.primary.path for i in parents if i.skills.primary
-            ] + [i.skills.secondary.path for i in parents if i.skills.secondary]
+                i.skills.primary.path for i in parents if i and i.skills.primary
+            ] + [i.skills.secondary.path for i in parents if i and i.skills.secondary]
 
             # If there are parental paths, flip a coin to determine if they will get a parents path
             if parental_paths and random.randint(0, 1):
@@ -509,6 +864,7 @@ class CatSkills:
                     points=0,
                     interest_only=the_cat.status.rank.is_any_apprentice_rank()
                     or the_cat.status.rank == CatRank.KITTEN,
+                    cat_group=the_cat.status.group,
                 )
 
         if the_cat.status.is_clancat:
@@ -517,7 +873,10 @@ class CatSkills:
                 if not self.secondary and not int(random.random() * 22):
                     # if there's no secondary skill, try to give one!
                     self.secondary = Skill.get_random_skill(
-                        points=0, interest_only=True, exclude=self.primary.path
+                        points=0,
+                        interest_only=True,
+                        exclude=self.primary.path,
+                        cat_group=the_cat.status.group,
                     )
 
                 # if the the_cat has skills, check if they get any points this moon
@@ -536,7 +895,10 @@ class CatSkills:
                 if not self.secondary and not int(random.random() * 22):
                     # if there's no secondary skill, try to give one!
                     self.secondary = Skill.get_random_skill(
-                        points=0, interest_only=True, exclude=self.primary.path
+                        points=0,
+                        interest_only=True,
+                        exclude=self.primary.path,
+                        cat_group=the_cat.status.group,
                     )
 
                 # Check if they get any points this moon
@@ -585,7 +947,9 @@ class CatSkills:
                 # but, only a first-tier skill.
                 if not self.secondary and not int(random.random() * 300):
                     self.secondary = Skill.get_random_skill(
-                        exclude=self.primary.path, point_tier=1
+                        exclude=self.primary.path,
+                        point_tier=1,
+                        cat_group=the_cat.status.group,
                     )
 
                 # There is a change for primary to continue to improve throughout life
@@ -626,12 +990,34 @@ class CatSkills:
                 return True
         elif isinstance(path, SkillPath):
             if self.primary:
-                if path == self.primary.path and self.primary.tier >= min_tier:
-                    return True
+                # LG
+                if min_tier == -1:
+                    if path != self.primary.path and (
+                        (
+                            not self.secondary or
+                            (self.secondary and path != self.secondary.path)
+                        )
+                    ):
+                        return True
+                else:
+                # --
+                    if path == self.primary.path and self.primary.tier >= min_tier:
+                        return True
 
             if self.secondary:
-                if path == self.secondary.path and self.secondary.tier >= min_tier:
-                    return True
+                # LG
+                if min_tier == -1:
+                    if path != self.secondary.path and (
+                        (
+                            not self.primary or
+                            (self.primary and path != self.primary.path)
+                        )
+                    ):
+                        return True
+                else:
+                # --
+                    if path == self.secondary.path and self.secondary.tier >= min_tier:
+                        return True
 
         return False
 

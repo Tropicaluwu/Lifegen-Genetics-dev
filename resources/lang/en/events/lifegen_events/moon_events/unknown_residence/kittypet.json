@@ -1,0 +1,12 @@
+{
+    "general1": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You miss your Twolegs."
+    }
+}

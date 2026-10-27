@@ -1,0 +1,42 @@
+{
+    "general1": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "If only your body hadn't given up on you- c_n is being run horribly, and you know you could be doing so much better."
+    },
+    "general2": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You watch over the cats in the Dark Forest with narrowed eyes, silently observing from high above. "
+    },
+    "general3": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "c_n would be doing so much better with you as the Leader."
+    },
+    "general4": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You wonder if StarClan regrets gifting you nine lives."
+    }
+}

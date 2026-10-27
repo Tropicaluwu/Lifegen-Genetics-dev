@@ -1,0 +1,32 @@
+{
+    "general1": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "In the Dark Forest, your job feels more needed than ever, as there is no shortage of disputes."
+    },
+    "general2": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You watch an argument devolve into a full-blown fight, feeling too helpless to try and step in."
+    },
+    "general3": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You try to charm your way into StarClan, but they turn you away, leaving you pleading desperately at the border."
+    }
+}

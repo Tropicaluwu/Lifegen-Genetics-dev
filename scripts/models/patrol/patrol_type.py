@@ -8,3 +8,8 @@ class PatrolType(Enum):
     herb_gathering = "herb_gathering"
     border = "border"
     training = "training"
+
+    # LG
+    lifegen = "lifegen"
+    df = "df"
+    date = "date"

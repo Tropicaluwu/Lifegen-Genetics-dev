@@ -1,0 +1,53 @@
+{
+    "spritesheet": "acc_smallanimals",
+    "sprite_list": [
+        {
+            "GRAY SQUIRREL": "body",
+            "RED SQUIRREL": "body",
+            "CRAB": "body",
+            "WHITE RABBIT": "body",
+            "BLACK RABBIT": "body",
+            "BROWN RABBIT": "body",
+            "INDIAN GIANT SQUIRREL": "body",
+            "FAWN RABBIT" : "body",
+            "BROWN AND WHITE RABBIT" : "body",
+            "BLACK AND WHITE RABBIT" : "body"
+        },
+        {
+            "WHITE AND FAWN RABBIT": "body",
+            "BLACK VITILIGO RABBIT": "body",
+            "BROWN VITILIGO RABBIT": "body",
+            "FAWN VITILIGO RABBIT": "body",
+            "BLACKBIRD": "body",
+            "ROBIN": "body",
+            "JAY": "body",
+            "THRUSH": "body",
+            "CARDINAL": "body",
+            "MAGPIE": "body"
+        },
+        {
+            "CUBAN TROGON": "body",
+            "TAN RABBIT": "body",
+            "TAN AND WHITE RABBIT": "body",
+            "TAN VITILIGO RABBIT": "body",
+            "RAT": "body",
+            "WHITE MOUSE": "body",
+            "BLACK MOUSE": "body",
+            "GRAY MOUSE": "body",
+            "BROWN MOUSE": "body",
+            "GRAY RABBIT": "body"
+        },
+        {
+            "GRAY AND WHITE RABBIT": "body",
+            "GRAY VITILIGO RABBIT": "body",
+            "RAINBOWLORIKEET": "body",
+            "BILBY": "body",
+            "GRASS SNAKE": "body",
+            "BLUE RACER": "body",
+            "WESTERN COACHWHIP": "body",
+            "KINGSNAKE": "body",
+            "WINTERSTOAT": "body",
+            "BROWNSTOAT": "body"
+        }
+    ]
+}

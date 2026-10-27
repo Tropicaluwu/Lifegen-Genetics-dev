@@ -6,6 +6,7 @@ import i18n.config
 
 from scripts.game_structure import constants
 from scripts.cat.cats import Cat
+from scripts.cat.history import History
 from scripts.cat_relations.interaction import create_group_interaction, GroupInteraction
 from scripts.cat_relations.enums import RelType
 from scripts.event_class import Single_Event
@@ -123,8 +124,8 @@ class GroupEvents:
             interaction_str, abbreviations_cat_id
         )
 
-        interaction_str = interaction_str + i18n.t(
-            f"relationships.{inter_type}_postscript"
+        interaction_str = i18n.t(
+            f"relationships.{inter_type}_postscript", text=interaction_str
         )
 
         if len(chosen_interaction.general_reaction) > 0:
@@ -141,9 +142,11 @@ class GroupEvents:
         relevant_event_tabs = ["relation", "interaction"]
         if chosen_interaction.get_injuries:
             relevant_event_tabs.append("health")
+            relevant_event_tabs.remove("interaction")
 
+        clan = cat.status.fetch_clan_object(game.clan)
         game.cur_events_list.append(
-            Single_Event(interaction_str, relevant_event_tabs, ids)
+            Single_Event(interaction_str, relevant_event_tabs, ids, clan=clan.group_ID)
         )
         return ids
 
@@ -176,7 +179,7 @@ class GroupEvents:
         filtered_interactions = []
         main_cat = Cat.all_cats[abbreviations_cat_id["m_c"]]
         for interact in interactions:
-            if not event_for_location(interact.biome):
+            if not event_for_location(interact.biome, main_cat.status.fetch_clan_object(game.clan)):
                 continue
 
             if not event_for_season(interact.season):
@@ -440,8 +443,7 @@ class GroupEvents:
         """Check if the interaction is allowed with the current chosen cats."""
 
         for name, rel_constraint in interaction.relationship_constraint.items():
-            abbre_from = name.split("_to_")[0]
-            abbre_to = name.split("_to_")[1]
+            abbre_from, abbre_to = name.split("_to_")
 
             cat_from_id = abbreviations_cat_id[abbre_from]
             cat_to_id = abbreviations_cat_id[abbre_to]

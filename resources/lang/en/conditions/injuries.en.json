@@ -41,6 +41,14 @@
         "headache": "headache",
         "severe headache": "severe headache",
         "sore throat": "sore throat",
-        "pregnant": "pregnant"
+        "pregnant": "pregnant",
+        "guilt": "guilt",
+        "sunburn": "sunburn",
+        "body sunburn": "body sunburn",
+        "back pain": "back pain",
+        "cyst": "cyst",
+        "fatigue": "fatigue",
+        "exhaustion": "exhaustion",
+        "runny eyes": "runny eyes"
     }
 }

@@ -1,0 +1,14 @@
+{
+    "spritesheet": "acc_flowercrowns",
+    "sprite_list": [
+        {
+            "PINKFLOWERCROWN": "head",
+            "YELLOWFLOWERCROWN": "head",
+            "BLUEFLOWERCROWN": "head",
+            "PURPLEFLOWERCROWN": "head",
+            "DANDELIONCROWN": "head",
+            "POPPYCROWN": "head",
+            "LILYPADHAT": "head"
+        }
+    ]
+}

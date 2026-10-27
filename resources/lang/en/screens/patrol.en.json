@@ -27,6 +27,8 @@
             "many": "%{cats} ghosts now wander."
         },
         "met_outsider": "The patrol met %{cats}.",
+        "met_first_encountered": "You have met %{cats}.",
+        "met_encountered": "You have spoken with %{cats}.",
         "new_outsider": "%{cats} joined the Clan.",
         "lost_cats": {
             "one": "%{cats} has been lost.",
@@ -35,9 +37,9 @@
         "outsider_rep_improved": "Your Clan's reputation towards Outsiders has improved.",
         "outsider_rep_neutral": "Your Clan's reputation towards Outsiders is unchanged.",
         "outsider_rep_worsened": "Your Clan's reputation towards Outsiders has worsened.",
-        "clan_rep_improved": "Relations with %{clan} have improved.",
-        "clan_rep_neutral": "Relations with %{clan} are unchanged.",
-        "clan_rep_worsened": "Relations with %{clan} have worsened.",
+        "clan_rep_improved": "Relations with o_c_n have improved.",
+        "clan_rep_neutral": "Relations with o_c_n are unchanged.",
+        "clan_rep_worsened": "Relations with o_c_n have worsened.",
         "herbs_gathered": {
             "zero": "Despite searching, no herbs were found.",
             "one": "%{herbs} was gathered.",

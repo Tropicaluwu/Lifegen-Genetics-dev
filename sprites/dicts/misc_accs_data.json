@@ -1,0 +1,27 @@
+{
+    "spritesheet": "acc_misc",
+    "sprite_list": [
+        {
+            "TIDE": "body",
+            "WOODDRAGON": "body",
+            "TOAST": "head",
+            "TOASTBERRY": "head",
+            "TOASTGRAPE": "head",
+            "TOASTNUTELLA": "head",
+            "TOASTPB": "head",
+            "WATTLE": "body",
+            "CORKHAT": "head",
+            "ZOOKEEPER": "body"
+        },
+        {
+            "FAZBEAR": "body",
+            "WHITEBEAR": "body",
+            "PANDA": "body",
+            "BEAR": "body",
+            "BROWNBEAR": "body",
+            "EGG": "body",
+            "POPTABS": "body",
+            "BATHARNESS": "body"
+        }
+    ]
+}

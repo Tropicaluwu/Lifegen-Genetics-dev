@@ -57,7 +57,7 @@
                 "senior adult",
                 "senior"
             ],
-            "status": ["leader", "deputy", "medicine cat", "warrior"]
+            "status": ["leader", "deputy", "healer", "warrior"]
           },
         "new_cat": [
           ["loner"]
@@ -86,7 +86,7 @@
                 "senior adult",
                 "senior"
             ],
-            "status": ["leader", "deputy", "medicine cat", "warrior"]
+            "status": ["leader", "deputy", "healer", "warrior"]
           },
         "new_cat": [
           ["loner"]
@@ -115,7 +115,7 @@
                 "senior adult",
                 "senior"
             ],
-            "status": ["leader", "deputy", "medicine cat", "warrior"]
+            "status": ["leader", "deputy", "healer", "warrior"]
           },
         "new_cat": [
             ["age:has_kits", "meeting", "loner", "can_birth"],

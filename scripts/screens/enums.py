@@ -34,3 +34,17 @@ class GameScreen(StrEnum):
     CHOOSE_MATE = "choose_mate_screen"
     CHOOSE_MENTOR = "choose_mentor_screen"
     CHOOSE_ADOPTIVE_PARENT = "choose_adoptive_parent_screen"
+
+    # LifeGen Screens
+    ACHIEVEMENTS = "achievements_screen"
+    AFFAIR = "affair_screen"
+    CHOOSE_REBORN = "choose_reborn_screen"
+    CHOOSE_DEPUTY = "choose_deputy_screen"
+    ELDER_STORY = "elder_story_screen"
+    GIFT = "gift_screen"
+    MOONPLACE = "moonplace_screen"
+    MURDER = "murder_screen"
+    NAME_KITS = "name_kits_screen"
+    QUEEN = "queen_screen"
+    TALK = "talk_screen"
+    OFFSPRING_PREDICT = "offspring_predict_screen"

@@ -34,6 +34,14 @@
       "starclan_kit_6",
       "starclan_kit_7"
     ],
+    "starclan_misplaced": [
+      "starclan_misplaced_0",
+      "starclan_misplaced_1",
+      "starclan_misplaced_2",
+      "starclan_misplaced_3",
+      "starclan_misplaced_4",
+      "starclan_misplaced_5"
+    ],
     "dark_forest_default": [
       "dark_forest_default_0",
       "dark_forest_default_1",
@@ -68,6 +76,14 @@
       "dark_forest_kit_2",
       "dark_forest_kit_3",
       "dark_forest_kit_4"
+    ],
+    "dark_forest_misplaced": [
+      "dark_forest_misplaced_0",
+      "dark_forest_misplaced_1",
+      "dark_forest_misplaced_2",
+      "dark_forest_misplaced_3",
+      "dark_forest_misplaced_4",
+      "dark_forest_misplaced_5"
     ]
   }
 }

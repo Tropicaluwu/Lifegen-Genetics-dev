@@ -1,0 +1,5148 @@
+{
+    "warrior_22193": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "standing": [
+                    "shunned"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            }
+        },
+        "intro": [
+            "Your paws... They reek of blood."
+        ]
+    },
+    "unabashed elder1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "unabashed"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "apprentice"
+                ],
+                "cluster": [
+                    "cool"
+                ]
+            }
+        },
+        "intro": [
+            "Have you noticed how annoyingly 'cool' the young cats have to be today?",
+            "Like, r_c:0 is always out to impress everycat and act like {PRONOUN/r_c:0/subject}{VERB/r_c:0/'re/'s} better than others.",
+            "What happened to being unique? Showing yourself instead of hiding beneath a facade?",
+            "Honestly, r_c:0 looked dumb showing off that kick. Would never be suited for battle.",
+            "[t_c dissolves into laughter.]",
+            "No, I think r_c:0's just darling when {PRONOUN/r_c:0/subject}{VERB/r_c:0/'re/'s} not busy being 'cool'."
+        ]
+    },
+    "elder_1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "standing": [
+                    "shunned"
+                ]
+            },
+            "t_c": {}
+        },
+        "intro": [
+            "Your eyes hold the weight of a life taken."
+        ]
+    },
+    "elder_10": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "standing": [
+                    "shunned"
+                ]
+            },
+            "t_c": {}
+        },
+        "intro": [
+            "The cats of StarClan. I can see them. They shudder in the wake of your transgression."
+        ]
+    },
+    "elder32132": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "brooding"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "strangers"
+                ]
+            }
+        ],
+        "intro": [
+            "Ugh. A kit. Get out, you little vermin. I'm trying to get some rest here. Tsk. Never any peace or quiet with kits around... ",
+            "I don't see why anyone would want any. No, I don't care if you're bored. Shoo! Go back to the nursery."
+        ]
+    },
+    "assertive_elder_2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "unlawful",
+                    "unabashed",
+                    "sweet"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "kitten",
+                    "adolescent",
+                    "young adult",
+                    "adult"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "intro": [
+            "Do I ever wish I could explore the territory with the rest of my Clanmates?",
+            "Well, sure ... But there's plenty of adventure to be found here in the elder's den, as well!",
+            "Who else can drop everything to help our Clanmates who are in need of comfort? Or play with the kits when their parents need a break? Or keep you entertained when you want a story? Hehehe.",
+            "I may be an elder, but don't be fooled. I contribute to the Clan in my own special way."
+        ]
+    },
+    "assertive_elder2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "unlawful",
+                    "unabashed",
+                    "silly"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "kitten",
+                    "adolescent",
+                    "young adult",
+                    "adult"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "intro": [
+            "Get me a piece of prey from the freshkill pile, wouldja, y_c? I'm practically starving to death over here.",
+            "Kits and elders eat first, after all. Hehehe! I could get used to this life!"
+        ]
+    },
+    "assertive_elder3": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "unlawful",
+                    "unabashed",
+                    "cool",
+                    "silly"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "kitten",
+                    "adolescent",
+                    "young adult",
+                    "adult"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "parent/child",
+                    "min_like_20"
+                ]
+            }
+        ],
+        "intro": [
+            "y_c! Get over here and do some exercises with me, won't ya? If the medicine cat wants me to stay cooped up in this den all day, they'll have to drag me back in themselves!",
+            "[You and t_c chat about your days as you walk laps around camp, side-by-side, pelts brushing in the morning sun.]"
+        ]
+    },
+    "assertive_elder3_2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "unlawful",
+                    "unabashed",
+                    "sweet",
+                    "stable",
+                    "silly"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "hearing"
+                ],
+                "age": [
+                    "kitten",
+                    "adolescent",
+                    "young adult",
+                    "adult",
+                    "not_kitten"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "kitten"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            }
+        ],
+        "intro": [
+            "Hey, y_c! How was your day? ",
+            "The craziest thing happened to me today ... I was telling a story to r_c:0, and then, later in the day, {PRONOUN/r_c:0/subject} {VERB/r_c:0/were/was} repeating the story to all {PRONOUN/r_c:0/poss} friends!",
+            "And then, {PRONOUN/r_c:0/subject} started acting it out, and playing all the characters together ... StarClan, it was so cool to watch.",
+            "It's nice to know that I'm making a difference, y'know?",
+            "Anyways, wanna share a meal together later?"
+        ]
+    },
+    "assertive_elder4": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "unlawful",
+                    "unabashed"
+                ],
+                "age": [
+                    "kitten",
+                    "adolescent",
+                    "young adult",
+                    "adult"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "intro": [
+            "Psst. y_c.",
+            "Any chance you can help me sneak outta here later? I'm going insane trapped inside this place ... plus, all my denmates snore like crazy!",
+            "I know there's a way out by the camp entrance ... maybe you can distract the guards, then slip out and meet up with me later?",
+            "Ah, don't look so scared! No reason an elder can't get out and stretch {PRONOUN/t_c/poss} legs once in a while, huh? It's good for my health!"
+        ]
+    },
+    "cool_elder": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "cool"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "kitten",
+                    "adolescent",
+                    "young adult",
+                    "adult"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "mates"
+                ]
+            }
+        ],
+        "intro": [
+            "There's my beautiful mate. How've you been, gorgeous? Survive another day of work without me?",
+            "I'm fine, as always, though every second without you is frankly unbearable.",
+            "So, c'mon, then! Come share tongues with me!",
+            "We both know you'd never pass up that opportunity."
+        ]
+    },
+    "cool_elder1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "unlawful",
+                    "unabashed",
+                    "cool",
+                    "silly"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "kitten",
+                    "adolescent",
+                    "young adult",
+                    "adult"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "intro": [
+            "The smell of this den ... StarClan, I can hardly stand it!",
+            "Like dust mixed with herb poultice mixed with old, decaying leaves. Where's the vibrance? Where's the energy?",
+            "Oh, no ... Don't tell me I'm starting to smell like that, too!"
+        ]
+    },
+    "introspective_elder": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "introspective"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "kitten",
+                    "adolescent",
+                    "young adult",
+                    "adult"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "intro": [
+            "Somehow, even as a kit, I've always felt like the elders' den is where I most belonged.",
+            "Dispensing wisdom ... admiring nature ... Taking in the day-to-day scenery around camp ... There's something so beautiful in the mundanity of it all, don't you think?",
+            "Though, I suppose I always have been labeled an 'old soul' ..."
+        ]
+    },
+    "assertive_elder5": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "unlawful",
+                    "brooding"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "kitten",
+                    "adolescent",
+                    "young adult",
+                    "adult"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "max_like_-50"
+                ]
+            }
+        ],
+        "intro": [
+            "Hmph. Come to mock me again?",
+            "Eat fox-dung!"
+        ]
+    },
+    "assertive_elder6": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "unlawful",
+                    "silly"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "kitten",
+                    "adolescent",
+                    "young adult",
+                    "adult"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            },
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "min_like_50"
+                ]
+            }
+        ],
+        "intro": [
+            "Hey, y_c, come and help me to my paws. I wanna play a prank on r_c:0.",
+            "What? You mean you refuse to help a poor, helpless elder find a little harmless joy in {PRONOUN/t_c/poss} life? Hmph. How heartless!",
+            "Guess who just landed {PRONOUN/y_c/self} a spot on my 'next-to-prank' list?"
+        ]
+    },
+    "introspective_elder2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "sweet",
+                    "stable",
+                    "brooding",
+                    "introspective",
+                    "neurotic"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "paralyzed:any:true",
+                    "raspy lungs:any:true"
+                ],
+                "age": [
+                    "kitten",
+                    "adolescent",
+                    "young adult",
+                    "adult"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "intro": [
+            "Hi, y_c. Want to try out this new training exercise the medicine cat just taught me?",
+            "It's called 'practiced breathing.' You just have to close your eyes, relax, and breathe in, two, three, four ... and out, two, three, four.",
+            "In, two, three, four ... and out, two, three, four.",
+            "... It's supposed to keep my lungs healthy and exercised, but I think it can be useful for a lot of different things. Like, easing anxiety, for instance.",
+            "Come and find me if you ever want to learn more stuff!"
+        ]
+    },
+    "introspective_elder3": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "sweet",
+                    "stable",
+                    "brooding",
+                    "introspective",
+                    "neurotic"
+                ],
+                "age": [
+                    "kitten",
+                    "adolescent",
+                    "young adult",
+                    "adult"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "intro": [
+            "Twenty-six, twenty-seven ...",
+            "Oh, hello, y_c. No, I'm not talking to myself. I'm counting all of the rocks I see around camp!",
+            "It can get pretty boring sometimes in the elder's den. But I refuse to just while away the days, letting my mind turn into mush. I need to exercise it, so I can stay as sharp as ever!",
+            "Oh, mouse-dung, now I've lost count.",
+            "One, two, three ..."
+        ]
+    },
+    "sweet_elder1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "sweet",
+                    "stable",
+                    "silly",
+                    "upstanding"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "kitten",
+                    "adolescent",
+                    "young adult",
+                    "adult",
+                    "not_kitten"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "intro": [
+            "Oh, y_c, it's so good to see you!",
+            "You've been so busy lately, are you making sure to take care of yourself? Your health is super important, y'know!",
+            "The older cats are teaching me a lot about stuff, they're actually gonna tell me a story they've been hyping up for a while now.",
+            "You should stop by later, take a break from the patrols and bring a snack or two? I'd love to tell you about it!"
+        ]
+    },
+    "sweet_elder2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "sweet"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "kitten",
+                    "adolescent",
+                    "young adult",
+                    "adult"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "mates"
+                ]
+            }
+        ],
+        "intro": [
+            "y_c! There you are! How was your day, sweetheart?",
+            "I always get so worried seeing you head out there, I hope you're taking care of yourself.",
+            "I know I know, I shouldn't worry so much, but I do! I can't let the most amazing cat in the world get hurt, y'know?",
+            "Well, enjoy your day, my love! I'll stop by your den and make sure your nest is nice and tidy, just for you."
+        ]
+    },
+    "young_eldergen": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "unlawful",
+                    "stable",
+                    "cool",
+                    "brooding",
+                    "introspective",
+                    "silly",
+                    "upstanding"
+                ],
+                "age": [
+                    "kitten",
+                    "adolescent",
+                    "young adult",
+                    "adult"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "intro": [
+            "All these pitying looks ... I just can't stand it!",
+            "Like, yeah, I may be an elder, but my brain still works just fine! Unlike half the cats in this Clan ...",
+            "What's it gonna take to be treated with some respect around here? It's not like I'm some sad, helpless kit! I'm a c_n cat, just like everybody else!"
+        ]
+    },
+    "young_eldergen1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "unlawful",
+                    "stable",
+                    "cool",
+                    "brooding",
+                    "introspective",
+                    "upstanding"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "kitten",
+                    "adolescent",
+                    "young adult",
+                    "adult"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "intro": [
+            "I'm so sick and tired of cats asking me why I chose to retire rather than doing something 'useful'.",
+            "First of all, I'm plenty useful! I do chores around camp, I kitsit, I help care for my denmates, I make others laugh ...",
+            "And second, why do I even have to be so-called 'useful' anyways? Doesn't just ... existing as a living, breathing cat give my life value? Why should I have to prove my 'use' to be worthy of respect and a place in the Clan?",
+            "*Sigh* Whatever. Thanks for listening to me rant, y_c.",
+            "It isn't easy being a young elder. But still, at the end of the day, this is who I am. And I wouldn't have it any other way."
+        ]
+    },
+    "young_eldergen1_2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "sweet",
+                    "silly"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "kitten",
+                    "adolescent",
+                    "young adult",
+                    "adult"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "intro": [
+            "Hey, y_c! My denmates are the best storytellers... They just told me this really cool one, how did it go again?",
+            "It was like... There once was an apprentice called Doepaw. She had a brother, Stagpaw, and her mother was training in the Dark Forest .... er, actually, maybe I wasn't supposed to tell you that yet.",
+            "*Sigh* Oh, well. Looks like I'll need to practice my storytelling skills!",
+            "If you ever stop by again, I'll try to have a better one ready!"
+        ]
+    },
+    "silly_elder": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "unlawful",
+                    "cool",
+                    "silly"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "kitten",
+                    "adolescent",
+                    "young adult",
+                    "adult"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "intro": [
+            "How'd I end up retired? Oh well, it's a funny story...",
+            "When I was just a kit, I was kidnapped by a hawk! Luckily, it dropped me ... right into the jaws of a huge dog! The dog then abandoned me to be discovered by foxes, but then this huge flood came and washed us all away into enemy territory, and ...",
+            "What, you don't believe me?",
+            "Psh. You're no fun!"
+        ]
+    },
+    "silly_elder_2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "silly"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "kitten",
+                    "adolescent",
+                    "young adult",
+                    "adult"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "intro": [
+            "How'd I end up retired? Oh well, it's a funny story ...",
+            "When I was just a kit, I was kidnapped by a hawk! Luckily, the hawk dropped me ... right into the jaws of a huge dog! The dog then abandoned me to be discovered by foxes, but then this huge flood came and washed us all away, and ...",
+            "What, you don't believe me?",
+            "Psh. You're no fun!"
+        ]
+    },
+    "upstanding_elder": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "upstanding"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "kitten",
+                    "adolescent",
+                    "young adult",
+                    "adult"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "intro": [
+            "What do you need, y_c? I'm very busy. I have a full schedule today!",
+            "*Sigh* Yes, even though I'm an elder.",
+            "Since my retirement, I've really stepped into managing the affairs of my older denmates. It's a full-time job, keeping track of their health needs, assisting them through physical exercises, helping their memories ...",
+            "Now, if you'll excuse me, one of my denmates has a meeting with their grandkits imminently. Goodbye!"
+        ]
+    },
+    "sweet_elder3": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {},
+            "t_c": {
+                "cluster": [
+                    "sweet",
+                    "stable",
+                    "introspective",
+                    "neurotic",
+                    "upstanding"
+                ],
+                "age": [
+                    "kitten",
+                    "adolescent",
+                    "young adult",
+                    "adult"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "intro": [
+            "Yes, very good! And what's the name of that apprentice, over there ...?",
+            "Oh, hello, y_c! I didn't see you there. I was just helping one of my denmates through a memory exercise!",
+            "I think {PRONOUN/r_c:0/poss} mind is slipping a bit ... {PRONOUN/r_c:0/subject} almost couldn't recognize me this morning! Perfectly natural at {PRONOUN/r_c:0/poss} age, of course, but I'd like to help {PRONOUN/r_c:0/object} hold onto {PRONOUN/r_c:0/poss} wits as long as possible.",
+            "So right now, I'm challenging {PRONOUN/r_c:0/object} to name all the cats around camp.",
+            "I wonder if {PRONOUN/r_c:0/subject} {VERB/r_c:0/remember/remembers} you ...?",
+            "[t_c's face lights up as the elder correctly identifies you as y_c.]"
+        ]
+    },
+    "sweet_elder4": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "sweet",
+                    "stable",
+                    "introspective",
+                    "neurotic",
+                    "upstanding"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "kitten",
+                    "adolescent",
+                    "young adult",
+                    "adult"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "intro": [
+            "C'mon, just one more bite!",
+            "*Sigh* It can be so difficult, getting them to eat sometimes ...",
+            "y_c, could you run to the medicine den and see if they have anything to help the elders with their appetites?",
+            "I'm really starting to get worried ..."
+        ]
+    },
+    "brooding_elder111": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "brooding"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "kitten",
+                    "adolescent",
+                    "young adult",
+                    "adult"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "intro": [
+            "How'd I end up in the elder's den?",
+            "Hmph. Why does everycat always ask me that?",
+            "At least come up with an original question."
+        ]
+    },
+    "brooding_elder12_AJ": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "rank": [
+                    "apprentice",
+                    "queen's apprentice",
+                    "medicine cat apprentice",
+                    "mediator apprentice"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "brooding"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "strangers"
+                ]
+            }
+        ],
+        "intro": [
+            "You! Apprentice! Bring me some fresh moss!",
+            "I swear, this new generation just has no manners at all ... Cats used to respect their elders. In my time, we never would've let it get this bad in the first place."
+        ]
+    },
+    "brooding_elder13_AJ": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "rank": [
+                    "apprentice",
+                    "queen's apprentice",
+                    "medicine cat apprentice",
+                    "mediator apprentice"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "brooding"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "strangers"
+                ]
+            }
+        ],
+        "intro": [
+            "Oh, and there goes y_c. I swear, each apprentice these days is even more useless than the last.",
+            "Well? Are you going to bring me some fresh kill, y_c, or just stand there gawking?"
+        ]
+    },
+    "brooding_elder14_AJ": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "adult"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "brooding"
+                ],
+                "age": [
+                    "older"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "strangers"
+                ]
+            }
+        ],
+        "intro": [
+            "Hmph. You there, y_c! Why haven't you checked me for ticks yet today?",
+            "I don't care that you're not an apprentice anymore! You're still practically a child in my eyes, and every child is to have deference towards their elders!"
+        ]
+    },
+    "brooding_elder15_AJ": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {},
+            "t_c": {
+                "cluster": [
+                    "brooding"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_50"
+                ]
+            }
+        ],
+        "intro": [
+            "[t_c sits in the darkest corner of the den, eyes seemingly screwed up in concentration.]",
+            "[When {PRONOUN/t_c/subject} {VERB/t_c/see/sees} you enter, {PRONOUN/t_c/poss} expression softens a little.]",
+            "Joint pain ... Wouldn't wish it on anybody.",
+            "[As you gently move to rub {PRONOUN/t_c/poss} legs, {PRONOUN/t_c/subject} {VERB/t_c/groan/groans} weakly in protest, but reluctantly {VERB/t_c/concede/concedes}, relaxing into your touch.]",
+            "Once, I was the fiercest warrior in the Clan, now I'm getting pampered like some kittypet.",
+            "... Do come back again, will you, y_c?"
+        ]
+    },
+    "neurotic_elder": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {},
+            "t_c": {
+                "cluster": [
+                    "neurotic"
+                ],
+                "age": [
+                    "kitten",
+                    "adolescent",
+                    "young adult",
+                    "adult"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "intro": [
+            "How'd I end up in the elder's den?",
+            "[t_c shifts {PRONOUN/t_c/poss} gaze nervously.]",
+            "Um ... maybe another time."
+        ]
+    },
+    "introspective_elder1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "sweet",
+                    "stable",
+                    "introspective"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "kitten",
+                    "adolescent",
+                    "young adult",
+                    "adult"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "intro": [
+            "How'd I end up in the elder's den?",
+            "Well, you see ...",
+            "[t_c calmly and evenly explains to you the circumstances around {PRONOUN/t_c/poss} disability, {PRONOUN/t_c/poss} decision to retire, and {PRONOUN/t_c/poss} perspectives on the social systems within the Clan.]",
+            "[It amazes you just how insightful {PRONOUN/t_c/subject} {VERB/t_c/are/is}, and you leave the den with heightened respect for {PRONOUN/t_c/object}!]"
+        ]
+    },
+    "silly_elder_15": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "unlawful",
+                    "silly"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "kitten",
+                    "adolescent",
+                    "young adult",
+                    "adult"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "intro": [
+            "How did I end up in the elders' den?",
+            "What, do ya want a live reenactment?"
+        ]
+    },
+    "assertivewarrior_leader2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "leader"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            }
+        },
+        "intro": [
+            "Oh, what I'd give for nine lives!",
+            "I already try to throw myself into whatever challenge I'm given, but you're on a whole other level! With nine lives, you could be really ... Truly ... FEARLESS!"
+        ]
+    },
+    "assertive_queen_2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "queen's apprentice",
+                    "queen"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "sweet",
+                    "cool",
+                    "silly"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            }
+        },
+        "intro": [
+            "Heya, y_c! How are the little ones today?",
+            "If you ever need any help at all, just give me a shout. I know they can be a pawful! Heh."
+        ]
+    },
+    "assertive_queensapp2_3": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "queen's apprentice",
+                    "queen"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "upstanding"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            }
+        },
+        "intro": [
+            "Hey, y_c! How are the kits today?",
+            "Ahhhh! StarClan, they're so cute! Can I help groom them?",
+            "Or - how about this? Maybe, every once in a while, I can hold a little kit-training session! Help them get a head start on their apprenticeships! It'll be like having a den of little warriors, hehehe!",
+            "Though, I guess I can see how that wouldn't be the best for you ...",
+            "Oh, what the heck. Let the kits be kits for now! They'll start their training when they're ready.",
+            "Seeya, y_c! I'll definitely have to come and visit more often."
+        ]
+    },
+    "assertive_queensapp1_3": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "queen's apprentice"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "unlawful",
+                    "unabashed",
+                    "cool",
+                    "brooding"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "max_like_-50"
+                ]
+            }
+        ],
+        "intro": [
+            "Hehe. Of course you'd never leave the nursery, y_c.",
+            "You don't have what it takes to be a real warrior. Not in a million moons!",
+            "But, uh, this is ... okay too, I guess! If you think becoming a full-time kitsitter is comparable to, y'know ... finding food and protecting the Clan from danger.",
+            "Have fun hanging out with the queens, y_c. *Snrk*"
+        ]
+    },
+    "assertivewarrior_mediatorapp_2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "mediator apprentice"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            }
+        },
+        "intro": [
+            "Man, you're insightful for an apprentice, y_c!",
+            "When I was your age, all I thought about was smashing stuff and chasing after my crushes. But now, here you are! Sorting out problems with cats who've been around ten times longer than you!",
+            "That must take a lot of discipline. The whole Clan is proud of you!"
+        ]
+    },
+    "assertive_medapp_2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "medicine cat apprentice"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "unlawful",
+                    "unabashed"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            }
+        },
+        "intro": [
+            "How's it going, mini-medicine cat? Herbal life treating you well?",
+            "Don't worry, I'm not going to run headfirst into trouble and injure myself today.",
+            "As for tomorrow? Who knows!"
+        ]
+    },
+    "assertive_warrior_or_elder_2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "apprentice"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "cool",
+                    "silly"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            }
+        },
+        "intro": [
+            "Working hard, y_c? Or, is it more like hardly working? Hehe.",
+            "Y'know, it's good to contribute to the Clan, but make sure you take some time to grow up, too. Working isn't everything. Now's the time for you to get out and explore!",
+            "*Sigh* I sorta miss those days myself ..."
+        ]
+    },
+    "assertive_elder_3_2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "rank": [
+                    "kitten",
+                    "apprentice"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            }
+        },
+        "intro": [
+            "Hey there, y_c! Stop by for a story? StarClan knows I got plenty to go around!",
+            "There was this one time in my apprenticeship when I was cornered by a whole pack of dogs! They were huge ones, too. I just barely escaped by the tip of my tail!",
+            "Ah, I can't deny I miss those days ... But I'm making plenty of memories right here in camp, too.",
+            "Thanks for coming to visit!"
+        ]
+    },
+    "assertive_elder_4": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            }
+        },
+        "intro": [
+            "*Cough* *Cough* ... Oh, hey, young'un! What brings you by the elders' den?",
+            "Just want to chat? Hehe, can't say I mind! It's so boring in here nowadays ...",
+            "Say, how's about we take this conversation outside? I'm dyin' to stretch my legs, they feel like they're about to snap off!",
+            "See if you can keep up, hehehe!"
+        ]
+    },
+    "assertive_elder_5_2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {},
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "silly"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "deputy"
+                ]
+            }
+        },
+        "intro": [
+            "I saw r_c:0 show off a belly rake to some apprentices earlier. Took me back to my glory days!",
+            "I wonder if I could still ...",
+            "[With a grunt and a whole load of popping joints, t_c rears and performs a creaky, but still stunningly precise belly rake. {PRONOUN/t_c/subject/CAP} {VERB/t_c/plop/plops} back into {PRONOUN/t_c/poss} nest, panting with exertion.]",
+            "Still got it! Hehehe!"
+        ]
+    },
+    "assertive_elder_6_2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            }
+        },
+        "intro": [
+            "Look at us, huh? Old bags of fur.",
+            "Hard to believe our golden years are over ...",
+            "Though, on the other paw, who says they have to be? I'm just getting started!"
+        ]
+    },
+    "assertive_elder_7_2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "assertive",
+                    "unlawful",
+                    "brooding",
+                    "neurotic"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive"
+                ]
+            }
+        },
+        "intro": [
+            "Ah, no need to look so grumpy, you old bag of bones, we got plenty to smile about!",
+            "We got a roof over our heads, plenty to eat ... StarClan knows that wasn't true all our lives.",
+            "So, just try to relax and enjoy it! I know I will."
+        ]
+    },
+    "assertive_elder_8_2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            }
+        },
+        "intro": [
+            "Hey, y_c, come walk some laps with me!",
+            "Shouldn't I be resting ...?",
+            "Psh, badger droppings! I'll rest plenty when I'm dead!"
+        ]
+    },
+    "assertive_elder_9_2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "not_elder",
+                    "not_newborn"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            }
+        },
+        "intro": [
+            "So, you've stopped by the elders' den for a bit of wisdom, ah?",
+            "My philosophy is this: always work hard, fight hard, and play hard, too!",
+            "Do everything with courage. After all, you'll never catch anything if you never pounce!",
+            "And don't be afraid to make mouse-brained mistakes. StarClan knows I have, and I've lived this long!",
+            "Do this, and you'll have success, no matter what you're going after. Life's too short to live with regrets!"
+        ]
+    },
+    "assertive_elder_10_2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "apprentice",
+                    "medicine cat apprentice",
+                    "mediator apprentice",
+                    "queen's apprentice",
+                    "warrior"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            }
+        },
+        "intro": [
+            "Hey, kit, come change my moss, will ya? I'm chafing something unreal.",
+            "After that, head to the medicine den and get some mouse bile. I'm lousy with ticks!"
+        ]
+    },
+    "assertive_elder_11_2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "kitten",
+                    "apprentice",
+                    "medicine cat apprentice",
+                    "mediator apprentice",
+                    "queen's apprentice"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_respect_50",
+                    "min_like_20"
+                ]
+            }
+        ],
+        "intro": [
+            "Tell ya what, kid, you're much smarter than I ever was at your age.",
+            "Maybe you'll go far ... If you see me in StarClan at your leader's ceremony, don't be surprised! Hehe!"
+        ]
+    },
+    "assertive_elder_12_2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "medicine cat apprentice",
+                    "medicine cat"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            }
+        },
+        "intro": [
+            "Hey, y_c, you got anything to make my joints less stiff?",
+            "I'm not as spry as I used to be, heh ... But I'm not planning on slowing down any time soon!"
+        ]
+    },
+    "assertive_elder_13_2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "unlawful",
+                    "unabashed",
+                    "cool",
+                    "upstanding"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            }
+        ],
+        "intro": [
+            "Don't let anybody tell ya that we elders can't defend ourselves. In my prime, I could take down a whole o_c_n patrol ... With my leg broken!",
+            "I'm serious! Ask anybody, they'll tell you!"
+        ]
+    },
+    "assertive_elder_133": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "unlawful",
+                    "unabashed",
+                    "cool"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            }
+        ],
+        "intro": [
+            "Tell ya what, there's one secret to me living this long: plain, dumb luck.",
+            "With all the stupid stunts I've pulled throughout my life, there's gotta be someone up in StarClan lookin' out for me if I've made it this far!"
+        ]
+    },
+    "introspective_elder_2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "introspective"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            }
+        },
+        "intro": [
+            "Good morning, y_c. It's a bright day out there, why are you still here in camp?",
+            "You've got so much to do, there's so much stuff to do with your youth, young one. You're wasting it sitting in here doing nothing.",
+            "I know facing the world is difficult on some days. You want to hide away, so you don't have to face the storm. But that won't help you.",
+            "Your inaction will become your worst action, my friend. Take your life as StarClan's blessing and catch it wholeheartedly in your claws and fangs before it flies away.",
+            "That's something I'd wished someone had told me when I was young. Take advantage of having cats in your corner, but spread your wings too."
+        ]
+    },
+    "introspective_elder_1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "introspective"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "hearing",
+                    "constant joint pain:any:true"
+                ]
+            }
+        },
+        "intro": [
+            "y_c. It's nice to see you, what seems to be the problem?",
+            "I'm fine, my joints are feeling better today, but I'm sure you're here for a reason. Most cats don't come here unless they need something.",
+            "Huh? A story? I know a lot of them, but why do you want to hear one?",
+            "... I see. I see. You're directionless. I understand that. I suppose it's something everycat goes through at some point.",
+            "But I don't think hearing myths about our ancestors will help you, y_c. They're fictional, choices made by cats long ago, embellished by word-of-mouth.",
+            "Why not stop praying to kitten stories, and become your own legend instead?",
+            "You're never going to become the true version of yourself, if you keep following the pawsteps of those before you."
+        ]
+    },
+    "introspective_elder_2_2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {},
+            "t_c": {
+                "cluster": [
+                    "introspective"
+                ]
+            }
+        },
+        "intro": [
+            "y_c. Good afternoon. Were you looking for me?",
+            "Yes, I'm okay. Just watching the cats in the camp-",
+            "[t_c gently chuckles at your face before flicking your cheek with a paw gently.]",
+            "Don't give me that look, what else do I have to do?",
+            "I've given my all to the Clan, but I'm not in StarClan yet. I've still got to give myself some form of entertainment.",
+            "Hehe... That's okay. If you ever change your mind, just let me know. I'm not going anywhere."
+        ]
+    },
+    "introspective_elder_3": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {},
+            "t_c": {
+                "cluster": [
+                    "introspective"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            }
+        },
+        "intro": [
+            "[t_c is batting at a leaf that had landed on {PRONOUN/t_c/object}.]",
+            "Hehe...",
+            "[{PRONOUN/t_c/subject/CAP} {VERB/t_c/spring/springs} onto the leaf in a brilliant hunter's catch form, and bat the leaf up into the air to continue to catch it.]",
+            "Oh, morning, y_c! Sorry, I was getting my bones working! There's not a whole lot to do around here. Want to join me?",
+            "[You spend some time batting the leaf around with t_c.]"
+        ]
+    },
+    "introspective_elder_4": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "introspective"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            }
+        },
+        "intro": [
+            "Hm...? Oh good afternoon, y_c. You enjoying the day too?",
+            "Yeah, I'm just sitting outside, enjoying the breeze. Sometimes you've got to embrace normalcy.",
+            "Sometimes things can change so suddenly. Did I tell you about the tale of when the moon swallowed the sun? It happened a very long time ago, in Clans lost to the sands of time.",
+            "A loner came to the Clans foretelling of a prophecy, that the sky would turn dark at sunhigh and the moon swallowed the sun. He caused no end of chaos within his time.",
+            "Did it happen? I'm not sure, but some say that the tallest tales hold the smallest sparkle of truth.",
+            "But anyways, what was I saying... Oh yes. Don't be afraid of normalcy, who knows when it'll leave you?"
+        ]
+    },
+    "introspective_elder_5": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "introspective"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            }
+        },
+        "intro": [
+            "...",
+            "[t_c is humming to {PRONOUN/t_c/self}, quietly. It... sounds like a nursery tune?]",
+            "...teardrops fall onto the nose of the villain, rain to the hero...",
+            "[You can't think of the last time that {PRONOUN/t_c/subject} {VERB/t_c/were/was} in the nursery. You wonder how long {PRONOUN/t_c/subject}{VERB/t_c/'ve/'s} known it for.]",
+            "[You decide to leave {PRONOUN/t_c/object} be. {PRONOUN/t_c/subject/CAP} {VERB/t_c/sound/sounds} busy.]"
+        ]
+    },
+    "assertive_misc_2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "sweet",
+                    "introspective",
+                    "neurotic"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "warrior",
+                    "apprentice"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "unlawful",
+                    "unabashed"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            }
+        },
+        "intro": [
+            "Yaknow, y_c, I never really found you all that convincing as a warrior.",
+            "Real warriors are strong! We're fearless! We never back down from a fight!",
+            "But in you, I sense ... uncertainty.",
+            "Maybe you should see the medicine cat about it."
+        ]
+    },
+    "cool_1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {},
+            "t_c": {
+                "cluster": [
+                    "unabashed",
+                    "cool",
+                    "introspective"
+                ]
+            }
+        },
+        "intro": [
+            "[You find t_c stacking pebbles near the elder's den.]",
+            "Oh hey, y_c. I'm trying to recreate a Twoleg den. Pretty neat, huh?",
+            "Just one more...",
+            "[{PRONOUN/t_c/subject/CAP} {VERB/t_c/place/places} one last rock on top of the pile.]",
+            "Perfect!"
+        ]
+    },
+    "cool_2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "cool",
+                    "introspective"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            }
+        },
+        "intro": [
+            "Just an average day in c_n!",
+            "But that doesn't mean we should take it for granted.",
+            "Let's make it a good day."
+        ]
+    },
+    "brooding_elder": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "kitten"
+                ],
+                "condition": [
+                    "deaf:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "brooding"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "queen"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "strangers"
+                ]
+            }
+        ],
+        "intro": [
+            "[You normally like visiting with the older cats in the Clan, but t_c has always scared you a little.]",
+            "[With {PRONOUN/t_c/poss} torn, scarred pelt and {PRONOUN/t_c/poss} mean face, {PRONOUN/t_c/subject} {VERB/t_c/look/looks} just like a monster ripped straight out of one of r_c:0's stories!]"
+        ]
+    },
+    "brooding_elder1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "brooding"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "strangers",
+                    "non-related"
+                ]
+            }
+        ],
+        "intro": [
+            "Augh ... Who let the little nuisance into the elder's den again?",
+            "With all the moons I've lived, why should I give a mouse's tail what a runty little kit has to say?"
+        ]
+    },
+    "brooding_elder2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "brooding"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "strangers"
+                ]
+            }
+        ],
+        "intro": [
+            "What is it, y_c? You want a story?",
+            "Uhm ... You might have a little more luck going elsewhere.",
+            "I don't have many stories. And the ones I do aren't appropriate for kits."
+        ]
+    },
+    "brooding_elder3": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "brooding"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "queen"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            }
+        ],
+        "intro": [
+            "[You ask t_c if {PRONOUN/t_c/subject} {VERB/t_c/have/has} any cool stories from {PRONOUN/t_c/poss} youth {PRONOUN/t_c/subject} can tell you.]",
+            "Uhm ... Well, I guess one time, when I was a young warrior, I ripped a o_c_n cat's throat out with my teeth.",
+            "It happened so easily ... It was just like tearing into a piece of prey ... The taste didn't leave my mouth for moons afterwards, and -- Ope.",
+            "[r_c:0 quickly swoops in and hurries you away. Safe to say you won't be going to t_c for any stories anymore.]"
+        ]
+    },
+    "brooding_elder4": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "apprentice",
+                    "medicine cat apprentice",
+                    "mediator apprentice",
+                    "queen's apprentice"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "brooding"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            }
+        ],
+        "intro": [
+            "Growing up fast, huh, y_c?",
+            "Everycat's in such a hurry. Just try and hold onto your innocence as long as you can ... I can guarantee, you'll miss it when it's gone."
+        ]
+    },
+    "brooding_elder6": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "brooding"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            }
+        ],
+        "intro": [
+            "Hmph. My advice to you, y_c: don't ever get old.",
+            "I used to be one of the most valuable warriors in c_n. Now, everycat just talks about me like I'm obsolete. A nobody.",
+            "My entire life was my purpose to my Clan ... what do I do now that that purpose is over?"
+        ]
+    },
+    "brooding_elder7": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "brooding"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            }
+        ],
+        "intro": [
+            "If a battle ever made its way into c_n camp, don't count on me just lazing around the elder's den.",
+            "I still have more than enough fight left in me to defend my Clan, and I'll do it to my last dying breath."
+        ]
+    },
+    "brooding_elder8": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "brooding",
+                    "introspective",
+                    "neurotic"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_50"
+                ]
+            }
+        ],
+        "intro": [
+            "[t_c stares at the side of the elder's den resentfully.]",
+            "It's not right, me living this long ...",
+            "All of my loved ones died honorable deaths, warriors' deaths. What was StarClan thinking? Why am I still here, after all these moons?",
+            "Ah ... I'm sorry, y_c. This isn't your battle to fight. It's mine.",
+            "I know StarClan has a plan for me. Still, I just can't stop myself from doubting ...",
+            "It's easy to lose control of your thoughts when you've been around for so long."
+        ]
+    },
+    "brooding_elder9": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {},
+            "t_c": {
+                "cluster": [
+                    "brooding"
+                ]
+            }
+        },
+        "intro": [
+            "*Cough* *Hack*",
+            "... What are you ogling at? Buzz off! Nothing to see here!",
+            "It's just a little cough ... Everybody's looking at me like I'm about to drop dead!"
+        ]
+    },
+    "brooding_elder10": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "brooding"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            }
+        ],
+        "intro": [
+            "My advice? Try not to let yourself get too attached to anyone.",
+            "There's nothing more dangerous. Makes it way too easy to lose your grip."
+        ]
+    },
+    "brooding_elder11": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "brooding"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            }
+        ],
+        "intro": [
+            "All these young cats milling about ... Politics, drama ... It's all just play to me now.",
+            "When you've been around as long as I have, you start to realize just how little stuff like that matters."
+        ]
+    },
+    "sweet_elder_1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "rank": [
+                    "newborn"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "sweet"
+                ]
+            }
+        },
+        "intro": [
+            "Welcome to c_n, y_c! Ah, I remember being a little kit like you... Well, not <i>as</i> little as you, of course!",
+            "You'll be someone future cats tell stories about, I can already tell... until then, you better be ready for all the teasing you can get~."
+        ]
+    },
+    "sweet_elder_2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "sweet"
+                ]
+            }
+        },
+        "intro": [
+            "Oh, hello, y_c! How are you doing this fine day? Eating well, I presume? You've grown so much when I last saw you!",
+            "Would you like to hear a story? I've got one I'd love to tell, if you're interested. Get comfortable, it's a long one! It all started way back thousands of moons ago..."
+        ]
+    },
+    "sweet_elder_3": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "sweet"
+                ]
+            }
+        },
+        "intro": [
+            "What was it like in my day? Well, it was much different. Many cats you'd never even know used to guide my path.",
+            "There are things I miss, some I don't, but I'd never change the way things went. Otherwise there's a chance I might never have met you, and you're one of the brightest lights in the Clan. Never forget that."
+        ]
+    },
+    "sweet_elder_4": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "sweet"
+                ]
+            }
+        },
+        "intro": [
+            "Hahaha, good morning to you too, y_c! Did you have a good night's sleep?",
+            "Come on, let's go get something to eat. You can tell me more about the story you were mentioning yesterday, if you'd like.",
+            "Will I tell other kits? If you would like me to, I can! But, I understand that some stories aren't meant for sharing."
+        ]
+    },
+    "sweet_elder_5": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "adolescent"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "sweet"
+                ]
+            }
+        },
+        "intro": [
+            "Oh, y_c! It's so nice to see you, what brings you here today?",
+            "You want to hear a story? Oh my! Most cats don't really want to hear stories once they become apprentices...",
+            "Well then, go get something to eat and settle down. I have one that I think you'll love."
+        ]
+    },
+    "sweet_elder_6": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "adolescent"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "sweet"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_trust_50"
+                ]
+            }
+        ],
+        "intro": [
+            "Oh, y_c, what are you doing up so late? ... A nightmare? I see..",
+            "Come here and watch the stars with me, trust me.",
+            "[As a shooting star darts across the sky, lighting up the night as it passes, t_c looks at you.]",
+            "That was a shooting star. Back when I was a kit, they used to say that if you saw a shooting star, a StarClan cat was telling you they were looking after you.",
+            "Looks like you're not so alone in this battle after all."
+        ]
+    },
+    "sweet_elder_7": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "rank": [
+                    "apprentice"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "sweet"
+                ]
+            }
+        },
+        "intro": [
+            "Greetings, y_c! Have you come to change our moss?",
+            "Well, how about I tell you a story while you do that, hm? Just to help pass the time, I know these tasks can be tedious."
+        ]
+    },
+    "sweet_elder_8": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "rank": [
+                    "queen's apprentice"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "sweet"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "warrior"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_trust_50"
+                ]
+            }
+        ],
+        "intro": [
+            "Hey y_c! Come sit with me, I need to tell you something.",
+            "While you were out gathering moss for the nursery, you had r_c:0 looking over the kits, yes?",
+            "Now, I'm not the type to usually call someone out, but {PRONOUN/r_c:0/subject}never actually watched over them.",
+            "I'm really not sure why, but {PRONOUN/r_c:0/subject} left the kits in my care and left camp.",
+            "I just figured you'd want to know, I know as well as any other cat that kits shouldn't go unattended."
+        ]
+    },
+    "sweet_elder_10": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "rank": [
+                    "warrior",
+                    "medicine cat",
+                    "mediator",
+                    "queen"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "sweet"
+                ]
+            }
+        },
+        "intro": [
+            "Hello, y_c! I have a question for you.",
+            "Have you ever heard of what's at the end of a rainbow?",
+            "Cats say it glimmers brighter than a thousand stars... But nothing else.",
+            "I like to think that's where StarClan kits have touched the ground to play in soft clovers.",
+            "I spent my whole youth wondering what it truly was but I was never brave enough to go.",
+            "What do you think?"
+        ]
+    },
+    "sweet_elder_11": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "rank": [
+                    "warrior",
+                    "medicine cat",
+                    "mediator",
+                    "queen"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "sweet"
+                ]
+            }
+        },
+        "intro": [
+            "[You've had a question nagging at the back of your mind, and you decided to ask t_c, but..]",
+            "[You see the elder with {PRONOUN/t_c/poss} gaze fixated on the sky, unwavering.]",
+            "[You decide to ask another time.]"
+        ]
+    },
+    "sweet_elder_12": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "backstory": [
+                    "clanfounder",
+                    "clanborn"
+                ],
+                "rank": [
+                    "warrior"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "sweet"
+                ],
+                "backstory": [
+                    "clanfounder",
+                    "clanborn"
+                ]
+            }
+        },
+        "intro": [
+            "[You spot t_c looking at you with a happy look on {PRONOUN/t_c/poss} face. {PRONOUN/t_c/subject/CAP} smile and wave at you.]",
+            "Sorry if I scared you! I'm just so proud of seeing how much this Clan has grown.",
+            "You, especially, have grown into a fine warrior."
+        ]
+    },
+    "sweet_elder_13": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "rank": [
+                    "medicine cat"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "sweet"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_comfort_50"
+                ]
+            }
+        ],
+        "intro": [
+            "[It's t_c's monthly checkup day, but {PRONOUN/t_c/subject} {VERB/t_c/seem/seems} a little quieter than usual.]",
+            "[You ask {PRONOUN/t_c/object} what's wrong, you usually can't escape from a story but {PRONOUN/t_c/subject} haven't said a word.]",
+            "I apologize... I just worry. I've spent many moons on this earth, wonderful and painful.",
+            "But I worry... There's only so many moons left for me. What will happen to c_n?",
+            "What if I can't be here to take care of you all?",
+            "[You gently nudge the elder, giving them a reassuring look. You promise to {PRONOUN/t_c/object} that everything will be okay.]",
+            "[t_c gives you a smile, still saddened but definitely looking much better.]",
+            "Thank you... I do believe I owe you a story."
+        ]
+    },
+    "sweet_elder_14": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "rank": [
+                    "mediator"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "sweet"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            }
+        ],
+        "intro": [
+            "[Today has been rough, cats are fighting left and right and you haven't caught a break.]",
+            "[You collapse onto a warm rock, desperately trying to get some rest and unaware of the cat you almost just laid on.]",
+            "Well, hello there. Are you alright? You look like you've aged a hundred moons?",
+            "[You'd recognize the voice of the ever-kind elder anywhere, feeling {PRONOUN/t_c/poss} tail drape over your side.]",
+            "[You explain to {PRONOUN/t_c/object} through frustrated breaths how your day has gone, and t_c gives you an empathetic look.]",
+            "Oh dear... You should take some time off.",
+            "[You go to protest, that you need to be on the lookout in case anyone else starts fighting.]",
+            "Well, perhaps I could use someone to talk to, right here on these warm stones."
+        ]
+    },
+    "sweet_elder_15": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "rank": [
+                    "queen"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "sweet"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "kitten"
+                ]
+            }
+        },
+        "intro": [
+            "[You and one of the kits are playing hide and seek, and you decide to check the elder's den.]",
+            "[You spot t_c, paws tucked under {PRONOUN/t_c/object} with a small bundle of fur underneath {PRONOUN/t_c/poss} tail.]",
+            "[Your gaze fixated on the small bundle of fur giggling underneath t_c's tail, you ask if {PRONOUN/t_c/subject} have seen the kit.]",
+            "r_c:0? Hmm, no, I don't think I have.",
+            "[If the smile on {PRONOUN/t_c/poss} face didn't give {PRONOUN/t_c/object} away, the amused squeals from the mystery tail lump sure did.]"
+        ]
+    },
+    "sweet_elder_16": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "rank": [
+                    "deputy"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "sweet"
+                ]
+            }
+        },
+        "intro": [
+            "[You stare at the leader's den, nervousness in your throat. Will that really be yours someday?]",
+            "[You feel someone move up next to you, t_c's tail wrapping comfortingly around you.]",
+            "You've got this."
+        ]
+    },
+    "sweet_elder_17": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "rank": [
+                    "deputy"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "sweet"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "apprentice"
+                ]
+            }
+        },
+        "intro": [
+            "Hey y_c! I hope you don't mind me bringing up a concern, know this isn't your fault at all.",
+            "[t_c settles down beside you with a gentle purr, {PRONOUN/t_c/poss} tail curling around {PRONOUN/t_c/object}.]",
+            "r_c:0 has been doing an incredible amount of work lately, especially for {PRONOUN/r_c:0/poss} age, but...",
+            "I'm starting to worry. {PRONOUN/r_c:0/subject/CAP} don't play as much anymore and seem so focused on everything...",
+            "Could you talk to them? Or stop sending {PRONOUN/r_c:0/object} on patrols for a little while to catch up.",
+            "Ultimately, it's your decision, I'm just worried for them."
+        ]
+    },
+    "sweet_elder_18": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "rank": [
+                    "deputy"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "sweet"
+                ]
+            }
+        },
+        "intro": [
+            "Hey y_c, I have a favor to ask of you, if you don't mind?",
+            "If you wouldn't mind walking with me, I'd like to go outside and see the birds.",
+            "I've heard rumors from the Warriors about a nest nearby... I'd like to see one again.",
+            "Of course, I understand if you don't want to do that. It's entirely up to you."
+        ]
+    },
+    "sweet_elder_19": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "rank": [
+                    "leader"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "sweet"
+                ]
+            }
+        },
+        "intro": [
+            "y_c, I have something very important to tell you, if you wouldn't mind.",
+            "[t_c nods {PRONOUN/t_c/poss} head towards the stack of prey near the center of the camp.]",
+            "I feel like the prey is turning into crowfood at an... alarming rate. I'm not sure of what to do.",
+            "One of the younger cats brought it to me in tears... It broke my heart. So I thought I'd bring it to you."
+        ]
+    },
+    "sweet_elder_20": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "rank": [
+                    "leader"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "sweet"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            }
+        ],
+        "intro": [
+            "[t_c purrs, welcoming your presence and dipping {PRONOUN/t_c/poss} head respectfully.]",
+            "y_c! Good to see you today!",
+            "[Even as a leader, it's always nice to be greeted by the ever-friendly elder.]"
+        ]
+    },
+    "sweet_elder_21": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "rank": [
+                    "leader"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "sweet"
+                ]
+            }
+        },
+        "intro": [
+            "Hey y_c, do you mind if I ask a question?",
+            "Mm...",
+            "When you got your lives, did you see... ah- nevermind, I don't want to spring this on you out of the blue."
+        ]
+    },
+    "sweet_elder_22": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "rank": [
+                    "elder"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "sweet"
+                ]
+            }
+        },
+        "intro": [
+            "[You stretch out on a sunny rock, happening to share it with t_c.]",
+            "Am I in your way? Hang on...",
+            "[The other elder shuffles around to give you more room, purring away.]"
+        ]
+    },
+    "sweet_elder_23": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "rank": [
+                    "elder"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "sweet"
+                ]
+            }
+        },
+        "intro": [
+            "[You feel a paw feebly nudging your side.]",
+            "Hey, y_c? I've got a surprise for you!",
+            "[{PRONOUN/t_c/subject/CAP} place a very fresh piece of prey at your paws, smiling proudly at you.]",
+            "The very first thing the Clan caught this morning. Enjoy!"
+        ]
+    },
+    "sweet_elder_24": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "rank": [
+                    "elder"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "sweet"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "kitten"
+                ]
+            }
+        },
+        "intro": [
+            "[You've been feeling really exhausted lately, it's been hard to be in good spirits.]",
+            "[Even so, r_c:0 seems determined to get a story out of you, prodding you and asking repeatedly.]",
+            "Hey there! Would you like a story? I think I've got a fun one to tell!",
+            "[t_c winks at you, mouthing 'get some rest' before turning to tell the kit {PRONOUN/t_c/poss} story.]"
+        ]
+    },
+    "stable_Elder_Gen_01": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "stable"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            }
+        },
+        "intro": [
+            "Arg, back in my day-",
+            "[All you did was walk past and t_c just begins rambling again. You sigh and sit down, listening to {PRONOUN/t_c/poss} story. As {PRONOUN/t_c/subject} {VERB/t_c/talk/talks} more and more, you find yourself captivated.]",
+            "And that's why you never catch a ladybug under the Thunderpath.",
+            "[Despite that story being... confusing, you find it interesting how {PRONOUN/t_c/subject} can recall so much. You thank {PRONOUN/t_c/object} and spend the rest of your day pondering the tale.]",
+            "[A story of a bug beneath the Thunderpath that, when caught, brings thunder crashing down... You doubt there's a moral, or even if those were the actual events to have happened. But it's entertaining nonetheless.]"
+        ]
+    },
+    "df_elder": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "kitten"
+                ],
+                "residence": [
+                    "sc"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "df"
+                ]
+            }
+        },
+        "intro": [
+            "Get out of the way before I step on you, kit."
+        ]
+    },
+    "assertive_elder_retag5": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "rank": [
+                    "elder"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "unlawful",
+                    "cool",
+                    "silly"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_romance_20",
+                    "mates",
+                    "min_like_20"
+                ]
+            }
+        ],
+        "intro": [
+            "Hey, furbag. I brought you something!",
+            "[t_c lays a colorful feather at your paws.",
+            "I know this is your favorite color, and you miss exploring the territory. So I knew I just had to bring it to you.",
+            "Yeah, yeah, don't get all soft on me, hehe. Wanna grab a meal together?"
+        ]
+    },
+    "assertive_elder_move6": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "rank": [
+                    "any"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "stable",
+                    "upstanding"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "strangers",
+                    "max_like_-50"
+                ]
+            }
+        ],
+        "intro": [
+            "*Sigh* Can't you see I have more important things to do, y_c?",
+            "Go back to catching mice, or whatever."
+        ]
+    },
+    "eldershunned_H1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "any"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "standing": [
+                    "shunned"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "intro": [
+            "To shun me in my old age... How dare they? Such little respect."
+        ]
+    },
+    "eldershunned_H2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "younger"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "any"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "standing": [
+                    "shunned"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "max_like_-50"
+                ]
+            }
+        ],
+        "intro": [
+            "My bones might be croaking and my health might be deteriorating, but that won't stop me from hurting you, youngling."
+        ]
+    },
+    "eldershunned_H3": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "any"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "standing": [
+                    "shunned"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "intro": [
+            "Ughh, finally, I was granted peace and quiet away from these offending o_c_n members.",
+            "And yet you still bother me.",
+            "Scram!"
+        ]
+    },
+    "silly_elder_greetings": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "younger",
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "silly"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "intro": [
+            "Oh, hi, y_c! It's been a while since you've said hello to me.",
+            "Well, whatcha been up to? Heroically defeat any large dogs recently?",
+            "Hmm... no? What about overthrowing a corrupt o_c_n? Banishing a mew-levolent Dark Forest cat?",
+            "Oh, your life is so boring, y_c!"
+        ]
+    },
+    "silly_elder_yawn": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "younger"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "silly"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "intro": [
+            "Yawn... I don't want to get up... y_c, would you bring me a mouse from the fresh-kill pile?",
+            "Why'd I say \"yawn\" out loud, you ask?",
+            "Well, because I'm- *yawn*",
+            "Fox-dung! I'm trying to think about yawning without actually yawning! And I clearly failed! I need a failure mouse right now, y_c! Bring me my failure mouse! Your elders command you!"
+        ]
+    },
+    "silly_elder_bossy": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {},
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "silly"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "intro": [
+            "Maybe it's nice to be an elder, after all. At first it was boring, but now I've learned to finally take advantage of it!",
+            "I get to tell anycat to do whatever I want them to, and they actually go through with it because I'm an elder!",
+            "'Bring me my fresh-kill!' ,'Get these ticks off my back!'",
+            "Maybe the apprentices think I'm bossy and argumentative, but when they're elders, they'll finally realize I was right all along. Because I was.",
+            "[t_c puffs out {PRONOUN/t_c/poss} chest in victory.]"
+        ]
+    },
+    "youdeaf_R19": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "deaf:any:true"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "rank": [
+                    "leader"
+                ]
+            },
+            "t_c": {
+                "age": [
+                    "not_kitten"
+                ],
+                "rank": [
+                    "warrior",
+                    "elder",
+                    "mediator"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "deputy"
+                ]
+            }
+        },
+        "intro": [
+            "[t_c comes to sit with you as you watch the Clan. Everything is going well and you bask in that knowledge.]",
+            "[But after a moment, {PRONOUN/t_c/subject} {VERB/t_c/bring/brings} up a good point with a quick signal. You need to think about a dog that was recently spotted on the territory.]",
+            "[You sign to t_c for {PRONOUN/t_c/poss} opinion. Between the two of you, you come up with a solid plan to drive off the dog.]",
+            "[Your head lifts as your ears wriggle and your whiskers twitch in the sign for 'thank you' before getting up to visit r_c:0 and tell {PRONOUN/r_c:0/object} the plan.]"
+        ]
+    },
+    "neurotic_elder_SQ1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "neurotic"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            },
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            },
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "t_c"
+                ],
+                "relationship": [
+                    "mates"
+                ]
+            }
+        ],
+        "intro": [
+            "I want to do something special for r_c:0, but I'm out of ideas.",
+            "I'm nervous to wander too far from camp these days, so it's not like I could just bring back a pretty flower... and that's been done before, anyways.",
+            "*sigh* r_c:0 deserves so much, but I'm not very good at this."
+        ]
+    },
+    "neurotic_elder_SQ2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "neurotic"
+                ],
+                "backstory": [
+                    "clanborn"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            }
+        ],
+        "intro": [
+            "The Clan's changed so much since I was a kit, and it's just going to keep changing...",
+            "It kind of scares me to think that one day, I might look down from the stars and not recognize what it's become."
+        ]
+    },
+    "neurotic_elder_SQ3": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "rank": [
+                    "warrior",
+                    "deputy",
+                    "leader"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "neurotic"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "warrior"
+                ]
+            },
+            "r_c:1": {
+                "rank": [
+                    "warrior"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_15"
+                ]
+            }
+        ],
+        "intro": [
+            "[t_c motions you over one evening as you're heading to your den. {PRONOUN/t_c/subject/CAP}{VERB/t_c/'re/'s} watching the edge of camp, {PRONOUN/t_c/poss} tail flicking nervously.]",
+            "I'm sorry, y_c, but could you check over there for me? I think I saw something moving.",
+            "I'd take a look myself but... uh... honestly I don't know if I could fight off a threat anymore.",
+            "[{PRONOUN/t_c/subject/CAP} {VERB/t_c/laugh/laughs} awkwardly. You call over r_c:0 and r_c:1 and the three of you inspect the area, but find nothing. t_c doesn't meet your eyes when you report back to {PRONOUN/t_c/object}.]",
+            "Ah... all right. Sorry for wasting your time."
+        ]
+    },
+    "introspective_crushto_H4": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "younger"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "introspective"
+                ],
+                "min_max_faith": [
+                    0,
+                    9
+                ],
+                "rank": [
+                    "elder"
+                ]
+            },
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "min_romance_20",
+                    "non-mates"
+                ]
+            }
+        ],
+        "intro": [
+            "Oh, y_c... I'm getting too old for this feeling.",
+            "[t_c glances beyond the camp, r_c:0 just in sight rounding up a few kits.]",
+            "Hahaha, if I were younger, the moment this crush developed, I would have been ecstatic. Oh, young love...",
+            "But this old cat has too many moons under {PRONOUN/t_c/poss} tail to worry about something like this. I've learned to let things happen just how StarClan intended it."
+        ]
+    },
+    "introspective_youcrush_H1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "adult"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "introspective"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            },
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "grandparent/grandchild"
+                ]
+            },
+            {
+                "cats_from": [
+                    "y_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "min_romance_20",
+                    "non-mates"
+                ]
+            }
+        ],
+        "intro": [
+            "Oh, young love...",
+            "[You jump in surprise as t_c sneaks up behind you with a soft, supportive grin.]",
+            "You know, you've been watching r_c:0 all dusk. It's been surprise you got anything done with how intently you were staring!",
+            "You're making this old cat wonder if I'll get great grandkits soon!"
+        ]
+    },
+    "introspective_youcrush_H2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "adult"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "introspective"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            },
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "grandparent/grandchild"
+                ]
+            },
+            {
+                "cats_from": [
+                    "y_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "min_romance_20",
+                    "non-mates"
+                ]
+            }
+        ],
+        "intro": [
+            "y_c I must let you know. It has been eating at me for moons now.",
+            "[t_c glances around before leaning in close, loudly whispering with {PRONOUN/t_c/poss} croaking voice.]",
+            "I'm not ready for great grandkits! Oh Starclan, I am not ready!",
+            "Don't get any funny ideas with r_c:0!!"
+        ]
+    },
+    "TinyTeddy_stable_Elder_Gen_01": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {},
+            "t_c": {
+                "cluster": [
+                    "stable"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "intro": [
+            "[t_c snores loudly from {PRONOUN/t_c/poss} den.]"
+        ]
+    },
+    "TinyTeddy_stable_Elder_Gen_02": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {},
+            "t_c": {
+                "cluster": [
+                    "stable"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "intro": [
+            "Huh? What did you want???",
+            "To say hello?",
+            "...",
+            "I'm not a big fan of small talk."
+        ]
+    },
+    "neurotic_elder_SQ4": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "neurotic"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "strangers"
+                ]
+            }
+        ],
+        "intro": [
+            "[You're allowed into the elders' den to ask t_c for a story! You pad up to {PRONOUN/t_c/object} and make your request, but t_c hesitates.]",
+            "Uh... I don't know, little one. I can't think of any good stories right now, and I don't want you to be disappointed.",
+            "How about you ask r_c:0? {PRONOUN/r_c:0/subject/CAP} had a good one yesterday."
+        ]
+    },
+    "sc_living_10": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "rank": [
+                    "elder"
+                ]
+            },
+            "t_c": {
+                "residence": [
+                    "sc"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "intro": [
+            "[t_c's eyes follow a group of apprentices with a chuckle.]",
+            "Apprentices these days seem to have more energy than sense."
+        ]
+    },
+    "neurotic_skilltreasure_SQ2~1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "any"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "neurotic"
+                ],
+                "age": [
+                    "adult"
+                ],
+                "condition": [
+                    "injury:any"
+                ],
+                "skill": [
+                    "TREASURE,1"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "warrior"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            },
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "max_like_-20"
+                ]
+            }
+        ],
+        "intro": [
+            "Hey, can I make a silly request? It's not super important, but if you have time...",
+            "You know how I keep a collection of trinkets in my nest? I found a cool sparkly rock right before I got hurt, and I saw r_c:0 eyeing it.",
+            "I feel bad saying this, but I don't really trust {PRONOUN/r_c:0/object} not to take it while I'm here. Could you get it from my nest and bring it over?"
+        ]
+    },
+    "about_stable_SQ2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "introspective",
+                    "neurotic"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "warrior"
+                ],
+                "cluster": [
+                    "stable"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_25"
+                ]
+            },
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            }
+        ],
+        "intro": [
+            "r_c:0 has been stopping by a lot recently.",
+            "{PRONOUN/r_c:0/subject/CAP} always {VERB/r_c:0/ask/asks} if I need anything, and then {VERB/r_c:0/stay/stays} to chat for at least an hour. {PRONOUN/r_c:0/subject/CAP} {VERB/r_c:0/say/says} {PRONOUN/r_c:0/subject} {VERB/r_c:0/want/wants} to make sure I stay informed of Clan business.",
+            "It's nice to still feel included. I hope {PRONOUN/r_c:0/subject}{VERB/r_c:0/'re/'s} visiting because {PRONOUN/r_c:0/subject} {VERB/r_c:0/want/wants} to, and not because {PRONOUN/r_c:0/subject} {VERB/r_c:0/feel/feels} obligated."
+        ]
+    },
+    "elder_H1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "stable",
+                    "introspective",
+                    "upstanding"
+                ],
+                "age": [
+                    "older"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "intro": [
+            "Legends are lessons that ring with truth. They're not just stories.",
+            "I know the younger generations of this Clan may think I'm making things up in my old memory, but it's true!",
+            "Although I suppose I repeat myself often.",
+            "[t_c lets out a quiet chuckle that turns into a cough. You rub your paw along {PRONOUN/t_c/poss} back to help soothe it.]",
+            "I am growing old and won't be around here much longer, but I hope a cat or two remembers these legends and passes them on, just like I did."
+        ]
+    },
+    "livekit_sc_Guy5": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "kitten"
+                ]
+            },
+            "t_c": {
+                "residence": [
+                    "sc"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "intro": [
+            "You want a story? Hm... have you ever heard of one of the fiercest warriors the Clans ever had?",
+            "They were born small, not expected to survive at all.",
+            "There was a terrible war between two Clans. Leafbares were even more hungry than they are now...",
+            "They stood between the two Clans, on the border. They invented a plan that would provide enough food for all of them.",
+            "And that was how the Clans came to have mediators. They've long since faded, but their legacy will last as long as there are cats who wish for peace."
+        ]
+    },
+    "yougrieving_H2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "adolescent"
+                ],
+                "condition": [
+                    "grief stricken"
+                ]
+            },
+            "t_c": {
+                "rank": [
+                    "elder"
+                ]
+            },
+            "r_c:0": {
+                "residence": [
+                    "any"
+                ]
+            },
+            "r_c:1": {
+                "residence": [
+                    "any"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_comfort_30",
+                    "non-related",
+                    "min_like_30"
+                ]
+            },
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "dead/grieving"
+                ]
+            },
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:1"
+                ],
+                "relationship": [
+                    "min_like_50"
+                ]
+            }
+        ],
+        "intro": [
+            "What is wrong, young one? Missing r_c:0?",
+            "Ah, grief... As you get older and death becomes inevitable, grieving becomes a far away memory.",
+            "I remember when r_c:1 died. That day was dreadful, but I found myself laughing at fond memories rather than letting the tears spill.",
+            "Haha, yes, every cat's experience is different, but remember: you'll see {PRONOUN/r_c:1/object} again.",
+            "Maybe not again in this life, but you'll see {PRONOUN/r_c:1/object} through the cats around you, the adventures, the earth... I just know it."
+        ]
+    },
+    "yougrieving_H3": {
+        "biome": [
+            "beach"
+        ],
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false",
+                    "grief stricken"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "introspective"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_comfort_30",
+                    "non-related",
+                    "min_like_30"
+                ]
+            }
+        ],
+        "intro": [
+            "Grief is like the ocean.",
+            "The waves come and go, crashing along the shore either gently or with force. You can choose to run from it, or learn how to swim.",
+            "Do not let grief drag you to the deepest darkness of yourself."
+        ]
+    },
+    "yougrieving_H4": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "grief stricken"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "introspective"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_comfort_30",
+                    "min_like_30"
+                ]
+            }
+        ],
+        "intro": [
+            "In all my moons of living, I realized that grief is not a burden. Rather, it is really just love.",
+            "It is all the love you want to give, but are unable to.",
+            "It builds and builds until suddenly that unspent love manifests into the tears in your eyes, the quiver in your throat, the heaviness in your chest...",
+            "Love that has no where to go is a grounding yet painful thing."
+        ]
+    },
+    "yougrieving_H5": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "grief stricken"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "introspective"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            },
+            "r_c:0": {
+                "residence": [
+                    "any"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_comfort_30",
+                    "non-related",
+                    "min_like_30"
+                ]
+            },
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "dead/grieving",
+                    "min_like_20"
+                ]
+            }
+        ],
+        "intro": [
+            "I'm sorry for your loss, dear. r_c:0 was a wonderful cat.",
+            "Let me know if you need anything, okay?"
+        ]
+    },
+    "elder_neg_youshunned_H1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "kitten"
+                ],
+                "standing": [
+                    "shunned"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "introspective"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "max_trust_30",
+                    "max_like_30"
+                ]
+            }
+        ],
+        "intro": [
+            "Ahh, this generation is so quick to violence these days...",
+            "What are the queens teaching you younglings? Maybe I should ask r_c:0 to do an investigation."
+        ]
+    },
+    "elder_neg_youshunned_H2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "standing": [
+                    "shunned"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "introspective"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_dislike_30",
+                    "max_trust_30",
+                    "max_like_30"
+                ]
+            }
+        ],
+        "intro": [
+            "I doubt you had much reason to murder somecat, but yah, you couldn't have waited until I died?",
+            "Now I have to deal with this drama before my passing."
+        ]
+    },
+    "elder_neg_youshunned_H3": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "standing": [
+                    "shunned"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "introspective"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            },
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "max_trust_30",
+                    "grandparent/grandchild",
+                    "max_like_30"
+                ]
+            },
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "parent/child"
+                ]
+            }
+        ],
+        "intro": [
+            "You have put disgrace on the family's name. How is my precious r_c:0 suppose to succeed now?",
+            "A murderer as {PRONOUN/r_c:0/poss} heir... tsk tsk tsk."
+        ]
+    },
+    "elder_neg_youshunned_H4": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "standing": [
+                    "shunned"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "cool",
+                    "brooding"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_dislike_30",
+                    "grandparent/grandchild",
+                    "max_like_30"
+                ]
+            }
+        ],
+        "intro": [
+            "You have disappointed me, young one.",
+            "... Well, more than normal."
+        ]
+    },
+    "backinmyday_elder_H2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "rank": [
+                    "queen's apprentice"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "introspective"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "max_like_-50"
+                ]
+            }
+        ],
+        "intro": [
+            "[t_c glances at you with an exhasperated look.]",
+            "What do you need now, y_c? Need me to watch over kittens again?",
+            "I'm not a queen, you know! Ask your mentor or some cat willing. I'm too old to be watching over those little Dark Forest spawns."
+        ]
+    },
+    "backinmyday_elder_H3": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "queen's apprentice",
+                    "mediator apprentice"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "introspective"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "max_like_-15"
+                ]
+            }
+        ],
+        "intro": [
+            "For most of my long life, I though queens and mediators had it easy. They don't have to hunt for food, guard the Clan, particibate in wars...",
+            "All queens do is watch over kittens and occationally help around the camp. Mediators only solved relationship related problems. A mentally taxing job, but an easy one nonetheless.",
+            "Ever thought warriors were the most undervalued in the Clan? They do so much without a simple thank you.",
+            "Be a good youngling and treasure your fellow apprentices. Tell them how much you care and appreciate them.",
+            "Maybe then the future would look bright."
+        ]
+    },
+    "backinmyday_elder_H4": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "queen's apprentice"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "introspective"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "warrior"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "max_like_-30"
+                ]
+            }
+        ],
+        "intro": [
+            "Eh? I asked for a warrior to help me, not a queen.",
+            "[You point out that t_c called you over in the first place.]",
+            "I don't remember doing that.",
+            "r_c:0!! Help me!"
+        ]
+    },
+    "elder_gen_theyshunned_rad2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "unlawful",
+                    "unabashed"
+                ],
+                "rank": [
+                    "elder"
+                ],
+                "standing": [
+                    "shunned"
+                ]
+            }
+        },
+        "intro": [
+            "What are all of you so afraid of? Doesn't everycat say that elders are the wisest members of the Clan?",
+            "Don't shun me just because my wisdom is a little less conventional than any other cat's."
+        ]
+    },
+    "elder_gen_theyshunned_rad3": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "unlawful",
+                    "unabashed"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "unlawful",
+                    "unabashed"
+                ],
+                "rank": [
+                    "elder"
+                ],
+                "standing": [
+                    "shunned"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_10"
+                ]
+            }
+        ],
+        "intro": [
+            "How hypocritical. Everycat will tell you that elders are the wise members of the Clan. Why shun me just because my wisdom is a little less conventional?",
+            "[You remind t_c that a wise cat would know how to avoid getting caught.]",
+            "...",
+            "I don't recall asking for your opinion, y_c!"
+        ]
+    },
+    "accomplice_J5": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ],
+                "standing": [
+                    "shunned"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "stable",
+                    "cool"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "rank": [
+                    "elder"
+                ],
+                "standing": [
+                    "shunned"
+                ]
+            }
+        },
+        "recent_murder": {
+            "accomplice": {
+                "cat": "t_c"
+            }
+        },
+        "intro": [
+            "Eh. I should've known I was too old to get away with something like that, anyway.",
+            "Ask someone younger next time. Maybe a cat with a clearer head will be able to hide evidence better, hehe."
+        ]
+    },
+    "retired_theyshunned_gen_rad1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "unlawful",
+                    "unabashed"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "kitten",
+                    "adolescent",
+                    "young adult",
+                    "adult"
+                ],
+                "standing": [
+                    "shunned"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "intro": [
+            "You know, in a way, being shunned is almost a compliment.",
+            "Retiring early clearly hasn't stopped me from striking fear into the hearts of other cats.",
+            "I certainly won't complain about that."
+        ]
+    },
+    "retired_youshunned_rad1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "younger"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "standing": [
+                    "shunned"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "brooding"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "kitten",
+                    "adolescent",
+                    "young adult",
+                    "adult"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "max_like_15"
+                ]
+            }
+        ],
+        "intro": [
+            "Are <i>all</i> cats your age this impulsive and thoughtless?",
+            "[t_c might be younger than most elders, but {PRONOUN/t_c/subject} already {VERB/t_c/have/has} the attitude down perfectly.]"
+        ]
+    },
+    "neurotic_elder_SQ5": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "neurotic"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "kitten"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_25"
+                ]
+            }
+        ],
+        "intro": [
+            "r_c:0 said I'd make a good mentor, and I had to explain to {PRONOUN/r_c:0/object} that when you're an elder, you don't take on apprentices anymore. {PRONOUN/r_c:0/subject/CAP} seemed disappointed.",
+            "[t_c sighs. {PRONOUN/t_c/subject/CAP} {VERB/t_c/watch/watches} r_c:0 play across camp.]",
+            "I hope no one thinks I became an elder too early. I can still teach what I know, but I know it's different from being someone's mentor."
+        ]
+    },
+    "neurotic_elder_SQ6": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "rank": [
+                    "deputy",
+                    "leader"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "neurotic"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "strangers"
+                ]
+            }
+        ],
+        "intro": [
+            "[t_c paces in front of the elders' den. When {PRONOUN/t_c/subject} {VERB/t_c/see/sees} you, {PRONOUN/t_c/subject} {VERB/t_c/straighten/straightens}.]",
+            "Ah, y_c? Let me know if there's anything I can help with. I could patch a den, or organize the fresh-kill pile, or... maybe even join a patrol?",
+            "Sorry, I don't mean to sound demanding! I just... want to help. I might be an elder, but I'm still a member of c_n. I don't want to be a burden."
+        ]
+    },
+    "elder_neg_youshunned_H5": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "standing": [
+                    "shunned"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "introspective"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "min_max_faith": [
+                    0,
+                    9
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "max_trust_30",
+                    "grandparent/grandchild",
+                    "max_like_30"
+                ]
+            }
+        ],
+        "intro": [
+            "I trust StarClan will punish you enough to realize your mistake."
+        ]
+    },
+    "backinmyday_elder_H1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "queen's apprentice",
+                    "mediator apprentice"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "introspective"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_15"
+                ]
+            }
+        ],
+        "intro": [
+            "Ahh, young one, has the other apprentices been bothering you lately?",
+            "Hm? Making fun of your role? Gah, younglings these days...",
+            "Back in my day, queens and mediators were the glue that held the Clan's together. A mature bunch, they were.",
+            "The warriors have allowed their ego to be their downfall, but worry not! StarClan always has a way of forcing them to reality. When they need to rely on you, they'll see your worth.",
+            "It is a shame warriors refuse to see it otherwise..."
+        ]
+    },
+    "backinmyday_elder_H5": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "introspective"
+                ],
+                "condition": [
+                    "deaf:any:false"
+                ],
+                "rank": [
+                    "queen's apprentice"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "deaf:any:false"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_trust_15",
+                    "max_like_-30"
+                ]
+            }
+        ],
+        "intro": [
+            "[You noticed t_c was struggling to stand up from {PRONOUN/t_c/poss} nest. You decide to approach and help.]",
+            "[As you paw closer, t_c looks at you with judegemntal eyes.]",
+            "[Seems like {PRONOUN/t_c/subject} {VERB/t_c/don't/doesn't} trust your strength. You guess you'll leave helping t_c up to a warrior instead.]"
+        ]
+    },
+    "they_sillysam2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "silly"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            },
+            "r_c:0": {},
+            "r_c:1": {},
+            "r_c:2": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "grandparent/grandchild"
+                ]
+            },
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "parent/child"
+                ]
+            },
+            {
+                "cats_from": [
+                    "r_c:1"
+                ],
+                "cats_to": [
+                    "t_c"
+                ],
+                "relationship": [
+                    "littermates"
+                ]
+            },
+            {
+                "cats_from": [
+                    "r_c:1"
+                ],
+                "cats_to": [
+                    "t_c"
+                ],
+                "relationship": [
+                    "littermates"
+                ]
+            },
+            {
+                "cats_from": [
+                    "r_c:2"
+                ],
+                "cats_to": [
+                    "t_c"
+                ],
+                "relationship": [
+                    "parent/child"
+                ]
+            }
+        ],
+        "intro": [
+            "Hey y_c! Come to visit 'ol t_c, have you?",
+            "Ah, you're looking for a story from when I was young. Well, young kit, I have quite a tale for you.",
+            "Once upon a time, long ago, I lived on the moon.",
+            "You want a <i>real</i> story? C'mon, what's the fun in that?",
+            "r_c:0 hasn't been telling you that every story has a life lesson, {VERB/r_c:0/have/has} {PRONOUN/r_c:0/subject}?",
+            "Well, {PRONOUN/r_c:0/subject}{VERB/r_c:0/'re/'s} wrong. Most stories are just for fun! Do you really want to hear a 'real' story?"
+        ],
+        "intro_choices": {
+            "choice1": {
+                "text": "Yes",
+                "next_scene": "real"
+            },
+            "choice2": {
+                "text": "No",
+                "next_scene": "not_real"
+            }
+        },
+        "real": [
+            "[t_c groans playfully.]",
+            "You're no fun, but fine, I guess I can tell you a real story.",
+            "Once upon a time, I was only a few moons older than you. It was my apprentice ceremony.",
+            "The leader was giving r_c:1 {PRONOUN/r_c:1/poss} apprentice name. You wanna know what {PRONOUN/r_c:1/subject} did?",
+            "{PRONOUN/r_c:1/subject/CAP} laughed. {PRONOUN/r_c:1/subject/CAP} laughed at the fact that I got my apprentice name after {PRONOUN/r_c:1/object}.",
+            "I was angry, but I didn't react. I turned back to the leader, waiting patiently for my apprentice name.",
+            "As soon as I started training, I tried harder than I ever had at anything. I never stopped.",
+            "And it paid off. I graduated before {PRONOUN/r_c:1/object}, and I got to see the shocked look on {PRONOUN/r_c:1/poss} face as I got my full name.",
+            "Then I laughed. But I wasn't mean. I laughed with {PRONOUN/r_c:1/object}, at the irony of the situation. {PRONOUN/r_c:1/subject/CAP} {VERB/r_c:1/weren't/wasn't} angry, but I still got back at {PRONOUN/r_c:1/object}.",
+            "Moral of the story, petty revenge is always an option, but you don't have to be mean about it.",
+            "Did you like the story?"
+        ],
+        "not_real": [
+            "Yes! This'll be so much more fun.",
+            "So, once upon a time, I lived on the moon. On the moon, there was a twoleg.",
+            "Strangely enough, it wasn't a mean twoleg. It was a nice one. The twoleg fed me, gave me water, but still let me have my warrior spirit.",
+            "One day, the twoleg left in a big metal tube, leaving me alone. Then, a cat named y_c came along.",
+            "No, it wasn't you, but {PRONOUN/r_c:1/subject} had the same name. {PRONOUN/r_c:1/subject/CAP} saved me. {PRONOUN/r_c:1/subject/CAP} took me back to my home in c_n.",
+            "That's how I convinced r_c:2 to name you y_c. y_c saved me.",
+            "[t_c watches your reaction for a moment, {PRONOUN/t_c/poss} face breaking into a grin that matches yours.]",
+            "See? Aren't fake stories much more fun?"
+        ]
+    },
+    "elder_nightmares_rad1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "rank": [
+                    "medicine cat",
+                    "medicine cat apprentice"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "cool",
+                    "stable",
+                    "sweet",
+                    "upstanding"
+                ],
+                "condition": [
+                    "constant nightmares",
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "intro": [
+            "You don't need to fuss over me, y_c.",
+            "I've never needed the medicine cat's help for a bad dream. I've had plenty of nightmares in my lifetime - I can handle a few more.",
+            "[You'd be more convinced if t_c didn't look nearly so exhausted.]"
+        ]
+    },
+    "cliffcamp_avix1": {
+        "frequency": 2,
+        "season": ["leaf-bare"],
+        "biome": ["mountainous"],
+        "camp": ["camp1"],
+        "cats": {
+            "y_c": {
+                "age": ["not_newborn", "not_senior", "not_senior adult"]
+            },
+            "t_c": {
+                "age": ["senior"]
+            }
+        },
+        "relationship": [
+            {
+                "cats_from": ["t_c"],
+                "cats_to": ["r_c:0"],
+                "relationship": ["min_like_10"]
+            }
+        ],
+        "intro": [
+            "Be sure to watch your steps, y_c. Wouldn't want you to slip and fall off one of these edges.",
+            "I've seen my fair share of ice-related injuries."
+        ]
+    }
+}

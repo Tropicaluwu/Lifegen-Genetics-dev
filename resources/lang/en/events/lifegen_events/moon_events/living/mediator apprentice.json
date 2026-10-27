@@ -1,0 +1,520 @@
+{
+    "general1": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "kitten"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 insists that you be the referee for {PRONOUN/r_c:0/poss} game in order to prevent the other kits from cheating."
+    },
+    "general2": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "littermates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "Your training has kept both of you busy, but you and r_c:0 schedule some much-needed sibling time."
+    },
+    "general3": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You break up an argument between a couple of kits, learning a valuable lesson about patience and keeping a cool head."
+    },
+    "general4": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {},
+            "r_c:1": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:1"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "siblings"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:1 asks you to help {PRONOUN/r_c:1/object} apologize to r_c:0, but you accidentally make the situation worse. r_c:1 laughs it off, but you can't help but feel like you've failed {PRONOUN/r_c:1/object}."
+    },
+    "general5": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "The warriors keep arguing, and you have to learn the importance of keeping your cool, even if your Clanmates are really, really annoying sometimes."
+    },
+    "general6": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You learn something very important today - not everycat in high positions has constant patience."
+    },
+    "general7": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "parent/child"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0's expectations of you weight heavily on your mind as you go about your day."
+    },
+    "general8": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "On a brief break, you wonder what your warrior name would be. The suffix tree, perhaps?"
+    },
+    "general9": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "apprentice"
+                ],
+                "cluster": [
+                    "unabashed"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 approaches you while you're eating freshkill, claiming proudly that {PRONOUN/r_c:0/subject} {VERB/r_c:0/were/was} the one to catch it. What a nice way to rub {PRONOUN/r_c:0/poss} success in your face."
+    },
+    "introspective10": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "introspective"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You find yourself musing over how you could have solved a previous complication differently, and it spirals into deep thought, only shaken when your mentor calls out for you. You realize your 'brief' self-reflection lasted all dawn. Whoops."
+    },
+    "introspective11": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "introspective"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "deputy"
+                ]
+            },
+            "r_c:1": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:1"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "mentor/app"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You happen to find yourself conveniently around r_c:1 and r_c:0 when they strike up conversation, and you listen intently for any gossip or mention of your name. Alas, the conversation ends up running dry and you lose interest."
+    },
+    "introspective12": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "introspective"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "Overwhelmed and tired with the day of work, you find refuge in the Elder's Den to listen to some stories and calm your busy mind."
+    },
+    "introspective13": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "introspective"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You couldn't help but be curious of how the mediator role came to be. Which Clan was so rattled with arguments and disturbances that they needed a specifically trained cat to soothe their bickering?"
+    },
+    "neurotic14": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "neurotic"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            },
+            "r_c:1": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:1"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "mentor/app"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You overhear r_c:1 reviewing your progress with r_c:0, but can't make out enough to be sure what r_c:1 really thinks of you."
+    },
+    "neurotic15": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "neurotic"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You find the perfect spot to lie in the sun by yourself and watch the camp."
+    },
+    "neurotic16": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "neurotic"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "warrior"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 notices you sitting alone and invites you to eat with {PRONOUN/r_c:0/object}."
+    },
+    "neurotic17": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "neurotic"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "When r_c:0 tells you stories, you're comforted by the cats and places you recognize."
+    },
+    "neurotic18": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "neurotic"
+                ]
+            },
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "parent/child"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You wonder if you're living up to r_c:0's hopes and expectations."
+    },
+    "unlawful19": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "unlawful"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You find your mediator training too easy!"
+    },
+    "rare20": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "mentor/app"
+                ]
+            }
+        ],
+        "types": [
+            "rare"
+        ],
+        "event": "A gathering goes badly and you lash out, only making the situation more tense. r_c:0 scolds you, and as the Clan returns home, you hold your head low in shame."
+    },
+    "rare21": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "rare"
+        ],
+        "event": "You wonder, for a brief moment, if you should have chosen a different path. One without constant arguments and headaches."
+    },
+    "shunned22": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "Clan meetings become a burden. Instead of working out disputes, you're the subject of them. No one seems to trust your judgment anymore."
+    },
+    "shunned23": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "The deputy reassigns you to mundane tasks. You're not involved in any important discussions or decision making."
+    },
+    "shunned24": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "The respect you once had from your Clanmates has evaporated. Every whisper and glance feels like an accusation."
+    },
+    "shunned25": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "You're kept away from delicate negotiations with other Clans. Your presence is seen as a potential cause for conflict."
+    },
+    "shunned26": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "Your training, once filled with valuable lessons on diplomacy and understanding, is now filled with silence and uneasy glances."
+    },
+    "shunned27": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "Clanmates avoid you, not wanting to involve you in their issues. You feel like a stranger in your own Clan."
+    },
+    "shunned28": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "You're no longer invited to participate in the regular Clan meetings. Your advice, once valued, is now shunned."
+    },
+    "shunned29": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "Even the kits, usually eager to listen to your stories and advice, stay away from you. Their playful laughter is now replaced with fearful silence."
+    },
+    "shunned30": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "mentor/app"
+                ]
+            }
+        ],
+        "types": [
+            "shunned"
+        ],
+        "event": "Your mentor solemnly suggests revisiting the fundamental teachings of peace and understanding, as though {PRONOUN/r_c:0/subject} {VERB/r_c:0/question/questions} your comprehension."
+    },
+    "shunned31": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "Your dreams are disturbed with images of the cat you murdered, their ghostly eyes filled with accusation. Sleep offers no solace."
+    },
+    "shunned32": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "Your access to sensitive issues within the Clan is limited at the request of your mentor."
+    },
+    "shunned33": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "You're asked to stay at camp when it becomes time for the next Gathering."
+    },
+    "shunned34": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "You wonder if becoming a mediator is the right path for you."
+    }
+}

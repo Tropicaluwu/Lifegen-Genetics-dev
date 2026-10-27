@@ -1290,7 +1290,7 @@
                 "frequency": 4
             },
             {
-                "text": "The patrol fans out, some cats climbing, some staying on the ground. The hunt comes to an abrupt end, however, when r_c yowls in fear as {PRONOUN/r_c/subject} {VERB/r_c/plummet/plummets} from the branches and lands heavily on the ground. {PRONOUN/r_c/poss/CAP} Clanmates help {PRONOUN/r_c/object} home and settle {PRONOUN/r_c/object} into the medicine cat den, guilt and regret prickling at them for pursuing such a foolhardy hunt.",
+                "text": "The patrol fans out, some cats climbing, some staying on the ground. The hunt comes to an abrupt end, however, when r_c yowls in fear as {PRONOUN/r_c/subject} {VERB/r_c/plummet/plummets} from the branches and lands heavily on the ground. {PRONOUN/r_c/poss/CAP} Clanmates help {PRONOUN/r_c/object} home and settle {PRONOUN/r_c/object} into the healer den, guilt and regret prickling at them for pursuing such a foolhardy hunt.",
                 "exp": 0,
                 "injury": [
                     {
@@ -2107,7 +2107,7 @@
                 "frequency": 3
             },
             {
-                "text": "Who cares about vultures or buzzards? The Clan needs fresh-kill! The buzzard does, and gives s_c a nasty bite to remember it by, and the medicine cat gets to tell {PRONOUN/s_c/object} the difference between common buzzards and vultures.",
+                "text": "Who cares about vultures or buzzards? The Clan needs fresh-kill! The buzzard does, and gives s_c a nasty bite to remember it by, and the healer gets to tell {PRONOUN/s_c/object} the difference between common buzzards and vultures.",
                 "exp": 0,
                 "stat_trait": [
                     "childish",

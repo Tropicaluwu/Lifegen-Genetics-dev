@@ -16,5 +16,15 @@
         "main_skill_constraint": [
             "STAR,1"
         ]
+    },
+    {
+        "id": "dark_death_dark_forest_lifegen",
+        "thoughts": [
+            "Is not surprised to find {PRONOUN/m_c/self} in the Dark Forest",
+            "Grumbles as {PRONOUN/m_c/subject} {VERB/m_c/look/looks} around the blackened trees, realizing {PRONOUN/m_c/subject} failed"
+        ],
+        "main_skill_constraint": [
+            "DARK,1"
+        ]
     }
 ]

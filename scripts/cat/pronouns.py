@@ -22,17 +22,23 @@ def get_pronouns(cat: "Cat"):
         return choice(cat.pronouns)
 
 
+def adjust_gender_align(genderalign):
+    return genderalign.replace("intersex ", "").replace("molly", "female").replace("tom", "male").replace("sam", "nonbinary")
+
+
 def get_new_pronouns(genderalign: str) -> List[Dict[str, Union[str, int]]]:
     """
     Handles getting the right pronoun set for the language.
     :param genderalign: The cat's gender alignment
     :return: The default list of pronouns for the cat's genderalign in the selected lang
     """
+
     config = get_lang_config()["pronouns"]
     if game_setting_get("they them default"):
         pronouns = config["sets"].get("default")
     else:
-        pronouns = config["sets"].get(genderalign, config["sets"].get("default"))
+        pronouns = config["sets"].get(adjust_gender_align(
+            genderalign), config["sets"].get("default"))
     if pronouns is None:
         raise Exception(
             "Default pronouns not provided in lang file! Check config.json to confirm correct labels"

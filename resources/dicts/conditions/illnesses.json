@@ -23,10 +23,10 @@
         "duration": 1,
         "medicine_duration": 1,
         "infectiousness": 0,
-        "risks": [ 
+        "risks": [
             {
-            "name": "severe headache",
-            "chance": 50
+                "name": "severe headache",
+                "chance": 50
             }
 
         ],
@@ -105,8 +105,8 @@
         "infectiousness": 0,
         "risks": [
             {
-            "name": "dehydrated",
-            "chance": 30
+                "name": "dehydrated",
+                "chance": 30
             }
         ],
         "herbs": {
@@ -155,8 +155,8 @@
             "1": [
                 "plantain"
             ],
-            "2": [],
-            "3": []
+            "2": [ ],
+            "3": [ ]
         }
     },
     "greencough": {
@@ -303,27 +303,27 @@
     "carrionplace disease": {
         "severity": "severe",
         "mortality": {
-            "newborn": 1,
-            "kitten": 1,
-            "adolescent": 2,
-            "young adult": 2,
-            "adult": 2,
-            "senior adult": 2,
-            "senior": 1
-        },
-        "medicine_mortality": {
             "newborn": 2,
             "kitten": 2,
-            "adolescent": 3,
-            "young adult": 3,
-            "adult": 3,
-            "senior adult": 3,
-            "senior": 2
+            "adolescent": 5,
+            "young adult": 8,
+            "adult": 10,
+            "senior adult": 8,
+            "senior": 5
+        },
+        "medicine_mortality": {
+            "newborn": 4,
+            "kitten": 4,
+            "adolescent": 10,
+            "young adult": 13,
+            "adult": 17,
+            "senior adult": 13,
+            "senior": 10
         },
         "duration": 3,
         "medicine_duration": 2,
         "infectiousness": 0,
-        "risks": [],
+        "risks": [ ],
         "herbs": {
             "1": [
                 "marigold",
@@ -361,7 +361,7 @@
         "duration": 50,
         "medicine_duration": 40,
         "infectiousness": 0,
-        "risks": [],
+        "risks": [ ],
         "herbs": {
             "1": [
                 "lungwort",
@@ -584,7 +584,7 @@
         "duration": 1,
         "medicine_duration": 1,
         "infectiousness": 0,
-        "risks": [],
+        "risks": [ ],
         "herbs": {
             "1": [
                 "ragwort"
@@ -787,13 +787,13 @@
         "duration": 100,
         "medicine_duration": 100,
         "infectiousness": 0,
-        "risks": [],
+        "risks": [ ],
         "herbs": {
             "1": [
-            "thyme"
+                "thyme"
             ],
-            "2": [],
-            "3": []
+            "2": [ ],
+            "3": [ ]
         }
     },
     "starving": {
@@ -819,10 +819,119 @@
         "duration": 100,
         "medicine_duration": 100,
         "infectiousness": 0,
-        "risks": [],
+        "risks": [ ],
         "herbs": {
             "1": [
                 "thyme"
+            ],
+            "2": [ ],
+            "3": [ ]
+        }
+    },
+
+    "itchy skin": {
+        "severity": "minor",
+        "mortality": {
+            "newborn": 0,
+            "kitten": 0,
+            "adolescent": 0,
+            "young adult": 0,
+            "adult": 0,
+            "senior adult": 0,
+            "senior": 0
+        },
+        "medicine_mortality": {
+            "newborn": 0,
+            "kitten": 0,
+            "adolescent": 0,
+            "young adult": 0,
+            "adult": 0,
+            "senior adult": 0,
+            "senior": 0
+        },
+        "duration": 3,
+        "medicine_duration": 2,
+        "infectiousness": 0,
+        "risks": [
+            {
+                "name": "an infected wound",
+                "chance": 25
+            }
+        ],
+        "herbs": {
+            "1": [ "marigold", "burdock", "wild_garlic", "oak_leaves" ],
+            "2": [ ],
+            "3": [ ]
+        }
+    },
+    "ear infection": {
+        "severity": "major",
+        "mortality": {
+            "newborn": 5,
+            "kitten": 10,
+            "adolescent": 35,
+            "young adult": 50,
+            "adult": 50,
+            "senior adult": 40,
+            "senior": 25
+        },
+        "medicine_mortality": {
+            "newborn": 5,
+            "kitten": 20,
+            "adolescent": 65,
+            "young adult": 100,
+            "adult": 100,
+            "senior adult": 75,
+            "senior": 50
+        },
+        "duration": 3,
+        "medicine_duration": 1,
+        "infectiousness": 40,
+        "risks": [
+            {
+                "name": "partial hearing loss",
+                "chance": 50
+            },
+            {
+                "name": "partial hearing loss in one ear",
+                "chance": 50
+            }
+        ],
+        "herbs": {
+            "1": [ "marigold", "dock", "sweet-sedge" ],
+            "2": [ ],
+            "3": [ ]
+        }
+    },
+    "heartbroken": {
+        "severity": "severe",
+        "mortality": {
+            "newborn": 0,
+            "kitten": 0,
+            "adolescent": 0,
+            "young adult": 0,
+            "adult": 0,
+            "senior adult": 0,
+            "senior": 0
+        },
+        "medicine_mortality": {
+            "newborn": 0,
+            "kitten": 0,
+            "adolescent": 0,
+            "young adult": 0,
+            "adult": 0,
+            "senior adult": 0,
+            "senior": 0
+        },
+        "duration": 12,
+        "medicine_duration": 9,
+        "infectiousness": 0,
+        "risks": [],
+        "herbs": {
+            "1": [
+                "juniper",
+                "thyme",
+                "poppy"
             ],
             "2": [],
             "3": []
@@ -851,11 +960,11 @@
         "duration": 5,
         "medicine_duration": 3,
         "infectiousness": 0,
-        "risks": [],
+        "risks": [ ],
         "herbs": {
             "1": [
-            "moss",
-            "plantain"
+                "moss",
+                "plantain"
             ],
             "2": [
                 "dandelion",

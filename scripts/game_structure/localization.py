@@ -7,6 +7,7 @@ import ujson
 lang_config: Optional[Dict] = None
 _lang_config_directory = os.path.join("resources", "lang", "{locale}", "config.json")
 _directory_changed: bool = False
+additional_lang_list: Optional[Dict] = None
 
 additional_lang_list: Optional[Dict] = None
 

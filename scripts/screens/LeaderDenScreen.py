@@ -6,7 +6,8 @@ import pygame_gui
 from pygame_gui.core import UIContainer
 
 from scripts.cat.cats import Cat
-from scripts.cat.enums import CatRank, CatGroup, CatStanding
+from scripts.cat.sprites.display_sprites import update_sprite
+from scripts.cat.enums import CatRank, CatGroup, CatStanding, CatAge
 from scripts.clan import OtherClan
 from scripts.game_structure import game
 from scripts.clan_package.settings.clan_settings import (
@@ -31,11 +32,14 @@ from scripts.clan_package.get_clan_cats import (
     find_alive_cats_with_rank,
     get_living_clan_cat_count,
 )
+from scripts.clan_package.settings import get_clan_setting
 
 
 class LeaderDenScreen(Screens):
     def __init__(self, name=None):
         super().__init__(name)
+
+        self.fav = {}
 
         self.current_page = 1
         self.help_button = None
@@ -70,6 +74,7 @@ class LeaderDenScreen(Screens):
 
         self.outsider_cat_list_container = None
         self.outsider_cat_buttons = {}
+        self.fav = {}
 
     def handle_event(self, event):
         """
@@ -201,6 +206,7 @@ class LeaderDenScreen(Screens):
                     ranks=[CatRank.MEDICINE_CAT, CatRank.MEDICINE_APPRENTICE],
                     working=True,
                     sort=True,
+                    clan=CatGroup.PLAYER_CLAN
                 )
                 if meds:
                     self.helper_cat = meds[0]
@@ -208,9 +214,9 @@ class LeaderDenScreen(Screens):
                     mediators = [
                         i
                         for i in Cat.all_cats.values()
-                        if not i.dead
-                        and not i.not_working()
+                        if not i.not_working()
                         and i.status.rank.is_any_mediator_rank()
+                        and i.status.alive_in_player_clan
                     ]
                     if mediators:
                         self.helper_cat = mediators[0]
@@ -367,6 +373,10 @@ class LeaderDenScreen(Screens):
         for ele in self.screen_elements:
             self.screen_elements[ele].kill()
 
+        for marker in self.fav:
+            self.fav[marker].kill()
+        self.fav = {}
+
         # killing containers kills all inner elements as well
         self.focus_frame_container.kill()
         self.other_clan_selection_container.kill()
@@ -438,7 +448,7 @@ class LeaderDenScreen(Screens):
             manager=MANAGER,
         )
         for i, other_clan in enumerate(game.clan.all_other_clans):
-            if other_clan.name == game.clan.displayname:
+            if other_clan.displayname == game.clan.displayname:
                 continue
             x_pos = 128
             self.other_clan_selection_elements[f"container{i}"] = UIContainer(
@@ -473,10 +483,11 @@ class LeaderDenScreen(Screens):
                 f"clan_name{i}"
             ] = pygame_gui.elements.UILabel(
                 ui_scale(pygame.Rect((0, 10), (133, -1))),
-                text=f"{other_clan.name}Clan",
+                text="general.clan",
                 object_id=get_text_box_theme("#text_box_30_horizcenter"),
                 container=self.other_clan_selection_elements[f"container{i}"],
                 manager=MANAGER,
+                text_kwargs={"name": other_clan.displayname},
                 anchors={
                     "centerx": "centerx",
                     "top_target": self.other_clan_selection_elements[f"clan_symbol{i}"],
@@ -507,7 +518,7 @@ class LeaderDenScreen(Screens):
                 f"clan_rel{i}"
             ] = pygame_gui.elements.UILabel(
                 ui_scale(pygame.Rect((0, 0), (133, -1))),
-                text=f"screens.leader_den.{other_clan.get_standing().strip()}",
+                text=f"screens.leader_den.{game.clan.get_relations(game.clan, other_clan, get_label=True).strip()}",
                 object_id=get_text_box_theme("#text_box_22_horizcenter_spacing_95"),
                 container=self.other_clan_selection_elements[f"container{i}"],
                 manager=MANAGER,
@@ -627,14 +638,15 @@ class LeaderDenScreen(Screens):
 
         x_pos = 10
         y_pos = 182
-        relation = self.focus_clan.get_standing()
+        relation = game.clan.get_relations(game.clan, self.focus_clan, get_label=True)
 
         self.focus_clan_elements["clan_name"] = pygame_gui.elements.UILabel(
             ui_scale(pygame.Rect((0, 15), (215, -1))),
-            text=f"{self.focus_clan.name}Clan",
+            text="general.clan",
             object_id="#text_box_30_horizcenter",
             container=self.focus_clan_container,
             manager=MANAGER,
+            text_kwargs={"name": self.focus_clan.displayname},
             anchors={
                 "centerx": "centerx",
                 "top_target": self.focus_clan_elements["clan_symbol"],
@@ -759,7 +771,7 @@ class LeaderDenScreen(Screens):
             "lead_den_clan_event",
             {
                 "cat_ID": gathering_cat.ID,
-                "other_clan": self.focus_clan.name,
+                "other_clan": self.focus_clan.displayname,
                 "player_clan_temper": self.clan_temper,
                 "interaction_type": interaction_type,
                 "success": success,
@@ -1057,6 +1069,7 @@ class LeaderDenScreen(Screens):
             i
             for i in Cat.all_cats.values()
             if not i.dead
+            and i.age not in [CatAge.KITTEN, CatAge.NEWBORN]
             and i.status.is_outsider
             and i.status.is_near(CatGroup.PLAYER_CLAN_ID)
             and (
@@ -1089,6 +1102,9 @@ class LeaderDenScreen(Screens):
 
         # CREATE DISPLAY
         display_cats = []
+        for marker in self.fav:
+            self.fav[marker].kill()
+        self.fav = {}
         if outsider_chunks:
             display_cats = outsider_chunks[self.current_page - 1]
 
@@ -1105,12 +1121,29 @@ class LeaderDenScreen(Screens):
         for ele in self.outsider_cat_buttons:
             self.outsider_cat_buttons[ele].kill()
         self.outsider_cat_buttons = {}
+        for marker in self.fav:
+            self.fav[marker].kill()
+        self.fav = {}
 
         pos_x = 0
         pos_y = 0
         i = 0
 
         for cat in display_cats:
+            if not cat.sprite:
+                update_sprite(cat)
+            if get_clan_setting("show fav") and cat.favourite:
+                self.fav[str(i)] = pygame_gui.elements.UIImage(
+                    ui_scale(pygame.Rect((5+ pos_x, pos_y), (50, 50))),
+                    pygame.transform.scale(
+                        pygame.image.load(
+                            f"resources/images/fav_marker{cat.favourite}.png"
+                        ).convert_alpha(),
+                        ui_scale_dimensions((50, 50)),
+                    ),
+                    container=self.outsider_cat_list_container,
+                )
+                self.fav[str(i)].disable()
             self.outsider_cat_buttons[f"sprite{str(i)}"] = UISpriteButton(
                 ui_scale(pygame.Rect((5 + pos_x, pos_y), (50, 50))),
                 cat.sprite,
@@ -1157,7 +1190,7 @@ class LeaderDenScreen(Screens):
 
         # percentage of success
         success_chance = (int(game.clan.reputation) / 100) / 1.5
-        if game.clan.leader.not_working:
+        if not game.clan.leader or game.clan.leader.not_working:
             success_chance = success_chance / 1.2
         # searching should be extra hard, after all those kitties are LOST
         if action == "search":

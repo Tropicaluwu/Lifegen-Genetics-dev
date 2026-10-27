@@ -1,69 +1,143 @@
-<strong>v0.13.3</strong>
-- Fixes various typos
-- Small UI adjustment in the Leader's Den to prevent text overlaps
-- Adjustments to the frequency of some events
-- Added an outcome to an event that was missing unconstrained antagonize outcomes
-- Fixed missing "war" tag in a war-only event
-- Fixed kittens sometimes being generated with adolescent parents
-- Fixed "r_c" appearing in some condition-related events instead of being replaced with a cat name
-- Fixed the deaths of other Clan cats not being displayed in the Other Clans event tab
+<strong>LifeGen Genetics v1.1.2: easier to play and update</strong>
 
-- Adjusted the amount of herbs that can be rewarded during a patrol. There is now a maximum number of herbs each cat on patrol can "carry home". `CLEVER` and `SENSE` skill cats can still gather more herbs than typical cats, but will still have to contend with the maximum limit the patrol as a whole can carry.
+- A step-by-step guide to playing on Windows, Mac and Linux, at the top of the README
+- Mac: double-click run.command to play (the first time, see the guide)
+- The start screen tells you when a new version is out, and how to update without losing your Clans
+- Fixed "clear all" in the white list leaving pangere's pale markings behind (they look just like white)
+- Fixed an empty row in the tortie patches list (the "Body" patch had no name)
+- Every kitten in the main character picker (and the cat maker's kitten preview) shows its real eye color: 1-moon kittens showed their blue kitten eyes instead
+- Fixed main characters made with Customize (starting from a picked cat) being marked intersex in their genes, which showed up when changing their gender (for new main characters; ones made before this update keep it)
+- Your cat's parents now carry the genes for both parts of a chimera main character (like ginger patches), so their siblings can share those colors too
+- Fixed errors when loading a LifeGen or ClanGen save for the first time, and kits whose parents loaded after them getting random genes (with Accurate Porting off)
 
+Updating: your Clans are in the saves folder inside the game folder. Copy it into the new version's folder every time you update.
 
-<strong>v0.13.2</strong>
-- Prevented starting and trailing spaces from being used for Clan names (this could cause crashes)
-- Newborns who are exiled and then return to the Clan are no longer perpetually stuck at the newborn rank for their entire life.
-- Other Clans no longer have a chance to generate with an already-used name
-- Fixed the filtering for romance in short events
-- Prevented kittens from "assigned task" thoughts
-- Fixed other_clan group ID bloat that would occur when loading old saves. Can't be retroactively fixed for affected saves, but shouldn't be particularly detrimental to normal play.
-- Apprentice wrangling rel events are now properly age filtered. No more kittens planning lessons for apprentices.
-- Fixed other clan cats who do not join the player clan still receiving "welcome" events as though they had
-- Various inverted relationship effects fixed.
-- Fixed unwanted capitalization of pelt pattern for kits listed under queens in allegiances
-- Allowed un-parented kits to use the longer version of their description in allegiances
-- Fixed issue where Clan ID was showing up in the leader's den screen and switch Clan screen
-- Added further protection to save conversion for sprite poses, just in case any cats had been assigned mismatched pose indexes prior to save conversion.
-- Mild typo fixes, added missing pronoun/verb tags, and slightly reworded some things to avoid text display errors.
+<strong>LifeGen Genetics v1.1.1: cat maker fixes</strong>
 
-- Moved "unspoken apology" rel event from comfort decrease to comfort increase (and now requires "avoids" tier)
-- Lowered frequencies of the "grim job" med cat patrol and the plains "far border" patrol
-- Adjusted the wording of a couple poly mate events
+- Fixed the Fur Length buttons not changing the cat when Customize started from a picked cat
+- Fixed "clear all" in the white list leaving some white behind: it now also turns off the white genes that don't use patches (dominant white, salmiak, karpati roan and blue-eyed white)
+- The Random cat button now makes a cat the way the game does, so white and other looks are as common as on real new cats (before, almost 9 in 10 random cats had white)
+- Fixed a rare crash when opening Customize
 
-<strong>v0.13.1</strong>
-- Fixed patrol results not displaying all received conditions when the outcome applies multiple conditions.
-- Fixed the Warrior Den screen crashing the game when all focus settings are false.
-- Fixed an event that would cause a crash when assigning an adoptive parent.
-- Fixed freshkill log not resetting on timeskip.
-- Fixed freshkill supply change events not appearing in the log.
-- Fixed freshkill consumption display to prevent weird decimals.
-- Fixed cats not dying on a patrol despite text implying they do.
-- Fixed a patrol where a cat would join the Clan when they weren't meant to.
-- Fixed constraints on the "go on patrol" relationship event so that kits wouldn't receive it.
-- Fixed a patrol that could result in a cat receiving a nonsensical permanent condition.
-- Fixed version number not appearing in the bottom right corner.
-- Fixed medicine cats receiving some ill-fitting thoughts.
-- Fixed a crash related to how we retrieve default risk chances.
-- Fixed apprentices kit-sitting their own littermates.
-- Fixed a self-interaction in a training patrol.
-- Fixed a variety of typos.
+<strong>LifeGen Genetics v1.1: the cat maker update</strong>
 
-- Changed relationship constraints of "maim" events
-- Added new events regarding other Clan relationships to help balance out the "new leader breaks alliances" event.
-- Allowed more outsider events to pull from existing outsiders instead of generating new ones
-- Adjusted frequency of a variety of events
+The custom cat maker (making your own main character) is now fully genetic:
+- Pressing Customize with a cat picked starts from that cat (its exact genes, sex, fur, poses, scars and accessories)
+- Genemod's real colors, patterns, point types and eye colors, with heterochromia as the second eye and sectoral eyes
+- One white list: the white genes plus every white patch (Genemod's, ClanGen's and color spots), pick as many as you like, in groups with "clear all" and "picked patches". The white genes follow how much white you pick, so kits get about that much
+- Torties: pick the patches, and a patch color or pattern of their own (which makes the cat a chimera, with a note saying so). Unticking and ticking Tortie again keeps them
+- Fur genes (rex coats, sphynx, LaPerm, lykoi, brush coat, satin, glitter) and body genes (ears, tails, legs, body type, size) on the last page
+- More options for each list (sunshine, silver, wideband, bleaching, ghosting, pale markings...), scars you can check and uncheck, and lists that stay where you scrolled
+- The cat maker starts from a plain cat, and your cat comes out exactly like the preview (including the sex you picked)
 
-<strong>v0.13.0</strong>
+Names:
+- A Names button on the main menu (and in the Clan settings) to add and take out names: prefixes, suffixes, rank endings (-kit, -paw, -star), loner names, kittypet names, Clan names and blocked names
+- Changes can be for all saves or for just one save, and they stack (a save uses the all-saves changes plus its own)
+- Any list can use only your names, and you can pick how often cats get your prefixes and suffixes (since most cats are named after their looks). Search, pages and "reset list" make big lists easy
 
-After seasons of silence, StarClan has finally spoken!
-Camp has been reinforced with fresh materials and a sparkling new look. The forest feels more lively than ever, with the gentle breeze and soft birdsong uplifting cats' spirits. Clanmates are gathering to discuss the day's activities, but some can't shake the feeling they're being watched...
+Fixes:
+- Fixed your cat showing as an elder on the "Welcome to the world" screen
+- Fixed ginger torties with patches of another color (from LifeGen saves or the custom cat maker) coming out as the other color with ginger patches
+- Fixed LifeGen colors sometimes turning into a near-white chinchilla coat when made into genes (from LifeGen saves or the custom cat maker)
+- Fixed all-white cats from LifeGen saves or the custom cat maker getting a broken white gene
+- Fixed intersex cats' descriptions showing "general.intersex"
+- Genemod's newest eye fix: mink, burmocha and mocha cats get their chance of blue eyes, albino cats can't get one blue eye, and eye color names always match the eyes
+- Genemod and ClanGen saves can be loaded too (one of your cats becomes your main character). Before, saves with fewer groups crashed while loading
 
-ClanGen's 0.13.0 update includes...
-- A redesigned UI to make navigation easier!
-- A new and improved relationship system! Cats' feelings towards each other will be a lot more varied and complicated.
-- Music and ambience designed to make the gameplay as immersive as possible!
-- New poses for newborns and long-furred apprentices!
-- Much, much more!
+<strong>LifeGen Genetics v1.0</strong>
 
-<a href=https://clangen.io/docs/blog/2026/05/08/v0.13.0/>Read the FULL changelog online</a>
+LifeGen and Genemod (the genetics mod) put together into one game.
+
+All credit goes to the LifeGen team (github.com/sedgestripe/clangen) and to Chinch-Bug and the Genemod contributors (github.com/Chinch-Bug/clangen-genemod), and to the ClanGen team they're both built on. This is just the two of them combined.
+
+Built on the latest stable versions: ClanGen v0.13.4, LifeGen v0.7.7.5 and Genemod 0.13.
+
+Genetics (from Genemod):
+- Every cat has real genes. Kits inherit coat color, patterns, white, eyes, fur length, ear and tail traits and more from their parents
+- Genemod's appearance descriptions, genotype tooltips and offspring prediction
+- Genemod's new names, suffixes and prefixes (can be turned off in the clan settings)
+- Genetic conditions like deafness in blue eyed white cats, manx syndrome, folds and so on
+- Optional multi clan mode when making a new clan, where the other clans have their own real cats
+- Healers, queens and queen apprentices use Genemod's ranks
+- Favorites have 6 colors (right click the star to remove it)
+
+LifeGen saves:
+- Normal LifeGen saves load in! Cats get genes made from their old pelts the first time the save is loaded
+- "Accurate Porting" is on by default so cats keep their look instead of getting new genes from their parents. You can turn it off in the settings if you want genetics to take over
+- Once a save is played here it can't go back into regular LifeGen
+- Saves go in their own folder so they don't mix with LifeGen's
+
+Making your cat:
+- Pick one of the random cats, or press customize to use the LifeGen customizer. Whatever you pick in the customizer gets turned into genes
+
+Kits:
+- With "same sex birth" on, either parent can carry the kits, whatever their gender. The kits are born in the Clan of whoever carries them, and that cat gets the pregnant and recovering conditions (before, the kits could be born in the other parent's Clan)
+
+ClanGen v0.13.4:
+- ClanGen v0.13.4's bug fixes, typo fixes and new events
+- A few new Gathering events about the other Clans and their new leaders
+- Healers that join from loner patrols get the wandering healer backstory, and random loners and rogues don't get it anymore
+- Herb patrols have a cap on how many herbs each cat can carry, clever cats can carry more
+
+Speed:
+- Moons are faster in big Clans: ranks aren't worked out from scratch millions of times a moon, cat lists check the Clan first, and a trait file isn't read from the disk thousands of times a moon
+
+Fixes:
+- Fixed a crash when talking to healers
+- Fixed crashes when your cat is born with siblings, born to one parent, or born to outsider parents
+- Fixed the customize button crashing when making a new clan
+- Fixed some ceremonies being broken so they could never show up or crashed the game
+- Fixed the multi clan button overlapping another button
+- Fixed the afterlife code getting mixed up between LifeGen and Genemod
+- Fixed multi clan saves breaking after loading them (the other clans got mixed up with the rogue and loner groups so wars and relations pointed at the wrong clans). Saves that already have this get fixed when loaded
+- Fixed a crash when another clan's deputy becomes leader
+- Fixed a crash when an affair led to kits
+- Fixed the affair screen crashing with some favorite colors, or with a cat you had no relationship with yet
+- Fixed the buttons in your tab getting stuck on screen after leaving the profile
+- Fixed the camp crashing after a new cat had to be remade because its genes came out sterile or lethal (the old one was left behind on the Clan list)
+- Fixed a crash when a clan's relations with another clan hit 0
+- Fixed a crash when looking at another clan's camp (and your own camp on some of the LifeGen camp backgrounds)
+- Fixed a crash with injury histories from interactions
+- Saves where a cat's parent, mate or mentor was deleted from the save don't crash anymore when loading, the broken link just gets removed
+- Revived cats keep their relationships (before, a cat that died and came back lost every relationship they had)
+- Fixed murdering any cat taking a life from your Clan's leader
+- Saves whose leader, deputy or medicine cat is missing from the save load instead of failing with "There was an error loading the clan.json". The role is just left empty
+- Fixed a crash when an apprentice's mentor is missing from the save
+- Fixed your cat disappearing (and their profile crashing) after leaving "customize new life" early, and the kits you didn't pick staying in the save
+- Fixed your cat becoming an apprentice at 5 moons
+- Fixed outsiders in a rogue group, loner group or household your cat isn't part of stopping aging
+- Fixed your healer, healer apprentice and queen's apprentice ceremonies (and healer mate events) never showing up
+- Fixed a crash when your cat is a healer and gets caught after a murder, or gets an apprentice
+- Fixed not being able to pick the last cats in the top row on the murder screen (an invisible text box was in the way)
+- Fixed the other Clans' cats never dying from events (or getting hurt or sick from them), which made those Clans keep growing in multi clan mode
+- Fixed accessories getting stuck on a cat's profile after closing the accessories tab
+- Fixed flirting giving rejection lines to cats that like you (the check for it never actually worked)
+- Predict offspring always lists a cat's mates
+- The have affair button doesn't crash anymore if one of your mates is missing from the save
+- Fixed a crash while talking to a cat when one of the typing sounds couldn't be loaded
+- Fixed a crash during the moon in classic mode (it looked for a fresh-kill pile, which classic mode doesn't have)
+- The relationships tab on the events screen only shows the Clan picked in the dropdown, like the other tabs (it was showing every Clan's chats)
+- Fixed a crash when going to the Moonplace after another Clan's medicine cat faded or died (or after loading a different Clan)
+- Fixed backstories that name another Clan (like a cat sent to spy on your Clan) showing "o_" and your own Clan's name instead of the other Clan
+- Fixed leaders listing their own leader name (sometimes more than once) under "Previous names"
+- Fixed your cat's camp showing every other Clan's cats (with their leaders and deputies) after joining another Clan in multi clan mode
+- In multi clan mode the other Clans' own healers come to the Moonplace, instead of new healers being made and added to those Clans every half-moon
+- Fixed a crash opening the Cats screen after your cat came back to the Clan (or died) while it still remembered your cat's old group
+- Fixed a crash during the moon when a cat's mate isn't in the game anymore
+- Fixed healers the Moonplace made for the other Clans being deleted when going back to the main menu (which left their mates pointing at nobody). Saves that already have them keep them
+- Fixed an answer staying stuck on the talk screen when two answers lead to the same reply (like "Kits and elders eat first")
+- Your cat's parent who brings you to the Clan from outside has a backstory saying so (it was Clanborn), and parents made when a new Clan starts are Clan founders like everyone else
+- Cats who joined the Clan from outside no longer keep the backstory for still living as a kittypet, loner or rogue ("lives a comfortable life with her housefolk")
+- Your cat living in another Clan sees that Clan's camp, not your old Clan's
+- Backstories that name a cat who traveled with them ("was joined by ... on their travels") name one of their clanmates, not a random cat from anywhere (like another Clan's founder)
+- Fixed not being able to patrol with another Clan's cats in multi clan mode (no cats showed up to pick)
+- Fixed accessories cats get from events (and collars new kittypets arrive with) not showing on the cat
+- Murdering a leader: they usually only lose one life (the chance to take all of them goes up as they lose lives), and a leader who survives wakes up and very likely names you as the attacker
+- Fixed murdering another Clan's leader taking lives from your Clan's leader instead of theirs (which also made it always take all of their lives)
+- A cat from another Clan who's hired to kill someone in exchange for a place in your Clan no longer gets an "exiled from their old Clan" backstory (they left by choice), and the victim's history says "a cat hired by" instead of "a rogue hired by"
+- Fixed the game crashing on the first moon skip with "Use modded litters" on (your cat counted as a kit before they were born)
+- Fixed "request an apprentice" giving your cat apprentices from other Clans (or of the wrong role, like a healer apprentice for a warrior)
+- Fixed patrol rewards for the extra cats on a patrol (like the flower crowns from the group dates) not being given
+- The parents made up for your cat's birth (outsiders, or birth parents who died) now have genes that could actually have made your cat, so your cat can't have a color or trait neither parent could pass down
+- Fixed a random crash during the moon when a cat who left your Clan to become a loner, rogue or kittypet dies
+- Fixed cats showing ERROR in the custom cat maker when the tint or white patches tint was set to "none"

@@ -24,6 +24,9 @@ class TagEnum(Enum):
     kit_manipulated = "kit_manipulated"
     romance = "romance"
     adoption = "adoption"
+    tnr = "tnr"
+    not_singleclan = "not_singleclan"
+    not_multiclan = "not_multiclan"
 
 
 class Tag(RootModel):

@@ -1,0 +1,21 @@
+{
+    "spritesheet": "acc_aliveInsect",
+    "sprite_list": [
+        {
+            "BROWN SNAIL": "body",
+            "RED SNAIL": "body",
+            "WORM": "body",
+            "BLUE SNAIL": "body",
+            "ZEBRA ISOPOD": "body",
+            "DUCKY ISOPOD": "body",
+            "DAIRY COW ISOPOD": "body",
+            "BEETLEJUICE ISOPOD": "body",
+            "BEE": "body",
+            "RED LADYBUG": "body"
+        },
+        {
+            "ORANGE LADYBUG": "body",
+            "YELLOW LADYBUG": "body"
+        }
+    ]
+}

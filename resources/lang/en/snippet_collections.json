@@ -146,7 +146,7 @@
     },
     "smell": {
       "general": [
-        ["the smell of the medicine cat den"],
+        ["the smell of the healer den"],
         ["the scent of catmint"],
         ["the scent of another Clan"],
         ["the scent of someone long dead"],
@@ -719,7 +719,7 @@
 
     ],
     "mountainous": [
-      ["The Eagle Who Became a Cat", "The She-cat Who Traded Her Voice", "The Cat Who Flew", "The Cat Who Carried The Sun",
+      ["The Eagle Who Became a Cat", "The Molly Who Traded Her Voice", "The Cat Who Flew", "The Cat Who Carried The Sun",
       "The Cats Made of Light", "The Cat Who Moved The Mountains", "The Cats Made of Shadow"],
       ["The Mountain's Shadow"],
       ["The Hummingbird's Feather"],

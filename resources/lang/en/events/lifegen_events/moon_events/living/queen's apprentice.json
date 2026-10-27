@@ -1,0 +1,732 @@
+{
+    "general1": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "littermates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "Your training has kept both of you busy, but you and r_c:0 schedule some much-needed sibling time."
+    },
+    "general2": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "kitten"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You catch a kit bullying r_c:0, and step in to protect r_c:0."
+    },
+    "general3": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You toss a pebble across the clearing and laugh as the kits run after it."
+    },
+    "general4": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You spend the day coming up with new lullabies to sing to the kits."
+    },
+    "general5": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "mentor/app"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You manage to finally get a kit to fall asleep, and r_c:0's eyes gleam with contented pride."
+    },
+    "general6": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "mentor/app"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You spend the day with r_c:0, making up lullabies and preparing sticks and feathers for potential future kits."
+    },
+    "general7": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "A kit sees you lay down the moss that you've been out collecting for the nursery and completely tears it apart while playing. Learning to keep your temper is part of the queen's role."
+    },
+    "general8": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "A kit refuses to listen to you because 'you're not a real queen yet'. No matter what you try, they turn their nose at you. You have to grit your teeth and tell yourself that they don't know better."
+    },
+    "general9": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "kitten"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 has picked up a strange food habit that you can't help but cringe from. Unluckily for you, r_c:0 noticed and is now doing it more often. Yay."
+    },
+    "general10": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "kitten"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You have a growing suspicion that r_c:0 is purposefully trying to peeve you off."
+    },
+    "general11": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You're quickly learning that as a queen, the moons never feel the same. Something crazy is always happening, whether there's kittens in the nursery or not."
+    },
+    "general12": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "kitten"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You're so tired from playing with r_c:0, but {PRONOUN/r_c:0/subject} {VERB/r_c:0/don't/doesn't} seem to realize... or care."
+    },
+    "general13": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You wonder what your suffix will be when you graduate."
+    },
+    "general14": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "There is still so much to learn, but you have very little time to do so. It's overwhelming."
+    },
+    "general15": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "If you have learned anything from being a queen's apprentice, it's that patience goes a long way. Though, you're finding that you're running out of patience..."
+    },
+    "general16": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "siblings"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 visits you in the nursery, but {PRONOUN/r_c:0/subject} {VERB/r_c:0/seem/seems} to cause a little more trouble than necessary."
+    },
+    "general17": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "parent/child"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 seems a little too relieved that you were given a role specific to the camp."
+    },
+    "cool18": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "cool"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "warrior"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "y_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "max_like_-15"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "With all the respect you can muster, you do not judge r_c:0 as {PRONOUN/r_c:0/subject} {VERB/r_c:0/walk/walks} through the camp covered in thorns. And you <i>totally</i> don't whisper to the kittens that r_c:0 turned into a porcupine overnight. Totally not."
+    },
+    "cool19": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "cool"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "queen"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "The kittens have been spreading rumors in the nursery, and r_c:0 asks you if you know who is responsible. With a smooth lie, you're able to rid yourself of {PRONOUN/r_c:0/poss} questioning. Phew! You gotta tell the kittens to be more careful!"
+    },
+    "cool20": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "cool"
+                ]
+            },
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "mentor/app"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You boast to r_c:0 about how the kittens prefer you as their caregiver, and it's not even that hard!"
+    },
+    "introspective21": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "introspective"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You learned a lot about kittens. One, they never comply with nap time. Two, none of them know what 'alone time' means. And three, they're unnecessarily mean."
+    },
+    "introspective22": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "introspective"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "If one more kitten interrupts your attempts to decompress, you feel like you may just burst into tears."
+    },
+    "introspective23": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "introspective"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "medicine cat",
+                    "medicine cat apprentice"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "After a rough moon of watching over the kittens, you flee to r_c:0 to ask for herbs to help with your growing headache. Thankfully, r_c:0 pities you enough to spare a few."
+    },
+    "introspective24": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "introspective"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "kitten"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "There's pride in finally learning about a kitten enough to silently care for them. When r_c:0 seems to be having a bad day, all you need to do is let r_c:0 cling to you. The simplicity is amazing."
+    },
+    "introspective25": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "introspective"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "kitten"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 seems to be having a bad day. To attempt to calm {PRONOUN/r_c:0/poss} emotions, you invite {PRONOUN/r_c:0/object} to watch the clouds with you. Thankfully, your quiet observations of the clouds' shapes puts r_c:0 into a well-needed nap."
+    },
+    "introspective26": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "introspective"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "kitten"
+                ],
+                "cluster": [
+                    "assertive"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You feel distracted today. Staring off into space while in-charge of watching over the kittens is not a good idea, and you learn this brutally as r_c:0 pulls a dirty prank on you."
+    },
+    "introspective27": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "introspective"
+                ]
+            },
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "mentor/app"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You asked r_c:0 a lot of questions this moon. Hopefully r_c:0c doesn't mind it."
+    },
+    "neurotic28": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "neurotic"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            },
+            "r_c:1": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:1"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "mentor/app"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You overhear r_c:1 reviewing your progress with r_c:0, but can't make out enough to be sure what r_c:1 really thinks of you."
+    },
+    "neurotic29": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "neurotic"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You find the perfect spot to lie in the sun by yourself and watch the camp."
+    },
+    "neurotic30": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "neurotic"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "warrior"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 notices you sitting alone and invites you to eat with {PRONOUN/r_c:0/object}."
+    },
+    "neurotic31": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "neurotic"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "When r_c:0 tells you stories, you're comforted by the cats and places you recognize."
+    },
+    "neurotic32": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "neurotic"
+                ]
+            },
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "parent/child"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You wonder if you're living up to r_c:0's hopes and expectations."
+    },
+    "silly33": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "silly"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "warrior"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "y_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "max_like_-15"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "With all the respect you can muster, you do not judge r_c:0 as {PRONOUN/r_c:0/subject} {VERB/r_c:0/walk/walks} through the camp covered in thorns. And you <i>totally</i> don't whisper to the kittens that r_c:0 turned into a porcupine overnight. Totally not."
+    },
+    "unlawful34": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "unlawful"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "kitten"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You secretly teach r_c:0 some simple battle moves. It doesn't hurt to get a head start on training."
+    },
+    "unlawful35": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "unlawful"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You think about setting up some traps behind the nursery to catch any predators who'd attempt to get into the den."
+    },
+    "unlawful36": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "unlawful"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "kitten"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You take r_c:0 just outside of camp after {PRONOUN/r_c:0/subject} promise not to tell anycat."
+    },
+    "rare37": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "rare"
+        ],
+        "event": "After making a mistake that almost injures one of the kits, you begin to wonder if the path of a queen's apprentice is truly the right choice."
+    },
+    "rare38": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "kitten"
+                ]
+            },
+            "r_c:1": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "y_c"
+                ],
+                "cats_to": [
+                    "r_c:1"
+                ],
+                "relationship": [
+                    "min_romance_20",
+                    "not_mates"
+                ]
+            }
+        ],
+        "types": [
+            "rare"
+        ],
+        "event": "r_c:0 has found out about your feelings toward r_c:1, and the mischievous look in {PRONOUN/r_c:0/poss} eye has you unnerved. What {VERB/r_c:0/are/is} {PRONOUN/r_c:0/subject} planning?"
+    },
+    "shunned39": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "No one trusts you around the kits anymore."
+    },
+    "shunned40": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "Kits shrink away from you when you approach them."
+    },
+    "shunned41": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "The stories you once told kits to scare them into staying in camp are now told about you."
+    }
+}

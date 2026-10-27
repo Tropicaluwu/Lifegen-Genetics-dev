@@ -11,6 +11,8 @@ class Skills(Enum):
     RUNNER = "RUNNER"
     CLIMBER = "CLIMBER"
     SWIMMER = "SWIMMER"
+    DIGGER = "DIGGER"
+    STEALTH = "STEALTH"
     SPEAKER = "SPEAKER"
     MEDIATOR = "MEDIATOR"
     CLEVER = "CLEVER"
@@ -28,6 +30,29 @@ class Skills(Enum):
     CLAIRVOYANT = "CLAIRVOYANT"
     PROPHET = "PROPHET"
     GHOST = "GHOST"
+
+    # LG
+    EXPLORER = "EXPLORER"
+    TRACKER = "TRACKER"
+    ARTISTAN = "ARTISTAN"
+    GUARDIAN = "GUARDIAN"
+    TUNNELER = "TUNNELER"
+    NAVIGATOR = "NAVIGATOR"
+    SONG = "SONG"
+    GRACE = "GRACE"
+    CLEAN = "CLEAN"
+    INNOVATOR = "INNOVATOR"
+    COMFORTER = "COMFORTER"
+    MATCHMAKER = "MATCHMAKER"
+    THINKER = "THINKER"
+    COOPERATIVE = "COOPERATIVE"
+    SCHOLAR = "SCHOLAR"
+    TIME = "TIME"
+    TREASURE = "TREASURE"
+    FISHER = "FISHER"
+    LANGUAGE = "LANGUAGE"
+    SLEEPER = "SLEEPER"
+    GARDENER = "GARDENER"
 
     # these ones are NOT real skills! DO NOT USE THEM!!
     # they're just here so that the tests don't error out.

@@ -1,0 +1,67 @@
+{
+    "general1": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You linger around the Clan border, but flee when you hear a patrol."
+    },
+    "general2": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You wonder if your former Clanmates really miss you."
+    },
+    "general3": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "As you tuck into your nest for the night, you look up at Silverpelt and wonder if you'll ever make it there."
+    },
+    "general4": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You miss the warm seclusion of your previous Clan's dens as it rains yet again, drenching you as you fail to find coverage."
+    },
+    "shunned5": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "If you were to leave tonight, would you go unnoticed? Would the Clan search for you?"
+    },
+    "shunned6": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "A small part of you wishes r_c:0 would just get this over with and exile you already."
+    }
+}

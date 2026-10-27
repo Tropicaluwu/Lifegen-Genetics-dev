@@ -21,8 +21,9 @@ class RelationshipConstraints(unittest.TestCase):
     def test_siblings(self):
         # given
         parent = Cat()
-        cat_from = Cat(parent1=parent.ID)
-        cat_to = Cat(parent1=parent.ID)
+        parent2 = Cat()
+        cat_from = Cat(parent1=parent.ID, parent2=parent2.ID)
+        cat_to = Cat(parent1=parent.ID, parent2=parent2.ID)
         rel = Relationship(cat_from, cat_to, False, True)
 
         # then
@@ -340,14 +341,14 @@ class SingleInteractionCatConstraints(unittest.TestCase):
         # when
         warrior_to_all = SingleInteraction("test")
         warrior_to_all.main_status_constraint = ["warrior"]
-        warrior_to_all.random_status_constraint = ["warrior", "medicine cat"]
+        warrior_to_all.random_status_constraint = ["warrior", "healer"]
 
         warrior_to_warrior = SingleInteraction("test")
         warrior_to_warrior.main_status_constraint = ["warrior"]
         warrior_to_warrior.random_status_constraint = ["warrior"]
 
         medicine_to_warrior = SingleInteraction("test")
-        medicine_to_warrior.main_status_constraint = ["medicine cat"]
+        medicine_to_warrior.main_status_constraint = ["healer"]
         medicine_to_warrior.random_status_constraint = ["warrior"]
 
         # then

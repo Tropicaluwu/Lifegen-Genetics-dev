@@ -1,0 +1,62 @@
+{
+    "general1": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "No one wants to listen to your stories, and you sit within your uncomfortable nest bored."
+    },
+    "general2": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "The kit's pranks are getting more concerning by the day, and you can't help but wonder what they're being taught."
+    },
+    "general3": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You express some concerns to the Dark Forest leader, but they turn their tail away."
+    },
+    "general4": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You offer some advice to the Dark Forest medicine cat."
+    },
+    "general5": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "The fresh kill pile is getting smaller and yet with all your moons with experience, you're at a loss for what to do."
+    },
+    "general6": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You offer to show a Dark Forest apprentice some battle moves you knew back in your prime, but they cruelly laugh you off."
+    }
+}

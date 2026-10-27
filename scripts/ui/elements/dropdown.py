@@ -1,4 +1,6 @@
 import pygame
+import i18n
+from typing import Optional, Dict
 from pygame_gui.core import UIContainer
 from pygame_gui.core.gui_type_hints import RectLike
 from pygame_gui.core.interfaces import IUIManagerInterface
@@ -33,6 +35,10 @@ class UIDropDown(UIDropDownContainer):
         child_trigger_close: bool = True,
         starting_selection: list = None,
         open_on_hover: bool = False,
+
+        # LG
+        your_cat=None,
+        clan_name=""
     ):
         """
         Class to handle the creation and management of non-scrolling dropdowns. It's recommended to use the on_use()
@@ -64,6 +70,10 @@ class UIDropDown(UIDropDownContainer):
         self.disable_selection = disable_selection
         self.parent_text = parent_text
         self.parent_reflect_selection = parent_reflect_selection
+
+        # LG
+        self.your_cat = your_cat
+        self.clan_name = clan_name
 
         super().__init__(
             relative_rect=ui_scale(relative_rect.copy()),
@@ -132,11 +142,19 @@ class UIDropDown(UIDropDownContainer):
         self.manager = manager
 
         for child in item_list:
+            # LG
+            # display text change for your_cat's group
+            display_text = i18n.t(
+                child,
+                your_group=your_cat.status.get_group_heading_text() if your_cat else "",
+                name=clan_name
+                )
+
             y_pos = -2 if prev_element else 0
 
             self.child_button_dicts[child] = UISurfaceImageButton(
                 ui_scale(pygame.Rect((0, y_pos), self.child_dimensions)),
-                child,
+                display_text,
                 get_button_dict(self.child_style, self.child_dimensions),
                 manager=manager,
                 object_id=f"@buttonstyles_{self.child_style.value}",
@@ -155,6 +173,9 @@ class UIDropDown(UIDropDownContainer):
                 self.parent_button.set_text(starting_selection[0])
         self.close()
 
+    def set_text(self, text: str, *, text_kwargs: Optional[Dict[str, str]] = None):
+        self.parent_button.set_text(text, text_kwargs=text_kwargs)
+
     def new_item_list(self, item_list):
         """
         Replace the old item_list with a new one. This kills and then rebuilds the child buttons.
@@ -167,11 +188,21 @@ class UIDropDown(UIDropDownContainer):
 
         prev_element = None
         for child in item_list:
+            # LG
+            # display text change for your_cat's group
+            display_text = i18n.t(
+                child,
+                your_group=self.your_cat.status.get_group_heading_text()
+                if self.your_cat
+                else "",
+                name=self.clan_name,
+            )
+
             y_pos = -2 if prev_element else 0
 
             self.child_button_dicts[child] = UISurfaceImageButton(
                 ui_scale(pygame.Rect((0, y_pos), self.child_dimensions)),
-                child,
+                display_text,
                 get_button_dict(self.child_style, self.child_dimensions),
                 manager=self.manager,
                 object_id=f"@buttonstyles_{self.child_style.value}",

@@ -526,5 +526,6 @@ class FreshkillManagementWindow(GameWindow):
         switch_clan_setting(setting)
 
     def kill(self):
-        self.feed_view_elements["cat_list"].cache_clear()
+        if "cat_list" in self.feed_view_elements:
+            self.feed_view_elements["cat_list"].cache_clear()
         super().kill()

@@ -27,7 +27,7 @@ def validate_nc_status(value: str) -> str:
     ]
     _, status_str = value.split(":")
 
-    if status_str not in statuses:
+    if status_str.strip() not in statuses:
         raise ValueError(f"Status {status_str} in {value} is invalid!")
     return value
 
@@ -43,10 +43,11 @@ def validate_nc_age(value: str) -> str:
         "senior",
         "mate",
         "has_kits",
+        "match"
     ]
     _, age_str = value.split(":")
 
-    if age_str not in ages:
+    if age_str.strip() not in ages:
         raise ValueError(f"Age {age_str} in {value} is invalid!")
     return value
 
@@ -67,6 +68,9 @@ class NewCatTag(Enum):
     unknown = "unknown"
     litter = "litter"
     dead = "dead"
+    change_clan = "change_clan"
+    change_clan_rev = "change_clan_rev"
+    exiled = "exiled"
 
 
 class NewCat(RootModel):
@@ -89,7 +93,11 @@ class NewCat(RootModel):
                 AfterValidator(validate_nc_backstories),
             ],
             Annotated[str, StringConstraints(pattern=r"^parent:([,0-9]+)$")],
+            Annotated[str, StringConstraints(pattern=r"^sibling:([,0-9]+)$")],
             Annotated[str, StringConstraints(pattern=r"^adoptive:([_,0-9a-zA-Z]+)$")],
             Annotated[str, StringConstraints(pattern=r"^mate:([_,0-9a-zA-Z]+)$")],
+
+            # LG
+            Annotated[str, StringConstraints(pattern=r"^residence:(.+)$")],
         ]
     ]

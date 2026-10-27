@@ -179,8 +179,8 @@ class SettingsScreen(Screens):
                 return
             elif event.ui_element == self.language_button:
                 self.open_lang_settings()
-            if self.sub_menu in ("general", "relation", "language"):
-                self.handle_checkbox_events(event)
+            # if self.sub_menu in ("general", "relation", "language"):
+            self.handle_checkbox_events(event)
 
         elif event.type == pygame.KEYDOWN and game_setting_get("keybinds"):
             if event.key == pygame.K_ESCAPE:
@@ -219,6 +219,7 @@ class SettingsScreen(Screens):
                     self.settings_changed = True
                     self.update_save_button()
 
+                    
                     if (
                         self.sub_menu == "general"
                         and event.ui_element is self.checkboxes["dark mode"]
@@ -543,6 +544,31 @@ class SettingsScreen(Screens):
                 "left_target": self.volume_elements["sound_volume_slider"],
             },
         )
+
+        # LG
+        # this checkbox is done manually
+        self.volume_elements["typing_sounds_text"] = pygame_gui.elements.UITextBox(
+            "settings.dialogue_typing_sound",
+            ui_scale(pygame.Rect((-18, 40), (180, 35))),
+            object_id=get_text_box_theme("#text_box_30_horizcenter"),
+            manager=MANAGER,
+            anchors={
+                "top_target": self.volume_elements["sound_volume_indicator"],
+                "centerx": "centerx"
+            },
+        )
+        self.checkboxes["dialogue_typing_sound"] = UICheckbox(
+                position=(20, 42),
+                container=None,
+                tool_tip_text="settings.dialogue_typing_sound_tooltip",
+                anchors={
+                    "top_target": self.volume_elements["sound_volume_indicator"],
+                    "left_target": self.volume_elements["typing_sounds_text"],
+                },
+                check=game_setting_get("dialogue_typing_sound"),
+                manager=MANAGER,
+            )
+        # ---
 
     def update_ambiance_volume_indicator(self):
         self.volume_elements["ambiance_volume_indicator"].set_text(

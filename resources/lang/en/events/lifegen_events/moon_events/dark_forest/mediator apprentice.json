@@ -1,0 +1,22 @@
+{
+    "general1": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "There's always arguments, all day long and everywhere possible. The worst part is that no one wants advice from a silly apprentice like you, who couldn't even finish their training."
+    },
+    "general2": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You wonder if there's any point in trying to solve the endless arguments here. Will anyone even get better?"
+    }
+}

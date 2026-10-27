@@ -1,0 +1,196 @@
+{
+    "cluster_addons": [
+        "upstanding", "brooding", "sweet", "cool", "unlawful", "silly", "neurotic", "introspective",
+        "unabashed", "assertive", "stable",
+        "bloodthirsty", "fierce", "bold", "daring", "confident", "arrogant", "competitive", "smug", "impulsive", "noisy",
+        "cold", "gloomy", "strict", "vengeful", "grumpy", "bullying", "secretive", "aloof", "stoic", "reserved",
+        "charismatic", "cunning", "charming", "manipulative", "leader-like", "passionate", "witty",
+        "flexible", "mellow", "flamboyant", "righteous", "ambitious", "responsible", "bossy", "know-it-all",
+        "loyal", "justified", "methodical", "lonesome", "calm", "wise", "thoughtful", "quiet", "daydreamer", "skittish", "fearless",
+        "nervous", "insecure", "careful", "meek", "cowardly", "emotional", "troublesome", "childish", "playful", "strange", "shy",
+        "attention-seeker", "rebellious", "bouncy", "energetic", "spontaneous", "faithful", "polite", "disciplined", 
+        "patient", "trusting", "compassionate", "loving", "oblivious", "sincere", "humble",
+        "shameless", "honest", "adventurous", "sneaky", "obsessive"
+    ],
+    "skill_addons": [
+        "teacher", "hunter", "fighter", "runner", "climber", "swimmer", "speaker",
+        "mediator", "clever", "insightful", "sense", "kit", "story", "lore",
+        "camp", "healer", "star", "omen", "dream", "clairvoyant", "prophet",
+        "ghost", "explorer", "tracker", "artistan", "guardian", "tunneler", "navigator",
+        "song", "grace", "clean", "innovator", "comforter", "matchmaker", "thinker",
+        "cooperative", "scholar", "time", "treasure", "fisher", "language", "sleeper", "dark"
+    ],
+    "rel_addons": [
+        "plike",
+        "plove",
+        "rlike",
+        "rlove",
+        "dislike",
+        "hate",
+        "neutral",
+        "trust",
+        "comfort",
+        "respect",
+        "jealous"
+    ],
+    "rel_addon_convert": {
+        "plike": "min_like_20",
+        "plove": "min_like_50",
+        "rlike": "min_romance_20",
+        "rlove": "min_romance_50",
+        "dislike": "max_like_-20",
+        "hate": "max_like_-50",
+        "neutral": "strangers",
+        "trust": "min_trust_20",
+        "comfort": "min_comfort_20",
+        "respect": "min_respect_20",
+        "jealous": "max_respect_-20"
+    },
+    "file_names": [
+        "old_dialogue"
+    ],
+    "abbrev_list": [
+        "r_c1",
+        "r_c2",
+        "r_c3",
+        "r_c4",
+        "r_c",
+        "d_c",
+        "d_n",
+        "r_a",
+        "r_m",
+        "y_p",
+        "tm_n",
+        "t_l",
+        "t_m",
+        "t_p",
+        "t_a",
+        "t_s",
+        "t_k",
+        "t_ka",
+        "t_kk",
+        "y_m",
+        "m_n",
+        "r_q",
+        "r_k",
+        "r_e",
+        "theircrush",
+        "yourcrush",
+        "r_w1",
+        "r_w2",
+        "r_w3",
+        "r_w",
+        "y_a",
+        "r_s",
+        "r_i",
+        "y_s",
+        "y_l",
+        "r_d",
+        "df_y_a",
+        "df_m_n",
+        "rsc_c",
+        "a_n",
+        "l_n",
+        "t_q",
+        "y_kk",
+        "y_k",
+        "rdf_c",
+        "fc_c",
+        "v_c",
+        "l_c",
+        "e_c",
+        "rsh_c",
+        "rsh_w",
+        "rsh_e",
+        "rsh_a",
+        "rsh_d",
+        "rsh_m",
+        "rsh_k",
+        "sh_d",
+        "sh_l",
+        "n_r1",
+        "n_r2",
+        "yg_c",
+        "tg_c"
+    ],
+    "rel_tags": {
+        "from_your_parent": "parent/child",
+        "from_adopted_parent": "adoptive parent/adoptive child",
+        "adopted_parent": "adoptive parent/adoptive child",
+        "half_sibling": "half-siblings",
+        "littermate": "littermates",
+        "siblings_mate": "sibling's mate/mate's sibling",
+        "cousin": "cousins",
+        "adopted_sibling": "adoptive siblings",
+        "parents_siblings": "parent's sibling/sibling's kit",
+        "from_mentor": "mentor/app",
+        "from_df_mentor": "df mentor/df app",
+        "from_your_kit": "child/parent",
+        "from_your_apprentice": "app/mentor",
+        "from_df_apprentice": "df app/df mentor",
+        "from_mate": "mates",
+        "from_parent": "parent/child",
+        "from_kit": "child/parent",
+        "sibling": "siblings",
+        "from_adopted_kit": "adoptive child/adoptive parent",
+        "non-mates": "non-mates",
+        "neutral": "strangers",
+        "they_grandparent": "grandparent/grandchild",
+        "from_your_adopted_kit": "adoptive child/adoptive parent",
+        "grievingthem": "dead/grieving",
+        "grievingyou": "grieving/dead",
+        "murderedthem": "victim/murderer",
+        "murderedyou": "murderer/victim",
+        "littermates": "littermates",
+        "non-related": "non-related",
+        "they_grandchild": "grandchild/grandparent"
+    },
+    "murder_tag_convert": {
+        "accomplice": {
+            "accomplice": {
+                "cat": "t_c"
+            }
+        },
+        "accomplice_agreed": {
+            "accomplice": {
+                "success": true
+            }
+        },
+        "accomplice_refused": {
+            "accomplice": {
+                "success": false
+            }
+        },
+        "not_accomplice": {
+            "accomplice": {
+                "cat": "not-t_c"
+            }
+        },
+        "murder_victim": {
+            "victim": {
+                "cat": "t_c"
+            }
+        },
+        "not_murder_victim": {
+            "victim": {
+                "cat": "not-t_c"
+            }
+        },
+        "murder_success": {
+            "victim": {
+                "success": true
+            }
+        },
+        "murder_fail": {
+            "victim": {
+                "success": false
+            }
+        },
+        "murder_discovered": {
+            "discovered": true
+        },
+        "murder_not_discovered": {
+            "discovered": false
+        }
+    }
+}

@@ -1,0 +1,56 @@
+{
+    "general1": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "medicine cat",
+                    "medicine cat apprentice"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You stand over the shoulder of r_c:0 as {PRONOUN/r_c:0/subject} {VERB/r_c:0/tend/tends} to a tricky patient. Your ghostly paws can't help {PRONOUN/r_c:0/object} out, but you hope that the medicine cat's StarClan connection is strong enough to sense your support."
+    },
+    "general2": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "With no injuries or illnesses to treat, you spend your days watching over the medical dramas of c_n."
+    },
+    "stable3": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "stable"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You ponder the need to practice your skills given your circumstances."
+    },
+    "stable4": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "stable"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You help a patch of herbs grow with a single touch of your blessed starry paw."
+    }
+}

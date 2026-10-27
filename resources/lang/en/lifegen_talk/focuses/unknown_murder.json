@@ -1,0 +1,4494 @@
+{
+    "unkmurder_J1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ],
+                "rank": [
+                    "not_leader",
+                    "not_deputy"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "cool",
+                    "brooding",
+                    "silly"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "rank": [
+                    "not_leader",
+                    "not_deputy"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "warrior"
+                ]
+            },
+            "r_c:1": {
+                "rank": [
+                    "warrior"
+                ],
+                "cluster": [
+                    "neurotic"
+                ]
+            },
+            "r_c:3": {
+                "focus_cat": true
+            },
+            "r_c:2": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_trust_20"
+                ]
+            },
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "max_like_-20"
+                ]
+            },
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "max_like_-20"
+                ]
+            }
+        ],
+        "intro": [
+            "Who do you think did it?",
+            "Come on, you have to have a guess."
+        ],
+        "intro_choices": {
+            "choice1": {
+                "text": "I don't know.",
+                "next_scene": "idontknow"
+            },
+            "choice2": {
+                "text": "r_c:0.",
+                "next_scene": "dislike_r_w1"
+            },
+            "choice3": {
+                "text": "r_c:1.",
+                "next_scene": "r_w2_neurotic"
+            },
+            "choice4": {
+                "text": "r_c:2.",
+                "next_scene": "l_n"
+            }
+        },
+        "idontknow": [
+            "Fine. Keep your secrets.",
+            "I have my eye on r_c:0, personally... But don't tell {PRONOUN/r_c:0/object} I said that, alright?"
+        ],
+        "dislike_r_w1": [
+            "[t_c's eyes widen.]",
+            "See, I was thinking the same thing... {PRONOUN/r_c:0/subject/CAP}{VERB/r_c:0/'re/'s} weird, right?",
+            "Let's keep an eye on {PRONOUN/r_c:0/object}, okay? It could be one of us next..."
+        ],
+        "r_w2_neurotic": [
+            "[t_c almost laughs.]",
+            "r_c:1? Why?",
+            "That cat jumps every time {PRONOUN/r_c:1/subject} {VERB/r_c:1/hear/hears} a woodpecker. And you think {PRONOUN/r_c:1/subject} killed r_c:3?",
+            "Hm... now that you think about it, maybe that anxiety is all just an act... Oh, maybe {PRONOUN/r_c:1/subject}{VERB/r_c:1/'ve/'s} had us fooled this whole time!",
+            "[t_c seems to be having a bit too much fun with this...]"
+        ],
+        "l_n": [
+            "Whoa! y_c, lower your voice!",
+            "[t_c whips around, in the least inconspicuous way possible, to see if the leader was within earshot. It appears that {PRONOUN/r_c:2/subject}{VERB/r_c:2/'re/'s} not even in camp.]",
+            "You need to be more careful, y_c. You can't just throw out an accusation like that.",
+            "[But... {VERB/t_c/aren't/isn't} {PRONOUN/t_c/subject} the one that asked?!]"
+        ]
+    },
+    "unkmurder_focus_SQ1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "neurotic"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true
+            },
+            "r_c:1": {
+                "focus_cat": true
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_comfort_15",
+                    "min_like_20"
+                ]
+            },
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            }
+        ],
+        "intro": [
+            "[t_c looks exhausted. {PRONOUN/t_c/subject/CAP} {VERB/t_c/keep/keeps} nodding off, then jolting back awake. You offer to take {PRONOUN/t_c/poss} patrols today so {PRONOUN/t_c/subject} can get some sleep.]",
+            "Thanks for the offer, but I don't think it'll help. I've been having trouble sleeping ever since r_c:0... you know.",
+            "My nightmares have gotten pretty bad recently. Last night I had one about r_c:1's murderer coming after me. I kept screaming, but no one listened...",
+            "Sorry. You don't want to hear about that. I'll be fine."
+        ]
+    },
+    "unkmurder_focus_SQ2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "neurotic"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_trust_15",
+                    "min_like_30"
+                ]
+            },
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "max_like_-20"
+                ]
+            }
+        ],
+        "intro": [
+            "Cats know that I didn't get along with r_c:0, right? But do you think any of them believe I was the one who... you know... killed {PRONOUN/r_c:0/object}?",
+            "I feel like everycat's been whispering around me a lot recently, and I'm kind of scared. I swear I didn't... I swear I would never..."
+        ]
+    },
+    "unkmurder_focus_SQ3": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "neurotic"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            },
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "min_like_50"
+                ]
+            }
+        ],
+        "intro": [
+            "I'm supposed to help clean out r_c:0's nest today, but I really don't want to.",
+            "It's not just that I don't want to see it gone... what if there's some kind of clue to what happened to {PRONOUN/r_c:0/object} in {PRONOUN/r_c:0/poss} nest, and we don't notice it, and we throw it out?",
+            "Wouldn't it be safer to wait? Just a little longer?"
+        ]
+    },
+    "unkmurder_focus_SQ4": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "neurotic"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_trust_15",
+                    "min_like_20"
+                ]
+            }
+        ],
+        "intro": [
+            "r_c:0's death was an accident, right? It had to be. Or else it was a rogue, or someone from o_c_n.",
+            "I just really, really can't deal with the thought that it was one of us."
+        ]
+    },
+    "unkmurder_focus_SQ5": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "neurotic"
+                ],
+                "condition": [
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true
+            }
+        },
+        "intro": [
+            "[t_c hasn't spoken much since r_c:0's death. {PRONOUN/t_c/subject/CAP} {VERB/t_c/don't/doesn't} meet anyone's eyes and {PRONOUN/t_c/subject} {VERB/t_c/jump/jumps} away from other cats, as if {PRONOUN/t_c/poss} Clanmates are just waiting for an opportunity to turn on {PRONOUN/t_c/object}.]"
+        ]
+    },
+    "unkmurder_focus_SQ6": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "unlawful",
+                    "unabashed",
+                    "cool",
+                    "brooding"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "min_like_50"
+                ]
+            }
+        ],
+        "intro": [
+            "Whichever one of you killed r_c:0... get out of here tonight. Get <i>far</i> from here and never, never show your face again.",
+            "Because if you're still here when we find you out, I swear to StarClan...",
+            "...You'll wish that you ran."
+        ]
+    },
+    "unkmurder_focus_SQ7": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "cluster": [
+                    "assertive"
+                ]
+            },
+            "r_c:1": {
+                "focus_cat": true
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "max_like_-20"
+                ]
+            },
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:1"
+                ],
+                "relationship": [
+                    "max_like_-20"
+                ]
+            }
+        ],
+        "intro": [
+            "[r_c:0 loudly reminds a group of whispering cats that t_c never got along well with r_c:1.]",
+            "[t_c glares at {PRONOUN/r_c:0/object}, then wordlessly stalks away.]"
+        ]
+    },
+    "unkmurder_focus_SQ8": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true,
+                "cluster": [
+                    "neurotic"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_trust_15",
+                    "min_like_20"
+                ]
+            },
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            }
+        ],
+        "intro": [
+            "Maybe I'm imagining it, but I feel like r_c:0 was even more nervous than usual the day before {PRONOUN/r_c:0/subject} died.",
+            "Do you think {PRONOUN/r_c:0/subject} knew what was going to happen?"
+        ]
+    },
+    "unkmurder_focus_SQ9": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "neurotic"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true,
+                "cluster": [
+                    "neurotic"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            },
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            }
+        ],
+        "intro": [
+            "I never thought something like this would happen to r_c:0. {PRONOUN/r_c:0/subject/CAP} {VERB/r_c:0/were/was} so careful! {PRONOUN/r_c:0/subject/CAP} took every precaution!",
+            "If someone killed {PRONOUN/r_c:0/object} , what chance do the rest of us have?"
+        ]
+    },
+    "unkmurder_focus_SQ10": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "unlawful",
+                    "unabashed",
+                    "stable",
+                    "upstanding"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true,
+                "cluster": [
+                    "neurotic"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "min_like_50"
+                ]
+            }
+        ],
+        "intro": [
+            "I was trying to help r_c:0 be less... <i>scared</i> all the time! I was trying to convince {PRONOUN/r_c:0/object} that the world wasn't out to get {PRONOUN/r_c:0/object}, and that it was okay to let {PRONOUN/r_c:0/poss} guard down!",
+            "[t_c digs {PRONOUN/t_c/poss} claws into the soil. {PRONOUN/t_c/subject/CAP} {VERB/t_c/glare/glares} at the cats clustered nearby.]",
+            "I will <i>never</i> forgive whichever of you proved to r_c:0 that {PRONOUN/r_c:0/subject} {VERB/r_c:0/were/was} right to be scared."
+        ]
+    },
+    "unkmurder_focus_SQ11": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "stable",
+                    "introspective",
+                    "upstanding"
+                ],
+                "min_max_faith": [
+                    0,
+                    9
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            },
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            }
+        ],
+        "intro": [
+            "StarClan will guide us to r_c:0's murderer. They haven't led us wrong before.",
+            "[t_c gazes upwards. The stars glimmer, but stay silent for now.]"
+        ]
+    },
+    "unkmurder_focus_SQ12": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "introspective"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "min_max_faith": [
+                    0,
+                    9
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            },
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "strangers"
+                ]
+            }
+        ],
+        "intro": [
+            "I'm trying to untangle this... if StarClan let r_c:0 die, was there a reason?",
+            "I'm sure they'll tell us more as soon as they can, but for now I can't help but wonder."
+        ]
+    },
+    "unkmurder_focus_SQ13": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "min_max_faith": [
+                    -9,
+                    0
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            },
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "min_like_50"
+                ]
+            }
+        ],
+        "intro": [
+            "I don't get how cats still believe StarClan cares, or that they're even there, when their precious stars haven't said anything about what happened to r_c:0.",
+            "[t_c glares at the sky. Clouds languish in front of the stars.]",
+            "r_c:0 was <i>murdered</i>. If that's not enough to break StarClan's silence, then nothing is going to."
+        ]
+    },
+    "unkmurder_focus_SQ14": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "min_max_faith": [
+                    -9,
+                    0
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true
+            },
+            "r_c:1": {
+                "focus_cat": true
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_trust_15",
+                    "min_like_20"
+                ]
+            },
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:1"
+                ],
+                "relationship": [
+                    "min_like_50"
+                ]
+            }
+        ],
+        "intro": [
+            "[The unusually clear night means that the stars are brighter than usual. You try to find a new one... one that might be r_c:0.]",
+            "[t_c scoffs and you look at {PRONOUN/t_c/object}, surprised, but {PRONOUN/t_c/subject} {VERB/t_c/aren't/isn't} watching you. {PRONOUN/t_c/subject/CAP}{VERB/t_c/'re/'s} looking at the stars.]",
+            "StarClan isn't going to help us, y_c. If we want to know what happened to r_c:1, we need to take matters into our own paws."
+        ]
+    },
+    "unkmurder_focus_SQ15": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true,
+                "cluster": [
+                    "assertive"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            },
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "min_like_50"
+                ]
+            }
+        ],
+        "intro": [
+            "r_c:0 had an 'awesome idea' {PRONOUN/r_c:0/subject} {VERB/r_c:0/were/was} going to tell me about. {PRONOUN/r_c:0/subject/CAP} said I was going to love it, and that it 'definitely wouldn't cause trouble like last time'.",
+            "I can't stand the fact that I'll never know what it was."
+        ]
+    },
+    "unkmurder_focus_SQ16": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "unlawful",
+                    "unabashed",
+                    "cool",
+                    "brooding"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true,
+                "cluster": [
+                    "introspective"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "max_like_-50"
+                ]
+            }
+        ],
+        "intro": [
+            "r_c:0 paid more attention to {PRONOUN/r_c:0/poss} own thoughts than {PRONOUN/r_c:0/poss} surroundings. Someone probably sauntered right up and killed {PRONOUN/r_c:0/object} without {PRONOUN/r_c:0/object} noticing.",
+            "[t_c snickers. No one joins in.]"
+        ]
+    },
+    "unkmurder_focus_SQ17": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true,
+                "cluster": [
+                    "silly"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            },
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "min_like_50"
+                ]
+            }
+        ],
+        "intro": [
+            "r_c:0 was joking around like usual the day before {PRONOUN/r_c:0/subject} died. {PRONOUN/r_c:0/subject/CAP} made some ridiculous pun, but I was busy and kind of brushed it off...",
+            "I wish I could remember what it was. I wish I'd said something back."
+        ]
+    },
+    "unkmurder_focus_SQ18": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "unlawful",
+                    "unabashed",
+                    "cool",
+                    "brooding",
+                    "upstanding"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true,
+                "cluster": [
+                    "unabashed"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            },
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "max_like_-20"
+                ]
+            }
+        ],
+        "intro": [
+            "Did r_c:0 call my fur scruffy the night before {PRONOUN/r_c:0/subject} died? Yes. Have I made comments about wanting to kill {PRONOUN/r_c:0/object}? Absolutely.",
+            "Did I <i>actually</i> murder r_c:0? One of our Clanmates? Absolutely not. If I see one more cat looking at me suspiciously...",
+            "[t_c stalks off, casting irritated looks across the camp.]"
+        ]
+    },
+    "unkmurder_focus_SQ19": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true,
+                "cluster": [
+                    "unlawful"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            },
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "max_like_-50"
+                ]
+            }
+        ],
+        "intro": [
+            "You know what? I'm going to say it. If r_c:0 was killed, it was probably because {PRONOUN/r_c:0/subject} {VERB/r_c:0/were/was} doing something {PRONOUN/r_c:0/subject} shouldn't have been.",
+            "I'd <i>easily</i> believe that {PRONOUN/r_c:0/subject} tried to hurt someone, and got killed in self-defense."
+        ]
+    },
+    "unkmurder_focus_SQ20": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "brooding"
+                ],
+                "age": [
+                    "adult",
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            }
+        ],
+        "intro": [
+            "[t_c coldly scans the small gathering of c_n cats, meeting everycat's eyes one by one.]",
+            "To whichever one of you murdered r_c:0, I hope you understand what you've done.",
+            "You've not only weakened this Clan by killing one of our own, but by causing so much suspicion and doubt.",
+            "This is unforgivable. And the truth <i>will</i> come to light."
+        ]
+    },
+    "unkmurder_focus_SQ21": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "stable",
+                    "upstanding"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "rank": [
+                    "deputy"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true
+            }
+        },
+        "intro": [
+            "We all need to be alert for a while.",
+            "No one should leave the camp alone, and for the next moon, I'm assigning cats to watch the camp at night.",
+            "What happened to r_c:0 won't happen to anyone else."
+        ]
+    },
+    "unkmurder_focus_SQ22": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true,
+                "cluster": [
+                    "cool"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_10"
+                ]
+            },
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "min_like_50"
+                ]
+            }
+        ],
+        "intro": [
+            "I just don't understand. r_c:0 could talk {PRONOUN/r_c:0/poss} way into anyone's heart, and out of any trouble.",
+            "{PRONOUN/r_c:0/subject/CAP} {VERB/r_c:0/were/was} so clever... so confident...",
+            "How could anyone hurt {PRONOUN/r_c:0/object}? <i>Why</i> would anyone hurt {PRONOUN/r_c:0/object}?!"
+        ]
+    },
+    "unkmurder_focus_SQ23": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "unabashed",
+                    "stable",
+                    "brooding",
+                    "upstanding"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true,
+                "cluster": [
+                    "cool"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            },
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "max_like_-20"
+                ]
+            }
+        ],
+        "intro": [
+            "r_c:0 was always too busy gossiping and posturing to do {PRONOUN/r_c:0/poss} job. It was honestly infuriating.",
+            "Don't look at me like that! Of <i>course</i> I didn't kill {PRONOUN/r_c:0/object}. I'm just saying, I understand why someone might."
+        ]
+    },
+    "unkmurder_focus_SQ24": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "neurotic"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            }
+        ],
+        "intro": [
+            "The worst thing about this is that we have no idea why someone killed r_c:0.",
+            "Was it a personal thing? Or do they want to take out c_n, one cat at a time?",
+            "...I'm keeping my guard up for now. You should, too."
+        ]
+    },
+    "unkmurder_focus_SQ25": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true
+            },
+            "r_c:1": {
+                "standing": [
+                    "shunned"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            },
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:1"
+                ],
+                "relationship": [
+                    "max_like_-20"
+                ]
+            }
+        ],
+        "intro": [
+            "Why are we even asking who r_c:0's murderer was? Isn't it obvious?",
+            "r_c:1 has killed before. Of course {PRONOUN/r_c:1/subject}'d kill again."
+        ]
+    },
+    "unkmurder_focus_SQ26": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true
+            },
+            "r_c:1": {
+                "standing": [
+                    "shunned"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:1"
+                ],
+                "relationship": [
+                    "min_like_50"
+                ]
+            }
+        ],
+        "intro": [
+            "Would everycat stop accusing r_c:1 of killing r_c:0? Just because {PRONOUN/r_c:1/subject} made a mistake in the past doesn't mean {PRONOUN/r_c:1/subject}{VERB/r_c:1/'re/'s} suddenly responsible for every mysterious death!",
+            "Leave {PRONOUN/r_c:1/object} alone and stop gossiping, for StarClan's sake!"
+        ]
+    },
+    "unkmurder_focus_SQ27": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "introspective"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true
+            },
+            "r_c:1": {
+                "standing": [
+                    "shunned"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:1"
+                ],
+                "relationship": [
+                    "strangers"
+                ]
+            }
+        ],
+        "intro": [
+            "I know this might seem like a stretch, but have you considered that someone might be trying to frame r_c:1 for r_c:0's murder?",
+            "Think about it: the real murderer probably knew we'd immediately be suspicious of r_c:1. They saw their chance to get rid of r_c:0 and escape blame, and they took it.",
+            "Just a thought. I wouldn't take anything at face value, right now."
+        ]
+    },
+    "unkmurder_focus_SQ28": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "medicine cat",
+                    "medicine cat apprentice"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "stable",
+                    "upstanding"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "deputy",
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "You have dangerous herbs in your den, right? Deathberries and the like?",
+            "Make sure they're somewhere that's hard to access for a bit. Maybe even hide them. I don't want to take any risks."
+        ]
+    },
+    "unkmurder_focus_SQ29": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "medicine cat",
+                    "medicine cat apprentice"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "neurotic"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "deputy",
+                    "leader"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true
+            }
+        },
+        "intro": [
+            "You keep deathberries and other dangerous herbs, right? I'm sorry, I don't want to tell you how to do your job, but maybe you should get rid of them for now...",
+            "Just until everything settles down, and we figure out what happened to r_c:0, and we know we're safe again."
+        ]
+    },
+    "unkmurder_focus_SQ30": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "neurotic"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "rank": [
+                    "mediator",
+                    "mediator apprentice"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            },
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            }
+        ],
+        "intro": [
+            "r_c:0... one of our Clanmates... was murdered...",
+            "[t_c sits with {PRONOUN/t_c/poss} back to a tree, watching the camp. {PRONOUN/t_c/subject/CAP} {VERB/t_c/sniffle/sniffles}.]",
+            "Isn't it my job to notice tensions and stop them before something bad happens?",
+            "I should've seen something. I should've been a good enough mediator to keep r_c:0 safe!"
+        ]
+    },
+    "unkmurder_focus_SQ31": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "neurotic"
+                ],
+                "min_max_faith": [
+                    0,
+                    9
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "rank": [
+                    "apprentice"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "medicine cat",
+                    "medicine cat apprentice"
+                ]
+            },
+            "r_c:1": {
+                "focus_cat": true
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            },
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "strangers"
+                ]
+            }
+        ],
+        "intro": [
+            "StarClan had to have seen what happened to r_c:1. I hope they tell r_c:0 about it soon.",
+            "Unless... what if r_c:0 was the one who... you know...",
+            "[t_c stares at the medicine den, tail twitching. When r_c:0 steps outside, blinking in the sunlight, t_c squeaks like a kit and scurries away."
+        ]
+    },
+    "unkmurder_focus_SQ32": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "neurotic"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "cluster": [
+                    "assertive"
+                ]
+            },
+            "r_c:1": {
+                "focus_cat": true
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            }
+        ],
+        "intro": [
+            "r_c:0's going around and questioning everycat about where they were the day r_c:1 died.",
+            "...That seems like a bad idea to me. I'm laying low for now. Don't draw too much attention to yourself either, okay?"
+        ]
+    },
+    "unkmurder_focus_SQ33": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "neurotic"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "backstory": [
+                    "formerlyakittypet"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            }
+        ],
+        "intro": [
+            "I'm seriously thinking about going back to being a kittypet, y_c.",
+            "It wasn't the greatest, but I've never heard of a kittypet killing another kittypet! And if you find a good Twoleg, they'll keep you safe...",
+            "I don't know. I don't think I'm actually brave enough to leave the Clan. I just don't know how long I can take this tension."
+        ]
+    },
+    "unkmurder_focus_SQ34": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "brooding",
+                    "introspective",
+                    "neurotic"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "backstory": [
+                    "formerlyaloner"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            }
+        ],
+        "intro": [
+            "One of the reasons I joined c_n was because I thought it'd be safer than living on my own.",
+            "It seems like I was wrong. Apparently it just lures cats like r_c:0 into a false sense of security so someone can kill them."
+        ]
+    },
+    "unkmurder_focus_SQ35": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "unlawful",
+                    "cool",
+                    "brooding",
+                    "upstanding"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "backstory": [
+                    "formerlyarogue"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            },
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            }
+        ],
+        "intro": [
+            "This is ridiculous. At least when rogues kill other cats, they're open about what they did.",
+            "r_c:0 doesn't deserve to have {PRONOUN/r_c:0/poss} death be a mystery."
+        ]
+    },
+    "unkmurder_focus_SQ36": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "unlawful",
+                    "brooding"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "max_like_-40"
+                ]
+            }
+        ],
+        "intro": [
+            "[t_c hisses in your ear.]",
+            "It was you, wasn't it? I saw your face when we first realized what happened to r_c:0. You didn't look nearly surprised enough.",
+            "No, I don't have proof, but the whole Clan knows how you feel about me. If I'm next, well...",
+            "...Let's just say that everycat will know it was you. And honestly, that might be worth dying for."
+        ]
+    },
+    "unkmurder_focus_SQ37": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "unlawful",
+                    "brooding"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "max_like_-30"
+                ]
+            }
+        ],
+        "intro": [
+            "I know it was you. I don't have proof yet, but I <i>will</i> soon.",
+            "Watch yourself."
+        ]
+    },
+    "unkmurder_focus_SQ38": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "unlawful"
+                ],
+                "condition": [
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            },
+            "r_c:1": {
+                "focus_cat": true
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "max_like_-20"
+                ]
+            },
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:1"
+                ],
+                "relationship": [
+                    "min_like_50"
+                ]
+            }
+        ],
+        "intro": [
+            "[t_c has been eying you all day. Any time you look over, {PRONOUN/t_c/subject}{VERB/t_c/'re/'s} fixated on you. {VERB/t_c/Are/Is} {PRONOUN/t_c/subject} sliding {PRONOUN/t_c/poss} claws in and out?]",
+            "[If {PRONOUN/t_c/subject} {VERB/t_c/figure/figures} out that you were the one to kill r_c:1, you're pretty sure {PRONOUN/t_c/subject}{VERB/t_c/'re/'s} the type to take action rather than wait for r_c:0 to intervene. You'll have to be careful.]"
+        ]
+    },
+    "unkmurder_focus_SQ39": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "adolescent"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "stable",
+                    "silly",
+                    "upstanding"
+                ],
+                "rank": [
+                    "apprentice"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "apprentice"
+                ]
+            },
+            "r_c:1": {},
+            "r_c:2": {
+                "focus_cat": true
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            },
+            {
+                "cats_from": [
+                    "r_c:1"
+                ],
+                "cats_to": [
+                    "t_c"
+                ],
+                "relationship": [
+                    "app/mentor"
+                ]
+            }
+        ],
+        "intro": [
+            "[t_c is practicing defensive moves over and over with r_c:0. When {PRONOUN/t_c/subject} {VERB/t_c/see/sees} you, {PRONOUN/t_c/subject} {VERB/t_c/call/calls} you over.]",
+            "Hey, do you want to practice with us? r_c:1 taught me a technique to get away if someone pins you down.",
+            "I think everycat should learn it, in case whoever killed r_c:2 tries anything else. Come on, I'll teach you!"
+        ]
+    },
+    "unkmurder_focus_SQ40": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "apprentice",
+                    "warrior"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "unabashed",
+                    "cool",
+                    "silly"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "apprentice"
+                ]
+            },
+            "r_c:0": {},
+            "r_c:1": {
+                "focus_cat": true
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            },
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "t_c"
+                ],
+                "relationship": [
+                    "app/mentor"
+                ]
+            },
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:1"
+                ],
+                "relationship": [
+                    "strangers"
+                ]
+            }
+        ],
+        "intro": [
+            "Of course I'm not saying it's good that r_c:1 got killed, but it means r_c:0's been teaching me some advanced fighting moves early.",
+            "Here, try to attack me! I'll show you!"
+        ]
+    },
+    "unkmurder_focus_SQ41": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "unabashed",
+                    "cool",
+                    "silly"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "rank": [
+                    "apprentice"
+                ]
+            },
+            "r_c:0": {},
+            "r_c:1": {
+                "focus_cat": true
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            },
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "t_c"
+                ],
+                "relationship": [
+                    "app/mentor"
+                ]
+            },
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:1"
+                ],
+                "relationship": [
+                    "strangers"
+                ]
+            }
+        ],
+        "intro": [
+            "r_c:0 tried to take me hunting this morning. {PRONOUN/r_c:0/subject/CAP} said it's important to keep the Clan well-fed, but I told {PRONOUN/r_c:0/object} that after what happened to r_c:1, I've gotta learn to fight so I can defend myself.",
+            "So we did that instead! It was fun."
+        ]
+    },
+    "unkmurder_focus_SQ42": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "neurotic"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "rank": [
+                    "warrior",
+                    "apprentice"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "warrior"
+                ]
+            },
+            "r_c:1": {
+                "rank": [
+                    "warrior"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_40"
+                ]
+            },
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "strangers"
+                ]
+            },
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:1"
+                ],
+                "relationship": [
+                    "min_trust_20"
+                ]
+            }
+        ],
+        "intro": [
+            "r_c:0 and I were supposed to hunt as a pair today, but I asked if r_c:1 could come too.",
+            "It's not that I don't trust {PRONOUN/r_c:0/object}! I just... I don't feel comfortable being alone with anyone right now.",
+            "I really hope I didn't hurt r_c:0's feelings."
+        ]
+    },
+    "unkmurder_focus_SQ43": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "neurotic"
+                ],
+                "age": [
+                    "adult"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_50"
+                ]
+            }
+        ],
+        "intro": [
+            "If anyone wants you to follow them somewhere, even if it's a cat you know, tell me first, okay?",
+            "[t_c licks you between the ears like normal, but you feel {PRONOUN/t_c/object}... shaking?]"
+        ]
+    },
+    "unkmurder_focus_SQ44": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "assertive",
+                    "unlawful",
+                    "unabashed",
+                    "cool",
+                    "brooding",
+                    "silly",
+                    "upstanding"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "unlawful",
+                    "unabashed",
+                    "cool",
+                    "brooding",
+                    "silly",
+                    "upstanding"
+                ],
+                "age": [
+                    "kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            }
+        ],
+        "intro": [
+            "[The adults seem more on edge than usual lately. Some of them seem weirdly distracted, and some of them seem super intense.]",
+            "[You and t_c make a game of getting as close as you can to anyone who you notice whispering. The more words you hear, the more points you win!]"
+        ]
+    },
+    "unkmurder_focus_SQ45": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "stable",
+                    "introspective",
+                    "neurotic"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_50"
+                ]
+            }
+        ],
+        "intro": [
+            "y_c, if you need to go anywhere alone, let me know, okay? We can go together, in case... well... you know.",
+            "I just don't want anything to happen to you."
+        ]
+    },
+    "unkmurder_focus_SQ46": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "neurotic"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true,
+                "cluster": [
+                    "upstanding"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_trust_15",
+                    "min_like_20"
+                ]
+            },
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "min_respect_20"
+                ]
+            }
+        ],
+        "intro": [
+            "I don't get it. r_c:0 was so... solid, I guess? Like... a constant. Like {PRONOUN/r_c:0/subject}'d always be here, looking out for the Clan.",
+            "But now {PRONOUN/r_c:0/subject}{VERB/r_c:0/'re/'s} gone, and that doesn't even feel possible, somehow, and...",
+            "I don't know what I'm saying. I just... who's going to take care of c_n like {PRONOUN/r_c:0/subject} used to?"
+        ]
+    },
+    "unkmurder_focus_SQ47": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "neurotic"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true,
+                "cluster": [
+                    "upstanding"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_trust_15",
+                    "min_like_20"
+                ]
+            },
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            }
+        ],
+        "intro": [
+            "r_c:0 was the sort who would do anything for c_n. It just makes me wonder... did {PRONOUN/r_c:0/subject} die protecting us from something?",
+            "Probably not, but that's all I can think about. I don't feel safe not knowing what exactly happened to {PRONOUN/r_c:0/object}."
+        ]
+    },
+    "unkmurder_focus_SQ48": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "neurotic"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true
+            },
+            "r_c:1": {
+                "rank": [
+                    "kitten"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_trust_15",
+                    "min_like_30"
+                ]
+            }
+        ],
+        "intro": [
+            "[t_c crouches in the shadow of a rock, watching the camp. {PRONOUN/t_c/subject/CAP} {VERB/t_c/tense/tenses} at your approach, but {VERB/t_c/relax/relaxes} when {PRONOUN/t_c/subject} {VERB/t_c/realize/realizes} it's you.]",
+            "Who do you think will be next? I want to believe that r_c:0's murder will be the last, but I just can't convince myself.",
+            "Do you think the murderer will go after the strongest of us, to weaken the Clan? Or maybe someone like r_c:1, because {PRONOUN/r_c:1/subject/CAP}{VERB/r_c:1/'re/'s} an easy target?",
+            "I'm so scared, y_c. Things are bad, but I think they'll only get worse."
+        ]
+    },
+    "unkmurder_focus_SQ49": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "neurotic"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "max_respect_15",
+                    "min_like_20"
+                ]
+            },
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "min_like_50"
+                ]
+            }
+        ],
+        "intro": [
+            "[Ever since r_c:0's death, t_c has been keeping {PRONOUN/t_c/poss} claws out. With how jumpy {PRONOUN/t_c/subject} {VERB/t_c/are/is}, you think it won't be long before {PRONOUN/t_c/subject} accidentally {VERB/t_c/hurt/hurts} someone.]",
+            "[You remind t_c to sheathe {PRONOUN/t_c/poss} claws. {PRONOUN/t_c/subject/CAP} {VERB/t_c/stare/stares} at {PRONOUN/t_c/poss} paws for a long moment, then slowly {VERB/t_c/shake/shakes} {PRONOUN/t_c/poss} head.]",
+            "I'm... I'm sorry, y_c. I'm keeping them out for now. If someone comes after me, I want to be ready to defend myself.",
+            "[{PRONOUN/t_c/subject/CAP} {VERB/t_c/scoot/scoots} away, looking apologetic. You make a note to be especially careful not to surprise {PRONOUN/t_c/object} for a while.]"
+        ]
+    },
+    "unkmurder_focus_SQ50": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "neurotic"
+                ],
+                "min_max_faith": [
+                    0,
+                    9
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "rank": [
+                    "medicine cat",
+                    "medicine cat apprentice"
+                ]
+            }
+        },
+        "intro": [
+            "[t_c fidgets with {PRONOUN/t_c/poss} paws beside the medicine den. {PRONOUN/t_c/subject/CAP}{VERB/t_c/'re/'s} watching everycat, but {VERB/t_c/are/is} {PRONOUN/t_c/subject} staring at you more?]",
+            "[After a bit of this, you ask what {PRONOUN/t_c/subject}{VERB/t_c/'re/'s} thinking about. {PRONOUN/t_c/subject/CAP} {VERB/t_c/jump/jumps}.]",
+            "Oh, uh, nothing much! I just... I think I might have had a vision from StarClan last night?",
+            "{PRONOUN/t_c/subject/CAP}{VERB/t_c/'re/'s} definitely averting {PRONOUN/t_c/poss} eyes. What {VERB/t_c/do/does} {PRONOUN/t_c/subject} know? Did StarClan reveal... no. They couldn't have.]",
+            "I'm just trying to figure out what it means, or if it means anything at all. Dreams are confusing!",
+            "[t_c gives you a weak smile and then goes back to looking away. You ask {PRONOUN/t_c/subject} for more details, but {PRONOUN/t_c/subject} just {VERB/t_c/shake/shakes} {PRONOUN/t_c/poss} head.]",
+            "[...You'll have to keep an eye on {PRONOUN/t_c/object}.]"
+        ]
+    },
+    "unkmurder_focus_SQ51": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "neurotic"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "min_max_faith": [
+                    0,
+                    9
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "rank": [
+                    "medicine cat",
+                    "medicine cat apprentice"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_comfort_15",
+                    "min_like_20"
+                ]
+            }
+        ],
+        "intro": [
+            "I haven't heard <i>anything</i> from StarClan about r_c:0's death. Shouldn't they have said something by now?",
+            "I feel like the whole Clan is waiting for me to get a sign. Every night I don't get one, I feel like I'm letting everycat down."
+        ]
+    },
+    "unknown_murder_J1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "stable",
+                    "neurotic",
+                    "upstanding"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            }
+        ],
+        "intro": [
+            "I can't believe r_c:0 is gone and we don't even know who killed {PRONOUN/r_c:0/object}...",
+            "The camp seems so empty now. And even worse, one of us is a murderer! How are we supposed to sleep at night?"
+        ]
+    },
+    "unknown_murder_J2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ],
+                "rank": [
+                    "not_leader",
+                    "not_deputy"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "stable",
+                    "cool",
+                    "brooding",
+                    "silly"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "rank": [
+                    "not_leader",
+                    "not_deputy"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "warrior"
+                ]
+            },
+            "r_c:1": {
+                "rank": [
+                    "warrior"
+                ],
+                "cluster": [
+                    "neurotic"
+                ]
+            },
+            "r_c:3": {
+                "focus_cat": true
+            },
+            "r_c:2": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_trust_20"
+                ]
+            },
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "max_like_-20"
+                ]
+            },
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "max_like_-20"
+                ]
+            }
+        ],
+        "intro": [
+            "Who do you think did it?",
+            "Come on, you have to have a guess."
+        ],
+        "intro_choices": {
+            "choice1": {
+                "text": "I don't know.",
+                "next_scene": "idontknow"
+            },
+            "choice2": {
+                "text": "r_c:0.",
+                "next_scene": "dislike_r_w1"
+            },
+            "choice3": {
+                "text": "r_c:1.",
+                "next_scene": "r_w2_neurotic"
+            },
+            "choice4": {
+                "text": "r_c:2.",
+                "next_scene": "l_n"
+            }
+        },
+        "idontknow": [
+            "Fine. Keep your secrets.",
+            "I have my eye on r_c:0, personally... But don't tell {PRONOUN/r_c:0/object} I said that, alright?"
+        ],
+        "dislike_r_w1": [
+            "[t_c's eyes widen.]",
+            "See, I was thinking the same thing... {PRONOUN/r_c:0/subject/CAP}{VERB/r_c:0/'re/'s} weird, right?",
+            "Let's keep an eye on {PRONOUN/r_c:0/object}, okay? It could be one of us next..."
+        ],
+        "r_w2_neurotic": [
+            "[t_c almost laughs.]",
+            "r_c:1? Why?",
+            "That cat jumps every time {PRONOUN/r_c:1/subject} {VERB/r_c:1/hear/hears} a woodpecker. And you think {PRONOUN/r_c:1/subject} killed r_c:3?",
+            "Hm... now that you think about it, maybe that anxiety is all just an act... Oh, maybe {PRONOUN/r_c:1/subject}{VERB/r_c:1/'ve/'s} had us fooled this whole time!",
+            "[t_c seems to be having a bit too much fun with this...]"
+        ],
+        "l_n": [
+            "Whoa! y_c, lower your voice!",
+            "[t_c whips around, in the least inconspicuous way possible, to see if the leader was within earshot. It appears that {PRONOUN/r_c:2/subject}{VERB/r_c:2/'re/'s} not even in camp.]",
+            "You need to be more careful, y_c. You can't just throw out an accusation like that.",
+            "[But... {VERB/t_c/aren't/isn't} {PRONOUN/t_c/subject} the one that asked?!]"
+        ]
+    },
+    "unknown_murder_J3": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "sweet",
+                    "silly"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "cool",
+                    "brooding"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "apprentice",
+                    "mediator apprentice"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_dislike_10",
+                    "max_like_30"
+                ]
+            },
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "strangers"
+                ]
+            }
+        ],
+        "intro": [
+            "Hey, y_c. Did you hear about the monster?",
+            "Yup. There's a monster in camp. It killed r_c:0. It might get you next.",
+            "Don't worry, though. I'll protect you... if you can sneak me some honey from the medicine den.",
+            "What? I don't work for free. Go on!",
+            "[You turn to run for the medicine den. A little bit of stolen honey is a small price to pay for protection from the monster!]"
+        ]
+    },
+    "unknown_murder_J4": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "upstanding"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true,
+                "cluster": [
+                    "sweet"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_70"
+                ]
+            }
+        ],
+        "intro": [
+            "y_c! y_c, do you have any enemies?",
+            "I'm just... Being cautious. I didn't think r_c:0 had any enemies, but...",
+            "[You assure t_c that you would never let anyone kill you, and {PRONOUN/t_c/subject} {VERB/t_c/don't/doesn't} have to worry.]",
+            "Okay. I'll take your word for it, y_c.",
+            "Just... Be careful, okay?"
+        ]
+    },
+    "unknown_murder_J5": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {},
+            "t_c": {
+                "cluster": [
+                    "brooding"
+                ],
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "[t_c is observing the Clan from above, {PRONOUN/t_c/poss} face stern and cold.]",
+            "Not now, y_c. I'm busy.",
+            "[This mystery seems to be troubling {PRONOUN/t_c/object}...]"
+        ]
+    },
+    "unknown_murder_J6": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "deaf:any:false"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "max_like_-40"
+                ]
+            }
+        ],
+        "intro": [
+            "[t_c flinches when you walk past. Almost as if {PRONOUN/t_c/subject} {VERB/t_c/suspect/suspects} something...]",
+            "[Almost.]"
+        ]
+    },
+    "unknown_murder_J7": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "brooding"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true
+            },
+            "r_c:1": {}
+        },
+        "intro": [
+            "Did you kill r_c:0?",
+            "Don't mess with me, y_c. I'll know if you lie. Answer the question."
+        ],
+        "intro_choices": {
+            "choice1": {
+                "text": "Did you?",
+                "next_scene": "didyou"
+            },
+            "choice2": {
+                "text": "No.",
+                "next_scene": "killthem_no"
+            },
+            "choice3": {
+                "text": "Yes.",
+                "next_scene": "killthem_yes"
+            }
+        },
+        "didyou": [
+            "...",
+            "... ... ... ... ... ...",
+            "... ... ... ... ... ... ... ... ... ... ... ...",
+            "Well played, y_c. I'll let you go.",
+            "[You have no idea what you're supposed to think.]"
+        ],
+        "killthem_no": [
+            "And you swear you're telling the truth? Swear on StarClan?",
+            "[You nod.]",
+            "Okay. Thank you.",
+            "[t_c turns and approaches r_c:1, standing nearby. Is this {PRONOUN/t_c/poss} investigation strategy?]"
+        ],
+        "killthem_yes": [
+            "What? Seriously?",
+            "No, you're messing with me. I told you not to mess with me! I can tell that you're lying!",
+            "Ugh. I'm gonna go ask r_c:1.",
+            "[What a foolproof investigation strategy.]"
+        ]
+    },
+    "unknown_murder_J8": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "deaf:any:false"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "deaf:any:false"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_trust_30"
+                ]
+            },
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "min_like_50"
+                ]
+            }
+        ],
+        "intro": [
+            "[Anytime you catch t_c's eye, {PRONOUN/t_c/subject} {VERB/t_c/give/gives} you a sad, hollow stare.]",
+            "[Is it grief for r_c:0, or {VERB/t_c/are/is} {PRONOUN/t_c/subject} trying to tell you something..?]"
+        ]
+    },
+    "unknown_murder_J9": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "queen",
+                    "queen's apprentice"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "neurotic"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "kitten"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true
+            }
+        },
+        "intro": [
+            "[After hearing about the mystery death in the Clan, t_c has refused to leave the nursery.]",
+            "No! No! I don't care! If I go out there, the monster's gonna get me like r_c:0!",
+            "[You consider telling {PRONOUN/t_c/object} that r_c:0 was killed by a cat, not a monster, but... That would probably make it worse.]"
+        ]
+    },
+    "unknown_murder_J10": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "deaf:any:false"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false",
+                    "grief stricken"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "min_like_50"
+                ]
+            }
+        ],
+        "intro": [
+            "[t_c looks awful. The suspicious death of r_c:0 must be incredibly stressful for {PRONOUN/t_c/object}... you can't even imagine.]"
+        ]
+    },
+    "unknown_murder_J11": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "deaf:any:false"
+                ],
+                "standing": [
+                    "shunned"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "upstanding"
+                ],
+                "condition": [
+                    "deaf:any:false"
+                ],
+                "rank": [
+                    "any"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "min_like_50"
+                ]
+            }
+        ],
+        "intro": [
+            "[Ever since r_c:0's death, t_c looks at you as if {PRONOUN/t_c/subject} watched you kill {PRONOUN/r_c:0/object}.]",
+            "[You know there's no way you'll be able to convince {PRONOUN/t_c/object} that you didn't... not until the real killer is found.]"
+        ]
+    },
+    "unknown_murder_J12": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "brooding"
+                ],
+                "standing": [
+                    "shunned"
+                ],
+                "rank": [
+                    "any"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_30"
+                ]
+            },
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "min_like_50"
+                ]
+            }
+        ],
+        "intro": [
+            "Hey. HEY. y_c. Stop looking at me like that.",
+            "[t_c must have noticed how nervous you are around {PRONOUN/t_c/object}. {VERB/t_c/Do/Does} {PRONOUN/t_c/subject} think yelling at you is going to help?]",
+            "Wow. You really think I killed r_c:0, don't you? You think I'm that evil?",
+            "I thought we were friends, y_c. I thought you knew me better than that.",
+            "[You don't know what you know anymore.]"
+        ]
+    },
+    "unknown_murder_J13": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "rank": [
+                    "df_trainee"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "cool"
+                ],
+                "age": [
+                    "older"
+                ],
+                "backstory": [
+                    "ancientspirit"
+                ],
+                "residence": [
+                    "df"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true
+            }
+        },
+        "intro": [
+            "Hey, kid. You don't know who killed r_c:0, do ya?",
+            "Really? I thought it was pretty obvious, honestly...",
+            "No, I'm not telling you!"
+        ]
+    },
+    "unknown_murder_J14": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {},
+            "t_c": {
+                "cluster": [
+                    "cool",
+                    "brooding"
+                ],
+                "residence": [
+                    "df"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true
+            }
+        },
+        "intro": [
+            "[Since {PRONOUN/t_c/subject} {VERB/t_c/were/was} curious, you took t_c to the place you killed r_c:0. {PRONOUN/t_c/subject/CAP} {VERB/t_c/sniff/sniffs} around the area, inspecting the ground through squinting eyes.]",
+            "You really covered your tracks well, huh...",
+            "Impressive. Really.",
+            "You gonna keep going?"
+        ]
+    },
+    "introspective_unkmur_H1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "introspective"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {},
+            "r_c:1": {
+                "focus_cat": true
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_trust_15"
+                ]
+            },
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "max_like_-20"
+                ]
+            },
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:1"
+                ],
+                "relationship": [
+                    "strangers"
+                ]
+            }
+        ],
+        "intro": [
+            "r_c:0 has been accusing me of being too quiet about r_c:1's death.",
+            "But is being quiet about a murder really that bad? It is unfortunate for both c_n and r_c:1.",
+            "I'm at a loss on what else to say."
+        ]
+    },
+    "introspective_unkmur_H2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "introspective"
+                ],
+                "condition": [
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            }
+        ],
+        "intro": [
+            "[t_c observes c_n around {PRONOUN/t_c/object}, {PRONOUN/t_c/poss} back pressed against the nearest surface.]",
+            "[After r_c:0's death, t_c seems suspicious of everycat.]"
+        ]
+    },
+    "introspective_unkmur_H3": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "introspective",
+                    "upstanding"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "grief stricken"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {},
+            "r_c:1": {
+                "focus_cat": true
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:1"
+                ],
+                "relationship": [
+                    "min_like_50"
+                ]
+            }
+        ],
+        "intro": [
+            "r_c:1 was murdered... and here is everycat thinking about themselves. If they're next, if r_c:0 was involved...",
+            "The fact of the matter is that I <i>need</i> to avenge my precious r_c:1.",
+            "No matter the cost."
+        ]
+    },
+    "introspective_unkmur_H4": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "introspective"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "max_like_-50"
+                ]
+            }
+        ],
+        "intro": [
+            "[t_c stares at you with unnerving observance. {PRONOUN/t_c/poss/CAP} eyes narrow, as if t_c knows something no other cat does.]",
+            "So... r_c:0 was murdered, huh?",
+            "I admit, I haven't heard you say anything about {PRONOUN/r_c:0/poss} death yet. Don't you think that makes you suspicious?"
+        ]
+    },
+    "introspective_unkmur_H5": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "introspective"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "kitten"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "child/parent",
+                    "adoptive child/adoptive parent"
+                ]
+            },
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            }
+        ],
+        "intro": [
+            "Everycat is whispering about r_c:0.",
+            "Did something bad happen?",
+            "... Huff, so even my {PRONOUN/t_c/parent} doesn't want to tell me! r_c:0 is my friend! Don't I have the right to know?"
+        ]
+    },
+    "introspective_unkmur_H6": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {},
+            "t_c": {
+                "cluster": [
+                    "introspective"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "kitten"
+                ]
+            },
+            "r_c:0": {},
+            "r_c:1": {
+                "focus_cat": true
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "child/parent",
+                    "adoptive child/adoptive parent"
+                ]
+            },
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "mates"
+                ]
+            },
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:1"
+                ],
+                "relationship": [
+                    "strangers"
+                ]
+            }
+        ],
+        "intro": [
+            "[You were whispering to r_c:0 about what happened to r_c:1 when you notice the flick of fur in the corner of your eye.]",
+            "[You turn your head just in time to catch t_c rushing out of sight.]"
+        ]
+    },
+    "gen_unkmur_H1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "grief stricken"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_comfort_15"
+                ]
+            },
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "min_like_50"
+                ]
+            }
+        ],
+        "intro": [
+            "y_c, I can't understand why anyone would hate r_c:0 enough to... To...",
+            "[t_c buries {PRONOUN/t_c/poss} head into {PRONOUN/t_c/poss} paws.]",
+            "It's awful! I keep thinking about it and nothing makes sense!"
+        ]
+    },
+    "introspective_unkmur_H7": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "introspective"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true
+            }
+        },
+        "intro": [
+            "[t_c has been oddly calm about r_c:0's death, a drastic difference from the rest of c_n's panic.]",
+            "Oh dear y_c, I've seen many murders in my days and the Clan always acts the same.",
+            "Take it from me. Panicking just blinds you from the truth standing right in front of you."
+        ]
+    },
+    "introspective_unkmur_H8": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "introspective"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true
+            }
+        },
+        "intro": [
+            "Back in my day, the leader and deputy would look for the murderer themselves.",
+            "Hmmf. It seems like those days are long gone now, though. Poor r_c:0... No one to avenge {PRONOUN/r_c:0/object}, no one to look for the truth."
+        ]
+    },
+    "introspective_unkmur_H9": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "introspective"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "grandparent/grandchild"
+                ]
+            }
+        ],
+        "intro": [
+            "Dear, you have been very smug lately. Don't think I can't tell.",
+            "I wonder what has gotten you in this mood."
+        ]
+    },
+    "gen_unkmur_H2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {},
+            "t_c": {
+                "age": [
+                    "younger"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true
+            },
+            "r_c:1": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "strangers"
+                ]
+            },
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:1"
+                ],
+                "relationship": [
+                    "min_romance_20",
+                    "non-mates"
+                ]
+            }
+        ],
+        "intro": [
+            "Huh? Oh. Yes, I heard about r_c:0.",
+            "[t_c's tone is very dismissive as {PRONOUN/t_c/subject} {VERB/t_c/continue/continues} to stare with heart eyes in r_c:1's direction.]",
+            "[Seems like t_c is too... occupied to talk about r_c:0's murder.]"
+        ]
+    },
+    "introspective_unkmur_H10": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "introspective"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true
+            }
+        },
+        "intro": [
+            "I noticed you were asking everycat about r_c:0's murder.",
+            "Why's that?"
+        ]
+    },
+    "introspective_unkmur_H11": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "introspective"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "hearing"
+                ],
+                "rank": [
+                    "any"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            }
+        ],
+        "intro": [
+            "I heard r_c:0 crying the night before {PRONOUN/r_c:0/subject} died.",
+            "I wonder if {PRONOUN/r_c:0/subject} knew {PRONOUN/r_c:0/subject} {VERB/r_c:0/were/was} in danger."
+        ]
+    },
+    "aboutcluster_unkmur_H1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "rank": [
+                    "medicine cat"
+                ]
+            },
+            "t_c": {
+                "age": [
+                    "adolescent",
+                    "kitten"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true,
+                "cluster": [
+                    "introspective"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_trust_15",
+                    "min_comfort_15"
+                ]
+            },
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "min_like_50"
+                ]
+            }
+        ],
+        "intro": [
+            "Hey, y_c? Can you promise me something?",
+            "If you see r_c:0 at the half-moon meeting, can you ask {PRONOUN/r_c:0/object} what story {PRONOUN/r_c:0/subject} {VERB/r_c:0/were/was} going to tell me before {PRONOUN/r_c:0/subject} {VERB/r_c:0/were/was}...",
+            "[t_c tears up and in pity, you cut {PRONOUN/t_c/object} off with a nod of your head.]"
+        ]
+    },
+    "introspective_unkmur_H12": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "adolescent",
+                    "kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "introspective",
+                    "upstanding"
+                ],
+                "rank": [
+                    "leader"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_comfort_15"
+                ]
+            },
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "strangers"
+                ]
+            }
+        ],
+        "intro": [
+            "Hm. Don't worry, little one. I've been watching c_n for any suspicious behavior lately.",
+            "I dislike doing this, but no one should go through what r_c:0 experienced. If that means watching my Clan as if I never held trust for them... so be it."
+        ]
+    },
+    "introspective_unkmur_H13": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "any"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "introspective"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "hearing"
+                ],
+                "rank": [
+                    "leader"
+                ]
+            },
+            "r_c:0": {
+                "cluster": [
+                    "unlawful"
+                ]
+            },
+            "r_c:1": {
+                "cluster": [
+                    "brooding"
+                ]
+            },
+            "r_c:2": {
+                "standing": [
+                    "shunned"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "max_like_-20"
+                ]
+            }
+        ],
+        "intro": [
+            "[As you approach t_c, you hear {PRONOUN/t_c/object} mumbling to {PRONOUN/t_c/self}.]",
+            "r_c:2? No, no, {PRONOUN/r_c:2/subject} wouldn't dare do it so soon. What about r_c:0... gah {PRONOUN/r_c:0/subject} may be a handful, but I trust {PRONOUN/r_c:0/object} more than r_c:1... But r_c:1 wouldn't do something like this either...",
+            "[You decide to leave t_c alone as {PRONOUN/t_c/poss} mumbles turn frustrated.]"
+        ]
+    },
+    "introspective_unkmur_H14": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "rank": [
+                    "kitten",
+                    "apprentice"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "introspective"
+                ],
+                "condition": [
+                    "hearing"
+                ],
+                "rank": [
+                    "deputy"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            },
+            "r_c:1": {
+                "focus_cat": true
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "max_like_-10"
+                ]
+            }
+        ],
+        "intro": [
+            "[t_c and r_c:0 look to be deep in conversation.]",
+            "[You attempt to crawl in earshot, but t_c turns {PRONOUN/t_c/poss} head just as you hear r_c:1's name.]",
+            "y_c, this is not the time. Reoccupy yourself elsewhere. And please, be good and do not cause further trouble."
+        ]
+    },
+    "gen_unkmur_H3": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "leader"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "parent/child",
+                    "max_like_-10"
+                ]
+            }
+        ],
+        "intro": [
+            "y_c... just because you're my kit, it does not mean you can simply ask for information on r_c:0's murder.",
+            "... No, no, you cannot ask again."
+        ]
+    },
+    "gen_unkmur_H4": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "standing": [
+                    "shunned"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "r_c:0"
+                ],
+                "relationship": [
+                    "strangers"
+                ]
+            }
+        ],
+        "intro": [
+            "I don't know what to believe. Everycat has been watching you so closely, they forgot anyone else could also do the same crime.",
+            "Well, duh, I don't think you killed r_c:0. I think that's a bit far-fetched, considering everycat has been watching you like a hawk.",
+            "Where would you even find the opening?",
+            "... Don't answer that."
+        ]
+    },
+    "strange_unkmur_H1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "strange"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "cluster": [
+                    "unlawful"
+                ]
+            },
+            "r_c:1": {
+                "cluster": [
+                    "unabashed"
+                ]
+            },
+            "r_c:2": {
+                "focus_cat": true
+            },
+            "r_c:3": {
+                "cluster": [
+                    "neurotic"
+                ]
+            },
+            "r_c:4": {}
+        },
+        "intro": [
+            "Everycat is thinking r_c:0 or r_c:1 murdered r_c:2.",
+            "But I think we need to think out of the box. What about r_c:3? Or r_c:4_upstanding?",
+            "Hey, I'm not weird for that! It's always the quiet, uptight ones...",
+            "Huh? Oh, I didn't say anything! Ahaha..."
+        ]
+    },
+    "strange_unkmur_H2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "strange"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true
+            },
+            "r_c:1": {
+                "cluster": [
+                    "upstanding"
+                ]
+            }
+        },
+        "intro": [
+            "Ohh, y_c~! I noticed everycat was playing a guessing game involving r_c:0!",
+            "So, y_c, do YOU think I murdered r_c:0??",
+            "Come on, come on, I wanna know!"
+        ],
+        "intro_choices": {
+            "choice1": {
+                "text": "[Stare incredulously.]",
+                "next_scene": "incredulously"
+            },
+            "choice2": {
+                "text": "As if.",
+                "next_scene": "as_if"
+            },
+            "choice3": {
+                "text": "Maybe.",
+                "next_scene": "maybe"
+            },
+            "choice4": {
+                "text": "Do you want me to?",
+                "next_scene": "wantto"
+            }
+        },
+        "incredulously": [
+            "... What? Why are you looking at me like that?",
+            "I think it's a valid question!",
+            "Ugh, fine, don't answer! I'll just ask some other cat since you're no fun.",
+            "[t_c skips gleefully to r_c:1. That's <i>totally</i> going to go well.]"
+        ],
+        "as_if": [
+            "[t_c makes an offended noise.]",
+            "'As if'?? No, no, I totally could murder! You underestimate me!",
+            "Not - not like I would do it though! Ugh!",
+            "[You huff in amusement. It seems like t_c is confusing {PRONOUN/t_c/self} with this joke of {PRONOUN/t_c/inposs}.]"
+        ],
+        "maybe": [
+            "Hehe, I get a maybe? So mysterious, y_c!",
+            "Hmmf. Keep your secrets. I'll just have to try harder next time!",
+            "[... Was this t_c's way of interrogating you?]"
+        ],
+        "wantto": [
+            "Erm. I'm not going to answer that, even though it wasn't even an answer to my question!",
+            "Asking a question to my question, I see how it is...",
+            "[t_c continues to grumble at how 'unfair' you're being before {PRONOUN/t_c/subject} {VERB/t_c/saunter/saunters} away.]"
+        ]
+    },
+    "unkmurd_sam1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "unlawful"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "focus_cat": true
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_trust_35",
+                    "min_like_50"
+                ]
+            }
+        ],
+        "intro": [
+            "Hey, y_c? I uh, kinda have a secret to tell you...",
+            "Promise you won't tell anyone?"
+        ],
+        "intro_choices": {
+            "choice1": {
+                "text": "I promise.",
+                "next_scene": "yes"
+            },
+            "choice2": {
+                "text": "No.",
+                "next_scene": "no"
+            }
+        },
+        "yes": [
+            "Alright.. Well, I need to be honest with you.",
+            "I need to do the right thing.",
+            "I... I killed r_c:0.",
+            "[You're stunned into silence by {PRONOUN/t_c/poss} confession, and you know your shock is clear as day on your face. How could it <i>not</i> be?]",
+            "[... So why {VERB/t_c/are/is} {PRONOUN/t_c/subject} suddenly laughing?!]",
+            "Hahaha! StarClan- Ha! The look on your face!",
+            "I swear I didn't <i>actually</i> kill r_c:0. I'm just messing with you.",
+            "[You roll your eyes, stalking off to your nest. You plan not to talk to {PRONOUN/t_c/object} for the next few days, out of spite for how much {PRONOUN/t_c/subject} scared you.]"
+        ],
+        "no": [
+            "[There's something about t_c's tone that makes you think {PRONOUN/t_c/subject}{VERB/t_c/'re/'s} not serious.]",
+            "You're no fun."
+        ]
+    }
+}

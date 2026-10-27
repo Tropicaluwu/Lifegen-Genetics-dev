@@ -1,16 +1,26 @@
 import i18n
 import pygame
 import pygame_gui
+from pygame_gui.core import ObjectID
 
 from scripts.cat.cats import Cat
 from scripts.game_structure import game
+from scripts.ui.generate_button import get_button_dict, ButtonStyles
 from scripts.game_structure.screen_settings import MANAGER
 from ..ui.theme import get_text_box_theme
+from ..ui.windows.export_allegiances import ExportAllegiancesWindow
 from ..events_module.text_adjust import event_text_adjust, adjust_list_text
 from ..ui.scale import ui_scale, ui_scale_offset
 from ..clan_package.get_clan_cats import get_alive_clan_queens
+from scripts.game_structure.game.switches import (
+    switch_set_value,
+    Switch,
+)
 from .Screens import Screens
-from ..cat.enums import CatRank
+from ..cat.enums import CatRank, CatSocial
+from scripts.ui.elements.allegiances_cat_button import AllegiancesCat
+from scripts.ui.elements.surface_image_button import UISurfaceImageButton
+from scripts.ui.elements.dropdown_container import UIDropDownContainer
 from ..ui.elements.modified_scrolling_container import UIModifiedScrollingContainer
 
 
@@ -23,34 +33,194 @@ class AllegiancesScreen(Screens):
         self.ranks_boxes = None
         self.scroll_container = None
         self.heading = None
+        self.export_button = None
+
+        self.event_screen_container = None
+        self.current_clan = None
+        self.choose_group_button = None
+        self.living_groups_container = None
+        self.choose_group_buttons = {}
+        self.choose_living_dropdown = None
 
     def handle_event(self, event):
-        if event.type == pygame_gui.UI_BUTTON_START_PRESS:
-            self.menu_button_pressed(event)
-            self.mute_button_pressed(event)
+        if event.type == pygame_gui.UI_BUTTON_PRESSED:
+            if event.ui_element in self.names_buttons:
+                switch_set_value(Switch.cat, event.ui_element.return_cat_id())
+                self.change_screen('profile_screen')
+            elif event.ui_element == self.export_button:
+                ExportAllegiancesWindow(self.get_outside_allegiances() if self.current_clan == "cotc" else self.get_allegiances_text(), 
+                (f"{self.current_clan.displayname}Clan Allegiances" if self.current_clan != "cotc" else "Cats Outside the Clan")+f"_moon_{game.clan.age}")
+            elif event.ui_element in self.choose_group_buttons.values():
+                self.choose_living_dropdown.close()
+                self.current_clan = event.ui_element.text if event.ui_element.text == "general.cotc" else event.ui_element.text.replace("Clan", "")
+                self.current_clan = [c for c in [game.clan] + game.clan.all_other_clans if c.displayname == self.current_clan]
+                if self.current_clan:
+                    self.current_clan = self.current_clan[0]
+                else:
+                    self.current_clan = "cotc"
+                
+                self.fill_allegiances()
+            else:
+                self.menu_button_pressed(event)
+                self.mute_button_pressed(event)
 
     def on_use(self):
         super().on_use()
 
     def screen_switches(self):
         super().screen_switches()
-        # Heading
-        self.heading = pygame_gui.elements.UITextBox(
-            "screens.allegiances.heading",
-            ui_scale(pygame.Rect((0, 115), (400, 40))),
-            text_kwargs={"clan_name": game.clan.displayname},
-            object_id=get_text_box_theme("#text_box_34_horizcenter_vertcenter"),
-            manager=MANAGER,
-            anchors={"centerx": "centerx"},
-        )
 
         # Set Menu Buttons.
         self.show_menu_buttons()
         self.show_mute_buttons()
         self.set_disabled_menu_buttons(["allegiances"])
-        self.update_heading_text(f"{game.clan.displayname}Clan")
-        allegiance_list = self.get_allegiances_text()
+        # LG EDIT
+        self.update_heading_text(game.clan.your_cat.status.get_group_heading_text())
+        # ---
 
+        if not self.current_clan or self.current_clan not in [game.clan, "cotc"] + game.clan.all_other_clans:
+            self.current_clan = game.clan
+
+        self.export_button = UISurfaceImageButton(
+            ui_scale(pygame.Rect((25, 100), (150, 30))),
+            "screens.allegiances.export_allegiances",
+            get_button_dict(ButtonStyles.SQUOVAL, (150, 30)),
+            object_id="@buttonstyles_squoval",
+            manager=MANAGER,
+            starting_height=1,
+        )
+
+        self.event_screen_container = pygame_gui.core.UIContainer(
+            ui_scale(pygame.Rect((600, 100), (200, 300))),
+            starting_height=1,
+            manager=MANAGER,
+        )
+        self.choose_group_button = UISurfaceImageButton(
+            ui_scale(pygame.Rect((0, 0), (190, 34))),
+            "screens.list.choose_group",
+            get_button_dict(ButtonStyles.DROPDOWN, (190, 34)),
+            object_id="@buttonstyles_dropdown",
+            manager=MANAGER,
+            starting_height=1,
+            container=self.event_screen_container,
+        )
+
+        self.living_groups_container = pygame_gui.elements.UIAutoResizingContainer(
+            ui_scale(pygame.Rect((0, 32), (0, 0))),
+            object_id="#choose_group_container",
+            manager=MANAGER,
+            starting_height=1,
+            container=self.event_screen_container,
+        )
+        self.living_groups_container.change_layer(10)
+        self.choose_group_buttons[game.clan.displayname] = UISurfaceImageButton(
+            ui_scale(pygame.Rect((0, 0), (190, 34))),
+            game.clan.displayname + "Clan",
+            get_button_dict(ButtonStyles.DROPDOWN, (190, 34)),
+            container=self.living_groups_container,
+            object_id=ObjectID(
+                class_id="@buttonstyles_dropdown", object_id=None),
+            starting_height=2,
+            manager=MANAGER,
+        )
+        y_pos = 32
+        if game.clan.clancount == 'multiclan':
+            for clan in game.clan.all_other_clans:
+                self.choose_group_buttons[clan.displayname] = UISurfaceImageButton(
+                    ui_scale(pygame.Rect((0, y_pos), (190, 34))),
+                    clan.displayname + "Clan",
+                    get_button_dict(ButtonStyles.DROPDOWN, (190, 34)),
+                    container=self.living_groups_container,
+                    object_id=ObjectID(
+                        class_id="@buttonstyles_dropdown", object_id=None),
+                    starting_height=2,
+                    manager=MANAGER,
+                )
+                y_pos += 32
+        self.choose_group_buttons["outsiders"] = UISurfaceImageButton(
+            ui_scale(pygame.Rect((0, y_pos), (190, 34))),
+            "general.cotc",
+            get_button_dict(ButtonStyles.DROPDOWN, (190, 34)),
+            container=self.living_groups_container,
+            object_id=ObjectID(
+                class_id="@buttonstyles_dropdown", object_id=None),
+            starting_height=2,
+            manager=MANAGER,
+        )
+
+        self.choose_living_dropdown = UIDropDownContainer(
+            self.living_groups_container.relative_rect,
+            container=self.event_screen_container,
+            object_id="#choose_living_dropdown",
+            starting_height=1,
+            parent_button=self.choose_group_button,
+            child_button_container=self.living_groups_container,
+            manager=MANAGER,
+        )
+
+        self.choose_living_dropdown.close()
+        self.choose_living_dropdown.show()
+
+        self.fill_allegiances()
+
+    def exit_screen(self):
+        for x in self.ranks_boxes:
+            x.kill()
+        del self.ranks_boxes
+        for x in self.names_boxes:
+            x.kill()
+        del self.names_boxes
+        for x in self.names_buttons:
+            x.kill()
+        del self.names_buttons
+        self.scroll_container.kill()
+        del self.scroll_container
+        self.heading.kill()
+        del self.heading
+        self.export_button.kill()
+        del self.export_button
+
+        self.event_screen_container.kill()
+        self.choose_group_button.kill()
+        self.living_groups_container.kill()
+        for x in self.choose_group_buttons.values():
+            x.kill()
+        self.choose_living_dropdown.kill()
+        del self.event_screen_container
+        del self.choose_group_button
+        del self.living_groups_container
+        self.choose_group_buttons = {}
+        del self.choose_living_dropdown
+
+    def fill_allegiances(self):
+        # Heading
+        if hasattr(self, "heading") and self.heading:
+            self.heading.kill()
+        allegiance_list = []
+        if self.current_clan == "cotc":
+            self.heading = pygame_gui.elements.UITextBox(
+                "screens.allegiances.alt_heading",
+                ui_scale(pygame.Rect((0, 115), (400, 40))),
+                object_id=get_text_box_theme(
+                    "#text_box_34_horizcenter_vertcenter"),
+                manager=MANAGER,
+                anchors={"centerx": "centerx"},
+            )
+            allegiance_list = self.get_outside_allegiances()
+        else:
+            self.heading = pygame_gui.elements.UITextBox(
+                "screens.allegiances.heading",
+                ui_scale(pygame.Rect((0, 115), (400, 40))),
+                text_kwargs={"clan_name": self.current_clan.displayname},
+                object_id=get_text_box_theme(
+                    "#text_box_34_horizcenter_vertcenter"),
+                manager=MANAGER,
+                anchors={"centerx": "centerx"},
+            )
+            allegiance_list = self.get_allegiances_text()
+
+        if hasattr(self, "scroll_container") and self.scroll_container:
+            self.scroll_container.kill()
         self.scroll_container = UIModifiedScrollingContainer(
             ui_scale(pygame.Rect((50, 165), (715, 470))),
             allow_scroll_x=False,
@@ -60,6 +230,9 @@ class AllegiancesScreen(Screens):
 
         self.ranks_boxes = []
         self.names_boxes = []
+        self.names_buttons = []
+        y_pos = 0
+        allegiances_height = 0
         for x in allegiance_list:
             self.ranks_boxes.append(
                 pygame_gui.elements.UITextBox(
@@ -76,13 +249,28 @@ class AllegiancesScreen(Screens):
                 )
             )
             self.ranks_boxes[-1].disable()
-
+            offset = 7
+            self.names_buttons.append(AllegiancesCat(
+                pygame.Rect(
+                    (offset, -
+                     self.ranks_boxes[-1].get_relative_rect()[3]+offset),
+                    ui_scale_offset((525, -1))),
+                x[1],
+                object_id=get_text_box_theme("#allegiance"),
+                container=self.scroll_container, manager=MANAGER,
+                anchors={
+                    "top_target": self.ranks_boxes[-1],
+                    "left_target": self.ranks_boxes[-1],
+                    "left": "left",
+                    "right": "right",
+                }))
+            self.names_buttons[-1].set_cat_id(x[2])
             self.names_boxes.append(
                 pygame_gui.elements.UITextBox(
-                    x[1],
+                    x[3],
                     pygame.Rect(
                         (0, -self.ranks_boxes[-1].get_relative_rect()[3]),
-                        ui_scale_offset((565, -1)),
+                        ui_scale_offset((525, -1)),
                     ),
                     object_id=get_text_box_theme("#text_box_30_horizleft"),
                     container=self.scroll_container,
@@ -96,18 +284,10 @@ class AllegiancesScreen(Screens):
                 )
             )
             self.names_boxes[-1].disable()
+            allegiances_height += 1
+        
+        self.scroll_container.set_scrollable_area_dimensions((715, 470 + allegiances_height*20))
 
-    def exit_screen(self):
-        for x in self.ranks_boxes:
-            x.kill()
-        del self.ranks_boxes
-        for x in self.names_boxes:
-            x.kill()
-        del self.names_boxes
-        self.scroll_container.kill()
-        del self.scroll_container
-        self.heading.kill()
-        del self.heading
 
     @staticmethod
     def generate_one_entry(cat, extra_details=""):
@@ -115,7 +295,7 @@ class AllegiancesScreen(Screens):
         output = f"{str(cat.name).upper()} - {cat.describe_cat()} {extra_details}"
 
         if len(cat.apprentice) == 0:
-            return event_text_adjust(Cat, output, main_cat=cat)
+            return [str(cat.name).upper(), cat.ID, event_text_adjust(Cat, output, main_cat=cat)]
 
         output += f"\n      {i18n.t('general.apprentice', count=len(cat.apprentice)).upper()}: "
         output += adjust_list_text(
@@ -126,18 +306,20 @@ class AllegiancesScreen(Screens):
             ]
         ).upper()
 
-        return event_text_adjust(Cat, output, main_cat=cat)
+        return [str(cat.name).upper(), cat.ID, event_text_adjust(Cat, output, main_cat=cat)]
 
     def get_allegiances_text(self):
         """Determine Text. Ouputs list of tuples."""
 
         living_cats = [
-            i for i in Cat.all_cats.values() if i.status.alive_in_player_clan
+            i for i in Cat.all_cats.values() if i.status.group_ID == self.current_clan.group_ID and i.moons >= 0
         ]
         living_meds = []
         living_mediators = []
+        living_queens = []
         living_warriors = []
         living_apprentices = []
+        living_queens = []
         living_kits = []
         living_elders = []
         for cat in living_cats:
@@ -147,15 +329,35 @@ class AllegiancesScreen(Screens):
                 living_warriors.append(cat)
             elif cat.status.rank == CatRank.MEDIATOR:
                 living_mediators.append(cat)
+            elif cat.status.rank == CatRank.QUEEN:
+                living_queens.append(cat)
             elif cat.status.rank.is_any_apprentice_rank():
                 living_apprentices.append(cat)
             elif cat.status.rank.is_baby():
                 living_kits.append(cat)
             elif cat.status.rank == CatRank.ELDER:
                 living_elders.append(cat)
+        if not len(living_meds):
+            for cat in living_apprentices:
+                if cat.status.rank == CatRank.MEDICINE_APPRENTICE:
+                    living_meds.append(cat)
+                    living_apprentices.remove(cat)
+        if not len(living_mediators):
+            for cat in living_apprentices:
+                if cat.status.rank == CatRank.MEDIATOR_APPRENTICE:
+                    living_mediators.append(cat)
+                    living_apprentices.remove(cat)
+
+
+        living_meds = sorted(living_meds, key=lambda x: x.moons, reverse=True)
+        living_mediators = sorted(living_mediators, key=lambda x: x.moons, reverse=True)
+        living_warriors = sorted(living_warriors, key=lambda x: x.moons, reverse=True)
+        living_apprentices = sorted(living_apprentices, key=lambda x: x.moons, reverse=True)
+        living_kits = sorted(living_kits, key=lambda x: x.moons, reverse=True)
+        living_elders = sorted(living_elders, key=lambda x: x.moons, reverse=True)
 
         # Find Queens:
-        queen_dict, living_kits = get_alive_clan_queens(living_cats)
+        queen_dict, living_kits = get_alive_clan_queens(living_cats, self.current_clan.group_ID)
 
         # Remove queens from warrior or elder lists, if they are there.  Let them stay on any other lists.
         for q in queen_dict:
@@ -164,78 +366,108 @@ class AllegiancesScreen(Screens):
                 continue
             if queen in living_warriors:
                 living_warriors.remove(queen)
+            elif queen in living_queens:
+                living_queens.remove(queen)
             elif queen in living_elders:
                 living_elders.remove(queen)
 
         # Clan Leader Box:
         # Pull the Clan leaders
         outputs = []
-        if game.clan.leader and game.clan.leader.status.alive_in_player_clan:
+        if self.current_clan.leader and not (self.current_clan.leader.dead or self.current_clan.leader.status.is_outsider):
+            x = self.generate_one_entry(self.current_clan.leader)
             outputs.append(
                 [
                     f"<b><u>{i18n.t('general.leader', count=1).upper()}</u></b>",
-                    self.generate_one_entry(game.clan.leader),
+                    x[0],
+                    x[1],
+                    x[2]
                 ]
             )
 
         # Deputy Box:
-        if game.clan.deputy and game.clan.deputy.status.alive_in_player_clan:
+        if self.current_clan.deputy and not (self.current_clan.deputy.dead or self.current_clan.deputy.status.is_outsider):
+            x = self.generate_one_entry(self.current_clan.deputy)
             outputs.append(
                 [
                     f"<b><u>{i18n.t('general.deputy', count=1).upper()}</u></b>",
-                    self.generate_one_entry(game.clan.deputy),
+                    x[0],
+                    x[1],
+                    x[2]
                 ]
             )
 
-        # Medicine Cat Box:
+        # Healer Box:
         if living_meds:
-            _box = ["", ""]
-            _box[
-                0
-            ] = f"<b><u>{i18n.t('general.medicine cat', count=len(living_meds)).upper()}</u></b>"
-
-            _box[1] = "\n".join([self.generate_one_entry(i) for i in living_meds])
-            outputs.append(_box)
-
+            for i in range(len(living_meds)):    
+                _box = ["", "", "", ""]
+                if i == 0:    
+                    _box[0] = f"<b><u>{i18n.t('general.healer', count=len(living_meds)).upper()}</u></b>"
+                else:
+                    _box[0] = ""
+                x = self.generate_one_entry(living_meds[i])
+                _box[1] = x[0]
+                _box[2] = x[1]
+                _box[3] = x[2]
+            
+                #_box[1] = "\n".join([self.generate_one_entry(i) for i in living_meds])
+                outputs.append(_box)
+        
         # Mediator Box:
         if living_mediators:
-            _box = ["", ""]
-            _box[
-                0
-            ] = f"<b><u>{i18n.t('general.mediator', count=len(living_mediators)).upper()}</u></b>"
-
-            _box[1] = "\n".join([self.generate_one_entry(i) for i in living_mediators])
-            outputs.append(_box)
+            for i in range(len(living_mediators)): 
+                _box = ["", "", "", ""]   
+                if i == 0:    
+                    _box[0] = f"<b><u>{i18n.t('general.mediator', count=len(living_mediators)).upper()}</u></b>"
+                else:
+                    _box[0] = ""
+                x = self.generate_one_entry(living_mediators[i])
+                _box[1] = x[0]
+                _box[2] = x[1]
+                _box[3] = x[2]
+            
+                #_box[1] = "\n".join([self.generate_one_entry(i) for i in living_mediators])
+                outputs.append(_box)
 
         # Warrior Box:
         if living_warriors:
-            _box = ["", ""]
-            _box[
-                0
-            ] = f"<b><u>{i18n.t('general.warrior', count=len(living_warriors)).upper()}</u></b>"
-
-            _box[1] = "\n".join([self.generate_one_entry(i) for i in living_warriors])
-            outputs.append(_box)
-
-        # Apprentice Box:
+            for i in range(len(living_warriors)):   
+                box = ["", "", "", ""]
+                if i == 0:    
+                    box[0] = f"<b><u>{i18n.t('general.warrior', count=len(living_warriors)).upper()}</u></b>"
+                else:
+                    box[0] = ""
+                x = self.generate_one_entry(living_warriors[i])
+                box[1] = x[0]
+                box[2] = x[1]
+                box[3] = x[2]
+                outputs.append(box)
+         # Apprentice Box:
         if living_apprentices:
-            _box = ["", ""]
-            _box[0] = f"<b><u>{i18n.t('general.apprentice', count=2).upper()}</u></b>"
-
-            _box[1] = "\n".join(
-                [self.generate_one_entry(i) for i in living_apprentices]
-            )
-            outputs.append(_box)
-
-        # Queens and Kits Box:
-        if queen_dict or living_kits:
-            _box = ["", ""]
-            _box[
-                0
-            ] = f"<b><u>{i18n.t('general.queen', count=2).upper()} AND {i18n.t('general.kit', count=2).upper()}</u></b>"
-
-            # This one is a bit different.  First all the queens, and the kits they are caring for.
+            for i in range(len(living_apprentices)):   
+                _box = ["", "", "", ""] 
+                if i == 0:    
+                    _box[0] = f"<b><u>{i18n.t('general.apprentice', count=len(living_apprentices)).upper()}</u></b>"
+                else:
+                    _box[0] = ""
+                x = self.generate_one_entry(living_apprentices[i])
+                _box[1] = x[0]
+                _box[2] = x[1]
+                _box[3] = x[2]
+                outputs.append(_box)
+        
+         # Queens and Kits Box:
+        if living_queens or queen_dict or living_kits:
+            # This one is a bit different.  First all the queens, and the kits they are caring for. 
             all_entries = []
+            # permaqueens first
+            for q in living_queens:
+                all_entries.append([str(q.name).upper(), q.ID, event_text_adjust(
+                    Cat,
+                    f"{str(q.name).upper()} - {q.describe_cat(short=True)}",
+                    main_cat=q,
+                )])
+        
             for q in queen_dict:
                 queen = Cat.fetch_cat(q)
                 if not queen:
@@ -262,25 +494,107 @@ class AllegiancesScreen(Screens):
                     )
                 all_entries.append(self.generate_one_entry(queen, kittens))
 
-            # Now kittens without carers
+            for k in living_queens:
+                if k.ID not in queen_dict.keys():
+                    all_entries.append(self.generate_one_entry(k))
+            #Now kittens without carers
             for k in living_kits:
-                all_entries.append(
-                    event_text_adjust(
+                all_entries.append([str(k.name).upper(), k.ID, event_text_adjust(
                         Cat,
                         f"{str(k.name).upper()} - {k.describe_cat()}",
                         main_cat=k,
-                    )
-                )
-
-            _box[1] = "\n".join(all_entries)
-            outputs.append(_box)
+                    )])
+            
+            if all_entries:
+                for i in range(len(all_entries)):
+                    _box = ["", "", "", ""]
+                    if i == 0:
+                        _box[0] = f"<b><u>{i18n.t('general.queen', count=len(queen_dict)).upper()} AND {i18n.t('general.kit', count=2).upper()}</u></b>"
+                    else:
+                        _box[0] = ''
+                    
+                    _box[1] = all_entries[i][0]
+                    _box[2] = all_entries[i][1]
+                    _box[3] = all_entries[i][2]
+                    outputs.append(_box)
 
         # Elder Box:
         if living_elders:
-            _box = ["", ""]
-            _box[0] = f"<b><u>{i18n.t('general.elder', count=2).upper()}</u></b>"
+            for i in range(len(living_elders)):    
+                _box = ["", "", "", ""]
+                if i == 0:    
+                    _box[0] = f"<b><u>{i18n.t('general.elder', count=len(living_elders)).upper()}</u></b>"
+                else:
+                    _box[0] = ""
+                x = self.generate_one_entry(living_elders[i])
+                _box[1] = x[0]
+                _box[2] = x[1]
+                _box[3] = x[2]
+                outputs.append(_box)
 
-            _box[1] = "\n".join([self.generate_one_entry(i) for i in living_elders])
-            outputs.append(_box)
+        return outputs
+
+    def get_outside_allegiances(self):
+        """Determine Text. Ouputs list of tuples."""
+
+        living_cats = [
+            i for i in Cat.all_cats.values() if i.status.group_ID == None
+        ]
+        living_loners = []
+        living_rogues = []
+        living_kittypets = []
+        for cat in living_cats:
+            if cat.status.social == CatSocial.LONER:
+                living_loners.append(cat)
+            elif cat.status.social == CatSocial.ROGUE:
+                living_rogues.append(cat)
+            elif cat.status.social == CatSocial.KITTYPET:
+                living_kittypets.append(cat)
+
+        living_loners = sorted(living_loners, key=lambda x: x.moons, reverse=True)
+        living_rogues = sorted(living_rogues, key=lambda x: x.moons, reverse=True)
+        living_kittypets = sorted(living_kittypets, key=lambda x: x.moons, reverse=True)
+
+        outputs = []
+        if living_loners:
+            for i in range(len(living_loners)):
+                _box = ["", "", "", ""]
+                if i == 0:
+                    _box[0] = f"<b><u>{i18n.t('general.loner', count=len(living_loners)).upper()}</u></b>"
+                else:
+                    _box[0] = ""
+                x = self.generate_one_entry(living_loners[i])
+                _box[1] = x[0]
+                _box[2] = x[1]
+                _box[3] = x[2]
+
+                outputs.append(_box)
+
+        if living_rogues:
+            for i in range(len(living_rogues)):
+                _box = ["", "", "", ""]
+                if i == 0:
+                    _box[0] = f"<b><u>{i18n.t('general.rogue', count=len(living_rogues)).upper()}</u></b>"
+                else:
+                    _box[0] = ""
+                x = self.generate_one_entry(living_rogues[i])
+                _box[1] = x[0]
+                _box[2] = x[1]
+                _box[3] = x[2]
+
+                outputs.append(_box)
+
+        if living_kittypets:
+            for i in range(len(living_kittypets)):
+                box = ["", "", "", ""]
+                if i == 0:
+                    box[0] = f"<b><u>{i18n.t('general.kittypet', count=len(living_kittypets)).upper()}</u></b>"
+                else:
+                    box[0] = ""
+                x = self.generate_one_entry(living_kittypets[i])
+                box[1] = x[0]
+                box[2] = x[1]
+                box[3] = x[2]
+                outputs.append(box)
 
         return outputs

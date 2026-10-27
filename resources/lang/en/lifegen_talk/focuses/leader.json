@@ -1,0 +1,2289 @@
+{
+    "good_opinion_c": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "r_c:0's lead us through thick and thin. This Clan's been through so much, and I know that it's thanks to r_c:0 that we've come this far.",
+            "I'll always support {PRONOUN/r_c:0/object} no matter what!"
+        ]
+    },
+    "good_opinion_Guy1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "age": [
+                    "kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "r_c:0 is the very bestest leader ever!"
+        ]
+    },
+    "good_opinion_Guy2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "age": [
+                    "adolescent"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "I'm so glad that r_c:0 is our leader!"
+        ]
+    },
+    "good_opinion_Guy3": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "I believe r_c:0 might be the best leader c_n has ever had."
+        ]
+    },
+    "good_opinion_AJ": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "stable"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "Oh, so one bad decision and suddenly everycat's turned against r_c:0? Is everybody's loyalty really that fragile?",
+            "All of us mess up from time to time, don't we? How would you like it if everybody acted like you were the worst cat ever after one little mistake?"
+        ]
+    },
+    "good_opinion_AJ1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "brooding",
+                    "upstanding"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "I swear, this Clan is filled with more mouse-brains than a knothole in newleaf. r_c:0 is a fine leader!",
+            "Cats around here like to complain, but I guarantee you, if you put any of the complainers in that position, none of them would be even half the leader r_c:0 is."
+        ]
+    },
+    "good_opinion_AJ2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "unabashed",
+                    "upstanding"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "I stand with r_c:0 ...",
+            "[t_c puffs {PRONOUN/t_c/poss} chest out in pride.]",
+            "... And I don't care what anycat thinks about it."
+        ]
+    },
+    "good_opinion_AJ3": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "neurotic"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "[t_c looks at the leader's den with a worried expression.]",
+            "You know, I really do feel for r_c:0.",
+            "All that pressure, all those expectations to succeed for your Clanmates ...",
+            "I would be a wreck in that position! If nothing else, I'm grateful r_c:0 is one making the choices just so I don't have to."
+        ]
+    },
+    "good_opinion_AJ5": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "unabashed",
+                    "upstanding"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "Anycat who has a problem with r_c:0 can take it up with me!",
+            "After all {PRONOUN/r_c:0/subject}{VERB/r_c:0/'ve/'s} given to the Clan, it's about time somecat gives something back!"
+        ]
+    },
+    "good_opinion_AJ67": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "cool"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "I don't get why everycat's so obsessed with r_c:0 all of a sudden. Is there something in the water? {PRONOUN/r_c:0/subject/CAP}{VERB/r_c:0/'ve/'s} always seemed like a fine leader to me.",
+            "And you know I mean it, too, because I'll never pass up on a good chance to complain."
+        ]
+    },
+    "good_opinion_AJ6": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "introspective",
+                    "neurotic"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            }
+        ],
+        "intro": [
+            "I know r_c:0 has made mistakes in the past, but {PRONOUN/r_c:0/subject}{VERB/r_c:0/'ve/'s} helped the Clan through a lot, too. I don't know if I can just let go of everything we've been through together as a Clan because {PRONOUN/r_c:0/subject} messed something up.",
+            "r_c:0 is a cat, just like any of us. {PRONOUN/r_c:0/subject/CAP} {VERB/r_c:0/deserve/deserves} a little grace, same as all of us do.",
+            "This Clan has enough problems as it is without all of us at each other's throats."
+        ]
+    },
+    "good_opinion_AJ8": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "cool"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "So, r_c:0 doesn't always make the best choices. Big deal!",
+            "The prey still runs, the sun still rises and sets, I can still get my nap in after my evening meal ... Are things really so bad?",
+            "When the Clan is actually in shambles, then maybe we can have a reason to question. But, until then, things seem pretty much the same as they always were."
+        ]
+    },
+    "good_opinion_AJ9": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "unabashed",
+                    "cool"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "Am I the only cat that thinks r_c:0 didn't do anything wrong? Honestly, it's exactly the choice I would've made if I were in {PRONOUN/r_c:0/poss} position!",
+            "Everycat takes everything so personally these days ... It really isn't about what we think. r_c:0's word for the Clan goes, and I know I'm personally happy to follow it."
+        ]
+    },
+    "good_opinion_AJ10": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "brooding",
+                    "upstanding"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "rank": [
+                    "warrior",
+                    "deputy",
+                    "apprentice"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "max_like_20"
+                ]
+            }
+        ],
+        "intro": [
+            "What are you doing?",
+            "[t_c snaps at you when you tread a little bit too close to the leader's den.]",
+            "Anyone who wants to cause any harm to r_c:0 is going to have to get through me first!!!",
+            "[You stammer to t_c that you were just passing through, and {PRONOUN/t_c/subject} {VERB/t_c/settle/settles} back into {PRONOUN/t_c/poss} position guarding the leader's den, eyes narrowed in suspicion.]"
+        ]
+    },
+    "good_opinion_AJ11": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "deaf:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "sweet",
+                    "neurotic"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "deaf:any:false"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "[At mealtime, t_c kindly leaves a portion of {PRONOUN/t_c/poss} prey outside r_c:0's den, clearly sympathizing with the stress of {PRONOUN/r_c:0/poss} situation.]"
+        ]
+    },
+    "good_opinion_AJ12": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "introspective"
+                ],
+                "age": [
+                    "adult",
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "I believe that there is nuance in every situation. Our life in this Clan is complex and multifaceted. Things are not always either good or bad, dark or light, but rather exist in a multitude of shades of gray.",
+            "However, in the case of r_c:0, when taking everything into consideration ... The good outweighs the bad. No matter what way you look at it, it will every time.",
+            "So, speaking strictly logically, there is no reason not to support {PRONOUN/r_c:0/object}."
+        ]
+    },
+    "good_opinion_AJ183": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "neurotic"
+                ],
+                "age": [
+                    "younger",
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "warrior",
+                    "apprentice"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "I still remember my first ever patrol with r_c:0 ...",
+            "I was so terrified of being around someone so important, I started getting careless and making stupid mistakes. Every piece of prey we encountered, somehow I found a way to scare it off.",
+            "It was so humiliating. It felt like the entire Clan was disappointed in me. I knew I could do better, but I just couldn't find the words to explain that to r_c:0. I was so sure {PRONOUN/r_c:0/subject} would be upset with me ...",
+            "But, really, that wasn't what happened at all. Instead, r_c:0 told the rest of the patrol to go ahead, and took the time out of {PRONOUN/r_c:0/poss} important schedule to give me some tips on my hunting.",
+            "{PRONOUN/r_c:0/subject/CAP} {VERB/r_c:0/were/was} so patient and understanding with me ... Even when I doubted myself the most, r_c:0 showed me that, no matter what, I will always have a place in this Clan.",
+            "Now that some time has passed, I want to do the same thing for {PRONOUN/r_c:0/object}.",
+            "No matter what happens, I will always support r_c:0."
+        ]
+    },
+    "good_opinion_AJ13.1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "neurotic"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "medicine cat",
+                    "medicine cat apprentice"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "I still remember my first ever time treating r_c:0 ...",
+            "I was so terrified of being around someone so important, I started getting careless and making stupid mistakes. Everything I tried, I somehow seemed to mess it up.",
+            "It was so humiliating. It felt like the entire Clan was disappointed in me. I knew I could do better, but I just couldn't find the words to explain that to r_c:0. I was so sure {PRONOUN/r_c:0/subject} would be upset with me ...",
+            "But, really, that wasn't what happened at all. Instead, r_c:0 reassured me that it was alright, and took the time out of {PRONOUN/r_c:0/poss} important schedule to give me some tips on my cobweb bandaging technique.",
+            "{PRONOUN/r_c:0/subject/CAP} {VERB/r_c:0/were/was} so patient and understanding with me ... Even when I doubted myself the most, r_c:0 showed me that, no matter what, I will always have a place in this Clan.",
+            "Now that some time has passed, I want to do the same thing for {PRONOUN/r_c:0/object}.",
+            "No matter what happens, I will always support r_c:0."
+        ]
+    },
+    "good_opinion_AJ13.2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "neurotic"
+                ],
+                "age": [
+                    "younger",
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "mediator",
+                    "mediator apprentice"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "I still remember my first ever time mediating one of r_c:0's arguments ...",
+            "I was so terrified of being around someone so important, I started getting careless and making stupid mistakes. No matter what I tried, I only ever seemed to make the situation worse.",
+            "It was so humiliating. It felt like the entire Clan was disappointed in me. I knew I could do better, but I just couldn't find the words to explain that to r_c:0. I was so sure {PRONOUN/r_c:0/subject} would be upset with me ...",
+            "But, really, that wasn't what happened at all. Instead, r_c:0 reassured me that it was alright, and took the time out of {PRONOUN/r_c:0/poss} important schedule to give me some tips on my conflict resolution.",
+            "{PRONOUN/r_c:0/subject/CAP} {VERB/r_c:0/were/was} so patient and understanding with me ... Even when I doubted myself the most, r_c:0 showed me that, no matter what, I will always have a place in this Clan.",
+            "Now that some time has passed, I want to do the same thing for {PRONOUN/r_c:0/object}.",
+            "No matter what happens, I will always support r_c:0."
+        ]
+    },
+    "good_opinion_AJ13.3": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "neurotic"
+                ],
+                "age": [
+                    "younger",
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "queen",
+                    "queen's apprentice"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "I still remember the first ever time r_c:0 visited the nursery after becoming leader ...",
+            "It was a huge disaster. The kits were unruly, the queens were irritable, no one listened to anything I had to say. No matter what I tried, I just couldn't seem to get the situation under control.",
+            "It was so humiliating. It felt like the entire Clan was disappointed in me. I knew I could do better, but I just couldn't find the words to explain that to r_c:0. I was so sure {PRONOUN/r_c:0/subject} would be upset with me ...",
+            "But, really, that wasn't what happened at all. Instead, r_c:0 reassured me that it was alright, and took the time out of {PRONOUN/r_c:0/poss} important schedule to give me some tips on how to manage the kits.",
+            "{PRONOUN/r_c:0/subject/CAP} {VERB/r_c:0/were/was} so patient and understanding with me ... Even when I doubted myself the most, r_c:0 showed me that, no matter what, I will always have a place in this Clan.",
+            "Now that some time has passed, I want to do the same thing for {PRONOUN/r_c:0/object}.",
+            "No matter what happens, I will always support r_c:0."
+        ]
+    },
+    "good_opinion_AJ13": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "unabashed",
+                    "stable",
+                    "cool",
+                    "brooding",
+                    "upstanding"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "deputy"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_trust_30"
+                ]
+            }
+        ],
+        "intro": [
+            "Cats in this Clan might think they know r_c:0, but they really don't. Not the way that I do.",
+            "Until you've worked alongside {PRONOUN/r_c:0/object} personally, until you know what it takes to manage this Clan down to the last minute detail, then you have no right to criticize {PRONOUN/r_c:0/poss} choices.",
+            "Point. Blank. Period."
+        ]
+    },
+    "good_opinion_AJ14": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "unabashed",
+                    "upstanding"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "[t_c is fighting with some of r_c:0's dissenters.]",
+            "Why don't you say it again? Huh? Why don't you say that to r_c:0's face?",
+            "If you're not going to support {PRONOUN/r_c:0/object}, then you don't even deserve to call yourself a part of this Clan!"
+        ]
+    },
+    "good_opinion_AJ15": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "unlawful"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "Tch. If this is all it takes to get the Clan mad at r_c:0, I'd hate to see how everybody would react if they knew about some of the things <i>I've</i> done.",
+            "... No, I'm not going to tell you!"
+        ]
+    },
+    "good_opinion_AJ16": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "unabashed",
+                    "silly",
+                    "upstanding"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "If you ask me, r_c:0 is exactly what this Clan needs. Things have only gotten better in c_n since {PRONOUN/r_c:0/subject} became leader!",
+            "Before {PRONOUN/r_c:0/object}, everybody in this Clan was so weak and lily livered ... r_c:0 has really whipped us into shape, and shown us what being a c_nner is really all about!"
+        ]
+    },
+    "good_opinion_AJ17": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "min_max_faith": [
+                    0,
+                    9
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "Have you seen how well the prey has been running lately? It has to be some kind of good sign.",
+            "Our warrior ancestors are smiling down on r_c:0, and honoring {PRONOUN/r_c:0/poss} leadership! To question it now could mean disaster for our Clan!"
+        ]
+    },
+    "good_opinion_AJ18": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "min_max_faith": [
+                    0,
+                    9
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "I might not always have faith in r_c:0, but I do have faith in StarClan.",
+            "After all, they wouldn't give nine lives to just any cat! There must be something in r_c:0 that none of us are seeing."
+        ]
+    },
+    "good_opinion_AJ19": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "stable",
+                    "brooding",
+                    "silly",
+                    "upstanding"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "Everycat complaining about r_c:0 around camp ... I'm just so sick of hearing about it.",
+            "If those cats think they can do so much better, then why don't they just leave and start their own Clan? It would certainly give us a lot more peace around here."
+        ]
+    },
+    "good_opinion_AJ20": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "mediator",
+                    "mediator apprentice"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_trust_30"
+                ]
+            }
+        ],
+        "intro": [
+            "I'm a mediator. I'm not supposed to feel any particular way about any conflicts around camp, period.",
+            "... But, if you ask me, y_c, we couldn't ask for a much better leader than the one we've got.",
+            "r_c:0 has never really given me any problems. The Clan could do a lot worse than {PRONOUN/r_c:0/object}."
+        ]
+    },
+    "good_opinion_AJ21": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "cool"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "Y'know, all this controversy has really only made me gain respect for our leader. Despite all the squabble, {PRONOUN/r_c:0/subject} still managed to rise above it all.",
+            "I think the rest of us could stand to learn a thing or two from that."
+        ]
+    },
+    "good_opinion_AJ22": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "unlawful",
+                    "cool"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "I never really felt all that strongly about r_c:0's leadership style, but all this squawking about how terrible {PRONOUN/r_c:0/subject} {VERB/r_c:0/are/is} is so annoying that I just might have to support {PRONOUN/r_c:0/object} now, just to make a point."
+        ]
+    },
+    "neutral_opinion_c": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "Eh, r_c:0? {PRONOUN/r_c:0/subject/CAP}{VERB/r_c:0/'re/'s} not bad, not the best either. I mean, there's no one else here who would really step up, to be honest. We've got what we got."
+        ]
+    },
+    "neutral_opinion_Guy1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "age": [
+                    "kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "r_c:0": {},
+            "r_c:1": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "t_c"
+                ],
+                "relationship": [
+                    "parent/child"
+                ]
+            }
+        ],
+        "intro": [
+            "r_c:1? r_c:0 makes me listen to them!"
+        ]
+    },
+    "neutral_opinion_Guy2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "age": [
+                    "adolescent"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "What do I think about r_c:0?",
+            "[t_c pauses for a moment.]",
+            "Well, I don't know enough about the other leaders to judge {PRONOUN/r_c:0/object} too much."
+        ]
+    },
+    "neutral_opinion_Guy3": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "We've had worse, we've had better... I just hope StarClan takes {PRONOUN/r_c:0/object} before they take me!",
+            "[t_c cackles.]"
+        ]
+    },
+    "neutral_opinion_SQ1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "neurotic"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "What do I think of r_c:0? I'm trying to stay out of this discussion, y_c. Sorry."
+        ]
+    },
+    "neutral_opinion_SQ2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "neurotic"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "My opinion of r_c:0? I don't really know...",
+            "What do you think?"
+        ]
+    },
+    "neutral_opinion_SQ3": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "neurotic"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "Everycat's talking about their opinions on r_c:0, and it's kind of stressing me out...",
+            "Can we talk about something else?"
+        ]
+    },
+    "neutral_opinion_AJ": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "brooding"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "strangers"
+                ]
+            }
+        ],
+        "intro": [
+            "You want to know my opinion on r_c:0?",
+            "Why in StarClan's name would I tell you?"
+        ]
+    },
+    "neutral_opinion_AJ1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "unabashed",
+                    "upstanding"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "Psh, who cares about r_c:0? It's not like what {PRONOUN/r_c:0/subject} {VERB/r_c:0/do/does} really matters to the Clan much anyways.",
+            "{PRONOUN/r_c:0/subject/CAP} can make whatever choices {PRONOUN/r_c:0/subject} {VERB/r_c:0/want/wants}, but we all know that it's what the rest of the Clan does that really matters. {PRONOUN/r_c:0/subject/CAP}{VERB/r_c:0/'re/'s} only one cat, after all.",
+            "A natural born leader with their paws on the ground has just as much influence over c_n as any one -star ever could!"
+        ]
+    },
+    "neutral_opinion_AJ2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "cool"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "warrior",
+                    "medicine cat",
+                    "mediator",
+                    "queen",
+                    "apprentice",
+                    "medicine cat apprentice",
+                    "mediator apprentice",
+                    "queen's apprentice"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "r_c:0 this, r_c:0 that. Does anycat really think all this talk about r_c:0 is going to make any difference to the Clan whatsoever?",
+            "Trust me, y_c, to the big cats up there, all of us are just little insects that they can crush beneath their paw. r_c:0 couldn't give a rat's tail whether the lowly t_c approves of {PRONOUN/r_c:0/object} or not.",
+            "And, I don't know about you, but I'm not really one to spend a lot of time thinking about cats who wouldn't twitch their whiskers at whether I live or die."
+        ]
+    },
+    "neutral_opinion_AJ3": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "adolescent"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "stable",
+                    "cool",
+                    "introspective",
+                    "neurotic",
+                    "upstanding"
+                ],
+                "age": [
+                    "older"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "strangers"
+                ]
+            }
+        ],
+        "intro": [
+            "Hm? You wanna know what I think about r_c:0?",
+            "... Don't you have training to get to, or something?"
+        ]
+    },
+    "neutral_opinion_AJ4": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "adolescent"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "cool"
+                ],
+                "age": [
+                    "older"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            }
+        },
+        "intro": [
+            "Sorry, pipsqueak. I don't talk politics with cats who don't even know if their name is gonna end with a -claw or a -cloud yet.",
+            "You can come back when you're a little older."
+        ]
+    },
+    "neutral_opinion_AJ5": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "introspective"
+                ],
+                "age": [
+                    "older"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "A big change is coming ... Can you feel it in the air?",
+            "This isn't the c_n it once was, when r_c:0 first came into power.",
+            "I can only hope the change will be for the better ... not for the worse."
+        ]
+    },
+    "neutral_opinion_AJ6": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "stable",
+                    "introspective"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "There is good and bad in everycat. r_c:0 is no different.",
+            "To expect anything different would be completely irrational. No matter what r_c:0 does, c_n will persist as it always has."
+        ]
+    },
+    "neutral_opinion_AJ7": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "Y'know, I remember a time before r_c:0 was leader. The leader then never always made the right choices, either. There were times when all of us doubted.",
+            "But, in the end ... c_n always pulled through.",
+            "I have to have faith that the same thing will happen now, as well."
+        ]
+    },
+    "neutral_opinion_AJ8": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "brooding"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "max_like_30"
+                ]
+            }
+        ],
+        "intro": [
+            "If you've come to talk about r_c:0, go waste your breath on some other cat. I'm not interested."
+        ]
+    },
+    "neutral_opinion_AJ9": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "brooding"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "So much idle gossip in this Clan, it's enough to make you sick.",
+            "Mark my words. Everybody may seem to feel strongly about r_c:0 now, but before long, everybody will abandon their convictions and move onto the next idiotic topic of the moon."
+        ]
+    },
+    "neutral_opinion_AJ10": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "cool",
+                    "silly"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "Pst, y_c. I heard a terrible rumor that r_c:0 is part turtle! How can we ever expect anycat so slow to lead our Clan to success?",
+            "[... t_c can never take anything seriously.]"
+        ]
+    },
+    "neutral_opinion_AJ11": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "age": [
+                    "adolescent",
+                    "adult"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "[When older cats start discussing r_c:0, t_c gets up and moves to a different part of camp.]"
+        ]
+    },
+    "neutral_opinion_AJ12": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "neurotic"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "Oh, I just hate how much animosity there is around camp nowadays! Don't you, y_c? It seems like even the tiniest comments are enough to start a fight.",
+            "If you ask me, all this r_c:0 nonsense couldn't be over soon enough. Clanmates are supposed to support one another! I miss it when we could all just get along."
+        ]
+    },
+    "neutral_opinion_AJ13": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "cool"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "Hey, love r_c:0 or hate {PRONOUN/r_c:0/object}, you can't deny this is the most excitement we've had around camp in moons.",
+            "Everybody at each other's' throats, squabbling, debating ... It's some solid entertainment!",
+            "Maybe I should start another rumor about the deputy, just to keep the fun going ..."
+        ]
+    },
+    "neutral_opinion_AJ14": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "mediator",
+                    "mediator apprentice",
+                    "deputy"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            }
+        ],
+        "intro": [
+            "Honestly, forget whatever r_c:0 did to upset everycat -- I'm way more worried about the way c_n can't seem to present a unified front on ... Well, much of anything these days!",
+            "The strength of a Clan is in its unity. If other cats saw the cracks that were starting to form in our very own camp, you bet your tail they'd love to take advantage!",
+            "I just hope we can manage to pull ourselves back together soon, or else who knows what'll happen?"
+        ]
+    },
+    "neutral_opinion_AJ15": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "min_like_20"
+                ]
+            }
+        ],
+        "intro": [
+            "Nowadays, everycat is either a r_c:0 supporter or a r_c:0 dissenter. It used to be that we were all just Clanmates.",
+            "Certainly everycat's true colors are showing, aren't they, y_c? I never would've imagined how vicious some cats can be towards members of their own Clan!"
+        ]
+    },
+    "bad_opinion_c": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "unabashed",
+                    "upstanding"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "r_c:0's the worst leader I've ever seen. Anycat here would be better than {PRONOUN/r_c:0/object}, to be honest.",
+            "[You glance around, hoping that t_c's voice doesn't carry and that r_c:0 isn't in camp.]",
+            "I don't care, I'll say it to {PRONOUN/r_c:0/poss} face!"
+        ]
+    },
+    "bad_opinion_Guy1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "age": [
+                    "kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "r_c:0 never wants to play with us!"
+        ]
+    },
+    "bad_opinion_Guy2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "apprentice"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "Ugh.",
+            "[You ask t_c what's wrong.]",
+            "r_c:0 gave me the worst mentor! {PRONOUN/r_c:0/subject/CAP} either {VERB/r_c:0/want/wants} me to fail, or {PRONOUN/r_c:0/subject} {VERB/r_c:0/have/has} no idea how to lead."
+        ]
+    },
+    "bad_opinion_Guy3": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "elder"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "deputy"
+                ]
+            },
+            "r_c:1": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "I hope to see the day r_c:0 takes r_c:1's place."
+        ]
+    },
+    "bad_opinion_AJ": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "cool",
+                    "upstanding"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "r_c:0's recent decision is exactly why a cat like me should be the leader. Nothing like this ever would have happened under my watch.",
+            "[You ask t_c if {PRONOUN/t_c/subject}{VERB/t_c/'re/'s} being a little forward?]",
+            "Hey, I just said a cat <i>like</i> me, not me exactly!",
+            "Honestly, I'd be happy if <i>anycat</i> other than r_c:0 took the position ..."
+        ]
+    },
+    "bad_opinion_AJ1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "sweet",
+                    "neurotic"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "How could r_c:0 possibly make a choice like this? {VERB/r_c:0/Don't/Doesn't} {PRONOUN/r_c:0/subject} understand what it will mean for our Clan?",
+            "I know {PRONOUN/r_c:0/subject}{VERB/r_c:0/'re/'s} not a bad cat. Maybe ... Maybe if I could just help {PRONOUN/r_c:0/object} understand the consequences of {PRONOUN/r_c:0/poss} choices, then ...",
+            "[t_c's gaze trails towards the leader's den, eyes pooling with doubt and betrayal.]"
+        ]
+    },
+    "bad_opinion_AJ2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "neurotic",
+                    "upstanding"
+                ],
+                "age": [
+                    "adolescent",
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "You want to know how I feel about r_c:0?",
+            "... If I tell the truth, will I still graduate on time?"
+        ]
+    },
+    "bad_opinion_AJ3": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "neurotic"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "strangers"
+                ]
+            }
+        ],
+        "intro": [
+            "You want to know how I feel about the r_c:0 situation?",
+            "W-Why? Who told you to ask me? Did r_c:0 send you?",
+            "[While t_c is reluctant to admit {PRONOUN/t_c/poss} dissent outright, {PRONOUN/t_c/poss} darting eyes and twitching tail tell you all you need to know.]"
+        ]
+    },
+    "bad_opinion_AJ4": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "stable",
+                    "introspective",
+                    "upstanding"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            }
+        },
+        "intro": [
+            "If things in c_n keep continuing on the way they've been going ... Well, then I don't know how much longer I can stay.",
+            "My loyalty is to my Clan, not the tyrant who wants to run it into the ground."
+        ]
+    },
+    "bad_opinion_AJ5": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "unabashed"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "r_c:0 is nothing short of a disgrace to the Clan. I don't know how {PRONOUN/r_c:0/subject} even became deputy in the first place, let alone leader!",
+            "Did the former leader have bees in their brain or something? I would've never let a cat like r_c:0 come into power! Not if I knew the damage {PRONOUN/r_c:0/subject} could do to the Clan!"
+        ]
+    },
+    "bad_opinion_AJ6": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "brooding",
+                    "introspective"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "r_c:0 is not my leader ... {PRONOUN/r_c:0/subject/CAP} never {VERB/r_c:0/have/has} been.",
+            "It's only a matter of time until StarClan realizes what a mistake it's made and strips all nine of r_c:0's lives away."
+        ]
+    },
+    "neutral_opinion_E2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "upstanding"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ],
+                "rank": [
+                    "mediator"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "All of this r_c:0 drama is really ruffling my fur. It'll be a miracle if half my pelt isn't covered in gray hairs by the time I settle all of the arguments around camp.",
+            "What do I think about r_c:0..?",
+            "Well... sure, {PRONOUN/r_c:0/subject}{VERB/t_c/'ve/'s} made some... rocky decisions in the past but {PRONOUN/r_c:0/subject}{VERB/t_c/'ve/'s} led the Clan this far, {VERB/r_c:0/haven't/hasn't} {PRONOUN/r_c:0/subject}? How can we expect {PRONOUN/r_c:0/object} to improve if we tear {PRONOUN/r_c:0/object} down whenever {PRONOUN/r_c:0/subject} {VERB/r_c:0/slip/slips} up?",
+            "I think things are fine just the way they are. r_c:0 is learning, and that's just something the others will have to realize eventually."
+        ]
+    },
+    "neutral_opinion_E": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "upstanding"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "not_kitten"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "warrior"
+                ]
+            },
+            "r_c:1": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "intro": [
+            "What's up with everycat nowadays? All I've been hearing around camp is 'r_c:1 this', 'r_c:1 that', 'Did you hear what r_c:1 told r_c:0 earlier?'.",
+            "Seriously! If these cats spend as much time hunting as they do gossiping, the fresh-kill pile would be filled by sunhigh!"
+        ]
+    }
+}

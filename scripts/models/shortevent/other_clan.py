@@ -18,3 +18,7 @@ class OtherClan(BaseModel):
         MISSING,
         description="How the reputation of the Clan changes as a result of this event",
     )
+    has_rank: Union[list, MISSING] = Field(
+        MISSING,
+        description="Clan must have certain ranks of cats in order for event to trigger.",
+    )

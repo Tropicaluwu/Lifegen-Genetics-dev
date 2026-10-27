@@ -34,11 +34,14 @@ class CatRank(StrEnum):
     NEWBORN = "newborn"
     KITTEN = "kitten"
     APPRENTICE = "apprentice"
-    MEDICINE_APPRENTICE = "medicine cat apprentice"
+    MEDICINE_APPRENTICE = "healer apprentice"
     MEDIATOR_APPRENTICE = "mediator apprentice"
+    QUEEN_APPRENTICE = "queen apprentice"
+    QUEENS_APPRENTICE = "queen apprentice"  # lifegen name for it
     WARRIOR = "warrior"
-    MEDICINE_CAT = "medicine cat"
+    MEDICINE_CAT = "healer"
     MEDIATOR = "mediator"
+    QUEEN = "queen"
     DEPUTY = "deputy"
     LEADER = "leader"
     ELDER = "elder"
@@ -51,31 +54,61 @@ class CatRank(StrEnum):
     def is_baby(self) -> bool:
         return self in (self.NEWBORN, self.KITTEN)
 
+    def lifegen_name(self) -> str:
+        """the name lifegen uses for this rank. lifegen's dialogue and event files
+        are named and filtered with these (genemod renamed a few of them)"""
+        return {
+            "healer": "medicine cat",
+            "healer apprentice": "medicine cat apprentice",
+            "queen apprentice": "queen's apprentice",
+        }.get(str(self.value), str(self.value))
+
     def is_any_medicine_rank(self) -> bool:
         return self in (self.MEDICINE_CAT, self.MEDICINE_APPRENTICE)
 
     def is_any_mediator_rank(self) -> bool:
         return self in (self.MEDIATOR, self.MEDIATOR_APPRENTICE)
+    
+    def is_any_queen_rank(self) -> bool:
+        return self in (self.QUEEN, self.QUEEN_APPRENTICE)
 
     def is_any_apprentice_rank(self) -> bool:
         return self in (
             self.APPRENTICE,
             self.MEDIATOR_APPRENTICE,
+            self.QUEEN_APPRENTICE,
             self.MEDICINE_APPRENTICE,
+            self.QUEENS_APPRENTICE
         )
 
     def is_any_adult_warrior_like_rank(self) -> bool:
         return self in (self.WARRIOR, self.DEPUTY, self.LEADER)
 
-    def is_allowed_to_patrol(self) -> bool:
+    def is_any_adult_patrol_rank(self) -> bool:
+        return self in (self.WARRIOR, self.DEPUTY, self.LEADER, self.QUEEN, self.MEDIATOR)
+
+    def is_allowed_to_patrol(self, cat=None, allow_mediators=False) -> bool:
         # newborn is not included in this because the constants.CONFIG["fun"] needs extra checks
+        if cat is not None:
+            # outsiders who travel with you can patrol once they're old enough
+            if not cat.status.group.is_any_clan_group():
+                return cat.status.alive_in_your_cat_group and cat.moons >= 6
+            # LG: Clan cats are only checked by rank here. Which Clan is patrolling is up to the patrol screen,
+            # this used to turn away every other Clan's cats when you picked that Clan to patrol with
+            if cat.dead:
+                return False
         if self.is_any_clancat_rank() and self not in (
             self.ELDER,
             self.KITTEN,
             self.NEWBORN,
-            self.MEDIATOR,
-            self.MEDIATOR_APPRENTICE,
+            self.QUEEN,
+            self.QUEENS_APPRENTICE,
         ):
+            if not allow_mediators and self in (
+                self.MEDIATOR,
+                self.MEDIATOR_APPRENTICE
+            ):
+                return False
             return True
         return False
 
@@ -104,6 +137,10 @@ class CatStanding(StrEnum):
     KNOWN = "known"
     UNKNOWN = "unknown"
 
+    # LG
+    SHUNNED = "shunned"
+    DAYLIGHT = "daylight"
+
 
 class CatGroup(StrEnum):
     PLAYER_CLAN = "player_clan"
@@ -120,6 +157,15 @@ class CatGroup(StrEnum):
     UNKNOWN_RESIDENCE_ID = "3"
     DARK_FOREST_ID = "4"
 
+    # LG
+    ROGUE_GROUP = "rogue_group"
+    LONER_GROUP = "loner_group"
+    HOUSEHOLD = "household"
+
+    ROGUE_GROUP_ID = "5"
+    LONER_GROUP_ID = "6"
+    HOUSEHOLD_ID = "7"
+
     def is_afterlife(self) -> bool:
         return self in (self.DARK_FOREST, self.STARCLAN, self.UNKNOWN_RESIDENCE)
 
@@ -128,7 +174,27 @@ class CatGroup(StrEnum):
             self.PLAYER_CLAN,
             self.OTHER_CLAN,
         )
-
+    
+    # LG
+    def get_all_outside_groups_IDs(self):
+        """ 
+        Returns a list of groups that the specified cat is NOT a part of. 
+        Called from a cat's group object
+        """
+        return_groups= []
+        all_groups = {
+            CatGroup.PLAYER_CLAN: CatGroup.PLAYER_CLAN_ID,
+            CatGroup.ROGUE_GROUP: CatGroup.ROGUE_GROUP_ID,
+            CatGroup.LONER_GROUP: CatGroup.LONER_GROUP_ID,
+            CatGroup.HOUSEHOLD: CatGroup.HOUSEHOLD_ID,
+            CatGroup.NONE: None
+        }
+        for i in all_groups:
+            if i == self:
+                continue
+            else:
+                return_groups.append(all_groups[i])
+        return return_groups
 
 class CatCompatibility(Enum):
     NEGATIVE = auto()
@@ -150,3 +216,10 @@ class CatThought(StrEnum):
     ON_LOST = "on_lost"
     ON_AFTERLIFE_CHANGE = "on_afterlife_change"
     ON_RANK_CHANGE = "on_rank_change"
+
+    # LG
+    IS_DF_GUIDE = "is_df_guide"
+    OUTSIDE_DAM = "outside_dam"
+    OUTSIDE_SIRE = "outside_sire"
+    OUTSIDE_SURROGATE = "outside_surrogate"
+    OUTSIDE_KIT_DEATH = "outside_kit_death"

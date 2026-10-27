@@ -30,6 +30,13 @@
         "starclan_kit_6": "The stars reassured m_c that {PRONOUN/m_c/subject} would be cared for.",
         "starclan_kit_7": "m_c had no deeds to note, no legacy to leave behind, but StarClan welcomed {PRONOUN/m_c/object} to their ranks.",
 
+        "starclan_misplaced_0": "m_c slipped through StarClan's gates unquestioned, and no ancestor thought to ask whether {PRONOUN/m_c/subject} had earned the starlight {PRONOUN/m_c/subject} now walked.",
+        "starclan_misplaced_1": "Whatever m_c had done in life, the stars did not see it. {PRONOUN/m_c/subject/CAP} settled among the honored dead, smug in a paradise {PRONOUN/m_c/subject} had no right to.",
+        "starclan_misplaced_2": "By some oversight of the heavens, m_c woke among the stars.",
+        "starclan_misplaced_3": "StarClan's light fell on m_c the same as any other, blind to the darkness {PRONOUN/m_c/subject} carried. The mistake went unnoticed, and {PRONOUN/m_c/subject} {VERB/m_c/were/was} glad of it.",
+        "starclan_misplaced_4": "m_c had braced for the cold of the deep woods, and instead found starlight. If the ancestors had erred, {PRONOUN/m_c/subject} {VERB/m_c/were/was} not about to correct them.",
+        "starclan_misplaced_5": "The stars opened for m_c as if {PRONOUN/m_c/subject} {VERB/m_c/were/was} worthy, and the truth of who {PRONOUN/m_c/subject} had been slipped quietly beneath the glimmering welcome.",
+
         "dark_forest_default_0": "Power and authority, confidence and excitement — it had called to m_c, pulled {PRONOUN/m_c/object} like magnets in {PRONOUN/m_c/poss} blood. {PRONOUN/m_c/subject/CAP} soon walked the Dark Forest, raising {PRONOUN/m_c/poss} voice to call to others in turn.",
         "dark_forest_default_1": "m_c's spirit lay in the endless solitude of the deep woods, {PRONOUN/m_c/poss} soul watching the stars in envy.",
         "dark_forest_default_2": "The shadows of the deeps woods hid nothing from m_c, who stepped down the path to the Dark Forest with eyes open and tail held high.",
@@ -59,6 +66,13 @@
         "dark_forest_kit_1": "m_c reached a shadowed hollow, still and quiet. {PRONOUN/m_c/subject/CAP} hadn't seen any cat, and didn't know how {PRONOUN/m_c/subject} got so far from camp.",
         "dark_forest_kit_2": "The wind rustled through the trees, shadowed tangled on the ground, and m_c stepped into an afterlife peaceful, still, and quiet.",
         "dark_forest_kit_3": "The new world was damp and dark, but not unwelcoming to m_c.",
-        "dark_forest_kit_4": "m_c wandered the Dark Forest, a little confused, but mostly curious."
+        "dark_forest_kit_4": "m_c wandered the Dark Forest, a little confused, but mostly curious.",
+
+        "dark_forest_misplaced_0": "m_c had done nothing to deserve the shadows, yet they closed around {PRONOUN/m_c/object} dark and enveloping. Somewhere, a terrible mistake had been made.",
+        "dark_forest_misplaced_1": "The gnarled trees loomed close and the cold seeped into m_c's fur. {PRONOUN/m_c/subject/CAP} waited for the stars to correct their error, but the darkness only deepened.",
+        "dark_forest_misplaced_2": "There was a kindness in m_c that the deep woods had no place for, and yet here {PRONOUN/m_c/subject} woke, wronged by an afterlife that had misjudged {PRONOUN/m_c/object}.",
+        "dark_forest_misplaced_3": "m_c did not belong here -- every honest bone in {PRONOUN/m_c/poss} body knew it -- but no one came to lead {PRONOUN/m_c/object} back to the light.",
+        "dark_forest_misplaced_4": "Confused and afraid, m_c wandered in the sludge, a good soul lost to a fate meant for someone far crueler.",
+        "dark_forest_misplaced_5": "The Dark Forest had taken one it should never have touched, and m_c's spirit flickered there like a star fallen where no star should fall."
     }
 }

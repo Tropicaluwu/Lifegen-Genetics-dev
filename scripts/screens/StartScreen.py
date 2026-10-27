@@ -16,6 +16,7 @@ import os
 import platform
 import subprocess
 import traceback
+import random
 from html import escape
 
 import pygame
@@ -41,6 +42,9 @@ from ..housekeeping.datadir import get_cache_dir
 from ..housekeeping.update import has_update, UpdateChannel, get_latest_version_number
 from ..housekeeping.version import get_version_info
 from ..ui.generate_button import get_button_dict, ButtonStyles
+from ..ui.windows.names_editor import NamesEditorWindow
+from ..housekeeping import lgg_update
+from ..ui.windows.lgg_update import LGGUpdateWindow
 
 logger = logging.getLogger(__name__)
 has_checked_for_update = False
@@ -55,11 +59,20 @@ class StartScreen(Screens):
     def __init__(self, name=None):
         super().__init__(name)
         self.warning_label = None
-
         self.social_buttons = {}
-
         self.error_open = False
         self.event_edit = None
+
+    def choose_random_menu(self, folder_path):
+        """This will choose a random menu to display from the menus folder."""
+        files = os.listdir(folder_path)
+        png_files = [file for file in files if file.endswith('.png')]
+
+        if png_files:
+            chosen_file = random.choice(png_files)
+            return "resources/menus/" + chosen_file
+        else:
+            return "resources/images/menu.png"
 
     def handle_event(self, event):
         """This is where events that occur on this page are handled.
@@ -80,6 +93,10 @@ class StartScreen(Screens):
                 self.settings_button: GameScreen.SETTINGS,
             }
             if event.ui_element in screens and not self.error_open:
+                if event.ui_element == self.continue_button:
+                    for x in Cat.all_cats:
+                        if Cat.all_cats[x].dead:
+                            Cat.all_cats[x].pelt.rebuild_sprite = True
                 self.change_screen(screens[event.ui_element])
             elif event.ui_element == self.open_data_directory_button:
                 open_data_dir()
@@ -92,13 +109,16 @@ class StartScreen(Screens):
                 self.open_data_directory_button.kill()
                 self.error_open = False
             elif event.ui_element == self.update_button:
-                UpdateAvailableWindow()
+                LGGUpdateWindow()
+            elif event.ui_element == self.names_button and not self.error_open:
+                # add and take out names, for all saves or for one
+                NamesEditorWindow()
             elif event.ui_element == self.quit:
                 quit_game(savesettings=False, clearevents=False)
             elif event.ui_element == self.event_edit:
                 self.change_screen(GameScreen.EVENT_EDIT)
             elif event.ui_element == self.social_buttons["discord_button"]:
-                open_url("https://discord.gg/clangen")
+                open_url("https://discord.gg/WqzdEcavcH")
             elif event.ui_element == self.social_buttons["tumblr_button"]:
                 open_url("https://officialclangen.tumblr.com/")
             elif event.ui_element == self.social_buttons["twitter_button"]:
@@ -109,11 +129,26 @@ class StartScreen(Screens):
             ) and self.continue_button.is_enabled:
                 self.change_screen(GameScreen.CAMP)
 
-    # def on_use(self):
-    #     """
-    #     TODO: DOCS
-    #     """
-    #     super().on_use()
+    def on_use(self):
+        super().on_use()
+        # a newer LifeGen Genetics is out: show the button, and the first time for each new
+        # version, the window saying how to update
+        if lgg_update.newer_version and not self.update_button.visible:
+            self.update_button.show()
+            seen_file = f"{get_cache_dir()}/lgg_update_shown"
+            seen = ""
+            if os.path.exists(seen_file):
+                with open(seen_file, "r", encoding="utf-8") as read_file:
+                    seen = read_file.read().strip()
+            changelog = getattr(self, "changelog_window", None)
+            if changelog is not None and changelog.alive():
+                # after the changelog is closed (the button shows already)
+                self.update_button.hide()
+                return
+            if seen != lgg_update.newer_version and not self.error_open:
+                LGGUpdateWindow()
+                with open(seen_file, "w", encoding="utf-8") as write_file:
+                    write_file.write(lgg_update.newer_version)
 
     def exit_screen(self):
         """
@@ -124,6 +159,7 @@ class StartScreen(Screens):
         self.switch_clan_button.kill()
         self.new_clan_button.kill()
         self.settings_button.kill()
+        self.names_button.kill()
         self.error_label.kill()
         self.warning_label.kill()
         self.update_button.kill()
@@ -131,6 +167,7 @@ class StartScreen(Screens):
         if self.event_edit:
             self.event_edit.kill()
         self.closebtn.kill()
+        self.warning_label_background.kill()
         for btn in self.social_buttons:
             self.social_buttons[btn].kill()
 
@@ -193,7 +230,9 @@ class StartScreen(Screens):
         if game.event_editing:
             game.event_editing = False
 
-        bg = pygame.image.load("resources/images/menu.png").convert()
+        # LG
+        bg = pygame.image.load(self.choose_random_menu("resources/menus")).convert()
+
         if game_setting_get("dark mode"):
             bg.fill(
                 constants.CONFIG["theme"]["fullscreen_background"]["dark"][
@@ -244,13 +283,21 @@ class StartScreen(Screens):
             manager=MANAGER,
             anchors={"top_target": self.new_clan_button},
         )
+        self.names_button = UISurfaceImageButton(
+            ui_scale(pygame.Rect((70, 15), (200, 30))),
+            "names",
+            image_dict=get_button_dict(ButtonStyles.MAINMENU, (200, 30)),
+            object_id="@buttonstyles_mainmenu",
+            manager=MANAGER,
+            anchors={"top_target": self.settings_button},
+        )
         self.quit = UISurfaceImageButton(
             ui_scale(pygame.Rect((70, 15), (200, 30))),
             "buttons.quit",
             image_dict=get_button_dict(ButtonStyles.MAINMENU, (200, 30)),
             object_id="@buttonstyles_mainmenu",
             manager=MANAGER,
-            anchors={"top_target": self.settings_button},
+            anchors={"top_target": self.names_button},
         )
         if constants.CONFIG["dev_tools"]:
             self.event_edit = UISurfaceImageButton(
@@ -307,7 +354,9 @@ class StartScreen(Screens):
         )
 
         self.error_gethelp = pygame_gui.elements.UITextBox(
-            "screens.start.error_gethelp",  # pylint: disable=line-too-long
+            "Please join the Discord server and ask for technical support. "
+            "We'll be happy to help! Please include the error message and the traceback below (if available). "
+            '<br><a href="https://discord.gg/WqzdEcavcH">Discord</a>',  # pylint: disable=line-too-long
             ui_scale(pygame.Rect((527, 215), (175, 300))),
             object_id="#text_box_22_horizleft",
             starting_height=3,
@@ -320,7 +369,8 @@ class StartScreen(Screens):
             get_button_dict(ButtonStyles.SQUOVAL, (178, 30)),
             object_id="@buttonstyles_squoval",
             manager=MANAGER,
-            starting_height=2,  # Layer 2 and repositioned so hover affect works.
+            # Layer 2 and repositioned so hover affect works.
+            starting_height=2,
             tool_tip_text="Opens the data directory. "
             "This is where save files "
             "and logs are stored.",
@@ -329,7 +379,8 @@ class StartScreen(Screens):
         self.closebtn = UIImageButton(
             ui_scale(pygame.Rect((693, 215), (22, 22))),
             "",
-            starting_height=2,  # Hover affect works, and now allows it to be clicked more easily.
+            # Hover affect works, and now allows it to be clicked more easily.
+            starting_height=2,
             object_id="#exit_window_button",
             manager=MANAGER,
         )
@@ -347,19 +398,14 @@ class StartScreen(Screens):
             object_id="@buttonstyles_squoval",
             manager=MANAGER,
         )
-        self.update_button.visible = 0
+        self.update_button.hide()
+        lgg_update.start_check()
 
         try:
             global has_checked_for_update
             global update_available
-            if (
-                not get_version_info().is_source_build
-                and not get_version_info().is_itch
-                and get_version_info().upstream.lower()
-                == "ClanGenOfficial/clangen".lower()
-                and game_setting_get("check_for_updates")
-                and not has_checked_for_update
-            ):
+            if not get_version_info().is_source_build and not get_version_info().is_itch and get_version_info().upstream.lower() == "sedgestripe/clangen".lower() and \
+                    game_setting_get('check_for_updates') and not has_checked_for_update:
                 if has_update(UpdateChannel(get_version_info().release_channel)):
                     update_available = True
                     show_popup = True
@@ -369,16 +415,18 @@ class StartScreen(Screens):
                             "r",
                             encoding="utf-8",
                         ) as read_file:
-                            if read_file.readline() == get_latest_version_number():
+                            if read_file.readline().strip() == get_latest_version_number().strip():
                                 show_popup = False
 
-                    if show_popup:
-                        UpdateAvailableWindow(show_checkbox=True)
+                    # LG
+                    # commented out bc it no worky
+                    # if show_popup:
+                    #     UpdateAvailableWindow(show_checkbox=True)
 
                 has_checked_for_update = True
 
-            if update_available:
-                self.update_button.visible = 1
+            # if update_available:
+            #     self.update_button.visible = 1
         except (RequestException, Timeout):
             logger.exception("Failed to check for update")
             has_checked_for_update = True
@@ -395,14 +443,22 @@ class StartScreen(Screens):
                         show_changelog = False
 
             if show_changelog:
-                ChangelogWindow()
+                self.changelog_window = ChangelogWindow()
                 with open(
                     f"{get_cache_dir()}/changelog_popup_shown", "w", encoding="utf-8"
                 ) as write_file:
                     write_file.write(get_version_info().version_number)
 
+        self.warning_label_background = UISurfaceImageButton(
+            ui_scale(pygame.Rect((50, 601), (700, 32))),
+            "",
+            get_button_dict(ButtonStyles.ROUNDED_RECT, (700, 32)),
+            object_id="@buttonstyles_rounded_rect",
+            manager=MANAGER
+        )
+        self.warning_label_background.disable()
         self.warning_label = pygame_gui.elements.UITextBox(
-            "screens.start.content_warning",
+            "Warning: this game includes descriptions of gore, violence, murder, kit death, and animal abuse",
             ui_scale(pygame.Rect((0, 600), (800, 40))),
             object_id=ObjectID("#text_box_30_horizcenter", "#dark"),
             manager=MANAGER,

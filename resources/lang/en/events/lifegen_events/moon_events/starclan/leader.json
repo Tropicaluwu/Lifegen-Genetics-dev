@@ -1,0 +1,57 @@
+{
+    "general1": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You watch r_c:0 closely each day, hoping {PRONOUN/r_c:0/subject}{VERB/r_c:0/'re/'s} effectively using the life that you gave {PRONOUN/r_c:0/object}."
+    },
+    "general2": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You consider gifting StarClan's apprentices and kits with full names."
+    },
+    "general3": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You feel the pressure of deciding cats' fates on your shoulders now more than ever as a StarClan leader."
+    },
+    "general4": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You feel a sense of nostalgia as you stand by the other StarClan leaders to watch over a Clan Gathering."
+    },
+    "general5": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You and the other StarClan leaders hold a private meeting to discuss certain cats' futures."
+    }
+}

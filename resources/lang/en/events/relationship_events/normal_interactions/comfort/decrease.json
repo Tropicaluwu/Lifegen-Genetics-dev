@@ -143,10 +143,10 @@
 		],
 		"random_status_constraint": [
 	    "apprentice",
-            "medicine cat apprentice",
+            "healer apprentice",
             "mediator apprentice",
             "warrior",
-            "medicine cat",
+            "healer",
             "mediator",
             "deputy",
             "leader",
@@ -198,7 +198,7 @@
 			"r_c told m_c something awful, and m_c may never look at {PRONOUN/r_c/object} quite the same.",
 			"m_c is discomforted by r_c's muttering.",
 			"m_c feels extremely unsettled when r_c looks at {PRONOUN/m_c/object}.",
-			"m_c can't stop thinking about the way r_c glared at {PRONOUN/r_c/object} Clanmate."
+			"m_c can't stop thinking about the way r_c glared at {PRONOUN/r_c/poss} Clanmate."
 		]
 	},
 	{
@@ -222,10 +222,10 @@
 		},
 		"main_status_constraint": [
 	    "apprentice",
-            "medicine cat apprentice",
+            "healer apprentice",
             "mediator apprentice",
             "warrior",
-            "medicine cat",
+            "healer",
             "mediator",
             "deputy",
             "leader",
@@ -233,10 +233,10 @@
         ],
 		"random_status_constraint": [
 	    "apprentice",
-            "medicine cat apprentice",
+            "healer apprentice",
             "mediator apprentice",
             "warrior",
-            "medicine cat",
+            "healer",
             "mediator",
             "deputy",
             "leader",
@@ -266,10 +266,10 @@
 		],
 		"random_status_constraint": [
 	    "apprentice",
-            "medicine cat apprentice",
+            "healer apprentice",
             "mediator apprentice",
             "warrior",
-            "medicine cat",
+            "healer",
             "mediator",
             "deputy",
             "leader",
@@ -294,10 +294,10 @@
 		],
 		"main_status_constraint": [
             "apprentice",
-            "medicine cat apprentice",
+            "healer apprentice",
             "mediator apprentice",
             "warrior",
-            "medicine cat",
+            "healer",
             "mediator",
             "deputy",
             "leader",
@@ -316,7 +316,7 @@
 			"m_c overhears r_c complaining about giving herbs to cats that don't 'deserve' them.",
 			"m_c is startled at r_c's views on sharing herbs with other Clans.",
 			"m_c noticed that there are less deathberries than usual in r_c's herb storage.",
-			"m_c feels more nauseous after being treated r_c for a stomach ache.",
+			"m_c feels more nauseous after being treated by r_c for a stomach ache.",
 			"m_c catches r_c doing experimental treatments on a piece of fresh-kill.",
 			"m_c bristles after seeing r_c add more deathberries to {PRONOUN/r_c/poss} herb storage."
 		],
@@ -326,8 +326,8 @@
 			"vengeful"
 		],
 		"random_status_constraint": [
-			"medicine cat",
-			"medicine cat apprentice"
+			"healer",
+			"healer apprentice"
 		]
 	}
 ]

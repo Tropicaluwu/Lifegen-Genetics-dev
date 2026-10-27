@@ -8,6 +8,7 @@ os.environ["SDL_AUDIODRIVER"] = "dummy"
 from scripts.cat.cats import Cat
 from scripts.cat_relations.relationship import Relationship
 from scripts.clan import Clan
+from scripts.game_structure import game
 from scripts.events_module.relationship.pregnancy_events import Pregnancy_Events
 from scripts.events_module.relationship.romantic_events import RomanticEvents
 
@@ -30,11 +31,12 @@ class CanHaveKits(unittest.TestCase):
     )
     def test_no_kit_setting(self, check_if_can_have_kits):
         # given
-        test_clan = Clan(name="clan")
+        test_clan = Clan(name="clan", your_cat=Cat())
+        game.clan = test_clan
         test_clan.pregnancy_data = {}
-        cat1 = Cat(gender="female", disable_random=True)
+        cat1 = Cat(gender = 'molly', moons=25, disable_random=True)
         cat1.no_kits = True
-        cat2 = Cat(gender="male", disable_random=True)
+        cat2 = Cat(gender='tom', moons=25, disable_random=True)
 
         cat1.mate.append(cat2.ID)
         cat2.mate.append(cat1.ID)
@@ -44,7 +46,6 @@ class CanHaveKits(unittest.TestCase):
         cat2.relationships[cat1.ID] = relation2
 
         # when
-        check_if_can_have_kits.return_value = True
         Pregnancy_Events.handle_having_kits(cat=cat1, clan=test_clan)
 
         # then
@@ -55,8 +56,8 @@ class SameSexAdoptions(unittest.TestCase):
     def test_kits_are_adopted(self):
         # given
 
-        cat1 = Cat(gender="female", age="adult", moons=40, disable_random=True)
-        cat2 = Cat(gender="female", age="adult", moons=40, disable_random=True)
+        cat1 = Cat(gender='fem', age="adult", moons=40, disable_random=True)
+        cat2 = Cat(gender='fem', age="adult", moons=40, disable_random=True)
         cat1.mate.append(cat2.ID)
         cat2.mate.append(cat1.ID)
 
@@ -75,7 +76,8 @@ class SameSexAdoptions(unittest.TestCase):
             )
         )
 
-        can_have_kits, kits_are_adopted = Pregnancy_Events.check_second_parent(
+        cat2 = [cat2]
+        can_have_kits, kits_are_adopted, cat2 = Pregnancy_Events.check_second_parent(
             cat=cat1,
             second_parent=cat2,
             single_parentage=single_parentage,
@@ -94,13 +96,14 @@ class Pregnancy(unittest.TestCase):
     )
     def test_single_cat_female(self, check_if_can_have_kits):
         # given
-        clan = Clan(name="clan")
+        clan = Clan(name="clan", your_cat=Cat())
+        game.clan = clan
         cat = Cat(gender="female", age="adult", moons=40, disable_random=True)
         clan.pregnancy_data = {}
 
         # when
         check_if_can_have_kits.return_value = True
-        Pregnancy_Events.handle_zero_moon_pregnant(cat, None, clan)
+        Pregnancy_Events.handle_zero_moon_pregnant(cat, None, False, clan)
 
         # then
         self.assertIn(cat.ID, clan.pregnancy_data.keys())
@@ -110,19 +113,21 @@ class Pregnancy(unittest.TestCase):
     )
     def test_pair(self, check_if_can_have_kits):
         # given
-        clan = Clan(name="clan")
+        clan = Clan(name="clan", your_cat=Cat())
+        game.clan = clan
         cat1 = Cat(gender="female", age="adult", moons=40, disable_random=True)
         cat2 = Cat(gender="male", age="adult", moons=40, disable_random=True)
 
         clan.pregnancy_data = {}
 
+        cat2 = [cat2]
         # when
         check_if_can_have_kits.return_value = True
-        Pregnancy_Events.handle_zero_moon_pregnant(cat1, cat2, clan)
+        Pregnancy_Events.handle_zero_moon_pregnant(cat1, cat2, False, clan)
 
         # then
         self.assertIn(cat1.ID, clan.pregnancy_data.keys())
-        self.assertEqual(clan.pregnancy_data[cat1.ID]["second_parent"], cat2.ID)
+        self.assertEqual(clan.pregnancy_data[cat1.ID]["second_parent"]+(clan.pregnancy_data[cat1.ID]["affair_partner"] or []), [cat2[0].ID])
 
 
 class Mates(unittest.TestCase):

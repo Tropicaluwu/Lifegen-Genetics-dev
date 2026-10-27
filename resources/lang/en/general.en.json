@@ -17,6 +17,7 @@
         "living_group": "%{group} %{rank}",
         "past_no_group": "past %{rank}",
         "past_group": "past %{group} %{rank}",
+        "daylight_warrior": "%{group} daylight %{rank}",
         "leader": {
             "one": "leader",
             "many": "leaders"
@@ -29,10 +30,6 @@
             "one": "warrior",
             "many": "warriors"
         },
-        "medicine cat": {
-            "one": "medicine cat",
-            "many": "medicine cats"
-        },
         "mediator": {
             "one": "mediator",
             "many": "mediators"
@@ -41,10 +38,6 @@
             "one": "apprentice",
             "many": "apprentices"
         },
-        "medicine cat apprentice": {
-            "one": "medicine cat apprentice",
-            "many": "medicine cat apprentices"
-        },
         "mediator apprentice": {
             "one": "mediator apprentice",
             "many": "mediator apprentices"
@@ -52,6 +45,10 @@
         "queen": {
             "one": "queen",
             "many": "queens"
+        },
+        "queen's apprentice": {
+            "one": "queen's apprentice",
+            "many": "queen's apprentices"
         },
         "queen/pregnant": {
             "one": "queen/pregnant cat",
@@ -103,33 +100,28 @@
             "one": "exiled from",
             "many": "exiled from"
         },
+        "shunned": {
+            "one": "shunned",
+            "many": "shunned"
+        },
         "lost": "lost",
         "mate": {
             "one": "mate",
             "many": "mates"
         },
-        "she-cat": "she-cat",
+        "she-cat": "molly",
         "tom": "tom",
-        "cat": "cat",
-        "female": "female",
-        "male": "male",
-        "trans female": "trans female",
-        "trans male": "trans male",
-        "nonbinary": "nonbinary",
+        "cat": "sam",
         "is": "is",
         "are": "are",
         "can_work": "This cat can work",
         "cant_work": "This cat isn't able to work",
         "cant_work_condition": "Can't work with this condition",
         "exp_label": "exp: %{exp}",
-        "newleaf": "newleaf",
-        "Newleaf": "Newleaf",
-        "greenleaf": "greenleaf",
-        "Greenleaf": "Greenleaf",
-        "leaf-fall": "leaf-fall",
-        "Leaf-fall": "Leaf-fall",
-        "leaf-bare": "leaf-bare",
-        "Leaf-bare": "Leaf-bare",
+        "newleaf": "Newleaf",
+        "greenleaf": "Greenleaf",
+        "leaf-fall": "Leaf-fall",
+        "leaf-bare": "Leaf-bare",
         "relation_BLOOD": "",
         "relation_ADOPTIVE": "adoptive",
         "relation_HALF_BLOOD": "half sibling",
@@ -167,8 +159,9 @@
         "dark_forest": "Dark Forest",
         "the_dark_forest": "The Dark Forest",
         "unknown_residence": "Unknown Residence",
-        "your_clan": "Your Clan",
-        "cotc": "Cats Outside the Clan",
+        "your_clan": "%{name}Clan",
+        "cotc": "Outsiders",
+        "your_group": "%{your_group}",
         "empty": "empty",
         "none": "none",
         "name_search": "name search",
@@ -216,12 +209,37 @@
         },
         "had_injury_for": "has been hurt for %{moons}",
         "pregnant_for": "has been pregnant for %{moons}",
+        "guilty_for": "has been troubled for %{moons}",
         "recovering_from_birth_for": "has been recovering for %{moons}",
         "sick": "sick",
         "injured": "injured",
         "grieving": "grieving",
         "fleas": "flea-ridden",
         "is_infected": "is infected",
-        "is_festering": "is festering"
+        "is_festering": "is festering",
+        "healer": {
+            "one": "healer",
+            "many": "healers"
+        },
+        "healer apprentice": {
+            "one": "healer apprentice",
+            "many": "healer apprentices"
+        },
+        "queen apprentice": {
+            "one": "queen apprentice",
+            "many": "queen apprentices"
+        },
+        "molly": "molly",
+        "trans molly": "trans molly",
+        "trans tom": "trans tom",
+        "sam": "sam",
+        "intersex molly": "intersex molly",
+        "intersex tom": "intersex tom",
+        "intersex trans molly": "intersex trans molly",
+        "intersex trans tom": "intersex trans tom",
+        "intersex sam": "intersex sam",
+        "relation_SURROGATE": "surrogate litter",
+        "cbtc": "Cats Beyond the Clan",
+        "genotype_search": "enter allele"
     }
 }

@@ -248,7 +248,7 @@
                 ]
             },
             {
-                "text": "r_c leaps for the rabbit.... and promptly trips over a rock. The rabbit hops away as r_c sheepishly picks {PRONOUN/r_c/self} up. It's probably for the better that {PRONOUN/r_c/subject} weren't able to catch the rabbit. Trespassing could easily have damaged relations with o_c_n.",
+                "text": "r_c leaps for the rabbit.... and promptly trips over a rock. The rabbit hops away as r_c sheepishly picks {PRONOUN/r_c/self} up. It's probably for the better that {PRONOUN/r_c/subject} {VERB/r_c/weren't/wasn't} able to catch the rabbit. Trespassing could easily have damaged relations with o_c_n.",
                 "exp": 10,
                 "prey": [
                     "medium"
@@ -434,11 +434,17 @@
             "herb_gathering"
         ],
         "tags": [],
+        "other_clan_filter": {
+            "has_rank": [
+                "any_healer",
+                "warrior"
+            ]
+        },
         "patrol_art": "gen_med_borderherb",
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "medicine cat": [1, 1]
+            "healer": [1, 1]
         },
         "frequency": 2,
         "intro_text": "p_l pads along, mouth open slightly as {PRONOUN/p_l/subject} {VERB/p_l/scent/scents} for any traces of herbs. Oh! {PRONOUN/p_l/subject/CAP} can smell some raspberries nearby — but it seems that they're just over the border.",
@@ -446,7 +452,7 @@
         "chance_of_success": 60,
         "success_outcomes": [
             {
-                "text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/pad/pads} over to the border and {VERB/p_l/hesitate/hesitates} only momentarily before crossing. {PRONOUN/p_l/subject/CAP} quickly {VERB/p_l/gather/gathers} some of the berries, making sure to leave plenty for o_c_n's medicine cat if they need some too.",
+                "text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/pad/pads} over to the border and {VERB/p_l/hesitate/hesitates} only momentarily before crossing. {PRONOUN/p_l/subject/CAP} quickly {VERB/p_l/gather/gathers} some of the berries, making sure to leave plenty for o_c_n's healer if they need some too.",
                 "exp": 20,
                 "herbs": [
                     "raspberry"
@@ -455,7 +461,7 @@
                 "frequency": 4
             },
             {
-                "text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/pad/pads} to the border and {VERB/p_l/pause/pauses} for a heartbeat to scent the air. o_c_n's scent is very strong, but there's something else... o_c_n's medicine cat appears at that moment. They're walking towards the raspberries when they spot p_l and wave their tail in greeting. They invite p_l to gather some, as there's plenty. p_l gratefully accepts.",
+                "text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/pad/pads} to the border and {VERB/p_l/pause/pauses} for a heartbeat to scent the air. o_c_n's scent is very strong, but there's something else... o_c_n's healer appears at that moment. They're walking towards the raspberries when they spot p_l and wave their tail in greeting. They invite p_l to gather some, as there's plenty. p_l gratefully accepts.",
                 "exp": 20,
                 "herbs": [
                     "raspberry"
@@ -497,6 +503,14 @@
             "border"
         ],
         "tags": [],
+        "other_clan_filter": {
+            "has_rank": [
+                "any_apprentice",
+                "warrior",
+                "any_healer",
+                "leader"
+            ]
+        },
         "patrol_art": "gen_bord_scent_allies",
         "min_cats": 2,
         "max_cats": 6,
@@ -513,7 +527,7 @@
                 "frequency": 4
             },
             {
-                "text": "The patrol follows the scent deeper into their own territory, eventually stumbling upon the o_c_n medicine cat! It seems there's an herb shortage and the medicine cat was hoping to borrow from c_n's own stores to treat a badly wounded warrior. p_l hastily escorts the cat to the c_n camp.",
+                "text": "The patrol follows the scent deeper into their own territory, eventually stumbling upon the o_c_n healer! It seems there's an herb shortage and the healer was hoping to borrow from c_n's own stores to treat a badly wounded warrior. p_l hastily escorts the cat to the c_n camp.",
                 "exp": 10,
                 "other_clan_rep": 2,
                 "frequency": 1
@@ -651,7 +665,7 @@
         ],
         "antag_fail_outcomes": [
             {
-                "text": "How dare they trespass! The patrol bounds after the scent, hoping to find the source of it, eventually finding that it leads to the c_n camp. Inside, they find the o_c_n medicine cat conversing with your own medicine cat. They tell the patrol off for so hastily jumping to conclusions.  The other medicine cat was only looking to borrow some herbs.",
+                "text": "How dare they trespass! The patrol bounds after the scent, hoping to find the source of it, eventually finding that it leads to the c_n camp. Inside, they find the o_c_n healer conversing with your own healer. They tell the patrol off for so hastily jumping to conclusions.  The other healer was only looking to borrow some herbs.",
                 "exp": 0,
                 "other_clan_rep": -1,
                 "frequency": 4,
@@ -699,6 +713,14 @@
             "border"
         ],
         "tags": [],
+        "other_clan_filter": {
+            "has_rank": [
+                "any_apprentice",
+                "warrior",
+                "any_healer",
+                "leader"
+            ]
+        },
         "patrol_art": "gen_bord_scent_allies",
         "min_cats": 1,
         "max_cats": 1,
@@ -715,7 +737,7 @@
                 "frequency": 4
             },
             {
-                "text": "p_l follows the scent deeper into their own territory, eventually stumbling upon the o_c_n medicine cat!  It seems there's an herb shortage and the medicine cat was hoping to borrow from c_n's own stores to treat a badly wounded warrior. p_l hastily escorts the cat to the c_n camp.",
+                "text": "p_l follows the scent deeper into their own territory, eventually stumbling upon the o_c_n healer!  It seems there's an herb shortage and the healer was hoping to borrow from c_n's own stores to treat a badly wounded warrior. p_l hastily escorts the cat to the c_n camp.",
                 "exp": 10,
                 "other_clan_rep": 2,
                 "frequency": 1,
@@ -800,7 +822,7 @@
         ],
         "antag_fail_outcomes": [
             {
-                "text": "How dare they trespass! p_l bounds after the scent, hoping to find the source of it, eventually finding that it leads to the c_n camp. Inside, they find the o_c_n medicine cat conversing with your own medicine cat. They tell p_l off for so hastily jumping to conclusions. The other medicine cat was only looking to borrow some herbs.",
+                "text": "How dare they trespass! p_l bounds after the scent, hoping to find the source of it, eventually finding that it leads to the c_n camp. Inside, they find the o_c_n healer conversing with your own healer. They tell p_l off for so hastily jumping to conclusions. The other healer was only looking to borrow some herbs.",
                 "exp": 0,
                 "other_clan_rep": -1,
                 "frequency": 4
@@ -1050,6 +1072,12 @@
             "border"
         ],
         "tags": [],
+        "other_clan_filter": {
+            "has_rank": [
+                "apprentice",
+                "any_warrior"
+            ]
+        },
         "patrol_art": "gen_bord_otherclan_allies",
         "min_cats": 2,
         "max_cats": 6,
@@ -1128,6 +1156,13 @@
             "border"
         ],
         "tags": [],
+        "other_clan_filter": {
+            "has_rank": [
+                "warrior",
+                "kitten_mult",
+                "leader"
+            ]
+        },
         "patrol_art": "bord_general_intro",
         "min_cats": 3,
         "max_cats": 6,
@@ -1327,8 +1362,12 @@
             {
                 "text": "p_l seizes the opportunity to weaken o_c_n and orders the patrol to attack and kill the kits.",
                 "exp": 20,
+                "frequency": 4,
                 "other_clan_rep": -2,
-                "frequency": 4
+                "new_cat": [
+                    [ "age: kitten", "meeting", "clancat", "exists", "dead" ],
+                    [ "age: kitten", "meeting", "clancat", "exists", "dead" ]
+                ]
             },
             {
                 "text": "p_l seizes the opportunity to weaken o_c_n and orders the patrol to steal the two kits.",
@@ -1346,14 +1385,8 @@
                 ],
                 "other_clan_rep": -8,
                 "new_cat": [
-                    [
-                        "age:kitten",
-                        "backstory:stolenkit3"
-                    ],
-                    [
-                        "age:kitten",
-                        "backstory:stolenkit3"
-                    ]
+                    ["age: kitten", "backstory: stolenkit3", "clancat", "exists", "change_clan"],
+                    ["age: kitten", "backstory: stolenkit3", "clancat", "exists", "change_clan"]
                 ],
                 "frequency": 3
             },
@@ -1368,14 +1401,8 @@
                 ],
                 "other_clan_rep": -8,
                 "new_cat": [
-                    [
-                        "age:kitten",
-                        "backstory:stolenkit3"
-                    ],
-                    [
-                        "age:kitten",
-                        "backstory:stolenkit3"
-                    ]
+                    ["age: kitten", "backstory: stolenkit3", "clancat", "exists", "change_clan"],
+                    ["age: kitten", "backstory: stolenkit3", "clancat", "exists", "change_clan"]
                 ],
                 "frequency": 3,
                 "relationships": [

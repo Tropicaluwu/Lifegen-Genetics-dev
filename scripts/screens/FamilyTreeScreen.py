@@ -5,6 +5,7 @@ import pygame.transform
 import pygame_gui.elements
 
 from scripts.cat.cats import Cat
+from scripts.cat_relations.inheritance import RelationType
 from scripts.game_structure import image_cache
 from ..ui.elements.sprite_button import UISpriteButton
 from ..ui.elements.image_button import UIImageButton
@@ -19,13 +20,14 @@ from ..game_structure.screen_settings import MANAGER
 from ..ui.generate_box import BoxStyles, get_box
 from ..ui.generate_button import get_button_dict, ButtonStyles
 from ..ui.icon import Icon
-
+from scripts.clan_package.settings import get_clan_setting
 
 class FamilyTreeScreen(Screens):
     # Page numbers for siblings and offspring
 
     def __init__(self, name=None):
         super().__init__(name)
+        self.fav = {}
         self.next_cat = None
         self.previous_cat = None
         self.grandkits_tab = None
@@ -536,6 +538,10 @@ class FamilyTreeScreen(Screens):
             self.relation_elements[ele].kill()
         self.relation_elements = {}
 
+        for marker in self.fav:
+            self.fav[marker].kill()
+        self.fav = {}
+
         self.update_tab()
         if not self.current_group:
             self.relation_elements["no_cats_notice"] = pygame_gui.elements.UITextBox(
@@ -559,10 +565,19 @@ class FamilyTreeScreen(Screens):
         i = 0
         for kitty in display_cats:
             _kitty = Cat.fetch_cat(kitty)
+            if not _kitty:
+                continue
+            if _kitty.moons < 0:
+                continue
             info_text = f"{str(_kitty.name)}"
             additional_info = self.the_cat.inheritance.get_cat_info(kitty)
             if len(additional_info["type"]) > 0:  # types is always real
-                rel_types = [str(rel_type.name) for rel_type in additional_info["type"]]
+                try:
+                    rel_types = [str(rel_type.name) for rel_type in additional_info["type"]]
+                except AttributeError:
+                    rel_types = [
+                        str(RelationType(rel_type).name) for rel_type in additional_info["type"]
+                    ]
                 rel_types = set(rel_types)  # remove duplicates
                 if "NOT_BLOOD" in rel_types and len(rel_types) > 1:
                     # in the edge case of a cat being not related and also related in some way
@@ -579,6 +594,19 @@ class FamilyTreeScreen(Screens):
                     add_info = set(additional_info["additional"])  # remove duplicates
                     info_text += "\n"
                     info_text += adjust_list_text(list(add_info))
+
+            if get_clan_setting("show fav")  and (not _kitty.faded and _kitty.favourite != 0):
+                try:
+                    self.fav[str(i)] = pygame_gui.elements.UIImage(
+                        ui_scale(pygame.Rect((324 + pos_x, 485 + pos_y), (50, 50))),
+                        pygame.transform.scale(
+                            pygame.image.load(
+                                f"resources/images/fav_marker{_kitty.favourite}.png").convert_alpha(),
+                            (50, 50))
+                    )
+                    self.fav[str(i)].disable()
+                except:
+                    pass
 
             self.relation_elements["cat" + str(i)] = UISpriteButton(
                 ui_scale(pygame.Rect((324 + pos_x, 485 + pos_y), (50, 50))),
@@ -630,6 +658,10 @@ class FamilyTreeScreen(Screens):
         for ele in self.cat_elements:
             self.cat_elements[ele].kill()
         self.cat_elements = {}
+
+        for marker in self.fav:
+            self.fav[marker].kill()
+        self.fav = {}
 
         for ele in self.relation_elements:
             self.relation_elements[ele].kill()

@@ -80,7 +80,6 @@
                     "bold",
                     "daring",
                     "shameless",
-                    "troublesome",
                     "playful",
                     "childish"
                 ],
@@ -565,6 +564,12 @@
             "herb_gathering"
         ],
         "tags": [],
+        "other_clan_filter": {
+            "has_rank": [
+                "any_healer",
+                "warrior"
+            ]
+        },
         "patrol_art": "gen_med_borderherb",
         "min_cats": 1,
         "max_cats": 1,
@@ -580,7 +585,7 @@
         "chance_of_success": 50,
         "success_outcomes": [
             {
-                "text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/pad/pads} over to the border and {VERB/p_l/hesitate/hesitates} only momentarily before crossing. {PRONOUN/p_l/subject/CAP} quickly {VERB/p_l/gather/gathers} some of the berries, making sure to leave plenty for o_c_n's medicine cat if they need some too.",
+                "text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/pad/pads} over to the border and {VERB/p_l/hesitate/hesitates} only momentarily before crossing. {PRONOUN/p_l/subject/CAP} quickly {VERB/p_l/gather/gathers} some of the berries, making sure to leave plenty for o_c_n's healer if they need some too.",
                 "exp": 20,
                 "herbs": [
                     "raspberry"
@@ -589,7 +594,7 @@
                 "frequency": 4
             },
             {
-                "text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/pad/pads} to the border and {VERB/p_l/pause/pauses} for a heartbeat to scent the air. o_c_n's scent is very strong, but there's something else... o_c_n's medicine cat appears at that moment. They're walking towards the raspberries when they spot p_l and wave their tail in greeting. They invite p_l to gather some, as there's plenty. p_l gratefully accepts.",
+                "text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/pad/pads} to the border and {VERB/p_l/pause/pauses} for a heartbeat to scent the air. o_c_n's scent is very strong, but there's something else... o_c_n's healer appears at that moment. They're walking towards the raspberries when they spot p_l and wave their tail in greeting. They invite p_l to gather some, as there's plenty. p_l gratefully accepts.",
                 "exp": 20,
                 "herbs": [
                     "raspberry"
@@ -598,7 +603,7 @@
                 "frequency": 1
             },
             {
-                "text": "p_l is about to step over the border when a hiss stops {PRONOUN/p_l/object} in {PRONOUN/p_l/poss} tracks. A o_c_n warrior bounds into view, bristling. {PRONOUN/p_l/subject/CAP} quickly {VERB/p_l/explain/explains} that {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} the medicine cat, that the Warrior Code allows {PRONOUN/p_l/object} to cross the border, and {VERB/p_l/assure/assures} the warrior that {PRONOUN/p_l/subject} won't take many of the berries. The warrior looks torn but agrees.",
+                "text": "p_l is about to step over the border when a hiss stops {PRONOUN/p_l/object} in {PRONOUN/p_l/poss} tracks. A o_c_n warrior bounds into view, bristling. {PRONOUN/p_l/subject/CAP} quickly {VERB/p_l/explain/explains} that {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} the healer, that the Warrior Code allows {PRONOUN/p_l/object} to cross the border, and {VERB/p_l/assure/assures} the warrior that {PRONOUN/p_l/subject} won't take many of the berries. The warrior looks torn but agrees.",
                 "exp": 20,
                 "stat_skill": [
                     "MEDIATOR,1"
@@ -612,7 +617,7 @@
         ],
         "fail_outcomes": [
             {
-                "text": "p_l starts to step over the border but a hiss stops {PRONOUN/p_l/object} in {PRONOUN/p_l/poss} tracks. A o_c_n patrol is running {PRONOUN/p_l/poss} way. p_l forces {PRONOUN/p_l/poss} fur to lie flat as the patrol approaches and swiftly blurts out that {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} a medicine cat. One of the warriors snarls that they can't spare any herbs for other Clans and that p_l needs to leave. {PRONOUN/p_l/subject/CAP} {VERB/p_l/oblige/obliges} quickly.",
+                "text": "p_l starts to step over the border but a hiss stops {PRONOUN/p_l/object} in {PRONOUN/p_l/poss} tracks. A o_c_n patrol is running {PRONOUN/p_l/poss} way. p_l forces {PRONOUN/p_l/poss} fur to lie flat as the patrol approaches and swiftly blurts out that {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} a healer. One of the warriors snarls that they can't spare any herbs for other Clans and that p_l needs to leave. {PRONOUN/p_l/subject/CAP} {VERB/p_l/oblige/obliges} quickly.",
                 "exp": 0,
                 "other_clan_rep": -1,
                 "frequency": 4
@@ -651,6 +656,13 @@
             "border"
         ],
         "tags": [],
+        "other_clan_filter": {
+            "has_rank": [
+                "any_apprentice",
+                "deputy",
+                "warrior"
+            ]
+        },
         "patrol_art": "bord_general_intro",
         "min_cats": 2,
         "max_cats": 6,
@@ -857,6 +869,13 @@
             "border"
         ],
         "tags": ["clan:leader"],
+        "other_clan_filter": {
+            "has_rank": [
+                "any_apprentice",
+                "deputy",
+                "warrior"
+            ]
+        },
         "patrol_art": "bord_general_intro",
         "min_cats": 1,
         "max_cats": 1,
@@ -989,6 +1008,12 @@
         ],
         "tags": ["clan:deputy"],
         "patrol_art": "gen_warrior_crouching",
+        "other_clan_filter": {
+            "has_rank": [
+                "apprentice",
+                "warrior"
+            ]
+        },
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
@@ -1453,6 +1478,12 @@
         ],
         "tags": ["clan:deputy"],
         "patrol_art": "gen_warrior_crouching",
+        "other_clan_filter": {
+            "has_rank": [
+                "apprentice",
+                "warrior"
+            ]
+        },
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
@@ -1917,6 +1948,12 @@
         ],
         "tags": ["clan:deputy"],
         "patrol_art": "gen_warrior_crouching",
+        "other_clan_filter": {
+            "has_rank": [
+                "apprentice",
+                "warrior"
+            ]
+        },
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
@@ -2381,6 +2418,13 @@
         ],
         "tags": ["clan:deputy"],
         "patrol_art": "gen_warrior_crouching",
+        "other_clan_filter": {
+            "has_rank": [
+                "apprentice",
+                "warrior",
+                "deputy"
+            ]
+        },
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
@@ -2845,6 +2889,14 @@
         ],
         "tags": ["clan:deputy"],
         "patrol_art": "gen_warrior_crouching",
+        "other_clan_filter": {
+            "has_rank": [
+                "apprentice",
+                "warrior",
+                "deputy",
+                "leader"
+            ]
+        },
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
@@ -3658,7 +3710,7 @@
                 "frequency": 4
             },
             {
-                "text": "Sighing to {PRONOUN/p_l/self}, p_l brightly suggests a super exciting mission for app1. All {PRONOUN/app1/subject} have to do is spot the closest bush in o_c_n territory, and sprint there and back as fast as {PRONOUN/app1/subject} can. While a slightly risky decision on p_l's part, the tiny transgression thankfully goes unnoticed, and gives app1 the thrill {PRONOUN/app1/subject} {VERB/app1/need/needs} to actually focus during the rest of the patrol. And besides, p_l reasons, what o_c_n doesn't know can't hurt them.",
+                "text": "Sighing to {PRONOUN/p_l/self}, p_l brightly suggests a super exciting mission for app1. All {PRONOUN/app1/subject} {VERB/app1/have/has} to do is spot the closest bush in o_c_n territory, and sprint there and back as fast as {PRONOUN/app1/subject} can. While a slightly risky decision on p_l's part, the tiny transgression thankfully goes unnoticed, and gives app1 the thrill {PRONOUN/app1/subject} {VERB/app1/need/needs} to actually focus during the rest of the patrol. And besides, p_l reasons, what o_c_n doesn't know can't hurt them.",
                 "exp": 5,
                 "art": "running_app2",
                 "relationships": [
@@ -3821,6 +3873,12 @@
             "border"
         ],
         "tags": [],
+        "other_clan_filter": {
+            "has_rank": [
+                "apprentice",
+                "any_warrior_mult"
+            ]
+        },
         "patrol_art": "gen_bord_otherclan_app_allies",
         "min_cats": 3,
         "max_cats": 6,
@@ -4293,7 +4351,7 @@
                 "frequency": 4
             },
             {
-                "text": "app1 raises {PRONOUN/app1/poss} hackles, staring down the other apprentice until they spit a challenge back. Tempers flare, and the patrols size each other up. It doesn't take much for the o_c_n patrol to decide c_n has put a paw wrong and leap across the border with claws unsheathed and teeth bared. s_c breaks up the skirmish, convincing {PRONOUN/s_c/poss} Clanmates not to waste all the medicine cat's herbs on a petty dispute.",
+                "text": "app1 raises {PRONOUN/app1/poss} hackles, staring down the other apprentice until they spit a challenge back. Tempers flare, and the patrols size each other up. It doesn't take much for the o_c_n patrol to decide c_n has put a paw wrong and leap across the border with claws unsheathed and teeth bared. s_c breaks up the skirmish, convincing {PRONOUN/s_c/poss} Clanmates not to waste all the healer's herbs on a petty dispute.",
                 "exp": 0,
                 "art": "gen_battle_app_other_clan",
                 "stat_skill": [
@@ -4428,6 +4486,13 @@
             "border"
         ],
         "tags": [],
+        "other_clan_filter": {
+            "has_rank": [
+                "kitten_mult",
+                "warrior",
+                "leader"
+            ]
+        },
         "patrol_art": "bord_general_intro",
         "min_cats": 3,
         "max_cats": 6,
@@ -4580,8 +4645,12 @@
             {
                 "text": "p_l seizes the opportunity to weaken o_c_n and orders the patrol to attack and kill the kits.",
                 "exp": 20,
+                "frequency": 4,
                 "other_clan_rep": -2,
-                "frequency": 4
+                "new_cat": [
+                    [ "age: kitten", "meeting", "clancat", "exists", "dead" ],
+                    [ "age: kitten", "meeting", "clancat", "exists", "dead" ]
+                ]
             },
             {
                 "text": "p_l seizes the opportunity to weaken o_c_n and orders the patrol to steal the two kits.",
@@ -4598,18 +4667,11 @@
                     "ambitious"
                 ],
                 "other_clan_rep": -8,
+                "frequency": 4,
                 "new_cat": [
-                    [
-                        "age:kitten",
-                        "backstory:stolenkit3"
-                    ],
-                    [
-                        "age:kitten",
-                        "backstory:stolenkit3"
-                    ]
-               
-                ],
-                "frequency": 4
+                    ["age: kitten", "backstory: stolenkit3", "clancat", "exists", "change_clan"],
+                    ["age: kitten", "backstory: stolenkit3", "clancat", "exists", "change_clan"]
+                ]
             },
             {
                 "text": "p_l gasps at seeing the two kits, how did they get so far from camp? Ordering the patrol to bring the kits back to camp, p_l doesn't notice the patrol exchange glances before keeping silent as they steal the kits from o_c_n.",
@@ -4621,17 +4683,11 @@
                     "oblivious"
                 ],
                 "other_clan_rep": -8,
-                "new_cat": [
-                    [
-                        "age:kitten",
-                        "backstory:stolenkit3"
-                    ],
-                    [
-                        "age:kitten",
-                        "backstory:stolenkit3"
-                    ]
-                ],
                 "frequency": 4,
+                "new_cat": [
+                    ["age: kitten", "backstory: stolenkit3", "change_clan"],
+                    ["age: kitten", "backstory: stolenkit3", "change_clan"]
+                ],
                 "relationships": [
                     {
                         "cats_to": [
@@ -4670,6 +4726,11 @@
             "border"
         ],
         "tags": [],
+        "other_clan_filter": {
+            "has_rank": [
+                "leader"
+            ]
+        },
         "patrol_art": "bord_general_intro",
         "min_cats": 3,
         "max_cats": 6,
@@ -4824,6 +4885,12 @@
             "border"
         ],
         "tags": [],
+        "other_clan_filter": {
+            "has_rank": [
+                "apprentice",
+                "warrior"
+            ]
+        },
         "patrol_art": "gen_bord_otherclan_allies",
         "min_cats": 2,
         "max_cats": 6,

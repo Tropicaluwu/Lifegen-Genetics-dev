@@ -34,69 +34,63 @@ def get_other_cat_for_thought(
     """
     Returns a cat object selected from the given cat_list. This will be a cat acceptable as the subject of main_cat's thought.
     """
-    if main_cat in cat_list:
-        cat_list.remove(main_cat)
-
     if not cat_list:
         return None
-
-    other_cat = choice(cat_list)
 
     # sometimes cats can think about a dead cat
     thinking_of_dead_cat = getrandbits(4) == 1
 
     # dead cats think of anyone
     if main_cat.status.group.is_afterlife():
-        return other_cat
-
-    else:
-        # count and give up if we don't find a suitable cat within 100 checks
-        i = 0
-        while cat_list and (
-            (
-                other_cat.dead and not thinking_of_dead_cat
-            )  # dead and thought isn't about dead cat
-            or not main_cat.relationships.get(
-                other_cat.ID
-            )  # no existing relationship at all
-            or (
-                main_cat.relationships.get(other_cat.ID)
-                and main_cat.relationships[other_cat.ID].total_relationship_value == 0
-            )  # the main_cat has an empty relationship toward other_cat
-            or other_cat.status.is_lost()  # other cat is lost
-            or other_cat.status.group_ID
-            != main_cat.status.group_ID  # must have matching group
-        ):
-            cat_list.remove(other_cat)
-
-            i += 1
-            if i > 100 or not cat_list:
-                other_cat = None
-                break
-
+        for _ in range(10):
             other_cat = choice(cat_list)
+            if other_cat.ID != main_cat.ID:
+                return other_cat
+        return None
 
-    return other_cat
+    valid = [
+        other_cat
+        for other_cat in cat_list
+        if other_cat.ID != main_cat.ID
+        and (not other_cat.dead or thinking_of_dead_cat)
+        and main_cat.relationships.get(other_cat.ID)
+        and main_cat.relationships[other_cat.ID].total_relationship_value != 0
+        and not other_cat.status.is_lost()
+        and other_cat.status.get_last_living_group() == main_cat.status.group_ID
+    ]
+
+    return choice(valid) if valid else None
 
 
-def _filter_list(inter_list: list, main_cat: "Cat", other_cat: "Cat") -> list:
+def _filter_list(inter_list: list, main_cat: "Cat", other_cat: "Cat", ageup=False) -> list:
     """
     Filters thoughts in the inter_list per their constraints and returns a list of allowed thoughts.
     """
     created_list = []
     for inter in inter_list:
-        if _constraints_fulfilled(main_cat, other_cat, inter):
+        if _constraints_fulfilled(main_cat, other_cat, inter, ageup=ageup):
             created_list.append(inter)
     return created_list
 
 
-def _load_group(thought_type: CatThought, main_cat: "Cat", other_cat: "Cat"):
+def _load_group(thought_type: CatThought, main_cat: "Cat", other_cat: "Cat", ageup=False):
     """
     Loads and returns thoughts appropriate for the given args.
     """
     # get rank
     rank = main_cat.status.rank
-    rank = rank.replace(" ", "_")
+    rank = rank.replace("healer", "medicine cat").replace(" ", "_")
+    
+    og_age = main_cat.age
+    if ageup and main_cat.dead:
+        if 'apprentice' in rank:
+            if '_apprentice' in rank:
+                rank = rank.replace("_apprentice", "")
+            else:
+                rank = "warrior"
+        elif 'kitten' in rank or 'newborn' in rank:
+            rank = "warrior"
+        main_cat.age = CatAge.YOUNG_ADULT
 
     start_path = f"thoughts/{thought_type}"
     new_path = start_path
@@ -104,12 +98,25 @@ def _load_group(thought_type: CatThought, main_cat: "Cat", other_cat: "Cat"):
 
     # GUIDES
     if thought_type == CatThought.IS_GUIDE:
-        thoughts = load_lang_resource(f"{start_path}/{main_cat.status.group}.json")
+    # LG EDITED
+        if game.clan.followingsc:
+            thoughts = load_lang_resource(f"{start_path}/starclan.json")
+        else:
+            thoughts = load_lang_resource(f"{start_path}/dark_forest.json")
+    if thought_type == CatThought.IS_DF_GUIDE:
+        if game.clan.followingsc:
+            thoughts = load_lang_resource(f"{start_path}/starclan.json")
+        else:
+            thoughts = load_lang_resource(f"{start_path}/dark_forest.json")
+    # ---
 
     # DEAD CATS
     elif thought_type == CatThought.WHILE_DEAD:
         new_path = f"{start_path}/{main_cat.status.group}"
-        thoughts = load_lang_resource(f"{new_path}/{rank}.json")
+        if main_cat.age == CatAge.NEWBORN:
+            thoughts = load_lang_resource(f"{new_path}/newborn.json")
+        else:
+            thoughts = load_lang_resource(f"{new_path}/{rank}.json")
         thoughts.extend(_load_exiled_and_former(main_cat, new_path))
         thoughts.extend(_load_general(main_cat, new_path))
 
@@ -121,14 +128,11 @@ def _load_group(thought_type: CatThought, main_cat: "Cat", other_cat: "Cat"):
             thoughts = load_lang_resource(f"{new_path}/{rank}.json")
 
         # make sure lost thoughts are included
-        if main_cat.status.is_lost(CatGroup.PLAYER_CLAN_ID):
-            prior_rank = main_cat.status.find_prior_clan_rank(CatGroup.PLAYER_CLAN_ID)
+        if main_cat.status.is_lost():
+            prior_rank = main_cat.status.find_prior_clan_rank()
             if prior_rank:
-                prior_rank = prior_rank.replace(" ", "_")
-                thoughts.extend(
-                    load_lang_resource(f"{start_path}/while_lost/{prior_rank}.json")
-                )
-
+                prior_rank = prior_rank.replace("healer", "medicine cat").replace(" ", "_")
+                thoughts.extend(load_lang_resource(f"{start_path}/while_lost/{prior_rank}.json"))
         else:
             thoughts.extend(_load_general(main_cat, new_path))
             thoughts.extend(_load_exiled_and_former(main_cat, new_path))
@@ -164,7 +168,7 @@ def _load_group(thought_type: CatThought, main_cat: "Cat", other_cat: "Cat"):
         thoughts = load_lang_resource(f"{new_path}/parent.json")
 
     # ON NEW CAT ENCOUNTER
-    elif thought_type == CatThought.ON_MEETING:
+    elif thought_type in [CatThought.ON_MEETING, CatThought.OUTSIDE_SIRE, CatThought.OUTSIDE_DAM, CatThought.OUTSIDE_SURROGATE, CatThought.OUTSIDE_KIT_DEATH]:
         if main_cat.status.is_clancat:
             thoughts = load_lang_resource(f"{new_path}/clancat.json")
         else:
@@ -185,7 +189,8 @@ def _load_group(thought_type: CatThought, main_cat: "Cat", other_cat: "Cat"):
         thoughts = load_lang_resource(f"{new_path}/{main_cat.status.group}.json")
         pass
 
-    final_thoughts = _filter_list(thoughts, main_cat, other_cat)
+    final_thoughts = _filter_list(thoughts, main_cat, other_cat, ageup=ageup)
+    main_cat.age = og_age
 
     return final_thoughts
 
@@ -195,6 +200,10 @@ def _load_exiled_and_former(main_cat: "Cat", path) -> list:
     Checks if cat needs exiled or former clancat thoughts and returns loaded resources
     """
     thoughts = []
+
+    if main_cat.age == CatAge.NEWBORN:
+        return thoughts
+
     # make sure exiled thoughts are included
     if main_cat.status.is_exiled(CatGroup.PLAYER_CLAN):
         thoughts.extend(load_lang_resource(f"{path}/exiled.json"))
@@ -228,24 +237,25 @@ def _load_clancat(main_cat: "Cat", path) -> list:
     return []
 
 
-def new_thought(thought_type: CatThought, main_cat: "Cat", other_cat: "Cat"):
+def new_thought(thought_type: CatThought, main_cat: "Cat", other_cat: "Cat", ageup=False):
     """
     Finds a thought appropriate for the given args.
     """
     # get possible thoughts
     try:
         # checks if the cat is Rick Astley to give the rickroll thought, otherwise proceed as usual
-        if (main_cat.name.prefix + main_cat.name.suffix).replace(
+        if (str(main_cat.name)).replace(" ", "").replace(
             " ", ""
         ).lower() == "rickastley":
             return i18n.t("defaults.rickroll")
         else:
             chosen_thought_group = choice(
-                _load_group(thought_type, main_cat, other_cat)
+                _load_group(thought_type, main_cat, other_cat, ageup)
             )
 
             chosen_thought = choice(chosen_thought_group["thoughts"])
     except IndexError:
+        print(main_cat.name, "thought error!")
         traceback.print_exc()
         chosen_thought = i18n.t("defaults.thought")
 
@@ -284,11 +294,11 @@ def new_death_thought(
         return i18n.t("defaults.thought")
 
 
-def _constraints_fulfilled(main_cat: "Cat", random_cat: "Cat", thought) -> bool:
+def _constraints_fulfilled(main_cat: "Cat", random_cat: "Cat", thought, ageup=False) -> bool:
     """Check if thought constraints are fulfilled"""
 
     if "biome" in thought:
-        if not event_for_location(thought["biome"]):
+        if not event_for_location(thought["biome"], main_cat.status.fetch_clan_object(game.clan)):
             return False
 
     if "season" in thought:
@@ -322,7 +332,12 @@ def _constraints_fulfilled(main_cat: "Cat", random_cat: "Cat", thought) -> bool:
 
     if "random_status_constraint" in thought and random_cat:
         random_info_dict["status"] = thought["random_status_constraint"]
-
+        if ageup and "living" not in thought.get("random_living_status", []) and main_cat.dead:
+            for s in random_info_dict["status"]:
+                if "apprentice" in s and "-" not in s or s in ["kitten", "newborn"]:
+                    random_info_dict["status"].remove(s)
+            random_info_dict["status"] += ["-newborn", "-kitten", "-apprentice", "-healer apprentice", "-mediator apprentice", "-queen apprentice"]
+            
     if "main_status_history" in thought:
         main_info_dict["status_history"] = thought["main_status_history"]
 
@@ -434,10 +449,18 @@ def _constraints_fulfilled(main_cat: "Cat", random_cat: "Cat", thought) -> bool:
             if not main_cat.permanent_condition:
                 return False
 
+            revealed_conditions = [
+                value
+                for value in main_cat.permanent_condition.values()
+                if value["moons_until"] < 1
+            ]
+            if not revealed_conditions:
+                return False
+
             valid_conditions = [
                 value
                 for key, value in main_cat.permanent_condition.items()
-                if key in thought["perm_conditions"]["m_c"]
+                if key in thought["perm_conditions"]["m_c"] and value in revealed_conditions
             ]
 
             if not valid_conditions and "any" not in thought["perm_conditions"]["m_c"]:
@@ -458,10 +481,18 @@ def _constraints_fulfilled(main_cat: "Cat", random_cat: "Cat", thought) -> bool:
             if not random_cat.permanent_condition:
                 return False
 
+            revealed_conditions = [
+                value
+                for value in random_cat.permanent_condition.values()
+                if value["moons_until"] < 1
+            ]
+            if not revealed_conditions:
+                return False
+
             valid_conditions = [
                 value
                 for key, value in random_cat.permanent_condition.items()
-                if key in thought["perm_conditions"]["r_c"]
+                if key in thought["perm_conditions"]["r_c"] and value in revealed_conditions
             ]
 
             if not valid_conditions and "any" not in thought["perm_conditions"]["r_c"]:

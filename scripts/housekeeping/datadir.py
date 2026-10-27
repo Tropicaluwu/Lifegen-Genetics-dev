@@ -36,8 +36,8 @@ def get_data_dir():
     from platformdirs import user_data_dir
 
     if get_version_info().is_dev():
-        return user_data_dir("ClanGenBeta", "ClanGen")
-    return user_data_dir("ClanGen", "ClanGen")
+        return user_data_dir('LifeGenGenetics', 'LifeGenGenetics')
+    return user_data_dir('LifeGenGenetics', 'LifeGenGenetics')
 
 
 def get_log_dir():
@@ -58,6 +58,11 @@ def get_temp_dir():
 
 def get_saved_images_dir():
     return get_data_dir() + "/saved_images"
+
+
+def get_saved_allegiances_dir():
+    os.makedirs(get_data_dir() + "/saved_allegiances", exist_ok=True)
+    return get_data_dir() + "/saved_allegiances"
 
 
 def open_data_dir():

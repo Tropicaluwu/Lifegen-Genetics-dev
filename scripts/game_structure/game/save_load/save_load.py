@@ -1,11 +1,10 @@
 import os
 from pathlib import Path
-from shutil import move as shutil_move
 from typing import Union, List
 
 import ujson
 
-from scripts.housekeeping.datadir import get_temp_dir, get_save_dir
+from scripts.housekeeping.datadir import get_save_dir
 
 
 def safe_save(
@@ -23,21 +22,26 @@ def safe_save(
     else:
         _data = write_data
 
+    path = os.fspath(path)
     dir_name, file_name = os.path.split(path)
 
-    if check_integrity:
-        if not file_name:
-            raise RuntimeError(f"Safe_Save: No file name was found in {path}")
+    if not file_name:
+        raise RuntimeError(f"Safe_Save: No file name was found in {path}")
 
-        temp_file_path = Path(get_temp_dir()) / (file_name + ".tmp")
-        i = 0
-        while True:
-            # Attempt to write to temp file
-            with open(temp_file_path, "w", encoding="utf-8") as write_file:
-                write_file.write(_data)
-                write_file.flush()
-                os.fsync(write_file.fileno())
+    if dir_name:
+        os.makedirs(dir_name, exist_ok=True)
 
+    temp_file_path = path + ".tmp"
+
+    i = 0
+    while True:
+        # Attempt to write to the temp file
+        with open(temp_file_path, "w", encoding="utf-8") as write_file:
+            write_file.write(_data)
+            write_file.flush()
+            os.fsync(write_file.fileno())
+
+        if check_integrity:
             # Read the entire file back in
             with open(temp_file_path, "r", encoding="utf-8") as read_file:
                 _read_data = read_file.read()
@@ -54,16 +58,8 @@ def safe_save(
                 print(f"Safe_Save: {file_name} was incorrectly saved. Trying again.")
                 continue
 
-            # This section is reached is the file was not nullied. Move the file and return True
-
-            shutil_move(temp_file_path, path)
-            return
-    else:
-        os.makedirs(dir_name, exist_ok=True)
-        with open(path, "w", encoding="utf-8") as write_file:
-            write_file.write(_data)
-            write_file.flush()
-            os.fsync(write_file.fileno())
+        os.replace(temp_file_path, path)
+        return
 
 
 def save_clanlist(loaded_clan=None, only_switch=False):

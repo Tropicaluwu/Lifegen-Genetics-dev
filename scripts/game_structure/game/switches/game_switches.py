@@ -22,6 +22,15 @@ class Switch(StrEnum):
     traceback = auto()
     biome = auto()
     camp_bg = auto()
+
+    # LG
+    current_camp_bg = auto()
+    # this stores the current bg of your cat
+    rogue_group_bg = auto()
+    loner_group_bg = auto()
+    household_bg = auto()
+    no_group_bg = auto()
+
     game_mode = auto()
     favorite_sub_tab = auto()
     root_cat = auto()
@@ -38,6 +47,29 @@ class Switch(StrEnum):
     new_leader = auto()
     switch_clan = auto()
 
+    # LG
+    attended_half_moon = auto()
+    other_meds = auto()
+    patrolled = auto()
+    window_open = auto()
+    patrol_category = auto()
+    next_possible_disaster = auto()
+    have_kits = auto()
+    request_apprentice = auto()
+    continue_after_death = auto()
+    accept = auto()
+    reject = auto()
+    new_mate = auto()
+    retire = auto()
+    retire_reject = auto()
+    windows_dict = auto()
+    customise_new_life = auto()
+    talk_category = auto()
+    accomplices = auto()
+
+    # the group the MC is attempting to switch to
+    change_group = auto()
+
 
 _switches: Dict[str, Union[str, int, bool, list, dict, None]] = {
     "cat": "",
@@ -48,14 +80,19 @@ _switches: Dict[str, Union[str, int, bool, list, dict, None]] = {
     "error_message": "",
     "traceback": None,
     "biome": "",
+    "current_camp_bg": "",
     "camp_bg": "",
+    "rogue_group_bg": "",
+    "loner_group_bg": "",
+    "household_bg": "",
+    "no_group_bg": "",
     "game_mode": "",
     "favorite_sub_tab": None,
     "root_cat": None,
     "skip_conditions": [],
     "show_history_moons": False,
     "fps": 30,
-    "war_rel_change_type": "neutral",
+    "war_rel_change_type": {},
     "disallowed_symbol_tags": [],
     "saved_scroll_positions": {},
     "saved_page_positions": {},
@@ -64,6 +101,28 @@ _switches: Dict[str, Union[str, int, bool, list, dict, None]] = {
     "no_able_left": False,
     "new_leader": None,
     "switch_clans": False,
+
+    # LIFEGEN
+    "attended_half_moon": False,
+    "other_meds": [],
+    "patrolled": [],
+    "window_open": False,
+    "patrol_category": "clangen",
+    "next_possible_disaster": "",
+    "have_kits": False,
+    "request_apprentice": False,
+    "continue_after_death": False,
+    "accept": False,
+    "reject": False,
+    "new_mate": None,
+    "retire": False,
+    "retire_reject": False,
+    "windows_dict": [],
+    "customise_new_life": False,
+    "talk_category": "talk",
+    "accomplices": [],
+    "change_group": None
+
 }
 """If you are somehow accessing this from outside game_switches.py, something has gone terribly wrong."""
 
@@ -84,6 +143,7 @@ def switch_set_value(name: Switch, value):
     :param value: The new value
     :return:
     """
+
     _switches[name] = value
 
 

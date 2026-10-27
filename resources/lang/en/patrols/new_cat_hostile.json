@@ -955,7 +955,8 @@
                         "age:newborn",
                         "loner",
                         "meeting",
-                        "parent:0"
+                        "parent:0",
+                        "sibling:1"
                     ]
                 ],
                 "relationships": [
@@ -1732,13 +1733,13 @@
         "chance_of_success": 40,
         "success_outcomes": [
             {
-                "text": "The new medicine cat is welcomed into the Clan.",
+                "text": "The new healer is welcomed into the Clan.",
                 "exp": 10,
                 "new_cat": [
                     [
-                        "status:medicine cat",
+                        "status:healer",
                         "loner",
-                       "backstory:wandering_healer1,loner_backstories"
+                        "backstory:wandering_healer1,loner_backstories"
                     ]
                 ],
                 "relationships": [
@@ -1764,11 +1765,11 @@
                 "frequency": 4
             },
             {
-                "text": "The new medicine cat is welcomed into the Clan along with {PRONOUN/n_c:0/poss} litter of kits.",
+                "text": "The new healer is welcomed into the Clan along with {PRONOUN/n_c:0/poss} litter of kits.",
                 "exp": 10,
                 "new_cat": [
                     [
-                        "status:medicine cat",
+                        "status:healer",
                         "age:has_kits",
                         "loner"
                     ],
@@ -1905,13 +1906,13 @@
         "chance_of_success": 40,
         "success_outcomes": [
             {
-                "text": "The new medicine cat is welcomed into the Clan.",
+                "text": "The new healer is welcomed into the Clan.",
                 "exp": 10,
                 "new_cat": [
                     [
-                        "status:medicine cat",
+                        "status:healer",
                         "loner",
-                       "backstory:wandering_healer1,loner_backstories"
+                        "backstory:wandering_healer1,loner_backstories"
                     ]
                 ],
                 "relationships": [
@@ -1937,11 +1938,11 @@
                 "frequency": 4
             },
             {
-                "text": "The new medicine cat is welcomed into the Clan along with {PRONOUN/n_c:0/poss} litter of kits.",
+                "text": "The new healer is welcomed into the Clan along with {PRONOUN/n_c:0/poss} litter of kits.",
                 "exp": 10,
                 "new_cat": [
                     [
-                        "status:medicine cat",
+                        "status:healer",
                         "age:has_kits",
                         "loner",
                         "backstory:wandering_healer1,loner_backstories"
@@ -2385,6 +2386,7 @@
             {
                 "text": "p_l starts to pad towards the bush. Before {PRONOUN/p_l/subject} can even reach it, however, a gang of rogues burst out of hiding! A fight ensues and though the rogues are eventually driven off, r_c is badly injured in the process.",
                 "exp": 0,
+                "dead_cats": ["r_c"],
                 "new_cat": [
                     [
                         "rogue",
@@ -2914,23 +2916,11 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "apprentice": [
-                -1,
-                -1
-            ],
-            "medicine cat": [
-                1,
-                6
-            ],
-            "healer cats": [
-                1,
-                6
-            ],
-            "all apprentices": [ -1, -1 ],
-            "normal adult": [
-                -1,
-                -1
-            ]
+            "apprentice": [-1, -1],
+            "healer": [1, 6],
+            "healer cats": [1, 6],
+            "all apprentices": [-1, -1],
+            "normal adult": [-1, -1]
         },
         "frequency": 1,
         "intro_text": "While searching for some specific herbs, p_l is startled by weird sounds and whispers on the wind.",
@@ -3055,23 +3045,11 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "apprentice": [
-                -1,
-                -1
-            ],
-            "medicine cat": [
-                1,
-                6
-            ],
-            "healer cats": [
-                1,
-                6
-            ],
-            "all apprentices": [ -1, -1 ],
-            "normal adult": [
-                -1,
-                -1
-            ]
+            "apprentice": [-1, -1],
+            "healer": [1, 6],
+            "healer cats": [1, 6],
+            "all apprentices": [-1, -1],
+            "normal adult": [-1, -1]
         },
         "frequency": 1,
         "intro_text": "While searching for some specific herbs, p_l is startled by weird sounds and whispers on the wind.",
@@ -3184,22 +3162,10 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "apprentice": [
-                -1,
-                -1
-            ],
-            "medicine cat apprentice": [
-                1,
-                6
-            ],
-            "healer cats": [
-                1,
-                6
-            ],
-            "normal adult": [
-                -1,
-                -1
-            ]
+            "apprentice": [-1, -1],
+            "healer apprentice": [1, 6],
+            "healer cats": [1, 6],
+            "normal adult": [-1, -1]
         },
         "frequency": 1,
         "intro_text": "While searching for some specific herbs, p_l is startled by weird sounds and whispers on the wind.",
@@ -3324,22 +3290,10 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "apprentice": [
-                -1,
-                -1
-            ],
-            "medicine cat apprentice": [
-                1,
-                6
-            ],
-            "healer cats": [
-                1,
-                6
-            ],
-            "normal adult": [
-                -1,
-                -1
-            ]
+            "apprentice": [-1, -1],
+            "healer apprentice": [1, 6],
+            "healer cats": [1, 6],
+            "normal adult": [-1, -1]
         },
         "frequency": 1,
         "intro_text": "While searching for some specific herbs, p_l is startled by weird sounds and whispers on the wind.",

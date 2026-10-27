@@ -1,0 +1,22 @@
+{
+    "general1": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You reflect on the events that brought you here, wondering what sort of leader you'd be in an alternate reality."
+    },
+    "general2": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "The current c_n seems to be overwhelmed. You remember making the same fumbles. Unfortunately, you're unable to offer them advice."
+    }
+}

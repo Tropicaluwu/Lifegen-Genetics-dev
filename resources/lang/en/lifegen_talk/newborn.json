@@ -1,0 +1,5835 @@
+{
+    "newborn_1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "Mew?"
+        ]
+    },
+    "newborn_2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "Meow!"
+        ]
+    },
+    "newborn_3": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "Purrrrr..."
+        ]
+    },
+    "newborn_4": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "Mrow!"
+        ]
+    },
+    "newborn_5": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "MROOOOOOOOW!!!!!!!!"
+        ]
+    },
+    "newborn_6": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "Grr..."
+        ]
+    },
+    "newborn_11": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "Mew?"
+        ]
+    },
+    "newborn_12": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "Meow!"
+        ]
+    },
+    "newborn_13": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "Purrrrr..."
+        ]
+    },
+    "newborn_14": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "Mrow!"
+        ]
+    },
+    "newborn_15": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "MROOOOOOOOW!!!!!!!!"
+        ]
+    },
+    "newborn_16": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "Grr..."
+        ]
+    },
+    "newborn_littermate": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "littermates"
+                ]
+            }
+        ],
+        "intro": [
+            "[You flop on top of t_c and {PRONOUN/t_c/subject} {VERB/t_c/let/lets} out an annoyed squeak.]"
+        ]
+    },
+    "assertive_newborn1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "Mroww...",
+            "[t_c seems to already be trying to squirm {PRONOUN/t_c/poss} way out of the nest!]"
+        ]
+    },
+    "assertive_newborn2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "Meowmeowmeowmeowmeow!",
+            "[t_c is the loudest kitten in the nursery!]"
+        ]
+    },
+    "assertive_newborn3": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "Prrr...",
+            "[t_c noses {PRONOUN/t_c/poss} siblings out of the way to nurse.]"
+        ]
+    },
+    "introspective_NB": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "introspective"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "Mew!",
+            "[You turn to see a newborn crawling around on {PRONOUN/t_c/poss} own outside the nursery. How on earth did {PRONOUN/t_c/subject} get here?]",
+            "[You pick {PRONOUN/t_c/object} up and carry {PRONOUN/t_c/object} back to the nursery.]",
+            "[You turn around to have a chat with a Clanmate for five minutes.]",
+            "Meeewww!",
+            "[The kitten has somehow escaped again.]",
+            "[You need to have a chat with the queens.]"
+        ]
+    },
+    "introspective_NB_1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "deaf:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "introspective"
+                ],
+                "condition": [
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "queen"
+                ]
+            }
+        },
+        "intro": [
+            "[You walk into the nursery to check on the kittens.]",
+            "[r_c:0 smiles and gestures to a newborn tucked into {PRONOUN/r_c:0/poss} side, gently snoring.]",
+            "...zzzz...",
+            "[You politely smile at the queen and leave.]"
+        ]
+    },
+    "introspective_NB_2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "introspective"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "[You're sat grooming yourself in the clearing.]",
+            "[A little newborn stumbles into you.]",
+            "Squeak! Meow!",
+            "[{PRONOUN/t_c/subject/CAP} {VERB/t_c/turn/turns} around and {VERB/t_c/stumble/stumbles} away. You're too surprised to grab {PRONOUN/t_c/object} before {PRONOUN/t_c/subject} {VERB/t_c/crawl/crawls} back to the nursery. Seems at the minimum that {PRONOUN/t_c/subject} {VERB/t_c/have/has} a good sense of direction?]"
+        ]
+    },
+    "introspective_NB_3": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "introspective"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "Mew?",
+            "[t_c walks into your side when wandering around the nursery.]",
+            "Meow! Prrr...",
+            "[{PRONOUN/t_c/subject/CAP} {VERB/t_c/flop/flops} over and {VERB/t_c/lay/lays} against you, seemingly satisfied with where {PRONOUN/t_c/subject} {VERB/t_c/are/is}.]",
+            "[Guess you're not moving any time soon.]"
+        ]
+    },
+    "introspective_NB_4": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "introspective"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "[You notice a newborn kitten... t_c? t_c sits in the corner.]",
+            "...",
+            "[{PRONOUN/t_c/subject/CAP} {VERB/t_c/don't/doesn't} look distressed so you decide to leave {PRONOUN/t_c/object} there.]"
+        ]
+    },
+    "introspective_NB_5": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {},
+            "t_c": {
+                "cluster": [
+                    "introspective"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "Mewww???",
+            "[A newborn kitten yells at you from the nursery. You walk over and flick your tail over {PRONOUN/t_c/poss} face.]",
+            "Meow!"
+        ]
+    },
+    "sweet_newborn_1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "sweet"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "[t_c seems to cuddle closer to you, purring.]"
+        ]
+    },
+    "sweet_newborn_2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "deaf:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "sweet"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "[t_c reaches {PRONOUN/t_c/poss} tiny little paw up, placing it on your nose with what you could swear is an itty bitty smile.]"
+        ]
+    },
+    "silly_newborn_1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "silly"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "[t_c reaches up and tries to touch your nose.]"
+        ]
+    },
+    "silly_newborn_2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "silly"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "[t_c mews even louder than the rest of {PRONOUN/t_c/poss} litter, as if it were a competition.]"
+        ]
+    },
+    "silly_newborn_3": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "silly"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "[t_c is making a sound that sounds vaguely like giggling.]"
+        ]
+    },
+    "silly_newborn_4": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "silly"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "MROOW!",
+            "MEOW! MEOW MEOW MEOW MEOW!",
+            "Mew!"
+        ]
+    },
+    "broodingnewborn_2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "brooding"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "Mrow!",
+            "[Did ... Did t_c just try to bat you away?]"
+        ]
+    },
+    "broodingnewborn_2_2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "brooding"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "Grrr ...",
+            "[t_c squirms away from your touch.]"
+        ]
+    },
+    "broodingnewborn_3_2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "brooding"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "Hisssss..."
+        ]
+    },
+    "broodingnewborn_4_2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "brooding"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "...",
+            "[t_c must be the quietest kit you've ever met!]"
+        ]
+    },
+    "stable_newborn_01": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "stable"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "Mew mew.",
+            "[{PRONOUN/t_c/subject/CAP} {VERB/t_c/bury/buries} {PRONOUN/t_c/poss} nose into {PRONOUN/t_c/poss} little paws.]"
+        ]
+    },
+    "stable_newborn_02": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "stable"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "Mreow?",
+            "[{PRONOUN/t_c/subject/CAP} {VERB/t_c/shift/shifts} in {PRONOUN/t_c/poss} sleep, chest rising and falling slowly.]"
+        ]
+    },
+    "stable_newborn_03": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "stable"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "Meep...",
+            "[{PRONOUN/t_c/subject/CAP} {VERB/t_c/press/presses} into your belly, snuggling closer.]"
+        ]
+    },
+    "stable_newborn_04": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "stable"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "[{PRONOUN/t_c/subject/CAP} {VERB/t_c/kick/kicks} {PRONOUN/t_c/poss} legs in {PRONOUN/t_c/poss} sleep in a running motion.]"
+        ]
+    },
+    "stable_newborn_05": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "stable"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "MMMMAAAARRRRRWWOOOOO!",
+            "[{PRONOUN/t_c/subject/CAP} {VERB/t_c/wail/wails} at the top of {PRONOUN/t_c/poss} lungs.]"
+        ]
+    },
+    "stable_newborn_06": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "stable"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "Meowel...",
+            "[{PRONOUN/t_c/subject/CAP} {VERB/t_c/rest/rests} against {PRONOUN/t_c/poss} siblings and {VERB/t_c/purr/purrs}. It seems {PRONOUN/t_c/subject}{VERB/t_c/'ve/'s} already made an unbreakable promise of protection- far earlier then what you would have expected!]"
+        ]
+    },
+    "stable_newborn_07": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "stable"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "...",
+            "[{PRONOUN/t_c/subject/CAP} {VERB/t_c/lay/lays} still and quiet. You press your nose to {PRONOUN/t_c/object} in fear to make sure {PRONOUN/t_c/subject}{VERB/t_c/'re/'s} okay, seems {PRONOUN/t_c/subject}{VERB/t_c/'re/'s} just a quiet one...]"
+        ]
+    },
+    "stable_newborn_08": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "stable"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "Maow!",
+            "[{PRONOUN/t_c/subject/CAP} {VERB/t_c/squirm/squirms} up to you and {VERB/t_c/place/places} {PRONOUN/t_c/poss} paws on your nose, holding you as close as {PRONOUN/t_c/subject} can.]"
+        ]
+    },
+    "stable_newborn_09": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "stable"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "Meow.",
+            "[Never did you think a kitten could say 'meow' so bluntly, but here you are.]"
+        ]
+    },
+    "stable_newborn_10": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {},
+            "t_c": {
+                "cluster": [
+                    "stable"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "Mew wow ow.",
+            "[{PRONOUN/t_c/subject/CAP} {VERB/t_c/puff/puffs} out {PRONOUN/t_c/poss} little chest as {PRONOUN/t_c/subject} {VERB/t_c/peep/peeps} in protest of staying still in the nest- it seems {PRONOUN/t_c/subject} {VERB/t_c/want/wants} to explore before {PRONOUN/t_c/subject} can even see!]"
+        ]
+    },
+    "stable_newborn_11": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {},
+            "t_c": {
+                "cluster": [
+                    "stable"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "Meow, me mow.",
+            "[{PRONOUN/t_c/subject/CAP} {VERB/t_c/shake/shakes} {PRONOUN/t_c/poss} head at you disapprovingly. {PRONOUN/t_c/subject/CAP} {VERB/t_c/have/has} so much to learn...]"
+        ]
+    },
+    "stable_newborn_112": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "stable"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "... ... ...",
+            "Mew... me..."
+        ]
+    },
+    "stable_newborn_113": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "deaf:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "stable"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "[You watch curiously as t_c opens {PRONOUN/t_c/poss} little mouth again and again making a small popping sound. {PRONOUN/t_c/subject/CAP}{VERB/t_c/'re/'s} so cute!!!]"
+        ]
+    },
+    "stable_newborn_14": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "stable"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "littermates"
+                ]
+            }
+        ],
+        "intro": [
+            "Meep!",
+            "[t_c boops your nose as you roll into {PRONOUN/t_c/object}.]"
+        ]
+    },
+    "stable_newborn_15": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "stable"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            },
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "littermates"
+                ]
+            },
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "parent/child"
+                ]
+            }
+        ],
+        "intro": [
+            "Mraow. Mew?",
+            "[You climb on top of t_c's back and begin to purr as {PRONOUN/t_c/poss} tiny body settles. The two of you seem comfortable despite the distant yowling of your parents in worry. r_c:0 attempts to separate the two of you.]",
+            "[To {PRONOUN/r_c:0/poss} disdain, in a few moments you both are in the same spot, but this time t_c sleeps on your back.]"
+        ]
+    },
+    "stable_newborn_16": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "stable"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            },
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "littermates"
+                ]
+            },
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "parent/child"
+                ]
+            }
+        ],
+        "intro": [
+            "[r_c:0 carefully places a moss blanket over you and your littermates. You smile softly as you curl up under the warm coverage. t_c nudges your paw and settles beside you.]",
+            "[Together like this, you're safe. Nothing outside the nursery matters. Not here and now, not while you and t_c are together.]"
+        ]
+    },
+    "stable_newborn_17": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "rank": [
+                    "newborn"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "stable"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            },
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "littermates"
+                ]
+            },
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "littermates"
+                ]
+            }
+        ],
+        "intro": [
+            "Mehehe mew.",
+            "[t_c cheekily giggles as {PRONOUN/t_c/subject} {VERB/t_c/roll/rolls} around the nest. You and r_c:0 purr in tiny laughter as you squint, watching {PRONOUN/t_c/poss} little form.]"
+        ]
+    },
+    "stable_newborn_18": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "stable"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "littermates"
+                ]
+            }
+        ],
+        "intro": [
+            "MEOW!",
+            "[You flinch back as t_c yowls in your little ear.]"
+        ]
+    },
+    "stable_newborn_19": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "stable"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            },
+            "r_c:0": {},
+            "r_c:1": {
+                "rank": [
+                    "queen"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "littermates"
+                ]
+            },
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "parent/child"
+                ]
+            }
+        ],
+        "intro": [
+            "[You and t_c snuggle together in a pile of feathers that r_c:1 gave r_c:0 as a present. You both smile as you knead the soft texture. t_c seems like {PRONOUN/t_c/subject}{VERB/t_c/'re/'s} especially enjoying it!]"
+        ]
+    },
+    "stable_newborn_20": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "stable"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "littermates"
+                ]
+            }
+        ],
+        "intro": [
+            "Me...",
+            "Wuv...",
+            "... ... ...",
+            "Mew!"
+        ]
+    },
+    "stable_newborn_21": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "stable"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            },
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "littermates"
+                ]
+            },
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "parent/child"
+                ]
+            }
+        ],
+        "intro": [
+            "[You curl against r_c:0 and shiver slightly as a cool breeze enters the nursery. Despite {PRONOUN/t_c/poss} small size, t_c takes notice.]",
+            "Meow!",
+            "[r_c:0 stares in shock at the little kitten who spoke so clearly only to see tiny t_c pointing at you with {PRONOUN/t_c/poss} little paws. r_c:0 immediately pulls you both closer and purrs loudly.]"
+        ]
+    },
+    "unabashed_newborn": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "unabashed"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "Mew! Meoow! Mrrrrow!",
+            "[{PRONOUN/t_c/subject/CAP} {VERB/t_c/paw/paws} at you playfully.]"
+        ]
+    },
+    "unabashed_newborn1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "deaf:any:false"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "unabashed"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            },
+            "r_c:0": {}
+        },
+        "intro": [
+            "[You spot t_c crawling around in circles, before suddenly biting r_c:0's leg.]"
+        ]
+    },
+    "cool_newborn_1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {},
+            "t_c": {
+                "cluster": [
+                    "cool"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "[t_c mewls in response to you saying {PRONOUN/t_c/poss} name.]",
+            "[It appears as if {PRONOUN/t_c/subject}{VERB/t_c/'re/'s} already trying to puff out the fur of {PRONOUN/t_c/poss} chest.]"
+        ]
+    },
+    "cool_newborn_2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "deaf:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "cool"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "[t_c wobbles {PRONOUN/t_c/poss} little paws out in front of {PRONOUN/t_c/self}, mewling loudly.]",
+            "[Fresh to the world, it seems like {PRONOUN/t_c/subject}{VERB/t_c/'re/'s} already trying to find steady ground to explore.]"
+        ]
+    },
+    "upstanding_newborn_2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "rank": [
+                    "queen's apprentice",
+                    "queen"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "upstanding"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "MEEEEW!",
+            "[As you turn to comfort t_c, you spot a few kits trying to sneak out of the nursery!]"
+        ]
+    },
+    "upstanding_newborn1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "upstanding"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "MROW!",
+            "[t_c mewls angrily as {PRONOUN/t_c/subject}{VERB/t_c/'re/'s} shoved out of {PRONOUN/t_c/poss} nest.]"
+        ]
+    },
+    "upstanding_newborn2_2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "deaf:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "upstanding"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "[t_c is hard at work, kneading {PRONOUN/t_c/poss} nest with itty-bitty paws.]"
+        ]
+    },
+    "neurotic_newborn": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "Squeak!"
+        ]
+    },
+    "neurotic_newborn1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            },
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "t_c"
+                ],
+                "relationship": [
+                    "parent/child"
+                ]
+            }
+        ],
+        "intro": [
+            "Eep!",
+            "[t_c buries {PRONOUN/t_c/self} deep into the fluff of r_c:0's tail.]"
+        ]
+    },
+    "neurotic_newborn2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "Mrow!",
+            "[t_c is buried under a pile of {PRONOUN/t_c/poss} siblings!]"
+        ]
+    },
+    "neurotic_newborn3": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "deaf:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "neurotic"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "[You can barely make out t_c, {PRONOUN/t_c/subject}{VERB/t_c/'re/'s} so deeply buried in {PRONOUN/t_c/poss} {PRONOUN/t_c/parent}'s nest.]"
+        ]
+    },
+    "newborn_yourkit": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "child/parent",
+                    "adoptive child/adoptive parent"
+                ]
+            }
+        ],
+        "intro": [
+            "[t_c snuggles deep into your belly fur.]",
+            "[You wrap your tail around {PRONOUN/t_c/object}, shielding {PRONOUN/t_c/object} from the cold.]"
+        ]
+    },
+    "newborn_yourkit1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "child/parent",
+                    "adoptive child/adoptive parent"
+                ]
+            }
+        ],
+        "intro": [
+            "[t_c squirms at your side, mewling frantically.]",
+            "[You lick the top of {PRONOUN/t_c/poss} head, quieting {PRONOUN/t_c/poss} cries.]"
+        ]
+    },
+    "newborn_yourkit2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "child/parent",
+                    "adoptive child/adoptive parent"
+                ]
+            }
+        ],
+        "intro": [
+            "[t_c presses against your side, sound asleep.]",
+            "[You breathe in {PRONOUN/t_c/poss} milky scent, swearing to love {PRONOUN/t_c/object} forever.]"
+        ]
+    },
+    "newborn_yourkit3": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "child/parent",
+                    "adoptive child/adoptive parent"
+                ]
+            }
+        ],
+        "intro": [
+            "[t_c ... t_c ... t_c ...]",
+            "[You run your beautiful new kit's perfect name over and over through your mind, certain you'll never ever forget it.]"
+        ]
+    },
+    "newborn_UNLAWFUL": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "unlawful"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "[t_c reaches up and bats at you. {PRONOUN/t_c/poss/CAP} tiny claws prick your nose.]",
+            "[You reel back with a yelp.]"
+        ]
+    },
+    "newborn_UNLAWFUL2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "deaf:any:false"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            },
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "t_c"
+                ],
+                "relationship": [
+                    "parent/child"
+                ]
+            }
+        ],
+        "intro": [
+            "[t_c has managed to wiggle {PRONOUN/t_c/poss} way out of {PRONOUN/t_c/poss} nest and is trying to make {PRONOUN/t_c/poss} way out of the nursery.]",
+            "[r_c:0 doesn't seem to notice.]"
+        ]
+    },
+    "newborn_unlawful": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "unlawful"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "Squeak!",
+            "[t_c is already trying to crawl out of {PRONOUN/t_c/poss} nest!]"
+        ]
+    },
+    "newborn_unlawful1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "unlawful"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "queen"
+                ]
+            }
+        },
+        "intro": [
+            "[What's this newborn doing outside of the nursery?]",
+            "Mew?",
+            "[You pick up the kit and return {PRONOUN/t_c/object} to r_c:0. t_c is gonna be a troublemaker, you can already tell.]"
+        ]
+    },
+    "newborn_unabashed1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "adolescent",
+                    "young adult",
+                    "adult",
+                    "senior adult",
+                    "senior"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "unabashed"
+                ],
+                "condition": [
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "[t_c looks up at you, seeming confused and almost wary.]",
+            "[...did {PRONOUN/t_c/subject} just make a face of disgust?]",
+            "[You want to feel offended, but it's kind of hilarious to see that expression on a newborn's face.]"
+        ]
+    },
+    "newborn_unabashed2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "unabashed"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "[t_c is making a ruckus.]",
+            "[{PRONOUN/t_c/subject/CAP} {VERB/t_c/seem/seems} pretty proud of {PRONOUN/t_c/self} when {PRONOUN/t_c/subject} {VERB/t_c/disturb/disturbs} one of the other kits. What a little nuisance!]"
+        ]
+    },
+    "newborn_unabashed3": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "deaf:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "unabashed"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "[t_c is shoving all the other kits out of {PRONOUN/t_c/poss} way. How can a newborn be this unstoppable?!]"
+        ]
+    },
+    "newborn_unabashed4": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "deaf:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "unabashed"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            },
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "t_c"
+                ],
+                "relationship": [
+                    "littermates"
+                ]
+            }
+        ],
+        "intro": [
+            "[t_c is squirming and shoving poor r_c:0 around.]",
+            "[...It looks like r_c:0 has just accepted {PRONOUN/t_c/poss} fate.]"
+        ]
+    },
+    "stable_newborn_12": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "stable"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "... ... ...",
+            "Mew... me..."
+        ]
+    },
+    "newborn_fromlittermate": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "unabashed"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "littermates"
+                ]
+            }
+        ],
+        "intro": [
+            "[You're trying to find your way to a queen to feed you when... SMACK!]",
+            "[t_c has shoved you out of the way!]"
+        ]
+    },
+    "newborn_fromlittermate2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "littermates"
+                ]
+            }
+        ],
+        "intro": [
+            "[You snuggle up next to t_c, falling into a peaceful slumber.]"
+        ]
+    },
+    "newborn_fromlittermate3": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "rank": [
+                    "newborn"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "stable",
+                    "brooding",
+                    "introspective",
+                    "neurotic"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "littermates"
+                ]
+            }
+        ],
+        "intro": [
+            "[You mew at t_c, and {PRONOUN/t_c/subject} {VERB/t_c/turn/turns} to stare at you.]",
+            "[...{PRONOUN/t_c/subject/CAP} {VERB/t_c/don't/doesn't} reply.]"
+        ]
+    },
+    "newborn_fromlittermate4": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "rank": [
+                    "newborn"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "unabashed",
+                    "silly"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "littermates"
+                ]
+            }
+        ],
+        "intro": [
+            "[You mew at t_c, and {PRONOUN/t_c/subject} {VERB/t_c/turn/turns} to stare at you, before squeaking back a reply.]",
+            "[This turns into a meow war, that ends with you winning by mewling far louder than t_c- and promptly getting shushed by the queens.]",
+            "[...Worth it.]"
+        ]
+    },
+    "newborn_fromlittermate5": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "assertive",
+                    "unlawful",
+                    "unabashed"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "littermates"
+                ]
+            }
+        ],
+        "intro": [
+            "[You step on t_c's tail, and {PRONOUN/t_c/subject} {VERB/t_c/bite/bites} you in return. The two of you get into a fight, and have to be separated.]"
+        ]
+    },
+    "newborn_fromlittermate6": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "sweet",
+                    "introspective"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "littermates"
+                ]
+            }
+        ],
+        "intro": [
+            "[You start crying, but t_c snuggles next to you, and the comforting warmth makes you calm down.]",
+            "[You two sleep for the day, not making a peep.]"
+        ]
+    },
+    "stable_newborn_littermate1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "stable"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "littermates"
+                ]
+            }
+        ],
+        "intro": [
+            "Meep!",
+            "[t_c boops your nose as you roll into {PRONOUN/t_c/object}.]"
+        ]
+    },
+    "stable_newborn_littermate2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "stable"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            },
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "littermates"
+                ]
+            },
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "parent/child"
+                ]
+            }
+        ],
+        "intro": [
+            "Mraow. Mew?",
+            "[You climb on top of t_c's back and begin to purr as {PRONOUN/t_c/poss} tiny body settles. The two of you seem comfortable despite the distant yowling of your parents in worry. r_c:0 attempts to separate the two of you.]",
+            "[To {PRONOUN/r_c:0/poss} disdain, a few moments you both are in the same spot, but this time t_c sleeps on your back.]"
+        ]
+    },
+    "stable_newborn_littermate3": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "stable"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            },
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "littermates"
+                ]
+            },
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "parent/child"
+                ]
+            }
+        ],
+        "intro": [
+            "[r_c:0 carefully places a moss blanket over you and your littermates. You smile softly as you curl up under the warm coverage. t_c nudges your paw and settles beside you.]",
+            "[Together like this, you're safe. Nothing outside the nursery matters. Not here and now, not while you and t_c are together.]"
+        ]
+    },
+    "stable_newborn_littermate4": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "rank": [
+                    "newborn"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "stable"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            },
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "littermates"
+                ]
+            },
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "littermates"
+                ]
+            }
+        ],
+        "intro": [
+            "Mehehe mew.",
+            "[t_c cheekily giggles as {PRONOUN/t_c/subject} {VERB/t_c/roll/rolls} around the nest. You and r_c:0 purr in tiny laughter as you squint, watching {PRONOUN/t_c/poss} little form.]"
+        ]
+    },
+    "stable_newborn_littermate5": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "stable"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "littermates"
+                ]
+            }
+        ],
+        "intro": [
+            "MEOW!",
+            "[You flinch back as t_c yowls in your little ear.]"
+        ]
+    },
+    "stable_newborn_littermate6": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false",
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "stable"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            },
+            "r_c:0": {},
+            "r_c:1": {
+                "rank": [
+                    "queen"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "littermates"
+                ]
+            },
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "parent/child"
+                ]
+            }
+        ],
+        "intro": [
+            "[You and t_c snuggle together in a pile of feathers that r_c:1 gave r_c:0 as a present. You both smile as you knead the soft texture. t_c seems like {PRONOUN/t_c/subject}{VERB/t_c/'re/'s} especially enjoying it.]"
+        ]
+    },
+    "stable_newborn_littermate7": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "stable"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "littermates"
+                ]
+            }
+        ],
+        "intro": [
+            "Me...",
+            "Wuv...",
+            "... ... ...",
+            "Mew!"
+        ]
+    },
+    "stable_newborn_littermate8": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "stable"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            },
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "littermates"
+                ]
+            },
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "parent/child"
+                ]
+            }
+        ],
+        "intro": [
+            "[You curl against r_c:0 and shiver slightly as a cool breeze enters the nursery. Despite {PRONOUN/t_c/poss} small size, t_c takes notice.]",
+            "Meow!",
+            "[r_c:0 stares in shock at the little kitten who spoke so clearly only to see tiny t_c pointing at you with {PRONOUN/t_c/poss} little paws. r_c:0 immediately pulls you both closer and purrs loudly.]"
+        ]
+    },
+    "sweet_newborn_3": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "sweet"
+                ],
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "[t_c seems to let out a very polite mew towards you, wiggling towards you in order to lean against you.]",
+            "[What a sweet kit!]"
+        ]
+    },
+    "sweet_newborn_4": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "sweet"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "Purr...",
+            "[Seems the kitten only started purring when you drew near.]"
+        ]
+    },
+    "sweet_newborn_6": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "sweet"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "[You're not having a good day, sighing as you lay down on a rock close to the nursery.]",
+            "Mew!",
+            "[You feel the small t_c plop down on your tail. You have no idea how {PRONOUN/t_c/subject} got here.]",
+            "[{PRONOUN/t_c/subject/CAP} seems drawn to you though, and keeps snuggling you... and you start to feel better.]"
+        ]
+    },
+    "upstanding_newborn3_2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "upstanding"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "[t_c has somehow managed to shift all of the moss in {PRONOUN/t_c/poss} nest to one side and is now lying in the center of a small mossy fort.]"
+        ]
+    },
+    "upstanding_newborn4_2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "upstanding"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "[t_c has somehow managed to shift all of the moss in {PRONOUN/t_c/poss} nest to one side and is now lying in the center of a small mossy fort.]"
+        ]
+    },
+    "upstanding_newborn5": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "upstanding"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "MROW!",
+            "[t_c mewls angrily as {PRONOUN/t_c/subject}{VERB/t_c/'re/'s} shoved out of {PRONOUN/t_c/poss} nest.]"
+        ]
+    },
+    "upstanding_newborn6": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "deaf:any:false"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            },
+            "t_c": {
+                "cluster": [
+                    "upstanding"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "[t_c is hard at work, kneading {PRONOUN/t_c/poss} nest with itty-bitty paws.]"
+        ]
+    },
+    "newborn_shunned1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "standing": [
+                    "shunned"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "queen"
+                ]
+            }
+        },
+        "intro": [
+            "[r_c:0 picks up t_c and pulls {PRONOUN/t_c/object} away as you approach.]"
+        ]
+    },
+    "newborn_shunned2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "standing": [
+                    "shunned"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            },
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "t_c"
+                ],
+                "relationship": [
+                    "parent/child"
+                ]
+            }
+        ],
+        "intro": [
+            "[r_c:0 has {PRONOUN/t_c/poss} whole body wrapped around t_c, shielding {PRONOUN/t_c/object} from you.]"
+        ]
+    },
+    "newborn_shunned3": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "standing": [
+                    "shunned"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            },
+            "r_c:0": {}
+        },
+        "intro": [
+            "[r_c:0 quickly grabs t_c and carries {PRONOUN/t_c/poss} away as {PRONOUN/t_c/subject} {VERB/t_c/stumble/stumbles} curiously towards you.]"
+        ]
+    },
+    "newborn_shunned4": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "standing": [
+                    "shunned"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "Mrow..?",
+            "[Could even this newborn kit be judging you?]"
+        ]
+    },
+    "newborn_shunned5": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "deaf:any:false"
+                ],
+                "standing": [
+                    "shunned"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "queen"
+                ]
+            }
+        },
+        "intro": [
+            "[From across camp, you stare at one of the only members of c_n who doesn't know what you did.]",
+            "[r_c:0 sees you staring and steps in front of t_c to block your view.]",
+            "[You sigh. It won't be long before someone lets {PRONOUN/t_c/object} know.]"
+        ]
+    },
+    "starclannewborn": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "deaf:any:false"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "sc"
+                ]
+            }
+        },
+        "intro": [
+            "[t_c limply bats at the stars glimmering around {PRONOUN/t_c/object}.]"
+        ]
+    },
+    "starclannewborn1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "residence": [
+                    "sc"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "sc"
+                ]
+            }
+        },
+        "intro": [
+            "[t_c purrs softly as {PRONOUN/t_c/subject} {VERB/t_c/bask/basks} in the starlit grass.]"
+        ]
+    },
+    "starclannewborn2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "residence": [
+                    "sc"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "sc"
+                ]
+            }
+        },
+        "intro": [
+            "[You find yourself wandering close to the Dark Forest border when you spot movement out of the corner of your eye.]",
+            "[You turn your head to see... is that- is that t_c?!]",
+            "MEEEW!",
+            "[With a jolt you realize that t_c is stumbling right towards the border. You lunge forward and grab the kit, ignoring {PRONOUN/t_c/poss} mewls of protest as you carry {PRONOUN/t_c/object} back towards StarClan's hunting grounds.]"
+        ]
+    },
+    "starclannewborn3": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "residence": [
+                    "sc"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "sc"
+                ]
+            }
+        },
+        "intro": [
+            "Meeew!",
+            "[t_c has somehow managed to climb onto a large rock.]",
+            "MEW!",
+            "[Should you... should you help {PRONOUN/t_c/object} down?]"
+        ]
+    },
+    "dfnewborn": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "df"
+                ]
+            }
+        },
+        "intro": [
+            "[t_c yowls as you come near, {PRONOUN/t_c/poss} little voice shaking.]"
+        ]
+    },
+    "youstarclannewborn": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "deaf:any:false"
+                ],
+                "residence": [
+                    "sc"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "[t_c looks confused.]"
+        ]
+    },
+    "youdfnewborn": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "deaf:any:false"
+                ],
+                "residence": [
+                    "df"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "[t_c looks confused.]"
+        ]
+    },
+    "newborn_1_sc": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "sc"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "sc"
+                ]
+            }
+        },
+        "intro": [
+            "Mew?"
+        ]
+    },
+    "newborn_2_sc": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "sc"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "sc"
+                ]
+            }
+        },
+        "intro": [
+            "Meow!"
+        ]
+    },
+    "newborn_3_sc": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "sc"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "sc"
+                ]
+            }
+        },
+        "intro": [
+            "Purrrrr..."
+        ]
+    },
+    "newborn_4_sc": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "sc"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "sc"
+                ]
+            }
+        },
+        "intro": [
+            "Mrow!"
+        ]
+    },
+    "newborn_5_sc": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "sc"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "sc"
+                ]
+            }
+        },
+        "intro": [
+            "MROOOOOOOOW!!!!!!!!"
+        ]
+    },
+    "newborn_6_sc": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "sc"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "sc"
+                ]
+            }
+        },
+        "intro": [
+            "Grr..."
+        ]
+    },
+    "newborn_1_df": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "df"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "df"
+                ]
+            }
+        },
+        "intro": [
+            "Mew?"
+        ]
+    },
+    "newborn_2_df": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "df"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "df"
+                ]
+            }
+        },
+        "intro": [
+            "Meow!"
+        ]
+    },
+    "newborn_3_df": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "df"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "df"
+                ]
+            }
+        },
+        "intro": [
+            "Purrrrr..."
+        ]
+    },
+    "newborn_4_df": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "df"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "df"
+                ]
+            }
+        },
+        "intro": [
+            "Mrow!"
+        ]
+    },
+    "newborn_5_df": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "df"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "df"
+                ]
+            }
+        },
+        "intro": [
+            "MROOOOOOOOW!!!!!!!!"
+        ]
+    },
+    "newborn_6_df": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "df"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "df"
+                ]
+            }
+        },
+        "intro": [
+            "Grr..."
+        ]
+    },
+    "newborn_7_df": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "df"
+                ]
+            }
+        },
+        "intro": [
+            "Grr..."
+        ]
+    },
+    "newborn_8_df": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "standing": [
+                    "shunned"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "df"
+                ]
+            }
+        },
+        "intro": [
+            "Grr..."
+        ]
+    },
+    "newborn_1_scdf": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "df"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "sc"
+                ]
+            }
+        },
+        "intro": [
+            "Mew?"
+        ]
+    },
+    "newborn_2_scdf": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "df"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "sc"
+                ]
+            }
+        },
+        "intro": [
+            "Meow!"
+        ]
+    },
+    "newborn_3_scdf": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "df"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "sc"
+                ]
+            }
+        },
+        "intro": [
+            "Purrrrr..."
+        ]
+    },
+    "newborn_4_scdf": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "df"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "sc"
+                ]
+            }
+        },
+        "intro": [
+            "Mrow!"
+        ]
+    },
+    "newborn_5_scdf": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "df"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "sc"
+                ]
+            }
+        },
+        "intro": [
+            "MROOOOOOOOW!!!!!!!!"
+        ]
+    },
+    "newborn_6_scdf": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "sc"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "sc"
+                ]
+            }
+        },
+        "intro": [
+            "Grr..."
+        ]
+    },
+    "newborn_1_dfsc": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "sc"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "df"
+                ]
+            }
+        },
+        "intro": [
+            "Mew?"
+        ]
+    },
+    "newborn_2_dfsc": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "sc"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "df"
+                ]
+            }
+        },
+        "intro": [
+            "Meow!"
+        ]
+    },
+    "newborn_3_dfsc": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "sc"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "df"
+                ]
+            }
+        },
+        "intro": [
+            "Purrrrr..."
+        ]
+    },
+    "newborn_4_dfsc": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "sc"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "df"
+                ]
+            }
+        },
+        "intro": [
+            "Mrow!"
+        ]
+    },
+    "newborn_5_dfsc": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "sc"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "df"
+                ]
+            }
+        },
+        "intro": [
+            "MROOOOOOOOW!!!!!!!!"
+        ]
+    },
+    "newborn_6_dfsc": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "sc"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "df"
+                ]
+            }
+        },
+        "intro": [
+            "Grr..."
+        ]
+    },
+    "newborn_ur_J1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "ur"
+                ]
+            }
+        },
+        "intro": [
+            "... Mew..."
+        ]
+    },
+    "newborn_ur_J2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "sc"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "ur"
+                ]
+            }
+        },
+        "intro": [
+            "... Mew..."
+        ]
+    },
+    "newborn_ur_J3": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "df"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "ur"
+                ]
+            }
+        },
+        "intro": [
+            "... Mew..."
+        ]
+    },
+    "newborn_ur_J4": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "standing": [
+                    "shunned"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "ur"
+                ]
+            }
+        },
+        "intro": [
+            "... Mew..."
+        ]
+    },
+    "sc_sc_kit_R2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "sc"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "rank": [
+                    "newborn"
+                ],
+                "residence": [
+                    "sc"
+                ]
+            }
+        },
+        "intro": [
+            "Mew!",
+            "[Oh, it's t_c. Should {PRONOUN/t_c/subject} be over here? {PRONOUN/t_c/poss/CAP} family is probably looking for {PRONOUN/t_c/object}.]"
+        ]
+    },
+    "df_df_kit_R1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "df"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "rank": [
+                    "newborn"
+                ],
+                "residence": [
+                    "df"
+                ]
+            }
+        },
+        "intro": [
+            "Mewwww...",
+            "[t_c is whining for comfort again. {PRONOUN/t_c/subject/CAP} should know better by now that it's not coming.]"
+        ]
+    },
+    "ur_they_newborn_CM1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "residence": [
+                    "ur"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "ur"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "[You see t_c rolling in the misty fields, the tiny kitten angrily flopping around.]",
+            "MEW!!!!",
+            "[{PRONOUN/t_c/subject/CAP} {VERB/t_c/squeal/squeals}, stomping {PRONOUN/t_c/poss} little paws onto the ground.]",
+            "[Is... is this what a tantrum from {PRONOUN/t_c/object} looks like?]"
+        ]
+    },
+    "newborn_1dead_dead": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "any"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "any"
+                ]
+            }
+        },
+        "intro": [
+            "Mew?"
+        ]
+    },
+    "newborn_2dead_dead": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "any"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "any"
+                ]
+            }
+        },
+        "intro": [
+            "Meow!"
+        ]
+    },
+    "newborn_3dead_dead": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "any"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "any"
+                ]
+            }
+        },
+        "intro": [
+            "Purrrrr..."
+        ]
+    },
+    "newborn_4dead_dead": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "any"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "any"
+                ]
+            }
+        },
+        "intro": [
+            "Mrow!"
+        ]
+    },
+    "newborn_5dead_dead": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "any"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "any"
+                ]
+            }
+        },
+        "intro": [
+            "MROOOOOOOOW!!!!!!!!"
+        ]
+    },
+    "newborn_6dead_dead": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "any"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "any"
+                ]
+            }
+        },
+        "intro": [
+            "Grr..."
+        ]
+    },
+    "newborn_11dead_dead": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "any"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "any"
+                ]
+            }
+        },
+        "intro": [
+            "Mew?"
+        ]
+    },
+    "newborn_12dead_dead": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "any"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "any"
+                ]
+            }
+        },
+        "intro": [
+            "Meow!"
+        ]
+    },
+    "newborn_13dead_dead": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "any"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "any"
+                ]
+            }
+        },
+        "intro": [
+            "Purrrrr..."
+        ]
+    },
+    "newborn_14dead_dead": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "any"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "any"
+                ]
+            }
+        },
+        "intro": [
+            "Mrow!"
+        ]
+    },
+    "newborn_15dead_dead": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "any"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "any"
+                ]
+            }
+        },
+        "intro": [
+            "MROOOOOOOOW!!!!!!!!"
+        ]
+    },
+    "newborn_16dead_dead": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "any"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "any"
+                ]
+            }
+        },
+        "intro": [
+            "Grr..."
+        ]
+    },
+    "newborn_1dead": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "any"
+                ]
+            }
+        },
+        "intro": [
+            "Mew?"
+        ]
+    },
+    "newborn_2dead": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "any"
+                ]
+            }
+        },
+        "intro": [
+            "Meow!"
+        ]
+    },
+    "newborn_3dead": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "any"
+                ]
+            }
+        },
+        "intro": [
+            "Purrrrr..."
+        ]
+    },
+    "newborn_4dead": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "any"
+                ]
+            }
+        },
+        "intro": [
+            "Mrow!"
+        ]
+    },
+    "newborn_5dead": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "any"
+                ]
+            }
+        },
+        "intro": [
+            "MROOOOOOOOW!!!!!!!!"
+        ]
+    },
+    "newborn_1new": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "any"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "any"
+                ]
+            }
+        },
+        "intro": [
+            "Mew?"
+        ]
+    },
+    "newborn_2new": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "deaf:any:false"
+                ],
+                "residence": [
+                    "any"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "any"
+                ]
+            }
+        },
+        "intro": [
+            "[t_c is rolling around in the grass.]"
+        ]
+    },
+    "newborn_3new": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "any"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "any"
+                ]
+            }
+        },
+        "intro": [
+            "Purrrrr..."
+        ]
+    },
+    "newborn_4new": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "any"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "any"
+                ]
+            }
+        },
+        "intro": [
+            "Mrow!"
+        ]
+    },
+    "newborn_5new": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "any"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "any"
+                ]
+            }
+        },
+        "intro": [
+            "MROOOOOOOOW!!!!!!!!"
+        ]
+    },
+    "newborn_J1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "standing": [
+                    "shunned"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "any"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "dead/grieving"
+                ]
+            }
+        ],
+        "intro": [
+            "Purr......"
+        ]
+    },
+    "newborn_J2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "any"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "dead/grieving"
+                ]
+            }
+        ],
+        "intro": [
+            "Purr......"
+        ]
+    },
+    "deadnewborns_J1_2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "any"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "any"
+                ]
+            }
+        },
+        "intro": [
+            "Mrrp?"
+        ]
+    },
+    "deadnewborns_J2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "any"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "grief stricken"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "standing": [
+                    "shunned"
+                ]
+            }
+        },
+        "intro": [
+            "Um... hi, little fellow.",
+            "You probably shouldn't be here."
+        ]
+    },
+    "deadnewborns_J3": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "any"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "standing": [
+                    "shunned"
+                ]
+            }
+        },
+        "intro": [
+            "Um... hi, little fellow.",
+            "You probably shouldn't be here."
+        ]
+    },
+    "deadnewborns_J4": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "any"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "grief stricken"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "Um... hi, little fellow.",
+            "You probably shouldn't be here."
+        ]
+    },
+    "deadnewborns_J5": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "residence": [
+                    "any"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "grief stricken"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "standing": [
+                    "shunned"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "grieving/dead"
+                ]
+            }
+        ],
+        "intro": [
+            "Oh, y_c... It's torture to see you everywhere."
+        ]
+    },
+    "deadnewborns_J6": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false",
+                    "grief stricken"
+                ],
+                "standing": [
+                    "shunned"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "any"
+                ]
+            }
+        },
+        "intro": [
+            "Mew? Mew? ... Mew?"
+        ]
+    },
+    "deadnewborns_J7": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false",
+                    "grief stricken"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "any"
+                ]
+            }
+        },
+        "intro": [
+            "Mew? Mew? ... Mew?"
+        ]
+    },
+    "deadnewborns_J8": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "standing": [
+                    "shunned"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "any"
+                ]
+            }
+        },
+        "intro": [
+            "Mew? Mew? ... Mew?"
+        ]
+    },
+    "deafnewborn_J1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "... ... ..."
+        ]
+    },
+    "deafnewborn_J2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "deaf:any:false"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "[t_c is stomping {PRONOUN/t_c/poss} little paws on the ground, figuring out how to use them.]"
+        ]
+    },
+    "newborn_H1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "deaf:any:false"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "[t_c rolls around in the nest, getting a feeling of {PRONOUN/t_c/poss} surroundings.]"
+        ]
+    },
+    "newborn_sc_SAM1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "deaf:any:false"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "rank": [
+                    "newborn"
+                ],
+                "residence": [
+                    "sc"
+                ]
+            }
+        },
+        "intro": [
+            "[t_c is stumbling around blindly.]"
+        ]
+    },
+    "newborn_sc_H1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "deaf:any:false"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "rank": [
+                    "newborn"
+                ],
+                "residence": [
+                    "sc",
+                    "sc"
+                ]
+            }
+        },
+        "intro": [
+            "[The little body among stars surprises you.]"
+        ]
+    },
+    "fromkit_pos_shunned_H3": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "standing": [
+                    "shunned"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "child/parent",
+                    "adoptive child/adoptive parent"
+                ]
+            }
+        ],
+        "intro": [
+            "[t_c mewls for you, innocent and oblivious to your blood-stained paws.]"
+        ]
+    },
+    "new_shunned_J10": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false",
+                    "recovering from birth"
+                ],
+                "standing": [
+                    "shunned"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "child/parent"
+                ]
+            }
+        ],
+        "intro": [
+            "[You hold t_c close. With your kit still needing to wean, the Clan isn't able to take {PRONOUN/t_c/object} away from you yet.]",
+            "[You savour this moment. Once {PRONOUN/t_c/poss} eyes are open, you know the Clan will start telling {PRONOUN/t_c/object} what a horrible cat you are.]"
+        ]
+    },
+    "newborn_youshunned_rad1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "deaf:any:false"
+                ],
+                "standing": [
+                    "shunned"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "child/parent",
+                    "adoptive child/adoptive parent"
+                ]
+            }
+        ],
+        "intro": [
+            "[t_c's sides rise and fall as {PRONOUN/t_c/subject} {VERB/t_c/nestle/nestles} against you.]",
+            "[As you watch t_c sleep, you find yourself hoping that {PRONOUN/t_c/subject} {VERB/t_c/don't/doesn't} make the same mistakes you did.]"
+        ]
+    },
+    "newborn_youshunned_rad2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false",
+                    "guilt"
+                ],
+                "standing": [
+                    "shunned"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "child/parent",
+                    "adoptive child/adoptive parent"
+                ]
+            }
+        ],
+        "intro": [
+            "[Every time t_c shifts ever so slightly away from you, you're struck with a pang of terror.]",
+            "[It almost feels as though t_c, despite being a newborn, already knows <i>exactly</i> what you did.]"
+        ]
+    },
+    "from_newborn_youshunned_E1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "standing": [
+                    "shunned"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "t_c"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "non-related"
+                ]
+            }
+        ],
+        "intro": [
+            "Mrow?",
+            "[... You probably shouldn't be this close.]"
+        ]
+    },
+    "mcgrievingonly_general_H1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "grief stricken",
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "age": [
+                    "newborn"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ]
+            }
+        },
+        "intro": [
+            "[You can't help but curl around t_c, looking for comfort only the smallest and cutest of things can give.]",
+            "[t_c squeaks and spits in protest.]"
+        ]
+    },
+    "mcgrievingonly_general_H2": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "grief stricken",
+                    "deaf:any:false"
+                ],
+                "rank": [
+                    "not_kitten"
+                ]
+            },
+            "t_c": {
+                "age": [
+                    "newborn"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ]
+            },
+            "r_c:0": {
+                "residence": [
+                    "any"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "dead/grieving"
+                ]
+            }
+        ],
+        "intro": [
+            "[As you watch t_c flop around like a fish out of water, you can't help but think of r_c:0.]",
+            "[Even the most ridiculously random things remind you of {PRONOUN/r_c:0/object}.]"
+        ]
+    },
+    "scnew_urnew_R1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "newborn"
+                ],
+                "residence": [
+                    "sc"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "ur"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "Meewwww!",
+            "[Oh? Who is that? You toddle closer curiously.]",
+            "Meeew mew.",
+            "[You're friends now. The day is spent napping together.]"
+        ]
+    },
+    "scnew_urnew_R3": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "rank": [
+                    "newborn"
+                ],
+                "residence": [
+                    "sc"
+                ]
+            },
+            "t_c": {
+                "condition": [
+                    "blind:any:false"
+                ],
+                "age": [
+                    "newborn"
+                ],
+                "residence": [
+                    "ur"
+                ],
+                "rank": [
+                    "newborn"
+                ]
+            }
+        },
+        "intro": [
+            "Mew! Mew! Mew! Mew!",
+            "[What's that sound?]",
+            "Mew! Meeew! Meeeew! Meeeew!",
+            "[You decide to mew back, and soon there is a volley of tiny squeaks echoing softly between the two of you.]"
+        ]
+    },
+    "shunnedguilty_H1": {
+        "frequency": 2,
+        "cats": {
+            "y_c": {
+                "condition": [
+                    "grief stricken",
+                    "blind:any:false"
+                ],
+                "standing": [
+                    "member",
+                    "shunned"
+                ],
+                "rank": [
+                    "not_newborn"
+                ]
+            },
+            "t_c": {
+                "age": [
+                    "newborn"
+                ],
+                "rank": [
+                    "newborn"
+                ],
+                "condition": [
+                    "blind:any:false",
+                    "deaf:any:false"
+                ]
+            }
+        },
+        "intro": [
+            "[t_c mewls.]",
+            "[Sometimes it feels like even the newborns are judging you.]"
+        ]
+    }
+}

@@ -10,18 +10,33 @@
 [game]
     [game.general]
         "dark mode" = false
+        "flip camp mode" = false
         "fullscreen scaling" = false
         "no sprite antialiasing" = false
         "custom cursor" = false
         keybinds = false
         shaders = false
+        tints = false
+        black_pupils = false
+        accurate_porting = true
+        "filter genes" = true
+        "ageup dead" = false
+        "youthful dead" = false
         gore = false
         discord = false
-        check_for_updates = true
         show_changelog = true
         special_dates = true
         "random relation" = true
         "they them default" = false
+        lifegen_sprite_changes = true
+        red_bg = true
+        "ban problem genes" = false
+        "new prefixes" = true
+        "new suffixes" = true
+        "ancient names" = false
+        "no suffixes" = false
+        "no special suffixes" = false
+        "outsider names" = false
 
     [game.other]
         language = [
@@ -45,22 +60,50 @@
         audio_mute = [
             false, true
         ]
+        dialogue_typing_sound = [
+            true, false
+        ]
 
 [clan]
     [clan.general]
         autosave = false
         disasters = false
+        modded_kits = false
+        tnr_mode = false
+        sprite_scaling = true
+        showheight = false
+        metric_toggle = false
+        adult_height_toggle = false
         showxp = false
-        "random med cat" = true
         fading = true
         save_faded_copy = false
         backgrounds = true
+        freshkill = true
+        "all accessories" = false
+        "modded names" = true
+        "new prefixes" = true
+        "dynamic prefixes" = false
+        "new suffixes" = true
+        "ancient names" = false
+        "no suffixes" = false
+        "no special suffixes" = false
+        "outsider names" = false
     
     [clan.role]
         deputy = false
+        rel_deputy = true
         12_moon_graduation = false
         retirement = false
+        leader_retirement = false
+        healer_retirement = false
+        mediator_retirement = false
         become_mediator = false
+        become_med = false
+        become_queen = false
+        become_healer = false
+        "random med cat" = true
+        patrol_lock_meds = false
+        allow_mediator_patrols = false
     
     [clan.relation]
         affair = false
@@ -68,8 +111,16 @@
         "same sex birth" = false
         "same sex adoption" = false
         "single parentage" = false
+        "halfclan single" = false
+        "outsiders single" = false
+        surrogates = true
+        "only inclan surrogates" = false
+        "only clan surrogates" = false
+        "only outside surrogates" = false
+        multisire = false
         "romantic with former mentor" = true
         "first cousin mates" = false
+        no_litters = false
     
     [clan.freshkill_tactics]
         low_rank = true
@@ -103,10 +154,19 @@
         "show empty relation" = [
             false, true
         ]
+"show only you" = [
+            false, true
+        ]
+        "show outside relation" = [
+            false, true
+        ]
         "den labels" = [
             true, false
         ]
         "show fav" = [
+            false, true
+        ]
+        "search genotypes" = [
             false, true
         ]
 
@@ -116,5 +176,33 @@
     #   [clan.nests."section_name"."setting_name"]
     #       required_setting_name = required_value
     [clan.nests]
-            [clan.nests.relation."same sex adoption"]
-                "same sex birth" = false
+        [clan.nests.general.metric_toggle]
+            showheight = true
+        [clan.nests.general.adult_height_toggle]
+            showheight = true
+        [clan.nests.general."new prefixes"]
+            "modded names" = true
+        [clan.nests.general."dynamic prefixes"]
+            "modded names" = true
+        [clan.nests.general."new suffixes"]
+            "modded names" = true
+        [clan.nests.general."ancient names"]
+            "modded names" = true
+        [clan.nests.general."no suffixes"]
+            "modded names" = true
+        [clan.nests.general."no special suffixes"]
+            "modded names" = true
+        [clan.nests.general."outsider names"]
+            "modded names" = true
+        [clan.nests.relation."same sex adoption"]
+            "same sex birth" = false
+        [clan.nests.relation."halfclan single"]
+            "single parentage" = true
+        [clan.nests.relation."outsiders single"]
+            "single parentage" = true
+        [clan.nests.relation."only inclan surrogates"]
+            surrogates = true
+        [clan.nests.relation."only clan surrogates"]
+            surrogates = true
+        [clan.nests.relation."only outside surrogates"]
+            surrogates = true

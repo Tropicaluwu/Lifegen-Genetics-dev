@@ -3,6 +3,7 @@
 
 import i18n
 import ujson
+from copy import deepcopy
 
 from scripts.cat_relations.enums import RelType
 from scripts.events_module.event_filters import (
@@ -13,6 +14,7 @@ from scripts.events_module.ongoing.ongoing_event import OngoingEvent
 from scripts.game_structure import constants
 from scripts.game_structure import game
 from scripts.game_structure.localization import load_lang_resource
+from scripts.lifegen_utility import get_cluster
 
 
 def get_resource_directory(fallback=False):

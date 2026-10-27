@@ -1,0 +1,12 @@
+{
+    "spritesheet": "acc_fruit",
+    "sprite_list": [
+        {
+            "BLACKBERRY": "head",
+            "GOLDEN RASPBERRY": "head",
+            "YEW": "head",
+            "ORANGE SLICE": "head",
+            "SASKATOONS": "head"
+        }
+    ]
+}

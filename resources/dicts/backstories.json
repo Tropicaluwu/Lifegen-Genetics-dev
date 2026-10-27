@@ -1,7 +1,24 @@
 {
     "backstory_categories": {
         "clan_founder_backstories": [
-            "clan_founder"
+            "clan_founder",
+            "clan_founder1",
+            "clan_founder2",
+            "clan_founder3",
+            "clan_founder4",
+            "clan_founder5",
+            "clan_founder6",
+            "clan_founder7",
+            "clan_founder8",
+            "clan_founder9",
+            "clan_founder10",
+            "clan_founder11",
+            "clan_founder12",
+            "clan_founder13",
+            "clan_founder14",
+            "clan_founder15",
+            "clan_founder16",
+            "clan_founder17"
         ],
         "clan_guide_backstories": [
             "clan_guide1", "clan_guide2", "clan_guide3", "clan_guide4", "clan_guide5", "clan_guide6", "clan_guide7"
@@ -10,31 +27,48 @@
             "clanborn"
         ],
         "outsider_roots_backstories": [
-            "outsider_roots1", "outsider_roots2"
+            "outsider_roots1", "outsider_roots2", "outsider_roots3", "outsider_roots4",
+            "outsider_roots5", "outsider_roots6", "outsider_roots7", "outsider_roots8"
         ],
         "half_clan_backstories": [
-            "halfclan1", "halfclan2"
+            "halfclan1", "halfclan2", "halfclan3", "halfclan4", "halfclan5", "halfclan6", "halfclan7", "halfclan8",
+            "halfclan9", "halfclan10"
         ],
         "loner_backstories": [
             "loner1",
             "loner2",
             "loner3",
             "loner4",
+            "loner5",
+            "loner6",
+            "loner7",
             "refugee2",
             "tragedy_survivor4",
             "guided3"
         ],
         "rogue_backstories": [
-            "rogue1", "rogue2", "rogue3", "refugee4", "tragedy_survivor2", "guided2"
+            "rogue1", "rogue2", "rogue3", "rogue4", "rogue5", "rogue6", "rogue7", "rogue8",
+            "refugee4", "tragedy_survivor2", "guided2"
         ],
         "kittypet_backstories": [
-            "kittypet1", "kittypet2", "kittypet3", "kittypet4", "refugee3", "tragedy_survivor3", "guided1", "refugee6"
+            "kittypet1", "kittypet2", "kittypet3", "kittypet4", "kittypet5",
+            "kittypet6", "kittypet7", "kittypet8", "kittypet9", "refugee3",
+            "tragedy_survivor3", "guided1", "refugee6"
         ],
         "former_clancat_backstories": [
             "otherclan1",
             "otherclan2",
             "otherclan3",
             "otherclan4",
+            "otherclan5",
+            "otherclan6",
+            "otherclan7",
+            "otherclan8",
+            "otherclan9",
+            "otherclan10",
+            "otherclan11",
+            "otherclan12",
+            "otherclan13",
             "ostracized_warrior",
             "disgraced1",
             "disgraced2",
@@ -44,6 +78,7 @@
             "tragedy_survivor1",
             "medicine_cat",
             "guided4",
+            "guided6",
             "refugee5",
             "stolenkit1",
             "stolenkit2",
@@ -53,13 +88,14 @@
             "medicine_cat", "wandering_healer1", "wandering_healer2"
         ],
         "orphaned_backstories": [
-            "orphaned1", "orphaned2", "orphaned3", "orphaned4", "orphaned5", "orphaned6"
+            "orphaned1", "orphaned2", "orphaned3", "orphaned4", "orphaned5", "orphaned6", "orphaned7"
         ],
         "abandoned_backstories": [
             "abandoned1", "abandoned2", "abandoned3", "abandoned4"
         ],
         "outsider_backstories": [
-            "outsider1", "outsider2", "outsider3"
+            "outsider1", "outsider2", "outsider3", "outsider4", "outsider5", "outsider6",
+            "guided5", "refugee7", "tragedy_survivor5", "tragedy_survivor6", "wandering_healer3"
         ],
         "baby_clancat_backstories": [
             "halfclan1", "halfclan2", "outsider_roots1", "abandoned3"
@@ -69,6 +105,75 @@
         ],
         "baby_kittypet_backstories": [
             "abandoned4"
+        ],
+        "current_kittypet_backstories": [
+            "current_kittypet1", "current_kittypet2", "current_kittypet3",
+            "current_kittypet4", "current_kittypet5"
+        ],
+        "current_loner_backstories": [
+            "current_loner1", "current_loner2", "current_loner3",
+            "current_loner4", "current_loner5", "current_loner6"
+        ],
+        "current_rogue_backstories": [
+            "current_rogue1", "current_rogue2", "current_rogue3",
+            "current_rogue4", "current_rogue5", "current_rogue6"
+        ],
+
+
+        "dark_forest_kits": [
+            "dfkit1",
+            "dfkit2"
+        ],
+        "oldstarclan_backstories": [
+            "oldstarclan1",
+            "oldstarclan2",
+            "oldstarclan3"
+        ],
+        "new_sc_guide_backstories": [
+            "newscguide1",
+            "newscguide2",
+            "newscguide3",
+            "newscguide4"
+        ],
+        "new_df_guide_backstories": [
+            "newdfguide1",
+            "newdfguide2",
+            "newdfguide3",
+            "newdfguide4"
+        ],
+        "dead_cat_backstories": [
+            "dead1",
+            "dead2",
+            "dead3",
+            "dead4",
+            "dead5",
+            "dead6",
+            "dead8",
+            "dead9",
+            "dead10",
+            "dead11",
+            "dead12"
+        ],
+        "starclan_backstories": [
+            "dead1",
+            "dead3",
+            "dead4",
+            "dead6",
+            "dead8",
+            "dead10",
+            "dead12",
+            "dead15"
+        ],
+        "df_backstories": [
+            "dead2",
+            "dead5",
+            "dead7",
+            "dead8",
+            "dead9",
+            "dead11",
+            "dead12",
+            "dead13",
+            "dead14"
         ]
     },
     "conversion": {

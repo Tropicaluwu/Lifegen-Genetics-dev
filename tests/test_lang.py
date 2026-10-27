@@ -31,9 +31,9 @@ class TestLocalisation(unittest.TestCase):
         female_cat.genderalign = "female"
 
         nonbinary_cat = Cat()
-        nonbinary_cat.genderalign = "nonbinary"
-
+        nonbinary_cat.genderalign = "sam"
         mystery_cat = Cat(gender="potato", disable_random=True)
+        mystery_cat.genderalign = "potato"
         cls.cat_combos_two = {
             "male-male": [[male_cat, male_cat], cls.pronouns["1"]],
             "male-female": [[male_cat, female_cat], cls.pronouns["1"]],

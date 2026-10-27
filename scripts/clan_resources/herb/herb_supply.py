@@ -3,6 +3,7 @@ from typing import Optional
 
 import i18n
 
+from scripts.cat.enums import CatGroup
 from scripts.cat.skills import SkillPath
 from scripts.clan_resources.herb.herb import Herb, HERBS
 from scripts.clan_resources.herb.herb_effects import HerbEffect
@@ -18,18 +19,41 @@ from collections import defaultdict
 class HerbSupply:
     """Handles managing the Clan's herb supply."""
 
-    def __init__(self, herb_supply: dict[str, list[int | float]] = None):
+    PLAYER_CLAN_KEY = "player_clan"
+    OUTSIDE_GROUP_KEY = "mc_outside_group"
+    # LG: loners/rogues gather far fewer herbs than a clan
+    HERB_OUTSIDER_DIVISOR = 4
+
+    @staticmethod
+    def _mc_outside_group():
+        """Returns the player cat's CatGroup if they're outside any clan, else None."""
+        if not game.clan or not getattr(game.clan, "your_cat", None):
+            return None
+        try:
+            group = game.clan.your_cat.status.group
+        except AttributeError:
+            return None
+        if group.is_any_clan_group():
+            return None
+        return group
+
+    def __init__(self, herb_supply: dict = None):
         """
         Initialize the class
         """
-        # a dict of current stored herbs - herbs collected this moon
-        self.storage = defaultdict(list)
+        # storage/collected are split per group so the player clan's herbs
+        # and the player cat's outsider-group herbs dont mix, active group
+        # is chosen by self.active_key based on the player cat's current group.
+        self._storage_groups = {
+            self.PLAYER_CLAN_KEY: defaultdict(list),
+            self.OUTSIDE_GROUP_KEY: defaultdict(list),
+        }
+        self._collected_groups = {
+            self.PLAYER_CLAN_KEY: defaultdict(int),
+            self.OUTSIDE_GROUP_KEY: defaultdict(int),
+        }
         if herb_supply:
-            for herb, amounts in herb_supply.items():
-                self.storage[herb] = [int(i) for i in amounts]
-
-        # a dict of herbs collected this moon
-        self.collected = defaultdict(int)
+            self._load_supply(herb_supply)
 
         # herb count required for clan
         self.required_herb_count: int = 0
@@ -47,12 +71,67 @@ class HerbSupply:
         self.log = []
 
     @property
+    def active_key(self) -> str:
+        """The supply group key now (player clan or outsider group)."""
+        return (
+            self.OUTSIDE_GROUP_KEY
+            if self._mc_outside_group() is not None
+            else self.PLAYER_CLAN_KEY
+        )
+
+    @property
+    def storage(self) -> dict:
+        """The stored-herb dict for the currently active group."""
+        return self._storage_groups[self.active_key]
+
+    @storage.setter
+    def storage(self, value):
+        self._storage_groups[self.active_key] = value
+
+    @property
+    def collected(self) -> dict:
+        """this-moon collected-herb dict for the currently active group."""
+        return self._collected_groups[self.active_key]
+
+    @collected.setter
+    def collected(self, value):
+        self._collected_groups[self.active_key] = value
+
+    def _load_supply(self, herb_supply: dict):
+        if self.PLAYER_CLAN_KEY in herb_supply or self.OUTSIDE_GROUP_KEY in herb_supply:
+            for group_key in (self.PLAYER_CLAN_KEY, self.OUTSIDE_GROUP_KEY):
+                group_data = herb_supply.get(group_key) or {}
+                for herb, amounts in group_data.get("storage", {}).items():
+                    self._storage_groups[group_key][herb] = [int(i) for i in amounts]
+                for herb, amount in group_data.get("collected", {}).items():
+                    self._collected_groups[group_key][herb] = int(amount)
+        elif "storage" in herb_supply or "collected" in herb_supply:
+            for herb, amounts in herb_supply.get("storage", {}).items():
+                self._storage_groups[self.PLAYER_CLAN_KEY][herb] = [int(i) for i in amounts]
+            for herb, amount in herb_supply.get("collected", {}).items():
+                self._collected_groups[self.PLAYER_CLAN_KEY][herb] = int(amount)
+        else:
+            for herb, amounts in herb_supply.items():
+                self._storage_groups[self.PLAYER_CLAN_KEY][herb] = [int(i) for i in amounts]
+
+    @property
     def combined_supply_dict(self) -> dict:
         """
-        returns a dict containing both the storage and the collected herb dicts
+        returns the group storage and collected herb dicts, for saving
         """
-        combined_supply = {"storage": self.storage, "collected": self.collected}
-        return combined_supply
+        return {
+            group_key: {
+                "storage": {
+                    herb: list(amounts)
+                    for herb, amounts in self._storage_groups[group_key].items()
+                },
+                "collected": {
+                    herb: amount
+                    for herb, amount in self._collected_groups[group_key].items()
+                },
+            }
+            for group_key in (self.PLAYER_CLAN_KEY, self.OUTSIDE_GROUP_KEY)
+        }
 
     @property
     def entire_supply(self) -> dict:
@@ -148,7 +227,7 @@ class HerbSupply:
         """
         for herb, count in herb_list.items():
             if herb in self.base_herb_list:
-                self.storage[herb] = [count]
+                self._storage_groups[self.PLAYER_CLAN_KEY][herb] = [count]
 
     def set_required_herb_count(self, clan_size):
         """
@@ -167,9 +246,10 @@ class HerbSupply:
 
         for herb in self.base_herb_list:
             if randint(1, 4) == 1:
-                self.add_herb(
-                    herb,
-                    num_collected=randint(self.adequate_qualifier, self.full_qualifier),
+                # the player clan always starts with a supply, regardless of
+                # whether the player cat begins as an outsider
+                self._collected_groups[self.PLAYER_CLAN_KEY][herb] += randint(
+                    self.adequate_qualifier, self.full_qualifier
                 )
 
     def handle_moon(self, clan_size: int, clan_cats: list, med_cats: list):
@@ -179,6 +259,10 @@ class HerbSupply:
 
         # clear log
         self.log = []
+
+        # kittypets are cared for by Twolegs and don't gather or use herbs
+        if self._mc_outside_group() == CatGroup.HOUSEHOLD:
+            return
 
         # set herb count
         self.set_required_herb_count(clan_size)
@@ -191,12 +275,14 @@ class HerbSupply:
             self._gather_herbs(med)
 
         # check if herbs can be used
-        severity_ranking = {"severe": [], "major": [], "minor": []}
-        cats_to_treat = [
-            kitty
-            for kitty in clan_cats
-            if kitty.is_ill() or kitty.is_injured() or kitty.is_disabled()
-        ]
+        severity_ranking = {
+            "severe": [],
+            "major": [],
+            "minor": []
+        }
+        cats_to_treat = [kitty for kitty in clan_cats 
+                        if kitty.status.alive_in_player_clan and 
+                        (kitty.is_ill() or kitty.is_injured() or kitty.is_disabled())]
         for kitty in cats_to_treat:
             # if there are no working med cats, then only allow med cats to be treated. the idea being that a med cat
             # could conceivably attempt to care for themselves, but would not be well enough to care for the Clan as
@@ -356,7 +442,19 @@ class HerbSupply:
         """
         adds herb given to count for that moon
         """
-        if self.collected.get(herb, []):
+        outside_group = self._mc_outside_group()
+        # kittypets are cared for by Twolegs
+        if outside_group == CatGroup.HOUSEHOLD:
+            return
+
+        num_collected = int(num_collected)
+        if outside_group is not None:
+            # loners/rogues gather a fraction of what a clan does
+            num_collected = max(1, round(num_collected / self.HERB_OUTSIDER_DIVISOR))
+        if num_collected <= 0:
+            return
+
+        if self.collected.get(herb, 0):
             self.collected[herb] += num_collected
         else:
             self.collected[herb] = num_collected
@@ -377,7 +475,7 @@ class HerbSupply:
     def handle_focus(self, med_cats: list, assistants: list = None):
         """
         Handles sending med cats to gather extra herbs in accordance to Clan focus
-        :param med_cats: a list of medicine cat objects,
+        :param med_cats: a list of healer objects,
         :param assistants: a list of any non-meddies who are assisting the search for herbs
         """
 

@@ -6,11 +6,13 @@ class FutureEvent:
         pool: dict = None,
         moon_delay: int = 0,
         involved_cats: dict = None,
+        clan: str = None
     ):
         self.parent_event = parent_event
         self.event_type = event_type
         self.pool = pool
         self.moon_delay = moon_delay
+        self.clan = clan
 
         self.involved_cats = involved_cats
 
@@ -26,4 +28,5 @@ class FutureEvent:
             "pool": self.pool,
             "moon_delay": self.moon_delay,
             "involved_cats": self.involved_cats,
+            "clan": self.clan
         }

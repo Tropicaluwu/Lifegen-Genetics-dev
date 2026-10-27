@@ -19,7 +19,7 @@
 				"leader",
 				"warrior",
 				"elder",
-				"medicine cat",
+				"healer",
 				"mediator"
 			],
 			"r_c1": [
@@ -74,7 +74,7 @@
 				"leader",
 				"warrior",
 				"elder",
-				"medicine cat",
+				"healer",
 				"mediator"
 			]
 		},
@@ -123,22 +123,22 @@
 		"status_constraint": {
 			"r_c1": [
 				"apprentice",
-				"medicine cat apprentice",
+				"healer apprentice",
 				"mediator apprentice"
 			],
 			"r_c2": [
 				"apprentice",
-				"medicine cat apprentice",
+				"healer apprentice",
 				"mediator apprentice"
 			],
 			"r_c3": [
 				"apprentice",
-				"medicine cat apprentice",
+				"healer apprentice",
 				"mediator apprentice"
 			],
 			"r_c4": [
 				"apprentice",
-				"medicine cat apprentice",
+				"healer apprentice",
 				"mediator apprentice"
 			]
 		},
@@ -365,7 +365,7 @@
 		"status_constraint": {
 			"m_c": [
 				"apprentice",
-				"medicine cat apprentice",
+				"healer apprentice",
 				"mediator apprentice"
 			],
 			"r_c2": [
@@ -425,19 +425,19 @@
 		],
 		"status_constraint": {
 			"m_c": [
-				"medicine cat"
+				"healer"
 			],
 			"r_c1": [
-				"medicine cat"
+				"healer"
 			],
 			"r_c2": [
-				"medicine cat"
+				"healer"
 			],
 			"r_c3": [
-				"medicine cat"
+				"healer"
 			],
 			"r_c4": [
-				"medicine cat"
+				"healer"
 			]
 		},
 		"general_reaction": {

@@ -85,9 +85,9 @@ class KillCat(GameWindow):
                     death_message = self.initial
                 if self.the_cat.status.is_leader:
                     if self.take_all:
-                        game.clan.leader_lives = 0
+                        self.the_cat.status.fetch_clan_object(game.clan).leader_lives = 0
                     else:
-                        game.clan.leader_lives -= 1
+                        self.the_cat.status.fetch_clan_object(game.clan).leader_lives -= 1
 
                 if self.the_cat.status.alive_in_player_clan:
                     self.the_cat.die()

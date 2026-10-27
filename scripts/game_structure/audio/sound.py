@@ -77,7 +77,7 @@ class Sound:
         :param sound: The sound to play
         :param button: If included, sound played will be the sound_id of the button
         """
-        if self.muted:
+        if self.muted or not pygame.mixer.get_init():
             return
 
         if button and hasattr(button, "sound_id"):
@@ -89,10 +89,15 @@ class Sound:
 
         try:
             if pygame.mixer.find_channel():
+                # a sound whose files failed to load has an empty list, skip it instead of crashing
+                if not self.sound_dict[sound]:
+                    return
                 chosen = random.choice(self.sound_dict[sound])
                 chosen.play()
         except KeyError:
             logger.exception(f"Could not find sound {sound}")
+        except pygame.error:
+            logger.exception("Could not play sound (mixer error)")
 
     def change_volume(self, new_volume: int):
         """

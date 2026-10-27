@@ -1,0 +1,77 @@
+{
+    "general1": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "In StarClan, your job has never felt less important; there are no fights in paradise. What are you supposed to do?"
+    },
+    "general2": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "dead": [
+                    "sc"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You listen attentively as r_c:0 confides in you about {PRONOUN/r_c:0/poss} fears of being forgotten."
+    },
+    "general3": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You sort out a dispute regarding a newly deceased warrior and their mate who had found another lover in the afterlife. In the end, they were able to agree on a polyamorous arrangement."
+    },
+    "general4": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "A grudge never sorted in the living has found its way into the afterlife. You bring the two cats together to discuss the misunderstanding, and they are eventually able to reach a truce."
+    },
+    "general5": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "The transition of a recently deceased cat into StarClan is oftentimes a difficult one, and it's your job to help them now. You can't help but feel a bittersweet pang in your heart for every soul that crosses the threshold, remembering your own first day here."
+    },
+    "general6": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You reassure another StarClan cat that this is all part of both their destinies as they watch a loved one mourn them."
+    },
+    "general7": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You rush to stop a dispute between two StarClan warriors formerly of rival Clans as tensions rise between their living Clanmates."
+    }
+}

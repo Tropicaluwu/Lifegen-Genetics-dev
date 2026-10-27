@@ -1,0 +1,24 @@
+{
+    "spritesheet": "acc_harness",
+    "sprite_list": [
+        {
+            "REDHARNESS": "body",
+            "NAVYHARNESS": "body",
+            "YELLOWHARNESS": "body",
+            "TEALHARNESS": "body",
+            "ORANGEHARNESS": "body",
+            "GREENHARNESS": "body",
+            "PINKHARNESS": "body"
+        },
+        {
+            "MOSSHARNESS": "body",
+            "RAINBOWHARNESS": "body",
+            "BLACKHARNESS": "body",
+            "BEEHARNESS": "body",
+            "CREAMHARNESS": "body",
+            "MAGENTAHARNESS": "body",
+            "PEACHHARNESS": "body",
+            "VIOLETHARNESS": "body"
+        }
+    ]
+}

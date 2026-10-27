@@ -1,0 +1,2807 @@
+{
+    "general1": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You roll a piece of moss into a ball and bat it around with your tiny paws."
+    },
+    "general2": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "A bug skitters around the nursery, catching your eye. You pounce on it, and hold it up proudly so that the warriors can see your accomplishment."
+    },
+    "general3": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "As the camp settles down for the night, you curl up in your nest but can't seem to fall asleep! You want to continue to play, play, play."
+    },
+    "general4": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "kitten"
+                ]
+            },
+            "r_c:1": {
+                "rank": [
+                    "warrior"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You and r_c:0 set up an ambush, crouching near the camp entrance in wait for your victim. As soon as the entrance rustles, both of you pounce, landing on a shocked r_c:1."
+    },
+    "general5": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "kitten"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 beckons you out of the nursery one morning to play a game of mossball. The game ends in your victory!"
+    },
+    "general6": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "kitten"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 beckons you out of the nursery one morning to play a game of mossball. The game ends in your loss..."
+    },
+    "general7": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "deputy"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You watch as r_c:0 organizes a patrol, hoping one day that you'll be a part of one."
+    },
+    "general8": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "apprentice"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 shows off {PRONOUN/r_c:0/poss} skills, and you observe in awe. Maybe someday you'll be just like {PRONOUN/r_c:0/object}."
+    },
+    "general9": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "apprentice"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 makes fun of the fact that you can't leave camp yet. You lash your tail angrily. One day!"
+    },
+    "general10": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "warrior"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You sneak into the warrior's den, only to be chased out by r_c:0."
+    },
+    "general11": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You play hide and seek with r_c:0, and you find such a good hiding spot that the Clan starts to worry you've gone missing. When you spring out of your spot, you're scolded, despite insisting it was r_c:0's idea to play hide and seek."
+    },
+    "general12": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "kitten"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 plays a game of mossball, but seems to pointedly exclude you."
+    },
+    "general13": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "parent/child"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 comes back with a huge, colorful bird, and regales you with the tale of the chase! You listen in awe."
+    },
+    "general14": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "littermates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You and r_c:0 spend the whole day brainstorming about your full names together! You hope you'll be given matching ones."
+    },
+    "general15": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {},
+            "r_c:1": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "parent/child"
+                ]
+            },
+            {
+                "cats_from": [
+                    "r_c:1"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "siblings"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:1 refuses to play with you so you complain to r_c:0, who forces {PRONOUN/r_c:1/object} to apologize. Later, {PRONOUN/r_c:1/subject} {VERB/r_c:1/prank/pranks} you with thorns in your nest as revenge."
+    },
+    "general16": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "siblings"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You and r_c:0 take a nap together after a long day of playing. You cuddle together into a warm pile of fluff."
+    },
+    "general17": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {},
+            "r_c:1": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "parent/child"
+                ]
+            },
+            {
+                "cats_from": [
+                    "r_c:1"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "siblings"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 chides you unfairly for breaking the rules, but r_c:1 steps in to defend you!"
+    },
+    "general18": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 trips over you on the way to the freshkill pile."
+    },
+    "general19": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "apprentice"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 shows you a cool game called 'keep it up' which involves batting at a leaf to keep it in the air so it doesn't hit the ground."
+    },
+    "general20": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "A sudden downpour drenches the camp. You splash in the puddles it leaves behind. The queens aren't happy when you track mud back into the nursery."
+    },
+    "general21": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "A warrior brings you some honey to taste. It's absolutely delicious and you beg the warrior for more."
+    },
+    "general22": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You attempt to climb a tree. Your small claws scrape against the bark, but you don't get very far before a warrior urges you back to the nursery."
+    },
+    "general23": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You spend the day in the nursery, terrified of your newest discovery. You stare at the ground, eyes wide. Why does this happen? Why does your body do this? Where did your legs go? Why do they disappear whenever you sit down?"
+    },
+    "general24": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "parent/child"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You pull and tug on r_c:0's ear, but {PRONOUN/r_c:0/subject} {VERB/r_c:0/don't/doesn't} stir from {PRONOUN/r_c:0/poss} slumber. It isn't until you yowl in {PRONOUN/r_c:0/poss} ear that {PRONOUN/r_c:0/subject} {VERB/r_c:0/snap/snaps} back to reality. You both spend the morning chasing each other around camp."
+    },
+    "general25": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "parent/child"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 stares at you sternly, {PRONOUN/r_c:0/poss} paw firmly holding your tail keeping you in place. You don't want a lecture! Not now! It was an accident you swear, you would never, ever, ever pour honey into the warriors den as a prank! Not you!"
+    },
+    "general26": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "parent/child"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You and r_c:0 debate the weather for the next week. You both hope rain doesn't come soon, you shiver at the thought of the droplets clinging to your pelt."
+    },
+    "general27": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "While you're outside playing, an unexpected downpour begins. You let out a small growl of annoyance as your fur becomes drenched. Sensing your discomfort, r_c:0 moves to stand over you, sheltering you from the worst of the rain until the skies clear."
+    },
+    "general28": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "queen"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "While exploring the camp, you stumble and hurt your paw. r_c:0 rushes over, concerned, and gently licks your wound until you feel better."
+    },
+    "general29": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You follow the warriors with your eyes as they leave for a patrol. You can't wait for your turn to explore beyond the camp."
+    },
+    "general30": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "littermates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You cuddle close to r_c:0, silently vowing to always keep {PRONOUN/r_c:0/object} safe."
+    },
+    "general31": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {},
+            "r_c:1": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "parent/child"
+                ]
+            },
+            {
+                "cats_from": [
+                    "r_c:1"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "littermates"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "Snuggled close to r_c:1 and r_c:0, you can't imagine life without them."
+    },
+    "general32": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "The camp is too stuffy. You wonder what it's like to run across c_n's territory."
+    },
+    "assertive33": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "assertive"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You watch the battle-scarred warriors coming back into camp from the border patrol, eyes wide. You hope you'll be just like them someday!"
+    },
+    "assertive34": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "assertive"
+                ]
+            },
+            "r_c:0": {},
+            "r_c:1": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "parent/child"
+                ]
+            },
+            {
+                "cats_from": [
+                    "r_c:1"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "siblings"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 scolds you for playing too roughly with your sibling r_c:1, and makes you apologize. You stick out your tongue at {PRONOUN/r_c:1/object} for being such a tattle-tail."
+    },
+    "assertive35": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "assertive"
+                ]
+            },
+            "r_c:0": {},
+            "r_c:1": {
+                "rank": [
+                    "kitten"
+                ]
+            }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "parent/child"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You and r_c:1 have a yowling competition, which stresses out r_c:0 so much that {PRONOUN/r_c:0/subject} {VERB/r_c:0/have/has} to take a break and {VERB/r_c:0/unload/unloads} you onto the queens."
+    },
+    "assertive36": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "assertive"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You're so filled with energy that you spend the entire afternoon chasing your own tail!"
+    },
+    "assertive37": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "assertive"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "queen"
+                ]
+            },
+            "r_c:1": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:1"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "siblings"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You and r_c:1 hatch a plan to sneak out of camp, only for r_c:0 to catch you and stop your plan before it even starts!"
+    },
+    "assertive38": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "assertive"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "While r_c:0 is telling a story, you constantly interrupt {PRONOUN/r_c:0/object} with questions, eager to learn every detail."
+    },
+    "assertive39": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "assertive"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "warrior"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You demand r_c:0 to show you a battle move. r_c:0 reluctantly agrees, performing a basic swipe. Later, you copy {PRONOUN/r_c:0/object}, practicing the move over and over again."
+    },
+    "assertive40": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "assertive"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "apprentice"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "When r_c:0 teases you, you state that one day you'll become a better warrior than {PRONOUN/r_c:0/object}!"
+    },
+    "assertive41": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "assertive"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "kitten"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 takes your nest one night. You yowl and launch an attack on {PRONOUN/r_c:0/object}, pretending {PRONOUN/r_c:0/subject} {VERB/r_c:0/are/is} an enemy warrior who is invading the territory."
+    },
+    "assertive42": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "assertive"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "queen"
+                ]
+            },
+            "r_c:1": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:1"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "siblings"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You and r_c:1 hatch a plan to sneak out of camp, only for r_c:0 to catch you and stop your plan before it even starts!"
+    },
+    "assertive43": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "assertive"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You sneak into parts of camp where you're not supposed to be, your hunger for adventure already insatiable."
+    },
+    "assertive44": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "assertive"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "kitten"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You roll your eyes when r_c:0 cries over a small cut. You're so much stronger than {PRONOUN/r_c:0/subject} {VERB/r_c:0/are/is}."
+    },
+    "assertive45": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "assertive"
+                ]
+            },
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "siblings"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You help r_c:0 devise a plan to get back at a cat who was bullying {PRONOUN/r_c:0/object}."
+    },
+    "assertive46": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "assertive"
+                ]
+            },
+            "r_c:0": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You yell at r_c:0 who had accidentally stepped on a bug that you were watching."
+    },
+    "brooding47": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "brooding"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You find a quiet, shaded spot beneath an old oak tree and spend hours there, just observing the comings and goings of the Clan."
+    },
+    "brooding48": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "brooding"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You sit and stare at your reflection in a puddle, dipping in a tiny paw and watching the water ripple."
+    },
+    "brooding49": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "brooding"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "warrior"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 approaches you, asking if you are okay. You just wanted some solitude, away from the nursery for once!"
+    },
+    "brooding50": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "brooding"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "kitten"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You watch r_c:0 run and play, wondering why you can't be as carefree as your denmates ..."
+    },
+    "brooding51": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "brooding"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You shred a leaf into smaller and smaller pieces until it's reduced to nothing but specks of dust."
+    },
+    "brooding52": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "brooding"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "warrior"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 tells you to smile more. It only deepens your scowl."
+    },
+    "brooding53": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "brooding"
+                ]
+            },
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "parent/child"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You bury your face into r_c:0's fur, wishing the nursery weren't so bright all the time."
+    },
+    "brooding54": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "brooding"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "kitten"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You pick on r_c:0 for being smaller and weaker than you are."
+    },
+    "brooding55": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "brooding"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You daydream about being a cat in o_c_n. Maybe they would understand you better there."
+    },
+    "brooding56": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "brooding"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "kitten"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You roll your eyes when r_c:0 cries over a small cut. You're so much stronger than {PRONOUN/r_c:0/subject} {VERB/r_c:0/are/is}."
+    },
+    "brooding57": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "brooding"
+                ]
+            },
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "siblings"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You help r_c:0 devise a plan to get back at a cat who was bullying {PRONOUN/r_c:0/object}."
+    },
+    "cool58": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "cool"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "As r_c:0 tells you a long and boring story, you restlessly paw at the grass, waiting for {PRONOUN/r_c:0/object} to be done."
+    },
+    "cool59": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "cool"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "After a particularly rowdy play session, you find a small tuft of fur missing from your flank. You can't wait to show off your 'battle scar'!"
+    },
+    "cool60": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "cool"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "The whole hunting patrol comes to visit you in the nursery, showering you with gifts and praise."
+    },
+    "cool61": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "cool"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You perform a choreographed song and dance for the leader, much to their delight."
+    },
+    "cool62": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "cool"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "warrior"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You overhear r_c:0 remark that you must be the most charming little kit c_n has ever seen."
+    },
+    "cool63": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "cool"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "queen"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You convince r_c:0 to let you go out and play, without much effort. It seems you're especially good at using your words to get what you want."
+    },
+    "cool64": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "cool"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "The o_c_n mediator visits you in the nursery, and you delight them with your jokes, successfully diffusing some of the tensions between the two Clans."
+    },
+    "cool65": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "cool"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "An argument breaks out between two of your denmates, but you lighten the mood by cracking a joke that makes everycat laugh."
+    },
+    "cool66": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "cool"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "warrior"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "Your denmates watch enviously as r_c:0 brings you a special gift."
+    },
+    "cool67": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "cool"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "A lot of the kits in the nursery get picked on, but never you ... Must be your natural charm."
+    },
+    "upstanding68": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "upstanding"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "queen"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 lectures about the basics of the Warrior Code. You make it a point to memorize each rule, hoping to get a head start on your apprenticeship."
+    },
+    "upstanding69": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "upstanding"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "The deputy visits the nursery to teach the kits about border safety, and you're thrilled to answer all their questions correctly. Maybe you'll be their deputy someday!"
+    },
+    "upstanding70": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "upstanding"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You peek into the leader's den, eyes wide with awe. You wish you were as big and important as r_c:0 is."
+    },
+    "upstanding71": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "upstanding"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "apprentice"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You beg r_c:0 to help you get a head start on your apprenticeship, much to {PRONOUN/r_c:0/poss} annoyance."
+    },
+    "upstanding72": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "upstanding"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "deputy"
+                ]
+            },
+            "r_c:1": {
+                "rank": [
+                    "warrior"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You spend an afternoon carefully planning out the rest of your life. r_c:1 will be your mentor, then you'll usurp r_c:0 as deputy, and finally, you'll be leader of all of c_n. It's flawless."
+    },
+    "upstanding73": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "upstanding"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "kitten"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You throw a tantrum when r_c:0 doesn't follow the rules of the game you're playing."
+    },
+    "upstanding74": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "upstanding"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You memorize all the birds that move in and out of camp, delighting the warriors when you can identify them correctly."
+    },
+    "upstanding75": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "upstanding"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "deputy"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You demand that r_c:0 give you a task or put you on a patrol, just like the warriors. {PRONOUN/r_c:0/subject/CAP} {VERB/r_c:0/assign/assigns} you to watch the nursery. You take this new responsibility seriously, standing guard with unwavering focus."
+    },
+    "upstanding76": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "upstanding"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "kitten"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You spend the day ordering around r_c:0, acting out a story you spent hours planning and getting upset when {PRONOUN/r_c:0/subject} {VERB/r_c:0/try/tries} to deviate."
+    },
+    "introspective77": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "introspective"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You ask r_c:0 about life after death. r_c:0 tells you more about the warrior ancestors up in StarClan and how each star in the sky represents an ancestor who is watching over you."
+    },
+    "introspective78": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "introspective"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You ask r_c:0 about the Dark Forest. r_c:0 tells you that it is a place where unruly kits go."
+    },
+    "introspective79": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "introspective"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You spend an entire day watching the clouds slowly drift over camp."
+    },
+    "introspective80": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "introspective"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "While your denmates run and play, you visit r_c:0 in the elder's den, hoping to learn from {PRONOUN/r_c:0/poss} wisdom and experience."
+    },
+    "introspective81": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "introspective"
+                ]
+            },
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "parent/child"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You tear up at the sight of a squished bug. r_c:0 remarks how sensitive you are."
+    },
+    "introspective82": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "introspective"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "warrior"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 jokes that you're an 'old soul' ... whatever that means."
+    },
+    "introspective83": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "introspective"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "deputy"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You have a whole conversation with r_c:0, stumping {PRONOUN/r_c:0/object} with some of your questions."
+    },
+    "introspective84": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "introspective"
+                ]
+            },
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "parent/child"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "On a drizzly day, you ask r_c:0 where the rain comes from. When {PRONOUN/r_c:0/subject} can't answer, you spend hours puzzling over the question yourself."
+    },
+    "introspective85": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "introspective"
+                ]
+            },
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "parent/child"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You ask r_c:0 about the meaning of life. {PRONOUN/r_c:0/subject/CAP} {VERB/r_c:0/laugh/laughs} and {VERB/r_c:0/tell/tells} you you're too young to worry about things like that, and yet you can't seem to stop ..."
+    },
+    "introspective86": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "introspective"
+                ]
+            },
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "siblings"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You try to get r_c:0 to ponder about the nature of your warrior ancestors with you, but {PRONOUN/r_c:0/subject} {VERB/r_c:0/get/gets} bored and {VERB/r_c:0/wander/wanders} off to do something else."
+    },
+    "neurotic87": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "neurotic"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "When you catch the gaze of r_c:0, you nervously duck your head back into the nursery."
+    },
+    "neurotic88": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "neurotic"
+                ]
+            },
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "parent/child"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You tell r_c:0 that you don't want to become an apprentice. r_c:0 reassures you that it won't be so bad."
+    },
+    "neurotic89": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "neurotic"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You're kept awake all night, terrified of the shadows on the nursery walls."
+    },
+    "neurotic90": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "neurotic"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "kitten"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You watch r_c:0 run and play, wondering why you can't be as carefree as {PRONOUN/r_c:0/subject} {VERB/r_c:0/are/is}."
+    },
+    "neurotic91": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "neurotic"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You spend all day giggling at r_c:0's funny stories, happy for a break from the fast pace of nursery life."
+    },
+    "neurotic92": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "neurotic"
+                ]
+            },
+            "r_c:0": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 cheers you on as you step into a puddle for the first time, showing you there's nothing to be afraid of."
+    },
+    "neurotic93": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "neurotic"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You shriek and jump at a bug crawling on you ... Only for it to turn out to be a piece of fuzz."
+    },
+    "neurotic94": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "neurotic"
+                ]
+            },
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "siblings"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You're scared of leaving the nursery when it's raining, but seeing r_c:0 run out and play in the water makes you feel braver, and you finally work up the courage to join {PRONOUN/r_c:0/object}."
+    },
+    "neurotic95": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "neurotic"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "warrior"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 asks if you've started thinking about what you'd like to be when you're older, and anxiety fills your heart, overwhelmed by the possibilities of the future."
+    },
+    "neurotic96": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "neurotic"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "medicine cat",
+                    "medicine cat apprentice"
+                ]
+            },
+            "r_c:1": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:1"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "parent/child"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "A checkup trip to the medicine den leaves you terrified of all the strange sights and smells, and r_c:1 has to bribe you with prey to even look in r_c:0's direction again."
+    },
+    "silly97": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "silly"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            },
+            "r_c:1": {
+                "rank": [
+                    "deputy"
+                ]
+            },
+            "r_c:2": {
+                "rank": [
+                    "kitten"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You and r_c:2 imitate r_c:0 and r_c:1, pretending to order around some warriors."
+    },
+    "silly98": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "silly"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "queen"
+                ]
+            },
+            "r_c:1": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:1"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "siblings"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You and r_c:1 hatch a plan to sneak out of camp, only for r_c:0 to catch you and stop your plan before it even starts!"
+    },
+    "silly99": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "silly"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "mediator"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You ask r_c:0 if you can come along the next time {PRONOUN/r_c:0/subject} {VERB/r_c:0/travel/travels} to o_c_n."
+    },
+    "silly100": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "silly"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You try to stay up all night just to see what happens. You end up falling asleep a little past moonhigh."
+    },
+    "silly101": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "silly"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "mediator"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You ask r_c:0 what the point of {PRONOUN/r_c:0/poss} role is."
+    },
+    "silly102": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "silly"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "queen"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You imitate r_c:0, ordering the other kits to go to bed and stop talking."
+    },
+    "stable103": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "stable"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You can't wait to grow up! It's only a matter of time before r_c:0 makes you an apprentice."
+    },
+    "stable104": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "stable"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "kitten"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You groom your fur until it's sparkling. You now look much more put together than r_c:0!"
+    },
+    "stable105": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "stable"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "warrior"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You dig some holes around the clearing, apologizing profusely after r_c:0 trips over one."
+    },
+    "stable106": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "stable"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You overhear r_c:0 talking about some upcoming ceremonies. You wonder if it's your apprenticeship ceremony!"
+    },
+    "stable107": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "stable"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "apprentice"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 gives some advice to you about hunting. You make a mental note and intend to practice later."
+    },
+    "sweet108": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "sweet"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "medicine cat",
+                    "medicine cat apprentice"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You bring r_c:0 a flower that you found near the nursery. Perhaps it's an herb that will help {PRONOUN/r_c:0/object} cure sick cats."
+    },
+    "sweet109": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "sweet"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "kitten"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "When you notice r_c:0 getting left out of a game, you immediately invite {PRONOUN/r_c:0/object} to join."
+    },
+    "sweet110": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "sweet"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "elder"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You listen to r_c:0 tell a story, listening politely even though it is a bit boring."
+    },
+    "sweet111": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "sweet"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "apprentice"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You try to help r_c:0 with {PRONOUN/r_c:0/poss} chores, bringing {PRONOUN/r_c:0/object} moss or twigs, even if it's not always needed. It's the thought that counts!"
+    },
+    "sweet112": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "sweet"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "medicine cat",
+                    "medicine cat apprentice"
+                ]
+            },
+            "r_c:1": {
+                "rank": [
+                    "kitten"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "When r_c:1 takes a tumble and gets a small scrape, you are the first to hurry over to the medicine den to get r_c:0."
+    },
+    "sweet113": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "sweet"
+                ]
+            },
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "parent/child"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You tear up at the sight of a squished bug. r_c:0 remarks how sensitive you are."
+    },
+    "unabashed114": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "unabashed"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You play in the middle of the camp clearing, making the warriors have to step around you constantly to get around."
+    },
+    "unabashed115": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "unabashed"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "medicine cat",
+                    "medicine cat apprentice"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You pretend to collapse in front of the medicine den to get r_c:0's attention, pleased when {PRONOUN/r_c:0/subject} {VERB/r_c:0/rush/rushes} over to you in concern."
+    },
+    "unabashed116": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "unabashed"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "apprentice"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You see r_c:0 practice a battle move near the apprentice den. You loudly critique {PRONOUN/r_c:0/poss} technique, ensuring the warriors can hear your 'expert' opinion."
+    },
+    "unabashed117": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "unabashed"
+                ]
+            },
+            "r_c:0": {}
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You remark that r_c:0's nose looks bigger than usual today and are confused when {PRONOUN/r_c:0/subject} {VERB/r_c:0/get/gets} mad at you."
+    },
+    "unabashed118": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "unabashed"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "queen"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "When r_c:0 demands to know who messed up one of the queen's nests, you fess up immediately, and {PRONOUN/r_c:0/subject} {VERB/r_c:0/commend/commends} your honesty."
+    },
+    "unabashed119": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "unabashed"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "kitten"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "When r_c:0 calls you a mean name, you take it in stride, proudly declaring it your new nickname."
+    },
+    "unabashed120": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "unabashed"
+                ]
+            },
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "siblings"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You help r_c:0 devise a plan to get back at a cat who was bullying {PRONOUN/r_c:0/object}."
+    },
+    "unabashed121": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "unabashed"
+                ]
+            },
+            "r_c:0": {},
+            "r_c:1": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:1"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "parent/child"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You can't control yourself and eat a piece of prey that r_c:1 was saving for r_c:0. The guilt is crushing afterwards."
+    },
+    "unabashed122": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "unabashed"
+                ]
+            },
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "parent/child"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 grooms your fur after your third trip today, remarking how clumsy you are."
+    },
+    "unabashed123": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "unabashed"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "queen"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "Curious, you venture into a thicket of brambles, and return to an exasperated r_c:0 covered in thorns."
+    },
+    "unlawful124": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "unlawful"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "queen"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 lectures about the basics of the Warrior Code, but you don't pay attention. Rules are boring, you'd much rather be outside playing mossball!"
+    },
+    "unlawful125": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "unlawful"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "queen"
+                ]
+            },
+            "r_c:1": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:1"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "siblings"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You and r_c:1 hatch a plan to sneak out of camp, only for r_c:0 to catch you and stop your plan before it even starts!"
+    },
+    "unlawful126": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "unlawful"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You poke your nose outside camp when none of the warriors are looking, and are amazed by the sights and smells of the vast territory."
+    },
+    "unlawful127": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "unlawful"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "queen"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "r_c:0 tries to give you a lesson on Clan history, but you keep making funny faces and distracting your denmates until eventually the whole lesson has to be cancelled."
+    },
+    "unlawful128": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "unlawful"
+                ]
+            },
+            "r_c:0": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "parent/child"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You roll your eyes as r_c:0 lectures you on how you need to take things more seriously."
+    },
+    "unlawful129": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "unlawful"
+                ]
+            },
+            "r_c:0": {},
+            "r_c:1": {}
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "r_c:0"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "parent/child"
+                ]
+            },
+            {
+                "cats_from": [
+                    "r_c:1"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "siblings"
+                ]
+            }
+        ],
+        "types": [
+            "general"
+        ],
+        "event": "You teach r_c:1 to say bad words, much to r_c:0's horror."
+    },
+    "unlawful130": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "unlawful"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "kitten"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You fake an injury to purposefully get r_c:0 into trouble, to get back at {PRONOUN/r_c:0/object} for making fun of you earlier."
+    },
+    "unlawful131": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "unlawful"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "warrior"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You challenge r_c:0 to a fight. The warrior is much weaker than you thought {PRONOUN/r_c:0/subject} {VERB/r_c:0/were/was}, and you stand on top of {PRONOUN/r_c:0/object} triumphantly."
+    },
+    "unlawful132": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "unlawful"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "queen"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You bug r_c:0 to go play outside until {PRONOUN/r_c:0/subject} {VERB/r_c:0/relent/relents}."
+    },
+    "unlawful133": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "unlawful"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You stomp around on an anthill, crushing every ant that tries to escape your massacre."
+    },
+    "unlawful134": {
+        "cats": {
+            "y_c": {
+                "cluster": [
+                    "unlawful"
+                ]
+            },
+            "r_c:0": {
+                "rank": [
+                    "medicine cat",
+                    "medicine cat apprentice"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "general"
+        ],
+        "event": "You ask r_c:0 what the point of {PRONOUN/r_c:0/poss} role is."
+    },
+    "rare135": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "rare"
+        ],
+        "event": "One night, as you sneak out of the nursery, you look up to see brilliant streaks of white light traveling across the sky. You watch the meteor shower, your eyes wide with amazement and wonder."
+    },
+    "rare136": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "rare"
+        ],
+        "event": "One night, starry cats visit you in a dream, stating that you are destined for greatness."
+    },
+    "rare137": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "rare"
+        ],
+        "event": "One night, some unknown cats visit you in a dream, their pelts dripping with an unknown substance. They tell you that you are destined for something great."
+    },
+    "rare138": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "rare"
+        ],
+        "event": "The leader of o_c_n visits camp, but no one will tell you why."
+    },
+    "rare139": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "rare"
+        ],
+        "event": "You often feel as if something's watching you."
+    },
+    "shunned140": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "The older cats are watching you with a wariness in their eyes that wasn't there before."
+    },
+    "shunned141": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "You beg one of the queens to play and they snap at you to quiet down."
+    },
+    "shunned142": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "You overhear whispers about you amongst the older cats."
+    },
+    "shunned143": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "Suspicious glances follow you around the camp, making you feel like an outsider in your own home."
+    },
+    "shunned144": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "The nursery, once filled with laughter and warmth, becomes eerily silent when you enter. The other kits avoid your gaze and huddle close to their parents."
+    },
+    "shunned145": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "One of the queens, once so welcoming, now flinches away when you approach. Their eyes are full of mistrust and fear, as if you are a stranger to them."
+    },
+    "shunned146": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "The medicine cat treats you with a cool detachment, their gaze distant and hardened. It feels like their once comforting presence has become cold and unwelcoming."
+    },
+    "shunned147": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "The apprentices, who you once admired and aspired to join, now avoid you, crossing the camp to keep their distance. Their chatter stops when you approach, replaced by an uncomfortable silence."
+    },
+    "shunned148": {
+        "cats": {
+            "y_c": {},
+            "r_c:0": {
+                "rank": [
+                    "leader"
+                ]
+            }
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "Even the leader's gaze darkens when {PRONOUN/r_c:0/subject} {VERB/r_c:0/see/sees} you. {PRONOUN/r_c:0/subject/CAP} {VERB/r_c:0/have/has} yet to say a word to you since the incident, but {PRONOUN/r_c:0/poss} silence speaks volumes."
+    },
+    "shunned149": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "Playtime is no longer a joyful event. The queens watch you carefully, their eyes narrowing whenever you play a little too rough with the other kits."
+    },
+    "shunned150": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "You play with a mossball alone."
+    },
+    "shunned151": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "You overhear the leader debating whether your apprenticeship should be delayed."
+    },
+    "shunned152": {
+        "cats": {
+            "y_c": {}
+        },
+        "relationships": [],
+        "types": [
+            "shunned"
+        ],
+        "event": "You are left alone more often than not."
+    }
+}

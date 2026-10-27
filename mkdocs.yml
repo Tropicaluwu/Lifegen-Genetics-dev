@@ -1,63 +1,44 @@
-site_name: ClanGen Documentation
-site_url: https://clangen.io/clangen-docs/
-repo_url: https://github.com/ClanGenOfficial/clangen
-repo_name: ClanGenOfficial/clangen
-edit_uri: https://github.com/ClanGenOfficial/clangen/edit/development/docs/
+site_name: LifeGen Documentation
+site_url: https://mods.clangen.io/lifegen-docs/
+repo_url: https://github.com/sedgestripe/clangen
+repo_name: sedgestripe/clangen
+edit_uri: https://github.com/sedgestripe/clangen/tree/LifeGen-dev/docs
 nav:
   - Welcome:
     - index.md
     - report-a-bug.md
-  - Developer Documentation:
-    - dev/index.md
-    - Project Basics:
-        - dev/project-basics/index.md
-        - dev/project-basics/development-team-roles.md
-        - dev/project-basics/getting-started-with-github-and-clangen.md
-        - Senior Developer Guides:
-            - dev/senior/index.md
-    - Code:
-        - dev/code/index.md
-        - dev/code/cat-status.md
-        - dev/art/cat-sprites/adding-new-sprites.md
-        - dev/code/content-adding.md
-        - dev/code/localization.md
+  - LifeGen Features:
     - Writing:
-        - dev/writing/index.md
-        - Reference:
-          - dev/writing/reference/index.md
-          - dev/writing/reference/writing-standards.md
-          - dev/writing/reference/terminology.md
-          - dev/writing/reference/tag-lists.md
-          - dev/writing/reference/common-formats.md
-          - dev/writing/reference/pronoun-tags.md
-          - dev/writing/reference/trait-dictionary.md
-          - dev/writing/reference/biomes.md
-          - dev/writing/reference/animals.md
-          - dev/writing/reference/herbs.md
-          - dev/writing/reference/common-errors.md
-        - dev/writing/patrols.md
-        - dev/writing/shortevents.md
-        - dev/writing/future.md
-        - dev/writing/leaders-den-events.md
-        - dev/writing/thoughts.md
-        - dev/writing/leader-ceremonies.md
-        - dev/writing/localization.md
-        - dev/writing/advanced-documentation.md
+      - lifegen-features/writing/dialogue.md
+      - lifegen-features/writing/dialogue-references.md
+      - lifegen-features/writing/events.md
+      - lifegen-features/writing/activities.md
+      - lifegen-features/writing/lifegen-additions.md
     - Art:
-        - Cat Sprites:
-            - dev/art/cat-sprites/cat-sprites.md
-            - dev/art/cat-sprites/adding-new-sprites.md
-            - dev/art/cat-sprites/palette-maps.md
-        - dev/art/index.md
-        - dev/art/patrol-sprites.md
-        - dev/art/clan-symbols.md
-        - dev/art/camp-backgrounds.md
-    - Audio:
-        - dev/audio/index.md
-
+      - lifegen-features/art/favorite-stars.md
+      - lifegen-features/art/patrol-sprites.md
+    - Code:
+      - lifegen-features/code/queen's-activity.md
+    - lifegen-features/references.md
+    - lifegen-features/index.md
+  - LifeGen Catalog:
+    - lifegen-catalog/releases-catalog.md
+    - lifegen-catalog/upcoming.md
+    - lifegen-catalog/index.md
+  - Tech Help Documentation:
+    - tech-help-documentation/index.md
+    - tech-help-documentation/bug-catalog.md
+    - Installing:
+      - tech-help-documentation/installing/application.md
+      - tech-help-documentation/installing/source.md
   - User Guides:
+    - Save file Editing:
+      - user-guides/save-file-editing/lifegen-sfe-additions.md
+    - Modding Preparation:
+      - user-guides/modding-preparation/github-desktop.md
+      - user-guides/modding-preparation/creating-releases.md
+      - user-guides/modding-preparation/index.md
     - user-guides/index.md
-    - user-guides/removing-palette-maps.md
   - Contributing to the Wiki:
       - contributing/index.md
       - contributing/documentation-resources.md
@@ -117,7 +98,7 @@ theme:
         icon: material/weather-night
         name: Switch to system preference
 extra:
-  homepage: https://clangen.io/
+  homepage: https://mods.clangen.io/LifeGen/download
 extra_css:
   - stylesheets/extra.css
 
@@ -160,8 +141,8 @@ plugins:
   - search
   - git-committers:
       enabled: !ENV [GIT_COMMITTERS_ENABLED, False]
-      repository: ClanGenOfficial/clangen
-      branch: development
+      repository: sedgestripe/clangen
+      branch: LifeGen-dev
   - git-revision-date-localized:
       enable_creation_date: true
       type: timeago

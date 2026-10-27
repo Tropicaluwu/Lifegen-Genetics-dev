@@ -12,4 +12,4 @@ class CatEnum(Enum):
 
 
 class Cat(RootModel):
-    root: Union[CatEnum, Annotated[str, StringConstraints(pattern=r"^n_c:[0-9]+$")]]
+    root: Union[CatEnum, Annotated[str, StringConstraints(pattern=r"^(n_c:|r_c:|o_c)[0-9]+$")]]
