@@ -1,7 +1,11 @@
 # LifeGen Genetics
 
 **LifeGen** and **Genemod** (the genetics mod) put together into one game. You play as your own cat like in LifeGen, and every cat has real genes like in Genemod, so kits actually look like their parents.
+
+**Join the Discord server** for help, news and bug reports: [discord.gg/Kxdvk5eXC9](https://discord.gg/Kxdvk5eXC9)
+
 I ask that if you make a fork or a version of this mod built off of my code, you credit me as well as the creators of LifeGen, ClanGen, and Genemod too.
+
 ## How to play
 
 Updated October 27, 2026. Versions downloaded before this date don't have run.command, so Mac players should download the latest version.
