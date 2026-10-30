@@ -132,7 +132,41 @@ Once your Clans show up in the new version, you can delete the old folder.
 - **The window closes right away (Windows):** right-click inside the game folder, choose **Open in Terminal**, type `.\run.bat` and press **Enter**. The window stays open, so you can see the error.
 - **Mac: "run.command can't be opened":** see step 3 for Mac (**Open Anyway** in Privacy & Security).
 - **It got stuck or failed the first time:** check your internet connection and start it again. It picks up where it left off.
+- **"An Application Control policy has blocked this file" or "python.exe - Bad Image" (Windows 11):** this is Windows Smart App Control, not a broken download. See [Blocked by Smart App Control](#blocked-by-smart-app-control).
 - **My Clans are gone after updating:** copy the **saves** folder from the old game folder into the new one (see [Updating](#updating-to-a-new-version)).
+
+
+### Blocked by Smart App Control
+
+Smart App Control is a Windows 11 security feature that blocks programs it doesn't recognize, and that includes the copy of Python that uv downloads. You might see **"An Application Control policy has blocked this file (os error 4551)"**, or a **"python.exe - Bad Image"** window with **error status 0xc0e90002** that says `python312.dll` is damaged. It isn't damaged, it's being blocked.
+
+**Easiest fix:** open **Windows Security** > **App & browser control** > **Smart App Control** and turn it off, then start the game again. Windows may not let you turn it back on without resetting your PC, so decide if that's okay first.
+
+**If you'd rather keep it on,** you can try playing with the official Python instead of uv. This might not work on every PC, because Windows can still block the game's add-on files.
+
+1. Install **Python 3.12** from [python.org](https://www.python.org/downloads/). Pick a 3.12 version that has a Windows installer, and leave the "py launcher" option ticked.
+2. In the game folder, right-click an empty spot and choose **Open in Terminal**. If that isn't there, click the address bar at the top of the folder, type `cmd` and press **Enter**.
+3. Run this to remove uv's Python, so it can't get picked by mistake:
+   ```
+   uv python uninstall 3.12
+   ```
+4. Run this once to install what the game needs:
+   ```
+   py -V:PythonCore/3.12 -m pip install "black~=23.0" "cryptography~=42.0" "pgpy~=0.6" "platformdirs~=3.3" "pydantic>=2.12.0" "pygame-ce~=2.2" "pygame-gui~=0.6" "requests~=2.28" "strenum~=0.4" "tomli>=2.2.1" "ujson~=5.7"
+   ```
+5. Start the game with this line, every time you play:
+   ```
+   py -V:PythonCore/3.12 main.py
+   ```
+
+Don't use `run.bat` for this, because it downloads uv's Python again. To start the game with a double-click, make a text file in the game folder called `play.bat` with these lines in it:
+```
+@echo off
+py -V:PythonCore/3.12 main.py
+pause
+```
+
+If it's still blocked and the error mentions `Python312\Lib\site-packages`, Windows is blocking the add-on files too. Your options then are turning Smart App Control off, playing on another PC, or using a virtual machine.
 
 ---
 
@@ -146,6 +180,7 @@ Since the Reddit post did so well, I'm releasing my cat maker update early! Ther
 - Plus a bunch of fixes (see [changelog.txt](changelog.txt))
 - **v1.1.1:** cat maker fixes (Fur Length buttons, "clear all" white, Random cat odds and a rare crash)
 - **v1.1.2:** a how-to-play guide for Windows, Mac and Linux, double-click to play on Mac, the game now tells you when there's a new version, and a few more cat maker fixes
+- **v1.1.3:** the error screen and the start screen's Discord button go to the right places, a crash fix for the Change Role screen, and help for Windows Smart App Control
 
 ## Credits
 

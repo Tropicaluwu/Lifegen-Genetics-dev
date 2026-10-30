@@ -5,6 +5,6 @@
         "tooltip_tumblr": "Check out our Tumblr!",
         "tooltip_discord": "Join our Discord!",
         "error_text": "There was an error loading the game: %{error}%{traceback}",
-        "error_gethelp": "Please join the Discord server and ask for technical support. We'll be happy to help! Please include the error message and the traceback below (if available).<br><a href=\"https://discord.gg/clangen\">Discord</a>"
+        "error_gethelp": "Please report this on the LifeGen Genetics GitHub page, with the error message and the traceback below (if available). Please don't ask the ClanGen, LifeGen or Genemod teams, they can't help with it.<br><a href=\"https://github.com/Tropicaluwu/Lifegen-Genetics-dev/issues\">Report a problem</a>"
     }
 }

@@ -1,3 +1,9 @@
+<strong>LifeGen Genetics v1.1.3</strong>
+
+- Fixed the Change Role screen crashing for outsiders
+- Problems no longer send you to the LifeGen or ClanGen Discord for help: the error screen links to the LifeGen Genetics GitHub page instead, and the start screen's Discord button goes to our Discord server
+- The README explains what to do if Windows Smart App Control blocks the game
+
 <strong>LifeGen Genetics v1.1.2: easier to play and update</strong>
 
 - A step-by-step guide to playing on Windows, Mac and Linux, at the top of the README

@@ -118,7 +118,8 @@ class StartScreen(Screens):
             elif event.ui_element == self.event_edit:
                 self.change_screen(GameScreen.EVENT_EDIT)
             elif event.ui_element == self.social_buttons["discord_button"]:
-                open_url("https://discord.gg/WqzdEcavcH")
+                # our own Discord server (help, news and bug reports)
+                open_url("https://discord.gg/Kxdvk5eXC9")
             elif event.ui_element == self.social_buttons["tumblr_button"]:
                 open_url("https://officialclangen.tumblr.com/")
             elif event.ui_element == self.social_buttons["twitter_button"]:
@@ -354,9 +355,10 @@ class StartScreen(Screens):
         )
 
         self.error_gethelp = pygame_gui.elements.UITextBox(
-            "Please join the Discord server and ask for technical support. "
-            "We'll be happy to help! Please include the error message and the traceback below (if available). "
-            '<br><a href="https://discord.gg/WqzdEcavcH">Discord</a>',  # pylint: disable=line-too-long
+            # problems go to LifeGen Genetics' GitHub page, not the ClanGen or LifeGen Discord
+            "Please report this on the LifeGen Genetics GitHub page, with the error message and the "
+            "traceback below (if available). Please don't ask the ClanGen, LifeGen or Genemod teams, they "
+            "can't help with it.<br><a href='https://github.com/Tropicaluwu/Lifegen-Genetics-dev/issues'>Report a problem</a>",
             ui_scale(pygame.Rect((527, 215), (175, 300))),
             object_id="#text_box_22_horizleft",
             starting_height=3,
