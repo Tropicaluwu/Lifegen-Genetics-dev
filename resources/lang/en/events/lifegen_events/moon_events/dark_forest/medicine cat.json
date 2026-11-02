@@ -37,7 +37,7 @@
         "types": [
             "general"
         ],
-        "event": "You try to reach into the medicine cats' dreams at the half moon meeting."
+        "event": "You try to reach into the healers' dreams at the half moon meeting."
     },
     "general5": {
         "cats": {
@@ -47,6 +47,6 @@
         "types": [
             "general"
         ],
-        "event": "You whisper the wrong names of herbs in a medicine apprentice's ear, giggling at their horror when they find out what they've done to their patient."
+        "event": "You whisper the wrong names of herbs in a healer apprentice's ear, giggling at their horror when they find out what they've done to their patient."
     }
 }

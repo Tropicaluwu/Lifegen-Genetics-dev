@@ -3,13 +3,12 @@ from typing import Optional, TYPE_CHECKING, Any
 import pygame
 import ujson
 
-from scripts.event_class import Single_Event
+from scripts.events_module.event_information import EventInformation
 from scripts.housekeeping.datadir import get_save_dir
 
-from scripts.game_structure import constants
 from scripts.game_structure.screen_settings import toggle_fullscreen
 
-from . import save_load, settings, switches
+from . import save_load, settings, switches  # noqa: F401
 
 from .save_load import safe_save
 from .settings import game_setting_get
@@ -29,7 +28,7 @@ mediated = []  # Keep track of which couples have been mediated this moon.
 just_died = []  # keeps track of which cats died this moon via die()
 
 # LG
-told_story = [] # keeps track of who has been told a story by the elders this moon
+told_story = []  # keeps track of who has been told a story by the elders this moon
 # ---
 
 dead_cats_to_grieve = (
@@ -51,23 +50,6 @@ last_screen_forProfile = GameScreen.LIST
 last_list_forProfile = None
 selected_clan = None
 
-choose_cats = {}
-
-"""cat_buttons = {
-    'cat0': None,
-    'cat1': None,
-    'cat2': None,
-    'cat3': None,
-    'cat4': None,
-    'cat5': None,
-    'cat6': None,
-    'cat7': None,
-    'cat8': None,
-    'cat9': None,
-    'cat10': None,
-    'cat11': None
-}"""
-
 patrol_cats = {}
 updated_afterlife_cats = set()
 patrolled = []
@@ -81,7 +63,6 @@ used_group_IDs: dict = {
     CatGroup.STARCLAN_ID: CatGroup.STARCLAN,
     CatGroup.UNKNOWN_RESIDENCE_ID: CatGroup.UNKNOWN_RESIDENCE,
     CatGroup.DARK_FOREST_ID: CatGroup.DARK_FOREST,
-
     # LG
     CatGroup.ROGUE_GROUP_ID: CatGroup.ROGUE_GROUP,
     CatGroup.LONER_GROUP_ID: CatGroup.LONER_GROUP,
@@ -96,8 +77,7 @@ def reset_group_IDs():
         CatGroup.STARCLAN_ID: CatGroup.STARCLAN,
         CatGroup.UNKNOWN_RESIDENCE_ID: CatGroup.UNKNOWN_RESIDENCE,
         CatGroup.DARK_FOREST_ID: CatGroup.DARK_FOREST,
-
-        # LG, these have to stay taken or new other clans end up on the rogue/loner/kittypet IDs
+        # LG
         CatGroup.ROGUE_GROUP_ID: CatGroup.ROGUE_GROUP,
         CatGroup.LONER_GROUP_ID: CatGroup.LONER_GROUP,
         CatGroup.HOUSEHOLD_ID: CatGroup.HOUSEHOLD,
@@ -139,10 +119,7 @@ To give us the deprecation warnings/errors
 def __getattr__(attr):
     import warnings
 
-    if attr == "config":
-        warnings.warn("Use constants.CONFIG instead", DeprecationWarning, 2)
-        return constants.CONFIG
-    elif attr == "switches":
+    if attr == "switches":
         # unfortunately there's no way to let this one fix itself, so we have to CTD.
         warnings.warn(
             "Use get_switch(), set_switch(), or helpers instead", DeprecationWarning, 2
@@ -162,11 +139,6 @@ def __getattr__(attr):
     else:
         raise AttributeError(f"module '{__name__}' object has no attribute '{attr}'")
 
-
-"""
-DEPRECATED: use constants.CONFIG instead
-"""
-config: Any
 
 """
 DEPRECATED: use get_switch(), set_switch(), or helpers instead - WILL CRASH if you try and use this anyway
@@ -198,7 +170,7 @@ def save_events():
     for event in cur_events_list:
         if e := event.to_dict():
             events_list.append(e)
-    safe_save(f"{get_save_dir()}/{clan.name}/events.json", events_list)
+    safe_save(f"{get_save_dir()}/{clan.save_id}/events.json", events_list)
 
 
 def add_faded_offspring_to_faded_cat(parent, offspring):
@@ -208,7 +180,7 @@ def add_faded_offspring_to_faded_cat(parent, offspring):
 
     global clan
 
-    path = f"{get_save_dir()}/{clan.name}/faded_cats/{parent}.json"
+    path = f"{get_save_dir()}/{clan.save_id}/faded_cats/{parent}.json"
 
     try:
         with open(
@@ -235,92 +207,26 @@ def load_events():
 
     global clan
 
-    clanname = clan.name
+    clanname = clan.save_id
     events_path = f"{get_save_dir()}/{clanname}/events.json"
     events_list = []
     try:
         with open(events_path, "r", encoding="utf-8") as f:
             events_list = ujson.loads(f.read())
         for event_dict in events_list:
-            event_obj = Single_Event.from_dict(event_dict, cat_class)
+            event_obj = EventInformation.from_dict(event_dict, cat_class)
             if event_obj:
-                if event_obj.clan and (event_obj.clan == CatGroup.PLAYER_CLAN.value or event_obj.clan == clan.displayname):
+                if event_obj.clan and (event_obj.clan == CatGroup.PLAYER_CLAN.value or event_obj.clan == clan.prefix):
                     event_obj.clan = CatGroup.PLAYER_CLAN_ID
                 elif event_obj.clan and len(event_obj.clan) > 2:
                     try:
                         event_obj.clan = str(int(event_obj.clan[-1])+4)
                     except:
-                        event_obj.clan = next(filter(lambda c: event_obj.clan == c.displayname, clan.all_other_clans), None)
+                        event_obj.clan = next(filter(lambda c: event_obj.clan == c.prefix, clan.all_other_clans), None)
                         event_obj.clan = event_obj.clan.group_ID if event_obj.clan else None
                 cur_events_list.append(event_obj)
     except FileNotFoundError:
         pass
-
-
-def get_config_value(active_clan: "CatGroup", *args):
-    """Fetches a value from the config dictionary. Pass each key as a
-    separate argument, in the same order you would access the dictionary.
-    This function will apply war modifiers if the clan is currently at war."""
-
-    global clan
-
-    war_effected = {
-        ("death_related", "leader_death_chance"): (
-            "death_related",
-            "war_death_modifier_leader",
-        ),
-        ("death_related", "classic_death_chance"): (
-            "death_related",
-            "war_death_modifier",
-        ),
-        ("death_related", "expanded_death_chance"): (
-            "death_related",
-            "war_death_modifier",
-        ),
-        ("death_related", "cruel season_death_chance"): (
-            "death_related",
-            "war_death_modifier",
-        ),
-        ("condition_related", "classic_injury_chance"): (
-            "condition_related",
-            "war_injury_modifier",
-        ),
-        ("condition_related", "expanded_injury_chance"): (
-            "condition_related",
-            "war_injury_modifier",
-        ),
-        ("condition_related", "cruel season_injury_chance"): (
-            "condition_related",
-            "war_injury_modifier",
-        ),
-    }
-
-    # Get Value
-    config_value = constants.CONFIG
-    for key in args:
-        config_value = config_value[key]
-
-    # Apply war if needed
-    if clan and clan.get_wars(active_clan) and args in war_effected:
-        rel_change_types = switch_get_value(Switch.war_rel_change_type)
-        all_pos = True
-        for key in rel_change_types:
-            for other_key in rel_change_types[key]:
-                if rel_change_types[key][other_key] != "rel_up" and active_clan in [key, other_key]:
-                    all_pos = False
-
-        # if the war was positively affected this moon, we don't apply war modifier
-        # this way we only see increased death/injury when the war is going badly or is neutral
-        if not all_pos:
-            # Grabs the modifier
-            mod = constants.CONFIG
-            for key in war_effected[args]:
-                mod = mod[key]
-
-            config_value -= mod
-
-    return config_value
-
 
 def get_free_group_ID(group_type: CatGroup) -> str:
     """
@@ -339,11 +245,10 @@ def reset_used_group_IDs():
             CatGroup.STARCLAN,
             CatGroup.DARK_FOREST,
             CatGroup.UNKNOWN_RESIDENCE,
-
             # LG
             CatGroup.ROGUE_GROUP,
             CatGroup.LONER_GROUP,
-            CatGroup.HOUSEHOLD
+            CatGroup.HOUSEHOLD,
         ):
             used_group_IDs.pop(ID)
 

@@ -33,8 +33,8 @@ class GatherCatEnum(Enum):
     not_some_clan = "-some_clan"
     patrol = "patrol"
     not_patrol = "-patrol"
-    multi = "multi"
-    not_multi = "-multi"
+    some_patrol = "some_patrol"
+    not_some_patrol = "-some_patrol"
     high_lawful = "high_lawful"
     not_high_lawful = "-high_lawful"
     low_lawful = "low_lawful"
@@ -51,9 +51,31 @@ class GatherCatEnum(Enum):
     not_high_aggress = "-high_aggress"
     low_aggress = "low_aggress"
     not_low_aggress = "-low_aggress"
+    patrol_cats = "patrol_cats"
+    not_patrol_cats = "-patrol_cats"
+    apprentice = "apprentice"
+    not_apprentice = "-apprentice"
+    medicine_cat_apprentice = "medicine cat apprentice"
+    not_medicine_cat_apprentice = "-medicine cat apprentice"
+    warrior = "warrior"
+    not_warrior = "-warrior"
+    medicine_cat = "medicine cat"
+    not_medicine_cat = "-medicine cat"
+    deputy = "deputy"
+    not_deputy = "-deputy"
+    leader = "leader"
+    not_leader = "-leader"
+    past_deputy = "past_deputy"
+    not_past_deputy = "-past_deputy"
+    multi_cat = "multi_cat"
+    not_multi_cat = "-multi_cat"
 
 
 class GatherCat(RootModel):
     root: Union[
-        GatherCatEnum, Annotated[str, StringConstraints(pattern=r"^(n_c:|r_c:|o_c)[0-9]+$")]
+        GatherCatEnum,
+        Annotated[str, StringConstraints(pattern=r"^-?n_c:[0-9]+$")],
+        Annotated[str, StringConstraints(pattern=r"^-?(n_c|r_c|s_c)[0-9]+$")],
+        # LG: new cats, random cats in LifeGen patrols (r_c:X) and other patrol cats (o_cX)
+        Annotated[str, StringConstraints(pattern=r"^-?(n_c:|r_c:|o_c)[0-9]+$")],
     ]

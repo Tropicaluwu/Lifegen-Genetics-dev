@@ -10,7 +10,6 @@ from ..ui.theme import get_text_box_theme
 from ..ui.scale import ui_scale
 from .Screens import Screens
 from .enums import GameScreen
-from ..game_structure.game.settings import game_setting_get
 from ..game_structure.screen_settings import MANAGER
 from ..ui.generate_button import ButtonStyles, get_button_dict
 
@@ -101,7 +100,7 @@ class CeremonyScreen(Screens):
             else:
                 self.mute_button_pressed(event)
 
-        elif event.type == pygame.KEYDOWN and game_setting_get("keybinds"):
+        elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
                 self.change_screen(GameScreen.PROFILE)
         return

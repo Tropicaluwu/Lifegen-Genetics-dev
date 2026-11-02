@@ -6,7 +6,7 @@ import pygame_gui
 from scripts.game_structure.screen_settings import MANAGER
 from scripts.housekeeping import lgg_update
 from scripts.housekeeping.datadir import open_url
-from scripts.housekeeping.version import get_version_info
+from scripts.housekeeping.game_version import get_version_info
 from scripts.ui.elements.surface_image_button import UISurfaceImageButton
 from scripts.ui.generate_button import get_button_dict, ButtonStyles
 from scripts.ui.scale import ui_scale
@@ -18,7 +18,7 @@ class LGGUpdateWindow(GameWindow):
         super().__init__(ui_scale(pygame.Rect((150, 150), (500, 400))))
 
         pygame_gui.elements.UITextBox(
-            f"LifeGen Genetics {lgg_update.newer_version} is out!",
+            f"LifeGen Genetics {'dev build ' if lgg_update.update_channel() == 'dev' else ''}{lgg_update.newer_version} is out!",
             ui_scale(pygame.Rect((0, 10), (500, -1))),
             object_id="#changelog_popup_title",
             container=self,
@@ -55,7 +55,7 @@ class LGGUpdateWindow(GameWindow):
     def process_event(self, event):
         if event.type == pygame_gui.UI_BUTTON_START_PRESS:
             if event.ui_element == self.download_button:
-                open_url(lgg_update.DOWNLOAD_PAGE)
+                open_url(lgg_update.download_page())
                 self.kill()
                 return True
             if event.ui_element == self.later_button:

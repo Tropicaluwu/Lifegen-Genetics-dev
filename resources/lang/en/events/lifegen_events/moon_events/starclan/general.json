@@ -7,7 +7,7 @@
         "types": [
             "general"
         ],
-        "event": "You think of a message to send to the medicine cats of c_n during the half-moon meeting."
+        "event": "You think of a message to send to the healers of c_n during the half-moon meeting."
     },
     "general2": {
         "cats": {
@@ -266,7 +266,7 @@
         "types": [
             "general"
         ],
-        "event": "You watch the medicine cats eagerly, despite your death you yearn for new knowledge."
+        "event": "You watch the healers eagerly, despite your death you yearn for new knowledge."
     },
     "stable21": {
         "cats": {

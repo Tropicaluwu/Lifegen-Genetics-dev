@@ -4,20 +4,20 @@ from random import choice
 
 from scripts.game_structure import game, constants
 from scripts.ui.elements.surface_image_button import UISurfaceImageButton
-from scripts.ui.elements.text_box_tweaked import UITextBoxTweaked
 from scripts.ui.elements.image_button import UIImageButton
 from scripts.ui.generate_button import get_button_dict, ButtonStyles
 from scripts.ui.windows.window_base_class import GameWindow
 from scripts.game_structure.game.switches import (
     Switch,
     switch_get_value,
-    switch_set_value
+    switch_set_value,
 )
 from scripts.ui.icon import Icon
 from scripts.ui.scale import ui_scale
 from scripts.screens.enums import GameScreen
-from scripts.event_class import Single_Event
+from scripts.events_module.event_information import EventInformation
 from scripts.game_structure.localization import load_lang_resource
+
 
 class DeathScreen(GameWindow):
     def __init__(self, last_screen):
@@ -26,14 +26,13 @@ class DeathScreen(GameWindow):
         )
         switch_set_value(Switch.window_open, True)
 
-        self.clan_name = str(game.clan.name + 'Clan')
+        self.clan_name = str(game.clan.name)
         self.last_screen = last_screen
-        self.pick_path_message = UITextBoxTweaked(
+        self.pick_path_message = pygame_gui.elements.UITextBox(
             f"<b>You are dead.</b>\nWhat will you do now?",
             ui_scale(pygame.Rect((20, 10), (435, -1))),
-            line_spacing=1,
             object_id="#text_box_30_horizcenter",
-            container=self
+            container=self,
         )
 
         self.begin_anew_button = UISurfaceImageButton(
@@ -80,9 +79,9 @@ class DeathScreen(GameWindow):
 
         self.revive_button.enable()
         if (
-            ((game.clan.your_cat.dead_for >= constants.CONFIG["fading"]["age_to_fade"])
-            and not game.clan.your_cat.prevent_fading) or game.clan.your_cat.revives > 5
-            ):
+            (game.clan.your_cat.dead_for >= constants.CONFIG["fading"]["age_to_fade"])
+            and not game.clan.your_cat.prevent_fading
+        ) or game.clan.your_cat.revives > 5:
             self.revive_button.disable()
 
         self.continue_dead_button.enable()
@@ -92,7 +91,7 @@ class DeathScreen(GameWindow):
         super().process_event(event)
 
         if event.type == pygame_gui.UI_BUTTON_START_PRESS:
-            if event.ui_element == self.begin_anew_button: 
+            if event.ui_element == self.begin_anew_button:
                 game.last_screen_forupdate = switch_get_value(Switch.cur_screen)
                 switch_set_value(Switch.cur_screen, GameScreen.START)
                 game.switch_screens = True
@@ -131,9 +130,9 @@ class DeathScreen(GameWindow):
                 switch_set_value(Switch.cur_screen, GameScreen.EVENTS)
                 game.switch_screens = True
 
-                revival_json = load_lang_resource('events/lifegen_events/revival.json')
-                
-                game.cur_events_list.append(Single_Event(choice(revival_json), 'alert'))
+                revival_json = load_lang_resource("events/lifegen_events/revival.json")
+
+                game.cur_events_list.append(EventInformation(choice(revival_json), "alert"))
                 self.begin_anew_button.kill()
                 self.pick_path_message.kill()
                 self.switch_cats_button.kill()
@@ -156,7 +155,7 @@ class DeathScreen(GameWindow):
                 switch_set_value(Switch.customise_new_life, True)
                 switch_set_value(Switch.continue_after_death, False)
                 game.last_screen_forupdate = switch_get_value(Switch.cur_screen)
-                switch_set_value(Switch.cur_screen, GameScreen.MAKE_CLAN)
+                switch_set_value(Switch.cur_screen, GameScreen.MAKE_CLAN_CHOOSE_CATS)
                 game.switch_screens = True
 
                 self.begin_anew_button.kill()

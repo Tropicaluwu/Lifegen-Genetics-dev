@@ -14,7 +14,6 @@
         "fullscreen scaling" = false
         "no sprite antialiasing" = false
         "custom cursor" = false
-        keybinds = false
         shaders = false
         tints = false
         black_pupils = false
@@ -77,6 +76,7 @@
         showxp = false
         fading = true
         save_faded_copy = false
+        thought_tooltips = true
         backgrounds = true
         freshkill = true
         "all accessories" = false
@@ -93,6 +93,7 @@
         deputy = false
         rel_deputy = true
         12_moon_graduation = false
+        assign_mentors = true
         retirement = false
         leader_retirement = false
         healer_retirement = false
@@ -104,6 +105,7 @@
         "random med cat" = true
         patrol_lock_meds = false
         allow_mediator_patrols = false
+        allow_queen_patrols = true
     
     [clan.relation]
         affair = false
@@ -128,9 +130,10 @@
         youngest_first = false
         oldest_first = false
         hungriest_first = false
+        experience_first = false
+
         hunter_first = false
         sick_injured_first = false
-        experience_first = false
 
         ration_prey = false
         auto_feed = true
@@ -148,22 +151,34 @@
         hoarding = false
     
     [clan.other]
-        "show dead relation" = [
+        "show_dead_relation" = [
             false, true
         ]
-        "show empty relation" = [
+        "show_neutral_relation" = [
             false, true
         ]
-"show only you" = [
+        "show_outside_relation" = [
             false, true
         ]
-        "show outside relation" = [
+        "show_family_only" = [
             false, true
+        ]
+        "show_romance_only" = [
+            false, true
+        ]
+        "show_positive" = [
+            true, false
+        ]
+        "show_negative" = [
+            true, false
         ]
         "den labels" = [
             true, false
         ]
         "show fav" = [
+            false, true
+        ]
+        "show only you" = [
             false, true
         ]
         "search genotypes" = [

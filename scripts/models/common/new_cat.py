@@ -65,6 +65,7 @@ class NewCatTag(Enum):
     former_clancat = "former clancat"
     meeting = "meeting"
     exists = "exists"
+    not_exists = "-exists"
     unknown = "unknown"
     litter = "litter"
     dead = "dead"
@@ -96,7 +97,6 @@ class NewCat(RootModel):
             Annotated[str, StringConstraints(pattern=r"^sibling:([,0-9]+)$")],
             Annotated[str, StringConstraints(pattern=r"^adoptive:([_,0-9a-zA-Z]+)$")],
             Annotated[str, StringConstraints(pattern=r"^mate:([_,0-9a-zA-Z]+)$")],
-
             # LG
             Annotated[str, StringConstraints(pattern=r"^residence:(.+)$")],
         ]

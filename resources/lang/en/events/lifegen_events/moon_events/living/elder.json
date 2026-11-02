@@ -433,7 +433,7 @@
         "types": [
             "rare"
         ],
-        "event": "You wake up to the medicine cat and a handful of friends gathered around you in a hush, discovering that you had scared r_c:0 by not waking up when shaken. You shake it off, but your mind keeps wandering back to what would have happened if you didn't awaken."
+        "event": "You wake up to the healer and a handful of friends gathered around you in a hush, discovering that you had scared r_c:0 by not waking up when shaken. You shake it off, but your mind keeps wandering back to what would have happened if you didn't awaken."
     },
     "rare29": {
         "cats": {
@@ -508,7 +508,7 @@
         "types": [
             "shunned"
         ],
-        "event": "The leader, deputy, and medicine cat confer frequently, the seriousness of your actions troubling them deeply."
+        "event": "The leader, deputy, and healer confer frequently, the seriousness of your actions troubling them deeply."
     },
     "shunned36": {
         "cats": {
@@ -538,7 +538,7 @@
         "types": [
             "shunned"
         ],
-        "event": "The medicine cat appears more often in your den, ostensibly for health checks, but the tension is palpable."
+        "event": "The healer appears more often in your den, ostensibly for health checks, but the tension is palpable."
     },
     "shunned39": {
         "cats": {

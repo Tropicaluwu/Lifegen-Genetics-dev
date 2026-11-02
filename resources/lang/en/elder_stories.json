@@ -61,7 +61,7 @@
             "story": [
                 "m_c's tail flicks as {PRONOUN/m_c/subject} {VERB/m_c/begin/begins} to tell a story about one of StarClan's many omens.",
                 "It was many moons ago--long before anycat alive today was born, when a large black dog found its way into Clan territory. The dog spent nearly a moon there, chasing away prey and destroying invaluable patches of herbs that the Clancats needed. Eventually, the dog made its way into one of the Clan's camps...",
-                "Thankfully, the Clancats were safe! Though only just. The previous night, one of the Clan's medicine cats had received a cautionary omen from StarClan that told them to evacuate the camp. As dawn broke, the medicine cat managed to convince the Clan to leave their camp, ultimately saving them from the dog's wrath. Without StarClan's omen, who knows what would have happened..."
+                "Thankfully, the Clancats were safe! Though only just. The previous night, one of the Clan's healers had received a cautionary omen from StarClan that told them to evacuate the camp. As dawn broke, the healer managed to convince the Clan to leave their camp, ultimately saving them from the dog's wrath. Without StarClan's omen, who knows what would have happened..."
             ]
         },
         {
@@ -176,12 +176,12 @@
             "title": "The Forbidden Cure",
             "story": [
                 "m_c settles down to tell a story about the Dark Forest.",
-                "Once, long ago, redcough swept through the Clan. The medicine cat tried desperately to ease their Clanmates' suffering, but they quickly ran out of the necessary herbs. The remaining healthy cats scoured their territory for the plants, but to no avail.",
-                "However, a thick patch of herbs grew just across the border on o_c_n territory. The medicine cat asked o_c_n for permission to harvest some, but their other clan's leader coldly refused their request. Desperately, the medicine cat asked their own leader and deputy for permission to trespass on the other Clan's territory to acquire the life-saving herbs, but the two were stubbornly loyal to the Warrior Code. Even if it would mean the deaths of innocent cats, they refused to break it.",
-                "The medicine cat returned to the border and glared at the herbs, so close but still out of reach. As they sat, they grew angry. What kind of leader put arbitrary rules above their Clan's well-being? How dare they stop the medicine cat from doing their job?",
-                "The medicine cat got to their paws and, without a second thought, marched across the border. They gathered as many herbs as they could carry, their heart pounding. As they turned to flee, though, they ran right into a lone o_c_n warrior.",
-                "The medicine cat froze. They knew it was over: they were going to die here, or else they would be forced out of their Clan once their leader learned what they had done. The medicine cat started to stumble through an apology, and the warrior bared their teeth, but suddenly there was a flash of dark fur and the warrior fell to the ground. An unfamiliar, muck-pelted cat stood behind them: snarling and translucent, with blood dripping from their unsheathed claws. They dipped their head towards the medicine cat, and then faded.",
-                "And so the medicine cat returned home, and many cats were saved by the collected herbs. If anyone suspected what they had done, they never said anything. And while the Clan gave thanks to StarClan for their recovery, the medicine cat secretly sent their gratitude to the Dark Forest, for it was a Dark Forest warrior who rescued them and let them save their Clanmates."
+                "Once, long ago, redcough swept through the Clan. The healer tried desperately to ease their Clanmates' suffering, but they quickly ran out of the necessary herbs. The remaining healthy cats scoured their territory for the plants, but to no avail.",
+                "However, a thick patch of herbs grew just across the border on o_c_n territory. The healer asked o_c_n for permission to harvest some, but their other clan's leader coldly refused their request. Desperately, the healer asked their own leader and deputy for permission to trespass on the other Clan's territory to acquire the life-saving herbs, but the two were stubbornly loyal to the Warrior Code. Even if it would mean the deaths of innocent cats, they refused to break it.",
+                "The healer returned to the border and glared at the herbs, so close but still out of reach. As they sat, they grew angry. What kind of leader put arbitrary rules above their Clan's well-being? How dare they stop the healer from doing their job?",
+                "The healer got to their paws and, without a second thought, marched across the border. They gathered as many herbs as they could carry, their heart pounding. As they turned to flee, though, they ran right into a lone o_c_n warrior.",
+                "The healer froze. They knew it was over: they were going to die here, or else they would be forced out of their Clan once their leader learned what they had done. The healer started to stumble through an apology, and the warrior bared their teeth, but suddenly there was a flash of dark fur and the warrior fell to the ground. An unfamiliar, muck-pelted cat stood behind them: snarling and translucent, with blood dripping from their unsheathed claws. They dipped their head towards the healer, and then faded.",
+                "And so the healer returned home, and many cats were saved by the collected herbs. If anyone suspected what they had done, they never said anything. And while the Clan gave thanks to StarClan for their recovery, the healer secretly sent their gratitude to the Dark Forest, for it was a Dark Forest warrior who rescued them and let them save their Clanmates."
             ]
         }
     ],
@@ -215,9 +215,9 @@
             },
             "story": [
                 "m_c wants to tell a story about a lost Clancat.",
-                "It was leaf-bare, and o_c_n's medicine cat had gone out to look for catmint. A bad bout of whitecough had recently been plaguing the Clan, and the medicine cat was worried it would soon turn into greencough",
-                "Unfortunately, the medicine cat had been out so long that the sun began to set. As darkness crept up, the snowy trails confused the medicine cat and they were unable to find their way back to o_c_n's camp. Before long, they had wandered far away from Clan territory to somewhere completely new.",
-                "A few days later, the medicine cat died because of the harsh elements. Though many StarClan ghosts tried to find the medicine cat's spirit, they had wandered too far to be found. The medicine cat's spirit wandered the territories outside of the Clans, helping guide lost cats back to their Clans to prevent history from repeating itself."
+                "It was leaf-bare, and o_c_n's healer had gone out to look for catmint. A bad bout of whitecough had recently been plaguing the Clan, and the healer was worried it would soon turn into greencough",
+                "Unfortunately, the healer had been out so long that the sun began to set. As darkness crept up, the snowy trails confused the healer and they were unable to find their way back to o_c_n's camp. Before long, they had wandered far away from Clan territory to somewhere completely new.",
+                "A few days later, the healer died because of the harsh elements. Though many StarClan ghosts tried to find the healer's spirit, they had wandered too far to be found. The healer's spirit wandered the territories outside of the Clans, helping guide lost cats back to their Clans to prevent history from repeating itself."
             ]
         },
         {

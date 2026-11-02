@@ -1,34 +1,29 @@
-from math import ceil
-from random import choice
 
-import i18n
 import pygame.transform
 import pygame_gui.elements
 from operator import xor
 
 from scripts.cat.genotype import Genotype
+from scripts.cat.factories.new_cat_factory import NewCatFactory
 from scripts.cat.cats import Cat
-from ..cat.enums import CatAge, CatRank, CatGroup
-from scripts.game_structure import image_cache
+from ..cat.enums import CatRank
 from scripts.game_structure import game
 from ..game_structure.game.settings import game_setting_get
 from ..clan_package.settings import get_clan_setting
 from ..clan_package.get_clan_cats import search_cats
 from ..game_structure.game.switches import switch_get_value, Switch
-from scripts.game_structure import constants
-from pygame_gui.elements import UIDropDownMenu, UITextBox
+from scripts.config import get_config
+from pygame_gui.elements import UIDropDownMenu
 from pygame import Rect
 from ..ui.elements.sprite_button import UISpriteButton
-from ..ui.elements.image_button import UIImageButton
+from ..ui.elements.checkbox import UICheckbox
 from ..ui.elements.surface_image_button import UISurfaceImageButton
-from scripts.events_module.text_adjust import shorten_text_to_fit
 from scripts.ui.theme import get_text_box_theme
 from scripts.ui.scale import ui_scale, ui_scale_dimensions
 from .Screens import Screens
 from ..game_structure.screen_settings import MANAGER
 from ..ui.generate_box import get_box, BoxStyles
 from ..ui.generate_button import get_button_dict, ButtonStyles
-from ..ui.icon import Icon
 
 
 def create_dropdown(pos, size, options, selected_option, style=None):
@@ -114,27 +109,20 @@ class PredictOffspringScreen(Screens):
                 self.generate_offspring()
 
             if event.ui_element == self.search_toggle_checkbox:
-                if "@checked_checkbox" in event.ui_element.get_object_ids():
-                    event.ui_element.change_object_id("@unchecked_checkbox")
-                    event.ui_element.set_tooltip(
-                        "screens.list.search_genotypes_tooltip")
+                if event.ui_element.checked:
+                    event.ui_element.set_tooltip("screens.list.search_genotypes_tooltip")
                     self.search_genotype = False
                 else:
-                    event.ui_element.change_object_id("@checked_checkbox")
-                    event.ui_element.set_tooltip(
-                        "screens.list.search_names_tooltip")
+                    event.ui_element.set_tooltip("screens.list.search_names_tooltip")
                     self.search_genotype = True
+                event.ui_element.toggle()
                 self.search_bar.placeholder_text = "general.genotype_search" if self.search_genotype else "general.name_search"
                 self.search_bar.set_text("")
                 self.update_potential_mates_container()
 
             if event.ui_element == self.outsider_toggle_checkbox:
-                if "@checked_checkbox" in event.ui_element.get_object_ids():
-                    event.ui_element.change_object_id("@unchecked_checkbox")
-                    self.include_outsiders = False
-                else:
-                    event.ui_element.change_object_id("@checked_checkbox")
-                    self.include_outsiders = True
+                event.ui_element.toggle()
+                self.include_outsiders = event.ui_element.checked
                 self.update_potential_mates_container()
             
         elif event.type == pygame_gui.UI_DROP_DOWN_MENU_CHANGED:
@@ -260,39 +248,38 @@ class PredictOffspringScreen(Screens):
             manager=MANAGER,
         )
 
-        self.search_toggle_checkbox = UIImageButton(
-            ui_scale(pygame.Rect((310, 129), (38, 34))),
-            "",
-            object_id="@checked_checkbox"
-            if self.search_genotype
-            else "@unchecked_checkbox",
+        self.search_toggle_checkbox = UICheckbox(
+            (310, 129),
+            check=self.search_genotype,
             tool_tip_text="screens.list.search_names_tooltip"
             if self.search_genotype
             else "screens.list.search_genotypes_tooltip",
             starting_height=1,
             manager=MANAGER,
         )
+        if not get_config("genetics_config.show_genotype"):
+            self.search_toggle_checkbox.checked = False
+            self.search_toggle_checkbox.disable()
 
-        self.outsider_toggle_checkbox = UIImageButton(
-            ui_scale(pygame.Rect((310, 160), (38, 34))),
-            "",
-            object_id="@checked_checkbox"
-            if self.include_outsiders
-            else "@unchecked_checkbox",
+        self.outsider_toggle_checkbox = UICheckbox(
+            (310, 160),
+            check=self.include_outsiders,
             starting_height=1,
             manager=MANAGER,
         )
         
     def one_offspring(self):
-        par2geno = Genotype(constants.CONFIG['genetics_config'], game_setting_get("ban problem genes"))
+        gene_config = get_config("genetics_config")
+        gene_config.update(get_config("april_fools_genes"))
+        par2geno = Genotype(gene_config, game_setting_get("ban problem genes"))
         if 'Y' in self.selected_cat.phenotype.sexgene:
             par2geno.Generator('fem')
         else:
             par2geno.Generator('masc')
         if self.selected_mate:
-            new_cat = Cat(parent1 = self.selected_cat.ID, parent2 = self.selected_mate.ID, status_dict = {"rank": CatRank.WARRIOR}, moons = 40, example = True)
+            new_cat = NewCatFactory.create_cat(parent1=self.selected_cat.ID, parent2=self.selected_mate.ID, status_dict={"rank": CatRank.WARRIOR}, moons=40)
         else:
-            new_cat = Cat(parent1 = self.selected_cat.ID, extrapar=par2geno, status = {"rank": CatRank.WARRIOR}, moons = 40, example = True)
+            new_cat = NewCatFactory.create_cat(parent1 = self.selected_cat.ID, extrapar=par2geno, status = {"rank": CatRank.WARRIOR}, moons = 40)
         return new_cat
         
     def generate_offspring(self):
@@ -323,7 +310,7 @@ class PredictOffspringScreen(Screens):
             if offspring in Cat.all_cats_list:
                 Cat.all_cats_list.remove(offspring)
             if offspring.ID in Cat.all_cats:
-                del Cat.all_cats[offspring.ID]
+                game.clan.remove_cat(offspring.ID)
     
     def exit_screen(self):
         self.back_button.kill()
@@ -375,7 +362,7 @@ class PredictOffspringScreen(Screens):
                     and (i.status.group_ID == self.selected_cat.status.group_ID or self.include_outsiders)
                 )
             )
-            and "sterile" not in i.permanent_condition
+            and "sterile" not in i.permanent_conditions
             and (get_clan_setting("same sex birth") or xor('Y' in i.phenotype.sexgene, 'Y' in self.selected_cat.phenotype.sexgene))
         ]
 

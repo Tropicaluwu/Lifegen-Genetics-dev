@@ -5,6 +5,7 @@ from scripts.clan_package.settings import get_clan_setting
 from scripts.special_dates import SpecialDate, is_today
 from operator import xor
 import math
+from scripts.game_structure.localization import load_lang_resource
 
 
 class Genotype:
@@ -22,7 +23,7 @@ class Genotype:
         self.eumelanin = ["", ""]
         self.sexgene = ["", ""]
         self.specialred = None
-        self.tortiepattern = None
+        self.tortiepattern = {}
         self.pseudomerle = False
         self.merlepattern = None
         self.brindledbi = False
@@ -79,15 +80,14 @@ class Genotype:
         self.poly = ["pd", "pd"]
         self.pax3 = ["NoDBE", "NoDBE"]
 
-        self.wideband = ""
+        self.fur_shade = choice(odds['fur_shade'])
+        self.colour_warmth = choice(odds['colour_warmth'])
+
+        self.wideband = -1
         self.wbtype = ""
-        self.wbsum = 0
 
-        self.saturation = choice(odds['saturation'])
-
-        self.rufousing = ""
+        self.rufousing = -1
         self.ruftype = ""
-        self.rufsum = 0
 
         self.unders_ruf = ""
         self.unders_ruftype = ""
@@ -154,9 +154,13 @@ class Genotype:
         self.furLength = jsonstring["furLength"]
         self.eumelanin = jsonstring["eumelanin"]
         self.sexgene = jsonstring["sexgene"]
-        self.tortiepattern = jsonstring.get("tortiepattern", None)
-        if self.tortiepattern and not isinstance(self.tortiepattern, list):
-            self.tortiepattern = [self.tortiepattern]
+        self.tortiepattern = jsonstring.get("tortiepattern", {})
+        if isinstance(self.tortiepattern, list):
+            self.tortiepattern = {"0": self.tortiepattern}
+        elif isinstance(self.tortiepattern, str):
+            self.tortiepattern = {"0": [self.tortiepattern]}
+        elif self.tortiepattern is None:
+            self.tortiepattern = {}
         self.brindledbi = jsonstring["brindledbi"]
 
         self.specialred = jsonstring['specialred']
@@ -218,9 +222,17 @@ class Genotype:
         self.poly = jsonstring["poly"]
         self.pax3 = jsonstring.get("pax3", ['NoDBE', 'NoDBE'])
 
-        self.wideband = jsonstring["wideband"]
-        self.saturation = jsonstring.get("saturation", 3)
-        self.rufousing = jsonstring["rufousing"]
+        self.fur_shade = jsonstring.get("fur_shade", jsonstring.get("saturation", 3))
+        self.colour_warmth = jsonstring.get("colour_warmth")
+        if self.colour_warmth is None:
+            if self.fur_shade < 2:
+                self.colour_warmth = 2
+            elif self.fur_shade > 4:
+                self.colour_warmth = 0
+            else:
+                self.colour_warmth = 1
+        self.wideband = jsonstring["wideband"] if isinstance(jsonstring["wideband"], int) else sum([int(x) for x in jsonstring["wideband"]])
+        self.rufousing = jsonstring["rufousing"] if isinstance(jsonstring["rufousing"], int) else sum([int(x) for x in jsonstring["rufousing"]])
         self.unders_ruf = jsonstring.get("unders_ruf", "")
         self.bengal = jsonstring["bengal"]
         self.sokoke = jsonstring["sokoke"]
@@ -317,8 +329,10 @@ class Genotype:
             "poly" : self.poly,
             "pax3" : self.pax3,
 
+            "fur_shade" : self.fur_shade,
+            "colour_warmth" : self.colour_warmth,
+
             "wideband" : self.wideband,
-            "saturation" : self.saturation,
             "rufousing" : self.rufousing,
             "unders_ruf": self.unders_ruf,
             "bengal" : self.bengal,
@@ -356,6 +370,7 @@ class Genotype:
                 "rainbow_eyes" : ["NoDRE", "NoDRE"],
                 "black_spotting" : ["bs", "bs"],
                 "peacock_blue" : ["pb", "pb"],
+                "mineral_red" : ["mr", "mr"],
             }
             for i in range(2):
                 if self.odds["green"] > 0 and random() < (1/self.odds["green"]):
@@ -368,7 +383,9 @@ class Genotype:
                     self.april_fools["black_spotting"][i] = "Bs"
                 if self.odds["peacock_blue"] > 0 and random() < (1/self.odds["peacock_blue"]):
                     self.april_fools["peacock_blue"][i] = "Pb"
-            for key in ["danish_green", "polycaudal", "black_spotting", "peacock_blue"]:
+                if self.odds["mineral_red"] > 0 and random() < (1/self.odds["mineral_red"]):
+                    self.april_fools["mineral_red"][i] = "Mr"
+            for key in ["danish_green", "polycaudal", "black_spotting", "peacock_blue", "mineral_red"]:
                 if self.april_fools[key][0].islower() and self.april_fools[key][1].islower():
                     del self.april_fools[key]
             if self.april_fools["rainbow_eyes"][0] == "NoDRE" and self.april_fools["rainbow_eyes"][1] == "NoDRE":
@@ -470,16 +487,16 @@ class Genotype:
         self.pangere = choice([None, None,
                               "pangere small 1", "pangere small 1", "pangere small 1",
                                "pangere small 2", "pangere small 2", "pangere small 2",
-                               "pangere medium 1", "pangere medium 2", "pangere medium 1 + tail"])
+                               "pangere medium 1", "pangere medium 2", "pangere medium 1 + tail",
+                               "BEARD", "BEARD_SMALL", "CHIN"])
 
         self.rednose = random() < 0.25
         self.blacknose = random() < 0.005
 
         self.unders_ruf = ''
         self.unders_rufsum = 0
-
         for i in range(0, 4):
-            self.unders_ruf += choice(self.odds["rufousing"])
+            self.unders_ruf += choice(self.odds["underside_rufousing"])
             self.unders_rufsum += int(self.unders_ruf[i])
 
     def Generator(self, special=None, kittypet=False):
@@ -653,20 +670,12 @@ class Genotype:
         elif self.odds["DBE"] > 0 and randint(1, self.odds["DBE"]) == 1 and not self.ban_genes:
             self.pax3[0] = choice(['DBEcel', 'DBEcel', 'DBEre', 'DBEalt', 'DBEalt'])
 
-        self.wideband = ''
-        self.rufousing = ''
+        self.wideband = choices([choice([0, 1, 2, 3]), choice([4, 5, 6, 7]), choice([8, 9, 10, 11]), choice([12, 13, 14]), choice([15, 16])], weights=self.odds["wideband"])[0]
+        self.rufousing = choice(self.odds["rufousing"])
         self.spotted = ''
         self.tickgenes = ''
         self.bengal = ''
         self.sokoke = ''
-        
-        for i in range(0, 8):
-            self.wideband += choice(self.odds["wideband"])
-            self.wbsum += int(self.wideband[i])
-
-        for i in range(0, 4):
-            self.rufousing += choice(self.odds["rufousing"])
-            self.rufsum += int(self.rufousing[i])
 
         for i in range(0, 4):
             self.spotted += choice(self.odds["spotted"])
@@ -864,20 +873,12 @@ class Genotype:
         elif self.odds["DBE"] > 1 and randint(1, math.ceil(self.odds["DBE"]/modifier)) == 1  and not self.ban_genes:
             self.pax3[0] = choice(['DBEcel', 'DBEcel', 'DBEre', 'DBEalt', 'DBEalt'])
 
-        self.wideband = ''
-        self.rufousing = ''
+        self.wideband = choices([choice([0, 1, 2, 3]), choice([4, 5, 6, 7]), choice([8, 9, 10, 11]), choice([12, 13, 14]), choice([15, 16])], weights=self.odds["wideband_kittypet"])[0]
+        self.rufousing = choice(self.odds["rufousing_kittypet"])
         self.spotted = ''
         self.tickgenes = ''
         self.bengal = ''
         self.sokoke = ''
-
-        for i in range(0, 8):
-            self.wideband += choice(self.odds["wideband_kittypet"])
-            self.wbsum += int(self.wideband[i])
-
-        for i in range(0, 4):
-            self.rufousing += choice(self.odds["rufousing_kittypet"])
-            self.rufsum += int(self.rufousing[i])
 
         for i in range(0, 4):
             self.spotted += choice(self.odds["spotted_kittypet"])
@@ -905,31 +906,12 @@ class Genotype:
         self.EyeColourFinder()
 
     def BreedGenerator(self, special=None):
-
-        common_breeds = [
-            "Abyssinian", "American Burmese/Bombay", "American Curl", "American Shorthair", "Asian/Burmese", 
-            "Bengal", "Birman", "British", "Chartreux", "Cornish Rex", "Devon Rex", "Egyptian Mau", 
-            "Havana", "Japanese Bobtail", "Korat", "LaPerm", "Lykoi", "Maine Coon", "Manx", "Norwegian Forest cat", 
-            "Ocicat", "Oriental/Siamese", "Persian/Exotic", "Ragdoll", "Russian", "Selkirk Rex", "Siberian", 
-            "Singapura", "Sphynx", "Tonkinese", "Turkish"
-        ]
-        medium_breeds = [
-            "American Bobtail", "Australian Mist", "Bambino", "Chausie", "Donskoy", "European Shorthair", "German Rex",
-            "Highlander", "Khao Manee", "Kurilian Bobtail", "Mandalay/Burmese", "Munchkin", "Peterbald", "Pixie-Bob",
-            "Ragamuffin", "Savannah", "Snowshoe", "Sokoke", "Thai", "Toybob", "Toyger"
-        ]
-        rare_breeds = [
-            "Aphrodite", "Arabian Mau", "Brazilian Shorthair", "Cheetoh", "Ceylon", "Foldex", "Gaelic Fold", 
-            "German Longhair", "Kanaani", "Karelian Bobtail", "Kinkalow", "Lambkin", "Lin-Qing Lion cat", "Mekong Bobtail", 
-            "Napoleon", "New Zealand", "Serengeti", "Skookum", "Tennessee Rex", "Ural Rex"
-        ]
-
-        selected_breed = choice(choice([rare_breeds, medium_breeds, medium_breeds, medium_breeds, medium_breeds, common_breeds, common_breeds, common_breeds, common_breeds, common_breeds, common_breeds, common_breeds, common_breeds]))
+        selected_breed = choice(choices([self.odds["rare_breeds"], self.odds["medium_breeds"], self.odds["common_breeds"]], weights=[1, 5, 14], k=1)[0])
 
         if self.ban_genes:
             while selected_breed in ["Lykoi", "Manx", "Sphynx", "Bambino", "Donskoy", "Munchkin", "Peterbald", "Foldex", "Gaelic Fold",
-            "Kinkalow", "Lambkin", "Napoleon", "Skookum"]:
-                selected_breed = choice(choice([rare_breeds, medium_breeds, medium_breeds, medium_breeds, medium_breeds, common_breeds, common_breeds, common_breeds, common_breeds, common_breeds, common_breeds, common_breeds, common_breeds]))
+            "Kinkalow", "Lambkin", "Minuet", "Skookum"]:
+                selected_breed = choice(choices([self.odds["rare_breeds"], self.odds["medium_breeds"], self.odds["common_breeds"]], weights=[1, 5, 14], k=1)[0])
         
         gen = breed_functions["generator"][selected_breed]
 
@@ -953,6 +935,8 @@ class Genotype:
                 par1 = par1.chimerapheno
         except:
             par1 = par1
+            if not hasattr(par1, "breeds"):
+                par1 = None
         try:
             if par2.passes == 1 or not par2.chimerapheno:
                 par2 = par2.phenotype
@@ -962,6 +946,8 @@ class Genotype:
                 par2 = par2.chimerapheno
         except:
             par2 = par2
+            if not hasattr(par2, "breeds"):
+                par2 = None
         if not par2:
             print("No second parent genotype given")
             par2 = Genotype(self.odds, self.ban_genes, 'no chimeras')
@@ -995,7 +981,8 @@ class Genotype:
                 else:
                     self.breeds[breed] = par2.breeds[breed] / 2 
         
-        self.KitEyes(par1, par2)
+        self.refraction = self.kit_gradient_traits(par1.refraction-1, par2.refraction-1, 11, True)+1
+        self.pigmentation = self.kit_gradient_traits(par1.pigmentation-1, par2.pigmentation-1, 11, True)+1
 
         if chimera:
             if isinstance(par3, Genotype) and random() < 0.33:
@@ -1020,7 +1007,7 @@ class Genotype:
         if self.odds['pseudo_merle'] > 0 and randint(1, self.odds['pseudo_merle'])==1:
             self.pseudomerle = True 
         
-        for gene in ["danish_green", "polycaudal", "rainbow_eyes", "black_spotting", "peacock_blue"]:
+        for gene in ["danish_green", "polycaudal", "rainbow_eyes", "black_spotting", "peacock_blue", "mineral_red"]:
             self.april_fools[gene] = ["", ""]
             if gene in par1.april_fools.keys():
                 self.april_fools[gene][0] = choice(par1.april_fools[gene])
@@ -1197,29 +1184,11 @@ class Genotype:
         self.poly = [choice(par1.poly), choice(par2.poly)]
         self.pax3 = [choice(par1.pax3), choice(par2.pax3)]
 
-        if random() < 0.25:
-            self.saturation = par1.saturation
-        elif random() < 0.25:
-            self.saturation = par2.saturation
-        
+        self.fur_shade = self.kit_gradient_traits(par1.fur_shade, par2.fur_shade, 7, True)
+        self.colour_warmth = self.kit_gradient_traits(par1.colour_warmth, par2.colour_warmth, 3)
 
-        self.wideband = ""
-        for i in range(8):
-            tempwb = 0
-            if par1.wideband[i] == "2" or (par1.wideband[i] == "1" and randint(1, 2) == 1):
-                tempwb = tempwb+1
-            if par2.wideband[i] == "2" or (par2.wideband[i] == "1" and randint(1, 2) == 1):
-                tempwb = tempwb+1
-            self.wideband += str(tempwb)
-        
-        self.rufousing = ""
-        for i in range(4):
-            tempruf = 0
-            if par1.rufousing[i] == "2" or (par1.rufousing[i] == "1" and randint(1, 2) == 1):
-                tempruf = tempruf+1
-            if par2.rufousing[i] == "2" or (par2.rufousing[i] == "1" and randint(1, 2) == 1):
-                tempruf = tempruf+1
-            self.rufousing += str(tempruf)
+        self.wideband = self.kit_gradient_traits(par1.wideband, par2.wideband, 17)
+        self.rufousing = self.kit_gradient_traits(par1.rufousing, par2.rufousing, 9)
         
         self.unders_ruf = ""
         for i in range(4):
@@ -1297,44 +1266,38 @@ class Genotype:
 
         return threepars
 
-    def KitEyes(self, par1, par2):
-        multipliers = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-        multipliers2 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    def kit_gradient_traits(self, value1, value2, size, boost_par=False):
+        multipliers = [0] * size
     
         def maths(par, m):
-            m[par-1] += 10
-            for i in range(0, par-1):
-                m[i] += 10 / 5 ** (par-i-1)
+            m[par] += 10
+            for i in range(0, par):
+                m[i] += 10 / 2 ** (par-i)
             
-            for i in range(par, 11):
-                m[i] += 10 / 5 ** (i-par+1)
+            for i in range(par+1, size):
+                m[i] += 10 / 2 ** (i-par)
             return m
-    
-        multipliers = maths(par1.refraction, multipliers)
-        multipliers = maths(par2.refraction, multipliers)
-        multipliers = maths(math.floor((int(par1.refraction) + int(par2.refraction))/2), multipliers)
-        multipliers2 = maths(par1.pigmentation, multipliers2)
-        multipliers2 = maths(par2.pigmentation, multipliers2)
-        multipliers2 = maths(math.floor((int(par1.pigmentation) + int(par2.pigmentation))/2), multipliers2)
+        
+        if boost_par:
+            multipliers = maths(value1, multipliers)
+            multipliers = maths(value2, multipliers)
+        multipliers = maths(math.floor((int(value1) + int(value2))/2), multipliers)
+        multipliers = maths(math.floor((int(value1) + int(value2))/2), multipliers)
 
         x = sum(multipliers)
-        x2 = sum(multipliers2)
 
         def getindexes(m):
-            inds = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+            inds = [0] * size;
             
-            for i in range(0, 11):
+            for i in range(0, size):
                 for j in range(0, i+1):
                     inds[i] += m[j]
             
             return inds
         indexes = getindexes(multipliers)
-        indexes2 = getindexes(multipliers2)
 
         num = random() * x
-        self.refraction = next((n for n in range(len(indexes)) if num < indexes[n])) + 1
-        num = random() * x2
-        self.pigmentation = next((n for n in range(len(indexes2)) if num < indexes2[n])) + 1
+        return next((n for n in range(len(indexes)) if num < indexes[n]))
 
     def GenerateBody(self):
         self.body_value = randint(1, sum(self.body_ranges))
@@ -1423,20 +1386,12 @@ class Genotype:
         wbtypes = ["low", "medium", "high", "shaded", "chinchilla"]
         ruftypes = ["low", "medium", "rufoused"]
 
-        self.wbsum = 0
-        self.rufsum = 0
         self.unders_rufsum = 0
         self.bengsum = 0
         self.soksum = 0
         self.spotsum = 0
         self.ticksum = 0
         
-        if len(self.wideband) < 8:
-            while len(self.wideband) < 8:
-                self.wideband += '1'
-        if len(self.rufousing) < 4:
-            while len(self.rufousing) < 4:
-                self.rufousing += '1'
         if len(self.unders_ruf) < 4:
             while len(self.unders_ruf) < 4:
                 self.unders_ruf += '1'
@@ -1453,10 +1408,6 @@ class Genotype:
             while len(self.tickgenes) < 4:
                 self.tickgenes += '1'
 
-        for i in self.wideband:
-            self.wbsum += int(i)
-        for i in self.rufousing:
-            self.rufsum += int(i)
         for i in self.unders_ruf:
             self.unders_rufsum += int(i)
         for i in self.bengal:
@@ -1468,20 +1419,20 @@ class Genotype:
         for i in self.tickgenes:
             self.ticksum += int(i)
         
-        if self.wbsum < 6:
+        if self.wideband < 4:
             self.wbtype = wbtypes[0]
-        elif self.wbsum < 10:
+        elif self.wideband < 8:
             self.wbtype = wbtypes[1]
-        elif self.wbsum < 12: 
+        elif self.wideband < 12: 
             self.wbtype = wbtypes[2]
-        elif self.wbsum < 14: 
+        elif self.wideband < 15: 
             self.wbtype = wbtypes[3]
         else: 
             self.wbtype = wbtypes[4]
 
-        if self.rufsum < 3: 
+        if self.rufousing < 3: 
             self.ruftype = ruftypes[0]
-        elif self.rufsum < 6: 
+        elif self.rufousing < 6: 
             self.ruftype = ruftypes[1]
         else:
             self.ruftype = ruftypes[2]
@@ -1533,10 +1484,10 @@ class Genotype:
         else:
             self.soktype = soktypes[2]
 
-        body_types = ['snub-nosed cobby', 'cobby', 'semi-cobby', 'intermediate', 'semi-oriental', 'oriental', 'wedge-faced oriental']
+        body_types = ['snub-nosed cobby', 'cobby', 'semi-cobby', 'intermediate', 'semi-lanky', 'lanky', 'wedge-faced lanky']
         height_types = ['teacup', 'tiny', 'small', 'below average', 'average', 'above average', 'large', 'massive', 'giant', 'goliath']
 
-        if self.body_label != '':
+        if self.body_label in body_types:
             self.VerifyBody(body_types)
         else:
             index = next((n for n in range(7) if self.body_value <= self.body_indexes[n]))
@@ -1711,19 +1662,6 @@ class Genotype:
         return rand
 
     def EyeColourFinder(self):
-        eyecolours = {
-        "R1" : ["Citrine", "Golden Beryl", "Yellow", "Pale Golden", "Golden", "Amber", "Light Orange", "Orange", "Cinnabar", "Auburn", "Copper", "Ice Blue", "Pink"],
-        "R2" : ["Pale Citrine", "Pale Yellow", "Lemon", "Deep Yellow", "Dull Golden", "Honey", "Pale Orange", "Burnt Orange", "Dark Orange", "Russet", "Dark Topaz", "Aquamarine", "Rose"],
-        "R3" : ["Lemonade Yellow", "Straw Yellow", "Dandelion Yellow", "Banana Yellow", "Sunglow Yellow", "Copal", "Dull Orange", "Rust Orange", "Topaz", "Chocolate", "Burgundy", "Sky Blue", "Magenta"],
-        "R4" : ["Light Celadon", "Pale Chartreuse", "Pear Green", "Brass Yellow", "Golden Green", "Butterscotch", "Dusty Orange", "Tawny", "Jasper", "Light Brown", "Earth", "Cyan", "Periwinkle"],
-        "R5" : ["Light Jade", "Pale Lime", "Spring Bud", "Chartreuse", "Pale Hazel", "Yellow Hazel", "Golden Fluorite", "Beaver Brown", "Sienna", "Chestnut", "Umber", "Baby Blue", "Violet"],
-        "R6" : ["Light Fluorite", "Mantis Green", "Spring Green", "Lime", "Green Tea", "Hazel", "Green Hazel", "Dark Copal", "Cinnamon", "Raw Umber", "Sepia", "Aqua", "Glass"],
-        "R7" : ["Pale Emerald", "Apple Green", "Shamrock", "Lemon-Lime", "Peridot", "Antique Brass", "Dark Hazel", "Brown-Green", "Hazel Brown", "Bronze", "Bistre Brown", "Cerulean", "Moonstone"],
-        "R8" : ["Malachite", "Olivine", "Pastel Green", "Bright Green", "Pistachio", "Dull Olive", "Murky Green", "Jungle Green", "Hemlock Green", "Thatch Green", "Muddy", "Ocean Blue", "Albino Ice Blue"],
-        "R9" : ["Pale Turquoise", "Mint", "Snake Green", "Dark Lime", "Fern Green", "Dull Green", "Dark Fern Green", "Olive", "Tumbleweed Green", "Bronze Olive", "Deep Bronze", "Teal", "Albino Aquamarine"],
-        "R10" : ["Turquoise", "Viridian", "Green Onion", "Leaf Green", "Green", "Sap Green", "Dark Leaf Green", "Forest Green", "Dark Peridot", "Seaweed Green", "Dark Olive", "Sapphire", "Albino Sky Blue"],
-        "R11" : ["Deep Turquoise", "Amazonite", "Pine Green", "Deep Leaf Green", "Jade", "Emerald", "Deep Green", "Deep Forest Green", "Dark Green", "Dark Moss Green", "Black Olive", "Azure", "Albino Azure"]
-        }
         sectoralindex = randint(0, self.odds["sectoral_heterochromia"]-1) if self.odds["sectoral_heterochromia"] > 1 else 0
         het2index = randint(0, self.odds["random_heterochromia"]-1) if self.odds["random_heterochromia"] > 1 else 0
         blueindex = 1
@@ -1748,11 +1686,6 @@ class Genotype:
         if piggrade == 0 or ((self.pointgene == ["cb", "cs"] or self.pointgene == ["cb", "cm"] or self.pointgene == ["cm", "cm"] or self.pointgene == ["cm", "c"]) and randint(1, 5) == 1):
             piggrade = 1
 
-        def RefTypeFind(x, piggrade):
-            y = eyecolours['R' + str(x)][piggrade-1]
-
-            return y
-        
         def SecondaryRefTypeFind(x, piggrade):
             y = ""
 
@@ -1764,9 +1697,6 @@ class Genotype:
                     
             y += "R" + str(x) + " ; " + str(piggrade) + ""
             return y
-        
-        
-
 
         if self.pointgene == ["cb","cs"]:
             blueindex = randint(0, 10)
@@ -1869,24 +1799,11 @@ class Genotype:
                 self.lefteyetype = SecondaryRefTypeFind(refgrade, 12)
             else:
                 self.righteyetype = SecondaryRefTypeFind(refgrade, 12)
-        
+    
         self.EyeColourName()
 
     def EyeColourName(self):
-    
-        eyecolours = {
-        "R1" : ["Citrine", "Golden Beryl", "Yellow", "Pale Golden", "Golden", "Amber", "Light Orange", "Orange", "Cinnabar", "Auburn", "Copper", "Ice Blue", "Pink"],
-        "R2" : ["Pale Citrine", "Pale Yellow", "Lemon", "Deep Yellow", "Dull Golden", "Honey", "Pale Orange", "Burnt Orange", "Dark Orange", "Russet", "Dark Topaz", "Aquamarine", "Rose"],
-        "R3" : ["Lemonade Yellow", "Straw Yellow", "Dandelion Yellow", "Banana Yellow", "Sunglow Yellow", "Copal", "Dull Orange", "Rust Orange", "Topaz", "Chocolate", "Burgundy", "Sky Blue", "Magenta"],
-        "R4" : ["Light Celadon", "Pale Chartreuse", "Pear Green", "Brass Yellow", "Golden Green", "Butterscotch", "Dusty Orange", "Tawny", "Jasper", "Light Brown", "Earth", "Cyan", "Periwinkle"],
-        "R5" : ["Light Jade", "Pale Lime", "Spring Bud", "Chartreuse", "Pale Hazel", "Yellow Hazel", "Golden Fluorite", "Beaver Brown", "Sienna", "Chestnut", "Umber", "Baby Blue", "Violet"],
-        "R6" : ["Light Fluorite", "Mantis Green", "Spring Green", "Lime", "Green Tea", "Hazel", "Green Hazel", "Dark Copal", "Cinnamon", "Raw Umber", "Sepia", "Aqua", "Glass"],
-        "R7" : ["Pale Emerald", "Apple Green", "Shamrock", "Lemon-Lime", "Peridot", "Antique Brass", "Dark Hazel", "Brown-Green", "Hazel Brown", "Bronze", "Bistre Brown", "Cerulean", "Moonstone"],
-        "R8" : ["Malachite", "Olivine", "Pastel Green", "Bright Green", "Pistachio", "Dull Olive", "Murky Green", "Jungle Green", "Hemlock Green", "Thatch Green", "Muddy", "Ocean Blue", "Albino Ice Blue"],
-        "R9" : ["Pale Turquoise", "Mint", "Snake Green", "Dark Lime", "Fern Green", "Dull Green", "Dark Fern Green", "Olive", "Tumbleweed Green", "Bronze Olive", "Deep Bronze", "Teal", "Albino Aquamarine"],
-        "R10" : ["Turquoise", "Viridian", "Green Onion", "Leaf Green", "Green", "Sap Green", "Dark Leaf Green", "Forest Green", "Dark Peridot", "Seaweed Green", "Dark Olive", "Sapphire", "Albino Sky Blue"],
-        "R11" : ["Deep Turquoise", "Amazonite", "Pine Green", "Deep Leaf Green", "Jade", "Emerald", "Deep Green", "Deep Forest Green", "Dark Green", "Dark Moss Green", "Black Olive", "Azure", "Albino Azure"]
-        }
+        eyecolours = load_lang_resource("cat/genemod_eyes.json")
 
         def setup(eyestring):
             eye = eyestring.split(' ; ')
@@ -1989,7 +1906,7 @@ class Genotype:
             self.Other_Colour = [self.pinkdilute, self.dilutemd, self.ext, self.corin, self.karp, self.bleach, self.ghosting, self.satin, self.glitter]
             self.Body_Genes = [self.curl, self.fold, self.fourear, self.manx, self.kab, self.toybob, self.jbob, self.kub, self.ring, self.munch, self.poly, self.pax3]
             april_fools_output = [self.april_fools.values()]
-        self.Polygenes = ["Wideband:", self.wideband, self.wbtype, "Rufousing:", self.rufousing, self.ruftype, "Underbelly rufousing:", self.unders_ruf, self.unders_ruftype, "Saturation:", self.saturation, "Bengal:", self.bengal, self.bengtype, "Sokoke:", self.sokoke, self.soktype, "Spotted:", self.spotted, self.spottype, "Ticked:", self.tickgenes, self.ticktype, "White Grade:", self.whitegrade, "Refraction:", self.refraction, "Pigmentation:", self.pigmentation]
+        self.Polygenes = ["Wideband:", self.wideband, self.wbtype, "Rufousing:", self.rufousing, self.ruftype, "Underbelly rufousing:", self.unders_ruf, self.unders_ruftype, "Fur Shade:", self.fur_shade, "Colour Warmth:", self.colour_warmth, "Bengal:", self.bengal, self.bengtype, "Sokoke:", self.sokoke, self.soktype, "Spotted:", self.spotted, self.spottype, "Ticked:", self.tickgenes, self.ticktype, "White Grade:", self.whitegrade, "Refraction:", self.refraction, "Pigmentation:", self.pigmentation]
 
         if is_today(SpecialDate.APRIL_FOOLS):
             return self.Cat_Genes, "Other Fur Genes: ", self.Fur_Genes, "Other Colour Genes: ", self.Other_Colour, "Body Mutations: ", self.Body_Genes, "Polygenes: ", self.Polygenes, "April Fools:", april_fools_output
@@ -2226,13 +2143,17 @@ class Genotype:
         print(name_map[which])
     
     def GenerateSomatic(self):
-        self.somatic["base"] = choice(['Somatic/leftface', 'Somatic/rightface', 'Somatic/tail', 
-                                    'underbelly1', "BEARD", "BELLY", "BIB",
+        self.somatic["base"] = choice(['Somatic/leftface', 'Somatic/rightface', "EYELINER_MAX_L", "EYELINER_MAX_R", "EYESPOT_L", "EYESPOT_R", 
+                                    "HELMET",
+                                    'underbelly1', "BEARD", "BEARD_FULL", "BEARD_HIGH", 
+                                    'Somatic/tail', 
+                                    "BELLY", "BELLY_HIGH", "BELLY_MID", "BELLY_SMALL", "BIB", "TEARDROP",
                                     'right front bicolour2', 'left front bicolour2', 
                                     'right back bicolour2', 'left back bicolour2', 
                                     'right front bicolour1', 'left front bicolour1', 
                                     'right back bicolour1', 'left back bicolour1', 
-                                    "LEFTEAR", "RIGHTEAR", "BACKSPOT", "TAILTIP"])
+                                    "LEFTEAR", "RIGHTEAR", "BACKSPOT", "SADDLE_SMALL", 
+                                    "TAILTIP", "TAIL_HIGH_RING", "TAIL_MID", "TAIL_REVERSE_HALF", "TAIL_REVERSE_MIN"])
 
         possible_mutes = {
         "furtype" : ["wirehair", "laperm", "cornish", "urals", "tenn", "fleece", "sedesp"],
@@ -2279,9 +2200,9 @@ class Genotype:
                 if self[gene][0] in ['W', 'ws', 'wt']:
                     filtered_mutes["main"].remove(gene)
                     continue
-            if self[gene][0] in ['I', 'b', 'bl', 'd', 'wg', 'wsal', 'cs', 'cb', 'cm', 'c', 'Apb', 'a']:
+            if self[gene][0] in ['I', 'b', 'bl', 'd', 'wg', 'wsal', 'cs', 'cb', 'cm', 'c', 'Apb', 'a', 'Ta', 'mc']:
                 filtered_mutes["main"].remove(gene)
-            elif len(self[gene]) > 1 and self[gene][1] in ['B', 'D', 'w', 'C', 'A']:
+            elif len(self[gene]) > 1 and self[gene][1] in ['B', 'D', 'w', 'C', 'A', 'Mc']:
                 filtered_mutes["main"].remove(gene)
             
         if "eumelanin" in filtered_mutes["main"] and self.sexgene[0] != "o":
@@ -2300,9 +2221,9 @@ class Genotype:
             self.somatic = {}
             return
 
-        
-        if self.white[1] in ['ws', 'wt'] and self.somatic["base"] not in ['Somatic/leftface', 'Somatic/rightface', 'Somatic/tail', "LEFTEAR", "RIGHTEAR", "BACKSPOT"]:
-            self.somatic["base"] = choice(['Somatic/leftface', 'Somatic/rightface', 'Somatic/tail', "LEFTEAR", "RIGHTEAR", "BACKSPOT"])
+        top_patches = ['Somatic/leftface', 'Somatic/rightface', 'Somatic/tail', "LEFTEAR", "RIGHTEAR", "BACKSPOT", "SADDLE_SMALL", "HELMET", "EYESPOT_L", "EYESPOT_R", "TAIL_MID", "TAIL_REVERSE_HALF", "TAIL_REVERSE_MIN"]
+        if self.white[1] in ['ws', 'wt'] and self.somatic["base"] not in top_patches:
+            self.somatic["base"] = choice(top_patches)
         
         if self.somatic["gene"] in possible_mutes["furtype"]:
             self.somatic["base"] = "Somatic/tail"
@@ -2341,8 +2262,12 @@ class Genotype:
         body = {
             "Somatic/leftface" : "face",
             "Somatic/rightface" : "face",
+            "EYELINER_MAX_L": "face",
+            "EYELINER_MAX_R": "face",
+            "EYESPOT_L": "face",
+            "EYESPOT_R": "face",
+            "HELMET": "head",
             "Somatic/tail" : 'tail',
-            "underbelly1" : 'underbelly',
             'right front bicolour2' : 'front leg', 
             'left front bicolour2' : 'front leg', 
             'right back bicolour2' : 'back leg', 
@@ -2354,10 +2279,22 @@ class Genotype:
             'LEFTEAR' : 'ear', 
             'RIGHTEAR' : 'ear', 
             "BACKSPOT": "back",
+            "SADDLE_SMALL": "back",
             "TAILTIP": "tail tip",
+            "TAIL_HIGH_RING": "tail",
+            "TAIL_MID": "tail",
+            "TAIL_REVERSE_HALF": "tail",
+            "TAIL_REVERSE_MIN": "tail base",
+            "underbelly1" : 'underbelly',
             "BEARD": "chin",
             "BELLY": "belly",
-            "BIB": "chest"
+            "BELLY_HIGH": "belly",
+            "BELLY_MID": "belly",
+            "BELLY_SMALL": "belly",
+            "BIB": "chest",
+            "TEARDROP": 'chest',
+            "BEARD_FULL": "chest",
+            "BEARD_HIGH": "chest"
         }
         if not self.somatic.get('gene', False):
             return ""
@@ -2397,12 +2334,12 @@ class Genotype:
             "agouti" : "Solid"
         }
         try:
-            return "Mutated " + alleles[self.somatic['gene']].get(self.somatic['allele']) + " on " + body[self.somatic['base']]
+            return "Mutated " + alleles[self.somatic['gene']].get(self.somatic['allele']) + " on " + body.get(self.somatic['base'], "body")
         except:
             try:
-                return "Mutated " + alleles[self.somatic['gene']] + " on " + body[self.somatic['base']]
+                return "Mutated " + alleles[self.somatic['gene']] + " on " + body.get(self.somatic['base'], "body")
             except:
-                return self.somatic['gene'] + " mutated on " + body[self.somatic['base']]
+                return self.somatic['gene'] + " mutated on " + body.get(self.somatic['base'], "body")
 
 
 

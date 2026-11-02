@@ -1,6 +1,6 @@
 import threading
 import time
-from random import randint, choice
+from random import randint
 from threading import Thread
 from typing import Optional, Tuple
 
@@ -9,22 +9,22 @@ import pygame
 import pygame_gui
 
 import scripts.game_structure.screen_settings
-from scripts.game_structure import image_cache, constants
+from scripts.config import get_config
+from scripts.game_structure import image_cache
+from pygame_gui.elements import UITextBox
+from scripts.game_structure import image_cache
 from scripts.game_structure.game.settings import game_setting_get
-from scripts.game_structure import game
+from scripts.game_structure import game, constants
 from scripts.game_structure.screen_settings import MANAGER
 from scripts.ui.elements.dropdown import UIDropDown
 from scripts.ui.elements.modified_image import UIModifiedImage
-from scripts.ui.elements.image_button import UIImageButton
 from scripts.ui.elements.surface_image_button import UISurfaceImageButton
-from scripts.housekeeping.version import get_version_info
+from scripts.housekeeping.game_version import get_version_info
 from scripts.ui.generate_box import get_box, BoxStyles
 from scripts.ui.generate_button import get_button_dict, ButtonStyles
 from scripts.ui.icon import Icon
-from scripts.ui.theme import get_text_box_theme
 from scripts.ui.scale import (
     ui_scale,
-    ui_scale_dimensions,
     ui_scale_offset,
     ui_scale_value,
     ui_scale_blit,
@@ -176,7 +176,6 @@ def rebuild_top_menu_buttons():
         parent_style=ButtonStyles.MENU_MIDDLE,
         visible=False,
         manager=MANAGER,
-        object_id="@buttonstyles_menu_middle",
         starting_height=6,
         anchors={"left": "left", "left_target": menu_buttons["cats"]},
         disable_selection=False,
@@ -185,14 +184,14 @@ def rebuild_top_menu_buttons():
     # menu_buttons["events"].change_layer(menu_buttons["dens"].get_starting_height() + 5)
 
     menu_buttons["patrols"] = UISurfaceImageButton(
-        ui_scale(pygame.Rect((-46, 60), (86, 30))),
+        ui_scale(pygame.Rect((0, 60), (86, 30))),
         "screens.core.patrol",
         get_button_dict(ButtonStyles.MENU_RIGHT, (86, 30)),
         visible=False,
         manager=MANAGER,
         object_id="#patrol_button",
         starting_height=6,
-        anchors={"left": "left", "left_target": menu_buttons["dens"]},
+        anchors={"left": "left", "left_target": menu_buttons["dens"].parent_button},
     )
     menu_buttons["main_menu"] = UISurfaceImageButton(
         ui_scale(pygame.Rect((25, 25), (153, 30))),
@@ -261,7 +260,7 @@ def rebuild_top_menu_buttons():
         )
         del heading_rect
     else:
-        clan_list = [c.displayname +"Clan" for c in [game.clan] + game.clan.all_other_clans]
+        clan_list = [c.name for c in [game.clan] + game.clan.all_other_clans]
         menu_buttons["heading"] = UIDropDown(
             pygame.Rect((0, 25), (220, 35)),
             "",
@@ -307,21 +306,41 @@ def rebuild_moon_n_season_indicator(change_moon: bool = False, visible: bool = F
         menu_buttons["season_indicator"].kill()
         menu_buttons["secret_season_indicator"].kill()
 
-    if "moon_indicator" not in menu_buttons:
+    if "moon_indicator_frame" not in menu_buttons:
         global chosen_moon_phase
+
         chosen_moon_phase = randint(0, 7)
 
-        menu_buttons["moon_indicator"] = pygame_gui.elements.UIImage(
+        moon_icon = getattr(Icon, f"MOON_PHASE{chosen_moon_phase}")
+
+        clancount = game.clan.clancount if hasattr(game.clan, "clancount") else "singleclan"
+        menu_buttons["moon_indicator"] = UITextBox(
+            moon_icon,
+            ui_scale(pygame.Rect((-23, -26), (30, 30))),
+            visible=visible,
+            manager=MANAGER,
+            starting_height=5,
+            anchors={
+                "right_target": menu_buttons["heading"].parent_button if clancount == "multiclan" else menu_buttons["heading"],
+                "right": "right",
+                "bottom_target": menu_buttons["events"],
+                "bottom": "bottom",
+            },
+            object_id="@clangen_16",
+        )
+        menu_buttons["moon_indicator_frame"] = pygame_gui.elements.UIImage(
             scale_rect,
             pygame.transform.scale(
-                moon_phases[chosen_moon_phase],
+                image_cache.load_image(
+                    "resources/images/moon_container.png"
+                ).convert_alpha(),
                 (22, 26),
             ),
             visible=visible,
             manager=MANAGER,
             starting_height=4,
             anchors={
-                "right_target": menu_buttons["heading"],
+                "right_target": menu_buttons["heading"].parent_button if clancount == "multiclan" else menu_buttons["heading"],
                 "right": "right",
                 "bottom_target": menu_buttons["events"],
                 "bottom": "bottom",
@@ -332,10 +351,11 @@ def rebuild_moon_n_season_indicator(change_moon: bool = False, visible: bool = F
     if change_moon:
         start_moon_animation()
 
-    menu_buttons["moon_indicator"].set_tooltip(
+    menu_buttons["moon_indicator_frame"].set_tooltip(
         i18n.t("general.moon_date", moon=clan_age)
     )
-    menu_buttons["moon_indicator"].tool_tip_delay = 0
+    menu_buttons["moon_indicator_frame"].tool_tip_delay = 0
+    menu_buttons["moon_indicator"].disable()
 
     menu_buttons["season_indicator"] = UIModifiedImage(
         ui_scale(pygame.Rect((404, 3), (144, 67))),
@@ -358,7 +378,7 @@ def rebuild_moon_n_season_indicator(change_moon: bool = False, visible: bool = F
         starting_height=5
     )
     menu_buttons["season_indicator"].disable()
-    menu_buttons["secret_season_indicator"].set_tooltip(i18n.t(f"general.{game.clan.current_season.lower() if game.clan else ''}"))
+    menu_buttons["secret_season_indicator"].set_tooltip(i18n.t(f"general.{game.clan.current_season[0].upper()+game.clan.current_season[1:] if game.clan else ''}"))
     menu_buttons["secret_season_indicator"].tool_tip_delay = 0
 
     menu_buttons["season_indicator"].change_layer(10)
@@ -372,9 +392,7 @@ def load_moon_phases():
     global moon_phases
 
     for i in range(0, 8):
-        moon_phases.append(
-            pygame.image.load(f"resources/images/moon_phase{i}.png").convert_alpha()
-        )
+        moon_phases.append(getattr(Icon, f"MOON_PHASE{i}"))
 
 
 def start_moon_animation():
@@ -409,11 +427,8 @@ def run_moon_animation():
         frames.append(i)
 
     for frame in frames:
-        menu_buttons["moon_indicator"].set_image(
-            pygame.transform.scale(
-                moon_phases[frame],
-                (22, 26),
-            )
+        menu_buttons["moon_indicator"].set_text(
+            moon_phases[frame],
         )
         time.sleep(0.125)
 
@@ -465,6 +480,7 @@ def rebuild_mute(location: str):
         anchors=anchors,
     )
 
+
 def get_red_bg(dark_mode=False):
     if dark_mode:
         b = 50
@@ -480,12 +496,15 @@ def get_red_bg(dark_mode=False):
                 if game.clan.your_cat.history.murder:
                     if "is_murderer" in game.clan.your_cat.history.murder:
                         if len(game.clan.your_cat.history.murder["is_murderer"]) > 0:
-                            for m in range(len(game.clan.your_cat.history.murder["is_murderer"])):
+                            for m in range(
+                                len(game.clan.your_cat.history.murder["is_murderer"])
+                            ):
                                 b -= b_alter
     if dark_mode:
-        return [57, max(36,b), 36]
+        return [57, max(36, b), 36]
     else:
         return [206, max(b, 167), 168]
+
 
 def rebuild_bgs():
     global default_fullscreen_bgs
@@ -632,7 +651,7 @@ def get_camp_bgs():
         camp_bg_base_dir, camp_nr = get_current_camp()
         biome = game.clan.biome.lower()
     except AttributeError:
-        camp_bg_base_dir = "resources/images/camp_bg/clancat/"
+        camp_bg_base_dir = "resources/images/camp_bg/"
         camp_nr = "camp1"
         biome = available_biome[0]
 
@@ -697,13 +716,11 @@ def process_blur_bg(
     if theme is None:
         theme = "dark" if game_setting_get("dark mode") else "light"
 
-    fade.fill(constants.CONFIG["theme"]["fullscreen_background"][theme]["fade_color"])
-    vignette.set_alpha(
-        constants.CONFIG["theme"]["fullscreen_background"][theme]["vignette_alpha"]
-    )
-    dropshadow.set_alpha(
-        constants.CONFIG["theme"]["fullscreen_background"][theme]["dropshadow_alpha"]
-    )
+    fullscreen_theme_info = get_config("theme.fullscreen_background")
+
+    fade.fill(fullscreen_theme_info[theme]["fade_color"])
+    vignette.set_alpha(fullscreen_theme_info[theme]["vignette_alpha"])
+    dropshadow.set_alpha(fullscreen_theme_info[theme]["dropshadow_alpha"])
 
     if vignette_strength is not None:
         vignette.set_alpha(vignette_strength)

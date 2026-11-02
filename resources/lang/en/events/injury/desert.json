@@ -160,7 +160,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "cracked pads"
+                    "cracked_pads"
                 ]
             }
         ]
@@ -436,7 +436,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "joint pain"
+                    "joint_pain"
                 ]
             }
         ]
@@ -463,7 +463,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "joint pain"
+                    "joint_pain"
                 ]
             }
         ]
@@ -477,7 +477,7 @@
             "any"
         ],
         "frequency": 4,
-        "event_text": "m_c must've landed wrong after a jump or something — {PRONOUN/m_c/poss} bones are reminding {PRONOUN/m_c/object} of {PRONOUN/m_c/poss} age. Painfully.",
+        "event_text": "m_c must've landed wrong after a jump or something. {PRONOUN/m_c/poss/CAP} bones are reminding {PRONOUN/m_c/object} of {PRONOUN/m_c/poss} age. Painfully.",
         "m_c": {
             "age": [
                 "senior adult",
@@ -493,7 +493,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "joint pain"
+                    "joint_pain"
                 ]
             }
         ]
@@ -523,7 +523,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "joint pain"
+                    "joint_pain"
                 ]
             }
         ]
@@ -559,7 +559,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "joint pain"
+                    "joint_pain"
                 ]
             }
         ]
@@ -593,7 +593,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "severe headache"
+                    "severe_headache"
                 ]
             },
             {
@@ -640,7 +640,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "damaged eyes"
+                    "damaged_eyes"
                 ]
             }
         ],
@@ -1009,7 +1009,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "small cut"
+                    "small_cut"
                 ],
                 "scars": [
                     "QUILLSIDE"
@@ -1020,7 +1020,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "poisoned"
+                    "venom_sickness"
                 ]
             }
         ],
@@ -1107,7 +1107,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "water in their lungs"
+                    "water_in_lungs"
                 ]
             },
             {
@@ -1115,7 +1115,7 @@
                     "r_c"
                 ],
                 "injuries": [
-                    "water in their lungs"
+                    "water_in_lungs"
                 ]
             }
         ],
@@ -1180,7 +1180,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "claw-wound"
+                    "claw_wound"
                 ],
                 "scars": [
                     "SIDE"
@@ -1233,7 +1233,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "cat bite"
+                    "cat_bite"
                 ],
                 "scars": [
                     "CATBITETWO"
@@ -1307,7 +1307,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "cat bite"
+                    "cat_bite"
                 ]
             },
             {
@@ -1315,7 +1315,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "torn ear"
+                    "torn_ear"
                 ]
             },
             {
@@ -1323,7 +1323,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "torn pelt"
+                    "torn_pelt"
                 ]
             }
         ],
@@ -1384,7 +1384,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "claw-wound"
+                    "claw_wound"
                 ]
             },
             {
@@ -1416,7 +1416,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "mangled tail"
+                    "mangled_tail"
                 ]
             }
         ],
@@ -1552,7 +1552,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "dislocated joint"
+                    "dislocated_joint"
                 ]
             },
             {
@@ -1633,7 +1633,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "beak bite"
+                    "beak_bite"
                 ]
             }
         ],
@@ -1731,7 +1731,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "torn pelt"
+                    "torn_pelt"
                 ]
             }
         ],
@@ -1766,9 +1766,9 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "small cut",
-                    "torn pelt",
-                    "torn ear"
+                    "small_cut",
+                    "torn_pelt",
+                    "torn_ear"
                 ]
             }
         ]
@@ -1842,7 +1842,7 @@
             "any"
         ],
         "frequency": 4,
-        "event_text": "Climbing the highest rock in the territory was not, in fact, a good idea. m_c doesn't know what's worse — that {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} now confined to the medicine den, or that everyone {PRONOUN/m_c/subject} {VERB/m_c/were/was} trying to show off to <i>saw</i> {PRONOUN/m_c/object} fall.",
+        "event_text": "Climbing the highest rock in the territory was not, in fact, a good idea. m_c doesn't know what's worse — being confined to the healer den, or publicly embarrassing {PRONOUN/m_c/self}.",
         "m_c": {
             "status": [
                 "apprentice"
@@ -1881,8 +1881,8 @@
                 "cats": [
                     "m_c"
                 ],
-                "scar": "m_c isn't proud of all of {PRONOUN/m_c/poss} scars — one, for example, is from falling off the highest rock in the territory while trying to show off as an apprentice.",
-                "death": "The consequences of showing off took m_c's life when {PRONOUN/m_c/subject} fell from the highest rock in the territory."
+                "scar": "m_c was scarred after falling off the highest rock in the territory while trying to show off as an apprentice.",
+                "death": "m_c died of {PRONOUN/m_c/poss} injuries after falling from the highest rock in the territory."
             }
         ]
     },
@@ -1914,7 +1914,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "broken bone"
+                    "broken_bone"
                 ]
             }
         ],
@@ -2132,7 +2132,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "joint pain"
+                    "joint_pain"
                 ]
             }
         ],
@@ -2187,8 +2187,8 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "small cut",
-                    "torn pelt"
+                    "small_cut",
+                    "torn_pelt"
                 ],
                 "scars": [
                     "QUILLSCRATCH", "QUILLSIDE", "SCRATCHSIDE", "TOE"
@@ -2280,7 +2280,7 @@
                     "r_c"
                 ],
                 "injuries": [
-                    "blood loss"
+                    "blood_loss"
                 ]
             }
         ],
@@ -2356,7 +2356,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "torn ear"
+                    "torn_ear"
                 ]
             },
             {
@@ -2364,7 +2364,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "torn pelt"
+                    "torn_pelt"
                 ],
                 "scars": [
                     "QUILLSCRATCH", "QUILLSIDE", "SCRATCHSIDE"
@@ -2375,7 +2375,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "small cut"
+                    "small_cut"
                 ],
                 "scars": [
                     "QUILLSCRATCH", "QUILLSIDE", "SCRATCHSIDE", "TOE"
@@ -2487,7 +2487,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "torn ear"
+                    "torn_ear"
                 ]
             },
             {
@@ -2511,7 +2511,7 @@
                     "r_c"
                 ],
                 "injuries": [
-                    "torn ear"
+                    "torn_ear"
                 ]
             }
         ],
@@ -2587,7 +2587,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "beak bite"
+                    "beak_bite"
                 ]
             }
         ],
@@ -2650,7 +2650,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "claw-wound"
+                    "claw_wound"
                 ],
                 "scars": [
                     "BACK", "HINDLEG", "TAILBASE"
@@ -2722,7 +2722,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "claw-wound",
+                    "claw_wound",
                     "big_bite_injury"
                 ]
             }
@@ -2857,7 +2857,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "mangled leg"
+                    "mangled_leg"
                 ]
             }
         ],
@@ -2915,7 +2915,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "small cut"
+                    "small_cut"
                 ],
                 "scars": [
                     "QUILLSCRATCH", "QUILLSIDE", "SCRATCHSIDE", "TOE"
@@ -2926,7 +2926,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "small cut"
+                    "small_cut"
                 ],
                 "scars": [
                     "QUILLSCRATCH", "QUILLSIDE", "SCRATCHSIDE", "TOE"
@@ -2953,7 +2953,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "torn pelt"
+                    "torn_pelt"
                 ],
                 "scars": [
                     "QUILLSCRATCH", "QUILLSIDE", "SCRATCHSIDE"
@@ -2964,7 +2964,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "torn ear"
+                    "torn_ear"
                 ]
             }
         ],
@@ -3009,7 +3009,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "cracked pads"
+                    "cracked_pads"
                 ]
             }
         ]
@@ -3063,7 +3063,7 @@
         "injury": [
             {
                 "cats": ["m_c"],
-                "injuries": ["scrapes", "small cut"]
+                "injuries": ["scrapes", "small_cut"]
             }
         ]
     },
@@ -3091,7 +3091,6 @@
                 "insecure",
                 "playful",
                 "rebellious",
-                "sneaky",
                 "troublesome"
             ]
         },
@@ -3101,7 +3100,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "damaged eyes"
+                    "damaged_eyes"
                 ]
             }
         ],
@@ -3190,7 +3189,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "snake bite"
+                    "snake_bite"
                 ]
             }
         ],
@@ -3216,7 +3215,7 @@
         "injury": [
             {
                 "cats": ["m_c"],
-                "injuries": ["snake bite"]
+                "injuries": ["snake_bite"]
             }
         ],
         "history": [
@@ -3255,7 +3254,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "snake bite"
+                    "snake_bite"
                 ]
             },
             {
@@ -3263,7 +3262,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "poisoned"
+                    "venom_sickness"
                 ]
             }
         ],
@@ -3305,7 +3304,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "small cut"
+                    "small_cut"
                 ],
                 "scars": [
                     "BRIDGE", "FACE", "SNOUT"
@@ -3316,7 +3315,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "torn pelt"
+                    "torn_pelt"
                 ],
                 "scars": [
                     "QUILLSCRATCH", "QUILLSIDE", "SCRATCHSIDE"
@@ -3404,7 +3403,7 @@
                 ],
                 "injuries": [
                     "burn",
-                    "severe burn"
+                    "severe_burn"
                 ]
             },
             {
@@ -3413,7 +3412,7 @@
                 ],
                 "injuries": [
                     "burn",
-                    "severe burn"
+                    "severe_burn"
                 ]
             }
         ],
@@ -3480,7 +3479,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "mangled tail"
+                    "mangled_tail"
                 ]
             }
         ],
@@ -3522,7 +3521,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "torn pelt"
+                    "torn_pelt"
                 ],
                 "scars": [
                     "QUILLSCRATCH", "QUILLSIDE", "SCRATCHSIDE", "TOE"
@@ -3574,7 +3573,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "joint pain"
+                    "joint_pain"
                 ]
             }
         ]
@@ -3607,7 +3606,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "dislocated joint"
+                    "dislocated_joint"
                 ]
             }
         ]
@@ -3643,7 +3642,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "cracked pads"
+                    "cracked_pads"
                 ]
             }
         ]
@@ -3720,7 +3719,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "torn pelt"
+                    "torn_pelt"
                 ],
                 "scars": [
                     "QUILLSCRATCH", "QUILLSIDE", "SCRATCHSIDE"
@@ -3858,7 +3857,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "broken back"
+                    "broken_back"
                 ]
             }
         ],
@@ -3933,7 +3932,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "mangled tail"
+                    "mangled_tail"
                 ],
                 "scars": [
                     "HALFTAIL", "MANTAIL", "NOTAIL", "TAILSCAR"
@@ -3975,7 +3974,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "small cut"
+                    "small_cut"
                 ]
             }
         ],
@@ -4028,7 +4027,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "tick bites"
+                    "tick_bites"
                 ]
             },
             {
@@ -4036,7 +4035,7 @@
                     "r_c"
                 ],
                 "injuries": [
-                    "tick bites"
+                    "tick_bites"
                 ]
             }
         ],
@@ -4081,7 +4080,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "cracked pads"
+                    "cracked_pads"
                 ]
             }
         ]
@@ -4110,7 +4109,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "bee sting"
+                    "bee_sting"
                 ]
             }
         ],
@@ -4202,7 +4201,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "torn ear"
+                    "torn_ear"
                 ]
             }
         ],
@@ -4257,7 +4256,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "torn ear"
+                    "torn_ear"
                 ]
             },
             {
@@ -4265,7 +4264,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "small cut"
+                    "small_cut"
                 ]
             }
         ],
@@ -4300,7 +4299,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "bee sting"
+                    "bee_sting"
                 ],
                 "scars": [
                     "QUILLCHUNK", "TOE"
@@ -4341,7 +4340,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "small cut"
+                    "small_cut"
                 ],
                 "scars": [
                     "QUILLCHUNK", "TOE"
@@ -4352,7 +4351,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "poisoned"
+                    "venom_sickness"
                 ]
             }
         ],
@@ -4375,7 +4374,7 @@
             "any"
         ],
         "frequency": 4,
-        "event_text": "A copperhead snake takes a chunk out of m_c, sending {PRONOUN/m_c/object} to the medicine den.",
+        "event_text": "A copperhead snake takes a chunk out of m_c, sending {PRONOUN/m_c/object} to the healer den.",
         "m_c": {
             "age": [
                 "any"
@@ -4390,7 +4389,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "snake bite"
+                    "snake_bite"
                 ]
             },
             {
@@ -4398,7 +4397,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "poisoned"
+                    "venom_sickness"
                 ]
             }
         ],
@@ -4446,7 +4445,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "snake bite"
+                    "snake_bite"
                 ]
             },
             {
@@ -4500,7 +4499,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "snake bite"
+                    "snake_bite"
                 ]
             }
         ],
@@ -4551,7 +4550,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "torn pelt"
+                    "torn_pelt"
                 ],
                 "scars": [
                     "QUILLSCRATCH", "QUILLSIDE", "SCRATCHSIDE"
@@ -4562,7 +4561,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "small cut"
+                    "small_cut"
                 ],
                 "scars": [
                     "QUILLSCRATCH", "QUILLSIDE", "SCRATCHSIDE", "TOE"
@@ -4573,7 +4572,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "small cut"
+                    "small_cut"
                 ],
                 "scars": [
                     "QUILLSCRATCH", "QUILLSIDE", "SCRATCHSIDE", "TOE"
@@ -4584,7 +4583,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "small cut"
+                    "small_cut"
                 ],
                 "scars": [
                     "QUILLSCRATCH", "QUILLSIDE", "SCRATCHSIDE", "TOE"
@@ -4595,7 +4594,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "small cut"
+                    "small_cut"
                 ],
                 "scars": [
                     "QUILLSCRATCH", "QUILLSIDE", "SCRATCHSIDE", "TOE"
@@ -4606,7 +4605,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "torn ear"
+                    "torn_ear"
                 ]
             },
             {
@@ -4649,7 +4648,7 @@
             "war"
         ],
         "frequency": 4,
-        "event_text": "m_c and r_c make a raid into o_c_n territory — with such huge borders, no desert Clan can watch everything. But on unfamiliar ground and in the heat of the day, the two ambitious c_n warriors find only sunstroke.",
+        "event_text": "m_c and r_c raid o_c_n territory. With such huge borders, no desert Clan can watch everything. But on unfamiliar ground and in the heat of the day, the two ambitious c_n warriors find only sunstroke.",
         "m_c": {
             "status": [
                 "apprentice",
@@ -4772,7 +4771,7 @@
                     "r_c"
                 ],
                 "injuries": [
-                    "tick bites"
+                    "tick_bites"
                 ]
             },
             {

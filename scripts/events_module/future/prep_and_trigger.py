@@ -53,6 +53,7 @@ def _collect_involved_cats(cat_dict: dict, future_info: dict, clan=None) -> Opti
     string and value should be cat object.
     :param future_info: the future_info dict from the parent event
     """
+    # LG: the default used to be game.clan, which is only read once at import (when it's None)
     if clan is None:
         clan = game.clan
     gathered_cat_dict = {}
@@ -71,7 +72,7 @@ def _collect_involved_cats(cat_dict: dict, future_info: dict, clan=None) -> Opti
     for new_role, cat_involved in future_info["involved_cats"].items():
         # grab any cats that need to be newly gathered
         if isinstance(cat_involved, dict):
-            new_cat = cat_for_event(cat_involved, possible_cats, tags=[])
+            new_cat = cat_for_event(cat_involved, possible_cats, tags=[], clan=clan)
             if not new_cat:
                 return None
             gathered_cat_dict[new_role] = new_cat

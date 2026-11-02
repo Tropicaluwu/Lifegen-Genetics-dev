@@ -1,7 +1,7 @@
 [
     {
-        "id": "becoming_queen_apprentice",
-        "thoughts": [
+        "event_id": "becoming_queen_apprentice",
+        "strings": [
             "Is looking forward to becoming a queen"
         ]
     }

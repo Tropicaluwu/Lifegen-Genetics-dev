@@ -8,19 +8,22 @@
             "trans male": "1",
             "female": "2",
             "trans female": "2",
+            "agender": "3",
             "default": "0",
             "plural default": "0",
             "plural male": "0",
             "plural female": "0",
             "plural nonbinary": "0",
+            "plural agender": "0",
             "-&-default_comment-&-": "Default is the fallback/'what-happens-if-nothing-matches' pronoun set. Also the 'they them default' value."
         },
         "conju_count": 2,
-        "gender_count": 3,
+        "gender_count": 4,
         "plural_rules": {
             "order": {
                 "1": "plural male",
                 "2": "plural female",
+                "3": "plural agender",
                 "0": "plural nonbinary"
             }
         },
@@ -53,5 +56,8 @@
             }
         ]
     },
-    "oxford_comma": true
+    "oxford_comma": true,
+    "names": {
+        "clans_can_have_cat_prefixes": true
+    }
 }

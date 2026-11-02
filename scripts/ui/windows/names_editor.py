@@ -4,7 +4,7 @@ import pygame
 import pygame_gui
 
 from scripts.cat import custom_names
-from scripts.cat.names import Name, names
+from scripts.cat.names import Name
 from scripts.game_structure.screen_settings import MANAGER
 from scripts.housekeeping.datadir import get_save_dir
 from scripts.ui.elements.image_button import UIImageButton
@@ -200,7 +200,7 @@ class NamesEditorWindow(GameWindow):
         removed = {name.lower() for name in changes["removed"]}
         rows = [(name, "added") for name in changes["added"]]
         rows += [(name, "out" if (changes["only_mine"] or name.lower() in removed) else "in")
-                 for name in base if name not in changes["added"]]
+                 for name in dict.fromkeys(base) if name not in changes["added"]]
         if self.search:
             rows = [row for row in rows if self.search.lower() in row[0].lower()]
         return rows
@@ -281,7 +281,7 @@ class NamesEditorWindow(GameWindow):
         self.only_mine_box = UIImageButton(
             ui_scale(pygame.Rect((190, 524), (34, 34))),
             "",
-            object_id="@checked_checkbox" if changes["only_mine"] else "@unchecked_checkbox",
+            object_id="@checked_checkbox_smalltooltip" if changes["only_mine"] else "@unchecked_checkbox_smalltooltip",
             container=self,
             manager=MANAGER,
             tool_tip_text="Leave out all of the game's names in this list",
@@ -328,7 +328,7 @@ class NamesEditorWindow(GameWindow):
         custom_names.save(self.data, self.scope)
         # the game uses the new lists straight away
         if Name.current_clan:
-            names.load_clan_names(Name.current_clan)
+            Name.apply_custom_names()
         else:
             Name.names_dict = custom_names.combined(Name.default_names)
             Name.custom = custom_names.merged_info()

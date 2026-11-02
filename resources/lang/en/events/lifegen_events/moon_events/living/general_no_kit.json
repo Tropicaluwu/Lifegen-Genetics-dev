@@ -697,7 +697,7 @@
         "types": [
             "general"
         ],
-        "event": "r_c:0 is raring for a good spar. You offer to train with {PRONOUN/r_c:0/object} for a bit... But by the end r_c:0 is a bit bruised. {PRONOUN/r_c:1/subject/CAP} don't ask again. r_c:0's loss!"
+        "event": "r_c:0 is raring for a good spar. You offer to train with {PRONOUN/r_c:0/object} for a bit... But by the end r_c:0 is a bit bruised. {PRONOUN/r_c:1/subject/CAP} {VERB/r_c:1/don't/doesn't} ask again. r_c:0's loss!"
     },
     "assertive45": {
         "cats": {

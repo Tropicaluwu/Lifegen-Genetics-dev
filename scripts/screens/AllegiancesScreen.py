@@ -49,11 +49,11 @@ class AllegiancesScreen(Screens):
                 self.change_screen('profile_screen')
             elif event.ui_element == self.export_button:
                 ExportAllegiancesWindow(self.get_outside_allegiances() if self.current_clan == "cotc" else self.get_allegiances_text(), 
-                (f"{self.current_clan.displayname}Clan Allegiances" if self.current_clan != "cotc" else "Cats Outside the Clan")+f"_moon_{game.clan.age}")
+                (f"{self.current_clan.name} Allegiances" if self.current_clan != "cotc" else "Cats Outside the Clan")+f"_moon_{game.clan.age}")
             elif event.ui_element in self.choose_group_buttons.values():
                 self.choose_living_dropdown.close()
                 self.current_clan = event.ui_element.text if event.ui_element.text == "general.cotc" else event.ui_element.text.replace("Clan", "")
-                self.current_clan = [c for c in [game.clan] + game.clan.all_other_clans if c.displayname == self.current_clan]
+                self.current_clan = [c for c in [game.clan] + game.clan.all_other_clans if c.prefix == self.current_clan]
                 if self.current_clan:
                     self.current_clan = self.current_clan[0]
                 else:
@@ -113,9 +113,9 @@ class AllegiancesScreen(Screens):
             container=self.event_screen_container,
         )
         self.living_groups_container.change_layer(10)
-        self.choose_group_buttons[game.clan.displayname] = UISurfaceImageButton(
+        self.choose_group_buttons[game.clan.name] = UISurfaceImageButton(
             ui_scale(pygame.Rect((0, 0), (190, 34))),
-            game.clan.displayname + "Clan",
+            game.clan.name,
             get_button_dict(ButtonStyles.DROPDOWN, (190, 34)),
             container=self.living_groups_container,
             object_id=ObjectID(
@@ -126,9 +126,9 @@ class AllegiancesScreen(Screens):
         y_pos = 32
         if game.clan.clancount == 'multiclan':
             for clan in game.clan.all_other_clans:
-                self.choose_group_buttons[clan.displayname] = UISurfaceImageButton(
+                self.choose_group_buttons[clan.name] = UISurfaceImageButton(
                     ui_scale(pygame.Rect((0, y_pos), (190, 34))),
-                    clan.displayname + "Clan",
+                    clan.name,
                     get_button_dict(ButtonStyles.DROPDOWN, (190, 34)),
                     container=self.living_groups_container,
                     object_id=ObjectID(
@@ -211,7 +211,7 @@ class AllegiancesScreen(Screens):
             self.heading = pygame_gui.elements.UITextBox(
                 "screens.allegiances.heading",
                 ui_scale(pygame.Rect((0, 115), (400, 40))),
-                text_kwargs={"clan_name": self.current_clan.displayname},
+                text_kwargs={"clan_name": self.current_clan.name},
                 object_id=get_text_box_theme(
                     "#text_box_34_horizcenter_vertcenter"),
                 manager=MANAGER,
@@ -222,7 +222,7 @@ class AllegiancesScreen(Screens):
         if hasattr(self, "scroll_container") and self.scroll_container:
             self.scroll_container.kill()
         self.scroll_container = UIModifiedScrollingContainer(
-            ui_scale(pygame.Rect((50, 165), (715, 470))),
+            ui_scale(pygame.Rect((40, 165), (730, 470))),
             allow_scroll_x=False,
             allow_scroll_y=True,
             manager=MANAGER,
@@ -231,7 +231,6 @@ class AllegiancesScreen(Screens):
         self.ranks_boxes = []
         self.names_boxes = []
         self.names_buttons = []
-        y_pos = 0
         allegiances_height = 0
         for x in allegiance_list:
             self.ranks_boxes.append(
@@ -285,9 +284,10 @@ class AllegiancesScreen(Screens):
             )
             self.names_boxes[-1].disable()
             allegiances_height += 1
-        
-        self.scroll_container.set_scrollable_area_dimensions((715, 470 + allegiances_height*20))
 
+        self.scroll_container.set_scrollable_area_dimensions(
+            (715, 470 + allegiances_height * 20)
+        )
 
     @staticmethod
     def generate_one_entry(cat, extra_details=""):
@@ -497,7 +497,7 @@ class AllegiancesScreen(Screens):
             for k in living_queens:
                 if k.ID not in queen_dict.keys():
                     all_entries.append(self.generate_one_entry(k))
-            #Now kittens without carers
+            # Now kittens without carers
             for k in living_kits:
                 all_entries.append([str(k.name).upper(), k.ID, event_text_adjust(
                         Cat,

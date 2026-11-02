@@ -2,14 +2,14 @@ import ujson
 import re
 from random import choice
 from scripts.game_structure import game
-from scripts.cat.enums import (
-    CatAge,
-    CatRank,
-    CatGroup
+from scripts.cat.enums import CatAge, CatRank, CatGroup
+from scripts.clan_package.get_clan_cats import (
+    find_alive_cats_with_rank,
+    get_living_clan_cat_count,
 )
-from scripts.clan_package.get_clan_cats import find_alive_cats_with_rank, get_living_clan_cat_count
 from scripts.game_structure.game.switches import switch_get_value, Switch
 from scripts.screens.enums import GameScreen
+
 
 _CLUSTER_MAP = None
 
@@ -33,11 +33,16 @@ def get_cluster(trait):
 
     return cluster, second_cluster
 
+
 def check_achievements(Cat, eventspage=False):
     you = game.clan.your_cat
     achievements = set()
     murder_history = you.history.murder
-    num_victims = len(murder_history["is_murderer"]) if murder_history and "is_murderer" in murder_history else 0
+    num_victims = (
+        len(murder_history["is_murderer"])
+        if murder_history and "is_murderer" in murder_history
+        else 0
+    )
     if num_victims >= 1:
         achievements.add("1")
     if num_victims >= 5:
@@ -55,58 +60,84 @@ def check_achievements(Cat, eventspage=False):
             continue
 
         # genemod: a tom only shows tortie if he carries both O and o
-        if cat.gender in ('male', 'tom') and 'O' in cat.phenotype.sexgene and 'o' in cat.phenotype.sexgene:
+        if (
+            cat.gender in ("male", "tom")
+            and "O" in cat.phenotype.sexgene
+            and "o" in cat.phenotype.sexgene
+        ):
             achievements.add("5")
         if cat.insulted:
             achievements.add("29")
-        if (cat.name.prefix == "Coffee" and cat.name.suffix == "dot") or (cat.name.prefix == "Chibi" and cat.name.suffix == "Galaxies"):
+        if (cat.name.prefix == "Coffee" and cat.name.suffix == "dot") or (
+            cat.name.prefix == "Chibi" and cat.name.suffix == "Galaxies"
+        ):
             achievements.add("30")
-        if cat.status.rank == CatRank.APPRENTICE and cat.name.prefix == "Pea" and cat.phenotype.white[0] == "W":
+        if (
+            cat.status.rank == CatRank.APPRENTICE
+            and cat.name.prefix == "Pea"
+            # genemod: white cats carry dominant white
+            and "W" in cat.phenotype.white
+        ):
             achievements.add("33")
         if cat.status.rank == CatRank.KITTEN and cat.moons > 6:
             achievements.add("34")
-        if cat.backstory in ('dfkit', 'dfkit2'):
+        if cat.backstory in ("dfkit", "dfkit2"):
             achievements.add("35")
         # the old wildcard tortie check was based on lifegen pelt fields, with genetics
         # the closest thing is a chimera cat so that counts now
         if cat.chimerapheno is not None:
             achievements.add("6")
 
-        if len(cat.mate) >= 2 and cat.status.rank in frozenset({CatRank.WARRIOR, CatRank.MEDIATOR, CatRank.LEADER}):
+        if len(cat.mate) >= 2 and cat.status.rank in frozenset(
+            {CatRank.WARRIOR, CatRank.MEDIATOR, CatRank.LEADER}
+        ):
             group_ranks = {cat.status.rank}
             for mate in Cat.all_cats_list:
-                if mate.ID in cat.mate and mate.status.rank in frozenset({CatRank.WARRIOR, CatRank.MEDIATOR, CatRank.LEADER}):
+                if mate.ID in cat.mate and mate.status.rank in frozenset(
+                    {CatRank.WARRIOR, CatRank.MEDIATOR, CatRank.LEADER}
+                ):
                     group_ranks.add(mate.status.rank)
-            if group_ranks >= frozenset({CatRank.WARRIOR, CatRank.MEDIATOR, CatRank.LEADER}):
+            if group_ranks >= frozenset(
+                {CatRank.WARRIOR, CatRank.MEDIATOR, CatRank.LEADER}
+            ):
                 achievements.add("31")
 
-        is_dark_forest_cat = cat.status.group == CatGroup.DARK_FOREST or (not cat.dead and cat.joined_df)
-        if cat.ID in your_mate_ids and not you.dead and is_dark_forest_cat and cat.history \
-                and cat.history.beginning and cat.history.beginning.get("encountered") is True:
+        is_dark_forest_cat = cat.status.group == CatGroup.DARK_FOREST or (
+            not cat.dead and cat.joined_df
+        )
+        if (
+            cat.ID in your_mate_ids
+            and not you.dead
+            and is_dark_forest_cat
+            and cat.history
+            and cat.history.beginning
+            and cat.history.beginning.get("encountered") is True
+        ):
             achievements.add("36")
 
     if game.clan.age >= 1:
         living_count = get_living_clan_cat_count(Cat)
         if living_count == 0:
-            achievements.add('40')
+            achievements.add("40")
         elif living_count == 1 and you.status.alive_in_player_clan:
-            achievements.add('23')
+            achievements.add("23")
         else:
             if living_count >= 100:
-                achievements.add('24')
+                achievements.add("24")
             if living_count >= 400:
-                achievements.add('39')
+                achievements.add("39")
 
     if you.joined_df:
         achievements.add("7")
-    
+
     if len(you.former_apprentices) >= 1:
         achievements.add("8")
     if len(you.former_apprentices) >= 5:
         achievements.add("9")
-    
+
     if not you.inheritance:
         from scripts.cat_relations.inheritance import Inheritance
+
         you.inheritance = Inheritance(you)
     if you.inheritance.get_children():
         achievements.add("10")
@@ -114,38 +145,38 @@ def check_achievements(Cat, eventspage=False):
         if you.relationships.get(i).like <= -60:
             achievements.add("11")
         if you.relationships.get(i).romance >= 60:
-            achievements.add('12')
-        
+            achievements.add("12")
+
     if len(you.mate) >= 5:
-        achievements.add('13')
+        achievements.add("13")
     if you.status.rank == CatRank.WARRIOR:
-        achievements.add('14')
+        achievements.add("14")
     elif you.status.rank == CatRank.MEDICINE_CAT:
-        achievements.add('15')
+        achievements.add("15")
     elif you.status.rank == CatRank.MEDIATOR:
-        achievements.add('16')
+        achievements.add("16")
     elif you.status.rank == CatRank.DEPUTY:
-        achievements.add('17')
+        achievements.add("17")
     elif you.status.rank == CatRank.LEADER:
-        achievements.add('18')
+        achievements.add("18")
     elif you.status.rank == CatRank.ELDER:
-        achievements.add('19')
+        achievements.add("19")
     elif you.status.rank == CatRank.QUEEN:
-        achievements.add('32')
-    
+        achievements.add("32")
+
     if you.moons >= 200:
-        achievements.add('20')
+        achievements.add("20")
     if you.status.is_exiled(CatGroup.PLAYER_CLAN_ID):
-        achievements.add('21')
+        achievements.add("21")
     elif you.status.is_outsider:
-        achievements.add('22')
-        
+        achievements.add("22")
+
     if you.experience >= 100:
-        achievements.add('26')
+        achievements.add("26")
     if you.experience >= 200:
-        achievements.add('27')
+        achievements.add("27")
     if you.experience >= 300:
-        achievements.add('28')
+        achievements.add("28")
 
     new_achievements_list = []
     for item in achievements:
@@ -161,17 +192,18 @@ def check_achievements(Cat, eventspage=False):
                 new_achievements_list.append(item)
     if eventspage:
         return new_achievements_list
-    
+
+
 def get_current_camp():
-    """ LG """
+    """LG"""
     if game.clan.your_cat:
         if game.clan.your_cat.status.group == CatGroup.PLAYER_CLAN:
             camp_nr = game.clan.camp_bg
-            camp_bg_base_dir = "resources/images/camp_bg/clancat"
+            camp_bg_base_dir = "resources/images/camp_bg"
         elif game.clan.your_cat.status.group == CatGroup.OTHER_CLAN:
             # LG: your cat living in another Clan sees that Clan's camp, not your old Clan's
             camp_nr = (game.clan.your_cat.status.fetch_clan_object(game.clan) or game.clan).camp_bg
-            camp_bg_base_dir = "resources/images/camp_bg/clancat"
+            camp_bg_base_dir = "resources/images/camp_bg"
         elif game.clan.your_cat.status.group == CatGroup.ROGUE_GROUP:
             camp_nr = game.clan.rogue_group_bg
             camp_bg_base_dir = "resources/images/camp_bg/rogue"
@@ -186,14 +218,18 @@ def get_current_camp():
             camp_bg_base_dir = "resources/images/camp_bg/none"
     else:
         camp_nr = game.clan.camp_bg
-        camp_bg_base_dir = "resources/images/camp_bg/clancat"
+        camp_bg_base_dir = "resources/images/camp_bg"
 
     return camp_bg_base_dir, camp_nr
 
+
 def assign_new_bg(camp):
-    """ LG """
+    """LG"""
     if game.clan.your_cat:
-        if game.clan.your_cat.status.group in [CatGroup.PLAYER_CLAN, CatGroup.OTHER_CLAN]:
+        if game.clan.your_cat.status.group in [
+            CatGroup.PLAYER_CLAN,
+            CatGroup.OTHER_CLAN,
+        ]:
             game.clan.camp_bg = camp
         elif game.clan.your_cat.status.group == CatGroup.ROGUE_GROUP:
             game.clan.rogue_group_bg = camp
@@ -205,6 +241,7 @@ def assign_new_bg(camp):
             game.clan.no_group_bg = camp
     else:
         game.clan.camp_bg = camp
+
 
 # LG
 def get_your_cat_group_count(Cat):

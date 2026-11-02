@@ -2,13 +2,14 @@ import pygame
 import pygame_gui
 
 from scripts.game_structure import game
-from scripts.ui.elements.image_button import UIImageButton
+from scripts.ui.elements.checkbox import UICheckbox
 from scripts.ui.elements.surface_image_button import UISurfaceImageButton
-from scripts.screens.enums import GameScreen
 from scripts.ui.windows.window_base_class import GameWindow
 from scripts.ui.scale import ui_scale
+from scripts.cat.microservices.add_to_clan import add_to_clan
 
-from scripts.cat.cats import Cat, BACKSTORIES
+from scripts.cat.cats import Cat
+from scripts.cat.constants import BACKSTORIES
 from scripts.cat.enums import CatStanding, CatRank, CatAge
 from scripts.game_structure import game
 from scripts.ui.generate_button import ButtonStyles, get_button_dict
@@ -49,8 +50,8 @@ class ChangeCatClanWindow(GameWindow):
         for clan in [game.clan] + game.clan.all_other_clans:
             if self.the_cat.status.group_ID == clan.group_ID:
                 continue
-            self.texts[clan.displayname] = pygame_gui.elements.UITextBox(
-                clan.displayname + "Clan",
+            self.texts[clan.name] = pygame_gui.elements.UITextBox(
+                clan.name,
                 ui_scale(pygame.Rect(107, n * 30 + 35, -1, 30)),
                 object_id="#text_box_30_horizleft_pad_0_8",
                 container=self,
@@ -68,11 +69,10 @@ class ChangeCatClanWindow(GameWindow):
                 continue
             box_type = "@checked_checkbox" if self.selected == clan else "@unchecked_checkbox"
 
-            self.checkboxes[clan.displayname] = UIImageButton(
-                ui_scale(pygame.Rect((75, n * 30 + 35), (34, 34))),
-                "",
+            self.checkboxes[clan.name] = UICheckbox(
+                (75, n * 30 + 35),
+                check=self.selected == clan,
                 container=self,
-                object_id=box_type,
             )
             n += 1
 
@@ -100,7 +100,7 @@ class ChangeCatClanWindow(GameWindow):
                         if app_ob:
                             app_ob.update_mentor()
                 else:
-                    self.the_cat.add_to_clan(self.selected.group_ID)
+                    add_to_clan(self.the_cat, self.selected.group_ID)
                     if (
                         self.the_cat.backstory
                         in BACKSTORIES["backstory_categories"][
@@ -112,7 +112,7 @@ class ChangeCatClanWindow(GameWindow):
                         else:
                             self.the_cat.status._change_rank(CatRank.MEDICINE_CAT)
                 self.the_cat.update_mentor()
-                self.the_cat.get_new_thought()
+                self.the_cat.assign_thought()
                 if not self.the_cat.status.is_near():
                     self.the_cat.status.standing_history[-1]["near"] = True
                 game.all_screens["profile_screen"].exit_screen()
@@ -121,12 +121,12 @@ class ChangeCatClanWindow(GameWindow):
             if event.ui_element in self.checkboxes.values():
                 for clan_name, value in self.checkboxes.items():
                     if value == event.ui_element:
-                        if value.object_ids[1] == "@unchecked_checkbox":
-                            self.save_button.enable()
-                            self.selected = next(filter(lambda c: c.displayname == clan_name, game.clan.all_other_clans), game.clan)
-                        if value.object_ids[1] == "@checked_checkbox":
+                        if value.checked:
                             self.save_button.disable()
                             self.selected = None
+                        else:
+                            self.save_button.enable()
+                            self.selected = next(filter(lambda c: c.name == clan_name, game.clan.all_other_clans), game.clan)
                         self.refresh_checkboxes()
 
         return super().process_event(event)

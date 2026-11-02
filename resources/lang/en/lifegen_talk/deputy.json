@@ -1761,7 +1761,7 @@
         },
         "intro": [
             "Hey, y_c! I got into a bit of trouble again. No big deal, just a scratch!",
-            "[It is not, in fact, just a scratch. In fact, t_c is bleeding all over the medicine den. {PRONOUN/t_c/subject/CAP} {VERB/t_c/chat/chats} loudly as you hurry to help {PRONOUN/t_c/object}.]",
+            "[It is not, in fact, just a scratch. In fact, t_c is bleeding all over the healer den. {PRONOUN/t_c/subject/CAP} {VERB/t_c/chat/chats} loudly as you hurry to help {PRONOUN/t_c/object}.]",
             "Man, I must be using up, like, half your herb stores, huh? But where's the fun in being careful? Besides, I know you could use some company in here.",
             "Oh man, what type of herbs are those? They look cool. Are you talking to StarClan? Can you hear them right now?",
             "[You finish helping t_c with {PRONOUN/t_c/poss} injury.]",
@@ -1863,7 +1863,7 @@
             }
         },
         "intro": [
-            "How's it going, mini-medicine cat? Herbal life treating you well?",
+            "How's it going, mini-healer? Herbal life treating you well?",
             "Don't worry, I'm not going to run headfirst into trouble and injure myself today.",
             "As for tomorrow? Who knows!"
         ]
@@ -2563,7 +2563,7 @@
             "Yaknow, y_c, I never really found you all that convincing as a warrior.",
             "Real warriors are strong! We're fearless! We never back down from a fight!",
             "But in you, I sense ... uncertainty.",
-            "Maybe you should see the medicine cat about it."
+            "Maybe you should see the healer about it."
         ]
     },
     "introspective_dep": {
@@ -3003,7 +3003,7 @@
         ],
         "intro": [
             "Hey, y_c! I just got a new scar today! Wanna come take a look?",
-            "Yeah, I ran into a little dog out at the edge of a territory. Wasn't too hard to chase off, but it gave me a little nick. Medicine cat says it's probably never going away.",
+            "Yeah, I ran into a little dog out at the edge of a territory. Wasn't too hard to chase off, but it gave me a little nick. Healer says it's probably never going away.",
             "[You brush your tail over t_c's scar, and {PRONOUN/t_c/subject} {VERB/t_c/seem/seems} a little too thrilled by the gesture for it to just be friendly.]"
         ]
     },
@@ -4541,7 +4541,7 @@
         },
         "intro": [
             "Let me know if you ever need help reaching StarClan, I can ask r_c:0 and see if they've got any advice.",
-            "Leaders and medicine cats can both reach them, and sometimes what helps your mentor might not help you.",
+            "Leaders and healers can both reach them, and sometimes what helps your mentor might not help you.",
             "Everycat learns differently, after all!"
         ]
     },
@@ -4965,7 +4965,7 @@
             "r_c:0": {}
         },
         "intro": [
-            "[t_c escorts you to pick up a piece of freshkill from the pile. {PRONOUN/t_c/poss/CAP} gaze is full of silent hate. {PRONOUN/t_c/subject/CAP} {VERB/t_c/walk/walks} with you back to the medicine den, just as r_c:0 is leaving it.]",
+            "[t_c escorts you to pick up a piece of freshkill from the pile. {PRONOUN/t_c/poss/CAP} gaze is full of silent hate. {PRONOUN/t_c/subject/CAP} {VERB/t_c/walk/walks} with you back to the healer den, just as r_c:0 is leaving it.]",
             "[You sit down and look over the den, something smells... off. You notice an odd smell coming from your nest and cautiously peel back the moss.]",
             "[Under your bedding is a pile of deathberries, but they've been crushed, the juice seeping into your bed.]",
             "What is that?",
@@ -5187,7 +5187,7 @@
             }
         ],
         "intro": [
-            "[As you rest, half-asleep in the medicine cat den, you hear hesitant pawsteps approaching. After a moment, t_c's whisper breaks the silence.]",
+            "[As you rest, half-asleep in the healer den, you hear hesitant pawsteps approaching. After a moment, t_c's whisper breaks the silence.]",
             "Hey, y_c. I just wanted to let you know that I'm handling the Clan while you're recovering.",
             "I know you probably assumed that, but I... I guess I wanted to make sure you knew?",
             "I really hope you're better soon. You're much better at all of this than me.",
@@ -6883,7 +6883,7 @@
         "intro": [
             "Um... sorry, y_c? I don't mean to bother you, but r_c:0 has a bit of a sore throat. Could I have some honey from your stores to give them?",
             "O-of course, you could give it to them, too! I don't mean to overstep.",
-            "[There's not much that can go terribly wrong with honey. Since t_c seems to know {PRONOUN/t_c/poss} way around medicine despite not being a medicine cat, you give {PRONOUN/t_c/object} a dollop of honey on a stick and send {PRONOUN/t_c/object} on {PRONOUN/t_c/poss} way.]"
+            "[There's not much that can go terribly wrong with honey. Since t_c seems to know {PRONOUN/t_c/poss} way around medicine despite not being a healer, you give {PRONOUN/t_c/object} a dollop of honey on a stick and send {PRONOUN/t_c/object} on {PRONOUN/t_c/poss} way.]"
         ]
     },
     "neurotic_skillsleeper_SQ6": {
@@ -7289,7 +7289,7 @@
         "intro": [
             "[t_c bursts into camp, wind-blown and shaking.]",
             "y_c! Um... r_c:0 and I were hunting by the shore, and {PRONOUN/r_c:0/subject} fell in the water. {PRONOUN/r_c:0/subject/CAP} climbed back out, but {PRONOUN/r_c:0/subject}{VERB/r_c:0/'re/'s} really cold and {VERB/r_c:0/say/says} {PRONOUN/r_c:0/subject} can't feel {PRONOUN/r_c:0/poss} paws... Please, help!",
-            "[r_c:0 stumbles after t_c, violently shivering. You quickly call r_c:1 over, and {PRONOUN/r_c:1/subject} {VERB/r_c:1/get/gets} r_c:0 into the medicine den while t_c paces anxiously outside.]",
+            "[r_c:0 stumbles after t_c, violently shivering. You quickly call r_c:1 over, and {PRONOUN/r_c:1/subject} {VERB/r_c:1/get/gets} r_c:0 into the healer den while t_c paces anxiously outside.]",
             "I'm sorry. I should've gotten {PRONOUN/r_c:0/object} out of the water quicker... I should've been keeping a better eye on {PRONOUN/r_c:0/object}! I didn't realize the rocks were so slippery!",
             "[You tell t_c that {PRONOUN/t_c/subject} did everything {PRONOUN/t_c/subject} could, and that r_c:0 will be okay. t_c doesn't seem to hear you.]",
             "r_c:0's so important to me, y_c. What if... what if...",
@@ -7664,7 +7664,7 @@
             }
         ],
         "intro": [
-            "[t_c stumbles back into camp shivering, covered with snow, and supported by r_c:0. {PRONOUN/t_c/subject/CAP} {VERB/t_c/start/starts} towards the medicine den, but {VERB/t_c/pause/pauses} when {PRONOUN/t_c/subject} {VERB/t_c/see/sees} you about to leave on a hunting patrol.]",
+            "[t_c stumbles back into camp shivering, covered with snow, and supported by r_c:0. {PRONOUN/t_c/subject/CAP} {VERB/t_c/start/starts} towards the healer den, but {VERB/t_c/pause/pauses} when {PRONOUN/t_c/subject} {VERB/t_c/see/sees} you about to leave on a hunting patrol.]",
             "C-careful in the territory today. Some of the snowdrifts are really deep, and I fell right into one. I really, really thought that was it...",
             "[t_c stares into the distance for a moment before a particularly violent shiver snaps {PRONOUN/t_c/object} out of {PRONOUN/t_c/poss} thoughts.]",
             "I'm lucky r_c:0 was there to dig me out. Don't go anywhere alone out there!"
@@ -8958,7 +8958,7 @@
             "[You give t_c a questioning look.]",
             "I'm - hugh! - fine! This is of upmost importance.",
             "A little motion sickness doesn't hurt any cat!",
-            "[You'd call over a medicine cat, but something tells you {PRONOUN/t_c/subject} would be extra stubborn if you do.]"
+            "[You'd call over a healer, but something tells you {PRONOUN/t_c/subject} would be extra stubborn if you do.]"
         ]
     },
     "tunnel_H1": {
@@ -8979,7 +8979,7 @@
             }
         },
         "intro": [
-            "Hey, y_c! I need you to dig the medicine den's tunnel and make it a little bigger.",
+            "Hey, y_c! I need you to dig the healer den's tunnel and make it a little bigger.",
             "r_c:0 has been complaining about the 'lack of space' for {PRONOUN/r_c:0/poss} patients, as if {PRONOUN/r_c:0/subject} {VERB/r_c:0/don't/doesn't} have the largest tunnel in c_n. Greedy cat.",
             "... Just make sure it's done so I don't have to hear more of {PRONOUN/r_c:0/poss} whining."
         ]

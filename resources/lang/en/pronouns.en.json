@@ -32,6 +32,15 @@
             "sibling": "sister",
             "conju": 2,
             "gender": 2
+        },
+        "3": {
+            "subject": "it",
+            "object": "it",
+            "poss": "its",
+            "inposs": "its",
+            "self": "itself",
+            "conju": 2,
+            "gender": 0
         }
     }
 }

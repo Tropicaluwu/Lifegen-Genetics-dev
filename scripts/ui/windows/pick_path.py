@@ -4,20 +4,15 @@ from random import choice
 
 from scripts.game_structure import game
 from scripts.ui.elements.surface_image_button import UISurfaceImageButton
-from scripts.ui.elements.text_box_tweaked import UITextBoxTweaked
 from scripts.ui.elements.image_button import UIImageButton
 from scripts.ui.generate_button import get_button_dict, ButtonStyles
 from scripts.ui.windows.window_base_class import GameWindow
-from scripts.game_structure.game.switches import (
-    Switch,
-    switch_set_value
-)
+from scripts.game_structure.game.switches import Switch, switch_set_value
 from scripts.ui.scale import ui_scale
 from scripts.screens.enums import GameScreen
 from scripts.ui.icon import Icon
-from scripts.cat.enums import (
-    CatRank
-)
+from scripts.cat.enums import CatRank
+
 
 class PickPath(GameWindow):
     def __init__(self, last_screen):
@@ -27,14 +22,13 @@ class PickPath(GameWindow):
         self.set_blocking(True)
         switch_set_value(Switch.window_open, True)
 
-        self.clan_name = str(game.clan.name + 'Clan')
+        self.clan_name = str(game.clan.name)
         self.last_screen = last_screen
-        self.pick_path_message = UITextBoxTweaked(
+        self.pick_path_message = pygame_gui.elements.UITextBox(
             f"You have an important decision to make...",
             ui_scale(pygame.Rect((20, 20), (360, -1))),
-            line_spacing=1,
             object_id="#text_box_30_horizcenter",
-            container=self
+            container=self,
         )
 
         self.begin_anew_button = UIImageButton(
@@ -42,31 +36,28 @@ class PickPath(GameWindow):
             "",
             object_id="#med",
             container=self,
-            tool_tip_text='Choose to become a medicine cat apprentice'
+            tool_tip_text="Choose to become a healer apprentice",
         )
         self.not_yet_button = UIImageButton(
             ui_scale(pygame.Rect((110, 80), (75, 75))),
             "",
             object_id="#warrior",
             container=self,
-            tool_tip_text='Choose to become a warrior apprentice'
-
+            tool_tip_text="Choose to become a warrior apprentice",
         )
         self.mediator_button = UIImageButton(
             ui_scale(pygame.Rect((205, 80), (75, 75))),
             "",
             object_id="#mediator",
             container=self,
-            tool_tip_text='Choose to become a mediator apprentice'
-
+            tool_tip_text="Choose to become a mediator apprentice",
         )
         self.queen_button = UIImageButton(
             ui_scale(pygame.Rect((300, 80), (75, 75))),
             "",
             object_id="#queen",
             container=self,
-            tool_tip_text="Choose to become a queen's apprentice"
-
+            tool_tip_text="Choose to become a queen's apprentice",
         )
         self.random_button = UISurfaceImageButton(
             ui_scale(pygame.Rect((170, 175), (50, 50))),
@@ -74,7 +65,7 @@ class PickPath(GameWindow):
             get_button_dict(ButtonStyles.ICON, (50, 50)),
             object_id="@buttonstyles_icon",
             container=self,
-            tool_tip_text="Random"
+            tool_tip_text="Random",
         )
 
         self.not_yet_button.enable()
@@ -120,29 +111,34 @@ class PickPath(GameWindow):
                     switch_set_value(Switch.window_open, False)
 
                     if game.clan.your_cat.moons < 12:
-                        status = choice([
+                        status = choice(
+                            [
                                 CatRank.APPRENTICE,
                                 CatRank.MEDIATOR_APPRENTICE,
                                 CatRank.MEDICINE_APPRENTICE,
-                                CatRank.QUEENS_APPRENTICE
-                        ])
+                                CatRank.QUEENS_APPRENTICE,
+                            ]
+                        )
                     else:
-                        status = choice([
-                            CatRank.WARRIOR,
-                            CatRank.MEDICINE_CAT,
-                            CatRank.MEDIATOR,
-                            CatRank.QUEEN,
-                        ])
-                
+                        status = choice(
+                            [
+                                CatRank.WARRIOR,
+                                CatRank.MEDICINE_CAT,
+                                CatRank.MEDIATOR,
+                                CatRank.QUEEN,
+                            ]
+                        )
+
                 if status:
                     game.clan.your_cat.rank_change(status)
                     self.kill()
-                    # the path is picked at the end of 5 moons, so the moon goes on right away and your cat
+                    # LG: the path is picked at the end of 5 moons, so the moon goes on right away and your cat
                     # starts as an apprentice at 6 moons, not while still 5
-                    if self.last_screen == 'events screen':
+                    if self.last_screen == "events screen":
                         from scripts.screens.all_screens import get_screen
                         from scripts.screens.enums import GameScreen
+
                         get_screen(GameScreen.EVENTS).start_timeskip()
         except Exception as e:
-            print('Error with PickPath window!')
+            print("Error with PickPath window!")
             print(e)

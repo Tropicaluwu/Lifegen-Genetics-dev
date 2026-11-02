@@ -3,7 +3,7 @@ import platform
 import subprocess
 import logging
 
-from scripts.housekeeping.version import get_version_info
+from scripts.housekeeping.game_version import get_version_info
 
 logger = logging.getLogger(__name__)
 
@@ -15,7 +15,6 @@ def setup_data_dir():
         os.makedirs(get_temp_dir(), exist_ok=True)
     except FileExistsError:
         print("Macos ignored exist_ok=true for save or temp dict, continuing.")
-        pass
     os.makedirs(get_log_dir(), exist_ok=True)
     os.makedirs(get_cache_dir(), exist_ok=True)
     os.makedirs(get_saved_images_dir(), exist_ok=True)
@@ -36,8 +35,8 @@ def get_data_dir():
     from platformdirs import user_data_dir
 
     if get_version_info().is_dev():
-        return user_data_dir('LifeGenGenetics', 'LifeGenGenetics')
-    return user_data_dir('LifeGenGenetics', 'LifeGenGenetics')
+        return user_data_dir("LifeGenGenetics", "LifeGenGenetics")
+    return user_data_dir("LifeGenGenetics", "LifeGenGenetics")
 
 
 def get_log_dir():

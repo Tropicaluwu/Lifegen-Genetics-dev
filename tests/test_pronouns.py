@@ -15,9 +15,6 @@ import unittest
 import ujson
 
 
-os.environ["SDL_VIDEODRIVER"] = "dummy"
-os.environ["SDL_AUDIODRIVER"] = "dummy"
-
 from scripts.cat.pronouns import get_new_pronouns
 from scripts.events_module.text_adjust import process_text
 
@@ -37,15 +34,31 @@ def _test():
     replacement_dict = {
         "m_c": _r,
         "r_c": _r,
+        "r_c0": _r,
+        "r_c1": _r,
+        "r_c2": _r,
+        "r_c3": _r,
+        "r_c4": _r,
+        "r_c5": _r,
+        "r_c6": _r,
+        "r_c7": _r,
+        "r_c8": _r,
+        "r_c9": _r,
         "n_c": _r,
-        "app1": _r,
-        "app2": _r,
-        "app3": _r,
-        "app4": _r,
-        "app5": _r,
-        "app6": _r,
+        "n_c0": _r,
+        "n_c1": _r,
+        "n_c2": _r,
+        "n_c3": _r,
+        "n_c4": _r,
+        "n_c5": _r,
         "p_l": _r,
         "s_c": _r,
+        "s_c0": _r,
+        "s_c1": _r,
+        "s_c2": _r,
+        "s_c3": _r,
+        "s_c4": _r,
+        "s_c5": _r,
         "(mentor)": _r,
         "l_n": _r,
         "dead_par1": _r,
@@ -61,7 +74,6 @@ def _test():
         "parent1": _r,
         "parent2": _r,
         "sibling": _r,
-       
         "crush1": _r,
         "theircrush": _r,
         "yourcrush": _r,
@@ -76,6 +88,9 @@ def _test():
         "o_c1": _r,
         "cat_to": _r,
         "cat_from": _r,
+        "point_of_interest": "1",
+        "mc_mate": _r,
+        "rc_mate": _r,
     }
 
     for x in range(0, 11):
@@ -89,12 +104,7 @@ def _test():
 
     for root, _, files in os.walk("resources"):
         for file in files:
-            if (
-                (
-                    "lifegen_events" in root and
-                    "lifegen_events\\NEW" not in root
-                )
-                ):
+            if "lifegen_events" in root and "lifegen_events\\NEW" not in root:
                 # TEMP: ignore old event files
                 continue
             if file.endswith(".json") and file not in (
@@ -136,6 +146,8 @@ def _test_replacement_failure(path: str, repl_dict: dict) -> bool:
 
     for _str in get_all_strings(contents):
         try:
+            # maybe this is gross but it works
+            _str = _str.replace("multi_cat", "Name, Name, and Name")
             processed = process_text(
                 text=_str, cat_dict=repl_dict, raise_exception=True
             )
@@ -148,13 +160,22 @@ def _test_replacement_failure(path: str, repl_dict: dict) -> bool:
         else:
             # LG
             exceptions = [
-                "plike", "plove", "neutral", "rlike", "rlove", "neutral", "dislike", "hate",
-                "jealous", "trust", "comfort", "respect"
-                ]
-            match = (
-                re.search(r"(?<!\.\.)(?<!\.\s\.\s)\.\s+([a-z_]+)", processed)
-                or re.search(r"[?!]\s+([a-z]+)", processed)
-            )
+                "plike",
+                "plove",
+                "neutral",
+                "rlike",
+                "rlove",
+                "neutral",
+                "dislike",
+                "hate",
+                "jealous",
+                "trust",
+                "comfort",
+                "respect",
+            ]
+            match = re.search(
+                r"(?<!\.\.)(?<!\.\s\.\s)\.\s+([a-z_]+)", processed
+            ) or re.search(r"[?!]\s+([a-z]+)", processed)
             # ---
 
             # This tests for any pronoun or verb tag fragments that might have

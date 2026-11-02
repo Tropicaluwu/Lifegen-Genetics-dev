@@ -40,7 +40,7 @@
         "types": [
             "general"
         ],
-        "event": "You step into the medicine den, sighing at the disheveled piles of herbs scattered about. It looks like your duties have distracted you from properly sorting through your herb storages. Gritting your teeth at the task, you pull together all of the herbs, assess the quantities, pick out any of the decaying herbs, and group them in their designated placements. You give a satisfied nod as you finish, feeling your stress ease away."
+        "event": "You step into the healer den, sighing at the disheveled piles of herbs scattered about. It looks like your duties have distracted you from properly sorting through your herb storages. Gritting your teeth at the task, you pull together all of the herbs, assess the quantities, pick out any of the decaying herbs, and group them in their designated placements. You give a satisfied nod as you finish, feeling your stress ease away."
     },
     "general4": {
         "cats": {
@@ -241,7 +241,7 @@
         "types": [
             "general"
         ],
-        "event": "You peacefully reorganize herbs within the medicine den, finding the repetitive task strangely calming."
+        "event": "You peacefully reorganize herbs within the healer den, finding the repetitive task strangely calming."
     },
     "introspective17": {
         "cats": {
@@ -410,7 +410,7 @@
         "types": [
             "shunned"
         ],
-        "event": "Other medicine cats avoid you during gatherings. Your transgression has isolated you."
+        "event": "Other healers avoid you during gatherings. Your transgression has isolated you."
     },
     "shunned30": {
         "cats": {
@@ -450,7 +450,7 @@
         "types": [
             "shunned"
         ],
-        "event": "The gatherings feel different. Other Clans' medicine cats regard you warily, as if your actions have tainted the sacred bond you all share."
+        "event": "The gatherings feel different. Other Clans' healers regard you warily, as if your actions have tainted the sacred bond you all share."
     },
     "shunned34": {
         "cats": {
@@ -520,7 +520,7 @@
         "types": [
             "shunned"
         ],
-        "event": "You hear the elders talking about the old medicine cat, how they were so skilled and how cats these days aren't the same."
+        "event": "You hear the elders talking about the old healer, how they were so skilled and how cats these days aren't the same."
     },
     "shunned41": {
         "cats": {

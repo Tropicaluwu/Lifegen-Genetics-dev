@@ -247,7 +247,7 @@
             }
         ],
         "intro": [
-            "y_c! Get over here and do some exercises with me, won't ya? If the medicine cat wants me to stay cooped up in this den all day, they'll have to drag me back in themselves!",
+            "y_c! Get over here and do some exercises with me, won't ya? If the healer wants me to stay cooped up in this den all day, they'll have to drag me back in themselves!",
             "[You and t_c chat about your days as you walk laps around camp, side-by-side, pelts brushing in the morning sun.]"
         ]
     },
@@ -586,7 +586,7 @@
             }
         },
         "intro": [
-            "Hi, y_c. Want to try out this new training exercise the medicine cat just taught me?",
+            "Hi, y_c. Want to try out this new training exercise the healer just taught me?",
             "It's called 'practiced breathing.' You just have to close your eyes, relax, and breathe in, two, three, four ... and out, two, three, four.",
             "In, two, three, four ... and out, two, three, four.",
             "... It's supposed to keep my lungs healthy and exercised, but I think it can be useful for a lot of different things. Like, easing anxiety, for instance.",
@@ -1002,7 +1002,7 @@
         "intro": [
             "C'mon, just one more bite!",
             "*Sigh* It can be so difficult, getting them to eat sometimes ...",
-            "y_c, could you run to the medicine den and see if they have anything to help the elders with their appetites?",
+            "y_c, could you run to the healer den and see if they have anything to help the elders with their appetites?",
             "I'm really starting to get worried ..."
         ]
     },
@@ -1445,7 +1445,7 @@
             }
         },
         "intro": [
-            "How's it going, mini-medicine cat? Herbal life treating you well?",
+            "How's it going, mini-healer? Herbal life treating you well?",
             "Don't worry, I'm not going to run headfirst into trouble and injure myself today.",
             "As for tomorrow? Who knows!"
         ]
@@ -1689,7 +1689,7 @@
         },
         "intro": [
             "Hey, kit, come change my moss, will ya? I'm chafing something unreal.",
-            "After that, head to the medicine den and get some mouse bile. I'm lousy with ticks!"
+            "After that, head to the healer den and get some mouse bile. I'm lousy with ticks!"
         ]
     },
     "assertive_elder_11_2": {
@@ -2015,7 +2015,7 @@
             "Yaknow, y_c, I never really found you all that convincing as a warrior.",
             "Real warriors are strong! We're fearless! We never back down from a fight!",
             "But in you, I sense ... uncertainty.",
-            "Maybe you should see the medicine cat about it."
+            "Maybe you should see the healer about it."
         ]
     },
     "cool_1": {
@@ -4315,7 +4315,7 @@
                     "y_c"
                 ],
                 "relationship": [
-                    "min_dislike_30",
+                    "max_like_-30",
                     "max_trust_30",
                     "max_like_30"
                 ]
@@ -4414,7 +4414,7 @@
                     "y_c"
                 ],
                 "relationship": [
-                    "min_dislike_30",
+                    "max_like_-30",
                     "grandparent/grandchild",
                     "max_like_30"
                 ]
@@ -5116,7 +5116,7 @@
         },
         "intro": [
             "You don't need to fuss over me, y_c.",
-            "I've never needed the medicine cat's help for a bad dream. I've had plenty of nightmares in my lifetime - I can handle a few more.",
+            "I've never needed the healer's help for a bad dream. I've had plenty of nightmares in my lifetime - I can handle a few more.",
             "[You'd be more convinced if t_c didn't look nearly so exhausted.]"
         ]
     },
@@ -5133,16 +5133,18 @@
                 "age": ["senior"]
             }
         },
-        "relationship": [
-            {
-                "cats_from": ["t_c"],
-                "cats_to": ["r_c:0"],
-                "relationship": ["min_like_10"]
-            }
-        ],
         "intro": [
             "Be sure to watch your steps, y_c. Wouldn't want you to slip and fall off one of these edges.",
             "I've seen my fair share of ice-related injuries."
+        ],
+        "relationships": [
+            {
+                "cats_from": ["t_c"],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": ["min_like_10"]
+            }
         ]
     }
 }

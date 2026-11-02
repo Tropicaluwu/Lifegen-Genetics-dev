@@ -2,7 +2,8 @@ import pygame
 import pygame_gui
 from pygame_gui.elements import UIWindow
 
-from scripts.game_structure import constants
+from scripts.config import get_config
+from scripts.game_input import INPUT_ACTION_PRESSED
 from scripts.game_structure.game.settings import game_setting_get
 from scripts.game_structure.screen_settings import MANAGER
 from scripts.ui.elements.image_button import UIImageButton
@@ -40,16 +41,14 @@ class GameWindow(UIWindow):
         fade_surface = pygame.Surface(MANAGER.window_resolution)
 
         fade_surface.fill(
-            constants.CONFIG["theme"][
-                f"{'dark' if game_setting_get('dark mode') else 'light'}_mode_background"
-            ]
+            get_config(f"theme.{'dark' if game_setting_get('dark mode') else 'light'}_mode_background")
         )
 
         MANAGER.draw_ui(fade_surface)
 
         temp_surface = pygame.Surface(MANAGER.window_resolution, pygame.SRCALPHA)
 
-        temp_surface.fill(constants.CONFIG["theme"]["fade"])
+        temp_surface.fill(get_config("theme.fade"))
 
         self.fade = pygame_gui.elements.UIImage(
             pygame.Rect((0, 0), MANAGER.window_resolution),
@@ -71,6 +70,7 @@ class GameWindow(UIWindow):
                 scale_rect,
                 get_box(BoxStyles.ROUNDED_BOX, scale_rect.size),
                 starting_height=self.layer,
+                object_id="#window_image",
                 manager=MANAGER,
             )
 
@@ -99,6 +99,13 @@ class GameWindow(UIWindow):
             and not self.are_contents_hovered()
         ):
             self.kill()
+
+        if (
+            event.type == INPUT_ACTION_PRESSED
+            or INPUT_ACTION_PRESSED
+            and self.is_blocking
+        ):
+            return True  # consuming event
 
         return super().process_event(event)
 

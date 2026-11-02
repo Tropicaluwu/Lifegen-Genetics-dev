@@ -6,9 +6,17 @@ customizer on the make clan screen keeps its picks in a LegacyPelt and then
 turns them into genes with the same porting code that converts old saves.
 """
 
+import json
+
 from scripts.cat.pelts import Pelt
 from scripts.cat.sprites.load_sprites import sprites
 from scripts.game_structure.load_cat import accurate_porting
+
+
+def _all_tortie_patches():
+    """Every tortie patch in the game's sprite data, newest versions add more"""
+    with open("sprites/dicts/tortie_patches_sprite_data.json", "r", encoding="utf-8") as read_file:
+        return [name for row in json.load(read_file)["sprite_list"] for name in row]
 
 
 class LegacyPelt:
@@ -54,6 +62,7 @@ class LegacyPelt:
         "ROSETAIL", "SAFI", "DAPPLENIGHT", "BLANKET", "BELOVED", "BODY", "SHILOH", "FRECKLED",
         "HEARTBEAT"
     ]
+    tortie_patches = list(dict.fromkeys(tortie_patches + _all_tortie_patches()))
     little_white = [
         "LITTLE", "LIGHTTUXEDO", "BUZZARDFANG", "TIP", "PAWS", "BROKENBLAZE", "SCOURGE", "BLAZE",
         "BIB", "VEE", "HONEY", "BELLY", "TAILTIP", "TOES", "EXTRA", "TOESTAIL", "RAVENPAW",

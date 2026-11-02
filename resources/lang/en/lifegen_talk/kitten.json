@@ -505,7 +505,7 @@
         },
         "intro": [
             "y_c, help! I'm playing hide and seek with my den mates, and I need to hide, quick!",
-            "Yes, I know that there are some really good hiding spots over by the medicine den, but, erm, I'm kind of not allowed over there after the incident a few days ago.",
+            "Yes, I know that there are some really good hiding spots over by the healer den, but, erm, I'm kind of not allowed over there after the incident a few days ago.",
             "Hey, don't you get started on me as well! I didn't know that those brightly colored plants that I used for hunting practice were marigolds! And how was I supposed to know that the cobwebs were supposed to be stacked up like that?",
             "If you tell me, I actually did r_c:0 a favor! That den looked like it needed to be reorganized anyways, so I gave {PRONOUN/r_c:0/object} a reason to! {PRONOUN/r_c:0/subject/CAP} didn't seem to appreciate my work though..",
             "Uh oh. I think I'm running out of time to hide. I gotta go! I'll see you later y_c, maybe you can tell me another story later!"
@@ -942,7 +942,7 @@
         },
         "intro": [
             "Come play with me, y_c!!!",
-            "What? You have training with the medicine cat and mediator?",
+            "What? You have training with the healer and mediator?",
             "Hmph ... no fair! Come play with me as soon as you're back, okay?"
         ]
     },
@@ -3942,9 +3942,9 @@
             }
         },
         "intro": [
-            "[You butt your tiny little nose into the medicine den, where you see t_c sitting up, completely unbothered, on a broken nest formerly made from intricately woven sticks. It seems as though some of them have been pulled out and laid on the floor to play sticks with r_c:0.]",
+            "[You butt your tiny little nose into the healer den, where you see t_c sitting up, completely unbothered, on a broken nest formerly made from intricately woven sticks. It seems as though some of them have been pulled out and laid on the floor to play sticks with r_c:0.]",
             "Oh-my-gosh! Hi, y_c! I haven't seen you since, woah.. One, two, three, four hours ago? That's, oh my goodness... That's the first time I ever counted that high! Oh, I wanna go climb stuff with you so bad...",
-            "[The medicine cat gives t_c a tentative but affectionate look, as if to say 'Not again!' {PRONOUN/r_c:0/subject/CAP} {VERB/t_c/lean/leans} down and {VERB/t_c/whisper/whispers} something in t_c's ear.]",
+            "[The healer gives t_c a tentative but affectionate look, as if to say 'Not again!' {PRONOUN/r_c:0/subject/CAP} {VERB/t_c/lean/leans} down and {VERB/t_c/whisper/whispers} something in t_c's ear.]",
             "Oh, {PRONOUN/r_c:0/subject} said that's not a good idea. Awh, okay...",
             "Well, wanna play sticks with us instead?"
         ]
@@ -4386,7 +4386,7 @@
         ],
         "intro": [
             "Eughh ... What's that weird smell?",
-            "You're a medicine cat?",
+            "You're a healer?",
             "Way to say you're useless!"
         ]
     },
@@ -5859,7 +5859,7 @@
         "intro": [
             "Can I ask you a question, y_c?",
             "Why do we follow the Warrior Code? It just sounds strange because why do we let cats of the past tell us who we have to be? I get it but- I just hope StarClan has a plan for me, a great one!",
-            "Maybe I'll be a leader? Someone who you can rely on. Or a deputy, proud to serve the Clan! Maybe a warrior, strong like you. Or what about a medicine cat? Or a queen?",
+            "Maybe I'll be a leader? Someone who you can rely on. Or a deputy, proud to serve the Clan! Maybe a warrior, strong like you. Or what about a healer? Or a queen?",
             "I don't know yet, but when I do, I'll tell you! And, you'll be there to help me, right?"
         ]
     },
@@ -6404,7 +6404,7 @@
             "y_c, look! I'm helping r_c:0! Are you watching?",
             "I'm carrying TWO whole herbs all by myself, see? r_c:0 said that I'm the best helper {PRONOUN/r_c:0/subject} ever had, and that I'm going to be a great apprentice!",
             "Does this mean that I can be apprenticed early? Could you ask r_c:1?",
-            "[Before you have a chance to respond, t_c turns, noticing that r_c:0 was waiting by the entrance to the medicine den.]",
+            "[Before you have a chance to respond, t_c turns, noticing that r_c:0 was waiting by the entrance to the healer den.]",
             "I gotta go catch up! I'll tell you all about this later, okay? Bye!",
             "[t_c bounds after r_c:0, ducking under {PRONOUN/r_c:0/poss} legs and diving into the den.]"
         ]
@@ -8338,7 +8338,7 @@
         },
         "intro": [
             "*Cough* *Cough*",
-            "Oh ... y_c! Did you come to visit me on my special vacation in the medicine den?",
+            "Oh ... y_c! Did you come to visit me on my special vacation in the healer den?",
             "r_c:0 told me that, if I'm really good, {PRONOUN/r_c:0/subject}'ll go out and get me a really special gift from the territory ...",
             "I wonder what it'll be? Maybe a really cool feather? Ooh, or a Twoleg thing!",
             "I can't wait to see what it is."
@@ -8470,7 +8470,7 @@
             }
         ],
         "intro": [
-            "I'm tired of staying in the medicine den, y_c. I wanna go home.",
+            "I'm tired of staying in the healer den, y_c. I wanna go home.",
             "Why can't you take me home?"
         ]
     },
@@ -12305,7 +12305,7 @@
         "intro": [
             "I told r_c:0 about you, but {PRONOUN/r_c:0/subject} said I was lying.",
             "No one is allowed to see ghosts besides {PRONOUN/r_c:0/object}, I guess.",
-            "Does that mean I have to become a medicine cat?"
+            "Does that mean I have to become a healer?"
         ]
     },
     "bossy_kit": {
@@ -12327,7 +12327,7 @@
         },
         "intro": [
             "Hi, y_c! Wanna play pretend with me?",
-            "Okay! My character is Goldenstar, the leader of the Clan. You will be Stormshadow, the mysterious medicine cat with a tragic past.",
+            "Okay! My character is Goldenstar, the leader of the Clan. You will be Stormshadow, the mysterious healer with a tragic past.",
             "The Clan was founded hundreds of moons ago by a group of cats escaping from their sworn enemy, the Wolf Tribe. Now, they must repay a karmic debt to StarClan in order to --",
             "[You ask t_c when {PRONOUN/t_c/subject}{VERB/t_c/'re/'s} gonna be done explaining so you can finally start playing.]",
             "But - But the explaining is, like, the funnest part!"
@@ -12847,7 +12847,7 @@
             "t_c": {
                 "condition": [
                     "paralyzed:any:true",
-                    "constant join pain:any:true",
+                    "constant joint pain:any:true",
                     "raspy lungs:any:true"
                 ],
                 "rank": [
@@ -14703,50 +14703,6 @@
             "Can we play something? I don't wanna think about that anymore."
         ]
     },
-    "neurotic_fromparent_SQ1~1": {
-        "frequency": 2,
-        "cats": {
-            "y_c": {
-                "condition": [
-                    "blind:any:false"
-                ],
-                "age": [
-                    "kitten"
-                ]
-            },
-            "t_c": {
-                "cluster": [
-                    "neurotic"
-                ],
-                "age": [
-                    "adult"
-                ],
-                "condition": [
-                    "blind:any:false"
-                ]
-            }
-        },
-        "relationships": [
-            {
-                "cats_from": [
-                    "t_c"
-                ],
-                "cats_to": [
-                    "y_c"
-                ],
-                "relationship": [
-                    "parent/child",
-                    "adoptive parent/adoptive child",
-                    "min_like_50"
-                ]
-            }
-        ],
-        "intro": [
-            "y_c, my sweet kit... after you become an apprentice, and start spending all day with your mentor and the other apprentices...",
-            "Make sure to come tell me how everything's going. I want to hear about your training, and if anyone's being mean to you, and if you noticed something scary...",
-            "Oh! And the good things, too, of course!"
-        ]
-    },
     "neurotic_aboutshunned_SQ3": {
         "frequency": 2,
         "cats": {
@@ -15801,7 +15757,7 @@
             }
         ],
         "intro": [
-            "[As you go over herbs with r_c:0, you notice t_c watching you from just outside the medicine den.]",
+            "[As you go over herbs with r_c:0, you notice t_c watching you from just outside the healer den.]",
             "[You swear you see {PRONOUN/t_c/object} mouthing herb names as you quiz your apprentice on how to identify similar-looking leaves.]"
         ],
         "intro_choices": {
@@ -15828,7 +15784,7 @@
             "[The lesson continues for a while longer, until you hear r_c:1 scolding t_c and telling {PRONOUN/t_c/object} to go back to the nursery.]"
         ],
         "scare": [
-            "[Without taking your eyes off the herbs, you loudly announce your thoughts on how dangerous the medicine den is, and how kits really should stay where they belong.]",
+            "[Without taking your eyes off the herbs, you loudly announce your thoughts on how dangerous the healer den is, and how kits really should stay where they belong.]",
             "[You hear a tiny squeak and the patter of tiny paws scurrying away.]"
         ]
     },
@@ -16581,8 +16537,8 @@
         ],
         "intro": [
             "[One night, t_c curls up beside you and whispers about the starry-pelted cats {PRONOUN/t_c/object} sometimes {VERB/t_c/see/sees} around camp. You listen in wonder.]",
-            "r_c:0 said I'm 'star-touched', and that most living cats can't see StarClan. {PRONOUN/r_c:0/object/CAP} said that even medicine cats can't see them!",
-            "They're all nice to me, but I don't wanna be different. And does that mean I've gotta become a medicine cat?"
+            "r_c:0 said I'm 'star-touched', and that most living cats can't see StarClan. {PRONOUN/r_c:0/object/CAP} said that even healers can't see them!",
+            "They're all nice to me, but I don't wanna be different. And does that mean I've gotta become a healer?"
         ]
     },
     "neurotic_skillswimmer_SQ3": {
@@ -16983,7 +16939,7 @@
             }
         },
         "intro": [
-            "[r_c:0 gave t_c a dollop of honey for {PRONOUN/t_c/poss} sore throat. Now, the kit sits outside the medicine den with the gooey liquid on {PRONOUN/t_c/poss} paw, eying it dubiously.]",
+            "[r_c:0 gave t_c a dollop of honey for {PRONOUN/t_c/poss} sore throat. Now, the kit sits outside the healer den with the gooey liquid on {PRONOUN/t_c/poss} paw, eying it dubiously.]",
             "[You try to convince t_c to take just a lick, but t_c just shakes {PRONOUN/t_c/poss} head. After a few minutes of cajoling, you finally lean forward and lick the honey yourself.]",
             "[The delicious sweetness floods your mouth, and you hold yourself back from tasting more. t_c stares at you, but when you don't suddenly start holding your stomach, {PRONOUN/t_c/subject} {VERB/t_c/follow/follows} your lead.]",
             "...!",
@@ -17917,7 +17873,7 @@
         ],
         "intro": [
             "[t_c is sitting out of the nursery chores today, sick with a stomachache.]",
-            "[You go to visit {PRONOUN/t_c/object} with some herbs you collected from the medicine den.]",
+            "[You go to visit {PRONOUN/t_c/object} with some herbs you collected from the healer den.]",
             "Oughh - Ahh, the pain! The pain! It's -- Ack -- excruciating!",
             "[You drop the herbs at t_c's paws and gently lick {PRONOUN/t_c/poss} ear, asking if there's anything you can to to make {PRONOUN/t_c/object} better.]",
             "... Psst, y_c. I'm not really sick, dummy. I'm just faking to get out of cleaning my nest.",
@@ -18381,7 +18337,7 @@
         ],
         "intro": [
             "r_c:1 says I've gotta go to see r_c:0 'cause I tripped and now my paw kind of hurts.",
-            "C-could you come with, please? The medicine den's big and scary and I really, really don't want to go alone."
+            "C-could you come with, please? The healer den's big and scary and I really, really don't want to go alone."
         ]
     },
     "neurotic_kitten_SQ20": {
@@ -18492,7 +18448,7 @@
         ],
         "intro": [
             "[t_c is sitting out of the nursery chores today, sick with a stomachache.]",
-            "[You go to visit {PRONOUN/t_c/object} with some herbs you collected from the medicine den.]",
+            "[You go to visit {PRONOUN/t_c/object} with some herbs you collected from the healer den.]",
             "Oughh - Ahh, the pain! The pain! It's -- Ack -- excruciating!",
             "[You drop the herbs at t_c's paws and gently lick {PRONOUN/t_c/poss} ear, asking if there's anything you can to to make {PRONOUN/t_c/object} better.]",
             "... Psst, y_c. I'm not really sick, dummy. I'm just faking to get out of cleaning my nest.",
@@ -21243,7 +21199,7 @@
             "r_c:0 told me I can't play with {PRONOUN/t_c/object} anymore and hit me!",
             "See, see? I'm hurt!",
             "[t_c fakes limping around, even though {PRONOUN/t_c/poss} paw doesn't actually look injured.]",
-            "I wanna go to the medicine cat's den!"
+            "I wanna go to the healer's den!"
         ]
     },
     "attention-seeker_kittens_H1": {
@@ -21771,7 +21727,7 @@
             }
         },
         "intro": [
-            "y_c! Dare me to go steal some honey from the medicine den!",
+            "y_c! Dare me to go steal some honey from the healer den!",
             "[t_c races off to go do it before you can speak.]"
         ]
     },
@@ -21995,6 +21951,9 @@
             "r_c:0": {
                 "rank": [
                     "kitten"
+                ],
+                "cluster": [
+                    "attention-seeker"
                 ]
             }
         },
@@ -22024,8 +21983,8 @@
             }
         ],
         "intro": [
-            "[t_c and r_c:0_attention-seeker have been playing together a lot lately.]",
-            "[It's an odd match, but maybe r_c:0_attention-seeker just knows how to bring your kit out of {PRONOUN/t_c/poss} shell.]"
+            "[t_c and r_c:0 have been playing together a lot lately.]",
+            "[It's an odd match, but maybe r_c:0 just knows how to bring your kit out of {PRONOUN/t_c/poss} shell.]"
         ]
     },
     "self-conscious_kitten_rad1": {
@@ -22710,7 +22669,7 @@
             }
         },
         "intro": [
-            "[While sorting through herbs, you glance up to see t_c, observing you from the entrance to the medicine den.]",
+            "[While sorting through herbs, you glance up to see t_c, observing you from the entrance to the healer den.]",
             "... I have a thorn stuck behind my ear. Can you pull it out?",
             "[How long was t_c sitting there?]"
         ]
@@ -24658,7 +24617,7 @@
             }
         },
         "intro": [
-            "[You're dragging a large pile of moss across the camp, intent on delivering it to the medicine den. t_c spots you in the middle of your task and perks up, racing over.]",
+            "[You're dragging a large pile of moss across the camp, intent on delivering it to the healer den. t_c spots you in the middle of your task and perks up, racing over.]",
             "y_c! y_c! Need a helping paw? I'm super good at carrying moss, I swear!",
             "[t_c stares up at you with wide eyes, eagerly awaiting your response.]"
         ],
@@ -24676,7 +24635,7 @@
             "[You shrug t_c off and tell {PRONOUN/t_c/object} to go back to the nursery. t_c looks hurt but doesn't protest as {PRONOUN/t_c/subject} slowly {VERB/t_c/pad/pads} away with {PRONOUN/t_c/poss} head hung low.]"
         ],
         "accept": [
-            "[You graciously accept t_c's offer and slide {PRONOUN/t_c/object} a portion of your moss. With {PRONOUN/t_c/poss} head held high and an extra spring in {PRONOUN/t_c/poss} step, the two of you successfully deliver the moss to the medicine den.]"
+            "[You graciously accept t_c's offer and slide {PRONOUN/t_c/object} a portion of your moss. With {PRONOUN/t_c/poss} head held high and an extra spring in {PRONOUN/t_c/poss} step, the two of you successfully deliver the moss to the healer den.]"
         ]
     },
     "upstanding_choice5": {
@@ -25238,7 +25197,7 @@
             }
         },
         "help": [
-            "[You take t_c by the paw and teach {PRONOUN/m_c/object} the ways of den repair.]",
+            "[You take t_c by the paw and teach {PRONOUN/t_c/object} the ways of den repair.]",
             "[The task takes a bit longer than it would on your own, but t_c is enthusiastic and picks up your lessons more quickly than expected.]",
             "y_c, this is so much fun! I wanna help a whole lot from now on, and get just as great at this as you someday!"
         ],
@@ -25754,18 +25713,18 @@
                 "age": ["not_kitten"]
             },
             "t_c": {
-              "age": ["kitten"]
+                "age": ["kitten"]
             }
         },
-        "relationship": [
+        "intro": [
+            "y_c!! When's the green gonna come back? I'm tired of so much grey!"
+        ],
+        "relationships": [
             {
                 "cats_from": ["t_c"],
                 "cats_to": ["y_c"],
                 "relationship": ["min_like_5"]
             }
-        ],
-        "intro": [
-            "y_c!! When's the green gonna come back? I'm tired of so much grey!"
         ]
     },
     "quarrycamp_avix1": {
@@ -25778,16 +25737,9 @@
                 "age": ["not_kitten"]
             },
             "t_c": {
-              "age": ["kitten"]
+                "age": ["kitten"]
             }
         },
-        "relationship": [
-            {
-                "cats_from": ["t_c"],
-                "cats_to": ["y_c"],
-                "relationship": ["min_like_20"]
-            }
-        ],
         "intro": [
             "[t_c has been brushing snow off the giant skeleton all day.]",
             "Hi!! I'm keeping them from being cold!! Wanna help?"
@@ -25803,12 +25755,19 @@
             }
         },
         "warm": [
-          "Yay!! You can get that side while I finish this side!",
-          "[Before too long, you and t_c have cleared off all the snow. The kit is clearly proud of your shared efforts!]"
+            "Yay!! You can get that side while I finish this side!",
+            "[Before too long, you and t_c have cleared off all the snow. The kit is clearly proud of your shared efforts!]"
         ],
         "cold": [
-          "Aw, okay...",
-          "[{PRONOUN/t_c/subject} {VERB/t_c/go/goes} back to wiping off snow, silently.]"
+            "Aw, okay...",
+            "[{PRONOUN/t_c/subject} {VERB/t_c/go/goes} back to wiping off snow, silently.]"
+        ],
+        "relationships": [
+            {
+                "cats_from": ["t_c"],
+                "cats_to": ["y_c"],
+                "relationship": ["min_like_20"]
+            }
         ]
     }
 }

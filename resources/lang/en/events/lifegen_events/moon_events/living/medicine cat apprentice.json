@@ -20,7 +20,7 @@
         "types": [
             "general"
         ],
-        "event": "r_c:0 visits you in the medicine den and the two of you spend all day updating each other on the exciting new things you've learned!"
+        "event": "r_c:0 visits you in the healer den and the two of you spend all day updating each other on the exciting new things you've learned!"
     },
     "general2": {
         "cats": {
@@ -43,7 +43,7 @@
         "types": [
             "general"
         ],
-        "event": "r_c:0 fakes an injury to spend more time with you in the medicine den."
+        "event": "r_c:0 fakes an injury to spend more time with you in the healer den."
     },
     "general3": {
         "cats": {
@@ -738,7 +738,7 @@
         "types": [
             "shunned"
         ],
-        "event": "Your mentor refuses to teach you more about the herbs and their uses. {PRONOUN/r_c:0/subject/CAP} {VERB/r_c:0/tell/tells} you that a medicine cat's duty is to heal, not to harm."
+        "event": "Your mentor refuses to teach you more about the herbs and their uses. {PRONOUN/r_c:0/subject/CAP} {VERB/r_c:0/tell/tells} you that a healer's duty is to heal, not to harm."
     },
     "shunned37": {
         "cats": {
@@ -758,7 +758,7 @@
         "types": [
             "shunned"
         ],
-        "event": "Other Clans' medicine cats refuse to meet your gaze at the gatherings. Word of your transgression has spread like wildfire."
+        "event": "Other Clans' healers refuse to meet your gaze at the gatherings. Word of your transgression has spread like wildfire."
     },
     "shunned39": {
         "cats": {
@@ -783,7 +783,7 @@
         "types": [
             "shunned"
         ],
-        "event": "The Clan leader summons you, {PRONOUN/r_c:0/poss} disappointment clear. The sacred role of a medicine cat requires trust and compassion - attributes you've apparently lost."
+        "event": "The Clan leader summons you, {PRONOUN/r_c:0/poss} disappointment clear. The sacred role of a healer requires trust and compassion - attributes you've apparently lost."
     },
     "shunned41": {
         "cats": {
@@ -876,6 +876,6 @@
         "types": [
             "shunned"
         ],
-        "event": "You wonder if being a medicine cat apprentice is the right path for you."
+        "event": "You wonder if being a healer apprentice is the right path for you."
     }
 }

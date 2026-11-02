@@ -13,7 +13,7 @@
         "types": [
             "general"
         ],
-        "event": "You stand over the shoulder of r_c:0 as {PRONOUN/r_c:0/subject} {VERB/r_c:0/tend/tends} to a tricky patient. Your ghostly paws can't help {PRONOUN/r_c:0/object} out, but you hope that the medicine cat's StarClan connection is strong enough to sense your support."
+        "event": "You stand over the shoulder of r_c:0 as {PRONOUN/r_c:0/subject} {VERB/r_c:0/tend/tends} to a tricky patient. Your ghostly paws can't help {PRONOUN/r_c:0/object} out, but you hope that the healer's StarClan connection is strong enough to sense your support."
     },
     "general2": {
         "cats": {

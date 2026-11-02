@@ -1,4 +1,3 @@
-import warnings
 
 from .AllegiancesScreen import AllegiancesScreen
 from .CeremonyScreen import CeremonyScreen
@@ -22,7 +21,6 @@ from .EventsScreen import EventsScreen
 from .FamilyTreeScreen import FamilyTreeScreen
 from .LeaderDenScreen import LeaderDenScreen
 from .ListScreen import ListScreen
-from .MakeClanScreen import MakeClanScreen
 from .MedDenScreen import MedDenScreen
 from .MediationScreen import MediationScreen
 from .PatrolScreen import PatrolScreen
@@ -39,6 +37,16 @@ from .GiftScreen import GiftScreen
 from .ElderStoryScreen import ElderStoryScreen
 from .PredictOffspringScreen import PredictOffspringScreen
 from .enums import GameScreen
+from .make_clan_screens.ChooseCampScreen import ChooseCampScreen
+from .make_clan_screens.ChooseCardsScreen import ChooseCardsScreen
+from .make_clan_screens.ChooseCatsScreen import ChooseCatsScreen
+from .make_clan_screens.ChooseModeScreen import ChooseModeScreen
+from .make_clan_screens.ChooseClancountScreen import ChooseClancountScreen
+from .make_clan_screens.ChooseNameScreen import ChooseNameScreen
+from .make_clan_screens.ChooseSymbolScreen import ChooseSymbolScreen
+from .make_clan_screens.ClanCreatedScreen import ClanCreatedScreen
+from .make_clan_screens.CustomCat import CustomCatScreen
+from .make_clan_screens.ChooseYourNameScreen import ChooseYourNameScreen
 
 # ---------------------------------------------------------------------------- #
 #                                  UI RULES                                    #
@@ -73,7 +81,16 @@ def rebuild_all_screens():
         GameScreen.CEREMONY: CeremonyScreen,
         GameScreen.CHANGE_ROLE: RoleScreen,
         GameScreen.SPRITE_INSPECT: SpriteInspectScreen,
-        GameScreen.MAKE_CLAN: MakeClanScreen,
+        GameScreen.MAKE_CLAN_CHOOSE_CLANCOUNT: ChooseClancountScreen,
+        GameScreen.MAKE_CLAN_CHOOSE_MODE: ChooseModeScreen,
+        GameScreen.MAKE_CLAN_CHOOSE_CARDS: ChooseCardsScreen,
+        GameScreen.MAKE_CLAN_CHOOSE_NAME: ChooseNameScreen,
+        GameScreen.MAKE_CLAN_CHOOSE_CATS: ChooseCatsScreen,
+        GameScreen.MAKE_CLAN_CHOOSE_CAMP: ChooseCampScreen,
+        GameScreen.MAKE_CLAN_CUSTOM_CAT: CustomCatScreen,
+        GameScreen.MAKE_CLAN_CHOOSE_SYMBOL: ChooseSymbolScreen,
+        GameScreen.MAKE_CLAN_CLAN_CREATED: ClanCreatedScreen,
+        GameScreen.MAKE_CLAN_YOUR_NAME: ChooseYourNameScreen,
         GameScreen.ALLEGIANCES: AllegiancesScreen,
         GameScreen.CAMP: ClanScreen,
         GameScreen.LIST: ListScreen,
@@ -94,7 +111,6 @@ def rebuild_all_screens():
         GameScreen.MEDIATION: MediationScreen,
         GameScreen.CHANGE_GENDER: ChangeGenderScreen,
         GameScreen.EVENT_EDIT: EventEditScreen,
-
         GameScreen.MURDER: MurderScreen,
         GameScreen.AFFAIR: AffairScreen,
         GameScreen.GIFT: GiftScreen,
@@ -105,7 +121,7 @@ def rebuild_all_screens():
         GameScreen.CHOOSE_DEPUTY: DeputyScreen,
         GameScreen.ACHIEVEMENTS: AchievementScreen,
         GameScreen.ELDER_STORY: ElderStoryScreen,
-        GameScreen.QUEEN: QueenScreen
+        GameScreen.QUEEN: QueenScreen,
     }
 
     for enum, classobj in enum_to_class.items():

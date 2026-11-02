@@ -20,7 +20,7 @@
             "moon1": [
                 "Even the trees look dry. The cats of c_n cart moss between camp and their water source, bringing back vital liquid to their youngest and oldest Clanmates. But there are murmurs of discontented gossip - what will they do if their water dries up?",
                 "The prey that cats bring back to the fresh-kill pile is beginning to look weak. Difficult to say what's taking its toll - the heat, or the difficulty of finding water.",
-                "med_name feels the crunch of leaf litter so dry it shatters under {PRONOUN/med_name/poss} footsteps. {PRONOUN/med_name/subject/CAP} {VERB/med_name/swallow/swallows} {PRONOUN/med_name/poss} concern - drought cannot be fought by the Clan's warriors, but med_name can stock the medicine cat den with remedies against heat stroke and exhaustion."
+                "med_name feels the crunch of leaf litter so dry it shatters under {PRONOUN/med_name/poss} footsteps. {PRONOUN/med_name/subject/CAP} {VERB/med_name/swallow/swallows} {PRONOUN/med_name/poss} concern - drought cannot be fought by the Clan's warriors, but med_name can stock the healer den with remedies against heat stroke and exhaustion."
             ],
             "moon2": [
                 "The drought continues. The cats of c_n pant in the shade, too hot to move, their tongues dry and tacky.",
@@ -163,7 +163,7 @@
         "collateral_damage": {
             "injuries": [
                 "burn",
-                "severe burn"
+                "severe_burn"
             ],
             "deaths": {
                 "death_text": [
@@ -227,7 +227,7 @@
         },
         "collateral_damage": {
             "injuries": [
-                "water in their lungs"
+                "water_in_lungs"
             ],
             "deaths": {
                 "death_text": [
@@ -332,7 +332,7 @@
             "injuries": [
                 "scrapes",
                 "sprain",
-                "dislocated joint"
+                "dislocated_joint"
             ],
             "deaths": {
                 "death_text": [

@@ -7,13 +7,13 @@ import pygame_gui
 from pygame_gui.core import ObjectID
 
 from scripts.cat.cats import Cat
+from scripts.config import get_config
 from scripts.clan_package.settings import switch_clan_setting
 from scripts.clan_package.settings.clan_settings import (
     switch_clan_setting,
     get_clan_setting,
 )
 from scripts.clan_package.get_clan_cats import search_cats
-from scripts.game_structure.game.settings import game_setting_get
 from scripts.game_structure.game.switches import (
     switch_set_value,
     switch_get_value,
@@ -25,6 +25,7 @@ from scripts.game_structure.screen_settings import game_screen_size, MANAGER
 from scripts.ui.elements.dropdown import UIDropDown
 from scripts.ui.elements.cat_list_display import UICatListDisplay
 from scripts.ui.elements.image_button import UIImageButton
+from scripts.ui.elements.checkbox import UICheckbox
 from scripts.ui.elements.surface_image_button import UISurfaceImageButton
 from scripts.screens.Screens import Screens
 from scripts.screens.enums import GameScreen
@@ -205,17 +206,15 @@ class ListScreen(Screens):
 
             # TOGGLE GENOTYPE SEARCH
             if element == self.cat_list_bar_elements["search_genotype_checkbox"]:
-                if "@checked_checkbox" in event.ui_element.get_object_ids():
-                    element.change_object_id("@unchecked_checkbox")
+                if event.ui_element.checked:
                     element.set_tooltip("screens.list.search_genotypes_tooltip")
                     self.cat_list_bar_elements["search_bar_entry"].tool_tip_text = None
-                    switch_clan_setting("search genotypes")
                 else:
-                    element.change_object_id("@checked_checkbox")
                     element.set_tooltip("screens.list.search_names_tooltip")
                     self.cat_list_bar_elements["search_bar_entry"].tool_tip_text = "screens.list.search_genotypes_tutorial"
                     self.cat_list_bar_elements["search_bar_entry"].tool_tip_delay = 0
-                    switch_clan_setting("search genotypes")
+                event.ui_element.toggle()
+                switch_clan_setting("search genotypes")
                 self.cat_list_bar_elements["search_bar_entry"].placeholder_text = "general.genotype_search" if get_clan_setting("search genotypes") else "general.name_search"
                 self.cat_list_bar_elements["search_bar_entry"].set_text("")
                 self.update_cat_list(
@@ -255,7 +254,7 @@ class ListScreen(Screens):
                 self.menu_button_pressed(event)
                 self.mute_button_pressed(event)
 
-        elif event.type == pygame.KEYDOWN and game_setting_get("keybinds"):
+        elif event.type == pygame.KEYDOWN:
             if self.cat_list_bar_elements["search_bar_entry"].is_focused:
                 return
             if event.key == pygame.K_LEFT:
@@ -267,7 +266,7 @@ class ListScreen(Screens):
         super().screen_switches()
         self.show_mute_buttons()
         game.selected_clan = game.clan
-        self.clan_name = i18n.t("general.clan", name=game.clan.displayname)
+        self.clan_name = game.clan.name
 
         if not game.last_list_forProfile:
             self.death_status = "living"
@@ -275,14 +274,17 @@ class ListScreen(Screens):
         
         group_names = ["general.your_clan", "general.cotc", "general.cbtc"]
         if game.clan and game.clan.clancount == "multiclan":
-            group_names += [clan.displayname + "Clan" for clan in game.clan.all_other_clans]
+            group_names += [clan.name for clan in game.clan.all_other_clans]
         self.living_group_names = tuple(group_names)
 
         self.set_disabled_menu_buttons(["cats"])
         self.show_menu_buttons()
 
         # LG
-        if not game.clan.your_cat.status.alive_in_player_clan and not game.clan.your_cat.dead:
+        if (
+            not game.clan.your_cat.status.alive_in_player_clan
+            and not game.clan.your_cat.dead
+        ):
             group_names.insert(1, "general.your_group")
             self.living_group_names = tuple(group_names)
             if not game.last_list_forProfile:
@@ -347,18 +349,18 @@ class ListScreen(Screens):
         )
 
         # SEARCH GENOTYPE TOGGLE
-        self.cat_list_bar_elements["search_genotype_checkbox"] = UIImageButton(
-            ui_scale(pygame.Rect((36, 0), (38, 34))),
-            "",
-            object_id="@checked_checkbox"
-            if get_clan_setting("search genotypes")
-            else "@unchecked_checkbox",
+        self.cat_list_bar_elements["search_genotype_checkbox"] = UICheckbox(
+            (36, 0),
+            check=get_clan_setting("search genotypes"),
             container=self.cat_list_bar,
             tool_tip_text="screens.list.search_names_tooltip"
             if get_clan_setting("search genotypes")
             else "screens.list.search_genotypes_tooltip",
             starting_height=1,
         )
+        if not get_config("genetics_config.show_genotype"):
+            self.cat_list_bar_elements["search_genotype_checkbox"].checked = False
+            self.cat_list_bar_elements["search_genotype_checkbox"].disable()
 
         # SEARCH BAR
         self.cat_list_bar_elements["search_bar_image"] = pygame_gui.elements.UIImage(
@@ -419,10 +421,10 @@ class ListScreen(Screens):
             container=self.cat_list_bar,
             starting_selection=[self.current_group],
             anchors={"left_target": self.cat_list_bar_elements["view_button"]},
-
             # LG
             your_cat=game.clan.your_cat,
-            clan_name=game.clan.displayname
+            # "your_clan" adds Clan itself, so just the prefix (game.clan.name already ends in Clan)
+            clan_name=game.clan.prefix,
         )
 
         # SORT BY
@@ -660,6 +662,16 @@ class ListScreen(Screens):
 
         # adding in the guide if necessary, this ensures the guide isn't affected by sorting as we always want them to
         # be the first cat on the list
+        # LG
+        if self.current_group == "general.dark_forest":
+            if game.clan.demon in self.full_cat_list:
+                self.full_cat_list.remove(game.clan.demon)
+            self.full_cat_list.insert(0, game.clan.demon)
+        if self.current_group == "general.starclan":
+            if game.clan.instructor in self.full_cat_list:
+                self.full_cat_list.remove(game.clan.instructor)
+            self.full_cat_list.insert(0, game.clan.instructor)
+        # ---
 
         all_instructors = [game.clan.instructor, game.clan.demon] + [clan.instructor for clan in game.clan.all_other_clans if clan.instructor]
         for ins in all_instructors[::-1]:
@@ -807,19 +819,22 @@ class ListScreen(Screens):
             else:
                 group = i18n.t(
                     f"{self.current_group}",
-                    your_group=f"The {(game.clan.your_cat.status.group).replace('_', ' ')}"
-                    )
+                    your_group=f"The {(game.clan.your_cat.status.group).replace('_', ' ')}",
+                )
             if self.current_group == "general.starclan":
                 first_temper, second_temper = game.starclan.temperament
             else:
                 first_temper, second_temper = game.dark_forest.temperament
         else:
             group = self.current_group
-            first_temper, second_temper = next(filter(lambda c: c.displayname == self.selected_clan, game.clan.all_other_clans), game.clan).temperament
+            first_temper, second_temper = next(filter(lambda c: c.name == self.selected_clan, game.clan.all_other_clans), game.clan).temperament
 
         first = i18n.t(f"screens.leader_den.{first_temper}")
         second = i18n.t(f"screens.leader_den.{second_temper}")
-        temper = f"{first} & {second}"
+        temper = i18n.t(
+            "screens.leader_den.clan_temper", first_temper=first, second_temper=second
+        )
+
         return i18n.t("screens.list.temper", group=group, temper=temper)
 
     def get_cat_list(self):
@@ -858,7 +873,9 @@ class ListScreen(Screens):
         self.current_group = "general.your_clan"
         self.death_status = "living"
         self.full_cat_list = [
-            cat for cat in Cat.all_cats_list if cat.status.alive_in_player_clan and cat.moons >= 0
+            cat
+            for cat in Cat.all_cats_list
+            if cat.status.alive_in_player_clan and cat.moons >= 0
         ]
 
     def get_other_clan_cats(self, clan):
@@ -866,11 +883,11 @@ class ListScreen(Screens):
         grabs clan cats
         """
         self.current_group = clan
-        self.selected_clan = clan.replace("Clan", "")
+        self.selected_clan = clan
         self.death_status = "living"
         self.full_cat_list = [
             cat for cat in Cat.all_cats_list 
-            if cat.status.group.is_any_clan_group() and cat.status.fetch_clan_object().displayname == self.selected_clan
+            if cat.status.group.is_any_clan_group() and cat.status.fetch_clan_object().name == self.selected_clan
         ]
 
     def get_cotc_cats(self):
@@ -885,23 +902,6 @@ class ListScreen(Screens):
                 not the_cat.dead
                 and (the_cat.status.is_outsider or (the_cat.status.is_other_clancat and game.clan.clancount == "singleclan"))
                 and the_cat.status.is_near()
-                and not the_cat.status.alive_in_your_cat_group
-                and the_cat.moons >= 0
-            ):
-                self.full_cat_list.append(the_cat)
-
-    def get_cbtc_cats(self):
-        """
-        grabs cats outside the clan
-        """
-        self.current_group = "general.cbtc"
-        self.death_status = "living"
-        self.full_cat_list = []
-        for the_cat in Cat.all_cats_list:
-            if (
-                not the_cat.dead
-                and (the_cat.status.is_outsider or (the_cat.status.is_other_clancat and game.clan.clancount == "singleclan"))
-                and not the_cat.status.is_near()
                 and not the_cat.status.alive_in_your_cat_group
                 and the_cat.moons >= 0
             ):
@@ -923,6 +923,23 @@ class ListScreen(Screens):
             ):
                 self.full_cat_list.append(the_cat)
 
+    def get_cbtc_cats(self):
+        """
+        grabs cats outside the clan
+        """
+        self.current_group = "general.cbtc"
+        self.death_status = "living"
+        self.full_cat_list = []
+        for the_cat in Cat.all_cats_list:
+            if (
+                not the_cat.dead
+                and (the_cat.status.is_outsider or (the_cat.status.is_other_clancat and game.clan.clancount == "singleclan"))
+                and not the_cat.status.is_near()
+                and not the_cat.status.alive_in_your_cat_group
+                and the_cat.moons >= 0
+            ):
+                self.full_cat_list.append(the_cat)
+
     def get_sc_cats(self):
         """
         grabs starclan cats
@@ -932,7 +949,8 @@ class ListScreen(Screens):
         self.full_cat_list = []
         for the_cat in Cat.all_cats_list:
             if (
-                the_cat.status.group == CatGroup.STARCLAN
+                the_cat.ID not in (game.clan.instructor.ID, game.clan.demon.ID)
+                and the_cat.status.group == CatGroup.STARCLAN
                 and not the_cat.faded
                 and the_cat.moons >= 0
             ):
@@ -948,7 +966,8 @@ class ListScreen(Screens):
 
         for the_cat in Cat.all_cats_list:
             if (
-                the_cat.status.group == CatGroup.DARK_FOREST
+                the_cat.ID not in (game.clan.instructor.ID, game.clan.demon.ID)
+                and the_cat.status.group == CatGroup.DARK_FOREST
                 and not the_cat.faded
                 and the_cat.moons >= 0
             ):
@@ -963,7 +982,8 @@ class ListScreen(Screens):
         self.full_cat_list = []
         for the_cat in Cat.all_cats_list:
             if (
-                the_cat.status.group == CatGroup.UNKNOWN_RESIDENCE
+                the_cat.ID not in (game.clan.instructor.ID, game.clan.demon.ID)
+                and the_cat.status.group == CatGroup.UNKNOWN_RESIDENCE
                 and not the_cat.faded
                 and the_cat.status.is_near()
                 and the_cat.moons >= 0

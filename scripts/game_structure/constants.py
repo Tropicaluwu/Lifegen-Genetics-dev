@@ -1,11 +1,8 @@
 from pygame import Cursor, image, SYSTEM_CURSOR_ARROW
 import ujson
 import tomllib
-import os
-from scripts.housekeeping.datadir import get_save_dir
 
 # these scripts don't import any clangen scripts into themselves, so it's okay for them to be imported here
-from scripts.clan_resources.herb.herb import HERBS
 from scripts.clan_resources.supply import Supply
 
 from scripts.screens.enums import GameScreen
@@ -16,7 +13,17 @@ MENU_SCREENS = [
     GameScreen.SETTINGS,
     GameScreen.START,
     GameScreen.SWITCH_CLAN,
-    GameScreen.MAKE_CLAN,
+    GameScreen.MAKE_CLAN_CHOOSE_CLANCOUNT,
+    GameScreen.MAKE_CLAN_CHOOSE_MODE,
+    GameScreen.MAKE_CLAN_CHOOSE_CARDS,
+    GameScreen.MAKE_CLAN_CHOOSE_NAME,
+    GameScreen.MAKE_CLAN_CHOOSE_CATS,
+    GameScreen.MAKE_CLAN_CHOOSE_CAMP,
+    GameScreen.MAKE_CLAN_CHOOSE_SYMBOL,
+    GameScreen.MAKE_CLAN_CLAN_CREATED,
+    # LG: without these the music changes when you open them
+    GameScreen.MAKE_CLAN_CUSTOM_CAT,
+    GameScreen.MAKE_CLAN_YOUR_NAME,
 ]
 
 EVENTS_PER_PAGE = 10
@@ -25,9 +32,34 @@ BIOME_TYPES = ["Forest", "Plains", "Mountainous", "Beach", "Wetlands", "Desert"]
 
 CAMPS: dict = {
     "Forest": ["Classic", "Gully", "Grotto", "Lakeside", "Pine", "Birch"],
-    "Mountainous": ["Cliff", "Cavern", "Crystal River", "Rocky Slope", "Quarry", "Ruins"],
-    "Plains": ["Grasslands", "Tunnels", "Wastelands", "Taiga", "Desert", "City", "Farm", "Bushland", "Castle", "Bridge"],
-    "Beach": ["Tidepools", "Tidal Cave", "Shipwreck", "Fjord", "Tropical_Island", "Quay"],
+    "Mountainous": [
+        "Cliff",
+        "Cavern",
+        "Crystal River",
+        "Rocky Slope",
+        "Quarry",
+        "Ruins",
+    ],
+    "Plains": [
+        "Grasslands",
+        "Tunnels",
+        "Wastelands",
+        "Taiga",
+        "Desert",
+        "City",
+        "Farm",
+        "Bushland",
+        "Castle",
+        "Bridge",
+    ],
+    "Beach": [
+        "Tidepools",
+        "Tidal Cave",
+        "Shipwreck",
+        "Fjord",
+        "Tropical_Island",
+        "Quay",
+    ],
 }
 
 SEASONS = ["Newleaf", "Greenleaf", "Leaf-fall", "Leaf-bare"]
@@ -65,85 +97,12 @@ facet_range = [0, 16]
 OUTSIDER_REPS = ("welcoming", "neutral", "hostile")
 OTHER_CLAN_REPS = ("ally", "neutral", "hostile")
 
-INJURY_GROUPS = {
-    "battle_injury": [
-        "claw-wound",
-        "mangled leg",
-        "mangled tail",
-        "torn pelt",
-        "cat bite",
-    ],
-    "minor_injury": ["sprain", "sore", "bruises", "scrapes"],
-    "blunt_force_injury": ["broken bone", "broken back", "head damage", "broken jaw"],
-    "hot_injury": ["heat exhaustion", "heat stroke", "dehydrated"],
-    "cold_injury": ["shivering", "frostbite"],
-    "big_bite_injury": [
-        "bite-wound",
-        "broken bone",
-        "torn pelt",
-        "mangled leg",
-        "mangled tail",
-    ],
-    "small_bite_injury": ["bite-wound", "torn ear", "torn pelt", "scrapes"],
-    "beak_bite": ["beak bite", "torn ear", "scrapes"],
-    "rat_bite": ["rat bite", "torn ear", "torn pelt"],
-    "sickness": ["greencough", "redcough", "whitecough", "yellowcough"],
-}
-
-EVENT_ALLOWED_CONDITIONS = [
-    "tick bites",
-    "claw-wound",
-    "bite-wound",
-    "cat bite",
-    "beak bite",
-    "snake bite",
-    "quilled by a porcupine",
-    "rat bite",
-    "mangled leg",
-    "mangled tail",
-    "broken jaw",
-    "broken bone",
-    "sore",
-    "bruises",
-    "scrapes",
-    "cracked pads",
-    "small cut",
-    "sprain",
-    "bee sting",
-    "joint pain",
-    "dislocated joint",
-    "torn pelt",
-    "torn ear",
-    "water in their lungs",
-    "shivering",
-    "frostbite",
-    "burn",
-    "severe burn",
-    "shock",
-    "dehydrated",
-    "head damage",
-    "damaged eyes",
-    "broken back",
-    "poisoned",
-    "headache",
-    "severe headache",
-    "fleas",
-    "seizure",
-    "diarrhea",
-    "running nose",
-    "kittencough",
-    "whitecough",
-    "greencough",
-    "yellowcough",
-    "redcough",
-    "carrionplace disease",
-    "heat stroke",
-    "heat exhaustion",
-    "stomachache",
-    "constant nightmares",
-]
+HERBS: dict = {}
+with open("resources/dicts/herb_info.json", "r", encoding="utf-8") as read_file:
+    HERBS.update(ujson.loads(read_file.read()))
 
 SUPPLY_TYPES = ["fresh_kill", "all_herb", "any_herb"]
+
 SUPPLY_TYPES.extend(HERBS)
 
 SUPPLY_TRIGGERS = ["always", *Supply]
@@ -156,59 +115,42 @@ SUPPLY_ADJUSTMENTS = [
     "increase_#",
 ]
 
-with open("resources/game_config.toml", "r", encoding="utf-8") as read_file:
-    CONFIG = tomllib.loads(read_file.read())
-    PREY_CONFIG = CONFIG["clan_resources"]["freshkill"]
+CRUEL_CARDS_ALL: dict = {}
+with open(
+    "resources/dicts/cruel_season/origin_cards.json", "r", encoding="utf-8"
+) as read_file:
+    CRUEL_CARDS_ORIGIN: dict = ujson.loads(read_file.read())
+CRUEL_CARDS_ALL.update(CRUEL_CARDS_ORIGIN)
 
-def recursive_merge(dict1, dict2):
-    for key, value in dict2.items():
-        if key in dict1 and isinstance(dict1[key], dict) and isinstance(value, dict):
-            # Recursively merge nested dictionaries
-            dict1[key] = recursive_merge(dict1[key], value)
-        else:
-            # Merge non-dictionary values
-            dict1[key] = value
-    return dict1
+with open(
+    "resources/dicts/cruel_season/behavior_cards.json", "r", encoding="utf-8"
+) as read_file:
+    CRUEL_CARDS_BEHAVIOR: dict = ujson.loads(read_file.read())
+CRUEL_CARDS_ALL.update(CRUEL_CARDS_BEHAVIOR)
 
-def other_config_refreshes():
-    global CONFIG
-    from scripts.cat.cats import Cat
-    from scripts.cat.enums import CatAge
-    from scripts.game_structure import game
-    Cat.age_moons = {
-        CatAge.NEWBORN: CONFIG["cat_ages"]["newborn"],
-        CatAge.KITTEN: CONFIG["cat_ages"]["kitten"],
-        CatAge.ADOLESCENT: CONFIG["cat_ages"]["adolescent"],
-        CatAge.YOUNG_ADULT: CONFIG["cat_ages"]["young adult"],
-        CatAge.ADULT: CONFIG["cat_ages"]["adult"],
-        CatAge.SENIOR_ADULT: CONFIG["cat_ages"]["senior adult"],
-        CatAge.SENIOR: CONFIG["cat_ages"]["senior"],
-    }
-    PREY_CONFIG = CONFIG["clan_resources"]["freshkill"]
+with open(
+    "resources/dicts/cruel_season/society_cards.json", "r", encoding="utf-8"
+) as read_file:
+    CRUEL_CARDS_SOCIETY: dict = ujson.loads(read_file.read())
+CRUEL_CARDS_ALL.update(CRUEL_CARDS_SOCIETY)
 
-def load_clan_config():
-    global CONFIG
-    from scripts.game_structure.game.switches import Switch, switch_get_value
-    reset_config()
-    if switch_get_value(Switch.clan_list) and os.path.exists(
-        get_save_dir() +
-        f"/{switch_get_value(Switch.clan_list)[0]}/game_config.toml"
-    ):
-        with open(
-            get_save_dir()
-            + f"/{switch_get_value(Switch.clan_list)[0]}/game_config.toml",
-            "r",
-            encoding="utf-8",
-        ) as read_file:
-            config_override = tomllib.loads(read_file.read())
-            CONFIG = recursive_merge(CONFIG, config_override)
-            other_config_refreshes()
+with open(
+    "resources/dicts/cruel_season/danger_cards.json", "r", encoding="utf-8"
+) as read_file:
+    CRUEL_CARDS_DANGER: dict = ujson.loads(read_file.read())
+CRUEL_CARDS_ALL.update(CRUEL_CARDS_DANGER)
 
-def reset_config():
-    global CONFIG
-    with open("resources/game_config.toml", "r", encoding="utf-8") as read_file:
-        CONFIG = tomllib.loads(read_file.read())
-        other_config_refreshes()
+with open(
+    "resources/dicts/cruel_season/environment_cards.json", "r", encoding="utf-8"
+) as read_file:
+    CRUEL_CARDS_ENVIRONMENT: dict = ujson.loads(read_file.read())
+CRUEL_CARDS_ALL.update(CRUEL_CARDS_ENVIRONMENT)
+
+
+with open(
+    "resources/dicts/cruel_season/card_conflicts.json", "r", encoding="utf-8"
+) as read_file:
+    CRUEL_CARDS_CONFLICTS: dict = ujson.loads(read_file.read())
 
 with open("resources/display_settings.toml", "r", encoding="utf-8") as read_file:
     DISPLAY_SETTINGS = tomllib.loads(read_file.read())
@@ -218,3 +160,13 @@ with open("resources/placements.json", "r", encoding="utf-8") as read_file:
 
 CUSTOM_CURSOR = Cursor((9, 0), image.load("resources/images/cursor.png"))
 DEFAULT_CURSOR = Cursor(SYSTEM_CURSOR_ARROW)
+
+
+def __getattr__(name):
+    # LG: lifegen code still reads constants.CONFIG, the config now lives in scripts.config
+    # (looked up every time since a clan's own game_config.toml can replace it)
+    if name == "CONFIG":
+        from scripts import config
+
+        return config.CONFIG
+    raise AttributeError(f"module {__name__!r} has no attribute {name!r}")

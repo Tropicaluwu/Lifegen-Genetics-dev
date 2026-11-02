@@ -5,13 +5,13 @@ import pygame.transform
 import pygame_gui.elements
 
 from scripts.cat.cats import Cat
+from scripts.cat_relations.inheritance2 import inheritance_db
 from scripts.game_structure import image_cache
-
-from scripts.cat_relations.relationship import (
-    Relationship
-)
+from ..cat_relations.relationship import create_one_relationship
+from ..config import get_config
 from ..ui.elements.sprite_button import UISpriteButton
 from ..ui.elements.image_button import UIImageButton
+from ..ui.elements.checkbox import UICheckbox
 from ..ui.elements.surface_image_button import UISurfaceImageButton
 from ..ui.theme import get_text_box_theme
 from ..events_module.text_adjust import shorten_text_to_fit
@@ -27,6 +27,7 @@ from ..game_structure.screen_settings import MANAGER
 from ..ui.generate_box import BoxStyles, get_box
 from ..ui.generate_button import get_button_dict, ButtonStyles
 from ..ui.icon import Icon
+from ..ui.windows.cruel_locked_action import CruelLockedAction
 
 from operator import xor
 
@@ -48,6 +49,9 @@ class ChooseMateScreen(Screens):
         self.previous_search_text = ""
         self.search_genotype = False
         self.search_toggle_checkbox = None
+
+        self.show_all_checkbox = None
+        self.show_all = False
 
         self.toggle_mate = None
         self.page_number = None
@@ -91,6 +95,7 @@ class ChooseMateScreen(Screens):
         self.single_only_text = None
         self.have_kits_text = None
         self.with_selected_cat_text = None
+        self.show_all_text = None
 
         self.potential_page_display = None
         self.offspring_page_display = None
@@ -117,6 +122,9 @@ class ChooseMateScreen(Screens):
                 self.selected_mate_index = 0
                 self.change_screen(GameScreen.PROFILE)
             elif event.ui_element == self.toggle_mate:
+                if not get_config("mates.allow_manual"):
+                    CruelLockedAction()
+                    return
                 if self.work_thread is not None and self.work_thread.is_alive():
                     return
                 self.work_thread = self.loading_screen_start_work(self.change_mate)
@@ -155,17 +163,21 @@ class ChooseMateScreen(Screens):
                 self.update_offspring_container()
 
             if event.ui_element == self.search_toggle_checkbox:
-                if "@checked_checkbox" in event.ui_element.get_object_ids():
-                    event.ui_element.change_object_id("@unchecked_checkbox")
+                if event.ui_element.checked:
                     event.ui_element.set_tooltip(
                         "screens.list.search_genotypes_tooltip")
                     self.search_genotype = False
                 else:
-                    event.ui_element.change_object_id("@checked_checkbox")
                     event.ui_element.set_tooltip("screens.list.search_names_tooltip")
                     self.search_genotype = True
+                event.ui_element.toggle()
                 self.search_bar.placeholder_text = "general.genotype_search" if self.search_genotype else "general.name_search"
                 self.search_bar.set_text("")
+                self.update_potential_mates_container()
+
+            elif event.ui_element == self.show_all_checkbox:
+                event.ui_element.toggle()
+                self.show_all = event.ui_element.checked
                 self.update_potential_mates_container()
 
             # Next and last page buttons
@@ -285,17 +297,31 @@ class ChooseMateScreen(Screens):
             manager=MANAGER,
         )
 
-        self.search_toggle_checkbox = UIImageButton(
-            ui_scale(pygame.Rect((60, 629), (38, 34))),
-            "",
-            object_id="@checked_checkbox"
-            if self.search_genotype
-            else "@unchecked_checkbox",
+        self.show_all_text = pygame_gui.elements.UITextBox(
+            "screens.choose_mate.show_all",
+            ui_scale(pygame.Rect((225, 630), (120, -1))),
+            object_id=get_text_box_theme("#text_box_26_horizcenter"),
+            manager=MANAGER,
+        )
+
+        self.search_toggle_checkbox = UICheckbox(
+            position=(60, 629),
+            manager=MANAGER,
+            starting_height=3,
+            check=self.search_genotype,
             tool_tip_text="screens.list.search_names_tooltip"
             if self.search_genotype
-            else "screens.list.search_genotypes_tooltip",
-            starting_height=1,
+            else "screens.list.search_genotypes_tooltip"
+        )
+        if not get_config("genetics_config.show_genotype"):
+            self.search_toggle_checkbox.checked = False
+            self.search_toggle_checkbox.disable()
+
+        self.show_all_checkbox = UICheckbox(
+            position=(220, 629),
             manager=MANAGER,
+            starting_height=1,
+            check=self.show_all
         )
 
         # Tab containers:
@@ -443,7 +469,7 @@ class ChooseMateScreen(Screens):
             self.the_cat.set_mate(self.selected_cat)
 
         else:
-            self.the_cat.unset_mate(self.selected_cat, breakup=True)
+            self.the_cat.unset_mate(self.selected_cat, user_initiated_breakup=True)
 
     def update_both(self):
         """Updates both the current cat and selected cat info."""
@@ -457,7 +483,9 @@ class ChooseMateScreen(Screens):
         """Updates everything in the mates container, including the list of current mates,
         and the page"""
 
-        self.all_mates = self.chunks([Cat.fetch_cat(i) for i in self.the_cat.mate], 30)
+        self.all_mates = self.get_list_chunks(
+            [Cat.fetch_cat(i) for i in self.the_cat.mate], 30
+        )
         self.update_mates_container_page()
 
     def update_mates_container_page(self):
@@ -529,14 +557,16 @@ class ChooseMateScreen(Screens):
         pos_y = 0
         i = 0
         for _mate in display_cats:
-            if get_clan_setting("show fav")  and _mate.favourite != 0:
+            if get_clan_setting("show fav") and _mate.favourite != 0:
                 self.fav[str(i)] = pygame_gui.elements.UIImage(
                     ui_scale(pygame.Rect((pos_x, pos_y), (50, 50))),
                     pygame.transform.scale(
                         pygame.image.load(
-                            f"resources/images/fav_marker{_mate.favourite}.png").convert_alpha(),
-                        (50, 50)),
-                        container=self.mates_container,
+                            f"resources/images/fav_marker{_mate.favourite}.png"
+                        ).convert_alpha(),
+                        (50, 50),
+                    ),
+                    container=self.mates_container,
                 )
                 self.fav[str(i)].disable()
             self.mates_cat_buttons["cat" + str(i)] = UISpriteButton(
@@ -559,7 +589,7 @@ class ChooseMateScreen(Screens):
             self.the_cat.create_inheritance_new_cat()
         self.all_offspring = [
             Cat.fetch_cat(i)
-            for i in list(self.the_cat.inheritance.kits)
+            for i in inheritance_db.get_children(self.the_cat.ID)
             if isinstance(Cat.fetch_cat(i), Cat)
         ]
         if self.selected_cat and self.kits_selected_pair:
@@ -567,20 +597,14 @@ class ChooseMateScreen(Screens):
                 i for i in self.all_offspring if self.selected_cat.is_parent(i)
             ]
 
-        self.all_offspring = self.chunks(self.all_offspring, 24)
+        self.all_offspring = self.get_list_chunks(self.all_offspring, 24)
 
         if "kits_selected_pair" in self.checkboxes:
             self.checkboxes["kits_selected_pair"].kill()
 
-        if self.kits_selected_pair:
-            theme = "@checked_checkbox"
-        else:
-            theme = "@unchecked_checkbox"
-
-        self.checkboxes["kits_selected_pair"] = UIImageButton(
-            ui_scale(pygame.Rect((553, 62), (34, 34))),
-            "",
-            object_id=theme,
+        self.checkboxes["kits_selected_pair"] = UICheckbox(
+            position=(553, 62),
+            check=self.kits_selected_pair,
             container=self.offspring_container,
         )
 
@@ -703,37 +727,22 @@ class ChooseMateScreen(Screens):
         if "single_only" in self.checkboxes:
             self.checkboxes["single_only"].kill()
 
-        if self.single_only:
-            theme = "@checked_checkbox"
-        else:
-            theme = "@unchecked_checkbox"
-
-        self.checkboxes["single_only"] = UIImageButton(
-            ui_scale(pygame.Rect((553, 42), (34, 34))),
-            "",
-            object_id=theme,
+        self.checkboxes["single_only"] = UICheckbox(
+            position=(553, 42),
+            check=self.single_only,
             container=self.potential_container,
         )
 
         if "have_kits_only" in self.checkboxes:
             self.checkboxes["have_kits_only"].kill()
 
-        if self.have_kits_only:
-            theme = "@checked_checkbox"
-        else:
-            theme = "@unchecked_checkbox"
-
-        self.checkboxes["have_kits_only"] = UIImageButton(
-            ui_scale(pygame.Rect((553, 127), (34, 34))),
-            "",
-            object_id=theme,
+        self.checkboxes["have_kits_only"] = UICheckbox(
+            position=(553, 127),
+            check=self.have_kits_only,
             container=self.potential_container,
         )
 
-        self.all_potential_mates = self.chunks(self.get_valid_mates(self.search_bar.get_text().strip()), 24)
-
-        # Update checkboxes
-        # TODO
+        self.all_potential_mates = self.get_list_chunks(self.get_valid_mates(self.search_bar.get_text().strip()), 24)
 
         self.update_potential_mates_container_page()
 
@@ -842,6 +851,8 @@ class ChooseMateScreen(Screens):
         self.have_kits_text = None
         self.with_selected_cat_text.kill()
         self.with_selected_cat_text = None
+        self.show_all_text.kill()
+        self.show_all_text = None
 
         self.the_cat_frame.kill()
         self.the_cat_frame = None
@@ -877,13 +888,15 @@ class ChooseMateScreen(Screens):
         self.search_toggle_checkbox.kill()
         del self.search_toggle_checkbox
         self.previous_search_text = None
+        self.show_all = False
+        self.show_all_checkbox.kill()
+        del self.show_all_checkbox
 
     def update_current_cat_info(self, reset_selected_cat=True):
         """Updates all elements with the current cat, as well as the selected cat.
         Called when the screen switched, and whenever the focused cat is switched"""
         self.the_cat = Cat.all_cats[switch_get_value(Switch.cat)]
-        if not self.the_cat.inheritance:
-            self.the_cat.create_inheritance_new_cat()
+        self.the_cat.create_inheritance_new_cat()
 
         (
             self.next_cat,
@@ -1137,26 +1150,20 @@ class ChooseMateScreen(Screens):
 
         self.toggle_mate.kill()
 
-        if self.selected_cat.ID in self.the_cat.mate:
-            self.toggle_mate = UISurfaceImageButton(
-                ui_scale(pygame.Rect((323, 310), (153, 30))),
-                "screens.choose_mate.unset_mate",
-                get_button_dict(ButtonStyles.SQUOVAL, (153, 30)),
-                object_id="@buttonstyles_squoval",
-            )
-        else:
-            self.toggle_mate = UISurfaceImageButton(
-                ui_scale(pygame.Rect((323, 310), (153, 30))),
-                "screens.choose_mate.set_mate",
-                get_button_dict(ButtonStyles.SQUOVAL, (153, 30)),
-                object_id="@buttonstyles_squoval",
-            )
+        self.toggle_mate = UISurfaceImageButton(
+            ui_scale(pygame.Rect((323, 310), (153, 30))),
+            "screens.choose_mate.unset_mate"
+            if self.selected_cat.ID in self.the_cat.mate
+            else "screens.choose_mate.set_mate",
+            get_button_dict(ButtonStyles.SQUOVAL, (153, 30)),
+            object_id="@buttonstyles_squoval",
+        )
 
         if (
-            not get_clan_setting("same sex birth")
-            and not (xor('Y' in self.the_cat.phenotype.sexgene, 'Y' in self.selected_cat.phenotype.sexgene) 
-            and 'sterile' not in self.the_cat.permanent_condition 
-            and 'sterile' not in self.selected_cat.permanent_condition)
+            not ((get_clan_setting("same sex birth")
+            or xor('Y' in self.the_cat.phenotype.sexgene, 'Y' in self.selected_cat.phenotype.sexgene) )
+            and 'sterile' not in self.the_cat.permanent_conditions 
+            and 'sterile' not in self.selected_cat.permanent_conditions)
         ):
             warning_rect = ui_scale(pygame.Rect((0, 0), (160, 45)))
             warning_rect.bottomleft = ui_scale_offset((0, -5))
@@ -1204,7 +1211,7 @@ class ChooseMateScreen(Screens):
             if self.selected_cat.ID in self.the_cat.relationships:
                 relation = self.the_cat.relationships[self.selected_cat.ID]
             else:
-                relation = self.the_cat.create_one_relationship(self.selected_cat)
+                relation = create_one_relationship(self.the_cat, self.selected_cat)
             romantic_love = relation.romance
 
         if 10 <= romantic_love <= 30:
@@ -1236,7 +1243,7 @@ class ChooseMateScreen(Screens):
             if self.the_cat.ID in self.selected_cat.relationships:
                 relation = self.selected_cat.relationships[self.the_cat.ID]
             else:
-                relation = self.selected_cat.create_one_relationship(self.the_cat)
+                relation = create_one_relationship(self.selected_cat, self.the_cat)
             romantic_love = relation.romance
 
         if 10 <= romantic_love <= 30:
@@ -1282,9 +1289,9 @@ class ChooseMateScreen(Screens):
             if not i.faded
             and i.moons >= 12
             and self.the_cat.is_potential_mate(
-                i, for_love_interest=False, age_restriction=False, ignore_no_mates=True
+                i, for_love_interest=False, age_restriction=False, ignore_no_mates=True, outsider=self.show_all
             )
-            and i.status.group_ID == self.the_cat.status.group_ID
+            and (i.status.group_ID == self.the_cat.status.group_ID or self.show_all)
             and i.ID not in self.the_cat.mate
             and (not self.single_only or not i.mate)
             and (
@@ -1292,8 +1299,8 @@ class ChooseMateScreen(Screens):
                 or 
                 ((get_clan_setting("same sex birth")
                 or xor('Y' in i.phenotype.sexgene, 'Y' in self.the_cat.phenotype.sexgene)) 
-                and 'sterile' not in i.permanent_condition
-                and 'sterile' not in self.the_cat.permanent_condition)
+                and 'sterile' not in i.permanent_conditions
+                and 'sterile' not in self.the_cat.permanent_conditions)
             )
         ]
 

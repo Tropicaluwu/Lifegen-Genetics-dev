@@ -100,7 +100,7 @@ def combined(base, save=None):
 
 # how often a cat gets one of your own prefixes or suffixes instead of the game's (Genemod's
 # namer mostly names cats after their looks, so your names need a share of their own)
-SHARES = {"rarely": 0.1, "sometimes": 0.3, "often": 0.6, "always": 1.0}
+SHARES = {"rarely": 0.02, "sometimes": 0.06, "often": 0.15, "always": 1.0}
 DEFAULT_SHARE = "sometimes"
 
 
