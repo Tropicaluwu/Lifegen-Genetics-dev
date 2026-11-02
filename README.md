@@ -8,7 +8,7 @@ I ask that if you make a fork or a version of this mod built off of my code, you
 
 ## How to play
 
-Updated October 27, 2026. Versions downloaded before this date don't have run.command, so Mac players should download the latest version.
+Versions downloaded before October 27, 2026 don't have run.command, so Mac players should download the latest version.
 
 LifeGen Genetics runs from its source code, so there's no app to install. Instead you install **uv**. After that, starting the game is a double-click (or one command on Linux).
 
