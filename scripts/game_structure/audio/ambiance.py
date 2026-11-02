@@ -96,6 +96,8 @@ class Ambiance:
         """
         self._find_ambiance()
         screen = switch_get_value(Switch.cur_screen)
+        if screen in constants.KEEP_MUSIC_SCREENS and self.get_busy():
+            return
         # default to menu playlist
         playlist = self.playlist_dict["menu_playlist"]
         changed = False

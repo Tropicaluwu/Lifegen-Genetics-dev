@@ -135,6 +135,8 @@ class Music:
         :param should_fade_out: Set True if music should fade out, if False, music will stop abruptly
         """
         screen = switch_get_value(Switch.cur_screen)
+        if screen in constants.KEEP_MUSIC_SCREENS and self.get_busy():
+            return
         # updates our current playlist
         self.find_playlist()
 

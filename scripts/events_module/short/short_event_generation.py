@@ -357,6 +357,12 @@ def generate_event_objects(event_triggered, biome, frequency) -> list:
         return []
 
 
+def event_mentions(event, name):
+    """If the event's text or its relationship logs use that name, like lead_name"""
+    logs = [log for change in event.relationships or [] for log in (change.get("log") or {}).values()]
+    return name in event.text or any(name in log for log in logs)
+
+
 def filter_events(
     possible_events,
     main_cat,
@@ -433,13 +439,13 @@ def filter_events(
         if not event_for_poi(event.poi, clan):
             continue
 
-        if not clan.leader and "lead_name" in event.text:
+        if not clan.leader and event_mentions(event, "lead_name"):
             continue
-        if not clan.deputy and "dep_name" in event.text:
+        if not clan.deputy and event_mentions(event, "dep_name"):
             continue
         if (
             not find_alive_cats_with_rank(Cat, [CatRank.MEDICINE_CAT], working=True, clan=clan.group_ID)
-            and "med_name" in event.text
+            and event_mentions(event, "med_name")
         ):
             continue
 

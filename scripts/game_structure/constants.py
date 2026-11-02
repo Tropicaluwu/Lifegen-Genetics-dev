@@ -25,6 +25,8 @@ MENU_SCREENS = [
     GameScreen.MAKE_CLAN_CUSTOM_CAT,
     GameScreen.MAKE_CLAN_YOUR_NAME,
 ]
+# whatever is playing keeps playing on these, they open from the menus and from inside a Clan
+KEEP_MUSIC_SCREENS = [GameScreen.MAKE_CLAN_CUSTOM_CAT, GameScreen.MAKE_CLAN_YOUR_NAME]
 
 EVENTS_PER_PAGE = 10
 

@@ -1,4 +1,4 @@
-<strong>LifeGen Genetics v1.2-dev.2</strong>
+<strong>LifeGen Genetics v1.2-dev.3</strong>
 
 A development build, so keep a copy of your saves folder before playing.
 
@@ -8,6 +8,11 @@ Fixes:
 - Genetics text no longer stays on screen after leaving a cat's history
 - Scrolling big lists is gentler and stops at the ends
 - Fullscreen and the cards screen no longer crash
+- All harnesses show the right color in every pose, and the pink, peach and violet ones show up at all
+- Moon skips no longer crash on an event that names the leader of a Clan with no leader
+- The sectoral eye buttons no longer cover the heterochromia list in the cat maker
+- The speaker button goes back to its spot after leaving the cat maker
+- The music and ambiance keep playing when the cat maker opens from inside a Clan
 
 Changed:
 - White patches are grouped by where they are on the cat, and eye colors by color family, so the lists open quickly

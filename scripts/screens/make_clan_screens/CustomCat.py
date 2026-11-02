@@ -367,6 +367,8 @@ class CustomCatScreen(MakeClanScreenBase):
         self.clear_all_page()
         for item in self.customiser_button_dicts:
             item.clear()
+        # the Clan creation screens put it back at the top when they open
+        self.set_mute_button_position("bottomright")
         return super().exit_screen()
 
     def handle_event(self, event):
@@ -1742,6 +1744,8 @@ class CustomCatScreen(MakeClanScreenBase):
             # after the list's own rows (one text box each)
             rows = sum(1 for element in container.scrollable_container.elements
                        if isinstance(element, pygame_gui.elements.UITextBox))
+            # lists in groups have a button for each group too
+            rows += sum(1 for key in self.gene_menu_buttons if isinstance(key, tuple) and key[0] == "gene group")
             y = rows * 40
             if rows:
                 self.gene_names["heading"] = pygame_gui.elements.UITextBox(
