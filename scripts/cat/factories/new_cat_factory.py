@@ -147,7 +147,7 @@ class NewCatFactory(BaseCatFactory, ABC):
 
         cat = Cat(**cat_params)
 
-        cls._handle_genetic_confitions(cat)
+        cls._handle_genetic_conditions(cat)
 
         cat.name = Name(
             prefix=overrides.get("prefix"),
@@ -438,7 +438,7 @@ class NewCatFactory(BaseCatFactory, ABC):
         return [pelt, phenotype, chimerapheno, passes, parent3]
 
     @classmethod
-    def _handle_genetic_confitions(cls, cat):
+    def _handle_genetic_conditions(cls, cat):
         cat.genetic_conditions(False)
 
     @classmethod

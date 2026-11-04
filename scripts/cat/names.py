@@ -274,7 +274,7 @@ class Name:
             colour_changed = False
         elif change == "kit-apprentice" and self.phenotype.pointgene[0] in ['cb', 'cs']:
             colour_changed = True
-        elif change == "kit-apprentice" and (self.phenotype.fevercoat or self.phenotype.bleach[0] == 'lb'):
+        elif change == "kit-apprentice" and (self.cat.pelt.fevercoat or self.phenotype.bleach[0] == 'lb'):
             colour_changed = True
         elif change == "kit-apprentice" and self.phenotype.karp[0] == 'K':
             colour_changed = True
@@ -284,7 +284,7 @@ class Name:
             colour_changed = True
         elif self.phenotype.ext[0] == 'ea' and ((change == "apprentice-warrior" and self.phenotype.agouti[0] != 'a') or (self.moons > 35 and change == "apprentice-warrior")):
             colour_changed = True
-        elif change in ["apprentice-warrior", "warrior-elder"] and self.phenotype.vitiligo:
+        elif change in ["apprentice-warrior", "warrior-elder"] and (self.phenotype.vitiligo or self.cat.pelt.rusting):
             colour_changed = True
         elif self.prefix in self.mod_prefixes['general']['small'] and self.phenotype.height_label in ['goliath', 'giant', 'large', 'above average', 'average']:
             colour_changed = True
@@ -347,7 +347,7 @@ class Name:
         except:
             used_prefixes = []
 
-        namer = Namer(used_prefixes, self.mod_prefixes, self.moons, self.phenotype, self.chimpheno)
+        namer = Namer(used_prefixes, self.mod_prefixes, self.moons, cat)
         tries = 0
         if get_clan_setting("modded names") and get_clan_setting('new prefixes'):
             while True:
@@ -385,8 +385,7 @@ class Name:
 
         colours = colour_mappings[params[0]]
         if params[2]['type'] == 'silver' and params[0] not in ['ginger', 'cream']:
-            colours.append('PALEGREY')
-            colours.append('SILVER')
+            colours += ['PALEGREY', "SILVER", "CHINCHILLA"]
         if params[2]['type'] == 'dark' and params[0] == "black":
             colours.append('GHOST')
         if params[2]['type'] == 'golden' and params[0] not in ['ginger', 'cream']:
@@ -574,13 +573,12 @@ class Name:
                 "silver shaded": ["WHITE"]
             }
 
-            namer = Namer([], [], self.moons, self.phenotype, self.chimpheno)
+            namer = Namer([], [], self.moons, self.cat)
             params = namer.parse_chimera() if self.chimpheno else namer.get_categories(self.phenotype)
 
             colours = colour_mappings[params[0]]
             if params[2]['type'] == 'silver' and params[0] not in ['ginger', 'cream']:
-                colours.append('PALEGREY')
-                colours.append('SILVER')
+                colours += ['PALEGREY', "SILVER", "CHINCHILLA"]
             if params[2]['type'] == 'dark' and params[0] == "black":
                 colours.append('GHOST')
             if params[2]['type'] == 'golden' and params[0] not in ['ginger', 'cream']:

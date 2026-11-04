@@ -1547,9 +1547,12 @@ class CustomCatScreen(MakeClanScreenBase):
         options = self.GENE_MENUS[label].options
         if len(options) <= 40:
             return self.add_option_rows(label, options, y_pos)
+        # choices that aren't an eye color (like "None" for no odd eye) go above the groups
+        y_pos = self.add_option_rows(label, [o for o in options if o not in gene_menus.EYES], y_pos)
         groups = {}
         for option in options:
-            groups.setdefault(gene_menus.eye_family(option), []).append(option)
+            if option in gene_menus.EYES:
+                groups.setdefault(gene_menus.eye_family(option), []).append(option)
         current = self.GENE_MENUS[label].read(self.custom_cat.phenotype)
         for family in gene_menus.EYE_FAMILIES:
             if family not in groups:

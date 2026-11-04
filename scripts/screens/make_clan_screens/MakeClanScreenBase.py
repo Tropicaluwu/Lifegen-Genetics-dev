@@ -443,6 +443,7 @@ class MakeClanScreenBase(Screens):
                 ),
                 lifegen_kitten_creation=False,
                 max_cats=size_dict[self.clan_info.starting_size],
+                cards=self.clan_info.cruel_cards,
             ),
         )
         possible_cats = switch_get_value(Switch.future_clan_cats)

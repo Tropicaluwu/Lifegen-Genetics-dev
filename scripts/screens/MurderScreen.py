@@ -27,6 +27,27 @@ from ..ui.elements.surface_image_button import UISurfaceImageButton
 from ..ui.elements.sprite_button import UISpriteButton
 from scripts.game_structure import game
 from scripts.cat.skills import SkillPath
+
+
+# LG: skills are saved as codes like "FIGHTER,2", but this screen checks skill names like
+# "formidable fighter", so no skill check ever matched. This turns a code into its English name.
+_SKILL_NAMES = {}
+
+
+def _skill_name(code):
+    if not _SKILL_NAMES:
+        import json
+
+        def walk(d):
+            for k, v in d.items():
+                if isinstance(v, dict):
+                    walk(v)
+                elif isinstance(v, str) and re.match(r"^[A-Z_]+,[0-9.]+$", k):
+                    _SKILL_NAMES[k] = v
+
+        with open("resources/lang/en/cat/skills.en.json", encoding="utf-8") as f:
+            walk(json.load(f))
+    return _SKILL_NAMES.get(code, code)
 from ..ui.generate_box import BoxStyles, get_box
 from scripts.game_structure.screen_settings import MANAGER
 from ..ui.generate_button import get_button_dict, ButtonStyles
@@ -1437,15 +1458,15 @@ class MurderScreen(Screens):
 
         your_skills = []
         if you.skills.primary:
-            your_skills.append(you.skills.primary.skill)
+            your_skills.append(_skill_name(you.skills.primary.skill))
         if you.skills.secondary:
-            your_skills.append(you.skills.secondary.skill)
+            your_skills.append(_skill_name(you.skills.secondary.skill))
 
         their_skills = []
         if cat_to_murder.skills.primary:
-            their_skills.append(cat_to_murder.skills.primary.skill)
+            their_skills.append(_skill_name(cat_to_murder.skills.primary.skill))
         if cat_to_murder.skills.secondary:
-            their_skills.append(cat_to_murder.skills.secondary.skill)
+            their_skills.append(_skill_name(cat_to_murder.skills.secondary.skill))
 
         # GENERAL
         if you.joined_df:
@@ -1491,8 +1512,8 @@ class MurderScreen(Screens):
         victim_skills_lvl1 = [
             "watchful",
             "lives in groups",
-            "interested in oddities",
-            "fascinated by prophecies",
+            "notices oddities",
+            "likes riddles",
         ]
         victim_skills_lvl2 = [
             "good guard",
@@ -1520,17 +1541,13 @@ class MurderScreen(Screens):
         if self.method == "attack":
             if you.joined_df:
                 chance -= 35
-            if (
-                "steps lightly" or "mossball hunter" or "avid play-fighter"
-            ) in your_skills:
+            if any(skill in your_skills for skill in ("steps lightly", "moss ball hunter", "avid play-fighter")):
                 chance -= 3
-            if ("graceful" or "good hunter" or "good fighter") in your_skills:
+            if any(skill in your_skills for skill in ("graceful", "good hunter", "strong fighter")):
                 chance -= 7
-            if ("elegant" or "great hunter" or "formidable fighter") in your_skills:
+            if any(skill in your_skills for skill in ("elegant", "great hunter", "formidable fighter")):
                 chance -= 11
-            if (
-                "radiates elegance" or "renowned hunter" or "unusually strong fighter"
-            ) in your_skills:
+            if any(skill in your_skills for skill in ("radiates elegance", "renowned hunter", "indomitable fighter")):
                 chance -= 15
             if you.status.rank == CatRank.WARRIOR and you_healthy:
                 chance -= 23
@@ -1550,11 +1567,11 @@ class MurderScreen(Screens):
 
             if "avid play-fighter" in their_skills:
                 chance += 8
-            if "good fighter" in their_skills:
+            if "strong fighter" in their_skills:
                 chance += 12
             if "formidable fighter" in their_skills:
                 chance += 18
-            if "unusually strong fighter" in their_skills:
+            if "indomitable fighter" in their_skills:
                 chance += 25
 
             if self.location == "camp":
@@ -1601,7 +1618,7 @@ class MurderScreen(Screens):
                 chance += 11
 
         if self.method == "predator":
-            pred_skills_lvl_1 = ["other-cat-ly whisperer", "mossball hunter"]
+            pred_skills_lvl_1 = ["other-cat-ly whisperer", "moss ball hunter"]
             pred_skills_lvl_2 = ["dog-whisperer", "good hunter"]
             pred_skills_lvl_3 = ["multilingual", "great hunter"]
             pred_skills_lvl_4 = ["listener of all voices", "renowned hunter"]
@@ -1628,11 +1645,11 @@ class MurderScreen(Screens):
 
             if "avid play-fighter" in their_skills:
                 chance += 8
-            if "good fighter" in their_skills:
+            if "strong fighter" in their_skills:
                 chance += 12
             if "formidable fighter" in their_skills:
                 chance += 18
-            if "unusually strong fighter" in their_skills:
+            if "indomitable fighter" in their_skills:
                 chance += 25
 
         if chance >= 95:
@@ -2607,7 +2624,7 @@ class MurderScreen(Screens):
             chance += 8
 
         if accomplice and accompliced:
-            chance += chance * math.floor(1 / 3)
+            chance += round(chance / 3)
 
         return chance
 
@@ -2842,20 +2859,20 @@ class MurderScreen(Screens):
     murder_skills = [
         "quick witted",
         "avid play-fighter",
-        "oddly observant",
+        "stares intently",
         "never sits still",
     ]
-    good_murder_skills = ["clever", "good fighter", "natural intuition", "fast runner"]
+    good_murder_skills = ["clever", "strong fighter", "perceptive", "fast runner"]
     great_murder_skills = [
         "very clever",
         "formidable fighter",
-        "keen eye",
+        "sharp senses",
         "incredible runner",
     ]
     best_murder_skills = [
         "incredibly clever",
-        "unusually strong fighter",
-        "unnatural senses",
+        "indomitable fighter",
+        "uncanny senses",
         "fast as the wind",
     ]
 
@@ -2876,22 +2893,22 @@ class MurderScreen(Screens):
         # skill chances from original murderscreen
         your_skills = []
         if you.skills.primary:
-            your_skills.append(you.skills.primary.skill)
+            your_skills.append(_skill_name(you.skills.primary.skill))
         if you.skills.secondary:
-            your_skills.append(you.skills.secondary.skill)
+            your_skills.append(_skill_name(you.skills.secondary.skill))
 
         their_skills = []
         if cat_to_murder.skills.primary:
-            their_skills.append(cat_to_murder.skills.primary.skill)
+            their_skills.append(_skill_name(cat_to_murder.skills.primary.skill))
         if cat_to_murder.skills.secondary:
-            their_skills.append(cat_to_murder.skills.secondary.skill)
+            their_skills.append(_skill_name(cat_to_murder.skills.secondary.skill))
 
         accomp_skills = []
         if accomplice:
             if accomplice.skills.primary:
-                accomp_skills.append(accomplice.skills.primary.skill)
+                accomp_skills.append(_skill_name(accomplice.skills.primary.skill))
             if accomplice.skills.secondary:
-                accomp_skills.append(accomplice.skills.secondary.skill)
+                accomp_skills.append(_skill_name(accomplice.skills.secondary.skill))
 
         if any(skill in self.murder_skills for skill in your_skills):
             chance += 5
@@ -2989,8 +3006,8 @@ class MurderScreen(Screens):
         victim_skills_lvl1 = [
             "watchful",
             "lives in groups",
-            "interested in oddities",
-            "fascinated by prophecies",
+            "notices oddities",
+            "likes riddles",
         ]
         victim_skills_lvl2 = [
             "good guard",
@@ -3016,13 +3033,13 @@ class MurderScreen(Screens):
             chance -= 20
 
         if self.location != "camp":
-            if "picky nest builder" in their_skills:
+            if "always tidies up" in their_skills:
                 chance -= 3
-            if "steady paws" in their_skills:
+            if "nest weaver" in their_skills:
                 chance -= 7
             if "den builder" in their_skills:
                 chance -= 11
-            if "campkeeper" in their_skills:
+            if "camp keeper" in their_skills:
                 chance -= 15
 
         if (
@@ -3066,17 +3083,13 @@ class MurderScreen(Screens):
             if you.joined_df:
                 chance += 15
 
-            if (
-                "steps lightly" or "mossball hunter" or "avid play-fighter"
-            ) in your_skills:
+            if any(skill in your_skills for skill in ("steps lightly", "moss ball hunter", "avid play-fighter")):
                 chance += 3
-            if ("graceful" or "good hunter" or "good fighter") in your_skills:
+            if any(skill in your_skills for skill in ("graceful", "good hunter", "strong fighter")):
                 chance += 7
-            if ("elegant" or "great hunter" or "formidable fighter") in your_skills:
+            if any(skill in your_skills for skill in ("elegant", "great hunter", "formidable fighter")):
                 chance += 11
-            if (
-                "radiates elegance" or "renowned hunter" or "unusually strong fighter"
-            ) in your_skills:
+            if any(skill in your_skills for skill in ("radiates elegance", "renowned hunter", "indomitable fighter")):
                 chance += 15
 
             if you.status.rank == CatRank.WARRIOR:
@@ -3099,11 +3112,11 @@ class MurderScreen(Screens):
 
             if "avid play-fighter" in their_skills:
                 chance -= 3
-            if "good fighter" in their_skills:
+            if "strong fighter" in their_skills:
                 chance -= 7
             if "formidable fighter" in their_skills:
                 chance -= 11
-            if "unusually strong fighter" in their_skills:
+            if "indomitable fighter" in their_skills:
                 chance -= 15
 
             if self.location == "camp":
@@ -3254,11 +3267,11 @@ class MurderScreen(Screens):
 
             if "avid play-fighter" in their_skills:
                 chance -= 3
-            if "good fighter" in their_skills:
+            if "strong fighter" in their_skills:
                 chance -= 8
             if "formidable fighter" in their_skills:
                 chance -= 13
-            if "unusually strong fighter" in their_skills:
+            if "indomitable fighter" in their_skills:
                 chance -= 18
 
             if self.location == "camp":
@@ -3274,15 +3287,15 @@ class MurderScreen(Screens):
                 chance += 20
 
         if you.moons < 6:
-            chance = chance * math.ceil(2 / 3)
+            chance = round(chance * 2 / 3)
 
         if cat_to_murder.moons < 6:
-            chance = chance * math.ceil(4 / 3)
+            chance = round(chance * 4 / 3)
 
         if accomplice and accompliced:
-            chance = chance * math.floor(6 / 5)
+            chance = round(chance * 6 / 5)
 
-        if chance <= 0:
+        if chance < 5:
             chance = 5
 
         if chance > 95:

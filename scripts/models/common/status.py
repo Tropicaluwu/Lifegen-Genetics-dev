@@ -38,8 +38,6 @@ class Status(Enum):
 
     queens_apprentice = "queen's apprentice"
     not_queens_apprentice = "-queen's apprentice"
-
-    any = "any"
     kittypet = "kittypet"
     not_kittypet = "-kittypet"
     loner = "loner"
@@ -50,3 +48,4 @@ class Status(Enum):
     not_clancat = "-clancat"
     guide = "guide"
     not_guide = "-guide"
+    any = "any"

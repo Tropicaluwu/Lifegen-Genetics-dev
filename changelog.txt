@@ -1,3 +1,16 @@
+<strong>LifeGen Genetics v1.2-dev.4</strong>
+
+A development build, so keep a copy of your saves folder before playing.
+
+Fixes:
+- Windows no longer asks to replace files when unzipping the game: 19 button images were saved twice
+- The alphabetical sort button shows up on Mac and Linux
+- The cat maker no longer crashes on the odd eye tab
+- Clan creation: going back to pick your cat and pressing Next without picking one no longer crashes
+- Cruel season cards no longer carry over into your other Clans until you restart the game
+- Cruel season cards that change genetics (like all purebreds) now apply to the Clan's starting cats
+- Murder: skills count toward the chance of success again (no skill ever matched), and the kit, accomplice and leader lives bonuses use the right math
+
 <strong>LifeGen Genetics v1.2-dev.3</strong>
 
 A development build, so keep a copy of your saves folder before playing.

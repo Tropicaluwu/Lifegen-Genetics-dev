@@ -119,7 +119,9 @@ def _find_config(config_path, card_list):
     if config_value is CONFIG:
         for key in config_keys:
             config_value = config_value[key]
-        if isinstance(config_value, dict):
+        if isinstance(config_value, dict) and card_list:
+            # copy first, so a card's values never end up in the plain game config
+            config_value = copy.deepcopy(config_value)
             for value in config_value:
                 for card in card_list:
                     card_info = constants.CRUEL_CARDS_ALL[card]
