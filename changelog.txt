@@ -1,3 +1,10 @@
+<strong>LifeGen Genetics v1.2-dev.5</strong>
+
+A development build, so keep a copy of your saves folder before playing.
+
+Fixes:
+- The cat maker's semi-lanky, lanky and wedge-faced lanky body types can be picked (they were still called oriental, so picking them did nothing)
+
 <strong>LifeGen Genetics v1.2-dev.4</strong>
 
 A development build, so keep a copy of your saves folder before playing.
