@@ -1163,7 +1163,8 @@ class Genotype:
         self.fleece = [choice(par1.fleece), choice(par2.fleece)]
         self.sedesp = [choice(par1.sedesp), choice(par2.sedesp)]
         self.ruhr = [choice(par1.ruhr), choice(par2.ruhr)]
-        self.ruhrmod = [choice(par1.ruhrmod), choice(par2.ruhrmod)]
+        # cats made in the cat maker before the fix have an empty ruhrmod
+        self.ruhrmod = [choice(par1.ruhrmod or ["hi", "hi"]), choice(par2.ruhrmod or ["hi", "hi"])]
 
         if(self.ruhrmod[0] == "ha"):
             x = self.ruhrmod[1]

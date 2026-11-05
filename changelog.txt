@@ -1,3 +1,11 @@
+<strong>LifeGen Genetics v1.1.4</strong>
+
+- Windows no longer asks to replace files when unzipping the game: 19 button images were saved twice
+- The alphabetical sort button shows up on Mac and Linux
+- The README explains what to do if setup stops with "Microsoft Visual C++ 14.0 or greater is required" or "Failed to build cffi"
+- run.bat works when it's started as administrator or from a shortcut (it stopped with "No pyproject.toml found")
+- Fixed a crash when a cat made in the cat maker has kits (the brush coat gene was left empty)
+
 <strong>LifeGen Genetics v1.1.3</strong>
 
 - Fixed the Change Role screen crashing for outsiders

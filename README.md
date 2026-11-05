@@ -132,6 +132,14 @@ Once your Clans show up in the new version, you can delete the old folder.
 - **The window closes right away (Windows):** right-click inside the game folder, choose **Open in Terminal**, type `.\run.bat` and press **Enter**. The window stays open, so you can see the error.
 - **Mac: "run.command can't be opened":** see step 3 for Mac (**Open Anyway** in Privacy & Security).
 - **It got stuck or failed the first time:** check your internet connection and start it again. It picks up where it left off.
+- **Windows asks to replace or skip files when unzipping:** pick either one. Those files are exact copies.
+- **"Microsoft Visual C++ 14.0 or greater is required" or "Failed to build cffi" (Windows):** Windows can't find a ready-made part of the game for your setup. This can happen on newer laptops with ARM processors, or when the setup picked the wrong version of Python. To fix it:
+  1. In the game folder, delete the **.venv** folder if there is one. It's hidden: in File Explorer, click **View**, then **Show**, then **Hidden items**.
+  2. Right-click an empty spot in the game folder and choose **Open in Terminal**. Paste this and press **Enter**:
+     ```
+     uv sync --python cpython-3.12-windows-x86_64-none
+     ```
+  3. When it's done, close the window and double-click **run.bat** as usual.
 - **"An Application Control policy has blocked this file" or "python.exe - Bad Image" (Windows 11):** this is Windows Smart App Control, not a broken download. See [Blocked by Smart App Control](#blocked-by-smart-app-control).
 - **My Clans are gone after updating:** copy the **saves** folder from the old game folder into the new one (see [Updating](#updating-to-a-new-version)).
 
