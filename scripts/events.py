@@ -615,7 +615,7 @@ def _one_moon_impl():
         med_fulfilled = medicine_cats_can_cover_clan(Cat.all_cats.values(), clan=CatGroup.PLAYER_CLAN_ID)
 
         if not med_fulfilled:
-            string = i18n.t("defaults.warn_low_medcats")
+            string = event_text_adjust(Cat, i18n.t("defaults.warn_low_medcats"), clan=game.clan)
             game.cur_events_list.insert(0, EventInformation(string, ["health"], clan=game.clan.group_ID))
     else:
         has_med = any(
@@ -1000,7 +1000,7 @@ def handle_lead_den_event():
                                 )
                                 invited_cat.specsuffix_hidden = False
                         # if cat is an apprentice, make sure they get a mentor!
-                        if invited_cat.status.rank.is_any_apprentice_rank():
+                        if invited_cat.status.rank.is_any_apprentice_rank() and get_config("roles.receive_mentor"):
                             invited_cat.update_mentor()
                         # if the cat chose to become a mediator but the settings don't allow it, make them a warrior instead
                         if (
@@ -4488,8 +4488,9 @@ def check_missing_mentors():
     Checks to see if any apprentices have missing mentors, reminds players of this.
     """
 
-    # Only do the check if mentors aren't being assigned randomly.
-    if get_clan_setting("assign_mentors"):
+    # Only do the check if mentors aren't being assigned randomly
+
+    if get_clan_setting("assign_mentors") or not get_config("roles.receive_mentor"):
         return
 
     mentorless = []

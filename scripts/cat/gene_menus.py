@@ -1208,7 +1208,8 @@ PLAIN_GENES = {
 def make_plain(genes):
     for gene, pair in PLAIN_GENES.items():
         setattr(genes, gene, list(pair))
-    genes.ruhrmod = ""
+    # a real pair, an empty one crashed the game when the cat had kits
+    genes.ruhrmod = ["hi", "hi"]
     genes.specialred = None
     genes.vitiligo = False
     genes.pseudomerle = False

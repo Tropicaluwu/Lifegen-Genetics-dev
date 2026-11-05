@@ -1,3 +1,16 @@
+<strong>LifeGen Genetics v1.2-dev.6</strong>
+
+A development build, so keep a copy of your saves folder before playing.
+
+New:
+- ClanGen's On Their Own cruel season card: cats never get mentors, with new apprentice ceremonies to match
+- Brought up to date with Genemod's modded branch and ClanGen's development branch from November 5, 2026
+
+Fixes:
+- The "no deputy" and "not enough healers" warnings show the Clan's name instead of c_n
+- run.bat works when it's started as administrator or from a shortcut (it stopped with "No pyproject.toml found")
+- Fixed a crash when a cat made in the cat maker has kits (the brush coat gene was left empty)
+
 <strong>LifeGen Genetics v1.2-dev.5</strong>
 
 A development build, so keep a copy of your saves folder before playing.

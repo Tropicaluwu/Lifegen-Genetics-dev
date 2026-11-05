@@ -265,7 +265,7 @@ def check_and_promote_deputy(clan):
 
     if not get_clan_setting("deputy") and clan == game.clan:
         # player doesn't want us to pick a dep for them
-        game.cur_events_list.insert(0, EventInformation(event_text_adjust(Cat, "defaults.warn_no_deputy", clan=clan), clan=clan.group_ID))
+        game.cur_events_list.insert(0, EventInformation(event_text_adjust(Cat, i18n.t("defaults.warn_no_deputy"), clan=clan), clan=clan.group_ID))
         return
 
     # This determines all the cats who are eligible to be deputy.
