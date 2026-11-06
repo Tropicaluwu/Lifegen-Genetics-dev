@@ -1,8 +1,4 @@
-"""the gene menus of the custom cat maker (from the LifeGen Genetics Cat Maker). Each
-menu sets the genes that make that look, and reads the current choice back from the genes, so the
-menus and the genes never disagree.
-
-Menus are grouped into tabs (see TABS at the bottom). SHORT has shorter names for the lists."""
+"""The cat maker's gene menus: each one sets the genes for a look and reads it back from them."""
 
 import colorsys
 import re

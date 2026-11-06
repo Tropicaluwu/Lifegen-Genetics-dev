@@ -1,3 +1,14 @@
+<strong>LifeGen Genetics v1.2-dev.7</strong>
+
+A development build, so keep a copy of your saves folder before playing.
+
+New:
+- Your cat's family fits your cat: Clan cats are only picked as your cat's birth parents when they could have had your cat, and siblings sometimes share your cat's color
+
+Fixes:
+- In the cat maker, accessories can be picked again, the scar checkmarks follow every change, and the accessory list opens quickly
+- Fixed a crash when kits are born (new in the November 5 update)
+
 <strong>LifeGen Genetics v1.2-dev.6</strong>
 
 A development build, so keep a copy of your saves folder before playing.

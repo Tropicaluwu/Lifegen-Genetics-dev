@@ -59,6 +59,10 @@ class TickBox(UIImageButton):
         super().enable()
 
 
+# accessories shown at a time in the accessory list (building all of them is slow)
+ACC_PAGE = 60
+
+
 class CustomCatScreen(MakeClanScreenBase):
     sprite_preview_bg = pygame.transform.scale(pygame.image.load(
         'resources/images/sprite_preview.png').convert_alpha(), (1600, 1400))
@@ -127,6 +131,7 @@ class CustomCatScreen(MakeClanScreenBase):
         self.customiser_sort = "default"
         self.search_text = ""
         self.previous_search_text = "search"
+        self.acc_limit = ACC_PAGE
 
         self.tortie_enabled = False
         self.current_selection_buttons = {}
@@ -1244,9 +1249,8 @@ class CustomCatScreen(MakeClanScreenBase):
                 else:
                     new_acc_list = acc_list
 
-                for acc in (
-                    ["None"] + new_acc_list
-                    ):
+                all_items = ["None"] + new_acc_list
+                for acc in all_items[:self.acc_limit]:
                     self.accessory_buttons[acc] = TickBox(
                         ui_scale(pygame.Rect((0, eye_y_pos), (34, 34))),
                         "",
@@ -1266,6 +1270,17 @@ class CustomCatScreen(MakeClanScreenBase):
                         acc_name,
                         ui_scale(pygame.Rect((0 + 32, eye_y_pos),(200, 34))),
                         object_id=get_text_box_theme("#text_box_30_horizleft"),
+                        container=self.elements["scroll_container"],
+                        manager=MANAGER
+                    )
+                    eye_y_pos += 40
+                left = len(all_items) - self.acc_limit
+                if left > 0:
+                    self.elements["acc_more"] = UISurfaceImageButton(
+                        ui_scale(pygame.Rect((0, eye_y_pos), (170, 30))),
+                        f"Show more ({left})",
+                        get_button_dict(ButtonStyles.SQUOVAL, (170, 30)),
+                        object_id="@buttonstyles_squoval",
                         container=self.elements["scroll_container"],
                         manager=MANAGER
                     )
@@ -2427,12 +2442,29 @@ class CustomCatScreen(MakeClanScreenBase):
             if "search_button" in self.elements and event.ui_element == self.elements["search_button"]:
                 self.search_text = self.elements["search_bar"].get_text()
                 self.previous_search_text = self.search_text
+                self.acc_limit = ACC_PAGE
                 self.update_custom_cat_pages()
                 self.update_sprite()
                 self.update_disabled_buttons()
+            if "acc_more" in self.elements and event.ui_element == self.elements["acc_more"]:
+                container = self.elements.get("scroll_container")
+                bar = getattr(container, "vert_scroll_bar", None)
+                where = bar.start_percentage if bar else 0
+                self.acc_limit += ACC_PAGE
+                self.update_custom_cat_pages()
+                self.update_disabled_buttons()
+                # stay where the list was, it only got longer
+                bar = getattr(self.elements.get("scroll_container"), "vert_scroll_bar", None)
+                if bar:
+                    try:
+                        bar.set_scroll_from_start_percentage(where * (self.acc_limit - ACC_PAGE) / self.acc_limit)
+                    except Exception:
+                        pass
+                return
             if "clear" in self.elements and event.ui_element == self.elements["clear"]:
                 self.search_text = ""
                 self.previous_search_text = self.search_text
+                self.acc_limit = ACC_PAGE
                 self.update_custom_cat_pages()
                 self.update_sprite()
                 self.update_disabled_buttons()
@@ -2657,6 +2689,17 @@ class CustomCatScreen(MakeClanScreenBase):
                                 self.toggle_condition(comes_with)
                         self.update_sprite()
                         self.update_disabled_buttons()
+                for i in self.accessory_buttons.items():
+                    if event.ui_element == self.accessory_buttons[i[0]]:
+                        if i[0] == "None":
+                            self.custom_cat.legacy_pelt.accessory = []
+                            self.custom_cat.legacy_pelt.inventory = []
+                        else:
+                            self.custom_cat.legacy_pelt.accessory = [i[0]]
+                            self.custom_cat.legacy_pelt.inventory = [i[0]]
+                        self.update_sprite()
+                        self.update_disabled_buttons()
+                        break
             elif self.page == 3:
                 for i in self.condition_buttons.items():
                     if event.ui_element == self.condition_buttons[i[0]]:
@@ -2694,6 +2737,7 @@ class CustomCatScreen(MakeClanScreenBase):
             for i in self.current_selection_buttons.items():
                 if event.ui_element == self.current_selection_buttons[i[0]]:
                     self.current_selection = i[0]
+                    self.acc_limit = ACC_PAGE
                     self.update_custom_cat_pages()
                     self.update_sprite()
                     self.update_disabled_buttons()
@@ -2969,6 +3013,7 @@ class CustomCatScreen(MakeClanScreenBase):
                 if self.custom_cat.legacy_pelt.paralyzed is True:
                     for scar in ["BRIGHTHEART", "LEFTBLIND", "RIGHTBLIND", "BOTHBLIND", "NOPAW", "NOTAIL"]:
                         self.scar_buttons[scar].disable()
+            self.refresh_scar_checks()
             for i in self.accessory_buttons.items():
                 if i[0] == "None" and not self.custom_cat.legacy_pelt.accessory:
                     self.accessory_buttons[i[0]].disable()
@@ -2981,14 +3026,10 @@ class CustomCatScreen(MakeClanScreenBase):
                     for acc in Pelt.tail_accessories:
                         if acc in self.accessory_buttons:
                             self.accessory_buttons[acc].disable()
-                        else:
-                            print(acc, "button not generated?")
                 if "born without a leg" in self.picked_conditions:
                     for acc in Pelt.paw_accessories:
                         if acc in self.accessory_buttons:
                             self.accessory_buttons[acc].disable()
-                        else:
-                            print(acc, "button not generated?")
 
             if self.current_selection == "accessory":
                 if "acc_name" in self.elements:

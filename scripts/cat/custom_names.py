@@ -1,11 +1,4 @@
-"""Your own changes to the game's name lists (made in the Names window).
-
-They're kept apart from the game's lists, in custom_names.json: one in the saves folder for all
-saves, and one in a save's own folder for just that save. They stack: a save uses the game's
-names, then the all-saves changes, then its own. For each list you can add names, take any name
-out (the game's or your own), or use only your own names. The rank endings (kit, paw, star...)
-can each be changed.
-"""
+"""The player's own changes to the game's name lists, made in the Names window."""
 import copy
 import os
 
@@ -98,15 +91,13 @@ def combined(base, save=None):
     return names_dict
 
 
-# how often a cat gets one of your own prefixes or suffixes instead of the game's (Genemod's
-# namer mostly names cats after their looks, so your names need a share of their own)
+# how often a cat gets a custom prefix or suffix instead of the game's
 SHARES = {"rarely": 0.02, "sometimes": 0.06, "often": 0.15, "always": 1.0}
 DEFAULT_SHARE = "sometimes"
 
 
 def merged_info(save=None):
-    """Per list: your added names, the names taken out, how often yours are used and whether
-    only yours are used (all saves, then the save's own on top)"""
+    """Per list: added and removed names, how often custom names are used and if only they are"""
     info = {}
     for data in [load()] + ([load(save)] if save else []):
         for key, changes in data.get("lists", {}).items():
@@ -125,7 +116,7 @@ def merged_info(save=None):
 
 
 def pick(info, key):
-    """One of your own names for this list, if it's their turn, or None"""
+    """A custom name for this list when it's its turn, or None"""
     from random import choice, random
 
     entry = info.get(key)

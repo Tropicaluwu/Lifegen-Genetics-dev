@@ -1,10 +1,4 @@
-"""
-Old style (lifegen/clangen) pelt options for the cat customizer.
-
-Genemod builds cats from genes instead of picking a pelt name + colour, so the
-customizer on the make clan screen keeps its picks in a LegacyPelt and then
-turns them into genes with the same porting code that converts old saves.
-"""
+"""Old style (LifeGen/ClanGen) pelt options for the cat maker, turned into genes."""
 
 import json
 

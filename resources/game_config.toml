@@ -1851,6 +1851,12 @@ dev_tools = false
 
 # LIFEGEN!!!!
 
+[lgg.family]
+# your cat's siblings (when the parents are made up): the chance each one shares your cat's color,
+# and a tortie sibling of a tortie cat's chance to share the tortie colors
+color_chance = 0.35
+tortie_color_chance = 0.4
+
 [lifegen]
   [lifegen.debug]
     debug_ensure_focus = ""
