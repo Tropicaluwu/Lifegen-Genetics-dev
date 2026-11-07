@@ -431,6 +431,8 @@ def handle_outside_parent(cat, clan, amount=0, background_category= "1"):
         nr_of_parents = 1
         if background_category == "1" and get_clan_setting('multisire') and randint(1, get_config("pregnancy.multi-sire_chance")) == 1:
             nr_of_parents = randint(2, get_config("pregnancy.multi-sire_max_sires"))
+            if amount:
+                nr_of_parents = min(nr_of_parents, amount)
         outside_parents = []
         for i in range(nr_of_parents):
             if (random() < 0.75 or (random() < 0.5 and i) or not outsider_affair_partners):

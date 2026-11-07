@@ -128,10 +128,6 @@ class StartScreen(Screens):
                 open_url("https://github.com/Chinch-Bug/clangen-genemod/issues/new/choose")
             elif element == self.social_buttons["discord_button"]:
                 open_url("https://discord.gg/Kxdvk5eXC9")
-            elif element == self.social_buttons["tumblr_button"]:
-                open_url("https://officialclangen.tumblr.com/")
-            elif element == self.social_buttons["twitter_button"]:
-                open_url("https://twitter.com/OfficialClangen")
 
         super().handle_event(event)
 

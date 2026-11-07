@@ -1,3 +1,14 @@
+<strong>LifeGen Genetics v1.2-dev.8</strong>
+
+A development build, so keep a copy of your saves folder before playing.
+
+New:
+- Brought up to date with Genemod's modded branch and ClanGen's development branch from November 7, 2026
+- Cats starting a new Clan are never older than 140 moons (from ClanGen)
+
+Fixes:
+- Fixed a crash when clicking the mute button on the main menu
+
 <strong>LifeGen Genetics v1.2-dev.7</strong>
 
 A development build, so keep a copy of your saves folder before playing.
