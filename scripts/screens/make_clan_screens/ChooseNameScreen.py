@@ -63,8 +63,6 @@ class ChooseNameScreen(MakeClanScreenBase):
             manager=MANAGER,
         )
 
-        self.elements["medium"].disable()
-
         self.elements["established"] = UISurfaceImageButton(
             ui_scale(pygame.Rect((295, 200), (80, 30))),
             "Old",
@@ -81,7 +79,9 @@ class ChooseNameScreen(MakeClanScreenBase):
             tool_tip_text="The Clan is newly established and cats' backstories will reflect this.",
             manager=MANAGER,
         )
-        self.elements["established"].disable()
+        # the picked buttons show what the Clan will really get
+        self.elements[self.clan_info.starting_size].disable()
+        self.elements[self.clan_info.clan_age].disable()
         # ---
 
         self.elements["title"] = pygame_gui.elements.UITextBox(

@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from random import choice, randint, sample
+from random import choice, sample
 from re import sub
 from typing import Optional
 from uuid import uuid4
@@ -494,11 +494,10 @@ class MakeClanScreenBase(Screens):
                 self.clan_info.medicine_cat,
             ]
         ]
-        # the pool is sized by the chosen starting size, so don't ask for more than it holds
-        amount = min(
-            randint(max(minimum_needed, 0), max(maximum_needed, 0)),
-            len(available_cats),
-        )
+        # the pool is sized by the chosen starting size (10, 15 or 20 cats in all), so the whole
+        # pool joins, unless a cruel season card caps the Clan lower
+        amount = max(min(len(available_cats), maximum_needed), minimum_needed, 0)
+        amount = min(amount, len(available_cats))
         self.clan_info.starting_members = sample(available_cats, amount)
 
     def get_config_during_creation(self, config_path):

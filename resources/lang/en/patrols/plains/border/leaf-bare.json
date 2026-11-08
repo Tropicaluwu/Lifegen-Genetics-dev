@@ -807,10 +807,10 @@
                 "relationship_changes": [
                     {
                         "cats_to": [
-                            "patrol_cats", "-r_c"
+                            "patrol_cats", "-r_c0"
                         ],
                         "cats_from": [
-                            "patrol"
+                            "patrol_cats"
                         ],
                         "mutual": false,
                         "values": [

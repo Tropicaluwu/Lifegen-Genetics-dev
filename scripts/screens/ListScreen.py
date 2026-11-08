@@ -652,6 +652,19 @@ class ListScreen(Screens):
         #     print(cat.status.group == CatGroup.PLAYER_CLAN_ID)
         # print("player clan group:", CatGroup.PLAYER_CLAN_ID)
 
+        # adding in the guide if necessary, this ensures the guide isn't affected by sorting as we always want them to
+        # be the first cat on the list
+        # LG: before the search, or the first look at the list leaves the guide out
+        if self.current_group == "general.dark_forest" and game.clan.demon.status.group == CatGroup.DARK_FOREST:
+            if game.clan.demon in self.full_cat_list:
+                self.full_cat_list.remove(game.clan.demon)
+            self.full_cat_list.insert(0, game.clan.demon)
+        if self.current_group == "general.starclan" and game.clan.instructor.status.group == CatGroup.STARCLAN:
+            if game.clan.instructor in self.full_cat_list:
+                self.full_cat_list.remove(game.clan.instructor)
+            self.full_cat_list.insert(0, game.clan.instructor)
+        # ---
+
         # make sure cat list is the same everywhere else in the game.
         Cat.sort_cats(self.full_cat_list)
         Cat.sort_cats(Cat.all_cats_list)
@@ -659,19 +672,6 @@ class ListScreen(Screens):
         self.current_listed_cats = search_cats(search_text, self.full_cat_list, get_clan_setting("search genotypes"))
         
         Cat.sort_cats(self.current_listed_cats)
-
-        # adding in the guide if necessary, this ensures the guide isn't affected by sorting as we always want them to
-        # be the first cat on the list
-        # LG
-        if self.current_group == "general.dark_forest":
-            if game.clan.demon in self.full_cat_list:
-                self.full_cat_list.remove(game.clan.demon)
-            self.full_cat_list.insert(0, game.clan.demon)
-        if self.current_group == "general.starclan":
-            if game.clan.instructor in self.full_cat_list:
-                self.full_cat_list.remove(game.clan.instructor)
-            self.full_cat_list.insert(0, game.clan.instructor)
-        # ---
 
         all_instructors = [game.clan.instructor, game.clan.demon] + [clan.instructor for clan in game.clan.all_other_clans if clan.instructor]
         for ins in all_instructors[::-1]:

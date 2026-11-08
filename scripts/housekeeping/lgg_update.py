@@ -3,9 +3,9 @@ import re
 import threading
 from configparser import ConfigParser
 
-# which branch has the newest version of each channel. Stable players download the development
+# which branch has the newest version of each channel. Stable players download the stable
 # branch (the green Code button), dev builds the dev branch. Each only hears about its own channel.
-BRANCHES = {"stable": "development", "dev": "dev"}
+BRANCHES = {"stable": "stable", "dev": "dev"}
 REPO = "Tropicaluwu/Lifegen-Genetics-dev"
 
 # filled in by the check: the newest version ("v1.1.2"), if it's newer than this one

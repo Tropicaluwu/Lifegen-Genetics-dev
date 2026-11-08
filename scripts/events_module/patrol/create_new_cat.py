@@ -412,7 +412,7 @@ def _assign_name(created_cat: Cat):
         name = choice(Name.names_dict[selected_category])
         created_cat.change_name(new_prefix=name, new_suffix="")
         if selected_category == "normal prefixes" and get_clan_setting("modded names") and get_clan_setting('new prefixes') and random() < 0.9:
-            created_cat.name.give_prefix(Cat, created_cat.status.fetch_clan_object(game.clan).biome, no_suffix=True)
+            created_cat.name.give_prefix(created_cat, created_cat.status.fetch_clan_object(game.clan).biome, no_suffix=True)
         
 
 def _assign_backstory(created_cat, option_dict):
@@ -681,6 +681,7 @@ def updated_find_clan_cats(option_dict: InvolvedCatDict, involved_cats: dict[str
                 give_mates.append(involved_cats[index])
 
     option_dict = option_dict.copy()
+    status, age, blood_parent, sibling = [], None, None, None
     if option_dict.get("status"):
         # check for "clancat" first since it's not really a rank
         if "clancat" in option_dict["status"]:
@@ -702,7 +703,7 @@ def updated_find_clan_cats(option_dict: InvolvedCatDict, involved_cats: dict[str
     if par := option_dict.get("can_create_new_cat", {}).get("become_litter"):
         (parents, orphans) = get_alive_clan_queens(all_clan_cats, clan=other_clan.group_ID)
         if blood_parent:
-            picked_cats = parents[blood_parent.ID]
+            picked_cats = parents.get(blood_parent.ID, [])
         elif parents:
             litter = parents[choice(list(parents.keys()))]
             picked_cats = litter
@@ -712,7 +713,10 @@ def updated_find_clan_cats(option_dict: InvolvedCatDict, involved_cats: dict[str
                     orphans.remove(cat)
                 if isinstance(cat, list):
                     orphans = [i for i in orphans if i not in cat]
-            picked_cats = [choice(orphans)]
+            picked_cats = [choice(orphans)] if orphans else []
+        # no fitting kits in the other Clan: make new ones
+        if not picked_cats:
+            picked_cats = updated_create_new_cat(option_dict, involved_cats, clan, other_clan)
     else:
         if blood_parent and not sibling:
             all_clan_cats = [cat for cat in all_clan_cats if cat.parent1]
@@ -748,7 +752,7 @@ def updated_find_clan_cats(option_dict: InvolvedCatDict, involved_cats: dict[str
                     option_dict, involved_cats, clan, other_clan)
         elif age[0] == "has_kits":
             (parents, orphans) = get_alive_clan_queens(all_clan_cats, clan=other_clan.group_ID)
-            for par_id in parents.keys():
+            for par_id in list(parents.keys()):
                 if Cat.fetch_cat(par_id) not in all_clan_cats:
                     del parents[par_id]
             all_clan_cats = [Cat.fetch_cat(par_id) for par_id in parents.keys()]
@@ -759,11 +763,15 @@ def updated_find_clan_cats(option_dict: InvolvedCatDict, involved_cats: dict[str
                 tags=[],
                 return_id=False,
                 return_list=True
-            )
+            ) or []
         
         all_clan_cats_status = [i for i in all_clan_cats if i in status_filtered]
         if all_clan_cats_status:
             all_clan_cats = all_clan_cats_status
+
+        # no fitting cat in the other Clan: make a new one
+        if not all_clan_cats:
+            return updated_create_new_cat(option_dict, involved_cats, clan, other_clan)
 
         all_clan_cats_healthy = [i for i in all_clan_cats if i.can_work()]
         picked_cats = [choice(all_clan_cats_healthy if all_clan_cats_healthy else all_clan_cats)]

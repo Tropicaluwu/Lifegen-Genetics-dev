@@ -549,7 +549,7 @@ def create_new_cat_block(
                     )
                 else:  # completely new name
                     chosen_cat.name.give_prefix(
-                        Cat,
+                        chosen_cat,
                         biome=clan.biome
                     )
                     chosen_cat.name.give_suffix(
@@ -1246,7 +1246,7 @@ def create_new_cat(
                 new_cat.change_name(new_prefix=name, new_suffix="")
                 if overwrite_prefix:
                     new_cat.name.give_prefix(
-                        Cat, new_cat.status.fetch_clan_object(game.clan).biome, no_suffix=True)
+                        new_cat, new_cat.status.fetch_clan_object(game.clan).biome, no_suffix=True)
 
         # Remove disabling scars, if they generated.
         # these are removed bc the cat won't have the associated perm condition
@@ -1366,10 +1366,11 @@ def gather_cat_objects(
             continue
 
         found_cat = None
+        # patrols pass no event, so a stray m_c or r_c is skipped instead of crashing
         if abbr == "m_c":
-            found_cat = extra_cat if extra_cat else event.main_cat
+            found_cat = extra_cat if extra_cat else getattr(event, "main_cat", None)
         elif abbr == "r_c":
-            found_cat = event.random_cat
+            found_cat = getattr(event, "random_cat", None)
         # LG: the same cats the patrol text names as o_c1-4
         elif re.match(r"o_c[1-4]$", abbr) and involved_cats and involved_cats.get("patrol_cats"):
             other_cats = [

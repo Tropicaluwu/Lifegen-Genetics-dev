@@ -245,6 +245,53 @@ class Name:
         cls.apply_custom_names()
 
     @classmethod
+    def other_game_names(cls, key):
+        """The prefixes or suffixes the game also gives besides the main list (by looks, color,
+        biome, pelt, animal), so the Names window can show them and they can be taken out"""
+        cache = cls.__dict__.get("_other_names_cache")
+        if cache is None or cache[0] is not cls.default_names:
+            cache = (cls.default_names, {})
+            cls._other_names_cache = cache
+        if key in cache[1]:
+            return cache[1][key]
+        cache[1][key] = cls._find_other_game_names(key)
+        return cache[1][key]
+
+    @classmethod
+    def _find_other_game_names(cls, key):
+        if key == "normal_prefixes":
+            groups = ["colour_prefixes", "biome_prefixes", "pelt_prefixes", "animal_prefixes"]
+            mod_file = "alt_prefixes.json"
+        elif key == "normal_suffixes":
+            groups = ["colour_suffixes", "biome_suffixes", "pelt_suffixes", "animal_suffixes"]
+            mod_file = "alt_suffixes.json"
+        else:
+            return []
+        try:
+            mod_names = load_lang_resource(mod_file)
+        except Exception:  # pylint: disable=broad-except
+            mod_names = {}
+        out = {}
+
+        def walk(value):
+            if isinstance(value, str):
+                out.setdefault(value, None)
+            elif isinstance(value, list):
+                for item in value:
+                    walk(item)
+            elif isinstance(value, dict):
+                for inner_key, item in value.items():
+                    # filter_out lists words that are never used, the rest are notes
+                    if inner_key not in ("filter_out", "why_filter", "note", "comment"):
+                        walk(item)
+
+        for group in groups:
+            walk(cls.default_names.get(group, []))
+        walk(mod_names)
+        main = set(cls.default_names.get(key, []))
+        return [name for name in out if name and name not in main]
+
+    @classmethod
     def apply_custom_names(cls):
         cls.names_dict = custom_names.combined(cls.default_names, cls.current_clan)
         cls.custom = custom_names.merged_info(cls.current_clan)
@@ -327,9 +374,12 @@ class Name:
         if mine:
             self.prefix = mine
             return
-        self.give_game_prefix(cat, biome, no_suffix)
-        if custom_names.is_removed(Name.custom, "normal_prefixes", self.prefix):
-            self.prefix = random.choice(self.names_dict["normal_prefixes"])
+        # a few more tries keep it named after its looks, then a plain prefix
+        for _ in range(10):
+            self.give_game_prefix(cat, biome, no_suffix)
+            if not custom_names.is_removed(Name.custom, "normal_prefixes", self.prefix):
+                return
+        self.prefix = random.choice(self.names_dict["normal_prefixes"])
 
     def give_game_prefix(self, cat, biome, no_suffix=False):
         self.load_localized_names()
@@ -463,9 +513,11 @@ class Name:
             if mine:
                 self.suffix = mine
                 return
-        self.give_game_suffix(skills, personality, biome, honour)
-        if self.suffix and custom_names.is_removed(Name.custom, "normal_suffixes", self.suffix):
-            self.suffix = random.choice(self.names_dict["normal_suffixes"])
+        for _ in range(10):
+            self.give_game_suffix(skills, personality, biome, honour)
+            if not (self.suffix and custom_names.is_removed(Name.custom, "normal_suffixes", self.suffix)):
+                return
+        self.suffix = random.choice(self.names_dict["normal_suffixes"])
 
     def give_game_suffix(self, skills, personality, biome, honour=None):
         self.load_localized_names()

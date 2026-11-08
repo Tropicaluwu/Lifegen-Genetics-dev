@@ -1218,6 +1218,18 @@ class EventsScreen(Screens):
 
         self.update_display_events_lists()
 
+    def event_clan(self, event):
+        """the Clan whose page shows the event. Untagged events go with their first cat in a Clan, else the player's Clan"""
+        if event.clan:
+            return event.clan
+        clan_ids = [game.clan.group_ID] + [c.group_ID for c in game.clan.all_other_clans]
+        for cat_id in event.cats_involved:
+            cat = Cat.all_cats.get(cat_id)
+            group = cat.status.get_last_living_group() if cat and cat.dead else cat and cat.status.group_ID
+            if group in clan_ids:
+                return group
+        return game.clan.group_ID
+
     def update_display_events_lists(self):
         """
         Categorize events from game.cur_events_list into display categories for screen
@@ -1231,7 +1243,7 @@ class EventsScreen(Screens):
             for x in game.cur_events_list
             if "interaction" not in x.types
             and "faith" not in x.types
-            and (not x.clan or x.clan == self.current_clan)
+            and self.event_clan(x) == self.current_clan
         ]
 
         # LIFEGEN: changing all events based on fave filters
@@ -1270,27 +1282,27 @@ class EventsScreen(Screens):
 
         self.ceremony_events = [
             x for x in game.cur_events_list if "ceremony" in x.types and x.text
-            and (not x.clan or x.clan == self.current_clan)
+            and self.event_clan(x) == self.current_clan
         ]
         self.birth_death_events = [
             x for x in game.cur_events_list if "birth_death" in x.types and x.text
-            and (not x.clan or x.clan == self.current_clan)
+            and self.event_clan(x) == self.current_clan
         ]
         self.relation_events = [
             x for x in game.cur_events_list if "relation" in x.types and x.text
-            and (not x.clan or x.clan == self.current_clan)
+            and self.event_clan(x) == self.current_clan
         ]
         self.health_events = [
             x for x in game.cur_events_list if "health" in x.types and x.text
-            and (not x.clan or x.clan == self.current_clan)
+            and self.event_clan(x) == self.current_clan
         ]
         self.other_clans_events = [
             x for x in game.cur_events_list if "other_clans" in x.types and x.text
-            and (not x.clan or x.clan == self.current_clan)
+            and self.event_clan(x) == self.current_clan
         ]
         self.misc_events = [
             x for x in game.cur_events_list if "misc" in x.types and x.text
-            and (not x.clan or x.clan == self.current_clan)
+            and self.event_clan(x) == self.current_clan
         ]
 
     def update_events_display(self, is_page_update=False):
@@ -1337,12 +1349,12 @@ class EventsScreen(Screens):
             if self.faith_toggle is True:
                 self.display_events = [
                     x for x in game.cur_events_list if "faith" in x.types
-                    and (not x.clan or x.clan == self.current_clan)
+                    and self.event_clan(x) == self.current_clan
                 ]
             else:
                 self.display_events = [
                     x for x in game.cur_events_list if "interaction" in x.types
-                    and (not x.clan or x.clan == self.current_clan)
+                    and self.event_clan(x) == self.current_clan
                 ]
 
         # SET UP PAGES

@@ -1,3 +1,26 @@
+<strong>LifeGen Genetics v1.2-dev.9</strong>
+
+A development build, so keep a copy of your saves folder before playing.
+
+New:
+- Brought up to date with Genemod's modded branch and ClanGen's development branch from November 7, 2026
+- Two new cruel season cards from ClanGen: Hostile Environs and Healer's Tribute
+- A leader or deputy sent to another Clan with the leave Clan button starts there as a warrior (from ClanGen)
+
+Fixes:
+- Fixed a crash when a cat joining from an event or patrol got a whole new name
+- Kits' first relationships with their littermates and the Clan's queens go to the right cats (from Genemod)
+- Fixed a crash when failing the leaf-bare plains coyote patrol
+- Fixed a crash in multi clan patrols with cats from other Clans, like Dark Forest patrols
+- In multi clan mode, faith and LifeGen events only show on the events page of the Clan they happened in
+- The dens menu opens with a click too, not just by hovering
+- StarClan and Dark Forest guides show in the cat list the first time it's opened
+- Small, medium and large Clans start with 10, 15 and 20 cats (a large Clan could start with only 4)
+- The Clan size and age buttons show what was really picked (they showed Medium and Old, while the Clan came out Small and New)
+- Taking names out or bringing them back in the names menu no longer jumps the list to the top
+- The names menu lists the names cats get from their looks, color and biome too, so those can be taken out (before, taken out names could still show up)
+- Names menu: buttons to take out or bring back every name a search shows, a show button (all names, the main list or names from looks), and names sorted A to Z
+
 <strong>LifeGen Genetics v1.2-dev.8</strong>
 
 A development build, so keep a copy of your saves folder before playing.
