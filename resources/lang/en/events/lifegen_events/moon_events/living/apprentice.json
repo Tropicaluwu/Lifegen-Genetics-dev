@@ -228,7 +228,7 @@
         "types": [
             "general"
         ],
-        "event": "A particularly tough border skirmish leaves you exhausted. You wonder if being a medicine cat would have been a better choice."
+        "event": "A particularly tough border skirmish leaves you exhausted. You wonder if being a healer would have been a better choice."
     },
     "general12": {
         "cats": {
@@ -257,7 +257,7 @@
         "types": [
             "general"
         ],
-        "event": "r_c:1 calls for you to help the medicine cat, r_c:0 for a day. The only thing you do is gather herbs, leaving you sore and exhausted. Well that definitely didn't boost your respect for {PRONOUN/r_c:0/object}."
+        "event": "r_c:1 calls for you to help the healer, r_c:0 for a day. The only thing you do is gather herbs, leaving you sore and exhausted. Well that definitely didn't boost your respect for {PRONOUN/r_c:0/object}."
     },
     "general13": {
         "cats": {
@@ -354,7 +354,7 @@
         "types": [
             "general"
         ],
-        "event": "You and a few other apprentices decide to sneak into the medicine den while r_c:0 is out gathering herbs. You have an all-you-can-eat buffet with the herbs, and all end up with a horrible belly-ache the next day."
+        "event": "You and a few other apprentices decide to sneak into the healer den while r_c:0 is out gathering herbs. You have an all-you-can-eat buffet with the herbs, and all end up with a horrible belly-ache the next day."
     },
     "general18": {
         "cats": {
@@ -766,7 +766,7 @@
         "types": [
             "general"
         ],
-        "event": "You spend a day in the medicine cat's den. r_c:0 instructs you about some basic herbs and their uses. Eager to prove your worth, you confidently chime in with your own observations."
+        "event": "You spend a day in the healer's den. r_c:0 instructs you about some basic herbs and their uses. Eager to prove your worth, you confidently chime in with your own observations."
     },
     "assertive38": {
         "cats": {
@@ -966,7 +966,7 @@
         "types": [
             "general"
         ],
-        "event": "You spend a day in the medicine cat's den. r_c:0 instructs you about some basic herbs and their uses. You listen in silence, occasionally giving a curt nod."
+        "event": "You spend a day in the healer's den. r_c:0 instructs you about some basic herbs and their uses. You listen in silence, occasionally giving a curt nod."
     },
     "brooding46": {
         "cats": {
@@ -1084,7 +1084,7 @@
         "types": [
             "general"
         ],
-        "event": "You spend a day in the medicine cat's den. r_c:0 instructs you about some basic herbs and their uses. While you doubt you'll ever use the knowledge, you listen with practiced nonchalance."
+        "event": "You spend a day in the healer's den. r_c:0 instructs you about some basic herbs and their uses. While you doubt you'll ever use the knowledge, you listen with practiced nonchalance."
     },
     "cool52": {
         "cats": {
@@ -1164,7 +1164,7 @@
         "types": [
             "general"
         ],
-        "event": "You spend a day in the medicine cat's den. r_c:0 instructs you about some basic herbs and their uses. You sit upright, your posture rigid, determination etched on your face as you absorb every word with unwavering focus."
+        "event": "You spend a day in the healer's den. r_c:0 instructs you about some basic herbs and their uses. You sit upright, your posture rigid, determination etched on your face as you absorb every word with unwavering focus."
     },
     "upstanding56": {
         "cats": {
@@ -1328,7 +1328,7 @@
         "types": [
             "general"
         ],
-        "event": "You spend time observing the medicine cat, r_c:0, and contemplate the importance of {PRONOUN/r_c:0/poss} role in the Clan."
+        "event": "You spend time observing the healer, r_c:0, and contemplate the importance of {PRONOUN/r_c:0/poss} role in the Clan."
     },
     "introspective64": {
         "cats": {
@@ -2563,7 +2563,7 @@
         "types": [
             "shunned"
         ],
-        "event": "The medicine cat refuses to meet your gaze, their aura of comfort replaced by a chilling aloofness."
+        "event": "The healer refuses to meet your gaze, their aura of comfort replaced by a chilling aloofness."
     },
     "shunned130": {
         "cats": {

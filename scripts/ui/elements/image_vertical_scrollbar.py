@@ -30,7 +30,7 @@ class UIImageVerticalScrollBar(pygame_gui.elements.UIVerticalScrollBar):
             visible=visible,
         )
 
-        self.scroll_wheel_speed = 100
+        self.scroll_wheel_speed = 45
         self.sliding_button.change_layer(starting_height)
         self.button_height = 16
         self.arrow_button_height = self.button_height
@@ -93,6 +93,14 @@ class UIImageVerticalScrollBar(pygame_gui.elements.UIVerticalScrollBar):
     def set_visible_percentage(self, percentage: float):
         super().set_visible_percentage(percentage)
         self.scroll_wheel_speed = (1 / self.visible_percentage) * ui_scale_value(15)
+
+    def update(self, time_delta: float):
+        super().update(time_delta)
+        if self.alive() and self.sliding_button is not None:
+            self.target_scroll_position = min(
+                max(self.target_scroll_position, self.top_limit),
+                self.bottom_limit - self.sliding_button.relative_rect.height,
+            )
 
     def _check_should_handle_mousewheel_event(self) -> bool:
         def recursive_check_if_ignore(element):

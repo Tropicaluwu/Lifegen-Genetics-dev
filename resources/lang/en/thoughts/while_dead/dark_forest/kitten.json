@@ -1,7 +1,7 @@
 [
     {
-        "id": "gen_dead_kitten",
-        "thoughts": [
+        "event_id": "gen_dead_kitten",
+        "strings": [
             "Isn't used to the cold",
             "Wonders why it's so dark",
             "Wants someone to play with",
@@ -33,32 +33,26 @@
         ]
     },
     {
-        "id": "dead_kit_to_dead_other_kit",
-        "thoughts": [
-            "Is huddled up close to r_c",
+        "event_id": "dead_kit_to_dead_other_kit_df",
+        "strings": [
+            "Huddled up close to r_c",
             "Is comforting r_c despite {PRONOUN/m_c/poss} own fear",
-            "Is being comforted by r_c",
-            "Is playing hide-n-seek with r_c in the thick shadows of the Dark Forest",
-            "Jumps on top of r_c, wrestling with {PRONOUN/r_c/object} until they both fall into the mud",
-            "Makes r_c play as {PRONOUN/m_c/poss} loyal deputy while {PRONOUN/m_c/subject} {VERB/m_c/get/gets} to be the terrible Tigerstar",
-            "Still plays pretend with r_c",
-            "Hopes that r_c doesn't leave {PRONOUN/m_c/object}",
-            "Accidentally hurt r_c while playing",
-            "Hurts r_c while playing and claims it was an accident",
-            "Knows r_c doesn't have a nest to hide thorns in",
-            "Is sparring with r_c, despite neither knowing how to fight",
-            "Is trying to make r_c feel warm again despite being cold {PRONOUN/m_c/self}"
+            "Is being comforted by r_c"
         ],
-        "random_living_status": [
-            "darkforest"
-        ],
-        "random_age_constraint": [
-            "kitten"
-        ]
+        "involved_cats": {
+            "r_c": {
+                "age": [
+                    "kitten"
+                ],
+                "group": [
+                    "dark_forest"
+                ]
+            }
+        }
     },
     {
-        "id": "dead_kit_to_dead_parent",
-        "thoughts": [
+        "event_id": "dead_kit_to_dead_parent",
+        "strings": [
             "Is upset with r_c for leaving {PRONOUN/m_c/object} to the dark",
             "Wonders why stars shine in r_c's fur and not {PRONOUN/m_c/inposs}",
             "Wonders if r_c hates {PRONOUN/m_c/object}",
@@ -67,11 +61,26 @@
             "Watches r_c longingly from across the border",
             "Wonders if any of {PRONOUN/m_c/poss} siblings are in StarClan with r_c"
         ],
+        "involved_cats": {
+            "r_c": {
+                "group": [
+                    "starclan"
+                ]
+            }
+        },
         "relationship_constraint": [
-            "child/parent"
-        ],
-        "random_living_status": [
-            "starclan"
+            {
+                "cats_from": [
+                    "m_c"
+                ],
+                "cats_to": [
+                    "r_c"
+                ],
+                "mutual": false,
+                "constraints": [
+                    "child/parent"
+                ]
+            }
         ]
     }
 ]

@@ -1240,7 +1240,7 @@
         "faith_effect": 0.5,
         "frequency": 4,
         "event_text": [
-            "When m_c asks if medicine cats can bring cats back from the dead, r_c purrs in amusement, saying only StarClan can do that."
+            "When m_c asks if healers can bring cats back from the dead, r_c purrs in amusement, saying only StarClan can do that."
         ],
         "m_c": {
             "min_max_faith": [-9, 9],

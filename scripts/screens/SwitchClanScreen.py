@@ -25,8 +25,7 @@ from ..ui.scale import ui_scale, ui_scale_dimensions, ui_scale_offset, ui_scale_
 from .Screens import Screens
 from .enums import GameScreen
 from .screens_core.screens_core import rebuild_top_menu_buttons, rebuild_core
-from ..game_structure.game.save_load import read_clans
-from ..game_structure.game.settings import game_setting_get
+from ..game_structure.game.save_load import read_clans, get_clan_json
 from ..game_structure.screen_settings import MANAGER
 from ..ui.generate_button import get_button_dict, ButtonStyles
 from ..ui.icon import Icon
@@ -77,7 +76,7 @@ class SwitchClanScreen(Screens):
                         # rebuild to update menu scheme differences between game modes
                         rebuild_core()
 
-        elif event.type == pygame.KEYDOWN and game_setting_get("keybinds"):
+        elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
                 self.change_screen(GameScreen.START)
 
@@ -150,8 +149,8 @@ class SwitchClanScreen(Screens):
             manager=MANAGER,
             anchors={"centerx": "centerx"},
             text_kwargs={
-                "clan": game.clan.displayname if game.clan else "",
-                "clan_id": game.clan.displayname if game.clan else "",
+                "clan": game.clan.name if game.clan else "",
+                "clan_id": game.clan.save_id if game.clan else "",
                 "count": 1 if game.clan else 0,
             },
         )
@@ -205,16 +204,18 @@ class SwitchClanScreen(Screens):
                     for item in clan_cats_json:
                         if item["ID"] == you:
                             # if theres a better way to do this Keep it to yourself
-                            if isinstance(item['status'], dict):
+                            if isinstance(item["status"], dict):
                                 rank = item["status"]["group_history"][-1]["rank"]
                             else:
-                                rank = item['status']
+                                rank = item["status"]
                             if rank in [CatRank.KITTEN, CatRank.NEWBORN]:
                                 suffix = "kit"
                             elif rank in [
-                                CatRank.APPRENTICE, CatRank.QUEENS_APPRENTICE,
-                                CatRank.MEDIATOR_APPRENTICE, CatRank.MEDICINE_APPRENTICE
-                                ]:
+                                CatRank.APPRENTICE,
+                                CatRank.QUEENS_APPRENTICE,
+                                CatRank.MEDIATOR_APPRENTICE,
+                                CatRank.MEDICINE_APPRENTICE,
+                            ]:
                                 suffix = "paw"
                             elif rank == CatRank.LEADER:
                                 suffix = "star"
@@ -229,10 +230,15 @@ class SwitchClanScreen(Screens):
 
             self.clan_name[-1].append(clan)
             try:
-                with open(f"{get_save_dir()}/{clan}clan.json") as f:
+                with open(get_clan_json(clan)) as f:
                     clan_button_name = ujson.load(f).get("displayname", clan)
-            except (FileNotFoundError, ujson.JSONDecodeError):
-                clan_button_name = clan
+            except:
+                logger.warning(
+                    "Failed to read display name of clan with ID %s",
+                    clan,
+                    exc_info=True,
+                )
+                continue
             self.clan_display_names[-1].append(clan_button_name)
             self.clan_buttons[-1].append(
                 UISurfaceImageButton(
@@ -271,7 +277,7 @@ class SwitchClanScreen(Screens):
             else:
                 print("Can't find info for", clan + "Clan")
                 tooltext = None
-            
+
             self.your_cat_buttons[-1].append(
                 UIImageButton(
                     pygame.Rect(
@@ -314,7 +320,7 @@ class SwitchClanScreen(Screens):
                 self.clan_name.append([])
                 self.delete_buttons.append([])
                 self.your_cat_buttons.append([])
-
+                self.clan_display_names.append([])
 
         self.next_page_button = UISurfaceImageButton(
             ui_scale(pygame.Rect((456, 540), (34, 34))),

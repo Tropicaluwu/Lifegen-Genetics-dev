@@ -37,7 +37,7 @@
         "types": [
             "general"
         ],
-        "event": "You offer some advice to the Dark Forest medicine cat."
+        "event": "You offer some advice to the Dark Forest healer."
     },
     "general5": {
         "cats": {

@@ -44,7 +44,7 @@ If the version number isn't shown at the bottom right hand corner of the game's 
 #### Playing source
 
 On source versions of LifeGen, the commit number is in the bottom-right of every screen, so long as GIT is installed.
-![ClanGen main menu with commit number highlighted](assets/report-a-bug/find_game_version_dev_source.png)
+![ClanGen main menu with commit number highlighted](img/report-a-bug/find_game_version_dev_source.png)
 
 #### Can't open the game?
 

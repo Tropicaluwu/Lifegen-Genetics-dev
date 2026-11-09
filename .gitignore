@@ -184,7 +184,7 @@ cache/
 # Update system
 
 download.tmp
-# version.ini is kept in the repo for this build
+version.ini
 *.xml
 .vs/
 lgvenv/

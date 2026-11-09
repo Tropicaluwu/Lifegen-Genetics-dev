@@ -37,7 +37,7 @@
         "types": [
             "general"
         ],
-        "event": "You wonder if you'll ever be allowed to help mentor a living medicine cat apprentice, even though you never got to finish your own training."
+        "event": "You wonder if you'll ever be allowed to help mentor a living healer apprentice, even though you never got to finish your own training."
     },
     "stable5": {
         "cats": {
@@ -65,6 +65,6 @@
         "types": [
             "general"
         ],
-        "event": "You beg a medicine cat in StarClan to continue your training."
+        "event": "You beg a healer in StarClan to continue your training."
     }
 }

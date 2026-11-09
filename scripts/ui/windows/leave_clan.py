@@ -1,22 +1,19 @@
-from random import choice
-from re import sub
 
-import i18n
 import pygame
 import pygame_gui
 
+from scripts.cat.microservices.add_to_clan import add_to_clan
 from scripts.cat.cats import Cat
+import i18n
 from scripts.cat.enums import CatSocial, CatGroup
+from scripts.cat.microservices.add_to_clan import add_to_clan, add_dependents_to_clan
 from scripts.game_structure import game
 from scripts.game_structure.screen_settings import MANAGER
 from scripts.ui.elements.checkbox import UICheckbox
-from scripts.ui.elements.image_button import UIImageButton
 from scripts.ui.elements.surface_image_button import UISurfaceImageButton
 from scripts.screens.enums import GameScreen
 from scripts.ui.generate_button import get_button_dict, ButtonStyles
 from scripts.ui.windows.window_base_class import GameWindow
-from scripts.cat.sprites.display_sprites import update_sprite
-from scripts.events_module.text_adjust import process_text
 from scripts.ui.scale import ui_scale
 
 
@@ -52,13 +49,15 @@ class LeaveClanWindow(GameWindow):
         prev_element = self.heading
         # LG edits: changes these items to lists to add group IDs
         social_list = [
-            (CatSocial.CLANCAT, CatGroup.PLAYER_CLAN_ID, (game.clan.displayname + "Clan")),
+            (CatSocial.CLANCAT, CatGroup.PLAYER_CLAN_ID, str(game.clan.name)),
             (CatSocial.LONER, CatGroup.LONER_GROUP_ID, "Loner group"),
             (CatSocial.ROGUE, CatGroup.ROGUE_GROUP_ID, "Rogue group"),
-            (CatSocial.KITTYPET, CatGroup.HOUSEHOLD_ID, "Twolegplace")
+            (CatSocial.KITTYPET, CatGroup.HOUSEHOLD_ID, "Twolegplace"),
         ]
         for other_clan in game.clan.all_other_clans:
-            social_list.append((CatSocial.CLANCAT, other_clan.group_ID, (other_clan.name + "Clan")))
+            social_list.append(
+                (CatSocial.CLANCAT, other_clan.group_ID, str(other_clan.name))
+            )
 
         for social in social_list:
             self.checkboxes[social] = UICheckbox(
@@ -103,9 +102,7 @@ class LeaveClanWindow(GameWindow):
             object_id="#text_box_30_horizcenter",
             manager=MANAGER,
             container=self,
-            anchors={
-                "centerx": "centerx"
-            },
+            anchors={"centerx": "centerx"},
         )
         if cat == game.clan.your_cat:
             self.done_button.disable()
@@ -121,17 +118,20 @@ class LeaveClanWindow(GameWindow):
                 if self.new_group_ID in (
                     CatGroup.ROGUE_GROUP_ID,
                     CatGroup.LONER_GROUP,
-                    CatGroup.HOUSEHOLD_ID
-                    ):
+                    CatGroup.HOUSEHOLD_ID,
+                ):
                     # this cat is becoming a member of an outsider group
-                    self.the_cat.leave_clan(self.chosen_social, self.new_group_ID, cat_age=self.the_cat.age)
+                    self.the_cat.leave_clan(
+                        self.chosen_social, self.new_group_ID, cat_age=self.the_cat.age
+                    )
                 elif self.new_group_ID != CatGroup.PLAYER_CLAN_ID:
                     # this cat is joining a non-player clan
                     # TODO: populate clan?
                     self.the_cat.status.add_to_group(str(self.new_group_ID))
                 else:
                     # this cat is joining the player clan
-                    self.the_cat.add_to_clan()
+                    add_to_clan(self.the_cat, game.clan.group_ID)
+                    add_dependents_to_clan(self.the_cat, game.clan.group_ID)
                 # ---
                 game.all_screens[GameScreen.PROFILE].exit_screen()
                 game.all_screens[GameScreen.PROFILE].screen_switches()

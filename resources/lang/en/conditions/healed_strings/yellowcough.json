@@ -1,0 +1,33 @@
+[
+    {
+        "event_id": "healed_yellowcough0",
+        "strings": [
+            "m_c has survived yellowcough.",
+            "m_c has recovered from yellowcough.",
+            "m_c no longer has yellowcough.",
+            "m_c's yellowcough is gone."
+        ],
+        "involved_cats": {
+            "m_c": {}
+        }
+    },
+    {
+        "event_id": "healed_yellowcough_starclan0",
+        "strings": [
+            "When m_c woke, better than {PRONOUN/m_c/subject} had felt in moons, {PRONOUN/m_c/subject} swore a StarClan cat, r_c0, had healed {PRONOUN/m_c/object} in {PRONOUN/m_c/poss} dreams."
+        ],
+        "involved_cats": {
+            "m_c": {
+                "stat": {
+                    "skill": [ "STAR,1", "DREAM,0" ]
+                }
+            },
+            "r_c0": {
+                "stat": {
+                    "skill": [ "HEALER,1" ]
+                },
+                "group": [ "starclan" ]
+            }
+        }
+    }
+]

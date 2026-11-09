@@ -8,7 +8,7 @@
             "Without any herbs, m_c feels helpless.",
             "c_n needs an herb gathering patrol <i>yesterday</i>.",
             "The herb stores are entirely empty. m_c feels like {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} going to vibrate out of {PRONOUN/m_c/poss} skin.",
-            "There are as many herbs in the medicine den as there are in the warriors' den — which is to say, none.",
+            "There are as many herbs in the healer den as there are in the warriors' den — which is to say, none.",
             "The nooks and crannies of the herb stores contain nothing but dust.",
             "Any cat who is injured this moon will be on their own. There is nothing in the herb stores to help them."
         ],
@@ -57,7 +57,7 @@
             "Surrounded by the herb supplies, assaulted on all sides by their potent herbal stink, m_c kneads the ground happily.",
             "The herb stores are full.",
             "m_c would go out gathering, but there's no room for more herbs.",
-            "Flowers, stems, and leaves poke out from every nook and cranny in the medicine den. The stores are fully stocked.",
+            "Flowers, stems, and leaves poke out from every nook and cranny in the healer den. The stores are fully stocked.",
             "m_c knows that the herb stores are sufficient for even the most serious injuries and illnesses.",
             "The abundant herbs give m_c a sense of security.",
             "m_c has no qualms about tossing out wilting or dried up herbs. c_n is not wanting."
@@ -70,7 +70,7 @@
             "There are so many herbs stored that m_c's only worry is finding the specific herb {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} looking for.",
             "m_c has trouble making {PRONOUN/m_c/poss} nest — the herb supply is literally overflowing and threatening to invade {PRONOUN/m_c/poss} bedding.",
             "Sure, m_c has no idea where to put all these extra herbs, but it's a refreshing and reassuring problem to have.",
-            "No cat can twitch a whisker in the medicine den right now without bumping into the herb supplies. Herb gathering is not one of c_n's problems.",
+            "No cat can twitch a whisker in the healer den right now without bumping into the herb supplies. Herb gathering is not one of c_n's problems.",
             "There are few things better at putting a skip in m_c's step than having such an overflowing supply of herbs available.",
             "For once, m_c tells the warriors to ignore herbs on patrols. The herb stores are crammed.",
             "m_c tries to eke out new crannies to store herbs; the old ones are completely full.",
@@ -79,12 +79,12 @@
         ]
     },
     "no_meds_warning": [
-        "With no cat assigned to the medicine den, the Clan is at risk of injuries progressing to infection and fever.",
-        "The cats eye the empty medicine den uneasily. They're missing a crucial component of the Clan.",
-        "Death and sickness haunt the Clan more often without medicine cats to keep them at bay.",
-        "The absence of a medicine cats in the den sticks out like a thorn in a paw.",
+        "With no cat assigned to the healer den, the Clan is at risk of injuries progressing to infection and fever.",
+        "The cats eye the empty healer den uneasily. They're missing a crucial component of the Clan.",
+        "Death and sickness haunt the Clan more often without healers to keep them at bay.",
+        "The absence of a healer in the den sticks out like a thorn in a paw.",
         "This isn't right — there should be a source of comfort and guidance in this den, not an uneasy absence and unsettling silence.",
-        "The dip where a medicine cat would make their nest collects dust."
+        "The dip where a healer would make their nest collects dust."
     ],
     "single_not_working": [
         "m_c's tail twitches with irritation, but {PRONOUN/m_c/subject} {VERB/m_c/stay/stays} limp with exhaustion. c_n will have to manage without {PRONOUN/m_c/object} this moon.",
@@ -95,10 +95,10 @@
         "m_c worries about {PRONOUN/m_c/poss} condition worsening — not for {PRONOUN/m_c/poss} own sake, but for that of {PRONOUN/m_c/poss} Clanmates."
     ],
     "many_not_working": [
-        "The medicine cats aren't seeing patients this moon; they <i>are</i> the patients.",
-        "Hopefully nothing goes wrong this moon, given that the medicine cats are all unable to work.",
-        "Medicine cats make terrible patients, it turns out. Add that to the pile of reasons that c_n hopes they'll be back on their paws soon.",
-        "With no working medicine cats, c_n is vulnerable.",
-        "They do what they can for their Clanmates, but c_n's medicine cats are in no condition to work this moon."
+        "The healers aren't seeing patients this moon; they <i>are</i> the patients.",
+        "Hopefully nothing goes wrong this moon, given that the healers are all unable to work.",
+        "Healers make terrible patients, it turns out. Add that to the pile of reasons that c_n hopes they'll be back on their paws soon.",
+        "With no working healers, c_n is vulnerable.",
+        "They do what they can for their Clanmates, but c_n's healers are in no condition to work this moon."
     ]
 }

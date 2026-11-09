@@ -9,7 +9,8 @@ import os
 import ujson
 
 from scripts.cat.enums import CatGroup
-from scripts.game_structure import constants, image_cache
+from scripts.config import get_config
+from scripts.game_structure import image_cache
 from scripts.game_structure.game.settings import game_setting_get
 
 logger = logging.getLogger(__name__)
@@ -18,12 +19,38 @@ logger = logging.getLogger(__name__)
 class Sprites:
     cat_tints = {}
     white_patches_tints = {}
+    rusting_sprites = []
     clan_symbols = []
+    empty_indexes = []
+
+    @classmethod
+    def load_pelt_recipes(cls):
+        cls.PELT_RECIPES = {}
+        for file in os.listdir("sprites/dicts/pelt_recipes"):
+            with open(
+                os.path.join("sprites/dicts/pelt_recipes", file), "r", encoding="utf-8"
+            ) as read_file:
+                temp_read = ujson.loads(read_file.read())
+
+            cls.PELT_RECIPES[temp_read["name"]] = temp_read
+
+        with open(
+            "sprites/dicts/pelt_to_recipe.json", "r", encoding="utf-8"
+        ) as read_file:
+            cls.PELT_TO_RECIPE = ujson.loads(read_file.read())
+
+        with open(
+            "sprites/dicts/pelt_color_palettes.json", "r", encoding="utf-8"
+        ) as read_file:
+            cls.PELT_COLOR_PALETTES = ujson.loads(read_file.read())
 
     with open(
         "sprites/dicts/pose_sprite_data.json", "r", encoding="utf-8"
     ) as read_file:
         POSE_DATA = ujson.loads(read_file.read())
+    for i, pose in enumerate(POSE_DATA["poses"]):
+        if pose == "":
+            empty_indexes.append(i)
 
     # ACCESSORIES
     with open(
@@ -58,25 +85,17 @@ class Sprites:
         "sprites/dicts/sophisticated_data.json", "r", encoding="utf-8"
     ) as read_file:
         SOPHISTICATED_DATA = ujson.loads(read_file.read())
-    with open(
-        "sprites/dicts/fruit_data.json", "r", encoding="utf-8"
-    ) as read_file:
+    with open("sprites/dicts/fruit_data.json", "r", encoding="utf-8") as read_file:
         FRUIT_DATA = ujson.loads(read_file.read())
     with open(
         "sprites/dicts/flowercrowns_data.json", "r", encoding="utf-8"
     ) as read_file:
         FLOWERCROWNS_DATA = ujson.loads(read_file.read())
-    with open(
-        "sprites/dicts/misc_accs_data.json", "r", encoding="utf-8"
-    ) as read_file:
+    with open("sprites/dicts/misc_accs_data.json", "r", encoding="utf-8") as read_file:
         MISC_ACCS_DATA = ujson.loads(read_file.read())
-    with open(
-        "sprites/dicts/misc2_accs_data.json", "r", encoding="utf-8"
-    ) as read_file:
+    with open("sprites/dicts/misc2_accs_data.json", "r", encoding="utf-8") as read_file:
         MISC2_ACCS_DATA = ujson.loads(read_file.read())
-    with open(
-        "sprites/dicts/harness_data.json", "r", encoding="utf-8"
-    ) as read_file:
+    with open("sprites/dicts/harness_data.json", "r", encoding="utf-8") as read_file:
         HARNESS_DATA = ujson.loads(read_file.read())
     with open(
         "sprites/dicts/smallanimals_data.json", "r", encoding="utf-8"
@@ -94,14 +113,18 @@ class Sprites:
         SCAR_DATA = ujson.loads(read_file.read())
 
     with open(
-        "sprites/dicts/scar_missing_sprite_data.json", "r", encoding="utf-8"
-    ) as read_file:
-        SCAR_MISSING_PART_DATA = ujson.loads(read_file.read())
-
-    with open(
         "sprites/dicts/tortie_patches_sprite_data.json", "r", encoding="utf-8"
     ) as read_file:
         TORTIE_DATA = ujson.loads(read_file.read())
+
+    try:
+        with open(
+            "sprites/dicts/tortie_patches_combos.json", "r", encoding="utf-8"
+        ) as read_file:
+            TORTIE_PATCH_COMBOS = ujson.loads(read_file.read())
+    except FileNotFoundError:
+        # this is probably a mod that ain't adding patch combos
+        TORTIE_PATCH_COMBOS = {}
 
     with open(
         "sprites/dicts/white_patches_mostly_sprite_data.json", "r", encoding="utf-8"
@@ -119,6 +142,16 @@ class Sprites:
         "sprites/dicts/white_patches_little_sprite_data.json", "r", encoding="utf-8"
     ) as read_file:
         WHITE_LITTLE_DATA = ujson.loads(read_file.read())
+
+    try:
+        with open(
+            "sprites/dicts/white_patches_combos.json", "r", encoding="utf-8"
+        ) as read_file:
+            WHITE_PATCH_COMBOS = ujson.loads(read_file.read())
+    except FileNotFoundError:
+        # this is probably a mod that ain't adding patch combos
+        WHITE_PATCH_COMBOS = {}
+
     with open(
         "sprites/dicts/white_patches_vitiligo_sprite_data.json", "r", encoding="utf-8"
     ) as read_file:
@@ -193,10 +226,16 @@ class Sprites:
         :param palettes: list of palette names
         """
         # pulls the defaults from the pose_sprite_data.json file
+        ignore_blank = True
+        if sprites_x or sprites_y:
+            ignore_blank = False
         if not sprites_x:
             sprites_x = self.sheet_layout[0]
         if not sprites_y:
             sprites_y = self.sheet_layout[1]
+
+        if no_index:
+            sprites_x = sprites_y = 1
 
         group_x_ofs = pos[0] * sprites_x * self.size
         group_y_ofs = pos[1] * sprites_y * self.size
@@ -208,7 +247,14 @@ class Sprites:
                 if no_index:
                     full_name = f"{name}"
                 else:
-                    full_name = f"{name}{i}"
+                    if i in self.empty_indexes and ignore_blank:
+                        i += 1
+                        continue
+
+                    if sprites_y > 1:
+                        full_name = f"{name}_{i}"
+                    else:
+                        full_name = f"{name}{i}"
 
                 try:
                     new_sprite = pygame.Surface.subsurface(
@@ -221,7 +267,8 @@ class Sprites:
 
                 except ValueError as e:
                     # Fallback for non-existent sprites
-                    print(f"WARNING: nonexistent sprite - {full_name}")
+                    if "CRYPTIC" not in full_name:
+                        print(f"WARNING: nonexistent sprite - {full_name}")
                     if not self.blank_sprite:
                         self.blank_sprite = pygame.Surface(
                             (self.size, self.size), pygame.HWSURFACE | pygame.SRCALPHA
@@ -272,7 +319,7 @@ class Sprites:
             # convert back into a surface
             _sprite = recolor_sprite.make_surface()
             # add it to our sprite dict!
-            self.sprites[f"{name}_{color_name}{sprite_index}"] = _sprite
+            self.sprites[f"{name}_{color_name}_{sprite_index}"] = _sprite
             # close the pixel array now that we're done
             recolor_sprite.close()
 
@@ -323,6 +370,9 @@ class Sprites:
         self.make_group("lineart_ur_aprilfools", (0, 0), "aprilfoolslineartur")
         self.make_group("lineart_df_aprilfools", (0, 0), "aprilfoolslineartdf")
 
+        self.spritesheet("sprites/tnr_scar.png", 'tnr_scar')
+        self.make_group("tnr_scar", (0, 0), "scars_masksTNR")
+
         for x in os.listdir("sprites/genemod/borders"):
             self.spritesheet("sprites/genemod/borders/"+x, 'genemod/'+x.replace('.png', ""))
         for x in os.listdir("sprites/genemod/Base Colours"):
@@ -340,6 +390,10 @@ class Sprites:
             self.make_group('Somatic/'+x.replace('.png', ""), (0, 0), "Somatic/"+x.replace('.png', ""))
         
         
+        for x in os.listdir("sprites/genemod/rusting"):
+            self.spritesheet("sprites/genemod/rusting/"+x, 'Rust/'+x.replace('.png', ""))
+            self.make_group('Rust/'+x.replace('.png', ""), (0, 0), "rusting_"+x.replace('.png', ""))
+            self.rusting_sprites.append("rusting_"+x.replace('.png', ""))
         for x in os.listdir("sprites/genemod/white"):
             self.spritesheet("sprites/genemod/white/"+x, 'White/'+x.replace('.png', ""))
             self.make_group('White/'+x.replace('.png', ""), (0, 0), x.replace('.png', ""))
@@ -375,6 +429,7 @@ class Sprites:
                                "dove", "champagne", "buff", 
                                "platinum", "lavender", "beige"]):
             self.make_group('base/eumelanin', (0, i), f'{x}', sprites_x=7, sprites_y=1)
+            self.make_group('base/warm_eumelanin', (0, i), f'warm_{x}', sprites_x=7, sprites_y=1)
         for i, x in enumerate(["rufousedred", "mediumred", "lowred", 
                                "rufousedcream", "mediumcream", "lowcream", 
                                "rufousedhoney", "mediumhoney", "lowhoney", 
@@ -384,34 +439,25 @@ class Sprites:
 
         # genemod tabby bases
 
-        for x in ["black", "blue", "pale_blue", "dove", "pale_dove", "platinum",
-                  "chocolate", "lilac", "pale_lilac", "champagne", "lavender",
-                  "cinnamon", "fawn", "pale_fawn", "buff", "beige",
+        for x in ["black", "blue", "dove", "platinum",
+                  "chocolate", "lilac", "champagne", "lavender",
+                  "cinnamon", "fawn", "buff", "beige",
                   "red", "cream", "honey", "ivory"]:
             for a, i in enumerate(['rufousedlow', 'rufousedmedium', 'rufousedhigh', 'rufousedshaded', 'rufousedchinchilla']):
-                self.make_group('Tabby/'+x, (a, 0), f'{x}{i}', sprites_x=1, sprites_y=1)
+                self.make_group('Tabby/'+x, (a, 0), f'{x}{i}', no_index=True)
             for a, i in enumerate(['mediumlow', 'mediummedium', 'mediumhigh', 'mediumshaded', 'mediumchinchilla']):
-                self.make_group('Tabby/'+x, (a, 1), f'{x}{i}', sprites_x=1, sprites_y=1)
+                self.make_group('Tabby/'+x, (a, 1), f'{x}{i}', no_index=True)
             for a, i in enumerate(['lowlow', 'lowmedium', 'lowhigh', 'lowshaded', 'lowchinchilla']):
-                self.make_group('Tabby/'+x, (a, 2), f'{x}{i}', sprites_x=1, sprites_y=1)
+                self.make_group('Tabby/'+x, (a, 2), f'{x}{i}', no_index=True)
             for a, i in enumerate(['silverlow', 'silvermedium', 'silverhigh', 'silvershaded', 'silverchinchilla']):
-                self.make_group('Tabby/'+x, (a, 3), f'{x}{i}', sprites_x=1, sprites_y=1)
+                self.make_group('Tabby/'+x, (a, 3), f'{x}{i}', no_index=True)
         for a, x in enumerate(['low', 'medium', 'high', 'shaded', 'chinchilla']):
             self.make_group('Tabby/shading', (a, 0), f'{x}shading')
         self.make_group('Tabby/unders', (0, 0), f'Tabby_unders')
 
-        # genemod tabby patterns
-
-        for a, i in enumerate(['mackerel', 'brokenmack', 'spotted', 'blotched', 'fullbar', 'fullbaralt']):
-            self.make_group('Other/tabbypatterns', (a, 0), f'{i}')
-        for a, i in enumerate(['braided', 'brokenbraid', 'rosetted', 'marbled', 'redbar', 'redbaralt']):
-            self.make_group('Other/tabbypatterns', (a, 1), f'{i}')
-        for a, i in enumerate(['pinstripe', 'brokenpins', 'servaline', 'blotchtail', 'agouti']):
-            self.make_group('Other/tabbypatterns', (a, 2), f'{i}')
-        for a, i in enumerate(['pinsbraided', 'brokenpinsbraid', 'leopard', 'blotchbar', 'pinsbar', 'charcoal']):
-            self.make_group('Other/tabbypatterns', (a, 3), f'{i}')
-        for a, i in enumerate(['macktail', 'bengtail', 'partialrosetted', 'sheeted', 'goldengradient', 'tabbypads']):
-            self.make_group('Other/tabbypatterns', (a, 4), f'{i}')
+        for x in os.listdir("sprites/genemod/tabby patterns"):
+            self.spritesheet("sprites/genemod/tabby patterns/"+x, 'Tabbypatterns/'+x.replace('.png', ""))
+            self.make_group('Tabbypatterns/'+x.replace('.png', ""), (0, 0), x.replace('.png', ""))
 
         #genemod point markings
 
@@ -421,12 +467,12 @@ class Sprites:
         self.make_group('mocha_spring', (0, 0), 'mocham')
         self.make_group('mocha_summer', (0, 0), 'mochal')
         self.make_group('mocha_winter', (0, 0), 'mochad')
-
-        #genemod karpati
-        for a, x in enumerate(['hetkarpatiwinter', 'hetkarpatispring', 'hetkarpatisummer']):
-            self.make_group('Other/karpati', (a, 0), x)
-        for a, x in enumerate(['homokarpatiwinter', 'homokarpatispring', 'homokarpatisummer']):
-            self.make_group('Other/karpati', (a, 1), x)
+        self.make_group('heterokarpati_spring', (0, 0), 'hetkarpatispring')
+        self.make_group('heterokarpati_summer', (0, 0), 'hetkarpatisummer')
+        self.make_group('heterokarpati_winter', (0, 0), 'hetkarpatiwinter')
+        self.make_group('homokarpati_spring', (0, 0), 'homokarpatispring')
+        self.make_group('homokarpati_summer', (0, 0), 'homokarpatisummer')
+        self.make_group('homokarpati_winter', (0, 0), 'homokarpatiwinter')
 
         #genemod effects
         self.make_group('Other/ghosting', (0, 0), 'ghost')
@@ -445,17 +491,18 @@ class Sprites:
 
         #genemod extra
         self.make_group('Other/ears', (0, 0), 'ears')
+        self.make_group('Other/fold_curl_ears', (0, 0), 'fold_curl_ears')
         self.make_group('Other/noses', (0, 0), 'nose')
-        self.make_group('Other/nose_colours', (0, 0), 'nosecolours', sprites_y=5)
+        self.make_group('Other/nose_colours', (0, 0), 'nosecolours', sprites_x=3, sprites_y=5)
         self.make_group('Other/paw_pads', (0, 0), 'pads')
-        self.make_group('Other/pad_colours', (0, 0), 'padcolours', sprites_y=5)
+        self.make_group('Other/pad_colours', (0, 0), 'padcolours', sprites_x=3, sprites_y=5)
 
         #genemod eyes
 
         for i, x in enumerate(['left', 'right', 'sectoral1', 'sectoral2', 'sectoral3', 'sectoral4', 'sectoral5', 'sectoral6']):
-            self.make_group('Other/eyebase', (i, 0), x, sprites_y=8)
+            self.make_group('Other/eyebase', (i, 0), x)
         for i, x in enumerate(['outer', 'inner', 'pupil']):
-            self.make_group('Other/eyesections', (i, 0), f"eye{x}", sprites_y=7)
+            self.make_group('Other/eyesections', (i, 0), f"eye{x}")
         
         data_jsons = (
             self.WHITE_MOSTLY_DATA,
@@ -465,11 +512,9 @@ class Sprites:
             self.WHITE_VITILIGO_DATA,
             self.TORTIE_DATA,
             self.SCAR_DATA,
-            self.SCAR_MISSING_PART_DATA,
             self.PLANT_DATA,
             self.WILD_DATA,
             self.COLLAR_DATA,
-
             self.ALIVEINSECT_DATA,
             self.DEADINSECT_DATA,
             self.PLANT2_DATA,
@@ -544,7 +589,46 @@ class Sprites:
             else:
                 self.load_sheet(data["spritesheet"], data["sprite_list"])
 
+        # patch combos
+        for category, combos in self.WHITE_PATCH_COMBOS.items():
+            self.create_patch_combo(
+                combos=combos, sheet_name="patches_white_", white_category=category
+            )
+
+        self.create_patch_combo(
+            combos=self.TORTIE_PATCH_COMBOS, sheet_name="patches_tortie"
+        )
+
         self.load_symbols()
+
+    def create_patch_combo(
+        self, combos: dict, sheet_name: str, white_category: str = ""
+    ):
+        # pulls the defaults from the pose_sprite_data.json file
+        sprites_x = self.sheet_layout[0]
+        sprites_y = self.sheet_layout[1]
+        for name, patches in combos.items():
+            i = 0
+            for y in range(sprites_y):
+                for x in range(sprites_x):
+                    if i in self.empty_indexes:
+                        i += 1
+                        continue
+
+                    new_patch = pygame.Surface(
+                        (sprites.size, sprites.size),
+                        pygame.HWSURFACE | pygame.SRCALPHA,
+                    )
+
+                    for patch in patches:
+                        addition = self.sprites[f"{patch}_{i}".removeprefix("little").removeprefix("mid").removeprefix("high").removeprefix("mostly")]
+                        new_patch.blit(
+                            addition,
+                            (0, 0),
+                        )
+
+                    self.sprites[f"{name}_{i}"] = new_patch
+                    i += 1
 
     def load_sheet(self, spritesheet: str, sprite_names: list[list[str]]):
         """
@@ -647,9 +731,9 @@ class Sprites:
         var.replace(
             (87, 76, 45),
             (
-                pygame.Color(constants.CONFIG["theme"]["dark_mode_clan_symbols"])
+                pygame.Color(get_config("theme.dark_mode_clan_symbols"))
                 if not force_light and (game_setting_get("dark mode") or force_dark)
-                else pygame.Color(constants.CONFIG["theme"]["light_mode_clan_symbols"])
+                else pygame.Color(get_config("theme.light_mode_clan_symbols"))
             ),
             distance=0,
         )
@@ -716,6 +800,8 @@ class Sprites:
             )
         )
 
+
+Sprites.load_pelt_recipes()
 
 # CREATE INSTANCE
 sprites = Sprites()

@@ -1,7 +1,7 @@
 [
     {
-        "id": "gen_queen",
-        "thoughts": [
+        "event_id": "gen_queen",
+        "strings": [
             "Is soaking up knowledge about nurturing kits",
             "Is discovering the balance between discipline and care in the nursery",
             "Is picking up lullabies and tales to soothe restless kits",
@@ -26,11 +26,12 @@
             "Is understanding the fine line between allowing kits to explore and ensuring their safety",
             "Is marveling at how quickly kits grow and change each day",
             "Is pondering the legacy {PRONOUN/m_c/subject} {VERB/m_c/want/wants} to leave for the kits within the Clan"
-        ]
+        ],
+        "event_id": "gen_queen"
     },
     {
-        "id": "flamboyant_queen",
-        "thoughts": [
+        "event_id": "flamboyant_queen",
+        "strings": [
             "Leads the kits in an exciting new adventure game",
             "Boasts that {PRONOUN/m_c/subject}{VERB/m_c/'re/'s'} the kits favorite game creator",
             "Takes the attention off a shy kit with {PRONOUN/m_c/poss} rowdy antics",
@@ -44,52 +45,15 @@
             "Watches the kits put on a show for {PRONOUN/m_c/object} and hollers praise",
             "Makes everything into a game with {PRONOUN/m_c/object} at the center"
         ],
-        "main_trait_constraint": [
-            "flamboyant"
-        ]
-    },
-    {
-        "id": "queen_gen",
-        "thoughts": [
-            "Is checking the nursery for any gaps",
-            "Gives advice to cats planning a litter",
-            "Is keeping watch of camp"
-        ]
-    },
-    {
-        "id": "queen_camp_gen",
-        "thoughts": [
-            "Is patching up a gap in the nursery"
-        ],
-        "main_skill_constraint": [
-            "CAMP,1"
-        ]
-    },
-    {
-        "id": "queen_to_kit",
-        "thoughts": [
-            "Is keeping a close eye on r_c",
-            "Is helping r_c clean up a mess {PRONOUN/r_c/subject} made",
-            "Got roped into a game by r_c",
-            "Caught r_c trying to sneak out of camp"
-        ],
-        "random_status_constraint": [
-            "kitten"
-        ],
-        "random_living_status": [
-            "living"
-        ]
-    },
-    {
-        "id": "queen_to_newborn",
-        "thoughts": [
-            "Helps tend to r_c"
-        ],
-        "random_status_constraint": [
-            "newborn"
-        ],
-        "random_living_status": [
-            "living"
-        ]
+        "involved_cats": {
+            "m_c": {
+                "stat": {
+                    "trait": [
+                        "flamboyant"
+                    ]
+                }
+            }
+        },
+        "event_id": "flamboyant_queen"
     }
 ]

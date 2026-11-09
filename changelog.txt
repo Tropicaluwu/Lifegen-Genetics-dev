@@ -1,10 +1,38 @@
-<strong>LifeGen Genetics v1.1.4</strong>
+<strong>LifeGen Genetics v1.2: the big update</strong>
 
+LifeGen Genetics now runs on the newest development versions of ClanGen, LifeGen and Genemod (Genemod's modded branch and ClanGen's development branch from November 7, 2026, and LifeGen-dev). Keep a copy of your saves folder before updating: your Clans load in v1.2, but once they're played here they might not open in v1.1 anymore.
+
+New:
+- ClanGen's new event and patrol systems and its new screens for making a Clan
+- ClanGen's chinchilla color and new background sounds for each biome
+- ClanGen's On Their Own cruel season card: cats never get mentors, with new apprentice ceremonies to match
+- Cats starting a new Clan are never older than 140 moons (from ClanGen)
+- Everything new in Genemod and LifeGen since v1.1
+- "Healer" everywhere instead of "medicine cat" (the medicine den is the healer den)
+- In the cat maker, white patches are grouped by where they are on the cat, and eye colors by color family, so the lists open quickly
+- Made up parents and siblings share your cat's pattern and white markings
+- Your cat's family fits your cat: Clan cats are only picked as your cat's birth parents when they could have had your cat, and siblings sometimes share your cat's color
+
+Fixes:
 - Windows no longer asks to replace files when unzipping the game: 19 button images were saved twice
 - The alphabetical sort button shows up on Mac and Linux
 - The README explains what to do if setup stops with "Microsoft Visual C++ 14.0 or greater is required" or "Failed to build cffi"
-- run.bat works when it's started as administrator or from a shortcut (it stopped with "No pyproject.toml found")
-- Fixed a crash when a cat made in the cat maker has kits (the brush coat gene was left empty)
+- Murder: skills count toward the chance of success again (no skill ever matched), and the kit, accomplice and leader lives bonuses use the right math
+- Clan creation: going back to pick your cat and pressing Next without picking one no longer crashes
+- Fixed a crash when clicking the mute button on the main menu
+- Fixed a crash when a cat joining from an event or patrol got a whole new name
+- Fixed a crash when failing the leaf-bare plains coyote patrol
+- Fixed a crash in multi clan patrols with cats from other Clans, like Dark Forest patrols
+- In multi clan mode, faith and LifeGen events only show on the events page of the Clan they happened in
+- The dens menu opens with a click too, not just by hovering
+- StarClan and Dark Forest guides show in the cat list the first time it's opened
+- Small, medium and large Clans start with 10, 15 and 20 cats (a large Clan could start with only 4)
+- The Clan size and age buttons show what was really picked (they showed Medium and Old, while the Clan came out Small and New)
+- Taking names out or bringing them back in the names menu no longer jumps the list to the top
+- The names menu lists the names cats get from their looks, color and biome too, so those can be taken out (before, taken out names could still show up)
+- Names menu: buttons to take out or bring back every name a search shows, a show button (all names, the main list or names from looks), and names sorted A to Z
+- The stable version now lives on a GitHub branch called stable (the download link stays the same)
+- Plus the fixes from the v1.2 development builds
 
 <strong>LifeGen Genetics v1.1.3</strong>
 
@@ -155,3 +183,6 @@ Fixes:
 - The parents made up for your cat's birth (outsiders, or birth parents who died) now have genes that could actually have made your cat, so your cat can't have a color or trait neither parent could pass down
 - Fixed a random crash during the moon when a cat who left your Clan to become a loner, rogue or kittypet dies
 - Fixed cats showing ERROR in the custom cat maker when the tint or white patches tint was set to "none"
+- run.bat works when it's started as administrator or from a shortcut (it stopped with "No pyproject.toml found")
+- In the cat maker, accessories can be picked again, the scar checkmarks follow every change, and the accessory list opens quickly
+- Fixed a crash when a cat made in the cat maker has kits (the brush coat gene was left empty)

@@ -1813,7 +1813,7 @@
         "types": [
             "general"
         ],
-        "event": "A checkup trip to the medicine den leaves you terrified of all the strange sights and smells, and r_c:1 has to bribe you with prey to even look in r_c:0's direction again."
+        "event": "A checkup trip to the healer den leaves you terrified of all the strange sights and smells, and r_c:1 has to bribe you with prey to even look in r_c:0's direction again."
     },
     "silly97": {
         "cats": {
@@ -2142,7 +2142,7 @@
         "types": [
             "general"
         ],
-        "event": "When r_c:1 takes a tumble and gets a small scrape, you are the first to hurry over to the medicine den to get r_c:0."
+        "event": "When r_c:1 takes a tumble and gets a small scrape, you are the first to hurry over to the healer den to get r_c:0."
     },
     "sweet113": {
         "cats": {
@@ -2203,7 +2203,7 @@
         "types": [
             "general"
         ],
-        "event": "You pretend to collapse in front of the medicine den to get r_c:0's attention, pleased when {PRONOUN/r_c:0/subject} {VERB/r_c:0/rush/rushes} over to you in concern."
+        "event": "You pretend to collapse in front of the healer den to get r_c:0's attention, pleased when {PRONOUN/r_c:0/subject} {VERB/r_c:0/rush/rushes} over to you in concern."
     },
     "unabashed116": {
         "cats": {
@@ -2737,7 +2737,7 @@
         "types": [
             "shunned"
         ],
-        "event": "The medicine cat treats you with a cool detachment, their gaze distant and hardened. It feels like their once comforting presence has become cold and unwelcoming."
+        "event": "The healer treats you with a cool detachment, their gaze distant and hardened. It feels like their once comforting presence has become cold and unwelcoming."
     },
     "shunned147": {
         "cats": {

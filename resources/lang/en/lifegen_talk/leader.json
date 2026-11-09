@@ -1708,7 +1708,7 @@
         },
         "intro": [
             "Hey, y_c! I got into a bit of trouble again. No big deal, just a scratch!",
-            "[It is not, in fact, just a scratch. In fact, t_c is bleeding all over the medicine den. {PRONOUN/t_c/subject/CAP} {VERB/t_c/chat/chats} loudly as you hurry to help {PRONOUN/t_c/object}.]",
+            "[It is not, in fact, just a scratch. In fact, t_c is bleeding all over the healer den. {PRONOUN/t_c/subject/CAP} {VERB/t_c/chat/chats} loudly as you hurry to help {PRONOUN/t_c/object}.]",
             "Man, I must be using up, like, half your herb stores, huh? But where's the fun in being careful? Besides, I know you could use some company in here.",
             "Oh man, what type of herbs are those? They look cool. Are you talking to StarClan? Can you hear them right now?",
             "[You finish helping t_c with {PRONOUN/t_c/poss} injury.]",
@@ -1816,7 +1816,7 @@
             }
         },
         "intro": [
-            "How's it going, mini-medicine cat? Herbal life treating you well?",
+            "How's it going, mini-healer? Herbal life treating you well?",
             "Don't worry, I'm not going to run headfirst into trouble and injure myself today.",
             "As for tomorrow? Who knows!"
         ]
@@ -1925,7 +1925,7 @@
             "Yaknow, y_c, I never really found you all that convincing as a warrior.",
             "Real warriors are strong! We're fearless! We never back down from a fight!",
             "But in you, I sense ... uncertainty.",
-            "Maybe you should see the medicine cat about it."
+            "Maybe you should see the healer about it."
         ]
     },
     "assertive_rom_3": {
@@ -1956,7 +1956,7 @@
         ],
         "intro": [
             "Hey, y_c! I just got a new scar today! Wanna come take a look?",
-            "Yeah, I ran into a little dog out at the edge of a territory. Wasn't too hard to chase off, but it gave me a little nick. Medicine cat says it's probably never going away.",
+            "Yeah, I ran into a little dog out at the edge of a territory. Wasn't too hard to chase off, but it gave me a little nick. Healer says it's probably never going away.",
             "[You brush your tail over t_c's scar, and {PRONOUN/t_c/subject} {VERB/t_c/seem/seems} a little too thrilled by the gesture for it to just be friendly.]"
         ]
     },
@@ -3374,7 +3374,7 @@
             }
         },
         "intro": [
-            "How's medicine cat training been going for you? I was told you're learning about signs and dreams today.",
+            "How's healer training been going for you? I was told you're learning about signs and dreams today.",
             "Finding the role you're meant to do matters, and sometimes we find out what we're meant to do moons later than you'd expect.",
             "Ah... You haven't been able to get those dreams... I understand. It's not an easy thing to do.",
             "I have had one though, if you'd like to hear about it. It wasn't pleasant, but if it helps you in any way, I'm more than happy to talk about it.",
@@ -3387,7 +3387,7 @@
             "The kit's fur turned starry, and I realized...",
             "This was during a time where my faith was shaken... They gently guided me back to the stars.",
             "It was pretty scary at first, but after I got used to it, it was almost comforting being out there.",
-            "Finding your way as a medicine cat will be the same."
+            "Finding your way as a healer will be the same."
         ]
     },
     "sweet_leader_10": {
@@ -4125,122 +4125,6 @@
             "Who's going to do the dawn patrols without me? o_c_n will be taking over our borders in no time!",
             "Fine. If you can't help me, I'll find somecat who can.",
             "[{PRONOUN/t_c/subject/CAP} {VERB/t_c/turn/turns} and {VERB/t_c/run/runs} away. You'll have to keep your eye on {PRONOUN/t_c/object}...]"
-        ]
-    },
-    "deaddeputy_connected_J1~2_2": {
-        "frequency": 2,
-        "cats": {
-            "y_c": {
-                "cluster": [
-                    "cool"
-                ],
-                "age": [
-                    "adult"
-                ],
-                "min_max_dead_moons": [
-                    40,
-                    -1
-                ],
-                "residence": [
-                    "sc"
-                ]
-            },
-            "t_c": {
-                "cluster": [
-                    "upstanding"
-                ],
-                "condition": [
-                    "blind:any:false"
-                ],
-                "rank": [
-                    "deputy",
-                    "connected"
-                ],
-                "min_max_dead_moons": [
-                    10,
-                    -1
-                ],
-                "residence": [
-                    "sc"
-                ]
-            }
-        },
-        "intro": [
-            "[It's been a while since you've heard of t_c's escape attempts... Maybe {PRONOUN/t_c/subject} actually succeeded, you joke to yourself.]",
-            "Hi, y_c.",
-            "[Never mind. Here t_c is, looking just as starry as before.]",
-            "If you're here to make fun of me, save it. I couldn't find any way to get back to the Clan.",
-            "And I'm not saying you're right-- I just haven't figured it out yet.",
-            "Now, go away. I'm thinking."
-        ]
-    },
-    "deaddeputy_connected_J1~3_2": {
-        "frequency": 2,
-        "cats": {
-            "y_c": {
-                "cluster": [
-                    "cool"
-                ],
-                "age": [
-                    "adult"
-                ],
-                "min_max_dead_moons": [
-                    40,
-                    -1
-                ],
-                "residence": [
-                    "sc"
-                ]
-            },
-            "t_c": {
-                "cluster": [
-                    "upstanding"
-                ],
-                "condition": [
-                    "blind:any:false"
-                ],
-                "rank": [
-                    "deputy",
-                    "connected"
-                ],
-                "min_max_dead_moons": [
-                    10,
-                    -1
-                ],
-                "residence": [
-                    "sc"
-                ]
-            },
-            "r_c:0": {
-                "rank": [
-                    "medicine cat",
-                    "medicine cat apprentice"
-                ]
-            },
-            "r_c:1": {
-                "rank": [
-                    "deputy"
-                ]
-            },
-            "r_c:2": {
-                "rank": [
-                    "warrior"
-                ]
-            },
-            "r_c:3": {
-                "residence": [
-                    "sc"
-                ]
-            }
-        },
-        "intro": [
-            "y_c, y_c! Oh, guess what!",
-            "[t_c looks ecstatic!]",
-            "The half-moon meeting for the Clans was yesterday, and I got to visit r_c:0's dreams!",
-            "Yeah, I do still miss living with the Clan, but...",
-            "You never told me being a StarClan cat could be so fun!",
-            "I'm gonna go ask r_c:3 how {PRONOUN/r_c:3/subject} {VERB/r_c:3/make/makes} omens... I'm thinking of sending r_c:1 a sign that r_c:2 should be put on more patrols.",
-            "[Looks like {PRONOUN/t_c/subject} found some more work to do!]"
         ]
     },
     "neurotic_choice_foxtokit_SQ5~2_2": {
@@ -5090,7 +4974,7 @@
         "intro": [
             "[t_c bursts into camp, wind-blown and shaking.]",
             "y_c! Um... r_c:0 and I were hunting by the shore, and {PRONOUN/r_c:0/subject} fell in the water. {PRONOUN/r_c:0/subject/CAP} climbed back out, but {PRONOUN/r_c:0/subject}{VERB/r_c:0/'re/'s} really cold and {VERB/r_c:0/say/says} {PRONOUN/r_c:0/subject} can't feel {PRONOUN/r_c:0/poss} paws... Please, help!",
-            "[r_c:0 stumbles after t_c, violently shivering. You quickly call r_c:1 over, and {PRONOUN/r_c:1/subject} {VERB/r_c:1/get/gets} r_c:0 into the medicine den while t_c paces anxiously outside.]",
+            "[r_c:0 stumbles after t_c, violently shivering. You quickly call r_c:1 over, and {PRONOUN/r_c:1/subject} {VERB/r_c:1/get/gets} r_c:0 into the healer den while t_c paces anxiously outside.]",
             "I'm sorry. I should've gotten {PRONOUN/r_c:0/object} out of the water quicker... I should've been keeping a better eye on {PRONOUN/r_c:0/object}! I didn't realize the rocks were so slippery!",
             "[You tell t_c that {PRONOUN/t_c/subject} did everything {PRONOUN/t_c/subject} could, and that r_c:0 will be okay. t_c doesn't seem to hear you.]",
             "r_c:0's so important to me, y_c. What if... what if...",
@@ -5437,7 +5321,7 @@
             }
         ],
         "intro": [
-            "[t_c stumbles back into camp shivering, covered with snow, and supported by r_c:0. {PRONOUN/t_c/subject/CAP} {VERB/t_c/start/starts} towards the medicine den, but {VERB/t_c/pause/pauses} when {PRONOUN/t_c/subject} {VERB/t_c/see/sees} you about to leave on a hunting patrol.]",
+            "[t_c stumbles back into camp shivering, covered with snow, and supported by r_c:0. {PRONOUN/t_c/subject/CAP} {VERB/t_c/start/starts} towards the healer den, but {VERB/t_c/pause/pauses} when {PRONOUN/t_c/subject} {VERB/t_c/see/sees} you about to leave on a hunting patrol.]",
             "C-careful in the territory today. Some of the snowdrifts are really deep, and I fell right into one. I really, really thought that was it...",
             "[t_c stares into the distance for a moment before a particularly violent shiver snaps {PRONOUN/t_c/object} out of {PRONOUN/t_c/poss} thoughts.]",
             "I'm lucky r_c:0 was there to dig me out. Don't go anywhere alone out there!"
@@ -6342,7 +6226,7 @@
             },
             "t_c": {
                 "condition": [
-                    "water in their lungs",
+                    "water in lungs",
                     "yellowcough",
                     "redcough",
                     "greencough",
@@ -6380,7 +6264,7 @@
             },
             "t_c": {
                 "condition": [
-                    "water in their lungs",
+                    "water in lungs",
                     "yellowcough",
                     "redcough",
                     "greencough",
@@ -6589,7 +6473,7 @@
             "|r_c:0|Dear, you need to go lay back down. You're going to fall over.",
             "But you just look soo amazing!",
             "[t_c sways on {PRONOUN/t_c/poss} paws and r_c:0 gently nudges {PRONOUN/t_c/object} back into {PRONOUN/t_c/poss} nest.]",
-            "[Yeah... You're definitely keeping t_c in the medicine den. r_c:1 can take over leading the clan until t_c is better.]"
+            "[Yeah... You're definitely keeping t_c in the healer den. r_c:1 can take over leading the clan until t_c is better.]"
         ]
     },
     "leader_sh_J21": {
@@ -6806,7 +6690,7 @@
             }
         },
         "intro": [
-            "Hey, y_c! I need you to dig the medicine den's tunnel and make it a little bigger.",
+            "Hey, y_c! I need you to dig the healer den's tunnel and make it a little bigger.",
             "r_c:0 has been complaining about the 'lack of space' for {PRONOUN/r_c:0/poss} patients, as if {PRONOUN/r_c:0/subject} {VERB/r_c:0/don't/doesn't} have the largest tunnel in c_n. Greedy cat.",
             "... Just make sure it's done so I don't have to hear more of {PRONOUN/r_c:0/poss} whining."
         ]

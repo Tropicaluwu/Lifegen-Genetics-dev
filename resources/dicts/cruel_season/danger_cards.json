@@ -1,8 +1,74 @@
 {
-  "card1": {
-    "card_art": "file_path",
+  "easy_pickings": {
+    "card_art": "danger/stolen_vitality.png",
     "modifiers": {
-      "mod_name": 1
+      "death_related.size_modifiers": {
+        "teacup": -75,
+        "tiny": -50,
+        "small": -25,
+        "below average": 0,
+        "average": 0,
+        "above average": 0,
+        "large": 5,
+        "massive": 10,
+        "giant": 15,
+        "goliath": 25
+      },
+      "death_related.kit_death_chances": {
+        "0": 0.35,
+        "1": 0.25,
+        "2": 0.2,
+        "3": 0.2,
+        "4": 0.1,
+        "5": 0.1
+      },
+      "settings.force_enable.modded_kits": true
+    }
+  },
+  "hostile_lands": {
+    "card_art": "danger/miasma.png",
+    "modifiers": {
+      "death_related.mass_death_chance": 8,
+      "death_related.max_mass_deaths": 1000,
+      "settings.force_enable.disasters": true
+    }
+  },
+  "for_the_throne": {
+    "card_art": "danger/for_the_throne.png",
+    "modifiers": {
+      "death_related.murder.deputy_murder_modifier": 40,
+      "relationship.deputy_to_leader_neg_buff": true,
+      "relationship.deputy_envy_leader_influence": 3,
+      "death_related.murder.deputy_prefer_leader": true
+    }
+  },
+  "plague_ridden": {
+    "card_art": "danger/tooth_and_claw.png",
+    "modifiers": {
+      "condition_related.med_infection_reduction": 0.0,
+      "condition_related.illness_outbreak_season": ["Leaf-bare", "Leaf-fall", "Greenleaf", "Newleaf"],
+      "condition_related.illness_percentage_max": 1.25
+    }
+  },
+  "stolen_vitality": {
+    "card_art": "danger/stolen_vitality.png",
+    "modifiers": {
+      "cruel_season.event.stolen_vitality": true
+    }
+  },
+  "tooth_and_claw": {
+    "card_art": "danger/tooth_and_claw.png",
+    "modifiers": {
+      "condition_related.war_injury_modifier": 235,
+      "death_related.war_death_modifier": 340,
+      "death_related.war_death_modifier_leader": 46
+    }
+  },
+  "miasma": {
+    "card_art": "danger/miasma.png",
+    "modifiers": {
+      "condition_related.illness_chance": 175
+
     }
   }
 }

@@ -4,7 +4,7 @@ import pygame
 import pygame_gui
 
 from scripts.cat import custom_names
-from scripts.cat.names import Name, names
+from scripts.cat.names import Name
 from scripts.game_structure.screen_settings import MANAGER
 from scripts.housekeeping.datadir import get_save_dir
 from scripts.ui.elements.image_button import UIImageButton
@@ -18,6 +18,9 @@ from scripts.ui.scale import ui_scale
 from scripts.ui.windows.window_base_class import GameWindow
 
 ALL_SAVES = "All saves"
+# the lists that also have names from looks: which of them to show
+SHOW_KEYS = ("normal_prefixes", "normal_suffixes")
+SHOW_TEXT = {"all": "show: all names", "main": "show: main list", "looks": "show: from looks"}
 PAGE_SIZE = 50
 # how each list writes its names, like the game's own lists
 STYLE = {
@@ -65,6 +68,7 @@ class NamesEditorWindow(GameWindow):
         self.search = ""
         self.page = 0
         self.editing_rank = None
+        self.show = "all"
         self.rows = {}
         self.data = custom_names.load(self.scope)
 
@@ -109,9 +113,18 @@ class NamesEditorWindow(GameWindow):
                 container=self,
                 manager=MANAGER,
             )
+        self.show_button = UISurfaceImageButton(
+            ui_scale(pygame.Rect((20, 398), (150, 32))),
+            SHOW_TEXT["all"],
+            get_button_dict(ButtonStyles.ROUNDED_RECT, (150, 32)),
+            object_id="@buttonstyles_rounded_rect",
+            container=self,
+            manager=MANAGER,
+            tool_tip_text="All names, just the main list, or the names cats get from their looks, color, biome and so on",
+        )
         self.note = pygame_gui.elements.UITextBox(
             "",
-            ui_scale(pygame.Rect((15, 400), (165, 190))),
+            ui_scale(pygame.Rect((15, 436), (165, 154))),
             object_id=get_text_box_theme("#text_box_22_horizleft"),
             container=self,
             manager=MANAGER,
@@ -147,6 +160,24 @@ class NamesEditorWindow(GameWindow):
             manager=MANAGER,
         )
         self.list_box = None
+        self.take_out_all = UISurfaceImageButton(
+            ui_scale(pygame.Rect((190, 440), (232, 34))),
+            "take out all shown",
+            get_button_dict(ButtonStyles.ROUNDED_RECT, (232, 34)),
+            object_id="@buttonstyles_rounded_rect",
+            container=self,
+            manager=MANAGER,
+            tool_tip_text="Takes out every name in the list that matches the search, on every page",
+        )
+        self.bring_back_all = UISurfaceImageButton(
+            ui_scale(pygame.Rect((428, 440), (232, 34))),
+            "bring back all shown",
+            get_button_dict(ButtonStyles.ROUNDED_RECT, (232, 34)),
+            object_id="@buttonstyles_rounded_rect",
+            container=self,
+            manager=MANAGER,
+            tool_tip_text="Brings back every taken out name that matches the search, on every page",
+        )
 
         self.entry = pygame_gui.elements.UITextEntryLine(
             ui_scale(pygame.Rect((190, 482), (240, 34))),
@@ -192,6 +223,10 @@ class NamesEditorWindow(GameWindow):
     def rows_now(self):
         """(name, what it is) for this list: "added", "in" (one of the lists' names) or "out" """
         base = self.base_names().get(self.key, [])
+        if isinstance(base, list) and self.key in SHOW_KEYS:
+            # names given by looks, color, biome and so on are in other lists: show them too
+            others = Name.other_game_names(self.key)
+            base = {"all": base + others, "main": base, "looks": others}[self.show]
         if self.key == "special_suffixes":
             endings = dict(base)
             endings.update(self.data["rank_endings"])
@@ -200,9 +235,11 @@ class NamesEditorWindow(GameWindow):
         removed = {name.lower() for name in changes["removed"]}
         rows = [(name, "added") for name in changes["added"]]
         rows += [(name, "out" if (changes["only_mine"] or name.lower() in removed) else "in")
-                 for name in base if name not in changes["added"]]
+                 for name in dict.fromkeys(base) if name not in changes["added"]]
         if self.search:
             rows = [row for row in rows if self.search.lower() in row[0].lower()]
+        # your names first, then A to Z
+        rows.sort(key=lambda row: (row[1] != "added", row[0].lower()))
         return rows
 
     def refresh_list(self):
@@ -214,6 +251,11 @@ class NamesEditorWindow(GameWindow):
                 button.enable()
         self.scope_note.set_text("(every save)" if self.scope is None else "(on top of the all-saves changes)")
         self.note.set_text(NOTES[self.key])
+        if self.key in SHOW_KEYS:
+            self.show_button.show()
+            self.show_button.set_text(SHOW_TEXT[self.show])
+        else:
+            self.show_button.hide()
         rows = self.rows_now()
         pages = max(1, (len(rows) + PAGE_SIZE - 1) // PAGE_SIZE)
         self.page = max(0, min(self.page, pages - 1))
@@ -221,11 +263,21 @@ class NamesEditorWindow(GameWindow):
         self.prev_button.enable() if self.page > 0 else self.prev_button.disable()
         self.next_button.enable() if self.page < pages - 1 else self.next_button.disable()
 
+        # taking out or bringing back all at once: not for rank endings, or when only your names are used
+        only_mine = self.key != "special_suffixes" and custom_names.list_changes(self.data, self.key)["only_mine"]
+        for button, state in ((self.take_out_all, "in"), (self.bring_back_all, "out")):
+            if self.key == "special_suffixes":
+                button.hide()
+            else:
+                button.show()
+                button.enable() if not only_mine and any(r[1] == state for r in rows) else button.disable()
+
         if self.list_box:
             self.list_box.kill()
         self.rows = {}
+        self.row_texts = {}
         self.list_box = UIModifiedScrollingContainer(
-            ui_scale(pygame.Rect((190, 140), (470, 335))),
+            ui_scale(pygame.Rect((190, 140), (470, 295))),
             container=self,
             manager=MANAGER,
             allow_scroll_x=False,
@@ -241,7 +293,7 @@ class NamesEditorWindow(GameWindow):
             else:
                 text = name + {"added": "  (yours)", "out": "  (taken out)", "in": ""}[state]
                 action = {"added": "delete", "out": "bring back", "in": "take out"}[state]
-            pygame_gui.elements.UITextBox(
+            text_box = pygame_gui.elements.UITextBox(
                 text,
                 ui_scale(pygame.Rect((0, y), (320, 34))),
                 object_id=get_text_box_theme("#text_box_30_horizleft"),
@@ -260,6 +312,7 @@ class NamesEditorWindow(GameWindow):
             if state == "out" and only_mine:
                 button.disable()  # (only your names are used: nothing to bring back one by one)
             self.rows[button] = (name, state)
+            self.row_texts[button] = text_box
 
         self.refresh_options()
 
@@ -281,7 +334,7 @@ class NamesEditorWindow(GameWindow):
         self.only_mine_box = UIImageButton(
             ui_scale(pygame.Rect((190, 524), (34, 34))),
             "",
-            object_id="@checked_checkbox" if changes["only_mine"] else "@unchecked_checkbox",
+            object_id="@checked_checkbox_smalltooltip" if changes["only_mine"] else "@unchecked_checkbox_smalltooltip",
             container=self,
             manager=MANAGER,
             tool_tip_text="Leave out all of the game's names in this list",
@@ -328,7 +381,7 @@ class NamesEditorWindow(GameWindow):
         custom_names.save(self.data, self.scope)
         # the game uses the new lists straight away
         if Name.current_clan:
-            names.load_clan_names(Name.current_clan)
+            Name.apply_custom_names()
         else:
             Name.names_dict = custom_names.combined(Name.default_names)
             Name.custom = custom_names.merged_info()
@@ -354,7 +407,21 @@ class NamesEditorWindow(GameWindow):
         self.save_changes()
         self.refresh_list()
 
-    def row_action(self, name, state):
+    def change_all_shown(self, take_out):
+        """takes out (or brings back) every name the search shows, on every page"""
+        changes = custom_names.list_changes(self.data, self.key)
+        rows = self.rows_now()
+        if take_out:
+            removed = {n.lower() for n in changes["removed"]}
+            changes["removed"] += [name for name, state in rows if state == "in" and name.lower() not in removed]
+        else:
+            back = {name.lower() for name, state in rows if state == "out"}
+            changes["removed"] = [n for n in changes["removed"] if n.lower() not in back]
+        self.save_changes()
+        self.refresh_list()
+
+    def row_action(self, button):
+        name, state = self.rows[button]
         if self.key == "special_suffixes":
             self.editing_rank = name
             endings = dict(self.base_names().get("special_suffixes", {}))
@@ -370,7 +437,14 @@ class NamesEditorWindow(GameWindow):
         else:
             changes["removed"] = [n for n in changes["removed"] if n.lower() != name.lower()]
         self.save_changes()
-        self.refresh_list()
+        if state == "added":
+            self.refresh_list()
+            return
+        # change just this row, so the list stays scrolled where it was
+        new_state = "out" if state == "in" else "in"
+        self.rows[button] = (name, new_state)
+        self.row_texts[button].set_text(name + ("  (taken out)" if new_state == "out" else ""))
+        button.set_text("bring back" if new_state == "out" else "take out")
 
     def process_event(self, event):
         if event.type == pygame_gui.UI_BUTTON_START_PRESS:
@@ -406,7 +480,14 @@ class NamesEditorWindow(GameWindow):
                 self.save_changes()
                 self.refresh_options()
             elif element in self.rows:
-                self.row_action(*self.rows[element])
+                self.row_action(element)
+            elif element == self.show_button:
+                order = list(SHOW_TEXT)
+                self.show = order[(order.index(self.show) + 1) % len(order)]
+                self.page = 0
+                self.refresh_list()
+            elif element in (self.take_out_all, self.bring_back_all):
+                self.change_all_shown(take_out=element == self.take_out_all)
         elif event.type == pygame_gui.UI_DROP_DOWN_MENU_CHANGED and event.ui_element == self.scope_menu:
             self.scope = None if event.text == ALL_SAVES else event.text
             self.data = custom_names.load(self.scope)

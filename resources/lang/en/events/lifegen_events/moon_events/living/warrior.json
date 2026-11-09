@@ -411,7 +411,7 @@
         "types": [
             "general"
         ],
-        "event": "You notice r_c:0 limping after returning from patrol and insist on escorting {PRONOUN/r_c:0/object} to the medicine den."
+        "event": "You notice r_c:0 limping after returning from patrol and insist on escorting {PRONOUN/r_c:0/object} to the healer den."
     },
     "general32": {
         "cats": {
@@ -921,7 +921,7 @@
         "types": [
             "general"
         ],
-        "event": "You help r_c:0 fetch water-soaked moss for the medicine den."
+        "event": "You help r_c:0 fetch water-soaked moss for the healer den."
     },
     "unabashed62": {
         "cats": {
@@ -1100,7 +1100,7 @@
         "types": [
             "shunned"
         ],
-        "event": "The medicine cat avoids your gaze whenever you're in their den, treating your wounds with a cold detachment."
+        "event": "The healer avoids your gaze whenever you're in their den, treating your wounds with a cold detachment."
     },
     "shunned76": {
         "cats": {

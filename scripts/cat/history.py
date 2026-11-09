@@ -4,10 +4,12 @@ import i18n
 import os
 import ujson
 
+from scripts.cat.conditions.temporary_condition import TemporaryCondition
 from scripts.cat.enums import CatGroup
 from scripts.cat.skills import SkillPath
 from scripts.game_structure import game
 from scripts.events_module.text_adjust import adjust_list_text
+from scripts.game_structure.localization import load_lang_resource
 
 
 class History:
@@ -106,7 +108,14 @@ class History:
             "graduation_age": age,
             "moon": moon
             },
-        "lead_ceremony": full ceremony text,
+        "lead_ceremony": [
+            {
+                "involved": ID or None,
+                "text": text,
+                "virtue": virtue or None,
+                "extra_lives": count or None
+            },
+            ],
         "possible_history": {
             "condition name": {
                 "involved": ID
@@ -181,7 +190,7 @@ class History:
             "died_by": self.died_by,
             "scar_events": self.scar_events,
             "murder": self.murder,
-            "wrong_placement": self.wrong_placement
+            "wrong_placement": self.wrong_placement,
         }
         return history_dict
 
@@ -199,18 +208,14 @@ class History:
 
         if df is True:
             # when a cat is met in the dark forest
-            self.beginning = {
-            "moon": game.clan.age
-        }
+            self.beginning = {"moon": game.clan.age}
         else:
-           self.beginning = {
-            "clan_born": clan_born,
-            "birth_season": game.clan.current_season if clan_born else None,
-            "age": self.cat.moons,
-            "moon": game.clan.age,
-           }
-      
-            
+            self.beginning = {
+                "clan_born": clan_born,
+                "birth_season": game.clan.current_season if clan_born else None,
+                "age": self.cat.moons,
+                "moon": game.clan.age,
+            }
 
     def add_mentor_facet_influence_strings(self):
         """
@@ -227,60 +232,6 @@ class History:
             self.mentor_influence["trait"] = None
             return
 
-        # working under the impression that these blurbs will be preceded by "more likely to"
-        facet_influence_text = {
-            "lawfulness_raise": [
-                "follow rules",
-                "follow the status quo",
-                "heed {PRONOUN/m_c/poss} inner compass",
-                "have strong inner morals",
-            ],
-            "lawfulness_lower": [
-                "bend the rules",
-                "break away from the status quo",
-                "break rules that don't suit {PRONOUN/m_c/object}",
-                "make {PRONOUN/m_c/poss} own rules",
-            ],
-            "sociability_raise": [
-                "be friendly towards others",
-                "step out of {PRONOUN/m_c/poss} comfort zone",
-                "interact with others",
-                "put others at ease",
-            ],
-            "sociability_lower": [
-                "be cold towards others",
-                "refrain from socializing",
-                "bicker with others",
-            ],
-            "aggression_raise": [
-                "be ready for a fight",
-                "start a fight",
-                "defend {PRONOUN/m_c/poss} beliefs",
-                "use teeth and claws over words",
-                "resort to violence",
-            ],
-            "aggression_lower": [
-                "be slow to anger",
-                "avoid a fight",
-                "use words over teeth and claws",
-                "try to avoid violence",
-            ],
-            "stability_raise": [
-                "stay collected",
-                "think things through",
-                "be resilient",
-                "have a positive outlook",
-                "be consistent",
-                "adapt easily",
-            ],
-            "stability_lower": [
-                "behave erratically",
-                "make impulsive decisions",
-                "have trouble adapting",
-                "dwell on things",
-            ],
-        }
-
         for _ment in self.mentor_influence["trait"]:
             self.mentor_influence["trait"][_ment]["strings"] = []
             for _fac in self.mentor_influence["trait"][_ment]:
@@ -288,11 +239,11 @@ class History:
                 if _fac in self.cat.personality.facet_types:
                     if self.mentor_influence["trait"][_ment][_fac] > 0:
                         self.mentor_influence["trait"][_ment]["strings"].append(
-                            random.choice(facet_influence_text[_fac + "_raise"])
+                            random.choice(MENTOR_FACET_INFLUENCE_TEXT[_fac + "_raise"])
                         )
                     elif self.mentor_influence["trait"][_ment][_fac] < 0:
                         self.mentor_influence["trait"][_ment]["strings"].append(
-                            random.choice(facet_influence_text[_fac + "_lower"])
+                            random.choice(MENTOR_FACET_INFLUENCE_TEXT[_fac + "_lower"])
                         )
 
     def add_mentor_skill_influence_strings(self):
@@ -305,66 +256,67 @@ class History:
 
         # working under the impression that these blurbs will be preceded by "become better at"
         skill_influence_text = {
-                SkillPath.TEACHER: ["teaching"],
-                SkillPath.HUNTER: ["hunting"],
-                SkillPath.FIGHTER: ["fighting"],
-                SkillPath.RUNNER: ["running"],
-                SkillPath.CLIMBER: ["climbing"],
-                SkillPath.SWIMMER: ["swimming"],
-                SkillPath.DIGGER: ["tunneling", "digging"],
-                SkillPath.STEALTH: ["stealth", "deception"],
-                SkillPath.SPEAKER: ["arguing"],
-                SkillPath.MEDIATOR: ["resolving arguments"],
-                SkillPath.CLEVER: ["solving problems"],
-                SkillPath.INSIGHTFUL: ["providing insight"],
-                SkillPath.SENSE: ["noticing small details"],
-                SkillPath.KIT: ["caring for kittens"],
-                SkillPath.STORY: ["storytelling"],
-                SkillPath.LORE: ["remembering lore"],
-                SkillPath.CAMP: ["caring for camp"],
-                SkillPath.HEALER: ["healing"],
-                SkillPath.STAR: ["connecting to StarClan"],
-                SkillPath.OMEN: ["finding omens"],
-                SkillPath.DREAM: ["understanding dreams"],
-                SkillPath.CLAIRVOYANT: ["predicting the future"],
-                SkillPath.PROPHET: ["understanding prophecies"],
-                SkillPath.GHOST: ["connecting to the afterlife"],
-                SkillPath.EXPLORER: ["exploring unknown areas"],
-                SkillPath.TRACKER: ["tracking down scents"],
-                SkillPath.ARTISTAN: ["decorating dens"],
-                SkillPath.GUARDIAN: ["guarding the camp"],
-                SkillPath.TUNNELER: ["tunneling"],
-                SkillPath.NAVIGATOR: ["navigating unknown territory"],
-                SkillPath.SONG: ["using their voice"],
-                SkillPath.GRACE: ["watching where they step"],
-                SkillPath.CLEAN: ["keeping themself tidy"],
-                SkillPath.INNOVATOR: ["solving problems"],
-                SkillPath.COMFORTER: ["comforting others"],
-                SkillPath.MATCHMAKER: ["matchmaking"],
-                SkillPath.THINKER: ["thinking outside of the box"],
-                SkillPath.COOPERATIVE: ["being a team player"],
-                SkillPath.SCHOLAR: ["learning new things"],
-                SkillPath.TIME: ["managing their time"],
-                SkillPath.TREASURE: ["finding gifts"],
-                SkillPath.FISHER: ["fishing"],
-                SkillPath.LANGUAGE: ["using their words"],
-                SkillPath.SLEEPER: ["self-care"],
-                SkillPath.GARDENER: ["taking care of plants"],
-                SkillPath.DARK: ["connecting to the Dark Forest"],
-                # Kittypet-unique
-                SkillPath.TWOLEGCARE: ["getting along with Twolegs"],
-                SkillPath.CHARMER: ["charming others"],
-                SkillPath.SHOWCAT: ["looking their best"],
-                # Loner-unique
-                SkillPath.WANDERER: ["traveling long distances"],
-                SkillPath.SCAVENGER: ["scavenging for resources"],
-                SkillPath.SURVIVOR: ["surviving hardship"],
-                # Rogue-unique
-                SkillPath.BRAWLER: ["brawling"],
-                SkillPath.INTIMIDATOR: ["intimidating others"],
-                SkillPath.AMBUSHER: ["laying ambushes"]
-            }
-        
+            SkillPath.TEACHER: ["teaching"],
+            SkillPath.HUNTER: ["hunting"],
+            SkillPath.FIGHTER: ["fighting"],
+            SkillPath.RUNNER: ["running"],
+            SkillPath.CLIMBER: ["climbing"],
+            SkillPath.SWIMMER: ["swimming"],
+            SkillPath.DIGGER: ["tunneling", "digging"],
+            SkillPath.STEALTH: ["stealth", "deception"],
+            SkillPath.SPEAKER: ["arguing"],
+            SkillPath.MEDIATOR: ["resolving arguments"],
+            SkillPath.CLEVER: ["solving problems"],
+            SkillPath.INSIGHTFUL: ["providing insight"],
+            SkillPath.SENSE: ["noticing small details"],
+            SkillPath.KIT: ["caring for kittens"],
+            SkillPath.STORY: ["storytelling"],
+            SkillPath.LORE: ["remembering lore"],
+            SkillPath.CAMP: ["caring for camp"],
+            SkillPath.HEALER: ["healing"],
+            SkillPath.STAR: ["connecting to StarClan"],
+            SkillPath.OMEN: ["finding omens"],
+            SkillPath.DREAM: ["understanding dreams"],
+            SkillPath.CLAIRVOYANT: ["predicting the future"],
+            SkillPath.PROPHET: ["understanding prophecies"],
+            SkillPath.GHOST: ["connecting to the afterlife"],
+            # LG
+            SkillPath.EXPLORER: ["exploring unknown areas"],
+            SkillPath.TRACKER: ["tracking down scents"],
+            SkillPath.ARTISTAN: ["decorating dens"],
+            SkillPath.GUARDIAN: ["guarding the camp"],
+            SkillPath.TUNNELER: ["tunneling"],
+            SkillPath.NAVIGATOR: ["navigating unknown territory"],
+            SkillPath.SONG: ["using their voice"],
+            SkillPath.GRACE: ["watching where they step"],
+            SkillPath.CLEAN: ["keeping themself tidy"],
+            SkillPath.INNOVATOR: ["solving problems"],
+            SkillPath.COMFORTER: ["comforting others"],
+            SkillPath.MATCHMAKER: ["matchmaking"],
+            SkillPath.THINKER: ["thinking outside of the box"],
+            SkillPath.COOPERATIVE: ["being a team player"],
+            SkillPath.SCHOLAR: ["learning new things"],
+            SkillPath.TIME: ["managing their time"],
+            SkillPath.TREASURE: ["finding gifts"],
+            SkillPath.FISHER: ["fishing"],
+            SkillPath.LANGUAGE: ["using their words"],
+            SkillPath.SLEEPER: ["self-care"],
+            SkillPath.GARDENER: ["taking care of plants"],
+            SkillPath.DARK: ["connecting to the Dark Forest"],
+            # Kittypet-unique
+            SkillPath.TWOLEGCARE: ["getting along with Twolegs"],
+            SkillPath.CHARMER: ["charming others"],
+            SkillPath.SHOWCAT: ["looking their best"],
+            # Loner-unique
+            SkillPath.WANDERER: ["traveling long distances"],
+            SkillPath.SCAVENGER: ["scavenging for resources"],
+            SkillPath.SURVIVOR: ["surviving hardship"],
+            # Rogue-unique
+            SkillPath.BRAWLER: ["brawling"],
+            SkillPath.INTIMIDATOR: ["intimidating others"],
+            SkillPath.AMBUSHER: ["laying ambushes"],
+        }
+
         for _ment in self.mentor_influence["skill"]:
             self.mentor_influence["skill"][_ment]["strings"] = []
             for _path in self.mentor_influence["skill"][_ment]:
@@ -603,7 +555,7 @@ class History:
                 "other_cat": other_cat.ID if other_cat else None,
             }
 
-    def remove_possible_history(self, condition):
+    def remove_possible_history(self, condition: str):
         """
         use to remove possible death/scar histories
         :param condition: condition linked to the death/scar you're removing
@@ -711,7 +663,7 @@ class History:
             # e.g. the unknown residence - no StarClan/Dark Forest blurb applies
             self.afterlife_acceptance = None
 
-    def add_scar(self, scar_text, condition=None, other_cat=None):
+    def add_scar(self, scar_text, condition: str = None, other_cat=None):
         if not game.clan:
             return
 
@@ -772,7 +724,7 @@ class History:
         clan_reveal: bool = False,
         aware_individuals: list = None,
         # LG
-        shunned_cat = None
+        shunned_cat=None,
     ):
         """
         This adds reveal information to both the murderer and victim's history. This should be called from the murderer's history.
@@ -824,7 +776,7 @@ class History:
         generates and adds lead ceremony to history
         """
 
-        self.lead_ceremony = self.cat.generate_lead_ceremony()
+        self.cat.generate_lead_ceremony()
 
     # ---------------------------------------------------------------------------- #
     #                                 retrieving                                   #
@@ -837,7 +789,7 @@ class History:
 
         if not self.lead_ceremony:
             self.cat.generate_lead_ceremony()
-        return str(self.lead_ceremony)
+        return self.cat.render_lead_ceremony()
 
     def get_possible_history(self, condition=None):
         """
@@ -906,3 +858,16 @@ class History:
             return self.scar_events
         elif death:
             return self.died_by
+
+
+MENTOR_FACET_INFLUENCE_TEXT = None
+
+
+def load_mentor_facet_influence_strings():
+    global MENTOR_FACET_INFLUENCE_TEXT
+    MENTOR_FACET_INFLUENCE_TEXT = load_lang_resource(
+        "cat/mentor_facet_influence_strings.json"
+    )
+
+
+load_mentor_facet_influence_strings()

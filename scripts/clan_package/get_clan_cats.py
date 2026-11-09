@@ -1,4 +1,7 @@
-from typing import Union, Type, TYPE_CHECKING, Tuple, List
+from random import choice
+from typing import Union, Type, TYPE_CHECKING, Tuple, List, Optional
+
+from scripts.cat_relations.relationship import create_one_relationship
 
 if TYPE_CHECKING:
     from scripts.cat.cats import Cat
@@ -69,7 +72,7 @@ def find_alive_cats_with_rank(
     ]
 
     if working:
-        alive_cats = [i for i in alive_cats if not i.not_working()]
+        alive_cats = [i for i in alive_cats if i.can_work()]
 
     if sort:
         alive_cats = sorted(alive_cats, key=lambda cat: cat.moons, reverse=True)
@@ -107,9 +110,9 @@ def get_cats_same_age(Cat, cat_to_match, age_range=10):
             continue
 
         if inter_cat.ID not in cat_to_match.relationships:
-            cat_to_match.create_one_relationship(inter_cat)
+            create_one_relationship(cat_to_match, inter_cat)
             if cat_to_match.ID not in inter_cat.relationships:
-                inter_cat.create_one_relationship(cat_to_match)
+                create_one_relationship(inter_cat, cat_to_match)
             continue
 
         if (
@@ -138,9 +141,9 @@ def get_possible_mates(cat) -> Tuple[List["Cat"], List["Cat"]]:
             continue
 
         if inter_cat.ID not in cat.relationships:
-            cat.create_one_relationship(inter_cat)
+            create_one_relationship(cat, inter_cat)
             if cat.ID not in inter_cat.relationships:
-                inter_cat.create_one_relationship(cat)
+                create_one_relationship(inter_cat, cat)
             continue
 
         if inter_cat.is_potential_mate(cat, for_love_interest=True):
@@ -202,14 +205,15 @@ def search_cats(search_text, cat_list, search_genotype):
                 "pax3": ["NoDBE", "DBEre", "DBEalt", "DBEcel"],
             }
             polygenes = {
-                "wbsum": ["wideband", "wb"],
-                "rufsum": ["rufousing", "ruf"],
+                "wideband": ["wideband", "wb"],
+                "rufousing": ["rufousing", "ruf"],
                 "unders_rufsum": ["underbelly_rufousing", "underbelly_ruf"],
                 "bengsum": ["bengal", "bm"],
                 "soksum": ["sokoke", "sok"],
                 "spotsum": ["spotted", "spot"],
-                "ticksum": ["ticked_mod", "tick_md"],
-                "saturation": ["saturation", "sat"],
+                "ticksum": ["ticked_mod", "tickedmod", "tick_md", "tickmd"],
+                "fur_shade": ["saturation", "sat", "fs", "fur_shade"],
+                "colour_warmth": ["colour_warmth", "warmth", "temp"],
                 "refraction": ["refraction", "ref"],
                 "pigmentation": ["pigmentation", "pig"],
                 "whitegrade": ["whitegrade", "white_grade", "white"]
@@ -295,3 +299,14 @@ def search_cats(search_text, cat_list, search_genotype):
                 if search_text.lower() in str(cat.name).lower()
             ]
     return all_found
+
+def get_random_player_clan_cat(cat, not_allowed: list["Cat"] = None) -> Optional["Cat"]:
+    cat_list = [
+        c
+        for c in cat.all_cats.values()
+        if c.status.group_ID == cat.status.get_last_living_group() and c not in not_allowed
+    ]
+    if not cat_list:
+        return None
+
+    return choice(cat_list)

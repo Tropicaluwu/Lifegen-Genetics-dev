@@ -160,7 +160,7 @@ Smart App Control is a Windows 11 security feature that blocks programs it doesn
    ```
 4. Run this once to install what the game needs:
    ```
-   py -V:PythonCore/3.12 -m pip install "black~=23.0" "cryptography~=42.0" "pgpy~=0.6" "platformdirs~=3.3" "pydantic>=2.12.0" "pygame-ce~=2.2" "pygame-gui~=0.6" "requests~=2.28" "strenum~=0.4" "tomli>=2.2.1" "ujson~=5.7"
+   py -V:PythonCore/3.12 -m pip install "black~=23.0" "cryptography~=42.0" "pgpy~=0.6" "platformdirs~=3.3" "pydantic>=2.12.0" "pygame-ce~=2.2" "pygame-gui>=0.6.14" "requests~=2.28" "strenum~=0.4" "tomli>=2.2.1" "ujson~=5.7"
    ```
 5. Start the game with this line, every time you play:
    ```
@@ -178,17 +178,20 @@ If it's still blocked and the error mentions `Python312\Lib\site-packages`, Wind
 
 ---
 
-## What's new: the cat maker update!
+## What's new in v1.2: the big update
 
-Since the Reddit post did so well, I'm releasing my cat maker update early! There's bound to be bugs, but it has been tested a lot :3 Enjoy!
+LifeGen Genetics now runs on the newest development versions of ClanGen, LifeGen and Genemod (updated November 7, 2026), so you get everything they've added since v1.1.
 
-- **A fully genetic cat maker** for your main character: Genemod's real colors, patterns, points, eyes, fur and body genes, every white patch (pick as many as you like), and torties with their own patch colors and patterns. Click a cat first and press Customize to start from that cat
-- **A Names button** on the main menu and in the Clan settings: add and take out prefixes, suffixes, rank endings, loner, kittypet and Clan names, for all saves or just one
-- **Genemod and ClanGen saves** can be loaded too
-- Plus a bunch of fixes (see [changelog.txt](changelog.txt))
-- **v1.1.1:** cat maker fixes (Fur Length buttons, "clear all" white, Random cat odds and a rare crash)
-- **v1.1.2:** a how-to-play guide for Windows, Mac and Linux, double-click to play on Mac, the game now tells you when there's a new version, and a few more cat maker fixes
-- **v1.1.3:** the error screen and the start screen's Discord button go to the right places, a crash fix for the Change Role screen, and help for Windows Smart App Control
+> **Before you update, keep a copy of your saves folder.** Your Clans load in v1.2, but once you've played them here they might not open in v1.1 anymore.
+
+- **ClanGen's newest version:** its new event and patrol systems, the new screens for making a Clan, the chinchilla color, and new background sounds for each biome
+- **The newest Genemod and LifeGen**, with all their changes and fixes
+- **"Healer" everywhere** instead of "medicine cat"
+- **Easier cat maker lists:** white patches are grouped by where they are on the cat, and eye colors by color family
+- **Made up family looks like family:** your cat's made up parents and siblings share their pattern and white markings
+- Plus a lot of fixes (see [changelog.txt](changelog.txt))
+
+The cat maker, the Names button and everything else from v1.1 are still here.
 
 ## Credits
 
@@ -217,7 +220,7 @@ This is an unofficial combination made for fun. **Please don't take bug reports 
 - Everything from LifeGen: playing as your own cat, talking, patrols, the Dark Forest, shunning, affairs and the rest
 - Genemod's genetics: coat color, patterns, white spotting, eyes, fur types, ear and tail traits, genetic conditions and offspring prediction
 - Genemod's multi clan mode (optional, picked when you make a new clan)
-- Up to date with ClanGen v0.13.4
+- Built on the development versions of ClanGen, LifeGen and Genemod (updated November 7, 2026)
 - Fixes for crashes that came from putting the two mods together
 
 See [changelog.txt](changelog.txt) for the full list.

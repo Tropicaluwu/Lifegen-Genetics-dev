@@ -5,19 +5,18 @@
             "many": "%{count} moons"
         },
         "moons_age_in_death": {
-            "one": "1 moon (in death)",
-            "many": "%{count} moons (in death)"
-        },
-        "moons_age_in_life": {
-            "one": "1 moon (in life)",
-            "many": "%{count} moons (in life)"
+            "one": "dead for 1 moon",
+            "many": "dead for %{count} moons"
         },
         "moon_date": "moon %{moon}",
         "guide": "guiding ghost",
         "living_group": "%{group} %{rank}",
         "past_no_group": "past %{rank}",
         "past_group": "past %{group} %{rank}",
-        "daylight_warrior": "%{group} daylight %{rank}",
+        "lives": {
+            "one": "1 life",
+            "many": "%{count} lives"
+        },
         "leader": {
             "one": "leader",
             "many": "leaders"
@@ -30,6 +29,10 @@
             "one": "warrior",
             "many": "warriors"
         },
+        "healer": {
+            "one": "healer",
+            "many": "healers"
+        },
         "mediator": {
             "one": "mediator",
             "many": "mediators"
@@ -37,6 +40,10 @@
         "apprentice": {
             "one": "apprentice",
             "many": "apprentices"
+        },
+        "healer apprentice": {
+            "one": "healer apprentice",
+            "many": "healer apprentices"
         },
         "mediator apprentice": {
             "one": "mediator apprentice",
@@ -46,13 +53,13 @@
             "one": "queen",
             "many": "queens"
         },
-        "queen's apprentice": {
-            "one": "queen's apprentice",
-            "many": "queen's apprentices"
-        },
         "queen/pregnant": {
             "one": "queen/pregnant cat",
             "many": "queens/pregnant cats"
+        },
+        "queen apprentice": {
+            "one": "queen apprentice",
+            "many": "queen apprentices"
         },
         "newborn": {
             "one": "newborn",
@@ -100,29 +107,43 @@
             "one": "exiled from",
             "many": "exiled from"
         },
-        "shunned": {
-            "one": "shunned",
-            "many": "shunned"
-        },
         "lost": "lost",
         "mate": {
             "one": "mate",
             "many": "mates"
         },
+        "are_mates": "mates",
+        "ex_mate": "ex-mate",
         "she-cat": "molly",
-        "tom": "tom",
         "cat": "sam",
+        "molly": "molly",
+        "tom": "tom",
+        "trans molly": "trans molly",
+        "trans tom": "trans tom",
+        "sam": "sam",
+        "agender": "cat",
+        "intersex molly": "intersex molly",
+        "intersex tom": "intersex tom",
+        "intersex trans molly": "intersex trans molly",
+        "intersex trans tom": "intersex trans tom",
+        "intersex sam": "intersex sam",
+        "intersex agender": "intersex cat",
         "is": "is",
         "are": "are",
         "can_work": "This cat can work",
         "cant_work": "This cat isn't able to work",
         "cant_work_condition": "Can't work with this condition",
         "exp_label": "exp: %{exp}",
-        "newleaf": "Newleaf",
-        "greenleaf": "Greenleaf",
-        "leaf-fall": "Leaf-fall",
-        "leaf-bare": "Leaf-bare",
+        "newleaf": "newleaf",
+        "Newleaf": "Newleaf",
+        "greenleaf": "greenleaf",
+        "Greenleaf": "Greenleaf",
+        "leaf-fall": "leaf-fall",
+        "Leaf-fall": "Leaf-fall",
+        "leaf-bare": "leaf-bare",
+        "Leaf-bare": "Leaf-bare",
         "relation_BLOOD": "",
+        "relation_SURROGATE": "surrogate litter",
         "relation_ADOPTIVE": "adoptive",
         "relation_HALF_BLOOD": "half sibling",
         "relation_NOT_BLOOD": "not blood related",
@@ -161,9 +182,10 @@
         "unknown_residence": "Unknown Residence",
         "your_clan": "%{name}Clan",
         "cotc": "Outsiders",
-        "your_group": "%{your_group}",
+        "cbtc": "Cats Beyond the Clan",
         "empty": "empty",
         "none": "none",
+        "genotype_search": "enter allele",
         "name_search": "name search",
         "has_a_mate": "has a mate",
         "cats_mate": "%{name}'s mate",
@@ -189,9 +211,10 @@
             "one": "apprentice: %{apprentices}",
             "many": "apprentices: %{apprentices}"
         },
+        "former_apprentice_history": "%{name} previously mentored %{apprentices}.",
         "former_apprentice_label": {
-            "one": "former apprentice: %{apprentices}",
-            "many": "former apprentices: %{apprentices}"
+            "one": "1 former apprentice",
+            "many": "%{count} former apprentices"
         },
         "apprentice_extra": {
             "zero": "",
@@ -203,13 +226,9 @@
         "remove_favorite": "Remove favorite",
         "has_permanent_condition": "has a permanent condition",
         "born_with": "born with this condition",
-        "had_perm_condition_for": {
-            "one": "has had this condtion for %{count} moon",
-            "many": "has had this condition for %{count} moons"
-        },
+        "had_condition_for": "has had this condition for %{moons}",
         "had_injury_for": "has been hurt for %{moons}",
         "pregnant_for": "has been pregnant for %{moons}",
-        "guilty_for": "has been troubled for %{moons}",
         "recovering_from_birth_for": "has been recovering for %{moons}",
         "sick": "sick",
         "injured": "injured",
@@ -217,29 +236,17 @@
         "fleas": "flea-ridden",
         "is_infected": "is infected",
         "is_festering": "is festering",
-        "healer": {
-            "one": "healer",
-            "many": "healers"
+        "got_condition": "%{cat} got: %{conditions}.",
+        "daylight_warrior": "%{group} daylight %{rank}",
+        "queen's apprentice": {
+            "one": "queen's apprentice",
+            "many": "queen's apprentices"
         },
-        "healer apprentice": {
-            "one": "healer apprentice",
-            "many": "healer apprentices"
+        "shunned": {
+            "one": "shunned",
+            "many": "shunned"
         },
-        "queen apprentice": {
-            "one": "queen apprentice",
-            "many": "queen apprentices"
-        },
-        "molly": "molly",
-        "trans molly": "trans molly",
-        "trans tom": "trans tom",
-        "sam": "sam",
-        "intersex molly": "intersex molly",
-        "intersex tom": "intersex tom",
-        "intersex trans molly": "intersex trans molly",
-        "intersex trans tom": "intersex trans tom",
-        "intersex sam": "intersex sam",
-        "relation_SURROGATE": "surrogate litter",
-        "cbtc": "Cats Beyond the Clan",
-        "genotype_search": "enter allele"
+        "your_group": "%{your_group}",
+        "guilty_for": "has been troubled for %{moons}"
     }
 }

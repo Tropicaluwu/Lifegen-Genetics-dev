@@ -174,7 +174,7 @@
             }
         ],
         "intro": [
-            "Hey, y_c ... do you ever get lonely sleeping here in the medicine den all by yourself? I know I would ...",
+            "Hey, y_c ... do you ever get lonely sleeping here in the healer den all by yourself? I know I would ...",
             "Tell you what, if you ever get scared or cold in the night, just come over to my den. You can sleep in my nest, with me. Okay?"
         ]
     },
@@ -493,7 +493,7 @@
         "intro": [
             "[You hear a soft hum coming from the nursery.]",
             "... and pollen will spring from wilted flowers, and the day will rise again...",
-            "[You look into the medicine den, watching t_c singing a lullaby to the sleeping kits.]",
+            "[You look into the healer den, watching t_c singing a lullaby to the sleeping kits.]",
             "y_c? It's nice to see you. Sorry, the kits wanted to be sung to, and r_c:0 suggested that I get some practice in. There'll be lots of future kits wanting songs.",
             "You can stay to listen if you want. But don't feel like you're forced to.",
             "[t_c returns to humming the same tune.]"
@@ -2561,7 +2561,7 @@
         ],
         "intro": [
             "It feels really weird to become an apprentice, but still spend all my time in the same places I did when I was a kit.",
-            "Like, the warrior apprentices go explore the territory, and the medicine cat apprentices move to the medicine den and visit the herb patches... But I'm still in the nursery.",
+            "Like, the warrior apprentices go explore the territory, and the healer apprentices move to the healer den and visit the herb patches... But I'm still in the nursery.",
             "Sometimes, I'm scared I just decided to be a queen's apprentice 'cause I'm scared of things changing.",
             "I... I don't think that's true, but maybe it is and I just don't realize it?"
         ]
@@ -2667,7 +2667,7 @@
         "intro": [
             "Um... sorry, y_c? I don't mean to bother you, but r_c:0 has a bit of a sore throat. Could I have some honey from your stores to give them?",
             "O-of course, you could give it to them, too! I don't mean to overstep.",
-            "[There's not much that can go terribly wrong with honey. Since t_c seems to know {PRONOUN/t_c/poss} way around medicine despite not being a medicine cat, you give {PRONOUN/t_c/object} a dollop of honey on a stick and send {PRONOUN/t_c/object} on {PRONOUN/t_c/poss} way.]"
+            "[There's not much that can go terribly wrong with honey. Since t_c seems to know {PRONOUN/t_c/poss} way around medicine despite not being a healer, you give {PRONOUN/t_c/object} a dollop of honey on a stick and send {PRONOUN/t_c/object} on {PRONOUN/t_c/poss} way.]"
         ]
     },
     "assertive_elder2_5": {
@@ -2820,7 +2820,7 @@
             }
         },
         "intro": [
-            "r_c:0 is such a troublemaker. I swear to StarClan, I look away for one moment, and {PRONOUN/r_c:0/subject}{VERB/r_c:0/'ve/'s} already shredded my nest or snuck into the medicine den.",
+            "r_c:0 is such a troublemaker. I swear to StarClan, I look away for one moment, and {PRONOUN/r_c:0/subject}{VERB/r_c:0/'ve/'s} already shredded my nest or snuck into the healer den.",
             "Whoever becomes {PRONOUN/r_c:0/poss} mentor will have {PRONOUN/r_c:0/poss} paws full!"
         ]
     },
@@ -2893,7 +2893,7 @@
         "intro": [
             "Oh, that's y_c! {PRONOUN/y_c/subject/CAP}{VERB/y_c/'ve/'s} grown so quickly.",
             "I remember you being born, you know, even if it wasn't that long ago. It'll be amazing watching you grow to provide for the Clan. I wonder what you'll grow up to do.",
-            "A big strong warrior, a gentle medicine cat, a wise mediator... or you could become a queen like I'm learning to right now.",
+            "A big strong warrior, a gentle healer, a wise mediator... or you could become a queen like I'm learning to right now.",
             "But that doesn't matter right now. Just focus on enjoying your life. That's what I think."
         ]
     },
@@ -3106,7 +3106,7 @@
         "not_supposed_H": [
             "I know I'm not supposed to talk to you. Everycat knows that.",
             "It's just-- Uh... Well, r_c:1 has been having really bad ear pain and r_c:0 has been too busy to check on {PRONOUN/r_c:1/object}.",
-            "You always had the knack of finding out what's going on, even if you're not a medicine cat and, well, I was hoping you'd agree to help?"
+            "You always had the knack of finding out what's going on, even if you're not a healer and, well, I was hoping you'd agree to help?"
         ],
         "ignore_H": [
             "[You choose to ignore the apprentice, unwilling to strike up any conversation with {PRONOUN/t_c/object}.]",
@@ -3114,7 +3114,7 @@
         ],
         "not_supposed_H_choices": {
             "choice1": {
-                "text": "Lazy medicine cats...",
+                "text": "Lazy healers...",
                 "next_scene": "lazy_meds_H"
             },
             "choice2": {
@@ -3203,12 +3203,12 @@
         "intro": [
             "y_c? Will I be allowed to help with the kits again?",
             "Will I even recover from this?",
-            "[Before you have a chance to respond, r_c:0 runs into the medicine den.]",
+            "[Before you have a chance to respond, r_c:0 runs into the healer den.]",
             "|r_c:0|t_c! Can we play mossball? I miss playing with you!",
             "[t_c sighs softly, a conflict clear in {PRONOUN/t_c/poss} eyes.]",
             "Not today, r_c:0. Maybe tomorrow.",
             "|r_c:0|Okay! I'll see you tomorrow!",
-            "[r_c:0 runs back out of the medicine den, and t_c looks like {PRONOUN/t_c/subject}{VERB/t_c/'re/'s} going to cry.]",
+            "[r_c:0 runs back out of the healer den, and t_c looks like {PRONOUN/t_c/subject}{VERB/t_c/'re/'s} going to cry.]",
             "I miss the kits. I don't think I'll be able to help with them again.",
             "I might not even be able to become a full queen. How sad is that?",
             "A queen apprentice not able to graduate because {PRONOUN/t_c/subject} caught redcough.",

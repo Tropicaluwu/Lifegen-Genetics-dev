@@ -1,0 +1,84 @@
+from __future__ import annotations
+
+from random import sample, choices, choice, randint
+from typing import TYPE_CHECKING
+
+from scripts.cat.phenotype import Phenotype
+from scripts.cat.enums import CatRank, CatAge, CatStanding, CatGroup
+from scripts.cat.factories.new_cat_factory import NewCatFactory
+from scripts.cat.factories.test_cat_factory import TestCatFactory
+from scripts.cat.pelts import Pelt
+from scripts.config import get_config
+from scripts.game_structure.game.settings import game_setting_get
+
+if TYPE_CHECKING:
+    from scripts.cat.cats import Cat
+
+
+def create_example_cats(
+    majority_rank: CatRank,
+    rank_weights: dict,
+    lifegen_kitten_creation=False,
+    max_cats=12,
+    clan=None,
+    cards=None,
+) -> list[Cat]:
+    majority_rank_cats = sample(range(max_cats), 3)
+    use_special = get_config("clan_creation.use_special_roller")
+    socials = get_config("clan_creation.founder_socials", True, cards)
+
+    chosen_cats = []
+    if lifegen_kitten_creation:
+        for cat_index in range(max_cats):
+            chosen_cats.append(
+                NewCatFactory.create_cat(
+                    rank=CatRank.KITTEN,
+                    # LG: 2 moons or older, a 1-moon kitten still has blue kitten eyes and the
+                    # picker should show each cat's real eye color
+                    moons=randint(2, 5),
+                    group_ID=clan if clan else None,
+                    use_special=use_special,
+                    cards=cards,
+                )
+            )
+    else:
+        for cat_index in range(max_cats):
+            social = choice(socials)
+            rank = None
+            if cat_index in majority_rank_cats:
+                rank = majority_rank
+            else:
+                rank = choices(list(rank_weights.keys()), list(rank_weights.values()))[0]
+            cat = NewCatFactory.create_cat(status_dict={"social": social, "rank": rank, "group_ID": clan if clan else None}, 
+                                           use_special=use_special, backstory="clan_founder" if social == "clancat" else None, creating_clan=True, cards=cards)
+            cat.status._modify_group(rank, standing_with_past_group=CatStanding.LEFT, new_group_ID=clan if clan else CatGroup.PLAYER_CLAN_ID)
+
+            if cat.moons >= 140:
+                cat.moons = randint(120, 140)
+            chosen_cats.append(cat)
+
+    return chosen_cats
+
+
+def create_option_preview_cat(scar: str = None, acc: str = None):
+    """
+    Creates a cat with the specified scar
+    """
+    gene_config = get_config("genetics_config")
+    gene_config.update(get_config("april_fools_genes"))
+    pheno = Phenotype(gene_config, game_setting_get("ban problem genes"))
+    pheno.Generator()
+    new_cat = TestCatFactory.create_cat(
+        loading_cat=True,
+        pelt=Pelt(
+            phenotype=pheno,
+            reverse=False,
+            tint="gray",
+            scars=[scar] if scar else [],
+            adult_sprite=8,
+            accessory=[acc] if acc else [],
+        ),
+    )
+    new_cat.age = CatAge.ADULT
+
+    return new_cat

@@ -6,7 +6,7 @@ def get_warring_clan():
     """
     returns enemy clan if a war is currently ongoing
     """
-    # wars are stored per clan pair now (genemod), so just ask for the player clans enemies
+    # wars are stored per clan pair now (genemod), so just ask for the player clan's enemies
     enemies = game.clan.get_wars(CatGroup.PLAYER_CLAN_ID)
     for other_clan in game.clan.all_other_clans:
         if other_clan.group_ID in enemies:
@@ -19,7 +19,7 @@ def get_other_clan(clan_name):
     returns the clan object of given clan name
     """
     for clan in game.clan.all_other_clans:
-        if clan.displayname == clan_name:
+        if clan.name == clan_name:
             return clan
 
 
@@ -45,7 +45,3 @@ def change_clan_reputation(difference, clan):
     will change the Clan's reputation with outsider cats according to the difference parameter.
     """
     clan.reputation += difference
-    if clan.reputation < 0:
-        clan.reputation = 0  # clamp to 0
-    elif clan.reputation > 100:
-        clan.reputation = 100  # clamp to 100

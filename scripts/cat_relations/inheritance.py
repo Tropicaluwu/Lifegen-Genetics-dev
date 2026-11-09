@@ -11,17 +11,7 @@ while mating and for the display of the family tree screen.
 import i18n
 from strenum import StrEnum  # pylint: disable=no-name-in-module
 
-import os
-import ujson
-from scripts.game_structure import game
-from scripts.housekeeping.datadir import get_save_dir
-from scripts.game_structure.game.save_load import safe_save
 from scripts.events_module.text_adjust import adjust_list_text
-from scripts.game_structure.game.switches import (
-    switch_set_value,
-    switch_get_value,
-    Switch,
-)
 
 
 class RelationType(StrEnum):
@@ -48,7 +38,7 @@ class Inheritance:
 
     def __init__(self, cat, born=False):
         self.need_update = False
-        self.mate = {}
+        self.mates = {}
         self.other_mates = []
         self.kits = {}
         self.kits_mates = {}
@@ -65,12 +55,6 @@ class Inheritance:
         self.all_but_cousins = []
 
         self.cat = cat
-        if not born:
-            try:
-                self.load_inheritance()
-                return
-            except:
-                pass
         self.update_inheritance()
 
         # if the cat is newly born, update all the related cats
@@ -83,95 +67,6 @@ class Inheritance:
     def __setitem__(self, key, value):
         setattr(self, key, value)
 
-    def save_inheritance(self, fade=False):
-        # save inheritance
-        clanname = None
-        if switch_get_value(Switch.clan_name) != "":
-            clanname = switch_get_value(Switch.clan_name)
-        elif len(switch_get_value(Switch.clan_list)) > 0:
-            clanname = switch_get_value(Switch.clan_list)[0]
-        elif game.clan is not None:
-            clanname = game.clan.displayname
-
-        family_directory = get_save_dir() + "/" + clanname + "/inheritance"
-        family_file_path = family_directory + "/" + self.cat.ID + "_inheritance.json"
-
-        if fade:
-            if os.path.exists(family_file_path):
-                os.remove(family_file_path)
-            return
-
-        family = {}
-
-        if self.mate:
-            family["mate"] = self.mate
-        if self.other_mates:
-            family["other_mates"] = self.other_mates
-
-        if self.kits:
-            family["kits"] = self.kits
-        if self.kits_mates:
-            family["kits_mates"] = self.kits_mates
-
-        if self.siblings:
-            family["siblings"] = self.siblings
-        if self.siblings_mates:
-            family["siblings_mates"] = self.siblings_mates
-        if self.siblings_kits:
-            family["siblings_kits"] = self.siblings_kits
-
-        if self.parents:
-            family["parents"] = self.parents
-        if self.parents_siblings:
-            family["parents_siblings"] = self.parents_siblings
-
-        if self.cousins:
-            family["cousins"] = self.cousins
-
-        if self.grand_parents:
-            family["grand_parents"] = self.grand_parents
-        if self.grand_kits:
-            family["grand_kits"] = self.grand_kits
-
-        if self.others_in_tree:
-            family["others_in_tree"] = list(set([c for c in self.others_in_tree if c not in self.all_involved]))
-        if self.all_involved:
-            family["all_involved"] = list(set(self.all_involved))
-        if self.all_but_cousins:
-            family["all_but_cousins"] = list(set(self.all_but_cousins))
-
-        safe_save(family_file_path, family)
-
-    def load_inheritance(self):
-        if switch_get_value(Switch.clan_name) != "":
-            clanname = switch_get_value(Switch.clan_name)
-        else:
-            clanname = switch_get_value(Switch.clan_list)[0]
-
-        family_directory = get_save_dir() + "/" + clanname + "/inheritance/"
-        family_cat_directory = family_directory + self.cat.ID + "_inheritance.json"
-
-        with open(family_cat_directory, "r", encoding="utf-8") as read_file:
-            rel_data = ujson.loads(read_file.read())
-            for key in rel_data.keys():
-                if key == "all_in_tree":
-                    self["others_in_tree"] = rel_data[key]
-                if key == "mates":  # older genemod files
-                    self["mate"] = rel_data[key]
-                    continue
-                self[key] = rel_data[key]
-
-        self.all_inheritances[self.cat.ID] = self
-        # parents
-        for key in self.parents:
-            self.all_involved.remove(key)
-            self.all_but_cousins.remove(key)
-        self.init_parents()
-        
-        if self.parents.keys() != rel_data.get("parents", {}).keys():
-            self.update_inheritance()
-            self.update_all_related_inheritance()
-    
     def update_inheritance(self):
         """Update inheritance of the given cat."""
         self.parents = {}
@@ -495,7 +390,7 @@ class Inheritance:
 
     def init_mates(self):
         """Create a mate relationship"""
-        self.mate = {}
+        self.mates = {}
         for relevant_id in self.cat.mate:
             mate_rel = RelationType.NOT_BLOOD
             # they might be related, but only if it is not an adoption
@@ -713,7 +608,9 @@ class Inheritance:
                 _c_adoptive = self.get_adoptive_parents(_c)
                 if inter_id in _c_parents:
                     parents_cats = [self.cat.fetch_cat(c_id) for c_id in _c_parents]
-                    parent_cats_names = [str(c.name) for c in parents_cats if c is not None]
+                    parent_cats_names = [
+                        str(c.name) for c in parents_cats if c is not None
+                    ]
                     kit_rel_type = (
                         RelationType.BLOOD
                         if rel_type in BLOOD_RELATIVE_TYPES
@@ -760,6 +657,8 @@ class Inheritance:
                 self.all_but_cousins.append(inter_id)
 
                 grand_parent_cat = self.cat.fetch_cat(inter_parent_id)
+                if not grand_parent_cat:
+                    continue
                 if len(self.parents_siblings[inter_id]["additional"]) > 0:
                     add_info = self.parents_siblings[inter_id]["additional"][0]
                     self.parents_siblings[inter_id]["additional"][0] = (

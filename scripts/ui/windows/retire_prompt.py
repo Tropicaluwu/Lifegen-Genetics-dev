@@ -1,16 +1,14 @@
 import pygame
 import pygame_gui
 
+from scripts.events_module.ceremony.generate_normal_ceremony import create_ceremony
 from scripts.game_structure import game
 from scripts.ui.elements.surface_image_button import UISurfaceImageButton
-from scripts.ui.elements.text_box_tweaked import UITextBoxTweaked
 from scripts.ui.generate_button import get_button_dict, ButtonStyles
 from scripts.ui.windows.window_base_class import GameWindow
 from scripts.ui.scale import ui_scale
-from scripts.game_structure.game.switches import (
-    Switch,
-    switch_set_value
-)
+from scripts.game_structure.game.switches import Switch, switch_set_value
+
 
 class RetireWindow(GameWindow):
     def __init__(self, last_screen):
@@ -20,16 +18,15 @@ class RetireWindow(GameWindow):
         self.set_blocking(True)
         switch_set_value(Switch.window_open, True)
 
-        self.clan_name = str(game.clan.name + 'Clan')
+        self.clan_name = str(game.clan.name)
         self.last_screen = last_screen
         switch_set_value(Switch.retire, False)
         switch_set_value(Switch.retire_reject, False)
-        self.pick_path_message = UITextBoxTweaked(
+        self.pick_path_message = pygame_gui.elements.UITextBox(
             f"You're asked if you would like to retire.",
             ui_scale(pygame.Rect((20, 20), (260, -1))),
-            line_spacing=1,
             object_id="#text_box_30_horizcenter",
-            container=self
+            container=self,
         )
 
         self.begin_anew_button = UISurfaceImageButton(
@@ -46,11 +43,9 @@ class RetireWindow(GameWindow):
             object_id="@buttonstyles_squoval",
             container=self,
         )
-        
+
         self.begin_anew_button.enable()
         self.mediator_button.enable()
-
-
 
     def process_event(self, event):
         super().process_event(event)
@@ -61,13 +56,13 @@ class RetireWindow(GameWindow):
                     game.last_screen_forupdate = None
                     switch_set_value(Switch.window_open, False)
 
-                    # game.switch_screens = True                    
+                    # game.switch_screens = True
                     self.begin_anew_button.kill()
                     self.pick_path_message.kill()
                     self.mediator_button.kill()
                     self.kill()
+                    self.retire_your_cat()
                     switch_set_value(Switch.retire, True)
-                    game.clan.your_cat.status_change('elder')
                 elif event.ui_element == self.mediator_button:
                     game.last_screen_forupdate = None
                     switch_set_value(Switch.window_open, False)
@@ -78,5 +73,16 @@ class RetireWindow(GameWindow):
                     self.mediator_button.kill()
                     self.kill()
                     switch_set_value(Switch.retire_reject, True)
+                    # same as the profile's "prevent retirement", can be turned back off there
+                    game.clan.your_cat.no_retire = True
             except:
                 print("error with retire screen")
+
+    @staticmethod
+    def retire_your_cat():
+        your_cat = game.clan.your_cat
+        old_name = str(your_cat.name)
+        your_cat.retire_cat()
+        # at 119 moons the elder ceremony comes the moon after
+        if your_cat.moons != 119:
+            create_ceremony(main_cat=your_cat, old_name=old_name, involved_cats={"m_c": your_cat})

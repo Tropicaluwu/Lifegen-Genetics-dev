@@ -6,6 +6,7 @@ from strenum import StrEnum
 from enum import Enum, auto
 
 
+
 class CatAge(StrEnum):
     NEWBORN = "newborn"
     KITTEN = "kitten"
@@ -20,6 +21,40 @@ class CatAge(StrEnum):
 
     def can_have_mate(self):
         return self not in (CatAge.KITTEN, CatAge.NEWBORN, CatAge.ADOLESCENT)
+
+    @staticmethod
+    def get_from_moons(moons):
+        from scripts.config import get_config, AGE_CACHE
+        # LG: this runs for every age check, so each answer is remembered until the config changes
+        if moons in AGE_CACHE:
+            return AGE_CACHE[moons]
+        AGE_CACHE[moons] = CatAge._age_from_moons(moons, get_config("cat_ages", copy_value=False))
+        return AGE_CACHE[moons]
+
+    @staticmethod
+    def _age_from_moons(moons, ages_info):
+        lookup = {
+            CatAge.NEWBORN: ages_info["newborn"],
+            CatAge.KITTEN: ages_info["kitten"],
+            CatAge.ADOLESCENT: ages_info["adolescent"],
+            CatAge.YOUNG_ADULT: ages_info["young adult"],
+            CatAge.ADULT: ages_info["adult"],
+            CatAge.SENIOR_ADULT: ages_info["senior adult"],
+            CatAge.SENIOR: ages_info["senior"],
+        }
+        if moons > lookup[CatAge.SENIOR][1]:
+            return CatAge.SENIOR
+        if moons < lookup[CatAge.NEWBORN][0]:
+            return CatAge.NEWBORN
+
+        return next(
+            (
+                key
+                for key, (min_age, max_age) in lookup.items()
+                if min_age <= moons <= max_age
+            ),
+            None,
+        )
 
 
 class CatSocial(StrEnum):
@@ -51,6 +86,18 @@ class CatRank(StrEnum):
     ROGUE = "rogue"
     KITTYPET = "kittypet"
 
+    @classmethod
+    def _missing_(cls, value):
+        # LG: lifegen and clangen files still use the old names for the ranks genemod renamed
+        old_names = {
+            "medicine cat": "healer",
+            "medicine cat apprentice": "healer apprentice",
+            "queen's apprentice": "queen apprentice",
+        }
+        if isinstance(value, str) and value in old_names:
+            return cls(old_names[value])
+        return None
+
     def is_baby(self) -> bool:
         return self in (self.NEWBORN, self.KITTEN)
 
@@ -68,7 +115,7 @@ class CatRank(StrEnum):
 
     def is_any_mediator_rank(self) -> bool:
         return self in (self.MEDIATOR, self.MEDIATOR_APPRENTICE)
-    
+
     def is_any_queen_rank(self) -> bool:
         return self in (self.QUEEN, self.QUEEN_APPRENTICE)
 
@@ -78,7 +125,7 @@ class CatRank(StrEnum):
             self.MEDIATOR_APPRENTICE,
             self.QUEEN_APPRENTICE,
             self.MEDICINE_APPRENTICE,
-            self.QUEENS_APPRENTICE
+            self.QUEENS_APPRENTICE,
         )
 
     def is_any_adult_warrior_like_rank(self) -> bool:
@@ -87,8 +134,11 @@ class CatRank(StrEnum):
     def is_any_adult_patrol_rank(self) -> bool:
         return self in (self.WARRIOR, self.DEPUTY, self.LEADER, self.QUEEN, self.MEDIATOR)
 
-    def is_allowed_to_patrol(self, cat=None, allow_mediators=False) -> bool:
-        # newborn is not included in this because the constants.CONFIG["fun"] needs extra checks
+    def is_allowed_to_patrol(
+        self, cat=None, allow_mediators=False, allow_queens=False
+    ) -> bool:
+        # newborn is not included in this because the "fun" config needs extra checks
+        # LG: with a cat given, outsiders who travel with your cat can patrol once they're old enough
         if cat is not None:
             # outsiders who travel with you can patrol once they're old enough
             if not cat.status.group.is_any_clan_group():
@@ -101,15 +151,20 @@ class CatRank(StrEnum):
             self.ELDER,
             self.KITTEN,
             self.NEWBORN,
-            self.QUEEN,
-            self.QUEENS_APPRENTICE,
         ):
             if not allow_mediators and self in (
                 self.MEDIATOR,
                 self.MEDIATOR_APPRENTICE
             ):
                 return False
+            if not allow_queens and self in (
+                self.QUEEN,
+                self.QUEEN_APPRENTICE
+            ):
+                return False
             return True
+        return False
+
         return False
 
     def is_active_clan_rank(self):
@@ -174,20 +229,20 @@ class CatGroup(StrEnum):
             self.PLAYER_CLAN,
             self.OTHER_CLAN,
         )
-    
+
     # LG
     def get_all_outside_groups_IDs(self):
-        """ 
-        Returns a list of groups that the specified cat is NOT a part of. 
+        """
+        Returns a list of groups that the specified cat is NOT a part of.
         Called from a cat's group object
         """
-        return_groups= []
+        return_groups = []
         all_groups = {
             CatGroup.PLAYER_CLAN: CatGroup.PLAYER_CLAN_ID,
             CatGroup.ROGUE_GROUP: CatGroup.ROGUE_GROUP_ID,
             CatGroup.LONER_GROUP: CatGroup.LONER_GROUP_ID,
             CatGroup.HOUSEHOLD: CatGroup.HOUSEHOLD_ID,
-            CatGroup.NONE: None
+            CatGroup.NONE: None,
         }
         for i in all_groups:
             if i == self:
@@ -195,6 +250,14 @@ class CatGroup(StrEnum):
             else:
                 return_groups.append(all_groups[i])
         return return_groups
+    def is_ID(self) -> bool:
+        return self in (
+            self.PLAYER_CLAN_ID,
+            self.STARCLAN_ID,
+            self.UNKNOWN_RESIDENCE_ID,
+            self.DARK_FOREST_ID,
+        )
+
 
 class CatCompatibility(Enum):
     NEGATIVE = auto()

@@ -13,23 +13,29 @@ from scripts.screens.enums import GameScreen
 from scripts.cat.cats import Cat
 from scripts.game_structure.game.settings import game_setting_get
 from scripts.game_structure import game
+from ..config import get_config
 from ..ui.elements.checkbox import UICheckbox
 from ..ui.elements.modified_scrolling_container import UIModifiedScrollingContainer
 from ..ui.elements.image_button import UIImageButton
 from ..ui.elements.surface_image_button import UISurfaceImageButton
 from scripts.housekeeping.datadir import open_data_dir
 from ..ui.theme import get_text_box_theme
-from ..ui.scale import ui_scale, ui_scale_dimensions, ui_scale_offset
+from ..ui.scale import ui_scale, ui_scale_offset
 from .Screens import Screens
 from .enums import GameScreen
 from ..cat import save_load
-from ..clan_package.settings import get_clan_setting, switch_clan_setting
+from ..clan_package.settings import (
+    get_clan_setting,
+    switch_clan_setting,
+    set_clan_setting,
+)
 from ..cat.enums import CatRank, CatGroup
 from ..game_structure.screen_settings import MANAGER, toggle_fullscreen
 from ..game_structure.constants import DISPLAY_SETTINGS
-from ..housekeeping.version import get_version_info
+from ..housekeeping.game_version import get_version_info
 from ..ui.generate_button import get_button_dict, ButtonStyles
 from ..ui.windows.delete_fadeds import DeleteCatCheck, DeleteCatHistoryCheck
+from ..ui.windows.cruel_locked_action import CruelLockedAction
 from ..ui.windows.names_editor import NamesEditorWindow
 
 logger = logging.getLogger(__name__)
@@ -85,12 +91,12 @@ class ClanSettingsScreen(Screens):
                 open_data_dir()
                 return
             elif event.ui_element == self.names_button:
-                NamesEditorWindow(game.clan.name if game.clan else None)
+                NamesEditorWindow(game.clan.save_id if game.clan else None)
             elif event.ui_element == self.deleted_faded_button:
-                DeleteCatCheck(self.change_screen, game.clan.displayname)
+                DeleteCatCheck(self.change_screen, game.clan.prefix)
                 return
             elif event.ui_element == self.deleted_faded_history_button:
-                DeleteCatHistoryCheck(self.change_screen, game.clan.displayname)
+                DeleteCatHistoryCheck(self.change_screen, game.clan.prefix)
                 return
             elif event.ui_element == self.game_settings_button:
                 self.change_screen(GameScreen.SETTINGS)
@@ -118,6 +124,40 @@ class ClanSettingsScreen(Screens):
         TODO: DOCS
         """
         if event.ui_element in self.checkboxes.values():
+            forced_enabled = get_config("settings.force_enable")
+            for setting in forced_enabled:
+                if event.ui_element == self.checkboxes.get(setting) and get_config(
+                    f"settings.force_enable.{setting}"
+                ):
+                    set_clan_setting(setting, True)
+                    self.checkboxes[setting].check()
+                    CruelLockedAction()
+                    return
+
+            forced_disabled = get_config("settings.force_disable")
+            for setting in forced_disabled:
+                if event.ui_element == self.checkboxes.get(setting) and get_config(
+                    f"settings.force_disable.{setting}"
+                ):
+                    set_clan_setting(setting, False)
+                    self.checkboxes[setting].uncheck()
+                    CruelLockedAction()
+                    return
+
+            if event.ui_element == self.checkboxes.get("affair") and not get_config(
+                "mates.allow_mating"
+            ):
+                set_clan_setting("affair", False)
+                self.checkboxes["affair"].uncheck()
+                CruelLockedAction()
+                return
+            elif event.ui_element == self.checkboxes.get(
+                "assign_mentors"
+            ) and not get_config("roles.receive_mentor"):
+                set_clan_setting("assign_mentors", False)
+                self.checkboxes["assign_mentors"].uncheck()
+                CruelLockedAction()
+                return
             for key, value in self.checkboxes.items():
                 if value == event.ui_element:
                     switch_clan_setting(key)
@@ -194,6 +234,15 @@ class ClanSettingsScreen(Screens):
             tool_tip_text="buttons.open_data_directory_tooltip",
         )
 
+        self.deleted_faded_button = UISurfaceImageButton(
+            ui_scale(pygame.Rect((210, 645), (178, 30))),
+            "Delete Faded Cats",
+            get_button_dict(ButtonStyles.SQUOVAL, (178, 30)),
+            object_id="@buttonstyles_squoval",
+            manager=MANAGER,
+            tool_tip_text="Deletes faded cats where possible. ",
+        )
+
         # add and take out names (starts on this save's own names)
         self.names_button = UISurfaceImageButton(
             ui_scale(pygame.Rect((210, 600), (178, 30))),
@@ -202,15 +251,6 @@ class ClanSettingsScreen(Screens):
             object_id="@buttonstyles_squoval",
             manager=MANAGER,
             tool_tip_text="Add and take out names, for this save or for all saves",
-        )
-
-        self.deleted_faded_button = UISurfaceImageButton(
-            ui_scale(pygame.Rect((210, 645), (178, 30))),
-            "Delete Faded Cats",
-            get_button_dict(ButtonStyles.SQUOVAL, (178, 30)),
-            object_id="@buttonstyles_squoval",
-            manager=MANAGER,
-            tool_tip_text="Deletes faded cats where possible. ",
         )
 
         self.deleted_faded_history_button = UISurfaceImageButton(
@@ -333,9 +373,8 @@ class ClanSettingsScreen(Screens):
         warrior_apprentices = 0
         med_cat_apprentices = 0
         mediator_apprentices = 0
-        mediators = 0
-        queens_apprentices = 0
         queens = 0
+        mediators = 0
         elders = 0
         kits = 0
         cats_outside = 0
@@ -376,19 +415,17 @@ class ClanSettingsScreen(Screens):
                 warrior_apprentices += 1
             elif cat.status.rank == CatRank.MEDIATOR_APPRENTICE:
                 mediator_apprentices += 1
+            elif cat.status.rank == CatRank.QUEEN or cat.status.rank == CatRank.QUEEN_APPRENTICE:
+                queens += 1
             elif cat.status.rank == CatRank.MEDIATOR:
                 mediators += 1
-            elif cat.status.rank == CatRank.QUEENS_APPRENTICE:
-                queens_apprentices += 1
-            elif cat.status.rank == CatRank.QUEEN:
-                queens += 1
             elif cat.status.rank == CatRank.ELDER:
                 elders += 1
             elif cat.status.rank.is_baby():
                 kits += 1
         self.checkboxes_text["stat_box"] = pygame_gui.elements.UITextBox(
             "screens.clan_settings.stats_text",
-            ui_scale(pygame.Rect((150, 200), (530, 400))),
+            ui_scale(pygame.Rect((150, 175), (530, 425))),
             object_id=get_text_box_theme("#text_box_30_horizcenter"),
             text_kwargs={
                 "living": str(living_cats),
@@ -397,20 +434,20 @@ class ClanSettingsScreen(Screens):
                 "starclan": str(starclan),
                 "darkforest": str(df),
                 "unknownresidence": str(ur),
+                "othercats": str(other_clan_cats),
                 "medcats": str(med_cats),
                 "medcatapps": str(med_cat_apprentices),
                 "warriors": str(warriors),
                 "apps": str(warrior_apprentices),
                 "mediators": str(mediators),
+                "queens": str(queens),
                 "mediatorapps": str(mediator_apprentices),
                 "elders": str(elders),
-                "queens": str(queens),
-                "queensapps": str(queens_apprentices),
                 "kits": str(kits),
                 "faded": str(faded_cats),
             },
         )
-        
+
         self.checkboxes_text["achievements"] = UISurfaceImageButton(
             ui_scale(pygame.Rect((335, 615), (120, 30))),
             "achievements",

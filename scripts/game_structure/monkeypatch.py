@@ -24,6 +24,8 @@ other = [
 def translate(text: str, **kwargs):
     if text == "":
         return ""
+    if kwargs.get("translate") is False:
+        return text
     output = i18n.t(text, **kwargs)
     if game.event_editing:
         return output
@@ -38,13 +40,9 @@ def translate(text: str, **kwargs):
         return event_text_adjust(
             Cat,
             output,
-            patrol_leader=dict.get("p_l"),
             main_cat=dict.get("m_c"),
             random_cat=dict.get("r_c"),
-            stat_cat=dict.get("s_c"),
             victim_cat=dict.get("mur_c"),
-            patrol_cats=dict.get("patrol_cats"),
-            patrol_apprentices=dict.get("patrol_apprentices"),
             new_cats=dict.get("new_cats"),
             multi_cats=dict.get("multi_cats"),
             clan=dict.get("clan", game.clan),

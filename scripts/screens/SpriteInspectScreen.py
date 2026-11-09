@@ -9,6 +9,7 @@ import ujson
 from scripts.cat.cats import Cat
 from scripts.game_structure import game
 from ..ui.elements.image_button import UIImageButton
+from ..ui.elements.checkbox import UICheckbox
 from ..ui.elements.surface_image_button import UISurfaceImageButton
 from ..ui.theme import get_text_box_theme
 from ..events_module.text_adjust import shorten_text_to_fit
@@ -70,14 +71,20 @@ class SpriteInspectScreen(Screens):
             if event.ui_element == self.back_button:
                 self.change_screen(GameScreen.PROFILE)
             elif event.ui_element == self.next_cat_button:
-                if isinstance(Cat.fetch_cat(self.next_cat), Cat) and Cat.fetch_cat(self.next_cat).moons >= 0:
+                if (
+                    isinstance(Cat.fetch_cat(self.next_cat), Cat)
+                    and Cat.fetch_cat(self.next_cat).moons >= 0
+                ):
                     switch_set_value(Switch.cat, self.next_cat)
                     self.season_override = game.clan.current_season
                     self.cat_setup()
                 else:
                     print("invalid next cat", self.next_cat)
             elif event.ui_element == self.previous_cat_button:
-                if isinstance(Cat.fetch_cat(self.previous_cat), Cat) and Cat.fetch_cat(self.previous_cat).moons >= 0:
+                if (
+                    isinstance(Cat.fetch_cat(self.previous_cat), Cat)
+                    and Cat.fetch_cat(self.previous_cat).moons >= 0
+                ):
                     switch_set_value(Switch.cat, self.previous_cat)
                     self.season_override = game.clan.current_season
                     self.cat_setup()
@@ -120,7 +127,7 @@ class SpriteInspectScreen(Screens):
                     self.scars_shown = True
 
                 self.make_cat_image()
-                self.update_checkboxes()
+                self.checkboxes["scars_shown"].toggle()
             elif event.ui_element == self.checkboxes["acc_shown"]:
                 if self.acc_shown:
                     self.acc_shown = False
@@ -128,16 +135,16 @@ class SpriteInspectScreen(Screens):
                     self.acc_shown = True
 
                 self.make_cat_image()
-                self.update_checkboxes()
-            elif event.ui_element == self.checkboxes["override_dead_lineart"]:
+                self.checkboxes["acc_shown"].toggle()
+            elif event.ui_element == self.checkboxes["show_as_living"]:
                 if self.override_dead_lineart:
                     self.override_dead_lineart = False
                 else:
                     self.override_dead_lineart = True
 
                 self.make_cat_image()
-                self.update_checkboxes()
-            elif event.ui_element == self.checkboxes["override_not_working"]:
+                self.checkboxes["show_as_living"].toggle()
+            elif event.ui_element == self.checkboxes["show_as_healthy"]:
                 if self.override_not_working:
                     self.override_not_working = False
                 else:
@@ -145,14 +152,13 @@ class SpriteInspectScreen(Screens):
 
                 self.make_cat_image()
                 self.update_checkboxes()
+                self.checkboxes["show_as_healthy"].toggle()
             elif event.ui_element == self.checkboxes["hide_white"]:
-                if self.hide_white:
-                    self.hide_white = False
-                else:
-                    self.hide_white = True
+                self.hide_white = not self.hide_white
 
                 self.make_cat_image()
                 self.update_checkboxes()
+                self.checkboxes["hide_white"].toggle()
             elif event.ui_element == self.cat_elements["favourite_button"]:
                 self.the_cat.favourite += 1
                 if self.the_cat.favourite > 6:
@@ -283,7 +289,7 @@ class SpriteInspectScreen(Screens):
                     else self.the_cat.status.fetch_clan_object(game.clan).biome,
                     season=self.season_override if self.season_override else game.clan.current_season,
                     show_nest=self.the_cat.age == "newborn"
-                    or self.the_cat.not_working(),
+                    or not self.the_cat.can_work(),
                     group=self.the_cat.status.group,
                 ),
                 ui_scale_dimensions((560, 350)),
@@ -339,7 +345,7 @@ class SpriteInspectScreen(Screens):
         cat_name = str(self.the_cat.name)  # name
         if self.the_cat.dead:
             cat_name = i18n.t("general.dead_label", name=cat_name)
-        short_name = shorten_text_to_fit(cat_name, 195, 20)
+        # short_name = shorten_text_to_fit(cat_name, 195, 20)
 
         self.cat_elements["cat_name"] = pygame_gui.elements.UITextBox(
             cat_name,
@@ -382,87 +388,56 @@ class SpriteInspectScreen(Screens):
         self.checkboxes = {}
 
         # "Show Platform"
-        self.make_one_checkbox(
-            ui_scale_offset((100, 575)), "platform_shown", self.platform_shown
+        self.checkboxes["platform_shown"] = UICheckbox(
+            position=(100, 575),
+            manager=MANAGER,
+            check=self.platform_shown,
         )
 
         # "Show Scars"
-        self.make_one_checkbox(
-            ui_scale_offset((300, 575)),
-            "scars_shown",
-            self.scars_shown,
-            self.the_cat.pelt.scars,
+        self.checkboxes["scars_shown"] = UICheckbox(
+            position=(300, 575),
+            manager=MANAGER,
+            check=self.scars_shown,
         )
+        if not self.the_cat.pelt.scars:
+            self.checkboxes["scars_shown"].disable()
 
         # "Show accessories"
-        self.make_one_checkbox(
-            ui_scale_offset((500, 575)),
-            "acc_shown",
-            self.acc_shown,
-            self.the_cat.pelt.accessory,
+        self.checkboxes["acc_shown"] = UICheckbox(
+            position=(500, 575),
+            manager=MANAGER,
+            check=self.acc_shown,
         )
+        if not self.the_cat.pelt.accessory:
+            self.checkboxes["acc_shown"].disable()
 
         # "Show as living"
-        self.make_one_checkbox(
-            ui_scale_offset((100, 625)),
-            "override_dead_lineart",
-            self.override_dead_lineart,
-            self.the_cat.dead,
-            disabled_object_id="@checked_checkbox",
+        self.checkboxes["show_as_living"] = UICheckbox(
+            position=(100, 625),
+            manager=MANAGER,
+            check=self.override_dead_lineart,
         )
+        if not self.the_cat.dead:
+            self.checkboxes["show_as_living"].disable()
 
         # "Show as healthy"
-        self.make_one_checkbox(
-            ui_scale_offset((300, 625)),
-            "override_not_working",
-            self.override_not_working,
-            self.the_cat.not_working(),
-            disabled_object_id="@checked_checkbox",
+        self.checkboxes["show_as_healthy"] = UICheckbox(
+            position=(300, 625),
+            manager=MANAGER,
+            check=self.override_not_working,
         )
+        if self.the_cat.can_work():
+            self.checkboxes["show_as_healthy"].disable()
 
         # "Hide white"
-        self.make_one_checkbox(
-            ui_scale_offset((500, 625)),
-            "hide_white",
-            self.hide_white,
-            (self.the_cat.phenotype.white_pattern != "No" or self.the_cat.phenotype.white[0] != "w") and (not self.the_cat.chimerapheno or self.the_cat.chimerapheno.white_pattern != "No" or self.the_cat.chimerapheno.white[0] != "w"),
-            disabled_object_id="@checked_checkbox",
+        self.checkboxes["hide_white"] = UICheckbox(
+            position=(500, 625),
+            manager=MANAGER,
+            check=self.hide_white,
         )
-
-    def make_one_checkbox(
-        self,
-        location: tuple,
-        name: str,
-        stored_bool: bool,
-        cat_value_to_allow=True,
-        disabled_object_id="@unchecked_checkbox",
-    ):
-        """Makes a single checkbox. So I don't have to copy and paste this 5 times.
-        if cat_value_to_allow evaluates to False, then the unchecked checkbox is always used the the checkbox
-        is disabled"""
-
-        if not cat_value_to_allow:
-            self.checkboxes[name] = UIImageButton(
-                pygame.Rect(location, ui_scale_dimensions((50, 50))),
-                "",
-                object_id=disabled_object_id,
-                starting_height=2,
-            )
-            self.checkboxes[name].disable()
-        elif stored_bool:
-            self.checkboxes[name] = UIImageButton(
-                pygame.Rect(location, ui_scale_dimensions((50, 50))),
-                "",
-                object_id="@checked_checkbox",
-                starting_height=2,
-            )
-        else:
-            self.checkboxes[name] = UIImageButton(
-                pygame.Rect(location, ui_scale_dimensions((50, 50))),
-                "",
-                object_id="@unchecked_checkbox",
-                starting_height=2,
-            )
+        if (self.the_cat.phenotype.white_pattern == "No" and self.the_cat.phenotype.white[0] == "w") and (not self.the_cat.chimerapheno or self.the_cat.chimerapheno.white_pattern == "No" and self.the_cat.chimerapheno.white[0] == "w"):
+            self.checkboxes["hide_white"].disable()
 
     def make_cat_image(self):
         """Makes the cat image"""
@@ -556,7 +531,7 @@ class SpriteInspectScreen(Screens):
                 if game.clan.override_biome
                 else self.the_cat.status.fetch_clan_object(game.clan).biome,
                 season=game.clan.current_season,
-                show_nest=self.the_cat.age == "newborn" or self.the_cat.not_working(),
+                show_nest=self.the_cat.age == "newborn" or not self.the_cat.can_work(),
                 group=self.the_cat.status.group,
             )
             full_image.blit(self.cat_image, (15, 0))
@@ -578,7 +553,7 @@ class SpriteInspectScreen(Screens):
         code["former_apprentices"] = []
         code["faded_offspring"] = []
 
-        file_path = os.path.join(get_save_dir(), game.clan.name, "exported_cats")
+        file_path = os.path.join(get_save_dir(), game.clan.save_id, "exported_cats")
         if not os.path.exists(file_path):
             os.makedirs(file_path)
         file_path = os.path.join(file_path, f"{code["ID"]}.json")

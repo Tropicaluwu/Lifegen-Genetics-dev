@@ -30,7 +30,7 @@
         ],
         "collateral_damage": {
             "injuries": [
-                "water in their lungs"
+                "water_in_lungs"
             ],
             "deaths": {
                 "death_text": [
@@ -62,8 +62,8 @@
         ],
         "progress_events": {
             "moon1": [
-                "Plants and herbs around the shore are slowly withering away until they are unusable. The fish are making c_n sick, and the water is slowly turning into a mess of grey and black. The medicine cats have a lot of work to do as the strange phenomena continues.",
-                "The medicine cats learn quickly that the dreadfully black ocean is the source of many sudden sicknesses. Cats are instructed to stay out of the water and the goop that pollutes it. With the convenience of the ocean gone, c_n struggles to find solutions."
+                "Plants and herbs around the shore are slowly withering away until they are unusable. The fish are making c_n sick, and the water is slowly turning into a mess of grey and black. The healers have a lot of work to do as the strange phenomena continues.",
+                "The healers learn quickly that the dreadfully black ocean is the source of many sudden sicknesses. Cats are instructed to stay out of the water and the goop that pollutes it. With the convenience of the ocean gone, c_n struggles to find solutions."
             ],
             "moon2": [
                 "Cats are becoming skinnier and quicker to tire due to the loss of a convenient source of fresh-kill. Rumors are spreading that the Dark Forest is punishing c_n for an unknown reason, and the resentment is growing to a concerning amount.",

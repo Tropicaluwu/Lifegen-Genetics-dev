@@ -33,7 +33,7 @@
         "conclusion_events": [
             "Unable to stand the thirst anymore, a weak warrior stumbles to the river, knowing of the sickness that they might have to battle because of it. They take a sip, and are surprised when they taste and smell cool, fresh water. They look down through the clear river, finally able to see the pebbles on the bottom again. Rejuvenated, the warrior takes a few gracious gulps before sprinting back to camp with the good news. The river is clean!",
             "The foul scent from the river has begun to fade, until one day, it seems to be completely gone. A border patrol visits the site of the pollution, and are elated to find it completely clear! Twoleg paw prints are evident in the mud. It seems that they've finally done something right!",
-            "The Clan has been closely monitoring the state of the river. Finally, lead_name has announced that the contamination is gone, and the water is once more safe to drink. Thirsty warriors rush to the camp entrance, clearing the medicine den of their moss stores, to fetch water for the ill."
+            "The Clan has been closely monitoring the state of the river. Finally, lead_name has announced that the contamination is gone, and the water is once more safe to drink. Thirsty warriors rush to the camp entrance, clearing the healer den of their moss stores, to fetch water for the ill."
         ],
         "collateral_damage": {}
     },
@@ -77,7 +77,7 @@
                 "chance": 5,
                 "trigger_events": [
                     "The snow has hidden all plants and trails, everything that c_n has relied on. Herbs, favorite moss gathering spots, best cobweb collections, all of it has been obliterated by white, icy flakes.",
-                    "Everything the clan has relied on has been vanquished by the never-ending snow. Medicine cats panic as herb supplies run dangerously low."
+                    "Everything the clan has relied on has been vanquished by the never-ending snow. Healers panic as herb supplies run dangerously low."
                 ]
             },
             "Famine": {
@@ -100,7 +100,7 @@
         "collateral_damage": {
             "injuries": [
                 "frostbite",
-                "shivering"
+                "dangerously_cold"
             ],
             "deaths": {
                 "death_text": [
@@ -147,7 +147,7 @@
         "secondary_disasters": [],
         "collateral_damage": {
             "injuries": [
-                "shivering",
+                "dangerously_cold",
                 "frostbite"
             ],
             "deaths": {
@@ -176,7 +176,7 @@
         "rarity": "uncommon",
         "trigger_events": [
             "The objects the Twolegs bring smell so enticing, but the cats of c_n avoid them as much as possible. It only occurs to them that the prey they so rely on for food might not do the same when the first cats start getting sick.",
-            "The prey has been easy to catch lately, though even the freshest of fresh-kill has seemed a little... off. The medicine cat den has more work than usual, and bellyaches are now very common.",
+            "The prey has been easy to catch lately, though even the freshest of fresh-kill has seemed a little... off. The healer den has more work than usual, and bellyaches are now very common.",
             "A group of Twolegs have settled in white, flimsy dens a little ways away from the territory. c_n can hear booms in the night and the ever growing unease of the animals around them. Prey and predator, big and small, are found deceased at dawn."
         ],
         "progress_events": {
@@ -287,7 +287,7 @@
                 "sprain",
                 "bruises",
                 "scrapes",
-                "small cuts"
+                "small_cut"
             ]
         }
     },
@@ -305,13 +305,13 @@
         "rarity": "common",
         "trigger_events": [
             "Greenleaf is as hot as ever, but this morning just seems unbearable. The ground is hot, the air is hot, and even the slight breeze does nothing to relieve cats from the beaming sun.",
-            "Cats are waking up in the middle of the night, complaining about the sudden unbearable heat of Greenleaf. Warriors are weary and exhausted from the lack of sleep, and medicine cats are worried about herbs and heat stroke."
+            "Cats are waking up in the middle of the night, complaining about the sudden unbearable heat of Greenleaf. Warriors are weary and exhausted from the lack of sleep, and healers are worried about herbs and heat stroke."
         ],
         "progress_events": {
             "moon1": [
                 "lead_name is worried about the rise in temperature and advises cats to say within shaded areas for now until it passes. Patrols will be done earlier in the morning when it's cooler and kittens are to strictly play inside the dens to avoid the sun.",
-                "The medicine cats are rushing to preserve herbs, worried the heat would damage them before they're able to be used. A decent portion of herbs has already dried up, thankfully still usable under the right conditions but worrying nonetheless.",
-                "Cats from all roles remind each other to drink water and take breaks to avoid dehydration as the days just get hotter. Elders and kittens are watched carefully for any signs of sickness, and the medicine cats are always on edge."
+                "The healers are rushing to preserve herbs, worried the heat would damage them before they're able to be used. A decent portion of herbs has already dried up, thankfully still usable under the right conditions but worrying nonetheless.",
+                "Cats from all roles remind each other to drink water and take breaks to avoid dehydration as the days just get hotter. Elders and kittens are watched carefully for any signs of sickness, and the healers are always on edge."
             ]
         },
         "conclusion_events": [
@@ -320,8 +320,8 @@
         ],
         "collateral_damage": {
             "injuries": [
-                "heat exhaustion",
-                "heat stroke",
+                "heat_exhaustion",
+                "heat_stroke",
                 "dehydrated"
             ],
             "deaths": {
@@ -365,8 +365,8 @@
         ],
         "collateral_damage": {
             "injuries": [
-                "shivering",
-                "running nose"
+                "dangerously_cold",
+                "running_nose"
             ]
         },
         "secondary_disasters": {

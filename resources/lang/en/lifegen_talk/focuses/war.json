@@ -91,7 +91,7 @@
         "intro": [
             "[t_c's eyes hold an unnerving understanding as you limp around camp.]",
             "You are injured. Why hasn't r_c:0 treated you yet?",
-            "{VERB/r_c:0/Are/Is} {PRONOUN/r_c:0/subject} busy? That's fine. I'm not a medicine cat, but I can help!"
+            "{VERB/r_c:0/Are/Is} {PRONOUN/r_c:0/subject} busy? That's fine. I'm not a healer, but I can help!"
         ]
     },
     "war_app_H1": {
@@ -918,7 +918,7 @@
             }
         ],
         "intro": [
-            "[Long after dusk, you're organizing your herbs in the medicine den when you hear tiny paws at the entrance.]",
+            "[Long after dusk, you're organizing your herbs in the healer den when you hear tiny paws at the entrance.]",
             "[t_c creeps in, {PRONOUN/t_c/poss} eyes wide and fur fluffed. When {PRONOUN/t_c/subject} {VERB/t_c/see/sees} you, {PRONOUN/t_c/subject} {VERB/t_c/gasp/gasps}.]",
             "I- I'm sorry! I know I'm not supposed to be here!",
             "[{PRONOUN/t_c/subject/CAP} {VERB/t_c/shuffle/shuffles} {PRONOUN/t_c/poss} paws, not meeting your eyes.]",
@@ -1595,7 +1595,7 @@
             }
         ],
         "intro": [
-            "[t_c watches the medicine cats rush to tend to the recent border patrol, deeply troubled.]",
+            "[t_c watches the healers rush to tend to the recent border patrol, deeply troubled.]",
             "Y'know, sometimes I wonder what our role is, in the midst of all this.",
             "Why should we get to stay in camp all day while our Clanmates have to struggle and die on the front lines?",
             "I get that what we do is important, but ... There's a war going on. Is it really more important than the lives of our Clanmates? It just seems a little unfair."
@@ -3467,7 +3467,7 @@
             "There was almost a fight at the border... I managed to deescalate before anyone got hurt.",
             "...",
             "y_c...",
-            "Don't overwork yourself, okay? I'm no medicine cat, but I'm happy to learn if you need help.",
+            "Don't overwork yourself, okay? I'm no healer, but I'm happy to learn if you need help.",
             "Temporarily, yes, but...",
             "I cannot stand seeing my Clanmates suffer and being unable to do anything about it besides cause more suffering for w_cClan."
         ]
@@ -4066,11 +4066,11 @@
             }
         },
         "intro": [
-            "[Since you're not allowed to work right now, you're sat at the edge of camp, watching the medicine den from afar as injured warriors mill in and out.]",
+            "[Since you're not allowed to work right now, you're sat at the edge of camp, watching the healer den from afar as injured warriors mill in and out.]",
             "Hey, y_c?",
             "[You turn your head. t_c hops up to you with a wound on {PRONOUN/t_c/poss} foreleg.]",
-            "The medicine den is totally full... can you help me?",
-            "Hm? Yes, of course I trust you. You're still a medicine cat.",
+            "The healer den is totally full... can you help me?",
+            "Hm? Yes, of course I trust you. You're still a healer.",
             "[You know it's not the time, so you stifle your smile as you examine t_c's injury.]"
         ]
     },
@@ -4160,7 +4160,7 @@
         "intro": [
             "[t_c stumbles into camp, out of breath and bleeding.]",
             "You're, uh... you're lucky you get to skip out on this, y_c.",
-            "[You watch sadly as {PRONOUN/t_c/subject} {VERB/t_c/stumble/stumbles} to the medicine den.]"
+            "[You watch sadly as {PRONOUN/t_c/subject} {VERB/t_c/stumble/stumbles} to the healer den.]"
         ]
     },
     "war_focus_sh_J6": {

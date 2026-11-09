@@ -5,11 +5,10 @@ import i18n
 import ujson
 
 from scripts.cat.cats import Cat
-from scripts.cat.enums import CatRank
+from scripts.cat.enums import CatRank, CatGroup
 from scripts.cat.skills import SkillPath
 from scripts.clan_resources.freshkill import (
     FRESHKILL_EVENT_ACTIVE,
-    FRESHKILL_EVENT_TRIGGER_FACTOR,
 )
 from scripts.events_module.event_filters import (
     event_for_location,
@@ -18,6 +17,7 @@ from scripts.events_module.event_filters import (
     event_for_cat,
     event_for_reputation,
     event_for_clan_relations,
+    event_for_temperament,
     event_for_freshkill_supply,
     event_for_herb_supply,
     event_for_season,
@@ -25,11 +25,13 @@ from scripts.events_module.event_filters import (
     cat_for_event,
     get_frequency,
     find_new_frequency,
+    event_for_poi,
+    _get_cats_from_group,
 )
 from scripts.events_module.short.short_event import ShortEvent
+from scripts.config import get_config
 from scripts.game_structure import constants, game
 from scripts.game_structure.game.switches import switch_get_value, Switch
-from scripts.clan_package.cotc import get_warring_clan
 from scripts.clan_package.get_clan_cats import (
     get_living_clan_cat_count,
     find_alive_cats_with_rank,
@@ -62,6 +64,7 @@ def create_short_event(
     :param sub_type: The required subtypes for this event.
     :param future_event: If this is being triggered by a future event, pass the future event object here.
     """
+    # LG: the default used to be game.clan, which is only read once at import (when it's None)
     if clan is None:
         clan = game.clan
     if future_event and (
@@ -95,11 +98,8 @@ def create_short_event(
             game.clan]+game.clan.all_other_clans if c.group_ID == chosen_enemy][0]
         sub_types.append("war")
     else:
-        other_clan = random.choice(
-            game.clan.all_other_clans +
-            [game.clan] if game.clan.all_other_clans else None
-        )
-        while other_clan == clan:
+        other_clan = random.choice(game.clan.all_other_clans + [game.clan]) if game.clan.all_other_clans else None
+        while other_clan.group_ID == clan.group_ID:
             other_clan = random.choice(
                 game.clan.all_other_clans + [game.clan])
 
@@ -107,22 +107,14 @@ def create_short_event(
     camp_cats = [
         c
         for c in Cat.all_cats_list
-        if c.status.group_ID == clan.group_ID
-        and (
-            (c.skills.primary and c.skills.primary.path == SkillPath.CAMP)
-            or (c.skills.secondary and c.skills.secondary.path == SkillPath.CAMP)
-        )
+        if c.status.group_ID == clan.group_ID and SkillPath.CAMP in c.skills.get_all()
     ]
 
     avoidance_chance = 1
     # each camp cat will increase the chance that significant reduction events do not occur
     for c in camp_cats:
         # tiers are added in order to make the chance num, this means the higher tiers have greater influence
-        if c.skills.primary.path == SkillPath.CAMP:
-            # +1 bc primary paths should have a little bit larger influence
-            avoidance_chance += c.skills.primary.tier + 1
-        elif c.skills.secondary and c.skills.secondary.path == SkillPath.CAMP:
-            avoidance_chance += c.skills.secondary.tier
+        avoidance_chance += c.skills.get_all()[SkillPath.CAMP]
 
     # NOW find the possible events and filter
     if event_type == "birth_death":
@@ -211,9 +203,7 @@ def find_needed_events(frequency, event_type=None, main_cat=None) -> list:
         )
         raise Exception(f"Unrecognized biome {game.clan.biome}.")
 
-    if (
-        debug_id := constants.CONFIG["event_generation"]["debug_ensure_event_id"]
-    ) and "debug" in debug_id:
+    if (debug_id := get_config("event_generation.debug_ensure_event_id")) and "debug" in debug_id:
         try:
             event_list.extend(generate_event_objects(event_type, "_debug", 0))
             frequency = 0
@@ -232,7 +222,7 @@ def find_needed_events(frequency, event_type=None, main_cat=None) -> list:
         # biome specific events
         event_list.extend(generate_event_objects(event_type, biome, frequency))
 
-        # general (non-biome) events 
+        # general (non-biome) events
         event_list.extend(generate_event_objects(event_type, "general", frequency))
 
     return event_list
@@ -270,7 +260,7 @@ def generate_event_objects(event_triggered, biome, frequency) -> list:
     :param biome: The biome to pull events for
     :param frequency: The frequency to pull events for
     """
-    debug_freq = constants.CONFIG["event_generation"]["debug_override_frequency"]
+    debug_freq = get_config("event_generation.debug_override_frequency")
     if debug_freq:
         frequency = debug_freq
 
@@ -332,6 +322,7 @@ def generate_event_objects(event_triggered, biome, frequency) -> list:
                     season=event["season"] if "season" in event else ["any"],
                     sub_type=event["sub_type"] if "sub_type" in event else [],
                     tags=event["tags"] if "tags" in event else [],
+                    poi=event["poi"] if "poi" in event else {},
                     text=event_text,
                     new_accessory=(
                         event["new_accessory"] if "new_accessory" in event else []
@@ -366,12 +357,18 @@ def generate_event_objects(event_triggered, biome, frequency) -> list:
         return []
 
 
+def event_mentions(event, name):
+    """If the event's text or its relationship logs use that name, like lead_name"""
+    logs = [log for change in event.relationships or [] for log in (change.get("log") or {}).values()]
+    return name in event.text or any(name in log for log in logs)
+
+
 def filter_events(
     possible_events,
     main_cat,
     random_cat,
     other_clan,
-    clan=None,
+    clan = None,
     sub_types: list = None,
     allowed_events: list = None,
     excluded_events: list = None,
@@ -390,6 +387,7 @@ def filter_events(
     :param ignore_subtyping: ignores subtyping entirely
     :param reduction_avoidance_chance: chance to avoid events that reduce supplies
     """
+    # LG: the default used to be game.clan, which is only read once at import (when it's None)
     if clan is None:
         clan = game.clan
     final_events = []
@@ -407,9 +405,9 @@ def filter_events(
             continue
 
         # ensure ID and requirements override
-        if constants.CONFIG["event_generation"]["debug_override_requirements"]:
-            if game.clan.clancount == 'multiclan' and event.other_clan and not event_for_other_clan(
-                Cat, event.other_clan.get("has_rank"), other_clan.group_ID
+        if get_config("event_generation.debug_override_requirements"):
+            if game.clan.clancount == 'multiclan' and not event_for_other_clan(
+                Cat, event.other_clan.get("has_rank") if event.other_clan else [], other_clan.group_ID
             ):
                 continue
             final_events.append(event)
@@ -430,16 +428,24 @@ def filter_events(
             continue
 
         # check tags
-        if not event_for_tags(event.tags, main_cat, random_cat):
+        if not event_for_tags(
+            event.tags,
+            main_cat,
+            clan=clan.group_ID if clan else CatGroup.PLAYER_CLAN_ID,
+            other_cat=random_cat,
+        ):
             continue
 
-        if not clan.leader and "lead_name" in event.text:
+        if not event_for_poi(event.poi, clan):
             continue
-        if not clan.deputy and "dep_name" in event.text:
+
+        if not clan.leader and event_mentions(event, "lead_name"):
+            continue
+        if not clan.deputy and event_mentions(event, "dep_name"):
             continue
         if (
             not find_alive_cats_with_rank(Cat, [CatRank.MEDICINE_CAT], working=True, clan=clan.group_ID)
-            and "med_name" in event.text
+            and event_mentions(event, "med_name")
         ):
             continue
 
@@ -453,20 +459,20 @@ def filter_events(
         if "old_age" in event.sub_type:
             if (
                 main_cat.moons
-                < constants.CONFIG["death_related"]["old_age_death_start"]
+                < get_config("death_related.old_age_death_start")
             ):
                 continue
             if (
                 random_cat
                 and random_cat.moons
-                < constants.CONFIG["death_related"]["old_age_death_start"]
+                < get_config("death_related.old_age_death_start")
             ):
                 continue
         # remove some non-old age events to encourage elders to die of old age more often
         if (
             "old_age" not in event.sub_type
             and main_cat.moons
-            > constants.CONFIG["death_related"]["old_age_death_start"]
+            > get_config("death_related.old_age_death_start")
             and int(random.random() * 3)
         ):
             continue
@@ -509,8 +515,13 @@ def filter_events(
 
         # check if outsider event is allowed
         if event.outsider:
-            if not event_for_reputation(event.outsider["current_rep"]):
+            if not event_for_reputation(event.outsider["current_rep"], clan):
                 continue
+
+        if game.clan.clancount == 'multiclan' and not event_for_other_clan(
+            Cat, event.other_clan.get("has_rank") if event.other_clan else [], other_clan.group_ID
+        ):
+            continue
 
         # other Clan related checks
         if event.other_clan:
@@ -522,8 +533,8 @@ def filter_events(
             ):
                 continue
 
-            if game.clan.clancount == 'multiclan' and not event_for_other_clan(
-                Cat, event.other_clan.get("has_rank"), other_clan.group_ID
+            if not event_for_temperament(
+                event.other_clan["temperament"], other_clan.temperament
             ):
                 continue
 
@@ -553,12 +564,7 @@ def filter_events(
                 c
                 for c in Cat.all_cats_list
                 if c.status.alive_in_player_clan
-                and (
-                    (c.skills.primary and c.skills.primary.path == SkillPath.CAMP)
-                    or (
-                        c.skills.secondary and c.skills.secondary.path == SkillPath.CAMP
-                    )
-                )
+                and SkillPath.CAMP in c.skills.get_all()
             ]
 
             discard = False
@@ -578,10 +584,7 @@ def filter_events(
                         continue
 
                     if not event_for_freshkill_supply(
-                        game.clan.freshkill_pile,
-                        trigger,
-                        FRESHKILL_EVENT_TRIGGER_FACTOR,
-                        clan_size,
+                        game.clan.freshkill_pile, trigger, clan_size
                     ):
                         discard = True
                         break
@@ -589,7 +592,7 @@ def filter_events(
                         discard = False
 
                 else:  # if supply type wasn't freshkill, then it must be an herb type
-                    if not event_for_herb_supply(trigger, supply_type, clan_size):
+                    if not event_for_herb_supply(trigger, supply_type):
                         discard = True
                         break
                     else:
@@ -603,22 +606,17 @@ def filter_events(
     if not final_events:
         return None, random_cat
 
-    cat_list = [
-        c
-        for c in Cat.all_cats.values()
-        if c.status.group_ID == clan.group_ID and c != main_cat
-    ]
     chosen_cat = None
     chosen_event = None
 
     if random_cat:
         chosen_cat = random_cat
         # if we've got our random cat already, then check if we have to find an ensured event
-        if constants.CONFIG["event_generation"]["debug_ensure_event_id"]:
+        if get_config("event_generation.debug_ensure_event_id"):
             for possible_event in final_events:
                 if (
                     possible_event.event_id
-                    == constants.CONFIG["event_generation"]["debug_ensure_event_id"]
+                    == get_config("event_generation.debug_ensure_event_id")
                 ):
                     chosen_event = possible_event
                     break
@@ -635,8 +633,8 @@ def filter_events(
             continue
 
         if (
-            constants.CONFIG["event_generation"]["debug_ensure_event_id"]
-            and constants.CONFIG["event_generation"]["debug_ensure_event_id"]
+            get_config("event_generation.debug_ensure_event_id")
+            and get_config("event_generation.debug_ensure_event_id")
             != chosen_event.event_id
         ):
             final_events.remove(chosen_event)
@@ -648,8 +646,27 @@ def filter_events(
         if not chosen_event.r_c:
             break
 
+        if chosen_event.r_c.get("group"):
+            cat_list = _get_cats_from_group(
+                [c for c in Cat.all_cats.values() if c != main_cat],
+                chosen_event.r_c["group"],
+                {},
+                main_clan=clan
+            )
+        else:
+            cat_list = [
+                c
+                for c in Cat.all_cats.values()
+                if c.status.group_ID == clan.group_ID and c != main_cat
+            ]
+        if not cat_list:
+            final_events.remove(chosen_event)
+            failed_ids.append(chosen_event.event_id)
+            chosen_event = None
+            continue
+
         # if we're overriding requirements, don't bother looking for an appropriate cat
-        if constants.CONFIG["event_generation"]["debug_override_requirements"]:
+        if get_config("event_generation.debug_override_requirements"):
             chosen_cat = random.choice(cat_list)
             continue
 
@@ -667,7 +684,7 @@ def filter_events(
             ).copy(),
             injuries=r_c_injuries,
             return_id=False,
-            tags=chosen_event.tags,
+            tags=chosen_event.tags, clan=clan,
         )
 
         if not chosen_cat:
@@ -677,7 +694,7 @@ def filter_events(
         elif (
             "old_age" in chosen_event.sub_type
             and chosen_cat.moons
-            < constants.CONFIG["death_related"]["old_age_death_start"]
+            < get_config("death_related.old_age_death_start")
         ):
             failed_ids.append(chosen_event.event_id)
             final_events.remove(chosen_event)

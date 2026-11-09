@@ -37,7 +37,7 @@ from ..game_structure.screen_settings import (
     MANAGER,
     set_display_mode,
 )
-from scripts.housekeeping.version import get_version_info
+from scripts.housekeeping.game_version import get_version_info
 from scripts.ui.generate_button import get_button_dict, ButtonStyles
 from scripts.game_structure import constants
 
@@ -182,7 +182,7 @@ class SettingsScreen(Screens):
             # if self.sub_menu in ("general", "relation", "language"):
             self.handle_checkbox_events(event)
 
-        elif event.type == pygame.KEYDOWN and game_setting_get("keybinds"):
+        elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
                 self.change_screen(GameScreen.START)
             elif event.key == pygame.K_RIGHT:
@@ -226,10 +226,7 @@ class SettingsScreen(Screens):
                     ):
                         # has to be done manually since we haven't saved the new mode yet.
                         self.toggled_theme = (
-                            "dark"
-                            if "@checked_checkbox"
-                            in self.checkboxes["dark mode"].get_object_ids()
-                            else "light"
+                            "dark" if self.checkboxes["dark mode"].checked else "light"
                         )
                         self.set_bg("default", "mainmenu_bg")
                         self.open_general_settings()
@@ -554,20 +551,20 @@ class SettingsScreen(Screens):
             manager=MANAGER,
             anchors={
                 "top_target": self.volume_elements["sound_volume_indicator"],
-                "centerx": "centerx"
+                "centerx": "centerx",
             },
         )
         self.checkboxes["dialogue_typing_sound"] = UICheckbox(
-                position=(20, 42),
-                container=None,
-                tool_tip_text="settings.dialogue_typing_sound_tooltip",
-                anchors={
-                    "top_target": self.volume_elements["sound_volume_indicator"],
-                    "left_target": self.volume_elements["typing_sounds_text"],
-                },
-                check=game_setting_get("dialogue_typing_sound"),
-                manager=MANAGER,
-            )
+            position=(20, 42),
+            container=None,
+            tool_tip_text="settings.dialogue_typing_sound_tooltip",
+            anchors={
+                "top_target": self.volume_elements["sound_volume_indicator"],
+                "left_target": self.volume_elements["typing_sounds_text"],
+            },
+            check=game_setting_get("dialogue_typing_sound"),
+            manager=MANAGER,
+        )
         # ---
 
     def update_ambiance_volume_indicator(self):

@@ -1,9 +1,7 @@
-"""the gene menus of the custom cat maker (from the LifeGen Genetics Cat Maker). Each
-menu sets the genes that make that look, and reads the current choice back from the genes, so the
-menus and the genes never disagree.
+"""The cat maker's gene menus: each one sets the genes for a look and reads it back from them."""
 
-Menus are grouped into tabs (see TABS at the bottom). SHORT has shorter names for the lists."""
-
+import colorsys
+import re
 import json
 import os
 from collections import namedtuple
@@ -18,20 +16,10 @@ OTHER = "(other)"
 Menu = namedtuple("Menu", "label options read write on multi reset", defaults=("genes", False, None))
 
 # Genemod's eye color names: row = refraction grade 1-11, column = pigmentation grade 1-11,
-# then the blue column (12) and the albino column (13). Same table as Genotype.EyeColourFinder.
-EYE_COLORS = [
-    ["Citrine", "Golden Beryl", "Yellow", "Pale Golden", "Golden", "Amber", "Light Orange", "Orange", "Cinnabar", "Auburn", "Copper", "Ice Blue", "Pink"],
-    ["Pale Citrine", "Pale Yellow", "Lemon", "Deep Yellow", "Dull Golden", "Honey", "Pale Orange", "Burnt Orange", "Dark Orange", "Russet", "Dark Topaz", "Aquamarine", "Rose"],
-    ["Lemonade Yellow", "Straw Yellow", "Dandelion Yellow", "Banana Yellow", "Sunglow Yellow", "Copal", "Dull Orange", "Rust Orange", "Topaz", "Chocolate", "Burgundy", "Sky Blue", "Magenta"],
-    ["Light Celadon", "Pale Chartreuse", "Pear Green", "Brass Yellow", "Golden Green", "Butterscotch", "Dusty Orange", "Tawny", "Jasper", "Light Brown", "Earth", "Cyan", "Periwinkle"],
-    ["Light Jade", "Pale Lime", "Spring Bud", "Chartreuse", "Pale Hazel", "Yellow Hazel", "Golden Fluorite", "Beaver Brown", "Sienna", "Chestnut", "Umber", "Baby Blue", "Violet"],
-    ["Light Fluorite", "Mantis Green", "Spring Green", "Lime", "Green Tea", "Hazel", "Green Hazel", "Dark Copal", "Cinnamon", "Raw Umber", "Sepia", "Aqua", "Glass"],
-    ["Pale Emerald", "Apple Green", "Shamrock", "Lemon-Lime", "Peridot", "Antique Brass", "Dark Hazel", "Brown-Green", "Hazel Brown", "Bronze", "Bistre Brown", "Cerulean", "Moonstone"],
-    ["Malachite", "Olivine", "Pastel Green", "Bright Green", "Pistachio", "Dull Olive", "Murky Green", "Jungle Green", "Hemlock Green", "Thatch Green", "Muddy", "Ocean Blue", "Albino Ice Blue"],
-    ["Pale Turquoise", "Mint", "Snake Green", "Dark Lime", "Fern Green", "Dull Green", "Dark Fern Green", "Olive", "Tumbleweed Green", "Bronze Olive", "Deep Bronze", "Teal", "Albino Aquamarine"],
-    ["Turquoise", "Viridian", "Green Onion", "Leaf Green", "Green", "Sap Green", "Dark Leaf Green", "Forest Green", "Dark Peridot", "Seaweed Green", "Dark Olive", "Sapphire", "Albino Sky Blue"],
-    ["Deep Turquoise", "Amazonite", "Pine Green", "Deep Leaf Green", "Jade", "Emerald", "Deep Green", "Deep Forest Green", "Dark Green", "Dark Moss Green", "Black Olive", "Azure", "Albino Azure"],
-]
+# then the blue column (12) and the albino column (13)
+with open("resources/lang/en/cat/genemod_eyes.json", "r", encoding="utf-8") as read_file:
+    _eye_names = json.load(read_file)
+EYE_COLORS = [_eye_names[f"R{grade}"] for grade in range(1, 12)]
 
 # dominance order for genes where one copy hides another (first = most dominant)
 ORDER = {
@@ -67,7 +55,11 @@ def shown(genes, gene):
 
 
 def set_poly_sum(genes, gene, total):
-    """Polygenes are strings of 0-2 per spot; spread `total` over the spots"""
+    """Polygenes are strings of 0-2 per spot; spread `total` over the spots. Wideband and rufousing
+    are one number instead (the same as adding up the spots)"""
+    if isinstance(genes[gene], int):
+        setattr(genes, gene, max(0, total))
+        return
     spots = len(genes[gene])
     total = max(0, min(total, spots * 2))
     base, extra = divmod(total, spots)
@@ -75,6 +67,8 @@ def set_poly_sum(genes, gene, total):
 
 
 def poly_sum(genes, gene):
+    if isinstance(genes[gene], int):
+        return genes[gene]
     return sum(int(d) for d in genes[gene])
 
 
@@ -343,11 +337,11 @@ SATURATION = [f"Saturation {n}" for n in range(7)]
 
 
 def get_saturation(genes):
-    return f"Saturation {genes.saturation}" if 0 <= genes.saturation <= 6 else OTHER
+    return f"Saturation {genes.fur_shade}" if 0 <= genes.fur_shade <= 6 else OTHER
 
 
 def set_saturation(genes, value):
-    genes.saturation = int(value.split()[-1])
+    genes.fur_shade = int(value.split()[-1])
 
 
 # --- pattern and shading ----------------------------------------------------------------------
@@ -601,6 +595,35 @@ def eye_type(name):
     raise ValueError(name)
 
 
+EYE_FAMILIES = ["Blue", "Aqua and teal", "Green", "Yellow and gold", "Orange and copper", "Brown and hazel",
+                "Red and pink", "Purple", "Gray and pale"]
+
+
+def eye_family(name):
+    """Which group of the eye lists a color goes in, from how it looks in the game"""
+    from scripts.cat.sprites.load_sprites import sprites
+
+    rank, pigment = eye_type(name).split(" ; ")
+    red, green, blue = (v / 255 for v in sprites.EYE_DATA[pigment][rank]["outer"][:3])
+    hue, light, saturation = colorsys.rgb_to_hls(red, green, blue)
+    hue *= 360
+    if saturation < 0.16:
+        return "Gray and pale"
+    if hue < 12 or hue >= 330:
+        return "Red and pink"
+    if hue < 40:
+        return "Brown and hazel" if light < 0.35 else "Orange and copper"
+    if hue < 66:
+        return "Yellow and gold"
+    if hue < 160:
+        return "Green"
+    if hue < 200:
+        return "Aqua and teal"
+    if hue < 262:
+        return "Blue"
+    return "Purple"
+
+
 def eye_name(code):
     try:
         ref, pig = code.split(" ; ")
@@ -828,8 +851,8 @@ def set_legs(genes, value):
     genes.poly = ["Pd", "pd"] if index & 2 else ["pd", "pd"]
 
 
-BODY_TYPES = ["snub-nosed cobby", "cobby", "semi-cobby", "intermediate", "semi-oriental", "oriental",
-              "wedge-faced oriental"]
+BODY_TYPES = ["snub-nosed cobby", "cobby", "semi-cobby", "intermediate", "semi-lanky", "lanky",
+              "wedge-faced lanky"]  # Genemod renamed the oriental types
 SIZES = ["teacup", "tiny", "small", "below average", "average", "above average", "large", "massive",
          "giant", "goliath"]
 
@@ -955,7 +978,7 @@ SHORT = {
     "Servaline-rosetted": "Serval-rosetted",
     "Reduced barring ticked": "Reduced barring",
     "Medium 1 and tail": "Medium 1 + tail",
-    "Wedge-faced oriental": "Wedge oriental",
+    "Wedge-faced lanky": "Wedge lanky",
     "Patchy brush coat": "Patchy brush",
     "Hairless (sphynx)": "Sphynx",
     "Pangere": "Pale markings",
@@ -1047,20 +1070,62 @@ def _files(folder):
     return sorted(name[:-4] for name in os.listdir(folder) if name.endswith(".png"))
 
 
+WHITE_AREAS = [
+    ("Face", r"blaze|beard|mask|eyebrow|forehead|eyeliner|undereye|tears|teardrop|eyespot|muzzle|chin|"
+             r"mustache|helmet|estrella|sparkle|star"),
+    ("Ears", r"(left|right|both)_?ear"),
+    ("Front left leg", r"leg_front_left|left front"),
+    ("Front right leg", r"leg_front_right|right front"),
+    ("Back left leg", r"leg_back_left|left back"),
+    ("Back right leg", r"leg_back_right|right back"),
+    ("Tail", r"tail"),
+    ("Chest", r"chest|bib|locket|vee|shirt|rosina|damien"),
+    ("Belly", r"belly|under|pants|heart"),
+    ("Back and sides", r"saddle|stripe|flank|two_spot|dorsal|belt|backspot|van\d|mantle|wings|vest"),
+]
+# words a row doesn't need to repeat when its group already says them
+WHITE_DROP = {"Front left leg": ("leg front l ", "l front "), "Front right leg": ("leg front r ", "r front "),
+              "Back left leg": ("leg back l ", "l back "), "Back right leg": ("leg back r ", "r back ")}
+
+
 def white_patch_groups():
-    """[(heading, [patch names])]: Genemod's, ClanGen's, color spots (white that's taken away)"""
+    """[(heading, [patch names])]: every patch by where it is on the cat, then the color spots
+    (white that's taken away). There are too many to draw in one list."""
     clangen = [name for size in ("little", "mid", "high", "mostly")
                for name in _sprite_list(f"sprites/dicts/white_patches_{size}_sprite_data.json")]
     genemod = [name for name in _files("sprites/genemod/white") if not name.startswith("pangere")]
-    groups = [("Genemod patches:", genemod),
-              ("ClanGen patches:", [name for name in clangen if name.lower() not in genemod]),
-              ("Color spots:", [f"break/{name}" for name in _files("sprites/genemod/break white")])]
-    return groups
+    patches = genemod + [name for name in clangen if name.lower() not in genemod]
+    groups = {heading: [] for heading, _ in WHITE_AREAS}
+    other = []
+    for name in patches:
+        area = next((heading for heading, words in WHITE_AREAS if re.search(words, name.lower())), None)
+        (groups[area] if area else other).append(name)
+    result = [(heading, names) for heading, names in groups.items() if names]
+    result.append(("Whole body and other", other))
+    result.append(("Color spots", [f"break/{name}" for name in _files("sprites/genemod/break white")]))
+    return result
 
 
-def patch_name(name):
-    """A patch's name for the list: "left front bicolour2" -> "L front bicolor 2" """
+# tortie patches whose sprite names don't read well, only for the cat maker's list
+PATCH_NAMES = {
+    "MINIMALONE": "Minimal 1", "MINIMALTWO": "Minimal 2", "MINIMALTHREE": "Minimal 3", "MINIMALFOUR": "Minimal 4",
+    "REDTAIL": "Red tail", "ARMTAIL": "Arm tail", "GRUMPYFACE": "Grumpy face", "SIDEMASK": "Side mask",
+    "EYEDOT": "Eye dot", "STREAMSTRIKE": "Stream strike", "ROSETAIL": "Rose tail", "DAPPLENIGHT": "Dapple night",
+    "CHERRYTAIL": "Cherry tail", "TURTLECRAWL": "Turtle crawl", "LARKPETAL": "Lark petal",
+    "TAILTIP_T": "Tail tip", "TAILTIPREVERSE_T": "Reverse tail tip", "BIBFULL_T": "Full bib",
+    "UNDERTAIL_T": "Under tail", "UNDERPAWS_T": "Under paws", "BOTHEARS_T": "Both ears",
+    "PAW_FR_T": "Front R paw", "PAW_FL_CLOVERTAIL": "Front L clover", "PAW_BR_WING": "Back R wing",
+    "PAW_BL_SPLOTCH": "Back L splotch",
+}
+
+
+def patch_name(name, group=None):
+    """A patch's name for the list: "left front bicolour2" -> "L front bicolor 2". Inside a leg's
+    group the words for the leg are left out, so patches with long names stay different"""
+    if name in PATCH_NAMES:
+        return PATCH_NAMES[name]
     text = name.replace("break/", "").replace("MMW_", "").replace("MMT_", "").replace("bicolour", "bicolor")
+    text = text.removesuffix("_T").replace("_", " ")
     words = text.lower().split()
     words = ["L" if w == "left" else "R" if w == "right" else w for w in words]
     text = " ".join(words)
@@ -1068,8 +1133,11 @@ def patch_name(name):
         text = text[:-1] + " " + text[-1]
     # ClanGen has a tortie patch called just "BODY"
     text = " ".join(text.replace("reverse", "reverse ").replace("sprite", "").split())
+    for words in WHITE_DROP.get(group, ()):
+        if text.lower().startswith(words):
+            text = text[len(words):]
     text = text[:1].upper() + text[1:]
-    return text if len(text) <= 16 else text[:15].rstrip() + "."
+    return text if len(text) <= 20 else text[:19].rstrip() + "."
 
 
 # How much of the cat each white gene covers on average (measured from the game's own white

@@ -15,8 +15,8 @@
         "go_on_patrol": "go on patrol",
         "current_prey": "current prey: %{prey}",
         "needed_prey": "needed prey: %{prey}",
-        "label_patrol_info": "patrol leader: %{leader}\npatrol members: %{members}\npatrol skills: %{skills}\npatrol traits: %{traits}",
-        "current_patrol_info": "current patrol skills: %{skills}\ncurrent patrol traits: %{traits}",
+        "label_patrol_info": "patrol leader: %{leader}\npatrol members: %{members}\npatrol skills: %{skills}\npatrol traits: %{traits}\npatrol temperament: %{patrol_temperament}",
+        "current_patrol_info": "current patrol skills: %{skills}\ncurrent patrol traits: %{traits}\ncurrent patrol temperament: %{patrol_temperament}",
         "proceed": "proceed",
         "dont_proceed": "do not proceed",
         "antagonize": "antagonize",
@@ -37,9 +37,9 @@
         "outsider_rep_improved": "Your Clan's reputation towards Outsiders has improved.",
         "outsider_rep_neutral": "Your Clan's reputation towards Outsiders is unchanged.",
         "outsider_rep_worsened": "Your Clan's reputation towards Outsiders has worsened.",
-        "clan_rep_improved": "Relations with o_c_n have improved.",
-        "clan_rep_neutral": "Relations with o_c_n are unchanged.",
-        "clan_rep_worsened": "Relations with o_c_n have worsened.",
+        "clan_rep_improved": "Relations with %{clan} have improved.",
+        "clan_rep_neutral": "Relations with %{clan} are unchanged.",
+        "clan_rep_worsened": "Relations with %{clan} have worsened.",
         "herbs_gathered": {
             "zero": "Despite searching, no herbs were found.",
             "one": "%{herbs} was gathered.",
@@ -53,11 +53,12 @@
             "one": "%{count} piece of prey was caught on a patrol.",
             "many": "%{count} pieces of prey were caught on a patrol."
         },
-        "prey_very_small": "A very small amount of prey is brought to camp.",
+        "prey_tiny": "A tiny amount of prey is brought to camp.",
         "prey_small": "A small amount of prey is brought to camp.",
         "prey_medium": "A medium amount of prey is brought to camp.",
         "prey_large": "A large amount of prey is brought to camp.",
         "prey_huge": "A huge amount of prey is brought to camp.",
-        "relationship_changed": "Relationships between cats in the Clan have changed."
+        "relationship_changed": "Relationships between cats in the Clan have changed.",
+        "accessory_gained": "%{cats} gained an accessory"
     }
 }
