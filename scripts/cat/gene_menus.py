@@ -1258,7 +1258,8 @@ def _patch_pixels(name, pose="12"):
     """The pixels a patch covers (on the adult pose)"""
     if (name, pose) not in _PATCH_PIXELS:
         from scripts.cat.sprites.load_sprites import sprites
-        surf = sprites.sprites.get(name + pose)
+        # sheets are named like "TUXEDO_12" now, older ones "TUXEDO12"
+        surf = sprites.sprites.get(f"{name}_{pose}", sprites.sprites.get(name + pose))
         pixels = set()
         if surf is not None:
             width, height = surf.get_size()
@@ -1287,6 +1288,9 @@ def white_genes_for(patches):
     for lowest, pair, grade in WHITE_BY_AMOUNT:
         if amount >= lowest:
             return list(pair), grade
+    # a patch that doesn't show on the measured pose still needs a white gene
+    if any(not p.startswith("break/") for p in patches):
+        return ["ws", "w"], 1
     return ["w", "w"], None
 
 

@@ -280,12 +280,32 @@ class LoadCatFactory(BaseCatFactory):
             chimerapheno.PhenotypeOutput(chimerapheno.white_pattern)
             chimerapheno.SpriteInfo(kwargs.get("moons", 0))
 
+        cls._white_genes_for_saved_patches(phenotype, kwargs.get("white_pattern"))
         phenotype.white_pattern = Pelt.generate_white(phenotype.white, phenotype.pointgene, phenotype.whitegrade, phenotype.vitiligo, kwargs.get("white_pattern"), phenotype.pax3)
-        
+
         if chimerapheno:
+            cls._white_genes_for_saved_patches(chimerapheno, kwargs.get("chim_white"))
             chimerapheno.white_pattern = Pelt.generate_white(chimerapheno.white, chimerapheno.pointgene, chimerapheno.whitegrade, chimerapheno.vitiligo, kwargs.get("chim_white"), chimerapheno.pax3)
 
         return [phenotype, chimerapheno]
+
+    @staticmethod
+    def _white_genes_for_saved_patches(genes, saved):
+        """cat maker cats could be saved with white patches but no white spotting genes (the patches
+        were lost on load): give them the spotting genes that match their patches instead"""
+        from scripts.cat import gene_menus
+        from scripts.cat.legacy_pelt import LegacyPelt
+
+        if not isinstance(saved, list) or genes.vitiligo or genes.pax3 != ["NoDBE", "NoDBE"]:
+            return
+        if genes.white[0] != "w" or "W" in genes.white:
+            return
+        patches = [p for p in saved if p and p not in LegacyPelt.vitiligo_markings]
+        if not patches:
+            return
+        genes.white, grade = gene_menus.white_genes_for(patches)
+        if grade:
+            genes.whitegrade = grade
 
     @classmethod
     def _build_pelt(cls, phenotype, kwargs) -> Pelt:

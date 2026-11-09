@@ -1,3 +1,9 @@
+<strong>Lifegen Genetics v1.2.2</strong>
+
+Fixes:
+- White patches picked in the cat maker or cat editor no longer disappear when the save loads (cats that already lost them need them picked again)
+- The cat maker's tint swatches show each tint's own color (pink looks pink, blue looks blue) instead of how it looks on brown fur
+
 <strong>Lifegen Genetics v1.2.1</strong>
 
 Fixes:
