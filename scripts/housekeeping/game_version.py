@@ -9,7 +9,7 @@ from platformdirs import user_data_dir
 
 logger = logging.getLogger(__name__)
 
-VERSION_NAME = "v1.2-dev.10"
+VERSION_NAME = "v1.2-dev.11"
 # This is saved in the Clan save-file, and is used for save-file converstion.
 SAVE_VERSION_NUMBER = 6
 

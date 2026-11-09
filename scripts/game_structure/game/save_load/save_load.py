@@ -100,6 +100,12 @@ def read_clans():
 
     # Now we can get a list of all the folders in the saves folder
     clan_list: List[str] = [d.name for d in save_dir.iterdir() if d.is_dir()]
+    # LG: a folder without its clan file (like a Clan copied over without <Name>clan.json) can't
+    # load, and loading it first broke the start. Skip it, so the other Clans still load
+    for name in list(clan_list):
+        if not (save_dir / f"{name}clan.json").exists() and not (save_dir / name / "clan.json").exists():
+            print(f"Skipping the saves folder {name}: its {name}clan.json file is missing")
+            clan_list.remove(name)
     clan_list.sort()  # because iterdir doesn't guarantee an order, we guarantee alphabetical here
 
     if currentclan_path.exists():

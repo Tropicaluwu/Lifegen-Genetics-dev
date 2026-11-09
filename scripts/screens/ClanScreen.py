@@ -162,26 +162,15 @@ class ClanScreen(Screens):
                         blend_layer, self.layout["cat_shading"]["blur"]
                     )
                 except ValueError:
-                    print("LG PRINT: ValueError:", x.placement, "is out of bounds.")
-                    x_diff = ui_scale_value(
-                        50 + (x.placement[0] if x.placement[0] < 0 else 0)
-                    )
-                    y_diff = ui_scale_value(
-                        50 + (x.placement[1] if x.placement[1] < 0 else 0)
-                    )
-                    avg_layer = self.game_bgs[self.active_bg].subsurface(
-                        ui_scale(
-                            pygame.Rect(
-                                (
-                                    x.placement[0] if x.placement[0] > 0 else 0,
-                                    x.placement[1] if x.placement[1] > 0 else 0,
-                                ),
-                                (x_diff, y_diff),
-                            )
-                        )
-                    )
+                    # LG: a cat at the camp's edge (any side) is shaded by the part of the camp it
+                    # stands on. Only the top and left edges were handled, so the others lost the cat
+                    background = self.game_bgs[self.active_bg]
+                    area = ui_scale(pygame.Rect(tuple(x.placement), (50, 50))).clip(background.get_rect())
                     blend_layer = pygame.Surface(ui_scale_dimensions((50, 50)))
-                    blend_layer.fill(pygame.transform.average_color(avg_layer))
+                    if area.width and area.height:
+                        blend_layer.fill(pygame.transform.average_color(background.subsurface(area)))
+                    else:
+                        blend_layer.fill((255, 255, 255))
 
                 sprite = image.copy()
                 sprite.fill((255, 255, 255, 255), special_flags=pygame.BLEND_RGB_MAX)

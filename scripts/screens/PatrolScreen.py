@@ -1395,7 +1395,7 @@ class PatrolScreen(Screens):
 
         if not game.clan.your_cat:
             print(
-                "Are you playing a normal ClanGen save? Switch to a LifeGen save or create a new cat!"
+                "Are you playing a normal Clangen save? Switch to a Lifegen save or create a new cat!"
             )
             print("Choosing random cat to play...")
             game.clan.your_cat = choice(Cat.all_cats_list)

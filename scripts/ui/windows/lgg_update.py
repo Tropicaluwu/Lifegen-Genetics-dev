@@ -18,7 +18,7 @@ class LGGUpdateWindow(GameWindow):
         super().__init__(ui_scale(pygame.Rect((150, 150), (500, 400))))
 
         pygame_gui.elements.UITextBox(
-            f"LifeGen Genetics {'dev build ' if lgg_update.update_channel() == 'dev' else ''}{lgg_update.newer_version} is out!",
+            f"Lifegen Genetics {'dev build ' if lgg_update.update_channel() == 'dev' else ''}{lgg_update.newer_version} is out!",
             ui_scale(pygame.Rect((0, 10), (500, -1))),
             object_id="#changelog_popup_title",
             container=self,
