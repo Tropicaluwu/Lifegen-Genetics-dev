@@ -253,7 +253,7 @@ def reset_used_group_IDs():
             used_group_IDs.pop(ID)
 
 
-pygame.display.set_caption("LifeGen Genetics")
+pygame.display.set_caption("Lifegen Genetics")
 
 toggle_fullscreen(
     fullscreen=game_setting_get("fullscreen"),

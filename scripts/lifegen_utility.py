@@ -220,7 +220,9 @@ def get_current_camp():
         camp_nr = game.clan.camp_bg
         camp_bg_base_dir = "resources/images/camp_bg"
 
-    return camp_bg_base_dir, camp_nr
+    # LG: saves keep no background for the groups the player's cat hasn't been in yet (like a dead
+    # cat's "none" group), and loading with one missing hung the game on the loading screen
+    return camp_bg_base_dir, camp_nr or "camp1"
 
 
 def assign_new_bg(camp):

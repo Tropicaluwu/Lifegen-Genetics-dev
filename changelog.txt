@@ -1,3 +1,18 @@
+<strong>Lifegen Genetics v1.2.1</strong>
+
+Fixes:
+- Fixed a crash after your cat died: the game closed, then got stuck on the loading screen every time it started (it looked for a camp background that doesn't exist)
+- The cat maker can make torties with up to 3 layers of shapes, tortie or white shapes, and any layer can cut the patches out instead, like born torties (a born tortie with more than one shape couldn't be made in the cat maker)
+- Hovering over the picked kit when making a Clan shows its genes again, and hovering over the cat in the cat maker shows its genes as they are right now
+- A Clan folder in saves without its <Name>clan.json file no longer stops the game from loading: it's skipped, and the other Clans load
+- In the cat maker, a chimera tortie's patches keep the cat's white (picking some eye colors took white away)
+- The tortie patches and white patches lists in the cat maker are grouped: tortie shapes by size, white shapes by where they are, and big white patches by size
+- The version label in the corner isn't cut off anymore
+- Cats standing at the right or bottom edge of the camp show up on the Clan page again
+- The cat maker has every tint born cats can get (11 were missing, like tawny and night, so a cat with one couldn't get it back after trying another), shown as color swatches with the name on hover
+- The cat maker's eye colors follow the cat's genes: albino eyes only for albino cats (they have their own group now, since they all look alike, like Pink, Rose and Periwinkle), and blue eyes only for cats with white, points or blue-eyed white genes, so kits can inherit them
+- The README explains what to do if setup stops with "failed to hardlink file" (the game folder is or was inside OneDrive)
+
 <strong>LifeGen Genetics v1.2: the big update</strong>
 
 LifeGen Genetics now runs on the newest development versions of ClanGen, LifeGen and Genemod (Genemod's modded branch and ClanGen's development branch from November 7, 2026, and LifeGen-dev). Keep a copy of your saves folder before updating: your Clans load in v1.2, but once they're played here they might not open in v1.1 anymore.

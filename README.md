@@ -1,16 +1,16 @@
-# LifeGen Genetics
+# Lifegen Genetics
 
-**LifeGen** and **Genemod** (the genetics mod) put together into one game. You play as your own cat like in LifeGen, and every cat has real genes like in Genemod, so kits actually look like their parents.
+**Lifegen** and **Genemod** (the genetics mod) put together into one game. You play as your own cat like in Lifegen, and every cat has real genes like in Genemod, so kits actually look like their parents.
 
 **Join the Discord server** for help, news and bug reports: [discord.gg/Kxdvk5eXC9](https://discord.gg/Kxdvk5eXC9)
 
-I ask that if you make a fork or a version of this mod built off of my code, you credit me as well as the creators of LifeGen, ClanGen, and Genemod too.
+I ask that if you make a fork or a version of this mod built off of my code, you credit me as well as the creators of Lifegen, Clangen, and Genemod too.
 
 ## How to play
 
 Versions downloaded before October 27, 2026 don't have run.command, so Mac players should download the latest version.
 
-LifeGen Genetics runs from its source code, so there's no app to install. Instead you install **uv**. After that, starting the game is a double-click (or one command on Linux).
+Lifegen Genetics runs from its source code, so there's no app to install. Instead you install **uv**. After that, starting the game is a double-click (or one command on Linux).
 
 You need an internet connection the first time you start the game: uv downloads the right version of Python and everything the game needs.
 
@@ -33,7 +33,7 @@ Jump to: [Windows](#windows) | [Mac](#mac) | [Linux](#linux) | [Updating](#updat
 
 **2. Download the game**
 
-1. Go to the [LifeGen Genetics GitHub page](https://github.com/Tropicaluwu/Lifegen-Genetics-dev) (the page you're reading this on).
+1. Go to the [Lifegen Genetics GitHub page](https://github.com/Tropicaluwu/Lifegen-Genetics-dev) (the page you're reading this on).
 2. Near the top, click the green **Code** button:
 
    ![The green Code button](readme-images/code-button.png)
@@ -65,7 +65,7 @@ Next time, just double-click **run.bat** again.
 
 **2. Download the game**
 
-1. Go to the [LifeGen Genetics GitHub page](https://github.com/Tropicaluwu/Lifegen-Genetics-dev) (the page you're reading this on).
+1. Go to the [Lifegen Genetics GitHub page](https://github.com/Tropicaluwu/Lifegen-Genetics-dev) (the page you're reading this on).
 2. Near the top, click the green **Code** button:
 
    ![The green Code button](readme-images/code-button.png)
@@ -97,7 +97,7 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
 **2. Download the game**
 
-On the [LifeGen Genetics GitHub page](https://github.com/Tropicaluwu/Lifegen-Genetics-dev), click the green **Code** button, then **Download ZIP**, and unzip it.
+On the [Lifegen Genetics GitHub page](https://github.com/Tropicaluwu/Lifegen-Genetics-dev), click the green **Code** button, then **Download ZIP**, and unzip it.
 
 **3. Play**
 
@@ -140,6 +140,7 @@ Once your Clans show up in the new version, you can delete the old folder.
      uv sync --python cpython-3.12-windows-x86_64-none
      ```
   3. When it's done, close the window and double-click **run.bat** as usual.
+- **"failed to hardlink file" or "incompatible hardlinks" (Windows):** the game folder is (or was) inside OneDrive. Move the game folder somewhere outside OneDrive, like **C:\Games**. Then delete the hidden **.venv** folder inside the game folder, open **PowerShell**, run `uv cache clean`, and start the game again. OneDrive can also get in the way of your saves, so the game is best kept outside it.
 - **"An Application Control policy has blocked this file" or "python.exe - Bad Image" (Windows 11):** this is Windows Smart App Control, not a broken download. See [Blocked by Smart App Control](#blocked-by-smart-app-control).
 - **My Clans are gone after updating:** copy the **saves** folder from the old game folder into the new one (see [Updating](#updating-to-a-new-version)).
 
@@ -180,12 +181,12 @@ If it's still blocked and the error mentions `Python312\Lib\site-packages`, Wind
 
 ## What's new in v1.2: the big update
 
-LifeGen Genetics now runs on the newest development versions of ClanGen, LifeGen and Genemod (updated November 7, 2026), so you get everything they've added since v1.1.
+Lifegen Genetics now runs on the newest development versions of Clangen, Lifegen and Genemod (updated November 7, 2026), so you get everything they've added since v1.1.
 
 > **Before you update, keep a copy of your saves folder.** Your Clans load in v1.2, but once you've played them here they might not open in v1.1 anymore.
 
-- **ClanGen's newest version:** its new event and patrol systems, the new screens for making a Clan, the chinchilla color, and new background sounds for each biome
-- **The newest Genemod and LifeGen**, with all their changes and fixes
+- **Clangen's newest version:** its new event and patrol systems, the new screens for making a Clan, the chinchilla color, and new background sounds for each biome
+- **The newest Genemod and Lifegen**, with all their changes and fixes
 - **"Healer" everywhere** instead of "medicine cat"
 - **Easier cat maker lists:** white patches are grouped by where they are on the cat, and eye colors by color family
 - **Made up family looks like family:** your cat's made up parents and siblings share their pattern and white markings
@@ -197,42 +198,42 @@ The cat maker, the Names button and everything else from v1.1 are still here.
 
 **None of this would exist without these teams. All of the real work is theirs:**
 
-### LifeGen
-Made by the **LifeGen team**. LifeGen is the mod where you play as your own cat.
+### Lifegen
+Made by the **Lifegen team**. Lifegen is the mod where you play as your own cat.
 - GitHub: [sedgestripe/clangen](https://github.com/sedgestripe/clangen)
 - Website: [mods.clangen.io/LifeGen](https://mods.clangen.io/LifeGen/download)
 - Discord: [discord.gg/lifegen](https://discord.gg/lifegen)
-- Full list of everyone who worked on it: [LifeGen credits](https://docs.google.com/document/d/1XCm5Eo-y5VA6W9quDMbF3VNyKL7S8_9Tl4c2buuiA8g/edit?usp=sharing)
+- Full list of everyone who worked on it: [Lifegen credits](https://docs.google.com/document/d/1XCm5Eo-y5VA6W9quDMbF3VNyKL7S8_9Tl4c2buuiA8g/edit?usp=sharing)
 
 ### Genemod (Genetics mod)
 Made by **Chinch-Bug** and contributors. Genemod gives every cat real, inheritable genes.
 - GitHub: [Chinch-Bug/clangen-genemod](https://github.com/Chinch-Bug/clangen-genemod)
 
-### ClanGen
-The game both mods are built on. Original creator **just-some-cat**, fan edit by **SableSteel** and the ClanGen team.
+### Clangen
+The game both mods are built on. Original creator **just-some-cat**, fan edit by **SableSteel** and the Clangen team.
 - GitHub: [ClanGenOfficial/clangen](https://github.com/ClanGenOfficial/clangen)
 - Itch.io: [sablesteel.itch.io/clan-gen-fan-edit](https://sablesteel.itch.io/clan-gen-fan-edit)
 
-This is an unofficial combination made for fun. **Please don't take bug reports from it or ask for help to the LifeGen, Genemod or ClanGen teams**, they didn't make this mod and can **NOT** help with it.
+This is an unofficial combination made for fun. **Please don't take bug reports from it or ask for help to the Lifegen, Genemod or Clangen teams**, they didn't make this mod and can **NOT** help with it.
 
 ## What's in it
 
-- Everything from LifeGen: playing as your own cat, talking, patrols, the Dark Forest, shunning, affairs and the rest
+- Everything from Lifegen: playing as your own cat, talking, patrols, the Dark Forest, shunning, affairs and the rest
 - Genemod's genetics: coat color, patterns, white spotting, eyes, fur types, ear and tail traits, genetic conditions and offspring prediction
 - Genemod's multi clan mode (optional, picked when you make a new clan)
-- Built on the development versions of ClanGen, LifeGen and Genemod (updated November 7, 2026)
+- Built on the development versions of Clangen, Lifegen and Genemod (updated November 7, 2026)
 - Fixes for crashes that came from putting the two mods together
 
 See [changelog.txt](changelog.txt) for the full list.
 
-## Using a LifeGen save
+## Using a Lifegen save
 
-LifeGen saves work. Copy your clan's folder and its `<Name>clan.json` file (for example a `Leap` folder and `Leapclan.json`) into the **saves** folder inside the LifeGen Genetics game folder (start the game once first so the folder exists).
+Lifegen saves work. Copy your clan's folder and its `<Name>clan.json` file (for example a `Leap` folder and `Leapclan.json`) into the **saves** folder inside the Lifegen Genetics game folder (start the game once first so the folder exists).
 
-On Windows, LifeGen keeps its saves in `%LOCALAPPDATA%\LifeGen\LifeGen\saves` (paste that into the File Explorer address bar to open it).
+On Windows, Lifegen keeps its saves in `%LOCALAPPDATA%\LifeGen\LifeGen\saves` (paste that into the File Explorer address bar to open it).
 
-The first time the save loads, every cat gets genes made from its old pelt. Keep a backup of the original, because once it's saved here it won't load in regular LifeGen anymore.
+The first time the save loads, every cat gets genes made from its old pelt. Keep a backup of the original, because once it's saved here it won't load in regular Lifegen anymore.
 
 ## License
 
-Code is under the Mozilla Public License 2.0 and the sprites/art are under CC BY-NC 4.0, same as ClanGen, LifeGen and Genemod. See [LICENSE.md](LICENSE.md).
+Code is under the Mozilla Public License 2.0 and the sprites/art are under CC BY-NC 4.0, same as Clangen, Lifegen and Genemod. See [LICENSE.md](LICENSE.md).

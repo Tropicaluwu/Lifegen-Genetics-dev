@@ -739,6 +739,8 @@ class ChooseCatsScreen(MakeClanScreenBase):
                     possible_cats[i].sprite, ui_scale_dimensions((150, 150))
                 ),
                 cat_object=possible_cats[i],
+                # LG: hovering the picked cat shows its genes, like in v1.1 and Genemod
+                tool_tip_text=possible_cats[i].create_genelist(),
             )
 
     def _refresh_selected_cat_info(self, selected: Optional[Cat] = None):
