@@ -302,7 +302,7 @@ def handle_permanent_conditions(cat: Cat):
                     generate_condition_event(
                         path=f"conditions/reveal_condition_strings/{condition.name}.json",
                         involved_cats={"m_c": cat},
-                        clan=cat.status.fetch_clan_object()
+                        clan=cat.status.fetch_clan_object(),
                     )
                 )
 

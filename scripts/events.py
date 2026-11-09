@@ -3237,6 +3237,9 @@ def one_moon_cat(cat, clan):
     # handle nutrition amount
     # (CARE: the cats have to be fed before this happens - should be handled in "one_moon" function)
     if game.clan.game_mode in ("expanded", "cruel_season") and game.clan.freshkill_pile and cat.status.alive_in_player_clan:
+        # a cat that came back to the Clan after this moon's feeding (like the player's cat after exile) starts out fed
+        if cat.ID not in game.clan.freshkill_pile.nutrition_info:
+            game.clan.freshkill_pile.add_cat_to_nutrition(cat)
         handle_nutrition(cat, game.clan.freshkill_pile.nutrition_info)
 
         if cat.dead:

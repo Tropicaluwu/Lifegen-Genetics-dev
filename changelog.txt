@@ -1,3 +1,17 @@
+<strong>Lifegen Genetics v1.2-dev.10</strong>
+
+A development build, so keep a copy of your saves folder before playing.
+
+New:
+- Brought up to date with Genemod's modded branch and Clangen's development branch from November 8, 2026
+- Clangen's new healer den screen
+- The leave Clan button is now called change group, and Genemod's separate change Clan button is gone: the change group window already lets cats join any Clan
+
+Fixes:
+- In multi clan mode, events that need a cat of a certain rank look for that cat in the Clan the event happens in (from Genemod)
+- A cat that comes back to the Clan partway through a moon starts out fed (it was skipped with an error in the log)
+- The cat maker's little white patches and old style tortie patches show up right with Clangen's new split patch sheets
+
 <strong>LifeGen Genetics v1.2-dev.9</strong>
 
 A development build, so keep a copy of your saves folder before playing.
