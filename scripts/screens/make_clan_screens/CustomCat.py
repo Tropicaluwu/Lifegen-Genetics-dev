@@ -1,4 +1,5 @@
 """The custom cat maker: starts from the picked cat (or a plain one) and edits its genes."""
+import colorsys
 import random
 from copy import deepcopy
 from random import choice
@@ -1620,7 +1621,7 @@ class CustomCatScreen(MakeClanScreenBase):
                     manager=MANAGER
                 )
                 y_pos += 40
-            if group == "Color spots":
+            if group == "Color spots" and not searching:
                 self.gene_names[("white note", group)] = pygame_gui.elements.UITextBox(
                     "These take white away (a colored ear on a white cat...)",
                     ui_scale(pygame.Rect((0, y_pos), (170, 60))),
@@ -2095,21 +2096,24 @@ class CustomCatScreen(MakeClanScreenBase):
 
     @staticmethod
     def tint_swatch(name, picked):
-        """a square of warm brown fur with the tint on it, the way the game puts it on"""
+        """a square in the tint's own color, made stronger so pink looks pink and blue looks blue"""
         tints = sprites.cat_tints
-        swatch = pygame.Surface((30, 30), pygame.SRCALPHA)
-        swatch.fill((176, 118, 70, 255))
-        layer = pygame.Surface((30, 30))
         if name in tints["tint_colours"]:
-            layer.fill(tuple(tints["tint_colours"][name]))
-            swatch.blit(layer, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+            h, s, v = colorsys.rgb_to_hsv(*(x / 255 for x in tints["tint_colours"][name]))
+            s, v = min(0.55, s * 4), v ** 2.5
         elif name in tints["dilute_tint_colours"]:
-            layer.fill(tuple(tints["dilute_tint_colours"][name]))
-            swatch.blit(layer, (0, 0), special_flags=pygame.BLEND_RGB_ADD)
+            h, s, v = colorsys.rgb_to_hsv(*(x / 255 for x in tints["dilute_tint_colours"][name]))
+            s, v = min(0.35, s * 0.8), 0.95
         else:
-            layer.fill(tuple(tints["remove_tone_tint_colours"][name]))
-            swatch.blit(layer, (0, 0), special_flags=pygame.BLEND_RGB_SUB)
+            # these take color away, so show what's left of a light gray
+            left = [max(0, 200 - x) for x in tints["remove_tone_tint_colours"][name]]
+            h, s, v = colorsys.rgb_to_hsv(*(x / 255 for x in left))
+            s, v = min(0.5, s * 1.5), min(1, v * 1.15)
+        swatch = pygame.Surface((30, 30), pygame.SRCALPHA)
+        swatch.fill(tuple(round(x * 255) for x in colorsys.hsv_to_rgb(h, s, v)) + (255,))
         pygame.draw.rect(swatch, (250, 240, 205) if picked else (60, 42, 26), swatch.get_rect(), 3 if picked else 2)
+        if picked:
+            pygame.draw.rect(swatch, (60, 42, 26), swatch.get_rect().inflate(-6, -6), 1)
         return swatch
 
     def add_tint_swatches(self):

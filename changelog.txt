@@ -1,3 +1,15 @@
+<strong>Lifegen Genetics v1.2-dev.12</strong>
+
+A development build, so keep a copy of your saves folder before playing.
+
+New:
+- More name suffixes from Chinch-Bug: Lifegen's extra traits now have their own, and so do the Brawler, Fisher and Tunneler skills (with modded names and new suffixes turned on)
+
+Fixes:
+- White patches picked in the cat maker or cat editor no longer disappear when the save loads (cats that already lost them need them picked again)
+- Fixed a crash when opening the relationships screen in multi clan mode
+- The cat maker's tint swatches show each tint's own color (pink looks pink, blue looks blue) instead of how it looks on brown fur
+
 <strong>Lifegen Genetics v1.2-dev.11</strong>
 
 A development build, so keep a copy of your saves folder before playing.
