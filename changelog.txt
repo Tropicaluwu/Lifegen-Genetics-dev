@@ -1,3 +1,8 @@
+<strong>Lifegen Genetics v1.2.3</strong>
+
+Fixes:
+- Illness events no longer say the Clan has no healer when it has one
+
 <strong>Lifegen Genetics v1.2.2</strong>
 
 Fixes:
