@@ -1,3 +1,10 @@
+<strong>Lifegen Genetics v1.2-dev.13</strong>
+
+A development build, so keep a copy of your saves folder before playing.
+
+Fixes:
+- Illness events no longer say the Clan has no healer when it has one
+
 <strong>Lifegen Genetics v1.2-dev.12</strong>
 
 A development build, so keep a copy of your saves folder before playing.
