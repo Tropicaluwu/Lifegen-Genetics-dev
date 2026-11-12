@@ -236,7 +236,8 @@ class NewCatFactory(BaseCatFactory, ABC):
         :param age: CatAge
         :return: Appropriate moons
         """
-        return cls.rng.randint(Cat.age_moons[age][0], min(Cat.age_moons[age][1], get_config("cat_generation.max_age")))
+        # LGG: newborns range from -1 (your cat waiting to be born), new cats start at 0
+        return cls.rng.randint(max(Cat.age_moons[age][0], 0), min(Cat.age_moons[age][1], get_config("cat_generation.max_age")))
 
     @classmethod
     def _determine_age_moons_and_status(

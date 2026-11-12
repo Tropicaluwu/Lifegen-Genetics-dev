@@ -1,3 +1,16 @@
+<strong>Lifegen Genetics v1.2-dev.14</strong>
+
+A development build, so keep a copy of your saves folder before playing.
+
+Changes:
+- Brought up to date with Genemod's modded branch and Clangen's development branch from November 11, 2026
+
+Fixes:
+- When several cats die in one event, the death line names them once (it repeated names, like "Garkit died. Garkit and Minnowkit died.")
+- Date patrols go well more often: the chance was worked out of 100 but rolled out of 120, so even the closest couples failed one date in four
+- Cats with only minor conditions, like a running nose, can work and patrol again
+- Kits who join with a patrol are 0 moons old, not -1
+
 <strong>Lifegen Genetics v1.2-dev.13</strong>
 
 A development build, so keep a copy of your saves folder before playing.
