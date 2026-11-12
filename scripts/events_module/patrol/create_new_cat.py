@@ -139,7 +139,7 @@ def updated_create_new_cat(
         status["age"] = CatAge.get_from_moons(moons)
     elif status.get("age"):
         moons = randint(
-            Cat.age_moons[status["age"]][0], min(Cat.age_moons[status["age"]][1], get_config("cat_generation.max_age"))
+            max(Cat.age_moons[status["age"]][0], 0), min(Cat.age_moons[status["age"]][1], get_config("cat_generation.max_age"))
         )
 
     if option_dict.get("status"):

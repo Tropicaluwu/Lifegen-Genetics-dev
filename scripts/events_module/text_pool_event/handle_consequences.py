@@ -571,33 +571,35 @@ def _handle_death(
 
             # OUTSIDER
             elif c.status.is_outsider:
-                other_cat_names.append(_profile_link(c))
-
                 if not block.get("no_results"):
-                    results.append(
-                        i18n.t(
-                            "screens.patrol.dead_outsider",
-                            cats=adjust_list_text(other_cat_names),
-                            count=len(other_cat_names),
-                        )
-                    )
+                    other_cat_names.append(_profile_link(c))
 
             # NORMAL PLAYER CAT
             else:
-                player_cat_names.append(_profile_link(c))
-
                 if not block.get("no_results"):
-                    results.append(
-                        i18n.t(
-                            "cat.history.regular_death",
-                            cats=adjust_list_text(player_cat_names),
-                            count=len(player_cat_names),
-                        )
-                    )
+                    player_cat_names.append(_profile_link(c))
 
             # KILL
             __handle_death_history(c, block["history"], other_clan)
             c.die(body)
+
+    # LG: one line for all the dead cats (it was added after each one, so names repeated)
+    if other_cat_names:
+        results.append(
+            i18n.t(
+                "screens.patrol.dead_outsider",
+                cats=adjust_list_text(other_cat_names),
+                count=len(other_cat_names),
+            )
+        )
+    if player_cat_names:
+        results.append(
+            i18n.t(
+                "cat.history.regular_death",
+                cats=adjust_list_text(player_cat_names),
+                count=len(player_cat_names),
+            )
+        )
 
     return " ".join(results)
 

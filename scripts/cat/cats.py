@@ -1741,14 +1741,14 @@ class Cat:
         """returns True if the cat can work, False if the cat cannot work"""
         if not self.temporary_conditions:
             return True
-    def not_working(self):
-        """returns True if the cat cannot work, False if the cat can work"""
-        return not self.can_work()
-
 
         return all(
             condition.severity == "minor" for condition in self.temporary_conditions
         )
+
+    def not_working(self):
+        """returns True if the cat cannot work, False if the cat can work"""
+        return not self.can_work()
 
     def retire_cat(self):
         """This is only for cats that retire due to health condition"""
