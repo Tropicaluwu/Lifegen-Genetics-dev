@@ -6,6 +6,7 @@
         "show_neutral_relation_checkbox": "Show neutral relationships",
         "show_family_only_checkbox": "Only show family members",
         "show_romance_only_checkbox": "Only show romance-able cats",
+        "show only you_checkbox": "Only show your cat",
         "show_positive_checkbox": "Show positive relationships",
         "show_negative_checkbox": "Show negative relationships",
         "switch_cat": "View this cat's relationship page",
