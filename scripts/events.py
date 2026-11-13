@@ -2130,7 +2130,7 @@ def lifegen_process_text(text):
     if "w_c" in text:
         enemy_clan = get_warring_clan()
         if enemy_clan:
-            text = text.replace("w_c", str(enemy_clan.name))
+            text = text.replace("w_cClan", str(enemy_clan.name)).replace("w_c", str(enemy_clan.prefix))
 
     return text
 

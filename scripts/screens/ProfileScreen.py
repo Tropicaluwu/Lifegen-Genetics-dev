@@ -2936,7 +2936,7 @@ class ProfileScreen(Screens):
             self.condition_data[f"name_{con}"] = pygame_gui.elements.UITextBox(
                 con["name"],
                 ui_scale(pygame.Rect((0, 0), (120, -1))),
-                #                object_id="#text_box_30_horizcenter",
+                object_id="#text_box_30_horizcenter",
                 container=self.condition_data[f"bg_{con}"],
                 manager=MANAGER,
                 anchors={"centerx": "centerx"},
@@ -2948,7 +2948,7 @@ class ProfileScreen(Screens):
             self.condition_data[f"desc_{con}"] = pygame_gui.elements.UITextBox(
                 con["details"],
                 details_rect,
-                #                object_id="#text_box_22_horizcenter",
+                object_id="#text_box_22_horizcenter",
                 container=self.condition_data[f"bg_{con}"],
                 manager=MANAGER,
                 anchors={"centerx": "centerx", "top_target": self.condition_data[f"name_{con}"]},

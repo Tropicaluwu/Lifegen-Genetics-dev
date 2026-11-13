@@ -146,27 +146,14 @@ class RelationshipScreen(Screens):
                     if event.ui_element == self.elements[f"checkbox_{setting}"]:
                         self.current_page = 1
                         event.ui_element.toggle()
-                        if (
-                            setting == "show_family_only"
-                            and self.elements[f"checkbox_show_romance_only"].checked
-                            and event.ui_element.checked
-                        ):
-                            switch_clan_setting("show_romance_only")
-                            self.elements[f"checkbox_show_romance_only"].toggle()
-                        elif (
-                            setting == "show_romance_only"
-                            and self.elements[f"checkbox_show_family_only"].checked
-                            and event.ui_element.checked
-                        ):
-                            switch_clan_setting("show_family_only")
-                            self.elements[f"checkbox_show_family_only"].toggle()
-                        elif (
-                            setting == "show only you"
-                            and self.elements[f"checkbox_show only you"].checked
-                            and event.ui_element.checked
-                        ):
-                            switch_clan_setting("show only you")
-                            self.elements[f"checkbox_show only you"].toggle()
+                        # LGG: family only, romance only and only you are one-at-a-time. The
+                        # "only you" box used to untick itself straight away (it checked itself here)
+                        exclusive = ("show_family_only", "show_romance_only", "show only you")
+                        if setting in exclusive and event.ui_element.checked:
+                            for other in exclusive:
+                                if other != setting and self.elements[f"checkbox_{other}"].checked:
+                                    switch_clan_setting(other)
+                                    self.elements[f"checkbox_{other}"].toggle()
 
                         switch_clan_setting(setting)
                         self.apply_cat_filter()

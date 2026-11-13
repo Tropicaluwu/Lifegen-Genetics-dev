@@ -1,3 +1,17 @@
+<strong>Lifegen Genetics v1.2-dev.15</strong>
+
+A development build, so keep a copy of your saves folder before playing.
+
+Changes:
+- Brought up to date with Genemod's modded branch from November 12, 2026 (new setting to turn off shader highlights, Gathering brawls blame the right cat, the leader's name shows in queen and mediator ceremonies)
+
+Fixes:
+- The relationships screen's "only show your cat" box stays ticked (it unticked itself right away) and has its tooltip
+- The conditions tab's details use the small font again, so they fit their boxes
+- Clans with several healers no longer count them all as apprentices, so kits pick the healer path at the right rate
+- Shunned cats are never made deputy (a cat shunned for killing the deputy could take their place)
+- Events about the Clan you're at war with name it once (they said "RidgeClanClan")
+
 <strong>Lifegen Genetics v1.2-dev.14</strong>
 
 A development build, so keep a copy of your saves folder before playing.
