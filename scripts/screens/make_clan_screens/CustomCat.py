@@ -3314,6 +3314,22 @@ class CustomCatScreen(MakeClanScreenBase):
                 else:
                     self.elements[i].enable()
 
+    def keep_merle(self, cat):
+        """LG: the pseudo-merle markings are picked by chance, and picks like eye color or size
+        use up a different number of rolls first, so the first markings stay until Random cat"""
+        kept = getattr(self, "merle_kept", None)
+        if kept is None:
+            kept = self.merle_kept = {}
+        for attr in ("phenotype", "chimerapheno"):
+            genes = getattr(cat, attr, None)
+            if genes is None or not genes.merlepattern:
+                continue
+            seed, pattern = kept.get(attr, (None, None))
+            if seed == self.gene_seed:
+                genes.merlepattern = deepcopy(pattern)
+            else:
+                kept[attr] = (self.gene_seed, deepcopy(genes.merlepattern))
+
     def update_sprite(self):
         # this sucks
         if self.custom_cat.legacy_pelt.name in ["Tortie", "Calico"]:
@@ -3396,6 +3412,7 @@ class CustomCatScreen(MakeClanScreenBase):
         self.apply_gene_edits(self.custom_cat)
         self.apply_tortie_layers(self.custom_cat)
         random.setstate(state)
+        self.keep_merle(self.custom_cat)
 
         # self.custom_cat = Cat(moons=self.custom_cat.moons, pelt=new_pelt, loading_cat=True)
         new_sprite = generate_sprite(self.custom_cat)

@@ -461,12 +461,20 @@ def event_text_adjust(
     # lead_name
     if "lead_name" in text:
         leader = Cat.fetch_cat(clan.leader if clan else game.clan.leader)
-        replace_dict["lead_name"] = (str(leader.name), choice(leader.pronouns))
+        # no leader right now: the deputy stands in (events that need one are skipped where they're picked)
+        if leader is None:
+            leader = Cat.fetch_cat(clan.deputy if clan else game.clan.deputy)
+        if leader is not None:
+            replace_dict["lead_name"] = (str(leader.name), choice(leader.pronouns))
 
     # dep_name
     if "dep_name" in text:
         deputy = Cat.fetch_cat(clan.deputy if clan else game.clan.deputy)
-        replace_dict["dep_name"] = (str(deputy.name), choice(deputy.pronouns))
+        # no deputy right now: the leader stands in
+        if deputy is None:
+            deputy = Cat.fetch_cat(clan.leader if clan else game.clan.leader)
+        if deputy is not None:
+            replace_dict["dep_name"] = (str(deputy.name), choice(deputy.pronouns))
 
     # med_name
     if "med_name" in text:
