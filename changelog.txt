@@ -1,3 +1,10 @@
+<strong>Lifegen Genetics v1.2.6</strong>
+
+Fixes:
+- The game no longer crashes when an event names the leader or deputy while the Clan doesn't have one
+- Mac: double-clicking run.command works again (it said you "do not have appropriate access privileges")
+- Cat maker: the pseudo-merle markings no longer change when picking an eye color or size (they stay until Random cat)
+
 <strong>Lifegen Genetics v1.2.5</strong>
 
 Fixes:

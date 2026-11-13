@@ -363,6 +363,16 @@ def event_mentions(event, name):
     return name in event.text or any(name in log for log in logs)
 
 
+def _names_missing_role(event, clan) -> bool:
+    """the event's text names the leader or deputy, and the Clan doesn't have one right now"""
+    text = f"{event.text_template} {event.history}"
+    if "lead_name" in text and Cat.fetch_cat(clan.leader) is None:
+        return True
+    if "dep_name" in text and Cat.fetch_cat(clan.deputy) is None:
+        return True
+    return False
+
+
 def filter_events(
     possible_events,
     main_cat,
@@ -402,6 +412,10 @@ def filter_events(
 
         # check if event has already been used
         if event.event_id in used_events:
+            continue
+
+        # no leader or deputy right now: skip events that name them
+        if _names_missing_role(event, clan):
             continue
 
         # ensure ID and requirements override

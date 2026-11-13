@@ -131,6 +131,7 @@ Once your Clans show up in the new version, you can delete the old folder.
 - **"uv is not recognized" / "uv: command not found":** close the window and try again. If it still happens, restart your computer. If it still happens even after that, uv didn't install: repeat step 1.
 - **The window closes right away (Windows):** right-click inside the game folder, choose **Open in Terminal**, type `.\run.bat` and press **Enter**. The window stays open, so you can see the error.
 - **Mac: "run.command can't be opened":** see step 3 for Mac (**Open Anyway** in Privacy & Security).
+- **Mac: "run.command could not be executed because you do not have appropriate access privileges":** download the latest version (fixed in v1.2.6). Or open Terminal, type `chmod +x ` (with a space after it), drag **run.command** into the window and press Return.
 - **It got stuck or failed the first time:** check your internet connection and start it again. It picks up where it left off.
 - **Windows asks to replace or skip files when unzipping:** pick either one. Those files are exact copies.
 - **"Microsoft Visual C++ 14.0 or greater is required" or "Failed to build cffi" (Windows):** Windows can't find a ready-made part of the game for your setup. This can happen on newer laptops with ARM processors, or when the setup picked the wrong version of Python. To fix it:
