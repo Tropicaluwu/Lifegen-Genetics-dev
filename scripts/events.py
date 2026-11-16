@@ -611,6 +611,18 @@ def _one_moon_impl():
             ),
         )
 
+    if clancount:
+        for clan in game.clan.all_other_clans:
+            game.clan.herb_supply.handle_moon_otherclan(
+                clan_cats=[c for c in Cat.all_cats_list if c.status.group_ID == clan.group_ID],
+                med_cats=find_alive_cats_with_rank(
+                    Cat,
+                    ranks=[CatRank.MEDICINE_CAT, CatRank.MEDICINE_APPRENTICE],
+                    working=True,
+                    clan=clan.group_ID
+                )
+            )
+
     if game.clan.game_mode in ("expanded", "cruel_season"):
         med_fulfilled = medicine_cats_can_cover_clan(Cat.all_cats.values(), clan=CatGroup.PLAYER_CLAN_ID)
 
@@ -1000,7 +1012,10 @@ def handle_lead_den_event():
                                 )
                                 invited_cat.specsuffix_hidden = False
                         # if cat is an apprentice, make sure they get a mentor!
-                        if invited_cat.status.rank.is_any_apprentice_rank() and get_config("roles.receive_mentor"):
+                        if (
+                            invited_cat.status.rank.is_any_apprentice_rank()
+                            and get_config("roles.receive_mentor")
+                        ):
                             invited_cat.update_mentor()
                         # if the cat chose to become a mediator but the settings don't allow it, make them a warrior instead
                         if (
@@ -3234,6 +3249,9 @@ def one_moon_cat(cat, clan):
     # handle nutrition amount
     # (CARE: the cats have to be fed before this happens - should be handled in "one_moon" function)
     if game.clan.game_mode in ("expanded", "cruel_season") and game.clan.freshkill_pile and cat.status.alive_in_player_clan:
+        # a cat that came back to the Clan after this moon's feeding (like the player's cat after exile) starts out fed
+        if cat.ID not in game.clan.freshkill_pile.nutrition_info:
+            game.clan.freshkill_pile.add_cat_to_nutrition(cat)
         handle_nutrition(cat, game.clan.freshkill_pile.nutrition_info)
 
         if cat.dead:

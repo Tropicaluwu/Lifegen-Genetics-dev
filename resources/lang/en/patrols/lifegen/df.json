@@ -558,10 +558,9 @@
                 ],
                 "involved_cats": {
                     "n_c0": {
-                        "can_create_new_cat": {},
-                        "status": [
-                            "clancat"
-                        ],
+                        "can_create_new_cat": {
+                            "spirit": "dark_forest"
+                        },
                         "age": [
                             "adult",
                             "young adult",

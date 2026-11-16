@@ -28,7 +28,37 @@
         "CLAIRVOYANT": [],
         "PROPHET": [],
         "GHOST": [],
-        "DARK": []
+        "DARK": [],
+        "EXPLORER": [],
+        "TRACKER": [],
+        "ARTISTAN": [],
+        "GUARDIAN": [],
+        "TUNNELER": [],
+        "NAVIGATOR": [],
+        "SONG": [],
+        "GRACE": [],
+        "CLEAN": [],
+        "INNOVATOR": [],
+        "COMFORTER": [],
+        "MATCHMAKER": [],
+        "THINKER": [],
+        "COOPERATIVE": [],
+        "SCHOLAR": [],
+        "TIME": [],
+        "TREASURE": [],
+        "FISHER": [],
+        "LANGUAGE": [],
+        "SLEEPER": [],
+        "GARDENER": [],
+        "TWOLEGCARE": [],
+        "CHARMER": [],
+        "SHOWCAT": [],
+        "WANDERER": [],
+        "SCAVENGER": [],
+        "SURVIVOR": [],
+        "BRAWLER": [],
+        "INTIMIDATOR": [],
+        "AMBUSHER": []
     },
     "honour": {
         "adaptability": [],
@@ -200,6 +230,9 @@
             "versatility": {},
             "general": []
         },
+        "aloof": {
+            "general": []
+        },
         "ambitious": {
             "bravery": {},
             "commitment": {},
@@ -265,6 +298,9 @@
             "strong will": {},
             "valiance": {},
             "vulnerability": {},
+            "general": []
+        },
+        "bouncy": {
             "general": []
         },
         "calm": {
@@ -428,6 +464,9 @@
             "strong will": {},
             "general": []
         },
+        "cowardly": {
+            "general": []
+        },
         "cunning": {
             "adaptability": {},
             "cleverness": {},
@@ -454,6 +493,15 @@
             "valor": {},
             "vigor": {},
             "wit": {},
+            "general": []
+        },
+        "disciplined": {
+            "general": []
+        },
+        "emotional": {
+            "general": []
+        },
+        "energetic": {
             "general": []
         },
         "faithful": {
@@ -503,6 +551,9 @@
             "wit": {},
             "general": []
         },
+        "flexible": {
+            "general": []
+        },
         "gloomy": {
             "guardedness": {},
             "insight": {},
@@ -514,6 +565,9 @@
             "dedication": {},
             "fortitude": {},
             "pragmatism": {},
+            "general": []
+        },
+        "humble": {
             "general": []
         },
         "insecure": {
@@ -533,6 +587,9 @@
             "unpredictability": {},
             "vigilance": {},
             "wisdom": {},
+            "general": []
+        },
+        "justified": {
             "general": []
         },
         "lonesome": {
@@ -591,6 +648,15 @@
             "wit": {},
             "general": []
         },
+        "meek": {
+            "general": []
+        },
+        "mellow": {
+            "general": []
+        },
+        "methodical": {
+            "general": []
+        },
         "nervous": {
             "adaptability": {},
             "attention": {},
@@ -618,6 +684,12 @@
             "spirit": {},
             "general": []
         },
+        "obsessive": {
+            "general": []
+        },
+        "patient": {
+            "general": []
+        },
         "playful": {
             "determination": {},
             "empathy": {},
@@ -642,6 +714,9 @@
             "perseverance": {},
             "tenacity": {},
             "zeal": {},
+            "general": []
+        },
+        "reserved": {
             "general": []
         },
         "responsible": {
@@ -707,6 +782,12 @@
             "kindness": {},
             "perspective": {},
             "sincerity": {},
+            "general": []
+        },
+        "spontaneous": {
+            "general": []
+        },
+        "stoic": {
             "general": []
         },
         "strange": {
@@ -784,6 +865,9 @@
             "zest": {},
             "general": []
         },
+        "trusting": {
+            "general": []
+        },
         "vengeful": {
             "boldness": {},
             "cleverness": {},
@@ -820,6 +904,9 @@
             "tranquility": {},
             "understanding": {},
             "wisdom": {},
+            "general": []
+        },
+        "witty": {
             "general": []
         }
     },

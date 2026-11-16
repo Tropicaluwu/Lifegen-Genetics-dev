@@ -1,3 +1,20 @@
+<strong>Lifegen Genetics v1.3</strong>
+
+Dev builds have ended: from now on every update comes to this stable version, brought up to date with Clangen and Genemod as they change.
+
+Changes:
+- Brought up to date with Genemod's modded branch and Clangen's development branch from November 15, 2026: Clangen's new healer den screen, other Clans keep their own herb supplies in multi clan mode, a setting to turn off shader highlights, Gathering brawls blame the right cat, the leader's name shows in queen and mediator ceremonies, and more
+- More name suffixes from Chinch-Bug: Lifegen's extra traits now have their own, and so do the Brawler, Fisher and Tunneler skills (with modded names and new suffixes turned on)
+- The leave Clan button is now called change group, and Genemod's separate change Clan button is gone: the change group window already lets cats join any Clan
+- In multi clan mode, events that need a cat of a certain rank look for that cat in the Clan the event happens in (from Genemod)
+
+Fixes:
+- A cat that comes back to the Clan partway through a moon starts out fed (it was skipped with an error in the log)
+- The solo hunting patrols where a cat gets stuck in a Twoleg trap now really take that cat (nobody was taken)
+- The Dark Forest dream patrol about a lost StarClan spirit no longer picks a living cat (it could be a cat from another Clan): the spirit is a real Dark Forest cat
+- Fixed a crash on moon skip when a lost or exiled cat died whose old mentor had faded
+- Starting relationships: cats were all treated as siblings (so everyone liked everyone, even with randomized relationships on); only real siblings are now
+
 <strong>Lifegen Genetics v1.2.6</strong>
 
 Fixes:

@@ -4,13 +4,14 @@ import json
 
 from scripts.cat.pelts import Pelt
 from scripts.cat.sprites.load_sprites import sprites
+from scripts.cat.sprites.sprite_names import sprite_names
 from scripts.game_structure.load_cat import accurate_porting
 
 
 def _all_tortie_patches():
     """Every tortie patch in the game's sprite data, newest versions add more"""
     with open("sprites/dicts/tortie_patches_sprite_data.json", "r", encoding="utf-8") as read_file:
-        return [name for row in json.load(read_file)["sprite_list"] for name in row]
+        return sprite_names(json.load(read_file)["sprite_list"])
 
 
 class LegacyPelt:

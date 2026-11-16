@@ -5,7 +5,7 @@ import pygame_gui
 from scripts.cat.microservices.add_to_clan import add_to_clan
 from scripts.cat.cats import Cat
 import i18n
-from scripts.cat.enums import CatSocial, CatGroup
+from scripts.cat.enums import CatSocial, CatGroup, CatStanding, CatRank
 from scripts.cat.microservices.add_to_clan import add_to_clan, add_dependents_to_clan
 from scripts.game_structure import game
 from scripts.game_structure.screen_settings import MANAGER
@@ -117,7 +117,7 @@ class LeaveClanWindow(GameWindow):
                 # LG edits
                 if self.new_group_ID in (
                     CatGroup.ROGUE_GROUP_ID,
-                    CatGroup.LONER_GROUP,
+                    CatGroup.LONER_GROUP_ID,
                     CatGroup.HOUSEHOLD_ID,
                 ):
                     # this cat is becoming a member of an outsider group
@@ -126,8 +126,19 @@ class LeaveClanWindow(GameWindow):
                     )
                 elif self.new_group_ID != CatGroup.PLAYER_CLAN_ID:
                     # this cat is joining a non-player clan
-                    # TODO: populate clan?
-                    self.the_cat.status.add_to_group(str(self.new_group_ID))
+                    # a leader or deputy starts over as a warrior there (from ClanGen)
+                    if self.the_cat.status.rank in (CatRank.DEPUTY, CatRank.LEADER):
+                        self.the_cat.rank_change(CatRank.WARRIOR, resort=True)
+                    self.the_cat.status.add_to_group(
+                        new_group_ID=str(self.new_group_ID),
+                        standing_with_past_group=CatStanding.LEFT,
+                    )
+                    self.the_cat.update_mentor()
+                    for app in self.the_cat.apprentice.copy():
+                        fetched_cat = Cat.fetch_cat(app)
+                        if isinstance(fetched_cat, Cat):
+                            fetched_cat.update_mentor()
+                    self.the_cat.assign_thought()
                 else:
                     # this cat is joining the player clan
                     add_to_clan(self.the_cat, game.clan.group_ID)

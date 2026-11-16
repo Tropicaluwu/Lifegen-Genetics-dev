@@ -25,6 +25,7 @@ class CanCreateNewCatDict(TypedDict, total=False):
     assign_blood_parent: list[str]
     assign_adoptive_parent: list[str]
     assign_mate: list[str]
+    spirit: str
 
 
 class MentorApprenticeDict(TypedDict, total=False):

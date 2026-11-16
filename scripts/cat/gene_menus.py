@@ -6,6 +6,8 @@ import json
 import os
 from collections import namedtuple
 
+from scripts.cat.sprites.sprite_names import sprite_names
+
 
 OTHER = "(other)"
 
@@ -1099,7 +1101,7 @@ EXTRA_MENUS = [
 
 def _sprite_list(path):
     with open(path, encoding="utf-8") as file:
-        return [name for row in json.load(file)["sprite_list"] for name in row]
+        return sprite_names(json.load(file)["sprite_list"])
 
 
 WHITE_SIZES = (("little", "Small patches"), ("mid", "Medium patches"), ("high", "Large patches"),

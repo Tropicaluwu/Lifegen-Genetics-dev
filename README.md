@@ -180,20 +180,19 @@ If it's still blocked and the error mentions `Python312\Lib\site-packages`, Wind
 
 ---
 
-## What's new in v1.2: the big update
+## What's new in v1.3
 
-Lifegen Genetics now runs on the newest development versions of Clangen, Lifegen and Genemod (updated November 7, 2026), so you get everything they've added since v1.1.
+Lifegen Genetics is brought up to date with the newest Clangen and Genemod (November 15, 2026), and from now on every update keeps it that way. **There are no more dev builds:** this stable version gets all the new things and fixes, so if you played the dev version, download this one.
 
-> **Before you update, keep a copy of your saves folder.** Your Clans load in v1.2, but once you've played them here they might not open in v1.1 anymore.
+> **Before you update, keep a copy of your saves folder.** Your Clans load in v1.3, but once you've played them here they might not open in older versions anymore.
 
-- **Clangen's newest version:** its new event and patrol systems, the new screens for making a Clan, the chinchilla color, and new background sounds for each biome
-- **The newest Genemod and Lifegen**, with all their changes and fixes
-- **"Healer" everywhere** instead of "medicine cat"
-- **Easier cat maker lists:** white patches are grouped by where they are on the cat, and eye colors by color family
-- **Made up family looks like family:** your cat's made up parents and siblings share their pattern and white markings
-- Plus a lot of fixes (see [changelog.txt](changelog.txt))
+- **Clangen's new healer den screen**, and in multi clan mode the other Clans keep their own herb supplies
+- **New name suffixes from Chinch-Bug** for Lifegen's extra traits and the Brawler, Fisher and Tunneler skills
+- **Change group** replaces the leave Clan button, and lets cats join any Clan
+- A setting to turn off shader highlights, and more from Clangen and Genemod
+- Plus fixes, like starting relationships that made every cat act like siblings (see [changelog.txt](changelog.txt))
 
-The cat maker, the Names button and everything else from v1.1 are still here.
+Everything from v1.2 (the cat maker, the Names button, "healer" everywhere and the rest) is still here.
 
 ## Credits
 
@@ -222,7 +221,7 @@ This is an unofficial combination made for fun. **Please don't take bug reports 
 - Everything from Lifegen: playing as your own cat, talking, patrols, the Dark Forest, shunning, affairs and the rest
 - Genemod's genetics: coat color, patterns, white spotting, eyes, fur types, ear and tail traits, genetic conditions and offspring prediction
 - Genemod's multi clan mode (optional, picked when you make a new clan)
-- Built on the development versions of Clangen, Lifegen and Genemod (updated November 7, 2026)
+- Built on the development versions of Clangen, Lifegen and Genemod (updated November 15, 2026)
 - Fixes for crashes that came from putting the two mods together
 
 See [changelog.txt](changelog.txt) for the full list.

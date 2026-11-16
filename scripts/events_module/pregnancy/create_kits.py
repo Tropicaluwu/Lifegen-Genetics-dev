@@ -320,6 +320,8 @@ def get_kits(
                 if cat_id == kit.ID:
                     continue
                 the_cat = Cat.all_cats.get(cat_id)
+                if the_cat is None:
+                    continue
                 if not the_cat or the_cat.dead or the_cat.status.group_ID != cat.status.group_ID:
                     continue
                 if the_cat.ID in kit.get_parents():
@@ -426,22 +428,6 @@ def get_kits(
                     **parent_to_kit,
                 )
 
-    # update relationship for adoptive parents
-    for parent_id in all_kitten[0].adoptive_parents:
-        parent = Cat.fetch_cat(parent_id)
-        if parent:
-            kit_to_parent = get_config("new_cat.parent_buff.kit_to_parent")
-            parent_to_kit = get_config("new_cat.parent_buff.parent_to_kit")
-            change_relationship_values(
-                cats_from=[kit],
-                cats_to=[parent],
-                **kit_to_parent,
-            )
-            change_relationship_values(
-                cats_from=[parent],
-                cats_to=[kit],
-                **parent_to_kit,
-            )
     inheritance_db.load_inheritances(Cat)
 
     # check for more extended family members to create relationships with
