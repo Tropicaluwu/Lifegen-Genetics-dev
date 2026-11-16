@@ -15,7 +15,7 @@ from scripts.events_module.parameter_dicts import (
 )
 from scripts.events_module.patrol.patrol_event import PatrolEvent
 from scripts.events_module.text_pool_event.text_pool_event import TextPoolEvent
-from scripts.events_module.patrol.create_new_cat import updated_find_clan_cats
+from scripts.events_module.patrol.create_new_cat import updated_find_clan_cats, find_spirit_cats
 from scripts.game_structure import game
 
 
@@ -94,6 +94,15 @@ def find_cats(
             possible_cats = _check_prior_abbreviation(
                 abbr, constraints, event, interactable_cats, temp_involved_cats
             )
+
+        # LG: a spirit is never a living cat: sometimes a fitting one from that afterlife, or a new one
+        elif "n_c" in abbr and constraints.get("can_create_new_cat", {}).get("spirit"):
+            spirits = find_spirit_cats(constraints, temp_involved_cats)
+            if spirits and random.random() < 0.5:
+                temp_involved_cats[abbr] = random.choice(spirits)
+            else:
+                will_create_how_many += 1
+            continue
 
         # CHECK NEW CATS
         elif "n_c" in abbr:

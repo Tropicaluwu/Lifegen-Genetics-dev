@@ -57,12 +57,13 @@ def init_all_relationships(cat: "Cat"):
                     the_cat.parent2,
                     the_cat.parent3,
                 )
-                siblings = cat.parent1 in (
-                    the_cat.parent1,
-                    the_cat.parent2,
-                    the_cat.parent3,
-                ) or cat.parent2 in (the_cat.parent1, the_cat.parent2, the_cat.parent3
-                ) or cat.parent3 in (the_cat.parent1, the_cat.parent2, the_cat.parent3)
+                # only real parents count: a missing parent3 (None) matched the other cat's missing one,
+                # so every pair was siblings
+                siblings = bool(
+                    {cat.parent1, cat.parent2, cat.parent3}
+                    & {the_cat.parent1, the_cat.parent2, the_cat.parent3}
+                    - {None}
+                )
 
             related = parents or siblings
 

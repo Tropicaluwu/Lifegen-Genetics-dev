@@ -108,6 +108,10 @@ def updated_create_new_cat(
     """
     option_dict = option_dict.copy()
 
+    # LG: spirits are made dead in their afterlife
+    if option_dict.get("can_create_new_cat", {}).get("spirit"):
+        return [_create_spirit_cat(option_dict)]
+
     # STATUS
     status = StatusDict()
     if option_dict.get("group_ID"):
@@ -369,6 +373,80 @@ def updated_create_new_cat(
         inheritance_db.load_inheritances(Cat)
 
     return new_cats
+
+
+SPIRIT_GROUPS = {"starclan": CatGroup.STARCLAN_ID, "dark_forest": CatGroup.DARK_FOREST_ID}
+
+
+def _spirit_backstories(option_dict) -> list:
+    """LG: the backstories a spirit may have (categories turned into their backstories)"""
+    stories = []
+    for story in option_dict.get("backstory", []):
+        if story in BACKSTORIES["backstory_categories"]:
+            stories.extend(BACKSTORIES["backstory_categories"][story])
+        else:
+            stories.append(story)
+    return stories
+
+
+def find_spirit_cats(option_dict, involved_cats: dict) -> list:
+    """LG: dead cats already in the spirit's afterlife who fit it (same backstory, if one is given)"""
+    group_ID = SPIRIT_GROUPS.get(option_dict["can_create_new_cat"]["spirit"])
+    stories = _spirit_backstories(option_dict)
+    taken = []
+    for cat in involved_cats.values():
+        taken.extend(cat if isinstance(cat, list) else [cat])
+    return [
+        cat
+        for cat in Cat.all_cats.values()
+        if cat.status.group_ID == group_ID
+        and not getattr(cat, "faded", False)
+        and cat not in taken
+        and (not stories or cat.backstory in stories)
+    ]
+
+
+def _create_spirit_cat(option_dict) -> Cat:
+    """LG: makes a cat who is already dead in the spirit's afterlife, the way the Clan guides are made"""
+    group_ID = SPIRIT_GROUPS[option_dict["can_create_new_cat"]["spirit"]]
+    age = CatAge(choice(option_dict["age"])) if option_dict.get("age") else CatAge.ADULT
+    gender = choice(option_dict["gender"]) if option_dict.get("gender") else None
+    if gender == "can_birth":
+        gender = "female"
+
+    def make():
+        moons = randint(
+            max(Cat.age_moons[age][0], 0),
+            min(Cat.age_moons[age][1], get_config("cat_generation.max_age")),
+        )
+        return NewCatFactory.create_cat(
+            status_dict=StatusDict(
+                rank=Status.get_rank_from_age(age, disable_random=True), group_ID=group_ID
+            ),
+            moons=moons,
+            gender=gender,
+        )
+
+    created_cat = make()
+    # same rerolls as other new adult cats, so the spirit isn't made with genes that can't live
+    while (
+        created_cat.phenotype.manx[1] in ["Ab", "M"]
+        or created_cat.phenotype.sexgene[0] == "Y"
+        or created_cat.phenotype.munch[1] == "Mk"
+        or (
+            "NoDBE" not in created_cat.phenotype.pax3
+            and "DBEalt" not in created_cat.phenotype.pax3
+            and created_cat.phenotype.pax3 != ["DBEcel", "DBEcel"]
+        )
+    ):
+        game.clan.remove_cat(created_cat.ID)
+        created_cat = make()
+
+    created_cat.dead_for = randint(20, 200)
+    _assign_stats(created_cat, option_dict)
+    _assign_backstory(created_cat, option_dict)
+    game.clan.add_cat(created_cat)
+    return created_cat
 
 
 def _assign_mates(

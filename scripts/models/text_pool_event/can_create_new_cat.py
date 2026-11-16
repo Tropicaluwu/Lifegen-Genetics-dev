@@ -1,4 +1,4 @@
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import BaseModel, ConfigDict, Field
 from pydantic_core import MISSING
@@ -29,4 +29,8 @@ class CanCreateNewCat(BaseModel):
     multiclan_cat: Union[list[str], MISSING] = Field(
         MISSING,
         description="List of special tags for multiclan - change_clan, change_clan_rev, exiled, -exists, multiclan_only",
+    )
+    spirit: Union[Literal["starclan", "dark_forest"], MISSING] = Field(
+        MISSING,
+        description="This cat is a spirit of that afterlife: a fitting dead cat there (same backstory, if one is given) may be used, otherwise a dead cat is made there. A living cat is never used.",
     )

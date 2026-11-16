@@ -223,13 +223,8 @@ def event_for_tags(tags: list, cat, clan=CatGroup.PLAYER_CLAN_ID, other_cat=None
             for rank_spec in rank_match.group(1).split(","):
                 # Check for extra "min" subtag
                 sub_tag_check = re.match(r"([^(]+)(?:\(min:([0-9]+)\))?", rank_spec)
-                rank = sub_tag_check.group(1)
-                # LG: event files still say "medicine cat", but the rank is now "healer"
-                try:
-                    rank = CatRank(rank)
-                except ValueError:
-                    pass
-                ranks.append(rank)
+                ranks.append(sub_tag_check.group(1).replace("medicine cat", "healer"))
+                rank = ranks[-1]
 
                 if sub_tag_check.group(2):
                     minimums.append(int(sub_tag_check.group(2)))

@@ -6385,7 +6385,7 @@
                 "death": [
                     {
                         "cats": [
-                            "r_c0"
+                            "p_l"
                         ],
                         "history": "m_c was killed after an unfortunate experience with a wolverine."
                     }
@@ -6909,7 +6909,7 @@
                 "lost": [
                     {
                         "cats": [
-                            "r_c0"
+                            "p_l"
                         ]
                     }
                 ]

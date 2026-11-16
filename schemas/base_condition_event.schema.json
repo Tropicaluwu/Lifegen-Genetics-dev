@@ -485,6 +485,15 @@
           },
           "title": "Multiclan Cat",
           "type": "array"
+        },
+        "spirit": {
+          "description": "This cat is a spirit of that afterlife: a fitting dead cat there (same backstory, if one is given) may be used, otherwise a dead cat is made there. A living cat is never used.",
+          "enum": [
+            "starclan",
+            "dark_forest"
+          ],
+          "title": "Spirit",
+          "type": "string"
         }
       },
       "title": "CanCreateNewCat",
