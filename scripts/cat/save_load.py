@@ -38,6 +38,12 @@ def save_cats(clanname, cat_class: Type["Cat"], game: "Game"):
         for c in cat_class.all_cats.values()
         if c.dead and not c.relationships
     }
+    # LGG: files that get written again below stay too, so unchanged ones aren't rewritten
+    keep |= {
+        f"{c.ID}_relations.json"
+        for c in cat_class.all_cats.values()
+        if not c.dead or c.relationships
+    }
     for f in relationships_dir.glob("*.json"):
         if f.name not in keep:
             f.unlink()
@@ -51,10 +57,13 @@ def save_cats(clanname, cat_class: Type["Cat"], game: "Game"):
 
         save_condition(inter_cat)
 
-        if inter_cat.history:
-            inter_cat.save_history(history_dir)
-            # after saving, dump the history info
-            inter_cat.history = None
+        # LGG: reading inter_cat.history loads it from disk, so a history nobody opened (and so
+        # didn't change) is left alone unless it has no file yet
+        if inter_cat._history is not None or not (history_dir / f"{inter_cat.ID}_history.json").exists():
+            if inter_cat.history:
+                inter_cat.save_history(history_dir)
+                # after saving, dump the history info
+                inter_cat.history = None
         if not inter_cat.dead or inter_cat.relationships:
             inter_cat.save_relationship_of_cat(relationships_dir)
 

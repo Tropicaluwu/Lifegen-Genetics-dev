@@ -51,6 +51,7 @@ class ChangeGenderScreen(Screens):
         self.removalbuttons = {}
         self.deletebuttons = {}
         self.addbuttons = {}
+        self.add_pronoun_sets = {}
         self.pronoun_template = pronouns.get_new_pronouns("default")
         self.remove_button = {}
         self.removalboxes_text = {}
@@ -91,6 +92,16 @@ class ChangeGenderScreen(Screens):
 
             elif event.ui_element == self.buttons["add_pronouns"]:
                 PronounCreationWindow(self.the_cat)
+
+            elif event.ui_element in self.addbuttons.values():
+                # LGG: the "add" buttons stopped being CatButtons upstream, so clicking them did nothing
+                pronounset = next(
+                    self.add_pronoun_sets[k] for k, b in self.addbuttons.items() if b is event.ui_element
+                )
+                if pronounset not in self.the_cat.pronouns:
+                    self.the_cat.pronouns.append(pronounset)
+                    self.the_cat.assign_thought()
+                self.update_selected_cat()
 
             elif type(event.ui_element) is CatButton:
                 if event.ui_element.cat_id == "add":
@@ -487,6 +498,7 @@ class ChangeGenderScreen(Screens):
                 },
             )
 
+            self.add_pronoun_sets[dict_name_core] = pronounset
             if pronounset in self.the_cat.pronouns:
                 self.addbuttons[dict_name_core].disable()
 
@@ -553,6 +565,7 @@ class ChangeGenderScreen(Screens):
         self.selected_cat_elements = {}
         self.removalboxes_text = {}
         self.addbuttons = {}
+        self.add_pronoun_sets = {}
         self.elements = {}
         self.removalbuttons = {}
         self.deletebuttons = {}

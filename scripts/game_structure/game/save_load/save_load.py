@@ -6,6 +6,10 @@ import ujson
 
 from scripts.housekeeping.datadir import get_save_dir
 
+# LGG: what each file held after the last save, so unchanged files aren't written again.
+# Saving rewrote hundreds of small cat files every time, and on Windows each write is slow
+_last_saved: dict = {}
+
 
 def safe_save(
     path: Union[str, Path], write_data, check_integrity=False, max_attempts: int = 15
@@ -24,6 +28,9 @@ def safe_save(
 
     path = os.fspath(path)
     dir_name, file_name = os.path.split(path)
+
+    if not check_integrity and _unchanged(path, _data):
+        return
 
     if not file_name:
         raise RuntimeError(f"Safe_Save: No file name was found in {path}")
@@ -59,6 +66,7 @@ def safe_save(
                 continue
 
         os.replace(temp_file_path, path)
+        _remember(path, _data)
         return
 
 
@@ -143,3 +151,28 @@ def get_clan_json(clan: str):
         if new_path.exists():
             return new_path
     raise FileNotFoundError
+
+
+def _unchanged(path, data) -> bool:
+    """True if the file on disk already holds exactly this (remembered from the last save, or read)"""
+    if not os.path.exists(path):
+        _last_saved.pop(path, None)
+        return False
+    # the remembered copy only counts if nobody changed the file since (like an edit by hand)
+    if _last_saved.get(path) == (data, os.path.getmtime(path)):
+        return True
+    try:
+        with open(path, "r", encoding="utf-8") as read_file:
+            same = read_file.read() == data
+    except (OSError, UnicodeDecodeError):
+        return False
+    if same:
+        _remember(path, data)
+    return same
+
+
+def _remember(path, data):
+    try:
+        _last_saved[path] = (data, os.path.getmtime(path))
+    except OSError:
+        _last_saved.pop(path, None)

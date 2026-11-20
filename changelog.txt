@@ -1,3 +1,8 @@
+<strong>Lifegen Genetics v1.3.1</strong>
+
+Fixes:
+- The add button for saved pronoun sets works again (clicking it did nothing)
+
 <strong>Lifegen Genetics v1.3</strong>
 
 Dev builds have ended: from now on every update comes to this stable version, brought up to date with Clangen and Genemod as they change.
