@@ -45,6 +45,7 @@ class TalkScreen(Screens):
         self.the_cat = None
         self.speaking_cat = None
         self.other_clan = None
+        self.your_clan = None
         self.clock = pygame.time.Clock()
         self.typing_delay = 20
         self.next_frame_time = pygame.time.get_ticks() + self.typing_delay
@@ -93,7 +94,10 @@ class TalkScreen(Screens):
         self.the_cat = Cat.all_cats.get(switch_get_value(Switch.cat))
         self.dialogue_class = Dialogue(cat=self.the_cat, you=game.clan.your_cat)
         self.speaking_cat = self.the_cat
-        self.other_clan = choice(game.clan.all_other_clans)
+        # the Clan your cat lives in, which may not be the player's
+        self.your_clan = game.clan.your_cat.status.fetch_clan_object(game.clan)
+        clans = [c for c in [game.clan] + game.clan.all_other_clans if c is not self.your_clan]
+        self.other_clan = choice(clans)
 
         self.cat_dict.clear()
         self.other_dict.clear()
@@ -226,7 +230,7 @@ class TalkScreen(Screens):
 
         # event text adjust for clan name
         final_text = event_text_adjust(
-            Cat, text=processed_text, clan=game.clan, other_clan=self.other_clan
+            Cat, text=processed_text, clan=self.your_clan or game.clan, other_clan=self.other_clan
         )
 
         return final_text

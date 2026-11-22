@@ -1,3 +1,16 @@
+<strong>Lifegen Genetics v1.3.2</strong>
+
+Changes:
+- Brought up to date with Genemod and Clangen from November 22, 2026
+
+Fixes:
+- Fixed a crash when a patrol or event gave a kit to a parent who had been through Trap-Neuter-Return
+- Patrol results say "water in his lungs" instead of showing the pronoun code
+- Naming your cat's kits no longer opens an empty menu when the kits were born in another Clan, or when your cat lives in one. The window doesn't come up when there are no living kits to name
+- Once your cat lives in another Clan, talk lines there name the right Clan
+- The healer den no longer crashes when a Clan has no healers (from Genemod), and clicking the empty healer spot there does nothing
+- In multi clan mode, cats only confess their feelings to cats in the same Clan (from Genemod)
+
 <strong>Lifegen Genetics v1.3.1</strong>
 
 Fixes:

@@ -248,7 +248,8 @@ def updated_create_new_cat(
         if "sterile" in bp.permanent_conditions:
             bp.remove_condition("sterile")
         if "TNR" in bp.pelt.scars:
-            bp.pelt.scars.remove("TNR")
+            # scars are a tuple
+            bp.pelt.scars = tuple(s for s in bp.pelt.scars if s != "TNR")
 
     if status.get("rank") and status["rank"] in [CatRank.NEWBORN, CatRank.KITTEN] or status.get("age") and status["age"].is_baby() or blood_parents:
         generated_parents = create_bio_parents(

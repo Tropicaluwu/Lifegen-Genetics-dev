@@ -763,11 +763,20 @@ def _handle_conditions(
             i18n.t(
                 "general.got_condition",
                 cat=_profile_link(c),
-                conditions=adjust_list_text(
-                    [
-                        i18n.t(f"conditions.temporary_conditions.{_con}")
-                        for _con in conditions
-                    ]
+                # some condition names have pronouns in them (water in their lungs)
+                conditions=event_text_adjust(
+                    Cat,
+                    adjust_list_text(
+                        [
+                            i18n.t(
+                                f"conditions.temporary_conditions.{_con}"
+                                if _con in TEMPORARY_CONDITIONS
+                                else f"conditions.permanent_conditions.{_con}"
+                            )
+                            for _con in conditions
+                        ]
+                    ),
+                    main_cat=c,
                 ),
             )
         )

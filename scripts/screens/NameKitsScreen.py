@@ -23,6 +23,20 @@ from ..ui.generate_button import get_button_dict, ButtonStyles
 from ..ui.icon import Icon
 
 
+def kits_to_name() -> list:
+    """your cat's living newborns, in your group or any Clan (a half-Clan litter can be born across the border)"""
+    you = game.clan.your_cat
+    children = you.get_children()
+    return [
+        cat
+        for cat in Cat.all_cats_list
+        if cat.ID in children
+        and not cat.dead
+        and cat.age == CatAge.NEWBORN
+        and (cat.status.group_ID == you.status.group_ID or cat.status.group.is_any_clan_group())
+    ]
+
+
 class NameKitsScreen(Screens):
     selected_cat = None
     current_page = 1
@@ -78,13 +92,8 @@ class NameKitsScreen(Screens):
                         )
                     # self.update_buttons()
             elif event.ui_element == self.back_button:
-                for cat in Cat.all_cats_list:
-                    if (
-                        cat.status.alive_in_player_clan
-                        and cat.age == CatAge.NEWBORN
-                        and cat.ID in game.clan.your_cat.get_children()
-                        and cat.name.prefix.strip() == ""
-                    ):
+                for cat in kits_to_name():
+                    if cat.name.prefix.strip() == "":
                         cat.name.give_prefix(cat, game.clan.biome)
                 self.change_screen(GameScreen.EVENTS)
             elif event.ui_element == self.next_page_button:
@@ -328,14 +337,9 @@ class NameKitsScreen(Screens):
     def get_valid_cats(self):
         valid_mentors = []
 
-        for cat in Cat.all_cats_list:
-            if (
-                cat.status.alive_in_player_clan
-                and cat.age == CatAge.NEWBORN
-                and cat.ID in game.clan.your_cat.get_children()
-            ):
-                valid_mentors.append(cat)
-                cat.name.prefix = ""
+        for cat in kits_to_name():
+            valid_mentors.append(cat)
+            cat.name.prefix = ""
 
         return valid_mentors
 
