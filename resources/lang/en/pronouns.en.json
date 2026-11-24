@@ -39,6 +39,8 @@
             "poss": "its",
             "inposs": "its",
             "self": "itself",
+            "parent": "parent",
+            "sibling": "sibling",
             "conju": 2,
             "gender": 0
         }

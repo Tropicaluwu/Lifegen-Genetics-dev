@@ -631,6 +631,12 @@ def clear_missing_cat_links(cats):
                 if len(kept) != len(other_ids):
                     logger.warning(f"Cat #{cat.ID} had missing cats in {field}, removed them.")
                     setattr(cat, field, kept)
+        # LG: an apprentice who doesn't have this mentor got the ID of one who was deleted
+        if cat.apprentice:
+            kept = [i for i in cat.apprentice if Cat.fetch_cat(i).mentor == cat.ID]
+            if len(kept) != len(cat.apprentice):
+                logger.warning(f"Cat #{cat.ID} had an apprentice who isn't theirs, removed them.")
+                cat.apprentice = kept
 
 
 def json_load(version_info: dict):

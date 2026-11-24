@@ -201,6 +201,17 @@ _LIST_REF_FIELDS = (
 )
 
 
+def clear_links(cat: "Cat", gone_id: str):
+    """LG: takes a cat that's leaving the game for good out of this cat's links"""
+    for field in _SINGLE_REF_FIELDS:
+        if getattr(cat, field, None) == gone_id:
+            setattr(cat, field, None)
+    for field in _LIST_REF_FIELDS:
+        value = getattr(cat, field, None)
+        if value and gone_id in value:
+            setattr(cat, field, [i for i in value if i != gone_id])
+
+
 def prune_dead_relationships(cat_class: Type["Cat"]):
     resolvable = set(cat_class.all_cats.keys()) | set(get_faded_ids())
 

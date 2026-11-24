@@ -26,7 +26,7 @@ def killing_outsiders(cat: "Cat", clan=None):
     # LG: the default used to be game.clan, which is only read once at import (when it's None)
     if clan is None:
         clan = game.clan
-    if info_dict := get_clan_setting("lead_den_outsider_event"):
+    if info_dict := (getattr(game.clan, "leader_den_events", None) or {}).get("outsider_event"):
         if cat.ID == info_dict["cat_ID"]:
             return
 
@@ -102,8 +102,7 @@ def outsider_wander(cat: "Cat", clan=None):
     # LG: the default used to be game.clan, which is only read once at import (when it's None)
     if clan is None:
         clan = game.clan
-    if get_clan_setting("lead_den_outsider_event"):
-        info_dict = get_clan_setting("lead_den_outsider_event")
+    if info_dict := (getattr(game.clan, "leader_den_events", None) or {}).get("outsider_event"):
         if cat.ID == info_dict["cat_ID"]:
             return
 

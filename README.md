@@ -182,7 +182,7 @@ If it's still blocked and the error mentions `Python312\Lib\site-packages`, Wind
 
 ## What's new in v1.3
 
-Lifegen Genetics is brought up to date with the newest Clangen and Genemod (November 22, 2026), and from now on every update keeps it that way. **There are no more dev builds:** this stable version gets all the new things and fixes, so if you played the dev version, download this one.
+Lifegen Genetics is brought up to date with the newest Clangen and Genemod (November 24, 2026), and from now on every update keeps it that way. **There are no more dev builds:** this stable version gets all the new things and fixes, so if you played the dev version, download this one.
 
 > **Before you update, keep a copy of your saves folder.** Your Clans load in v1.3, but once you've played them here they might not open in older versions anymore.
 
@@ -221,7 +221,7 @@ This is an unofficial combination made for fun. **Please don't take bug reports 
 - Everything from Lifegen: playing as your own cat, talking, patrols, the Dark Forest, shunning, affairs and the rest
 - Genemod's genetics: coat color, patterns, white spotting, eyes, fur types, ear and tail traits, genetic conditions and offspring prediction
 - Genemod's multi clan mode (optional, picked when you make a new clan)
-- Built on the development versions of Clangen, Lifegen and Genemod (updated November 22, 2026)
+- Built on the development versions of Clangen, Lifegen and Genemod (updated November 24, 2026)
 - Fixes for crashes that came from putting the two mods together
 
 See [changelog.txt](changelog.txt) for the full list.

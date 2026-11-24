@@ -313,7 +313,7 @@
             "m_c wants to prove that r_c1 isn't worthy of multi_cat's respect.",
             "m_c tries to turn multi_cat against r_c1.",
             "m_c doesn't get why r_c1 gets more praise from multi_cat for doing the same thing everyone else does.",
-            "m_c notices that r_c makes multi_cat laugh more than {PRONOUN/m_c/subject} {VERB/m_c/do/does}.",
+            "m_c notices that r_c1 makes multi_cat laugh more than {PRONOUN/m_c/subject} {VERB/m_c/do/does}.",
             "m_c thinks multi_cat talk more highly of r_c1 than {PRONOUN/m_c/object}.",
             "m_c interrupts multi_cat praising r_c1 to change the subject pointedly."
         ],
@@ -383,7 +383,7 @@
             },
             {
                 "cats_from": ["multi_cat"],
-                "cats_to": ["r_c"],
+                "cats_to": ["r_c1"],
                 "mutual": false,
                 "values": ["like"],
                 "amount": 5
@@ -486,10 +486,10 @@
         "event_id": "group_3_negative_strangerjealousy",
         "strings": [
             "m_c overhears r_c2 praise r_c1 for something m_c actually did.",
-            "m_c wants to asks r_c2 to eat with {PRONOUN/m_c/object}, but {PRONOUN/r_c2/subject}{VERB/r_c2/'re/'s} busy with r_c1.",
+            "m_c wants to ask r_c2 to eat with {PRONOUN/m_c/object}, but {PRONOUN/r_c2/subject}{VERB/r_c2/'re/'s} busy with r_c1.",
             "r_c2 accuses m_c of copying one of r_c1's jokes.",
             "m_c wishes that r_c2 liked {PRONOUN/m_c/object} as much as {PRONOUN/r_c2/subject} {VERB/r_c2/like/likes} r_c1.",
-            "m_c wants to get to know r_c2 better, but {PRONOUN/r_c2/subject}{VERB/r_c2/'re/'s} already close to r_c."
+            "m_c wants to get to know r_c2 better, but {PRONOUN/r_c2/subject}{VERB/r_c2/'re/'s} already close to r_c1."
         ],
         "involved_cats": {
             "m_c": {},
@@ -1114,7 +1114,7 @@
         "relationship_changes": [
             {
                 "cats_from": ["m_c"],
-                "cats_to": ["multi_cat", "r_c"],
+                "cats_to": ["multi_cat", "r_c1"],
                 "mutual": true,
                 "values": ["like"],
                 "amount": -10

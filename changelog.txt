@@ -1,3 +1,13 @@
+<strong>Lifegen Genetics v1.3.3</strong>
+
+Changes:
+- Brought up to date with Genemod from November 24, 2026: the leader's den can send aid (some of the Clan's prey and herbs) to another Clan, and works in multi clan mode too. A Clan's temperament now follows the cats it has, and the mediation screen is fixed
+
+Fixes:
+- A kit added when a new Clan was made could vanish the next time the game was opened, and leave their mentor with an empty apprentice spot that a newborn from any Clan could later fill. Those kits stay now, and loading a save takes wrong apprentices off the list
+- Two relationship events between three cats no longer show "r_c" in place of a cat's name, two others now change the relationship they were meant to, and one reads "wants to ask" instead of "wants to asks"
+- Talk lines that name a parent or sibling ("...is my parent") no longer show "error2" for cats with it/its pronouns or pronouns made by the player (a player report)
+
 <strong>Lifegen Genetics v1.3.2</strong>
 
 Changes:

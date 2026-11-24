@@ -101,7 +101,8 @@ def pronoun_repl(m, cat_pronouns_dict, raise_exception=False, clan=None):
                     d = choice(get_new_pronouns("default"))
 
         if inner_details[0].upper() == "PRONOUN":
-            out = d[inner_details[2]]
+            # LG: sets without family words (it/its, ones players made) used to show error2
+            out = d[inner_details[2]] if inner_details[2] in d else _family_word(inner_details[2], d)
         elif inner_details[0].upper() == "VERB":
             out = inner_details[d["conju"] + 1]
         elif inner_details[0].upper() == "ADJ":
@@ -127,6 +128,16 @@ def pronoun_repl(m, cat_pronouns_dict, raise_exception=False, clan=None):
         logger.exception("Failed to find pronoun: " + m.group(1))
         print("Failed to find pronoun:", m.group(1))
         return "error2"
+
+
+FAMILY_WORDS = {"parent": ("parent", "father", "mother"), "sibling": ("sibling", "brother", "sister")}
+
+
+def _family_word(word, d):
+    """parent or sibling by the set's gender, for pronoun sets that don't have their own"""
+    words = FAMILY_WORDS[word]  # anything else still fails as before
+    gender = d.get("gender", 0)
+    return words[gender] if gender in (0, 1, 2) else words[0]
 
 
 def name_repl(m, cat_dict):

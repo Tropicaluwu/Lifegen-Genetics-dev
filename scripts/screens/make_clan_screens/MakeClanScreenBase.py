@@ -9,6 +9,7 @@ import pygame_gui
 
 from scripts.cat import save_load
 from scripts.cat.cats import Cat
+from scripts.cat_relations.cat_handle_funcs import create_relationships_new_cat
 from scripts.clan import Clan
 from scripts.clan_package.settings import load_clan_settings
 from scripts.clan_package.clan_names import get_possible_clan_names
@@ -327,6 +328,9 @@ class MakeClanScreenBase(Screens):
             possible_kits.remove(kit)
             Cat.all_cats[kit.ID] = kit
             Cat.all_cats_list.append(kit)
+            # LG: on the Clan's list too, or the start screen deletes the kit at the next start
+            game.clan.add_cat(kit)
+            create_relationships_new_cat(kit)
 
         Cat.sort_cats()
         rebuild_top_menu_buttons()

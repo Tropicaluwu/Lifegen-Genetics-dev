@@ -14,13 +14,15 @@ def get_warring_clan():
     return None
 
 
-def get_other_clan(clan_name):
+def get_other_clan(group_ID):
     """
     returns the clan object of given clan name
     """
     for clan in game.clan.all_other_clans:
-        if clan.name == clan_name:
+        if clan.group_ID == group_ID:
             return clan
+    if group_ID == game.clan.group_ID:
+        return game.clan
 
 
 def change_clan_relations(clan, other_clan, difference):
