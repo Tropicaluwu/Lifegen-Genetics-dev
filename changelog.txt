@@ -1,3 +1,10 @@
+<strong>Lifegen Genetics v1.3.4</strong>
+
+Fixes:
+- Talking to a cat with only a few lines that fit (like the leader when the player's cat is a kit) no longer gives the "Meow! This is a bug" line once those lines were all heard recently (a player report)
+- Dead cats made by an event who never lived in a Clan show "past warrior" in their profile instead of "past None warrior" (a player report)
+- A StarClan cat coaxed into the Dark Forest on a Dark Forest patrol gets their own backstory, instead of one saying they snuck into StarClan and were exiled (a player report)
+
 <strong>Lifegen Genetics v1.3.3</strong>
 
 Changes:

@@ -1554,6 +1554,7 @@ class ProfileScreen(Screens):
                 in [game.clan.instructor, game.clan.demon]
                 + [clan.instructor for clan in game.clan.all_other_clans if clan.instructor]
                 or the_cat.status.is_outsider
+                or not cat_clan
             ):
                 text = i18n.t(
                     "general.past_no_group",

@@ -176,6 +176,7 @@ class Backstory(Enum):
     oldstarclan1 = "oldstarclan1"
     oldstarclan2 = "oldstarclan2"
     oldstarclan3 = "oldstarclan3"
+    tempted_starclan1 = "tempted_starclan1"
     oldstarclan_backstories = "oldstarclan_backstories"
 
     dfkit1 = "dfkit1"

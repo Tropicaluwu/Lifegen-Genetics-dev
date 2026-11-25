@@ -304,12 +304,18 @@ class Dialogue:
                     + " Set debug_dialogue_override_filtering to true to override filtering."
                 )
             # weighted shuffle
-            ordered_keys = sorted(
-                possible_dialogue_keys,
-                key=lambda k: random.random()
-                ** (1 / max(self.dialogue_weights.get(k, 1), 1)),
-                reverse=True,
-            )
+            def shuffled(keys):
+                return sorted(
+                    keys,
+                    key=lambda k: random.random()
+                    ** (1 / max(self.dialogue_weights.get(k, 1), 1)),
+                    reverse=True,
+                )
+
+            # LGG: recently heard lines are tried last, not dropped, so a cat with only a few
+            # lines that fit doesn't fall back to the bug line
+            heard = [k for k in possible_dialogue if k not in possible_dialogue_keys]
+            ordered_keys = shuffled(possible_dialogue_keys) + shuffled(heard)
             # check possible dialogue for valid cat constraints
             for key in ordered_keys:
                 dialogue_block = possible_dialogue[key]

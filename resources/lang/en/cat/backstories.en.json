@@ -176,6 +176,7 @@
         "oldstarclan1": "m_c snuck into StarClan when {PRONOUN/m_c/subject} died, but was discovered and exiled back to the Dark Forest after many years.",
         "oldstarclan2": "m_c was originally from StarClan, but after getting lost in the Dark Forest one day, {PRONOUN/m_c/subject} {VERB/m_c/were/was} unable to find {PRONOUN/m_c/poss} way back. Now, {PRONOUN/m_c/subject} belong to the Place of No Stars, resenting {PRONOUN/m_c/poss} StarClan family who never came to find {PRONOUN/m_c/object}.",
         "oldstarclan3": "m_c belonged to StarClan once, but got lost outside of StarClan territory one day and has been bitterly wandering the Dark Forest ever since.",
+        "tempted_starclan1": "m_c was once a StarClan cat, until a Dark Forest dreamer coaxed {PRONOUN/m_c/object} out of the stars. Now {PRONOUN/m_c/subject} {VERB/m_c/walk/walks} the shadows by choice.",
         "dfkit1": "m_c was born in the Dark Forest, with one Dark Forest parent and one living one.",
         "dfkit2": "m_c was born in the Dark Forest and taken to live with the Clan by {PRONOUN/m_c/poss} living parent.",
         "newdfguide1": "m_c sensed darkness within the newly formed c_n and decided to live as their new Dark Forest guide.",
