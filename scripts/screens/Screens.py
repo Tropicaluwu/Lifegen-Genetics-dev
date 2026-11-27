@@ -69,7 +69,7 @@ class Screens:
         It will handle keeping track of the last screen and cur screen.
         Last screen must be tracked to ensure a clear transition between screens."""
 
-        if new_screen not in [GameScreen.CAMP, GameScreen.MEDIATION, GameScreen.MED_DEN, GameScreen.LEADER_DEN, GameScreen.PROFILE] and game.clan and game.clan.clancount == "multiclan":
+        if new_screen not in [GameScreen.CAMP, GameScreen.MEDIATION, GameScreen.QUEEN_ADVICE, GameScreen.MED_DEN, GameScreen.LEADER_DEN, GameScreen.PROFILE] and game.clan and game.clan.clancount == "multiclan":
             game.selected_clan = game.clan
             if Screens.menu_buttons.get("supplies"):
                 for b in Screens.menu_buttons["supplies"].child_buttons:
@@ -109,6 +109,7 @@ class Screens:
             GameScreen.CHOOSE_ADOPTIVE_PARENT,
             GameScreen.RELATIONSHIP,
             GameScreen.MEDIATION,
+            GameScreen.QUEEN_ADVICE,
             GameScreen.CHANGE_GENDER,
             GameScreen.FAMILY_TREE,
             GameScreen.ELDER_STORY,
@@ -489,6 +490,12 @@ class Screens:
             == Screens.menu_buttons["dens"].child_button_dicts["screens.core.clearing"]
         ):
             self.change_screen(GameScreen.MEDIATION)
+        # OPEN NURSERY/QUEEN
+        elif (
+            event.ui_element
+            == Screens.menu_buttons["dens"].child_button_dicts["screens.core.nursery"]
+        ):
+            self.change_screen(GameScreen.QUEEN_ADVICE)
         # GO TO CAMP
         elif event.ui_element in (
             Screens.menu_buttons["back_to_camp"],

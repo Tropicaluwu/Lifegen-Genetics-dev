@@ -1130,6 +1130,7 @@ def create_new_cat(
             parent2=parent2,
             extrapar=extrapar,
             adoptive_parents=adoptive_parents if adoptive_parents else [],
+            boosted_genes=game.clan.boosted_genes,
         )
 
         if new_cat.phenotype.manx[1] in ["Ab", "M"] or new_cat.phenotype.sexgene[0] == "Y" or new_cat.phenotype.munch[1] == "Mk" or ('NoDBE' not in new_cat.phenotype.pax3 and 'DBEalt' not in new_cat.phenotype.pax3 and new_cat.phenotype.pax3 != ["DBEcel", "DBEcel"]):
@@ -1149,6 +1150,7 @@ def create_new_cat(
                     parent2=parent2,
                     extrapar=extrapar,
                     adoptive_parents=adoptive_parents if adoptive_parents else [],
+                    boosted_genes=game.clan.boosted_genes,
                 )
             else:
                 new_cat.moons = 0

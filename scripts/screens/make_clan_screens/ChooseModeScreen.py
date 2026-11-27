@@ -35,18 +35,13 @@ class ChooseModeScreen(MakeClanScreenBase):
 
         # Reset variables
         if not switch_get_value(Switch.possible_cats):
-            switch_set_value(
-                Switch.possible_cats,
-                create_example_cats(
-                    majority_rank=self.get_config_during_creation(
-                        "clan_creation.majority_rank"
-                    ),
-                    rank_weights=self.get_config_during_creation(
-                        "clan_creation.rank_weights"
-                    ),
-                    lifegen_kitten_creation=True,
-                ),
+            possible_cats, boosted_genes = create_example_cats(
+                majority_rank=self.get_config_during_creation("clan_creation.majority_rank"),
+                rank_weights=self.get_config_during_creation("clan_creation.rank_weights"),
+                lifegen_kitten_creation=True,
             )
+            switch_set_value(Switch.possible_cats, possible_cats)
+            self.clan_info.boosted_genes = boosted_genes
 
         self.elements["previous_step"].enable()
         self.elements["next_step"].enable()
@@ -226,19 +221,14 @@ class ChooseModeScreen(MakeClanScreenBase):
             set_clan_setting(setting, True)
 
         # create new cats because the cats might no longer fit the card constraints
-        switch_set_value(
-            Switch.possible_cats,
-            create_example_cats(
-                majority_rank=self.get_config_during_creation(
-                    "clan_creation.majority_rank"
-                ),
-                rank_weights=self.get_config_during_creation(
-                    "clan_creation.rank_weights"
-                ),
-                max_cats=member_amount[1]+6,
-                cards=self.clan_info.cruel_cards,
-            ),
+        possible_cats, boosted_genes = create_example_cats(
+            majority_rank=self.get_config_during_creation("clan_creation.majority_rank"),
+            rank_weights=self.get_config_during_creation("clan_creation.rank_weights"),
+            max_cats=member_amount[1]+6,
+            cards=self.clan_info.cruel_cards,
         )
+        switch_set_value(Switch.possible_cats, possible_cats)
+        self.clan_info.boosted_genes = boosted_genes
 
         self.clan_info.display_name = self.random_clan_name()
         self.clan_info.biome = self.random_biome_selection()

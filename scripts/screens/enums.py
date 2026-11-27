@@ -34,6 +34,8 @@ class GameScreen(StrEnum):
     MED_DEN = "med_den_screen"
     WARRIOR_DEN = "warrior_den_screen"
     MEDIATION = "mediation_screen"
+    # LGG: Genemod's nursery (queen advice), Lifegen's own queen screen is QUEEN below
+    QUEEN_ADVICE = "queen_advice_screen"
 
     PROFILE = "profile_screen"
     # screens accessed through profile

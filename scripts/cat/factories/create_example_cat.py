@@ -22,10 +22,18 @@ def create_example_cats(
     max_cats=12,
     clan=None,
     cards=None,
-) -> list[Cat]:
+) -> tuple[list[Cat], list]:
     majority_rank_cats = sample(range(max_cats), 3)
     use_special = get_config("clan_creation.use_special_roller")
     socials = get_config("clan_creation.founder_socials", True, cards)
+
+    boosted_genes = []
+    genes_to_boost = randint(*get_config("genetics_config.boosted_genes_count"))
+    gene_config = get_config("genetics_config")
+    possible_genes = list(gene_config.keys())
+    possible_genes = [gene for gene in possible_genes if isinstance(gene_config[gene], int) and gene_config[gene] > 10 and 
+                        gene not in ["dominant white", "cryptic_tortie", "somatic_mutation", "random_mutation", "X monosomy", "XXX/XXY", "intersex", "identical_twins", "chimera"] and "blue_eye" not in gene and "_breed" not in gene]
+    boosted_genes = sample(possible_genes, genes_to_boost)
 
     chosen_cats = []
     if lifegen_kitten_creation:
@@ -39,6 +47,7 @@ def create_example_cats(
                     group_ID=clan if clan else None,
                     use_special=use_special,
                     cards=cards,
+                    boosted_genes=boosted_genes,
                 )
             )
     else:
@@ -50,14 +59,15 @@ def create_example_cats(
             else:
                 rank = choices(list(rank_weights.keys()), list(rank_weights.values()))[0]
             cat = NewCatFactory.create_cat(status_dict={"social": social, "rank": rank, "group_ID": clan if clan else None}, 
-                                           use_special=use_special, backstory="clan_founder" if social == "clancat" else None, creating_clan=True, cards=cards)
+                                           use_special=use_special, backstory="clan_founder" if social == "clancat" else None,
+                                           creating_clan=True, cards=cards, boosted_genes=boosted_genes)
             cat.status._modify_group(rank, standing_with_past_group=CatStanding.LEFT, new_group_ID=clan if clan else CatGroup.PLAYER_CLAN_ID)
 
             if cat.moons >= 140:
                 cat.moons = randint(120, 140)
             chosen_cats.append(cat)
 
-    return chosen_cats
+    return chosen_cats, boosted_genes
 
 
 def create_option_preview_cat(scar: str = None, acc: str = None):

@@ -65,6 +65,7 @@ class ClanInfo:
     starting_season: str = "Newleaf"
     game_mode: str = "classic"
     clan_count_mode: str = "singleclan"
+    boosted_genes: Optional[list] = None
     
     cruel_cards: list[str] = field(default_factory=list)
 
@@ -91,6 +92,7 @@ class ClanInfo:
         self.game_mode = "classic"
         self.clan_count_mode = "singleclan"
         self.cruel_cards = []
+        self.boosted_genes = []
 
         self.starting_size = "small"
         self.clan_age = "new"
@@ -119,6 +121,7 @@ class ClanInfo:
         self.game_mode = saved_info["game_mode"]
         self.clan_count_mode = saved_info["clan_count_mode"]
         self.cruel_cards = saved_info["cruel_cards"]
+        self.boosted_genes = saved_info["boosted_genes"]
 
         self.starting_size = saved_info["starting_size"]
         self.clan_age = saved_info["clan_age"]
@@ -143,6 +146,7 @@ class ClanInfo:
             "cruel_cards": self.cruel_cards,
             "starting_size": self.starting_size,
             "clan_age": self.clan_age,
+            "boosted_genes": self.boosted_genes,
         }
 
     def no_cats_chosen(self) -> bool:
@@ -283,6 +287,8 @@ class MakeClanScreenBase(Screens):
 
     def save_clan(self):
         game.mediated.clear()
+        game.queen_advice.clear()
+        game.queen_advice_outcomes.clear()
         game.patrolled.clear()
         game.just_died.clear()
         game.dead_cats_to_grieve.clear()
@@ -436,20 +442,20 @@ class MakeClanScreenBase(Screens):
         # EDITED FOR LG: used to be choose_random_cats
         # now creates the rest of the clan
         size_dict = {"small": 10, "medium": 15, "large": 20}
-        switch_set_value(
-            Switch.future_clan_cats,
-            create_example_cats(
-                majority_rank=self.get_config_during_creation(
-                    "clan_creation.majority_rank"
-                ),
-                rank_weights=self.get_config_during_creation(
-                    "clan_creation.rank_weights"
-                ),
-                lifegen_kitten_creation=False,
-                max_cats=size_dict[self.clan_info.starting_size],
-                cards=self.clan_info.cruel_cards,
+        future_cats, boosted_genes = create_example_cats(
+            majority_rank=self.get_config_during_creation(
+                "clan_creation.majority_rank"
             ),
+            rank_weights=self.get_config_during_creation(
+                "clan_creation.rank_weights"
+            ),
+            lifegen_kitten_creation=False,
+            max_cats=size_dict[self.clan_info.starting_size],
+            cards=self.clan_info.cruel_cards,
         )
+        switch_set_value(Switch.future_clan_cats, future_cats)
+        # LGG: the Clan's boosted genes (Genemod) are the ones its cats were made with
+        self.clan_info.boosted_genes = boosted_genes
         possible_cats = switch_get_value(Switch.future_clan_cats)
         print("Upcoming Clan Cats:", possible_cats)
         if need_leader:

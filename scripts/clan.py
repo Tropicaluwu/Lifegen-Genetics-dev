@@ -121,7 +121,8 @@ class Clan:
         starting_size="small",
         relations={CatGroup.PLAYER_CLAN_ID: {}},
         self_run_init_functions=True,
-        clan_count_mode=""
+        clan_count_mode="",
+        boosted_genes=None
     ):
         """
         :param save_id: The save file name for the Clan, this should not be used for player-facing text beyond the save file screen
@@ -134,6 +135,8 @@ class Clan:
             starting_members = []
 
         self.received_aid = False
+        self.boosted_genes = boosted_genes if boosted_genes else []
+
         self.leader_den_events = {
             "clan_event": {},
             "outsider_event": {}
@@ -352,6 +355,7 @@ class Clan:
             )
             if self.clan_age == "new"
             else choice(BACKSTORIES["backstory_categories"]["clan_guide_backstories"]),
+            boosted_genes=self.boosted_genes,
         )
         self.instructor.dead_for = randint(20, 200)
 
@@ -364,6 +368,7 @@ class Clan:
             )
             if self.clan_age == "new"
             else choice(BACKSTORIES["backstory_categories"]["df_backstories"]),
+            boosted_genes=self.boosted_genes,
         )
 
         self.clancount = clancount
@@ -1077,6 +1082,10 @@ class Clan:
         TODO: DOCS
         """
 
+        queen_advice = []
+        for i in range(len(game.queen_advice)):
+            queen_advice.append(f"{game.queen_advice[i]} ; {game.queen_advice_outcomes[i]}")
+
         clan_data = {
             "clancount_mode": self.clancount,
             "save_id": self.save_id,
@@ -1091,6 +1100,7 @@ class Clan:
             "clan_symbol": self.chosen_symbol,
             "gamemode": self.game_mode,
             "cruel_cards": self.cruel_cards,
+            "boosted_genes": self.boosted_genes,
             "used_group_IDs": game.used_group_IDs,
             "last_focus_change": self.last_focus_change,
             "clans_in_focus": self.clans_in_focus,
@@ -1101,6 +1111,7 @@ class Clan:
             "following_starclan": self.followingsc,
             "mediated": game.mediated,
             "told_story": game.told_story,
+            "queen_advice": queen_advice,
             "starting_season": self.starting_season,
             "temperament": self.temperament,
             "relations": self.relations,
@@ -1359,6 +1370,7 @@ class Clan:
                 for c in clan_data.get("cruel_cards", [])
                 if c in constants.CRUEL_CARDS_ALL
             ],
+            boosted_genes=clan_data.get("boosted_genes"),
             self_run_init_functions=False,
         )
         game.clan.post_initialization_functions()
@@ -1411,7 +1423,8 @@ class Clan:
                 status_dict=StatusDict(
                     rank=choice([CatRank.WARRIOR, CatRank.WARRIOR, CatRank.ELDER]),
                     group_ID=CatGroup.STARCLAN_ID,
-                )
+                ),
+                boosted_genes=self.boosted_genes
             )
             game.clan.instructor.status.group_history.insert(0, {"rank": game.clan.instructor.status.rank, "group": CatGroup.PLAYER_CLAN_ID, "moons_as": self.instructor.moons})
             # update_sprite(game.clan.instructor)
@@ -1656,6 +1669,17 @@ class Clan:
         game.clan.clan_age = (
             clan_data["clan_age"] if "clan_age" in clan_data else "established"
         )
+
+        # Queen flag
+        if "queen_advice" in clan_data:
+            if not isinstance(clan_data["queen_advice"], list):
+                game.queen_advice = []
+            else:
+                queen_advice = clan_data["queen_advice"]
+                for q in queen_advice:
+                    split = q.split(" ; ")
+                    game.queen_advice.append(split[0])
+                    game.queen_advice_outcomes.append(split[1])
 
         game.just_died.clear()
         # Cat who had just died
@@ -2461,6 +2485,7 @@ class OtherClan:
                 backstory=choice(
                     BACKSTORIES["backstory_categories"]["clan_guide_backstories"]
                 ),
+                boosted_genes=game.clan.boosted_genes
             )
             self.instructor.dead_for = randint(20, 200)
             self.instructor.status.group_history.insert(0, {"rank": instructor_rank, "group": self.group_ID, "moons_as": self.instructor.moons})
@@ -2471,6 +2496,19 @@ class OtherClan:
         if clancount == "multiclan":
             for i in range(3):
                 generate_and_add_new_poi(self.biome, PoiType.TERRAIN, clan=self.group_ID)
+
+            member_amount = get_config("clan_creation.neighbourclan_cats")
+            possible_cats, boosted_genes = create_example_cats(
+                majority_rank=get_config("clan_creation.majority_rank"),
+                rank_weights=get_config("clan_creation.rank_weights"),
+                max_cats=member_amount[1]+3,
+                clan=self.group_ID
+            )
+            grown_cats = [
+                c
+                for c in possible_cats
+                if c.age not in (CatAge.NEWBORN, CatAge.KITTEN, CatAge.ADOLESCENT)
+            ]
 
             instructor_rank = choice(
                 (
@@ -2490,22 +2528,10 @@ class OtherClan:
                 backstory=choice(
                 BACKSTORIES["backstory_categories"]["clan_guide_backstories"]
                 ),
+                boosted_genes=boosted_genes
             )
             self.instructor.dead_for = randint(20, 200)
             self.instructor.status.group_history.insert(0, {"rank": instructor_rank, "group": self.group_ID, "moons_as": self.instructor.moons})
-
-            member_amount = get_config("clan_creation.neighbourclan_cats")
-            possible_cats = create_example_cats(
-                majority_rank=get_config("clan_creation.majority_rank"),
-                rank_weights=get_config("clan_creation.rank_weights"),
-                max_cats=member_amount[1]+3,
-                clan=self.group_ID
-            )
-            grown_cats = [
-                c
-                for c in possible_cats
-                if c.age not in (CatAge.NEWBORN, CatAge.KITTEN, CatAge.ADOLESCENT)
-            ]
 
             if grown_cats and get_config("clan_creation.ranks_needed.leader"):
                 self.new_leader(choice(grown_cats))

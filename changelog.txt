@@ -1,3 +1,14 @@
+<strong>Lifegen Genetics v1.3.5</strong>
+
+Changes:
+- Brought up to date with Genemod from November 25, 2026: queens can advise or discourage a cat in the nursery, which makes kits more or less likely that moon. Each new Clan makes a few genes more common in its cats. Some multi clan events name the right cats now
+- The "Meow! This is a bug" talk line now points to #lgg-bug-reports on the Discord server
+
+Fixes:
+- Cat lists that become empty no longer keep showing the cats from the last list: the Outsiders list after driving the last one away, and Cats Beyond the Clan (a player report)
+- The apprentice event about the mentor talking with the player's parents now names one parent, so it no longer shows up for a cat with one parent who is also their mentor (a player report)
+- A lost apprentice can no longer come back as the child in a "parent and child" patrol with a new parent they aren't related to. Family made by a patrol is always new (a player report)
+
 <strong>Lifegen Genetics v1.3.4</strong>
 
 Fixes:

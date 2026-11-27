@@ -2158,7 +2158,8 @@
                     "stable"
                 ]
             },
-            "r_c:0": {}
+            "r_c:0": {},
+            "r_c:1": {}
         },
         "relationships": [
             {
@@ -2171,12 +2172,23 @@
                 "relationship": [
                     "mentor/app"
                 ]
+            },
+            {
+                "cats_from": [
+                    "r_c:1"
+                ],
+                "cats_to": [
+                    "y_c"
+                ],
+                "relationship": [
+                    "parent/child"
+                ]
             }
         ],
         "types": [
             "general"
         ],
-        "event": "With a cautious gaze, you watch as r_c:0 talks with your parents. Anxiety tugs at your chest... Oh StarClan, what are they saying?"
+        "event": "With a cautious gaze, you watch your mentor, r_c:0, talk with your parent, r_c:1. Anxiety tugs at your chest... Oh StarClan, what are they saying?"
     },
     "stable107": {
         "cats": {

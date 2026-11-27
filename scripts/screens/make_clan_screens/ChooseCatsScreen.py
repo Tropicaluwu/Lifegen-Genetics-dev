@@ -88,7 +88,7 @@ class ChooseCatsScreen(MakeClanScreenBase):
                     ),
                     lifegen_kitten_creation=True,
                     cards=self.clan_info.cruel_cards,
-                ),
+                )[0],
             )
 
         # determine ranks needed
@@ -245,19 +245,17 @@ class ChooseCatsScreen(MakeClanScreenBase):
                 self.elements["roll3"],
             ):
                 # create new cats
+                possible_cats, boosted_genes = create_example_cats(
+                    majority_rank=self.get_config_during_creation("clan_creation.majority_rank"),
+                    rank_weights=self.get_config_during_creation("clan_creation.rank_weights"),
+                    lifegen_kitten_creation=True,
+                    cards=self.clan_info.cruel_cards,
+                )
                 switch_set_value(
                     Switch.possible_cats,
-                    create_example_cats(
-                        majority_rank=self.get_config_during_creation(
-                            "clan_creation.majority_rank"
-                        ),
-                        rank_weights=self.get_config_during_creation(
-                            "clan_creation.rank_weights"
-                        ),
-                        lifegen_kitten_creation=True,
-                        cards=self.clan_info.cruel_cards,
-                    ),
+                    possible_cats
                 )
+                self.clan_info.boosted_genes = boosted_genes
                 self.selected_cat = None
 
                 if self.elements["error_message"]:

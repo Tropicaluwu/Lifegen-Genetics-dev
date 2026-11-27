@@ -200,7 +200,8 @@ class UICatListDisplay(UIContainer):
         """
 
         self.current_page = current_page
-        if cat_list and cat_list != self.cat_list:
+        # LGG: an empty list is a list too, or the cats from the last list stayed on screen
+        if cat_list is not None and cat_list != self.cat_list:
             self.cat_list = cat_list
             self._chunk()
         self._display_cats()

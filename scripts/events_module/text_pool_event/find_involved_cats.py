@@ -64,6 +64,8 @@ def find_cats(
 
     for abbr, constraints in event.involved_cats.items():
         can_create_new_cat = False
+        # LGG: always a new cat (see below)
+        must_be_new = False
         possible_injuries = get_potential_conditions(abbr, can_give_condition, event)
         possible_accessories = get_potential_accessories(
             abbr, can_give_accessory, event
@@ -131,7 +133,14 @@ def find_cats(
                 creation_constraints = constraints["can_create_new_cat"]
                 if creation_constraints.get("become_litter", False):
                     # this is always gonna make new cats
-                    possible_cats = []
+                    must_be_new = True
+                # LGG: family of a cat who's being made new is new too. An existing cat (like a
+                # lost apprentice) used to fill the spot, with no family tie to the new cat
+                family = [ref for key in ("assign_mate", "assign_blood_parent", "assign_adoptive_parent",
+                                          "assign_sibling")
+                          for ref in creation_constraints.get(key, [])]
+                if any(ref not in temp_involved_cats for ref in family):
+                    must_be_new = True
                 if creation_constraints.get("assign_mate"):
                     relationship_constraints.append(
                         RelationshipConstraintDict(
@@ -170,6 +179,8 @@ def find_cats(
             possible_cats = [
                 c for c in outside_cats if c not in temp_involved_cats.values() and ("clancat" in constraints.get("status", [])+constraints.get("past_status", []) or c.status.is_outsider)
             ]
+            if must_be_new:
+                possible_cats = []
 
             # CHECK MULTI_CAT
         elif abbr == "multi_cat":
